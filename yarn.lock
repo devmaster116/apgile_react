@@ -1351,37 +1351,37 @@
     dompurify "^2.1.1"
 
 "@evenlogics/whf-ra-customer@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.3.5.tgz#43dc08bb93a8c20988be71914871d4fdca9b1552"
-  integrity sha512-UekW7sSFi9DGYmxZ2VMbVlZjU/jm5RLcNHHauD9f8VeRiSOPKh4vC8RqooOrgjSk70VbxIa2N5tXv8D3Jpqj/Q==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.4.2.tgz#d6e4348b9e8f217d8bd218deec6ee7ba43733d84"
+  integrity sha512-RjXY4c6DQCw3MZWj3KfO4RAxZuLWHUqnWI6RnAitIla9bmNfzmIMe0B/FV7L+be3GmFpz6Uei2Qc/E7Y8BUYvQ==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.3.5"
+    "@evenlogics/whf-reactadmin" "^1.4.2"
 
 "@evenlogics/whf-ra-entity@^1.3.5":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.1.tgz#9b08841ac68a86e64d6e668c868c6dcf9469a8e3"
-  integrity sha512-8LNjv2gEt/OZYlbalWj6pS4rBB7yePAFQlF7ypqJ5mRhk5UDQ74NSPHhdnok3Rf2VSQIWUTDCKJvpLV7t2LXdw==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.2.tgz#a004f37f558d9a2f1c8d7d3d51d72fb4566fdbb3"
+  integrity sha512-M70p2HMMlSAijHl9jGwciSvAg6dYE87banCeYrOA3J/4JHDJNliXed5pq0CGHApsEGPYnU2omuAAAeJSKvWuMg==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.3.5"
+    "@evenlogics/whf-reactadmin" "^1.4.2"
 
 "@evenlogics/whf-ra-notifier@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.3.5.tgz#100e1e3fc65624b314264bc4bcacae018849c54c"
-  integrity sha512-MYZ4VWqedKEpq8zJiaSoyjjSsNCJQBlBq8RwkIXY5OKhbhxrbFygTkj156VEu0XM61eAINiuwau9LcYbeQAGJA==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.2.tgz#8f220f548fb4ed4e8d4bee8ba37cbbf0e1a99ea1"
+  integrity sha512-rYSHteEa6q5gJsd8J9nuXTiE9yZyulRtVjc7xsLGA7YwTcjWc1szk7WOpXRbKM8nIb6s3dOp34r8OOB1scM07w==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.3.5"
+    "@evenlogics/whf-reactadmin" "^1.4.2"
 
 "@evenlogics/whf-ra-user@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.3.5.tgz#5f1574bb66743793dfdbc443c508715b714893ea"
-  integrity sha512-m+G73uiMzjlCYGmG8MbVoqT7cjy8q4Q8oFHePJcHNlP087nhuIPg8OuAlHxhanPmG8n5iie5mjPwCx+NDDmPyQ==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.4.2.tgz#f1e023f24a9395395406e64a0e4f28ea06ed5a39"
+  integrity sha512-9348KP2VAzQ/CaJ/CrvwgFEjniKmxi613X2ViQlumTdCIb0/jvyCuVIHwTilrf5JbrvPZFnZiHldM8Gx5o3rdg==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.3.5"
+    "@evenlogics/whf-reactadmin" "^1.4.2"
 
-"@evenlogics/whf-reactadmin@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.3.5.tgz#4ed55ef20293f25d59a79403fb5e7ec7b65caab7"
-  integrity sha512-9fJZLUbDCrK6Q57tVG90w60oht4QmVInEnv9dU3Wy7fdkBqYXXDn7p6hB+eAuaDfmkEuQCbiIC7qKJtGjYid8g==
+"@evenlogics/whf-reactadmin@^1.3.5", "@evenlogics/whf-reactadmin@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.4.2.tgz#9029908030f316c962d0468105469987c12e1813"
+  integrity sha512-PtjsuOTDltBKN3zWq9Fj67cpV+MvtSf12jJhqv0NjjOfcV/Piq+nW1trOJHWwo7zC9Q5GaALUl9IZpjj7HCB9w==
   dependencies:
     "@evenlogics/coreui-pro" "^3.4.2"
     "@evenlogics/react" "^3.0.1"
@@ -4280,9 +4280,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.4.17:
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.34.tgz#7d87dc0e95c2c65cbd0687ae23146a662506d1ef"
-  integrity sha512-B7g6Y9No9XMYk1VNrQ8KAmSEo1Iltrz/5EjOGxl1DffQAb3z/XbpHRCfYKwV8D+CPXm4Q7Xg1sceSt9osNwRIA==
+  version "1.4.35"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.35.tgz#69aabb73d7030733e71c1e970ec16f5ceefbaea4"
+  integrity sha512-wzTOMh6HGFWeALMI3bif0mzgRrVGyP1BdFRx7IvWukFrSC5QVQELENuy+Fm2dCrAdQH9T3nuqr07n94nPDFBWA==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -5386,9 +5386,9 @@ globby@^6.1.0:
     pinkie-promise "^2.0.0"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
-  integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
+  integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
 
 growly@^1.3.0:
   version "1.3.0"
@@ -9058,9 +9058,9 @@ prompts@^2.0.1:
     sisteransi "^1.0.5"
 
 prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
-  version "15.8.0"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.0.tgz#d237e624c45a9846e469f5f31117f970017ff588"
-  integrity sha512-fDGekdaHh65eI3lMi5OnErU6a8Ighg2KjcjQxO7m8VHyWjcPyj5kiOgV1LQDOOOgVy3+5FgjXvdSSX7B8/5/4g==
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
   dependencies:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
