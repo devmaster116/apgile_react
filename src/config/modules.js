@@ -31,12 +31,6 @@ export default [
     },
     {
         name: 'Promotion',
-        component: require('../modules/Promotion'),
-        status: true,
-        order: 11
-    },
-    {
-        name: 'Promotion',
         component: require('../modules/UserManagement'),
         status: true,
         order: 12

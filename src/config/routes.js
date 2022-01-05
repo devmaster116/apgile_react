@@ -7,9 +7,10 @@ import LocationsList from "./../components/Locations/List";
 import TeamsAdd from "./../components/Teams/Add";
 import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
+import React from "react";
 
-
-
+const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
+const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 
 const routes = [
@@ -25,6 +26,10 @@ const routes = [
 	{ path: '/owner/teams/:id/edit', exact: true, name: 'Edit', component: TeamsAdd },
 	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail },
 
+
+	{path : "/add-promotion" ,exact : true , component : AddPromotions},
+	{path : "/promotions" ,exact : true , component : PromotionsList},
+	{path : "/promotions/:id/edit" ,exact : true , component : AddPromotions},
 
 
 ];
