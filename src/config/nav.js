@@ -1,7 +1,5 @@
 export default {
 	dashboard: {
-		_tag: 'CSidebarNavItem',
-		name: 'Dashboard',
 		phrase: 'dashboard',
 		to: '/dashboard',
 		order: 10,
@@ -12,66 +10,61 @@ export default {
 		}
 	},
 	owner: {
-		_tag: 'CSidebarNavDropdown',
-		name: 'Location',
-		phrase: 'location',
+		phrase: 'Manage App',
 		to: '/owner',
+		order: 100,
 		icon: 'fas fa-building',
 		hasRoute: false,
 		children: {
 			location: {
-				name: 'Locations',
 				phrase: 'locations',
+				order:1,
 				icon: 'fas fa-list',
 				to: '/owner/locations'
 			},
 			team: {
-				name: 'Team',
 				phrase: 'team',
+				order:2,
 				icon: 'fas fa-list',
 				to: '/owner/teams'
 			}
 		}
 	},
 	customer: {
-		children: {
-			customerStatus: {
-				hide: true
-			},
-			customerTypes: {
-				hide: true
-			}
-		}
+		// children: {
+		// 	customerStatus: {
+		// 		hide: true
+		// 	},
+		// 	customerTypes: {
+		// 		hide: true
+		// 	}
+		// }
+		hide:true
 	},
 	user: {
-		children: {
-			permission: {
-				hide: true
-			},
-			role: {
-				hide: true
-			}
-		}
+		hide:true,
+		// children: {
+		// 	permission: {
+		// 		hide: true
+		// 	},
+		// 	role: {
+		// 		hide: true
+		// 	}
+		// }
 	},
 	Promotion: {
-		_tag: "CSidebarNavItem",
-		name: "Promotion",
 		phrase: "Promotion",
 		to: "/dummy",
-		order: 11,
+		order: 130,
 		icon: "fas fa-landmark",
 		children: {
 			add_promotion: {
-				_tag: "CSidebarNavItem",
-				name: "add_promotion",
 				phrase: "Add User",
 				to: "/add-promotion",
 				order: 1,
 				icon: "fas fa-plus-circle",
 			},
 			promotions_list: {
-				_tag: "CSidebarNavItem",
-				name: "promotions_list",
 				phrase: "Promotions List",
 				to: "/promotions",
 				order: 2,
@@ -80,8 +73,6 @@ export default {
 		},
 	},
 	staffs: {
-		_tag: "CSidebarNavItem",
-		name: "staffs",
 		phrase: "User Test",
 		to: "/dummy",
 		order: 12,
@@ -96,8 +87,6 @@ export default {
 			//   icon: "fas fa-plus-circle",
 			// },
 			staff_list: {
-				_tag: "CSidebarNavItem",
-				name: "staff_list",
 				phrase: "Staff List",
 				to: "/staffs",
 				order: 1,
@@ -105,4 +94,27 @@ export default {
 			},
 		},
 	},
+
+	calls: {
+		phrase: "Calls",
+		to: "/calls",
+		order: 115,
+		icon: "fas fa-landmark",
+	},
+	pages : {
+		phrase:"Pages",
+		order:125,
+		to:"/pages",
+		icon:"fas fa-pager",
+		children : {
+		page:{
+			phrase:"Pages",
+			to:"/pages",
+		      },
+		   styles: {
+			   phrase:"styles",
+			   to:"/styles",
+		   }
+	}
+}
 };

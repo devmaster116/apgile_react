@@ -23,14 +23,14 @@ export default [
         status: true,
         order: 8
     },
+    // {
+    //     name: 'Persons',
+    //     component: require('../modules/Persons'),
+    //     status: true,
+    //     order: 9
+    // },
     {
-        name: 'Persons',
-        component: require('../modules/Persons'),
-        status: true,
-        order: 9
-    },
-    {
-        name: 'Promotion',
+        name: 'UserManagement',
         component: require('../modules/UserManagement'),
         status: true,
         order: 12

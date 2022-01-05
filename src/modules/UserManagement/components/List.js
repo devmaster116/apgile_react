@@ -1,10 +1,16 @@
-import React from "react";
+import React,{useState} from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody,Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import api from '@evenlogics/whf-api';
+import Swal from 'sweetalert2'
 
 
+const List = () => {
 
+  const [query, setQuery] = useState(false);
+
+  
 const defaultSorted = [{ dataField: "id", order: "desc" }];
 const columns = [
   {
@@ -81,11 +87,36 @@ const columns = [
     align: "center",
     sort: true,
   },
-  
- 
+  {
+    dataField: 'Action',
+    isDummyField: true,
+    text: "Action",
+    align: 'center',
+    sort: true,
+    formatter: (cell, row) => {
+      console.log(row.status_id, "iddddd");
+      return (
+          <div>
+              {row.status_id !== 1 ? <Button onClick={() => getData(row, 'activate')} className='ml-1 mb-1' variant='success'>Unban</Button> : <Button onClick={() => getData(row, 'ban')} className='ml-1' variant='danger'>Ban</Button>}
+          </div>
+      )
+  },
+}
 ];
 
-const VendorsList = () => {
+
+
+  const getData = (data,type,status) => {
+    let paylaod = status
+    api.request('put',`/staff/account/${data.id}`,paylaod)
+        .then((response) => {
+            Swal.fire(`User Sucessfully ${type.toUpperCase()}`, "", "success");
+            setQuery(!query);
+        }).catch(() => {
+            Swal.fire("Something Went Wrong", "", "error");
+        })
+  }
+
   return (
     <div>
       <div>
@@ -115,4 +146,4 @@ const VendorsList = () => {
   );
 };
 
-export default VendorsList;
+export default List;
