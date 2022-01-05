@@ -9,44 +9,61 @@ class LocationsAdd extends Component {
         const {id} = this.props.match.params;
 
         const fields = {
-            title: {
+            name: {
                 type: 'text',
-                label: this.props.t('title'),
+                label: 'Name',
                 required: true,
-                name: 'title',
+                name: 'name',
+                col: 6
+            },
+            description: {
+                type: 'text',
+                label: "Description",
+                required: true,
+                name: 'description',
                 col: 6
             },
             parent_id: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:parent_id'),
+                label: "Parent",
                 target: 'locations?title=%s',
-                optionLabel: 'title',
+                // optionLabel: 'title',
                 async: true,
                 name: 'parent_id',
                 col: 6
             },
-            branch: {
+            branch_id: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:branche'),
+                label: "Branch",
                 target: 'branches?title=%s',
                 async: true,
-                name: 'branch',
+                name: 'branch_id',
                 col: 6
-            }
+            },
+            team_id: {
+                type: 'advanceSelect',
+                label: "Teams",
+                target: 'teams',
+                async: true,
+                // isMulti:true,
+                multi:true,
+                name: 'team_id',
+                col: 6
+            },
         };
 
         return (
             <Card className="animated fadeIn">
                 <CardHeader>
-                    {this.props.t('add-new')} {this.props.t('base:phrase')}
+                   Add New Location
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="terms"
+                        targetEntity="locations"
                         getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="phrases"
+                        name="locations"
                         repeater={true}
                         initialValues={this.props.location.aboutProps}
                         

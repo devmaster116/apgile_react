@@ -28,13 +28,7 @@ const columns = [
   },
   {
     dataField: "branch.phone1",
-    text: "phone1",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "branch.phone2",
-    text: "phone2",
+    text: "Branch Phone",
     align: "center",
     sort: true,
   },
@@ -46,12 +40,6 @@ const columns = [
     sort: true,
   },
  
-  {
-    dataField: "headline",
-    text: "Headline",
-    align: "center",
-    sort: true,
-  },
   {
     dataField: "description",
     text: "Description",

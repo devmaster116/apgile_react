@@ -11,38 +11,49 @@ class TeamsAdd extends Component {
         const fields = {
             name: {
                 type: 'text',
-                label: this.props.t('name'),
+                label: 'name',
                 required: true,
                 name: 'name',
                 col: 6
             },
             supervisor_id: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:supervisor_id'),
+                label: "Supervisor",
                 target: 'users?title=%s',
                 optionLabel: 'username',
                 async: true,
                 name: 'supervisor_id',
                 col: 6
             },
-            branch: {
+            branch_id: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:branch'),
+                label: "Branch",
                 target: 'branches?title=%s',
                 async: true,
-                name: 'branch',
+                name: 'branch_id',
                 col: 6
-            }
+            },
+            user_id: {
+                type: 'advanceSelect',
+                label: "User",
+                target: 'users?title=%s',
+                optionLabel: 'username',
+                async: true,
+                multi:true,
+                name: 'user_id',
+                col: 6
+            },
+
         };
 
         return (
             <Card className="animated fadeIn">
                 <CardHeader>
-                    {this.props.t('add-new')} {this.props.t('base:phrase')}
+                    Add New Team
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="terms"
+                        targetEntity="teams"
                         getValues={this.handleValue}
                         fields={fields}
                         targetId={id}

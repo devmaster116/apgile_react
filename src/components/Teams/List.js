@@ -6,31 +6,26 @@ import { withTranslation } from 'react-i18next';
 class TeamsList extends Component {
 	render() {
 		const columns = [
-			{ dataField: 'id', text: this.props.t('id'), align: 'center', sort: true },
+			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
 			{
-				dataField: 'title',
-				text: this.props.t('title'),
+				dataField: 'name',
+				text: 'Name',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'parent_id',
-				text: this.props.t('parent_id'),
+				dataField: 'supervisor.username',
+				text: 'Supervisor Name',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'slug',
-				text: this.props.t('slug'),
+				dataField: 'branch.name',
+				text: 'Branch Name',
 				align: 'center',
 				sort: true
 			},
-			{
-				dataField: 'module_name',
-				text: this.props.t('base:module-name'),
-				align: 'center',
-				sort: true
-			},
+		
 		];
 
 		if (this.props.extendedFields) {
@@ -48,12 +43,12 @@ class TeamsList extends Component {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>{this.props.t('base:terms')}</strong>
+						<strong>Team List</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="terms"
-							customEntity="base/terms"
+							entity="teams"
+							customEntity="teams"
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/owner/teams/add"

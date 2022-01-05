@@ -6,31 +6,31 @@ import { withTranslation } from 'react-i18next';
 class LocationsList extends Component {
 	render() {
 		const columns = [
-			{ dataField: 'id', text: this.props.t('id'), align: 'center', sort: true },
 			{
-				dataField: 'title',
-				text: this.props.t('title'),
+				dataField: 'id',
+				text: 'ID',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'parent_id',
-				text: this.props.t('parent_id'),
+				dataField: 'name',
+				text: 'Name',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'slug',
-				text: this.props.t('slug'),
+				dataField: 'description',
+				text: 'Description',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'module_name',
-				text: this.props.t('base:module-name'),
+				dataField: 'branch.name',
+				text: 'Branch Name',
 				align: 'center',
 				sort: true
 			},
+			
 		];
 
 		if (this.props.extendedFields) {
@@ -52,8 +52,8 @@ class LocationsList extends Component {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="terms"
-							customEntity="base/terms"
+							entity="locations"
+							customEntity="locations"
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/owner/locations/add"
