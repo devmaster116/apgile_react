@@ -9,6 +9,11 @@ export default {
 			text: 'NEW'
 		}
 	},
+
+	entity: {
+		hide: false,
+		order: 20,
+	},
 	owner: {
 		phrase: 'Manage App',
 		to: '/owner',
@@ -31,26 +36,10 @@ export default {
 		}
 	},
 	customer: {
-		// children: {
-		// 	customerStatus: {
-		// 		hide: true
-		// 	},
-		// 	customerTypes: {
-		// 		hide: true
-		// 	}
-		// }
 		hide:true
 	},
 	user: {
-		hide:true,
-		// children: {
-		// 	permission: {
-		// 		hide: true
-		// 	},
-		// 	role: {
-		// 		hide: true
-		// 	}
-		// }
+		hide:true
 	},
 	Promotion: {
 		phrase: "Promotion",
