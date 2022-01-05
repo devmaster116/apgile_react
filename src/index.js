@@ -1,4 +1,4 @@
-import React from "react";
+
 import customNav from "./config/nav";
 global.customNavGlobal = customNav;
 global.customRoutes = require("./config/routes");

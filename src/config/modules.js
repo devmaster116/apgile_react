@@ -23,4 +23,22 @@ export default [
         status: true,
         order: 8
     },
+    {
+        name: 'Persons',
+        component: require('../modules/Persons'),
+        status: true,
+        order: 9
+    },
+    {
+        name: 'Promotion',
+        component: require('../modules/Promotion'),
+        status: true,
+        order: 11
+    },
+    {
+        name: 'Promotion',
+        component: require('../modules/UserManagement'),
+        status: true,
+        order: 12
+    },
 ];

@@ -8,6 +8,10 @@ import TeamsAdd from "./../components/Teams/Add";
 import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
 
+
+
+
+
 const routes = [
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false },
 
@@ -19,7 +23,8 @@ const routes = [
 	{ path: '/owner/teams', exact: true, name: 'Terms', component: TeamsList, isPublic: true },
 	{ path: '/owner/teams/add', exact: true, name: 'Add', component: TeamsAdd },
 	{ path: '/owner/teams/:id/edit', exact: true, name: 'Edit', component: TeamsAdd },
-	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail }
+	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail },
+
 
 
 ];
