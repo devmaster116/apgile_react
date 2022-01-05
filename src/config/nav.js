@@ -32,5 +32,25 @@ export default {
 				to: '/owner/teams'
 			}
 		}
+	},
+	customer: {
+		children: {
+			customerStatus: {
+				hide: true
+			},
+			customerTypes: {
+				hide: true
+			}
+		}
+	},
+	user: {
+		children: {
+			permission: {
+				hide: true
+			},
+			role: {
+				hide: true
+			}
+		}
 	}
 };
