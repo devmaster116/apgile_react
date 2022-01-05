@@ -3,31 +3,31 @@ import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {withTranslation} from 'react-i18next';
 
-class LocationsAdd extends Component {
+class TeamsAdd extends Component {
 
     render() {
         const {id} = this.props.match.params;
 
         const fields = {
-            title: {
+            name: {
                 type: 'text',
-                label: this.props.t('title'),
+                label: this.props.t('name'),
                 required: true,
-                name: 'title',
+                name: 'name',
                 col: 6
             },
-            parent_id: {
+            supervisor_id: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:parent_id'),
-                target: 'locations?title=%s',
-                optionLabel: 'title',
+                label: this.props.t('general-phrases:supervisor_id'),
+                target: 'users?title=%s',
+                optionLabel: 'username',
                 async: true,
-                name: 'parent_id',
+                name: 'supervisor_id',
                 col: 6
             },
             branch: {
                 type: 'advanceSelect',
-                label: this.props.t('general-phrases:branche'),
+                label: this.props.t('general-phrases:branch'),
                 target: 'branches?title=%s',
                 async: true,
                 name: 'branch',
@@ -50,7 +50,7 @@ class LocationsAdd extends Component {
                         repeater={true}
                         initialValues={this.props.location.aboutProps}
                         
-                        redirect="owner/locations"
+                        redirect="owner/teams"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
@@ -59,4 +59,4 @@ class LocationsAdd extends Component {
     }
 }
 
-export default withTranslation()(LocationsAdd);
+export default withTranslation()(TeamsAdd);
