@@ -1,3 +1,4 @@
+import React from "react";
 import Dashboard from "./../components/Dashboard";
 
 import LocationsAdd from "./../components/Locations/Add";
@@ -7,7 +8,7 @@ import LocationsList from "./../components/Locations/List";
 import TeamsAdd from "./../components/Teams/Add";
 import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
-import React from "react";
+import NewCompany from "../components/NewCompany/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -31,6 +32,8 @@ const routes = [
 	{path : "/promotions" ,exact : true , component : PromotionsList},
 	{path : "/promotions/:id/edit" ,exact : true , component : AddPromotions},
 
+	{ path: '/entity/companies-new/add', exact: true, name: 'Add', component: NewCompany },
+	{ path: '/entity/companies-new/:id/edit', exact: true, name: 'Edit', component: NewCompany },
 
 ];
 
