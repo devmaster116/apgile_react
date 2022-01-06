@@ -54,23 +54,9 @@ export default {
 	},
 	Promotion: {
 		phrase: "Promotion",
-		to: "/dummy",
+		to: "/promotions",
 		order: 130,
 		icon: "fas fa-landmark",
-		children: {
-			add_promotion: {
-				phrase: "Add User",
-				to: "/add-promotion",
-				order: 1,
-				icon: "fas fa-plus-circle",
-			},
-			promotions_list: {
-				phrase: "Promotions List",
-				to: "/promotions",
-				order: 2,
-				icon: "fas fa-table",
-			},
-		},
 	},
 	staffs: {
 		phrase: "User Test",

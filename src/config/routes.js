@@ -17,6 +17,8 @@ import CallDetail from "./../components/Calls/Detail";
 import StyleAdd from "./../components/Styles/Add";
 import StylesList from "./../components/Styles/List";
 
+import PagesList from "./../components/Pages/List";
+
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -27,28 +29,32 @@ const routes = [
 
 	{ path: '/owner/locations', exact: true, name: 'Terms', component: LocationsList, isPublic: true },
 	{ path: '/owner/locations/add', exact: true, name: 'Add', component: LocationsAdd },
-	{ path: '/owner/locations/:id/edit', exact: true, name: 'Edit', component: LocationsAdd },
+	{ path: '/locations/:id/edit', exact: true, name: 'Edit', component: LocationsAdd },
 	{ path: '/owner/locations/:id/details', exact: true, name: 'Edit', component: LocationsDetail },
 
 	{ path: '/owner/teams', exact: true, name: 'Terms', component: TeamsList, isPublic: true },
 	{ path: '/owner/teams/add', exact: true, name: 'Add', component: TeamsAdd },
-	{ path: '/owner/teams/:id/edit', exact: true, name: 'Edit', component: TeamsAdd },
-	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail },
+	{ path: '/teams/:id/edit', exact: true, name: 'Edit', component: TeamsAdd },
+	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail},
 
 
-	{path : "/add-promotion" ,exact : true , component : AddPromotions},
-	{path : "/promotions" ,exact : true , component : PromotionsList},
+	{path : "/promotions" ,exact : true , component :PromotionsList},
+	{path : "/promotions/add" ,exact : true , component : AddPromotions},
 	{path : "/promotions/:id/edit" ,exact : true , component : AddPromotions},
 
 	// {path : "/pages" ,exact : true , component : PagesList},
-	{path : "/pages/page" ,exact : true , component : PageAdd},
+	{path : "/pages/page/add" ,exact : true , component : PageAdd},
+	{path : "/pages/:id/edit" ,exact : true , component : PageAdd},
+	{path : "/pages/page" ,exact : true , component : PagesList},
+	
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
 
 	{path : "/calls" ,exact : true , component : CallList},
 	{ path: '/callS/:id/details', exact: true, name: 'Edit', component: CallDetail },
 
-	{path : "/pages/styles" ,exact : true , component : StyleAdd},
-	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StylesList },
+	{path : "/pages/styles" ,exact : true , component : StylesList},
+	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StyleAdd },
+	{ path: '/styles/:id/edit', exact: true, name: 'Add', component: StyleAdd },
 	
 
 	// { path: '/entity/companies-new/:id/edit', exact: true, name: 'Edit', component: NewCompany },

@@ -45,9 +45,8 @@ const {id} = props.match.params;
     branch_id: {
       type: "advanceSelect",
       label: "Select Branch",
-      target: "",
-      optionValue: "id",
-      optionLabel: "role_id",
+      target: "branches",
+      optionLabel: "name",
       name: "branch_id",
       col: 4,
       required: true,

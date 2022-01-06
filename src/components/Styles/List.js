@@ -15,61 +15,37 @@ const columns = [
   },
   
   {
-    dataField: "username",
-    text: "username",
+    dataField: "name",
+    text: "Name",
     align: "center",
     sort: true,
   },
   {
-    dataField: "branch.name",
-    text: "Branch",
+    dataField: "font_color",
+    text: "Font Color",
     align: "center",
     sort: true,
   },
   {
-    dataField: "branch.phone1",
-    text: "phone1",
+    dataField: "bg_color",
+    text: "Background Color",
     align: "center",
     sort: true,
   },
   {
-    dataField: "branch.phone2",
-    text: "phone2",
+    dataField: "logo.name",
+    text: "Logo",
     align: "center",
     sort: true,
   },
   
   {
-    dataField: "title",
-    text: "Title",
+    dataField: "bg_image.name",
+    text: "Background Image",
     align: "center",
     sort: true,
   },
- 
-  {
-    dataField: "headline",
-    text: "Headline",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "description",
-    text: "Description",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "valid_from",
-    text: "valid_from",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "valid_till",
-    text: "valid_till",
-    align: "center",
-    sort: true,
-  },
+
   
  
 ];
@@ -89,6 +65,8 @@ const VendorsList = () => {
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
+              addRoute="/pages/styles/add"
+
             //   customButton={{
             //     name: "Download PDF",
             //     color: "warning",

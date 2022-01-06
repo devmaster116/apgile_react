@@ -15,61 +15,37 @@ const columns = [
   },
   
   {
-    dataField: "username",
-    text: "username",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "branch.name",
-    text: "Branch",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "branch.phone1",
-    text: "phone1",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "branch.phone2",
-    text: "phone2",
-    align: "center",
-    sort: true,
-  },
-  
-  {
-    dataField: "title",
-    text: "Title",
-    align: "center",
-    sort: true,
-  },
- 
-  {
-    dataField: "headline",
-    text: "Headline",
+    dataField: "name",
+    text: "Username",
     align: "center",
     sort: true,
   },
   {
     dataField: "description",
-    text: "Description",
+    text: "Descriptiond",
     align: "center",
     sort: true,
   },
   {
-    dataField: "valid_from",
-    text: "valid_from",
+    dataField: "total_calls",
+    text: "Total Calls",
     align: "center",
     sort: true,
   },
   {
-    dataField: "valid_till",
-    text: "valid_till",
+    dataField: "location.name",
+    text: "Location",
     align: "center",
     sort: true,
   },
+  
+  {
+    dataField: "location.branch.name",
+    text: "Branch Name",
+    align: "center",
+    sort: true,
+  },
+
   
  
 ];
@@ -79,16 +55,18 @@ const VendorsList = () => {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Promotions" />
+          <Header title="All Pages" />
           <CardBody>
             <RemoteTable
-              entity="promotions"
-              customEntity="promotions"
+              entity="pages"
+              customEntity="pages"
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
+              addRoute="/pages/page/add"
+
             //   customButton={{
             //     name: "Download PDF",
             //     color: "warning",

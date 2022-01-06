@@ -14,34 +14,44 @@ class TeamsAdd extends Component {
                 label: 'name',
                 required: true,
                 name: 'name',
-                col: 6
+                col: 4
             },
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
-                target: 'users?title=%s',
+                target: 'users',
                 optionLabel: 'username',
-                async: true,
+                // async: true,
                 name: 'supervisor_id',
-                col: 6
+                col: 4
+            },
+            location_id: {
+                type: 'advanceSelect',
+                label: "Location",
+                target: 'locations',
+                // optionValue: "id",
+                // optionLabel: "name",
+                // async: true,
+                name: 'location_id',
+                col: 4,
             },
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
-                target: 'branches?title=%s',
-                async: true,
+                target: 'branches',
+                // async: true,
                 name: 'branch_id',
-                col: 6
+                col: 4
             },
             user_id: {
                 type: 'advanceSelect',
                 label: "User",
-                target: 'users?title=%s',
+                target: 'users',
                 optionLabel: 'username',
-                async: true,
+                // async: true,
                 multi:true,
                 name: 'user_id',
-                col: 6
+                col: 4
             },
 
         };

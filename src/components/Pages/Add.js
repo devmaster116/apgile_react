@@ -15,7 +15,7 @@ const {id} = props.match.params;
     },
     total_calls: {
       type: "number",
-      label: "Total Calss",
+      label: "Total Calls",
       required: true,
       name: "total_calls",
       col: 4,
@@ -38,14 +38,14 @@ const {id} = props.match.params;
     branch_id: {
       type: "advanceSelect",
       label: "Branch",
-      target: 'branches?title=%s',
+      target: 'branches',
       async: true,
       name: "branch_id",
       required: true,
       col: 4,
     },
     message_box:{
-      type: "text",
+      type: "number",
       label: "Message",
       name: "message_box",
       required: true,
@@ -62,9 +62,19 @@ const {id} = props.match.params;
       col: 4,
       required: true,
     },
-    log:{
+    style_id: {
+      type: "advanceSelect",
+      label: "Select Style",
+      target: "styles",
+      // optionValue: "id",
+      // optionLabel: "role_id",
+      name: "style_id",
+      col: 4,
+      required: true,
+    },
+    logo:{
       type:"filePic",
-      name: "log",
+      name: "logo",
       col: 4,
       required: true,
     }
@@ -83,7 +93,7 @@ const {id} = props.match.params;
             name="pages"
             repeater={true}
             initialValues={props.location.aboutProps}
-            redirect="/pages"
+            redirect="pages"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

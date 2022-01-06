@@ -9,7 +9,7 @@ const {id} = props.match.params;
     style_id: {
       type: "advanceSelect",
       label: "Select Style",
-      target: 'styles?title=%s',
+      target: 'styles',
       async: true,
       name: "style_id",
       required: true,
@@ -73,7 +73,7 @@ const {id} = props.match.params;
             name="styles"
             repeater={true}
             initialValues={props.location.aboutProps}
-            redirect="pages"
+            // redirect="pages"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

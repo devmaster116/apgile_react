@@ -77,6 +77,7 @@ const VendorsList = () => {
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
+              addRoute="/promotions/add"
             //   customButton={{
             //     name: "Download PDF",
             //     color: "warning",

@@ -26,7 +26,7 @@ class LocationsAdd extends Component {
             parent_id: {
                 type: 'advanceSelect',
                 label: "Parent",
-                target: 'locations?title=%s',
+                target: 'locations',
                 // optionLabel: 'title',
                 async: true,
                 name: 'parent_id',
@@ -35,7 +35,7 @@ class LocationsAdd extends Component {
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
-                target: 'branches?title=%s',
+                target: 'branches',
                 async: true,
                 name: 'branch_id',
                 col: 6
