@@ -17,6 +17,9 @@ import CallDetail from "./../components/Calls/Detail";
 import StyleAdd from "./../components/Styles/Add";
 import StylesList from "./../components/Styles/List";
 
+import ExtendBranchAdd from "./../components/ExtendBranch/Add";
+import ExtendCompanyAdd from "./../components/ExtendCompany/Add";
+
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -49,9 +52,13 @@ const routes = [
 
 	{path : "/pages/styles" ,exact : true , component : StyleAdd},
 	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StylesList },
-	
 
-	// { path: '/entity/companies-new/:id/edit', exact: true, name: 'Edit', component: NewCompany },
+
+	{ path: '/entity/branches/add', exact: true, name: 'Add', component: ExtendBranchAdd },
+	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit', component: ExtendBranchAdd },
+
+	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },
+	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit', component: ExtendCompanyAdd },
 
 ];
 

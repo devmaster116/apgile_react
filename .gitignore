@@ -26,3 +26,4 @@ src/views/customComponents/*
 !src/views/customComponents/README.md
 /src/config/moduleConfig.js
 /public/assets/fontawesome-free/
+Test.js
