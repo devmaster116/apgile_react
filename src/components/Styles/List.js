@@ -5,7 +5,7 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 
 
-const defaultSorted = [{ dataField: "id", order: "desc" }];
+const defaultSorted = [{ dataField: "id", order: "asc" }];
 const columns = [
   {
     dataField: "id",
@@ -32,27 +32,38 @@ const columns = [
     align: "center",
     sort: true,
   },
-  // {
-  //   dataField: "logo.name",
-  //   text: "Logo",
-  //   align: "center",
-  //   sort: true,
-  // },
+
+  {
+   
+    isDummyField: true,
+    align: "center",
+    text: "Logo",
+    sort: true,
+    formatter: (cell, row) => {
+      console.log(cell,row, "cell");
+      return (
+          <div>
+             <img width={30} height={40} alt="background" src={row?.logo?.url}></img>
+          </div>
+      )
+  },
+  },
   
-  // {
-  //   dataField: "Action",
-  //   isDummyField: true,
-  //   text: "Background Image",
-  //   align: "center",
-  //   sort: true,
-  //   formatter: (cell, row) => {
-  //     console.log(cell,row, "cell");
-  //     return (
-  //         <div>
-  //            <img>
-  //         </div>
-  //     )
+  {
   
+    isDummyField: true,
+    align: "center",
+    text: "Background Image",
+    sort: true,
+    formatter: (cell, row) => {
+      console.log(cell,row, "cell");
+      return (
+          <div>
+             <img width={30} height={40} alt="background" src={row?.bg_image?.thumbnail}></img>
+          </div>
+      )
+  },
+  },
 
   
  

@@ -57,10 +57,10 @@ const routes = [
 	{path : "/pages/styles" ,exact : true , component : StylesList},
 	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StyleAdd },
 	{ path: '/styles/:id/edit', exact: true, name: 'Add', component: StyleAdd },
-	
 
 
-	{ path: '/entity/branches/add', exact: true, name: 'Add', component: ExtendBranchAdd },
+
+	{ path: '/entity/branches/add', exact: true, name: 'BranchAdd', component: ExtendBranchAdd },
 	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit', component: ExtendBranchAdd },
 
 	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },

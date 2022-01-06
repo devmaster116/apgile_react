@@ -12,8 +12,16 @@ export default {
 
 	entity: {
 		phrase:"Entity",
-		hide: false,
 		order: 20,
+		children:{
+			branch: {
+				phrase: 'Branch',
+				order:1,
+				name:"branch",
+				icon: 'fas fa-list',
+				to: '/entity/branches'
+			},
+		}
 	},
 	owner: {
 		phrase: 'Manage App',
@@ -47,20 +55,6 @@ export default {
 		to: "/promotions",
 		order: 130,
 		icon: "fas fa-landmark",
-	},
-	staffs: {
-		phrase: "User Test",
-		to: "/dummy",
-		order: 12,
-		icon: "fas fa-landmark",
-		children: {
-			staff_list: {
-				phrase: "Staff List",
-				to: "/staffs",
-				order: 1,
-				icon: "fas fa-table",
-			},
-		},
 	},
 
 	calls: {

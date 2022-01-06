@@ -2,10 +2,10 @@ import React from "react";
 
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
-function ExtendBranchAdd(props) {
+const ExtendBranchAdd = (props) =>  {
     let fields = {
         lat: {},
-        lng: {},
+        lng: {}  
     }
     return <BranchAdd extendedFields={fields} />;
 

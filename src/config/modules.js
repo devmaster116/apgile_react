@@ -5,12 +5,6 @@ export default [
         status: true,
         order: 5
     },
-    // {
-    //     name: 'Notifier',
-    //     component: require('@evenlogics/whf-ra-notifier'),
-    //     status: true,
-    //     order: 6
-    // },
     {
         name: 'Customer',
         component: require('@evenlogics/whf-ra-customer'),
@@ -23,16 +17,6 @@ export default [
         status: true,
         order: 8
     },
-    // {
-    //     name: 'Persons',
-    //     component: require('../modules/Persons'),
-    //     status: true,
-    //     order: 9
-    // },
-    {
-        name: 'UserManagement',
-        component: require('../modules/UserManagement'),
-        status: true,
-        order: 12
-    },
+   
+    
 ];
