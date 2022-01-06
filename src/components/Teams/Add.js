@@ -11,18 +11,18 @@ class TeamsAdd extends Component {
         const fields = {
             name: {
                 type: 'text',
-                label: 'name',
+                label: 'Name',
                 required: true,
                 name: 'name',
                 col: 4
             },
-            supervisor_id: {
+            branch_id: {
                 type: 'advanceSelect',
-                label: "Supervisor",
-                target: 'users',
-                optionLabel: 'username',
+                label: "Branch",
+                target: 'branches',
                 // async: true,
-                name: 'supervisor_id',
+                name: 'branch_id',
+                required: true,
                 col: 4
             },
             location_id: {
@@ -33,21 +33,25 @@ class TeamsAdd extends Component {
                 // optionLabel: "name",
                 // async: true,
                 name: 'location_id',
+                required: true,
                 col: 4,
             },
-            branch_id: {
+            supervisor_id: {
                 type: 'advanceSelect',
-                label: "Branch",
-                target: 'branches',
+                label: "Supervisor",
+                target: 'users',
+                optionLabel: 'username',
+                required: true,
                 // async: true,
-                name: 'branch_id',
+                name: 'supervisor_id',
                 col: 4
             },
             user_id: {
                 type: 'advanceSelect',
-                label: "User",
+                label: "Users",
                 target: 'users',
                 optionLabel: 'username',
+                required: true,
                 // async: true,
                 multi:true,
                 name: 'user_id',
