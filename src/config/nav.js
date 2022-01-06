@@ -16,11 +16,10 @@ export default {
 		children:{
 			branch: {
 				phrase: 'Branch',
-				order:1,
-				name:"branch",
-				icon: 'fas fa-list',
-				to: '/entity/branches'
 			},
+			person:{
+				phrase:"Users",
+			}
 		}
 	},
 	owner: {

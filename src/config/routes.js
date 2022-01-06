@@ -60,7 +60,7 @@ const routes = [
 
 
 
-	{ path: '/entity/branches/add', exact: true, name: 'BranchAdd', component: ExtendBranchAdd },
+	{ path: '/entity/branches/add', exact: true, name: 'Add', component: ExtendBranchAdd },
 	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit', component: ExtendBranchAdd },
 
 	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },
