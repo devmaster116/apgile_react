@@ -14,16 +14,6 @@ export default {
 		phrase:"Entity",
 		hide: false,
 		order: 20,
-		children:{
-			company:{
-				hide:true
-			},
-			companyNew:{
-			  icon:	"fas fa-building",
-			  phrase: "Company",
-			  to:"/entity/companies-new/add",
-			}
-		}
 	},
 	owner: {
 		phrase: 'Manage App',

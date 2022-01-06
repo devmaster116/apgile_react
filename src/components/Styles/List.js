@@ -32,19 +32,27 @@ const columns = [
     align: "center",
     sort: true,
   },
-  {
-    dataField: "logo.name",
-    text: "Logo",
-    align: "center",
-    sort: true,
-  },
+  // {
+  //   dataField: "logo.name",
+  //   text: "Logo",
+  //   align: "center",
+  //   sort: true,
+  // },
   
-  {
-    dataField: "bg_image.name",
-    text: "Background Image",
-    align: "center",
-    sort: true,
-  },
+  // {
+  //   dataField: "Action",
+  //   isDummyField: true,
+  //   text: "Background Image",
+  //   align: "center",
+  //   sort: true,
+  //   formatter: (cell, row) => {
+  //     console.log(cell,row, "cell");
+  //     return (
+  //         <div>
+  //            <img>
+  //         </div>
+  //     )
+  
 
   
  
