@@ -8,7 +8,15 @@ import LocationsList from "./../components/Locations/List";
 import TeamsAdd from "./../components/Teams/Add";
 import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
-import NewCompany from "../components/NewCompany/Add";
+
+import PageAdd from "./../components/Pages/Add";
+
+import CallList from "./../components/Calls/List";
+import CallDetail from "./../components/Calls/Detail";
+
+import StyleAdd from "./../components/Styles/Add";
+import StylesList from "./../components/Styles/List";
+
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -32,8 +40,18 @@ const routes = [
 	{path : "/promotions" ,exact : true , component : PromotionsList},
 	{path : "/promotions/:id/edit" ,exact : true , component : AddPromotions},
 
-	{ path: '/entity/companies-new/add', exact: true, name: 'Add', component: NewCompany },
-	{ path: '/entity/companies-new/:id/edit', exact: true, name: 'Edit', component: NewCompany },
+	// {path : "/pages" ,exact : true , component : PagesList},
+	{path : "/pages/page" ,exact : true , component : PageAdd},
+	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
+
+	{path : "/calls" ,exact : true , component : CallList},
+	{ path: '/callS/:id/details', exact: true, name: 'Edit', component: CallDetail },
+
+	{path : "/pages/styles" ,exact : true , component : StyleAdd},
+	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StylesList },
+	
+
+	// { path: '/entity/companies-new/:id/edit', exact: true, name: 'Edit', component: NewCompany },
 
 ];
 

@@ -1,6 +1,6 @@
 export default {
 	dashboard: {
-		phrase: 'dashboard',
+		phrase: 'Dashboard',
 		to: '/dashboard',
 		order: 10,
 		icon: 'fas fa-tachometer-alt',
@@ -11,6 +11,7 @@ export default {
 	},
 
 	entity: {
+		phrase:"Entity",
 		hide: false,
 		order: 20,
 		children:{
@@ -32,13 +33,13 @@ export default {
 		hasRoute: false,
 		children: {
 			location: {
-				phrase: 'locations',
+				phrase: 'Locations',
 				order:1,
 				icon: 'fas fa-list',
 				to: '/owner/locations'
 			},
 			team: {
-				phrase: 'team',
+				phrase: 'Teams',
 				order:2,
 				icon: 'fas fa-list',
 				to: '/owner/teams'
@@ -77,14 +78,6 @@ export default {
 		order: 12,
 		icon: "fas fa-landmark",
 		children: {
-			// add_promotion: {
-			//   _tag: "CSidebarNavItem",
-			//   name: "add_promotion",
-			//   phrase: "Add User",
-			//   to: "/add-promotion",
-			//   order: 1,
-			//   icon: "fas fa-plus-circle",
-			// },
 			staff_list: {
 				phrase: "Staff List",
 				to: "/staffs",
@@ -108,11 +101,11 @@ export default {
 		children : {
 		page:{
 			phrase:"Pages",
-			to:"/pages",
+			to:"/pages/page",
 		      },
 		   styles: {
-			   phrase:"styles",
-			   to:"/styles",
+			   phrase:"Styles",
+			   to:"/pages/styles",
 		   }
 	}
 }

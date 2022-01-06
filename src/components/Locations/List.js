@@ -48,7 +48,7 @@ class LocationsList extends Component {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>{this.props.t('base:terms')}</strong>
+						<strong>Locations</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable

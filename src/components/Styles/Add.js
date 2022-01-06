@@ -6,6 +6,15 @@ import { Header } from "@evenlogics/whf-ra-components";
 const Add = (props) => {
 const {id} = props.match.params;
   let fields = {
+    style_id: {
+      type: "advanceSelect",
+      label: "Select Style",
+      target: 'styles?title=%s',
+      async: true,
+      name: "style_id",
+      required: true,
+      col: 4,
+    },
     name: {
       type: "text",
       label: "Name",
@@ -13,77 +22,58 @@ const {id} = props.match.params;
       name: "name",
       col: 4,
     },
-    total_calls: {
-      type: "number",
-      label: "Total Calss",
-      required: true,
-      name: "total_calls",
-      col: 4,
-    },
-    description: {
+    font_color: {
       type: "text",
-      label: "Description",
+      label: "Font Color",
       required: true,
-      name: "description",
+      name: "font_color",
       col: 4,
     },
-    last_used: {
-      type: "date",
-      label: "Last Used",
-      name: "last_used",
+    bg_color: {
+      type: "text",
+      label: "Background Color",
+      required: true,
+      name: "bg_color",
+      col: 4,
+    },
+    other: {
+      type: "text",
+      label: "Others",
+      name: "other",
       required: true,
       col: 4,
     },
 
-    branch_id: {
-      type: "advanceSelect",
-      label: "Branch",
-      target: 'branches?title=%s',
-      async: true,
-      name: "branch_id",
+    logo: {
+      type: "filePic",
+      label: "Logo",
+      name: "logo",
       required: true,
       col: 4,
     },
-    message_box:{
-      type: "text",
-      label: "Message",
-      name: "message_box",
+    bg_image:{
+      type: "filePic",
+      label: "Background Image",
+      name: "bg_image",
       required: true,
       col: 4,
-
     },
-    location_id: {
-      type: "advanceSelect",
-      label: "Select Location",
-      target: "locations",
-      // optionValue: "id",
-      // optionLabel: "role_id",
-      name: "location_id",
-      col: 4,
-      required: true,
-    },
-    log:{
-      type:"filePic",
-      name: "log",
-      col: 4,
-      required: true,
-    }
   };
 
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Page" />
+        <Header title="Add New Style" />
         <CardBody>
           <FormGenerator
-            targetEntity="pages"
+            targetEntity="styles"
             // getValues={this.handleValue}
             fields={fields}
             targetId={id}
-            name="pages"
+            name="styles"
             repeater={true}
             initialValues={props.location.aboutProps}
-            redirect="/pages"
+            redirect="pages"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>
