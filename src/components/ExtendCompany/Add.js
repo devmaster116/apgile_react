@@ -6,6 +6,14 @@ function ExtendCompanyAdd(props) {
     let fields = {
         // lat: {},
         // lng: {},
+        phone1: {
+            type: 'text',
+            label: "Phone",
+            required: true,
+            validation: 'number',
+            name: 'phone1',
+            col: 6
+          },
     }
     return <CompanyAdd extendedFields={fields} />;
 

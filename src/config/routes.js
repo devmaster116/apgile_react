@@ -10,6 +10,7 @@ import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
 
 import PageAdd from "./../components/Pages/Add";
+import PageDetails from "./../components/Pages/Detail"
 
 import CallList from "./../components/Calls/List";
 import CallDetail from "./../components/Calls/Detail";
@@ -21,6 +22,11 @@ import PagesList from "./../components/Pages/List";
 import ExtendBranchAdd from "./../components/ExtendBranch/Add";
 import ExtendCompanyAdd from "./../components/ExtendCompany/Add";
 
+import ShiftAdd from "./../components/Shift/Add";
+import ShiftsList from "./../components/Shift/List";
+
+import RoasterAdd from "./../components/Roaster/Add";
+import RoasterList from "./../components/Roaster/List";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -47,6 +53,7 @@ const routes = [
 	// {path : "/pages" ,exact : true , component : PagesList},
 	{path : "/pages/page/add" ,exact : true , component : PageAdd},
 	{path : "/pages/:id/edit" ,exact : true , component : PageAdd},
+	{path : "/pages/:id/details" ,exact : true , component : PageDetails},
 	{path : "/pages/page" ,exact : true , component : PagesList},
 	
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
@@ -66,6 +73,17 @@ const routes = [
 	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },
 	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit', component: ExtendCompanyAdd },
 
+	{path : "/shifts" ,exact : true , component : ShiftsList},
+	{path : "/shifts/add" ,exact : true , component : ShiftAdd},
+	{path : "/shifts/:id/edit" ,exact : true , component : ShiftAdd},
+
+
+	{path : "/roasters" ,exact : true , component : RoasterList},
+	{path : "/roasters/add" ,exact : true , component : RoasterAdd},
+
+	
+
+	
 ];
 
 export default routes;

@@ -10,7 +10,9 @@
     "@evenlogics/whf-ra-notifier": "^1.3.5",
     "@evenlogics/whf-ra-user": "^1.3.5",
     "@evenlogics/whf-reactadmin": "^1.3.5",
+    "bootstrap": "5.1.3",
     "react": "^16.13.1",
+    "react-bootstrap": "^2.1.0",
     "react-dom": "^16.13.1",
     "react-select": "^5.2.1",
     "sweetalert2": "^11.3.3"

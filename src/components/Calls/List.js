@@ -15,7 +15,7 @@ const filters = {
     async: true,
     name: "company_id",
     required: true,
-    col: 4,
+    col: 12 + ' col-xl-3 ',
   },
   branch_id: {
     type: "advanceSelect",
@@ -24,7 +24,7 @@ const filters = {
     async: true,
     name: "branch_id",
     required: true,
-    col: 4,
+    col: 12 + ' col-xl-3 ',
   },
 }
 
