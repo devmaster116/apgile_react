@@ -52,7 +52,7 @@ const VendorsList = (props) => {
       sort: true,
       formatter: (cell, row) => {
         return (
-            <Button color="primary" onClick={()=> props.history.push("/pages/12/details")}>
+            <Button color="primary" onClick={()=> props.history.push(`/pages/${row.id}/details`)}>
               View QR Code
             </Button> 
         );
