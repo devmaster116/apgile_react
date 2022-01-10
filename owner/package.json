@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@evenlogics/whf-ra-entity": "^1.4.3",
+    "@evenlogics/whf-ra-user": "^1.4.3"
+  }
+}
