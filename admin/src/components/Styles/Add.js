@@ -6,12 +6,21 @@ import { Header } from "@evenlogics/whf-ra-components";
 const Add = (props) => {
 const {id} = props.match.params;
   let fields = {
-    style_id: {
+    // style_id: {
+    //   type: "advanceSelect",
+    //   label: "Select Style",
+    //   target: 'styles',
+    //   async: true,
+    //   name: "style_id",
+    //   required: true,
+    //   col: 4,
+    // },
+    company_id: {
       type: "advanceSelect",
-      label: "Select Style",
-      target: 'styles',
+      label: "Select Company",
+      target: 'companies',
       async: true,
-      name: "style_id",
+      name: "company_id",
       required: true,
       col: 4,
     },

@@ -17,7 +17,6 @@ export default {
     children: {
       person: {
         phrase: "Users",
-        to: "/entity/persons",
         order: 1,
       },
       branch: {
@@ -42,15 +41,27 @@ export default {
       location: {
         phrase: "Locations",
         order: 1,
-        icon: "fas fa-list",
+        icon: "fas fa-map-marker-alt",
         to: "/owner/locations",
       },
       team: {
         phrase: "Teams",
         order: 2,
-        icon: "fas fa-list",
+        icon: "fas fa-users",
         to: "/owner/teams",
       },
+      shifts: {
+        phrase: "Shifts",
+        order: 3,
+        to: "/owner/shifts",
+        icon: "fas fa-stopwatch",
+      },
+      roaster:{
+        phrase:"Roaster",
+        order:4,
+        to:"/owner/roasters",
+        icon:"fas fa-landmark"
+      }
     },
   },
   customer: {
@@ -60,10 +71,14 @@ export default {
   person: {
     hide: true,
   },
+  user:{
+    hide:true,
+  },
+
   Promotion: {
     phrase: "Promotion",
     to: "/promotions",
-    order: 130,
+    order: 138,
     // roles:['super-admin','staff-admin'],
     icon: "fas fa-ad",
   },
@@ -94,16 +109,5 @@ export default {
       },
     },
   },
-  shifts: {
-    phrase: "Shifts",
-    order: 140,
-    to: "/shifts",
-    icon: "fas fa-stopwatch",
-  },
-  roaster:{
-    phrase:"Roaster",
-    order:150,
-    to:"/roasters",
-    icon:"fas fa-landmark"
-  }
+
 };

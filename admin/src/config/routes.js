@@ -73,13 +73,13 @@ const routes = [
 	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },
 	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit', component: ExtendCompanyAdd },
 
-	{path : "/shifts" ,exact : true , component : ShiftsList},
-	{path : "/shifts/add" ,exact : true , component : ShiftAdd},
+	{path : "/owner/shifts" ,exact : true , component : ShiftsList},
+	{path : "/owner/shifts/add" ,exact : true , component : ShiftAdd},
 	{path : "/shifts/:id/edit" ,exact : true , component : ShiftAdd},
 
 
-	{path : "/roasters" ,exact : true , component : RoasterList},
-	{path : "/roasters/add" ,exact : true , component : RoasterAdd},
+	{path : "/owner/roasters" ,exact : true , component : RoasterList},
+	{path : "/owner/roasters/add" ,exact : true , component : RoasterAdd},
 
 	
 
