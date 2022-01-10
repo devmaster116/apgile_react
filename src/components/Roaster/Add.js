@@ -7,7 +7,7 @@ const Add = (props) => {
 const {id} = props.match.params;
   let fields = {
     week_day: {
-      type: "text",
+      type: "timeRange",
       label: "Weekday",
       required: true,
       name: "week_day",

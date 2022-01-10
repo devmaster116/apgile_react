@@ -13,13 +13,22 @@ export default {
   entity: {
     phrase: "Entity",
     order: 20,
+    // roles:['admin'],
     children: {
-      branch: {
-        phrase: "Branch",
-      },
       person: {
         phrase: "Users",
+        to: "/entity/persons",
+        order: 1,
       },
+      branch: {
+        phrase: "Branch",
+        order:2
+      },
+      company: {
+        phrase: "Company",
+        order:3
+      },
+     
     },
   },
   owner: {
@@ -27,6 +36,7 @@ export default {
     to: "/owner",
     order: 100,
     icon: "fas fa-mobile",
+    // roles:['admin'],
     hasRoute: false,
     children: {
       location: {
@@ -45,14 +55,16 @@ export default {
   },
   customer: {
     hide: true,
+    order:1,
   },
-  user: {
+  person: {
     hide: true,
   },
   Promotion: {
     phrase: "Promotion",
     to: "/promotions",
     order: 130,
+    // roles:['super-admin','staff-admin'],
     icon: "fas fa-ad",
   },
 
@@ -64,7 +76,7 @@ export default {
   },
   pages: {
     phrase: "Pages",
-    order: 125,
+    order: 135,
     to: "/pages",
     icon: "fas fa-pager",
     children: {

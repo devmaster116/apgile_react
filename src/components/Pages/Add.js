@@ -13,13 +13,14 @@ const {id} = props.match.params;
       name: "name",
       col: 4,
     },
-    total_calls: {
-      type: "number",
-      label: "Total Calls",
-      required: true,
-      name: "total_calls",
-      col: 4,
-    },
+    // total_calls: {
+    //   type: "number",
+    //   label: "Total Calls",
+    //   required: true,
+    //   name: "total_calls",
+    //   disabled:true,
+    //   col: 4,
+    // },
     description: {
       type: "text",
       label: "Description",
@@ -27,13 +28,14 @@ const {id} = props.match.params;
       name: "description",
       col: 4,
     },
-    last_used: {
-      type: "date",
-      label: "Last Used",
-      name: "last_used",
-      required: true,
-      col: 4,
-    },
+ 
+    // last_used: {
+    //   type: "date",
+    //   label: "Last Used",
+    //   name: "last_used",
+    //   required: true,
+    //   col: 4,
+    // },
 
     branch_id: {
       type: "advanceSelect",
@@ -44,14 +46,7 @@ const {id} = props.match.params;
       required: true,
       col: 4,
     },
-    message_box:{
-      type: "number",
-      label: "Message",
-      name: "message_box",
-      required: true,
-      col: 4,
-
-    },
+  
     location_id: {
       type: "advanceSelect",
       label: "Select Location",
@@ -72,12 +67,26 @@ const {id} = props.match.params;
       col: 4,
       required: true,
     },
-    logo:{
-      type:"filePic",
-      name: "logo",
-      col: 4,
+    message_box:{
+      type: "switch",
+      label: "Message",
+      name: "message_box",
       required: true,
+      col: 2,
+    },
+    customer_required:{
+      type: "switch",
+      label: "Customer Required",
+      required: true,
+      name: "customer_required",
+      col: 2,
     }
+    // logo:{
+    //   type:"filePic",
+    //   name: "logo",
+    //   col: 4,
+    //   required: true,
+    // }
   };
 
   return (
@@ -93,7 +102,7 @@ const {id} = props.match.params;
             name="pages"
             repeater={true}
             initialValues={props.location.aboutProps}
-            redirect="pages"
+            redirect="pages/page"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

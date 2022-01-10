@@ -36,13 +36,13 @@ const {id} = props.match.params;
       name: "bg_color",
       col: 4,
     },
-    other: {
-      type: "text",
-      label: "Others",
-      name: "other",
-      required: true,
-      col: 4,
-    },
+    // other: {
+    //   type: "text",
+    //   label: "Others",
+    //   name: "other",
+    //   required: true,
+    //   col: 4,
+    // },
 
     logo: {
       type: "filePic",
