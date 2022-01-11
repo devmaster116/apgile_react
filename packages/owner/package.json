@@ -16,8 +16,9 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start-owner": "react-scripts start",
+    "start:owner": "react-scripts start",
     "build": "react-scripts build",
+    "build:stagging": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
