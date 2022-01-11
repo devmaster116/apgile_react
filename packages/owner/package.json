@@ -1,5 +1,5 @@
 {
-  "name": "@evenlogics/whf-starter",
+  "name": "@evenlogics/adroit-owner",
   "version": "1.3.5",
   "description": "This is base package for creating react based admin panel using white falcon",
   "private": true,
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "react-scripts start",
+    "start-owner": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
