@@ -1,6 +1,6 @@
 import React from 'react'
 import RemoteTable from "@evenlogics/whf-remote-table";
-import { Card, CardBody, Button } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 
