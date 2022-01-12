@@ -7,7 +7,7 @@ const Add = (props) => {
 const {id} = props.match.params;
   let fields = {
     week_day: {
-      type: "timeRange",
+      type: "number",
       label: "Weekday",
       required: true,
       name: "week_day",
@@ -22,16 +22,16 @@ const {id} = props.match.params;
       required: true,
       col: 4
   },
-  team_id: {
-    type: 'advanceSelect',
-    label: "Team",
-    target: 'teams',
-    // async: true,
-    name: 'team_id',
-    multi:true,
-    required: true,
-    col: 4
-},
+//   team_id: {
+//     type: 'advanceSelect',
+//     label: "Team",
+//     target: 'teams',
+//     // async: true,
+//     name: 'team_id',
+//     multi:true,
+//     required: true,
+//     col: 4
+// },
   shift_id: {
     type: 'advanceSelect',
     label: "Shifts",

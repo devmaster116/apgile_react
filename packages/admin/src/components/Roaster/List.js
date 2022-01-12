@@ -77,7 +77,7 @@ const List = () => {
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
-              addRoute="/roasters/add"
+              addRoute="/owner/roasters/add"
             //   customButton={{
             //     name: "Download PDF",
             //     color: "warning",

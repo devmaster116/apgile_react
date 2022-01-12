@@ -25,22 +25,23 @@ const fields = {
       required: true,
       col: 4
   },
-  shift_start_time: {
-      type: 'date',
-      label: 'Shift Start Time',
+  company_id: {
+    type: 'advanceSelect',
+    label: "Select Company",
+    target: 'companies',
+    async: true,
+    name: 'company_id',
+    // multi:true,
+    required: true,
+    col: 4
+},
+  shift_time: {
+      type: 'timeRange',
+      label: 'Shift Time',
       required: true,
-      name: 'shift_start_time',
+      name: 'shift_time',
       col: 4
   },
-  shift_end_time: {
-      type: 'date',
-      label: 'Shift End Time',
-      required: true,
-      name: 'shift_end_time',
-      col: 4
-  },
-
-
 };
 
   return (

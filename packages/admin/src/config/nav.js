@@ -27,6 +27,12 @@ export default {
         phrase: "Company",
         order:3
       },
+      company_package: {
+        phrase: "Company Package",
+        order:4,
+        to:'/company-setup',
+        icon: "fas fa-box-open",
+      },
      
     },
   },

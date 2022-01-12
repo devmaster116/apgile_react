@@ -28,6 +28,10 @@ import ShiftsList from "./../components/Shift/List";
 import RoasterAdd from "./../components/Roaster/Add";
 import RoasterList from "./../components/Roaster/List";
 
+import CompanyPackageList from "./../components/Company Package/List";
+import CompanyPackageAdd from "./../components/Company Package/Add";
+
+
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
@@ -74,13 +78,18 @@ const routes = [
 	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit', component: ExtendCompanyAdd },
 
 	{path : "/owner/shifts" ,exact : true , component : ShiftsList},
-	{path : "/owner/shifts/add" ,exact : true , component : ShiftAdd},
+	{path : "/shifts/add" ,exact : true , component : ShiftAdd},
 	{path : "/shifts/:id/edit" ,exact : true , component : ShiftAdd},
 
 
 	{path : "/owner/roasters" ,exact : true , component : RoasterList},
 	{path : "/owner/roasters/add" ,exact : true , component : RoasterAdd},
 
+	{path : "/company-setup" ,exact : true , component : CompanyPackageList},
+	{path : "/company-setup/add" ,exact : true , component : CompanyPackageAdd},
+	{path : "/company-setups/:id/edit" ,exact : true , component : CompanyPackageAdd},
+
+	
 	
 
 	
