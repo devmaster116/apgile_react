@@ -3,7 +3,7 @@ import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {withTranslation} from 'react-i18next';
 
-class LocationsAdd extends Component {
+class ItemAdd extends Component {
 
     render() {
         const {id} = this.props.match.params;
@@ -23,33 +23,16 @@ class LocationsAdd extends Component {
                 name: 'description',
                 col: 6
             },
-            // parent_id: {
-            //     type: 'advanceSelect',
-            //     label: "Parent",
-            //     target: 'locations',
-            //     // optionLabel: 'title',
-            //     async: true,
-            //     name: 'parent_id',
-            //     col: 6
-            // },
-            branch_id: {
+            parent_id: {
                 type: 'advanceSelect',
-                label: "Branch",
-                target: 'branches',
+                label: "Location",
+                target: 'locations',
+                // optionLabel: 'title',
                 async: true,
-                name: 'branch_id',
+                required: true,
+                name: 'parent_id',
                 col: 6
-            },
-            // team_id: {
-            //     type: 'advanceSelect',
-            //     label: "Teams",
-            //     target: 'teams',
-            //     async: true,
-            //     // isMulti:true,
-            //     multi:true,
-            //     name: 'team_id',
-            //     col: 6
-            // },
+            }
         };
 
         return (
@@ -76,4 +59,4 @@ class LocationsAdd extends Component {
     }
 }
 
-export default withTranslation()(LocationsAdd);
+export default withTranslation()(ItemAdd);

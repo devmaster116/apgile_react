@@ -37,26 +37,27 @@ const {id} = props.match.params;
     //   col: 4,
     // },
 
-    branch_id: {
-      type: "advanceSelect",
-      label: "Branch",
-      target: 'branches',
-      async: true,
-      name: "branch_id",
-      required: true,
-      col: 4,
-    },
+    // branch_id: {
+    //   type: "advanceSelect",
+    //   label: "Branch",
+    //   target: 'branches',
+    //   async: true,
+    //   name: "branch_id",
+    //   required: true,
+    //   col: 4,
+    // },
   
-    location_id: {
-      type: "advanceSelect",
-      label: "Select Location",
-      target: "locations",
-      // optionValue: "id",
-      // optionLabel: "role_id",
-      name: "location_id",
-      col: 4,
-      required: true,
-    },
+    // location_id: {
+    //   type: "advanceSelect",
+    //   label: "Select Location",
+    //   target: "locations",
+    //   // optionValue: "id",
+    //   // optionLabel: "role_id",
+    //   name: "location_id",
+    //   col: 4,
+    //   required: true,
+    // },
+
     style_id: {
       type: "advanceSelect",
       label: "Select Style",
@@ -92,7 +93,7 @@ const {id} = props.match.params;
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Page" />
+        <Header title="Add New Area" />
         <CardBody>
           <FormGenerator
             targetEntity="pages"

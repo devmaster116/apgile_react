@@ -50,6 +50,12 @@ export default {
         icon: "fas fa-map-marker-alt",
         to: "/owner/locations",
       },
+      items: {
+        phrase: "Items",
+        order: 1,
+        icon: "fas fa-map-marker-alt",
+        to: "/owner/items",
+      },
       team: {
         phrase: "Teams",
         order: 2,

@@ -5,6 +5,10 @@ import LocationsAdd from "./../components/Locations/Add";
 import LocationsDetail from "./../components/Locations/Detail";
 import LocationsList from "./../components/Locations/List";
 
+import ItemAdd from "./../components/Items/Add";
+import ItemDetail from "./../components/Items/Detail";
+import ItemsList from "./../components/Items/List";
+
 import TeamsAdd from "./../components/Teams/Add";
 import TeamsDetail from "./../components/Teams/Detail";
 import TeamsList from "./../components/Teams/List";
@@ -38,6 +42,11 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 
 const routes = [
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false },
+
+	{ path: '/owner/items', exact: true, name: 'Terms', component: ItemsList, isPublic: true },
+	{ path: '/owner/items/add', exact: true, name: 'Add', component: ItemAdd },
+	{ path: '/areas/:id/edit', exact: true, name: 'Edit', component: ItemAdd },
+	{ path: '/owner/items/:id/details', exact: true, name: 'Edit', component: ItemDetail },
 
 	{ path: '/owner/locations', exact: true, name: 'Terms', component: LocationsList, isPublic: true },
 	{ path: '/owner/locations/add', exact: true, name: 'Add', component: LocationsAdd },
