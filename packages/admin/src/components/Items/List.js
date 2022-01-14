@@ -24,12 +24,12 @@ class ItemsList extends Component {
 				align: 'center',
 				sort: true
 			},
-			{
-				dataField: 'branch.name',
-				text: 'Branch Name',
-				align: 'center',
-				sort: true
-			},
+			// {
+			// 	dataField: 'branch.name',
+			// 	text: 'Branch Name',
+			// 	align: 'center',
+			// 	sort: true
+			// },
 			
 		];
 
@@ -48,12 +48,12 @@ class ItemsList extends Component {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>Locations</strong>
+						<strong>Items</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="locations"
-							customEntity="locations"
+							entity="items"
+							customEntity="items"
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/owner/items/add"

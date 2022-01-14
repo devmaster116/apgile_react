@@ -45,7 +45,7 @@ const routes = [
 
 	{ path: '/owner/items', exact: true, name: 'Terms', component: ItemsList, isPublic: true },
 	{ path: '/owner/items/add', exact: true, name: 'Add', component: ItemAdd },
-	{ path: '/areas/:id/edit', exact: true, name: 'Edit', component: ItemAdd },
+	{ path: '/items/:id/edit', exact: true, name: 'Edit', component: ItemAdd },
 	{ path: '/owner/items/:id/details', exact: true, name: 'Edit', component: ItemDetail },
 
 	{ path: '/owner/locations', exact: true, name: 'Terms', component: LocationsList, isPublic: true },

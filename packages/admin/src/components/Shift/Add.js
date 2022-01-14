@@ -57,7 +57,7 @@ const fields = {
             name="shifts"
             // repeater={true}
             // initialValues={props.location.aboutProps}
-            redirect="redirectURL"
+            redirect="owner/shifts"
             // handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

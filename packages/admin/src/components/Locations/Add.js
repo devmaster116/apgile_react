@@ -23,15 +23,6 @@ class LocationsAdd extends Component {
                 name: 'description',
                 col: 6
             },
-            // parent_id: {
-            //     type: 'advanceSelect',
-            //     label: "Parent",
-            //     target: 'locations',
-            //     // optionLabel: 'title',
-            //     async: true,
-            //     name: 'parent_id',
-            //     col: 6
-            // },
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
@@ -40,16 +31,7 @@ class LocationsAdd extends Component {
                 name: 'branch_id',
                 col: 6
             },
-            // team_id: {
-            //     type: 'advanceSelect',
-            //     label: "Teams",
-            //     target: 'teams',
-            //     async: true,
-            //     // isMulti:true,
-            //     multi:true,
-            //     name: 'team_id',
-            //     col: 6
-            // },
+         
         };
 
         return (
@@ -65,7 +47,7 @@ class LocationsAdd extends Component {
                         targetId={id}
                         name="locations"
                         repeater={true}
-                        initialValues={this.props.location.aboutProps}
+                        // initialValues={this.props.location.aboutProps}
                         
                         redirect="owner/locations"
                         handleSameValueFields={['title', 'slug']}

@@ -4,31 +4,25 @@ import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
-const {id} = props.match.params;
+  const { id } = props.match.params;
+
   let fields = {
     name: {
       type: "text",
       label: "Name",
       required: true,
       name: "name",
-      col: 4,
+      col: 3,
     },
-    // total_calls: {
-    //   type: "number",
-    //   label: "Total Calls",
-    //   required: true,
-    //   name: "total_calls",
-    //   disabled:true,
-    //   col: 4,
-    // },
+
     description: {
       type: "text",
       label: "Description",
       required: true,
       name: "description",
-      col: 4,
+      col: 3,
     },
-    
+
     style_id: {
       type: "advanceSelect",
       label: "Select Style",
@@ -36,24 +30,57 @@ const {id} = props.match.params;
       // optionValue: "id",
       // optionLabel: "role_id",
       name: "style_id",
-      col: 4,
+      col: 3,
       required: true,
     },
-  message_box:{
-    type: "switch",
-    label: "Message",
-    name: "message_box",
-    required: true,
-    col: 2,
-  },
-  customer_required:{
-    type: "switch",
-    label: "Customer Required",
-    required: true,
-    name: "customer_required",
-    col: 2,
-  },
- 
+    location_id: {
+      type: "advanceSelect",
+      label: "Select Location",
+      target: "locations",
+      name: "location_id",
+      col: 3,
+      required: true,
+    },
+    area: {
+      type: "dynamicFields",
+      condition: true,
+      label: "Area",
+      name: "area",
+      col: 4,
+      schema: {
+        item_id: {
+          type: "advanceSelect",
+          label: "Select Item Type",
+          target: "items",
+          // optionValue: "id",
+          // optionLabel: "role_id",
+          name: "item_id",
+          col: 6,
+        },
+        qty: {
+          type: "number",
+          label: "Quantity",
+          name: "qty",
+          required: true,
+          col: 6,
+        },
+      },
+    },
+    message_box: {
+      type: "switch",
+      label: "Message",
+      name: "message_box",
+      required: true,
+      col: 2,
+    },
+    customer_required: {
+      type: "switch",
+      label: "Customer Required",
+      required: true,
+      name: "customer_required",
+      col: 2,
+    },
+
     // last_used: {
     //   type: "date",
     //   label: "Last Used",
@@ -71,7 +98,7 @@ const {id} = props.match.params;
     //   required: true,
     //   col: 4,
     // },
-  
+
     // location_id: {
     //   type: "advanceSelect",
     //   label: "Select Location",
@@ -83,7 +110,6 @@ const {id} = props.match.params;
     //   required: true,
     // },
 
- 
     // logo:{
     //   type:"filePic",
     //   name: "logo",
@@ -104,9 +130,9 @@ const {id} = props.match.params;
             targetId={id}
             name="pages"
             repeater={true}
-            initialValues={props.location.aboutProps}
+            // initialValues={props.location.aboutProps}
             redirect="pages/page"
-            handleSameValueFields={["name"]}
+            // handleSameValueFields={["name"]}
           />
         </CardBody>
       </Card>

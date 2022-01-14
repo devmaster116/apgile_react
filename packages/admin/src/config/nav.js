@@ -108,7 +108,7 @@ export default {
     icon: "fas fa-pager",
     children: {
       page: {
-        phrase: "Pages",
+        phrase: "Area",
         to: "/pages/page",
         icon: "fas fa-pager",
 

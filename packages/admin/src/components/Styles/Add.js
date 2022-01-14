@@ -82,7 +82,7 @@ const {id} = props.match.params;
             name="styles"
             repeater={true}
             initialValues={props.location.aboutProps}
-            // redirect="pages"
+            redirect="/pages/styles"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

@@ -23,50 +23,15 @@ class ItemAdd extends Component {
             name: "description",
             col: 6,
           },
-          area: {
-            type: "dynamicFields",
-            condition: true,
-            label: "Area",
-            name: "area",
-            col: 4,
-            schema: {
-              areas: {
-                type: "advanceSelect",
-                label: "Select Area",
-                target: "areas",
-                // optionValue: "id",
-                // optionLabel: "role_id",
-                name: "location",
-                col: 4,
-                required: true,
-              },
-              item_type: {
-                type: "advanceSelect",
-                label: "Select Item",
-                target: "items",
-                // optionValue: "id",
-                // optionLabel: "role_id",
-                name: "item_type",
-                col: 4,
-              },
-              quantity: {
-                type: "number",
-                label: "Quantity",
-                name: "quantity",
-                required: true,
-                col: 4,
-              },
-            },
-          },
-          parent_id: {
+          location_id: {
             type: "advanceSelect",
             label: "Location",
             target: "locations",
             // optionLabel: 'title',
             async: true,
             required: true,
-            name: "parent_id",
-            col: 12,
+            name: "location_id",
+            col: 6,
           },
           
         };
@@ -78,15 +43,15 @@ class ItemAdd extends Component {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="locations"
+                        targetEntity="items"
                         getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="locations"
+                        name="items"
                         repeater={true}
                         initialValues={this.props.location.aboutProps}
                         
-                        redirect="owner/locations"
+                        redirect="owner/items"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
