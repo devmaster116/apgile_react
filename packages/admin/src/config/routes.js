@@ -93,6 +93,7 @@ const routes = [
 
 	{path : "/owner/roasters" ,exact : true , component : RoasterList},
 	{path : "/owner/roasters/add" ,exact : true , component : RoasterAdd},
+	{path : "/rosters/:id/edit" ,exact : true , component : RoasterAdd},
 
 	{path : "/company-setup" ,exact : true , component : CompanyPackageList},
 	{path : "/company-setup/add" ,exact : true , component : CompanyPackageAdd},

@@ -21,7 +21,7 @@ const columns = [
     sort: true,
   },
   {
-    dataField: "shift",
+    dataField: "branch_name",
     text: "Branch",
     align: "center",
     sort: true,

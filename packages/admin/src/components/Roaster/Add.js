@@ -7,12 +7,15 @@ const Add = (props) => {
 const {id} = props.match.params;
   let fields = {
     week_day: {
-      type: "number",
-      label: "Weekday",
+      type: 'advanceSelect',
+      label: "Week Day",
+      target: 'rosters/week-day-list',
+      // async: true,
+      name: 'week_day',
+      // multi:true,
       required: true,
-      name: "week_day",
-      col: 4,
-    },
+      col: 4
+  },
     branch_id: {
       type: 'advanceSelect',
       label: "Branch",
@@ -22,16 +25,7 @@ const {id} = props.match.params;
       required: true,
       col: 4
   },
-//   team_id: {
-//     type: 'advanceSelect',
-//     label: "Team",
-//     target: 'teams',
-//     // async: true,
-//     name: 'team_id',
-//     multi:true,
-//     required: true,
-//     col: 4
-// },
+
   shift_id: {
     type: 'advanceSelect',
     label: "Shifts",
@@ -57,7 +51,7 @@ const {id} = props.match.params;
             // getInitialValues={this.getInitialValues}
             // debug={false}
             // extraVals={extraVals}
-            redirect="rosters"
+            redirect="owner/roasters"
             // repeater={true}
           />
         </CardBody>

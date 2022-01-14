@@ -53,7 +53,7 @@ export default {
       items: {
         phrase: "Items",
         order: 1,
-        icon: "fas fa-map-marker-alt",
+        icon: "fas fa-box",
         to: "/owner/items",
       },
       team: {

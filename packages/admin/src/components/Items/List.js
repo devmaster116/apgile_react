@@ -56,7 +56,7 @@ class ItemsList extends Component {
 							customEntity="locations"
 							columns={columns}
 							sort={defaultSorted}
-							addRoute="/owner/locations/add"
+							addRoute="/owner/items/add"
 							{...this.props.remoteTableFields}
 						/>
 					</CardBody>

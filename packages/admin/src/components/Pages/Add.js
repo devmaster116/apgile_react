@@ -28,6 +28,31 @@ const {id} = props.match.params;
       name: "description",
       col: 4,
     },
+    
+    style_id: {
+      type: "advanceSelect",
+      label: "Select Style",
+      target: "styles",
+      // optionValue: "id",
+      // optionLabel: "role_id",
+      name: "style_id",
+      col: 4,
+      required: true,
+    },
+  message_box:{
+    type: "switch",
+    label: "Message",
+    name: "message_box",
+    required: true,
+    col: 2,
+  },
+  customer_required:{
+    type: "switch",
+    label: "Customer Required",
+    required: true,
+    name: "customer_required",
+    col: 2,
+  },
  
     // last_used: {
     //   type: "date",
@@ -58,30 +83,7 @@ const {id} = props.match.params;
     //   required: true,
     // },
 
-    style_id: {
-      type: "advanceSelect",
-      label: "Select Style",
-      target: "styles",
-      // optionValue: "id",
-      // optionLabel: "role_id",
-      name: "style_id",
-      col: 4,
-      required: true,
-    },
-    message_box:{
-      type: "switch",
-      label: "Message",
-      name: "message_box",
-      required: true,
-      col: 2,
-    },
-    customer_required:{
-      type: "switch",
-      label: "Customer Required",
-      required: true,
-      name: "customer_required",
-      col: 2,
-    }
+ 
     // logo:{
     //   type:"filePic",
     //   name: "logo",
@@ -104,7 +106,7 @@ const {id} = props.match.params;
             repeater={true}
             initialValues={props.location.aboutProps}
             redirect="pages/page"
-            handleSameValueFields={["title", "slug"]}
+            handleSameValueFields={["name"]}
           />
         </CardBody>
       </Card>
