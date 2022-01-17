@@ -3,6 +3,7 @@ export default {
     phrase: "Dashboard",
     to: "/dashboard",
     order: 10,
+    roles: ["super-admin"],
     icon: "fas fa-tachometer-alt",
     badge: {
       color: "info",
@@ -13,39 +14,50 @@ export default {
   entity: {
     phrase: "Entity",
     order: 20,
+    roles: ["super-admin"],
     // roles:['admin'],
     children: {
       person: {
         phrase: "Users",
+        roles: ["super-admin"],
+
         order: 1,
       },
       branch: {
         phrase: "Branch",
-        order:2
+        roles: ["super-admin"],
+
+        order: 2,
       },
       company: {
         phrase: "Company",
-        order:3
+        roles: ["super-admin"],
+
+        order: 3,
       },
       company_package: {
         phrase: "Company Package",
-        order:4,
-        to:'/company-setup',
+        order: 4,
+        to: "/company-setup",
         icon: "fas fa-box-open",
+        roles: ["super-admin"],
       },
-     
     },
   },
   owner: {
     phrase: "Manage App",
     to: "/owner",
     order: 100,
+    roles: ["super-admin"],
+
     icon: "fas fa-mobile",
     // roles:['admin'],
     hasRoute: false,
     children: {
       location: {
         phrase: "Locations",
+        roles: ["super-admin"],
+
         order: 1,
         icon: "fas fa-map-marker-alt",
         to: "/owner/locations",
@@ -53,43 +65,53 @@ export default {
       items: {
         phrase: "Items",
         order: 1,
+        roles: ["super-admin"],
+
         icon: "fas fa-box",
         to: "/owner/items",
       },
       team: {
         phrase: "Teams",
+        roles: ["super-admin"],
+
         order: 2,
         icon: "fas fa-users",
         to: "/owner/teams",
       },
       shifts: {
         phrase: "Shifts",
+        roles: ["super-admin"],
+
         order: 3,
         to: "/owner/shifts",
         icon: "fas fa-stopwatch",
       },
-      roaster:{
-        phrase:"Roaster",
-        order:4,
-        to:"/owner/roasters",
-        icon:"fas fa-landmark"
-      }
+      roaster: {
+        phrase: "Roaster",
+        roles: ["super-admin"],
+
+        order: 4,
+        to: "/owner/roasters",
+        icon: "fas fa-landmark",
+      },
     },
   },
   customer: {
     hide: true,
-    order:1,
+    order: 1,
   },
   person: {
     hide: true,
   },
-  user:{
-    hide:true,
+  user: {
+    hide: true,
   },
 
   Promotion: {
     phrase: "Promotion",
     to: "/promotions",
+    roles: ["super-admin"],
+
     order: 138,
     // roles:['super-admin','staff-admin'],
     icon: "fas fa-ad",
@@ -97,12 +119,16 @@ export default {
 
   calls: {
     phrase: "Calls",
+    roles: ["super-admin"],
+
     to: "/calls",
     order: 115,
     icon: "fas fa-phone-square-alt",
   },
   pages: {
     phrase: "Pages",
+    roles: ["super-admin"],
+
     order: 135,
     to: "/pages",
     icon: "fas fa-pager",
@@ -110,16 +136,17 @@ export default {
       page: {
         phrase: "Area",
         to: "/pages/page",
-        icon: "fas fa-pager",
+        roles: ["super-admin"],
 
+        icon: "fas fa-pager",
       },
       styles: {
         phrase: "Styles",
         to: "/pages/styles",
-        icon: "fas fa-broom",
+        roles: ["super-admin"],
 
+        icon: "fas fa-broom",
       },
     },
   },
-
 };

@@ -41,63 +41,63 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 
 
 const routes = [
-	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false },
+	{ path: '/dashboard', name: 'Dashboard',  roles:['super-admin'],component: Dashboard, isPublic: false },
 
-	{ path: '/owner/items', exact: true, name: 'Terms', component: ItemsList, isPublic: true },
-	{ path: '/owner/items/add', exact: true, name: 'Add', component: ItemAdd },
-	{ path: '/items/:id/edit', exact: true, name: 'Edit', component: ItemAdd },
-	{ path: '/owner/items/:id/details', exact: true, name: 'Edit', component: ItemDetail },
+	{ path: '/owner/items', exact: true, name: 'Terms',  roles:['super-admin'],component: ItemsList, isPublic: true },
+	{ path: '/owner/items/add', exact: true, name: 'Add',  roles:['super-admin'],component: ItemAdd },
+	{ path: '/items/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ItemAdd },
+	{ path: '/owner/items/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: ItemDetail },
 
-	{ path: '/owner/locations', exact: true, name: 'Terms', component: LocationsList, isPublic: true },
-	{ path: '/owner/locations/add', exact: true, name: 'Add', component: LocationsAdd },
-	{ path: '/locations/:id/edit', exact: true, name: 'Edit', component: LocationsAdd },
-	{ path: '/owner/locations/:id/details', exact: true, name: 'Edit', component: LocationsDetail },
+	{ path: '/owner/locations', exact: true, name: 'Terms',  roles:['super-admin'],component: LocationsList, isPublic: true },
+	{ path: '/owner/locations/add', exact: true, name: 'Add',  roles:['super-admin'],component: LocationsAdd },
+	{ path: '/locations/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: LocationsAdd },
+	{ path: '/owner/locations/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: LocationsDetail },
 
-	{ path: '/owner/teams', exact: true, name: 'Terms', component: TeamsList, isPublic: true },
-	{ path: '/owner/teams/add', exact: true, name: 'Add', component: TeamsAdd },
-	{ path: '/teams/:id/edit', exact: true, name: 'Edit', component: TeamsAdd },
-	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit', component: TeamsDetail},
+	{ path: '/owner/teams', exact: true, name: 'Terms',  roles:['super-admin'],component: TeamsList, isPublic: true },
+	{ path: '/owner/teams/add', exact: true, name: 'Add',  roles:['super-admin'],component: TeamsAdd },
+	{ path: '/teams/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: TeamsAdd },
+	{ path: '/owner/teams/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: TeamsDetail},
 
 
-	{path : "/promotions" ,exact : true , component :PromotionsList},
-	{path : "/promotions/add" ,exact : true , component : AddPromotions},
-	{path : "/promotions/:id/edit" ,exact : true , component : AddPromotions},
+	{path : "/promotions" ,exact : true ,  roles:['super-admin'],component :PromotionsList},
+	{path : "/promotions/add" ,exact : true ,  roles:['super-admin'],component : AddPromotions},
+	{path : "/promotions/:id/edit" ,exact : true ,  roles:['super-admin'],component : AddPromotions},
 
 	// {path : "/pages" ,exact : true , component : PagesList},
-	{path : "/pages/page/add" ,exact : true , component : PageAdd},
-	{path : "/pages/:id/edit" ,exact : true , component : PageAdd},
-	{path : "/pages/:id/details" ,exact : true , component : PageDetails},
-	{path : "/pages/page" ,exact : true , component : PagesList},
+	{path : "/pages/page/add" ,exact : true ,  roles:['super-admin'],component : PageAdd},
+	{path : "/pages/:id/edit" ,exact : true ,  roles:['super-admin'],component : PageAdd},
+	{path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
+	{path : "/pages/page" ,exact : true ,  roles:['super-admin'],component : PagesList},
 	
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
 
-	{path : "/calls" ,exact : true , component : CallList},
-	{ path: '/callS/:id/details', exact: true, name: 'Edit', component: CallDetail },
+	{path : "/calls" ,exact : true ,  roles:['super-admin'],component : CallList},
+	{ path: '/callS/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: CallDetail },
 
-	{path : "/pages/styles" ,exact : true , component : StylesList},
-	{ path: '/pages/styles/add', exact: true, name: 'Add', component: StyleAdd },
-	{ path: '/styles/:id/edit', exact: true, name: 'Add', component: StyleAdd },
-
-
-
-	{ path: '/entity/branches/add', exact: true, name: 'Add', component: ExtendBranchAdd },
-	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit', component: ExtendBranchAdd },
-
-	{ path: '/entity/companies/add', exact: true, name: 'Add', component: ExtendCompanyAdd },
-	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit', component: ExtendCompanyAdd },
-
-	{path : "/owner/shifts" ,exact : true , component : ShiftsList},
-	{path : "/shifts/add" ,exact : true , component : ShiftAdd},
-	{path : "/shifts/:id/edit" ,exact : true , component : ShiftAdd},
+	{path : "/pages/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
+	{ path: '/pages/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
+	{ path: '/styles/:id/edit', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 
 
-	{path : "/owner/roasters" ,exact : true , component : RoasterList},
-	{path : "/owner/roasters/add" ,exact : true , component : RoasterAdd},
-	{path : "/rosters/:id/edit" ,exact : true , component : RoasterAdd},
 
-	{path : "/company-setup" ,exact : true , component : CompanyPackageList},
-	{path : "/company-setup/add" ,exact : true , component : CompanyPackageAdd},
-	{path : "/company-setups/:id/edit" ,exact : true , component : CompanyPackageAdd},
+	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
+	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendBranchAdd },
+
+	{ path: '/entity/companies/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendCompanyAdd },
+	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendCompanyAdd },
+
+	{path : "/owner/shifts" ,exact : true ,  roles:['super-admin'],component : ShiftsList},
+	{path : "/shifts/add" ,exact : true ,  roles:['super-admin'],component : ShiftAdd},
+	{path : "/shifts/:id/edit" ,exact : true ,  roles:['super-admin'],component : ShiftAdd},
+
+
+	{path : "/owner/roasters" ,exact : true ,  roles:['super-admin'],component : RoasterList},
+	{path : "/owner/roasters/add" ,exact : true ,  roles:['super-admin'],component : RoasterAdd},
+	{path : "/rosters/:id/edit" ,exact : true ,  roles:['super-admin'],component : RoasterAdd},
+
+	{path : "/company-setup" ,exact : true ,  roles:['super-admin'], component : CompanyPackageList},
+	{path : "/company-setup/add" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
+	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
 	
 	
