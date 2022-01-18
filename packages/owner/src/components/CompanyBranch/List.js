@@ -18,13 +18,7 @@ const List = () => {
         text: "ID",
         align: "center",
         sort: true,
-      },
-      // {
-      //   dataField: "address",
-      //   text: "Address",
-      //   align: "center",
-      //   sort: true,
-      // },   
+      },  
       {
         dataField: "name",
         text: "Name",
@@ -42,12 +36,7 @@ const List = () => {
         text: "Secondary Phone",
         align: "center",
         sort: true,
-      },
-      
-    
-     
-     
-     
+      },   
     ];
       return (
         <div>

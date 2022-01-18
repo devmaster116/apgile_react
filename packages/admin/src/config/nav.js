@@ -11,39 +11,72 @@ export default {
     },
   },
 
+  // entity: {
+  //   phrase: "Entity",
+  //   order: 20,
+  //   roles: ["super-admin"],
+  //   // roles:['admin'],
+  //   children: {
+  //     person: {
+  //       phrase: "Users",
+  //       roles: ["super-admin"],
+
+  //       order: 1,
+  //     },
+  //     branch: {
+  //       phrase: "Branch",
+  //       roles: ["super-admin"],
+
+  //       order: 2,
+  //     },
+  //     company: {
+  //       phrase: "Company",
+  //       roles: ["super-admin"],
+
+  //       order: 3,
+  //     },
+  //     // company_package: {
+  //     //   phrase: "Company Package",
+  //     //   order: 4,
+  //     //   to: "/company-setup",
+  //     //   icon: "fas fa-box-open",
+  //     //   roles: ["super-admin"],
+  //     // },
+  //   },
+  // },
+
   entity: {
-    phrase: "Entity",
-    order: 20,
-    roles: ["super-admin"],
-    // roles:['admin'],
+    _tag: 'CSidebarNavDropdown',
+    name: 'Entity',
+    phrase: 'Entities',
+    order:20,
+    to: '/entity',
+    icon: 'fas fa-building',
+    hasRoute: false,
     children: {
-      person: {
-        phrase: "Users",
-        roles: ["super-admin"],
-
-        order: 1,
-      },
       branch: {
-        phrase: "Branch",
-        roles: ["super-admin"],
-
-        order: 2,
+        name: 'Branch',
+        phrase: 'Branch',
+        icon: 'fas fa-list',
+        to: '/entity/branches'
       },
       company: {
-        phrase: "Company",
-        roles: ["super-admin"],
-
-        order: 3,
+        name: 'Company',
+        phrase: 'Company',
+        icon: 'fas fa-list',
+        to: '/admin/companies'
       },
-      company_package: {
-        phrase: "Company Package",
-        order: 4,
-        to: "/company-setup",
-        icon: "fas fa-box-open",
-        roles: ["super-admin"],
-      },
-    },
+      person: {
+        name: 'Person',
+        phrase: 'User',
+        icon: 'fas fa-list',
+        to: '/users'
+      }
+    }
   },
+
+
+
   owner: {
     phrase: "Manage App",
     to: "/owner",
@@ -134,11 +167,16 @@ export default {
     icon: "fas fa-pager",
     children: {
       page: {
-        phrase: "Area",
+        phrase: "Page",
         to: "/pages/page",
         roles: ["super-admin"],
-
         icon: "fas fa-pager",
+      },
+      Area: {
+        phrase: "Area",
+        to: "/pages/area",
+        roles: ["super-admin"],
+        icon: "fas fa-warehouse",
       },
       styles: {
         phrase: "Styles",

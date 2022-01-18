@@ -12,35 +12,36 @@ const Add = (props) => {
       label: "Name",
       required: true,
       name: "name",
-      col: 3,
+      col: 4,
     },
 
     description: {
       type: "text",
       label: "Description",
-      required: true,
+      // required: true,
       name: "description",
-      col: 3,
+      col: 4,
     },
 
-    style_id: {
+    branch_id: {
       type: "advanceSelect",
-      label: "Select Style",
-      target: "styles",
-      // optionValue: "id",
-      // optionLabel: "role_id",
-      name: "style_id",
-      col: 3,
+      label: "Select Branch",
+      target: "branches",
+      name: "branch_id",
+      col: 4,
       required: true,
     },
-    location_id: {
-      type: "advanceSelect",
-      label: "Select Location",
-      target: "locations",
-      name: "location_id",
-      col: 3,
+    user_id: {
+      type: 'advanceSelect',
+      label: "Users",
+      target: 'users',
+      optionLabel: 'username',
       required: true,
-    },
+      // async: true,
+      // multi:true,
+      name: 'user_id',
+      col: 4
+  },
     area: {
       type: "dynamicFields",
       condition: true,
@@ -52,15 +53,15 @@ const Add = (props) => {
           type: "advanceSelect",
           label: "Select Item Type",
           target: "items",
-          // optionValue: "id",
-          // optionLabel: "role_id",
           name: "item_id",
           col: 6,
+          // onChange: (value) => console.log(value)
         },
-        qty: {
-          type: "number",
-          label: "Quantity",
-          name: "qty",
+        item_page: {
+          type: "advanceSelect",
+          label: "Item Page",
+          name: "item_page",
+          target:`items/19/pages`,
           required: true,
           col: 6,
         },
@@ -121,17 +122,17 @@ const Add = (props) => {
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Page" />
+        <Header title="Add New Area"/>
         <CardBody>
           <FormGenerator
-            targetEntity="pages"
+            targetEntity="areas"
             // getValues={this.handleValue}
             fields={fields}
             targetId={id}
-            name="pages"
+            name="areas"
             repeater={true}
             // initialValues={props.location.aboutProps}
-            redirect="pages/page"
+            redirect="pages/area"
             // handleSameValueFields={["name"]}
           />
         </CardBody>

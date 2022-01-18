@@ -1,14 +1,25 @@
+
 import React from "react";
+// import { FormGenerator } from "@evenlogics/whf-form-generator";
+// import { Card, CardBody } from "reactstrap";
+// import { Header } from "@evenlogics/whf-ra-components";
 
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
-const ExtendBranchAdd = () =>  {
-    // let id = props.match.params;
+const Add = (props) => {
+    let id = props.match.params.id;
     let fields = {
         // lat: {},
         // lng: {},
         // state:false,  
         // addr:false,
+        
+        company_id:{
+          col:6,
+          type:"text",
+          label:"Company",
+          value:'10',
+      },  
         phone1:{
             col:6,
             type:"text",
@@ -17,16 +28,9 @@ const ExtendBranchAdd = () =>  {
         phone2:{
             col:6,
             type:"text",
-            label:"Secondary phone no"
+            label:"Secondary Phone No"
         },
-        company_id:{
-            col:6,
-            type:"readOn",
-            label:"Company",
-            value:'10',    
-            disabled
-        },  
-     
+       
         
        
     }
@@ -36,4 +40,6 @@ const ExtendBranchAdd = () =>  {
 
 }
 
-export default ExtendBranchAdd;
+export default Add;
+
+

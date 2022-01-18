@@ -24,7 +24,10 @@ import StylesList from "./../components/Styles/List";
 
 import PagesList from "./../components/Pages/List";
 import ExtendBranchAdd from "./../components/ExtendBranch/Add";
-import ExtendCompanyAdd from "./../components/ExtendCompany/Add";
+
+
+import CompanyList from "./../components/ExtendCompany/List";
+import CompanyAdd from "./../components/ExtendCompany/Add";
 
 import ShiftAdd from "./../components/Shift/Add";
 import ShiftsList from "./../components/Shift/List";
@@ -35,6 +38,8 @@ import RoasterList from "./../components/Roaster/List";
 import CompanyPackageList from "./../components/Company Package/List";
 import CompanyPackageAdd from "./../components/Company Package/Add";
 
+import AreaAdd from "./../components/Area/Add";
+import AreaList from "./../components/Area/List";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -68,6 +73,12 @@ const routes = [
 	{path : "/pages/:id/edit" ,exact : true ,  roles:['super-admin'],component : PageAdd},
 	{path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
 	{path : "/pages/page" ,exact : true ,  roles:['super-admin'],component : PagesList},
+
+	{path : "/pages/area" ,exact : true ,  roles:['super-admin'],component : AreaList},
+	{path : "/areas/:id/edit" ,exact : true ,  roles:['super-admin'],component : AreaAdd},
+	// {path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
+	{path : "/pages/area/add" ,exact : true ,  roles:['super-admin'],component : AreaAdd},
+	
 	
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
 
@@ -83,8 +94,10 @@ const routes = [
 	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
 	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendBranchAdd },
 
-	{ path: '/entity/companies/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendCompanyAdd },
-	{ path: '/entity/companies/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendCompanyAdd },
+	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
+	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
+	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
+	
 
 	{path : "/owner/shifts" ,exact : true ,  roles:['super-admin'],component : ShiftsList},
 	{path : "/shifts/add" ,exact : true ,  roles:['super-admin'],component : ShiftAdd},

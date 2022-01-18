@@ -19,8 +19,15 @@ class ItemAdd extends Component {
           description: {
             type: "text",
             label: "Description",
-            required: true,
+            // required: true,
             name: "description",
+            col: 6,
+          },
+          qty: {
+            type: "number",
+            label: "Quantity",
+            required: true,
+            name: "qty",
             col: 6,
           },
           location_id: {

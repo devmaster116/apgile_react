@@ -90,14 +90,14 @@ const VendorsList = (props) => {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Pages" />
+          <Header title="All Pages"/>
           <CardBody>
             <RemoteTable
               entity="pages"
               customEntity="pages"
               columns={columns}
               sort={defaultSorted}
-              hideEdit={false}
+              hideEdit={true}
               hideDetail={true}
               hideDelete={false}
               addRoute="/pages/page/add"

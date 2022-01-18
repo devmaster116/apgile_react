@@ -19,7 +19,6 @@ class LocationsAdd extends Component {
             description: {
                 type: 'text',
                 label: "Description",
-                required: true,
                 name: 'description',
                 col: 6
             },
@@ -28,6 +27,7 @@ class LocationsAdd extends Component {
                 label: "Branch",
                 target: 'branches',
                 async: true,
+                required:true,
                 name: 'branch_id',
                 col: 6
             },

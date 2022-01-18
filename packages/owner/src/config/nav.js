@@ -3,13 +3,14 @@ export default {
     phrase: "Dashboard",
     to: "/dashboard",
     order: 10,
-    roles: ["admin"],
+    // roles: ["admin"],
     icon: "fas fa-tachometer-alt",
     badge: {
       color: "info",
       text: "NEW",
     },
   },
+
   profile: {
     phrase: "Profile",
     order: 100,
@@ -96,4 +97,40 @@ export default {
       },
     },
   },
+
+  user: {
+    _tag: 'CSidebarNavDropdown',
+    name: 'User',
+    order:22,
+    phrase: 'User',
+    to: '/users',
+    icon: 'fas fa-user',
+    children: {
+      user_extended: {
+        name: 'user_extended',
+        phrase: 'Users List',
+        icon: 'fas fa-list',
+        to: '/users-extended'
+      },
+      user:{
+        hide:true,
+      },
+      permission: {
+        _tag: 'CSidebarNavItem',
+        name: 'Permissions',
+        phrase: 'permissions',
+        icon: 'fas fa-list',
+        to: '/users/permissions',
+        hide:true,
+      },
+      role: {
+        _tag: 'CSidebarNavItem',
+        name: 'Roles',
+        phrase: 'roles',
+        icon: 'fas fa-list',
+        to: '/users/roles',
+        hide:true
+      } 
+    }
+  }
 };
