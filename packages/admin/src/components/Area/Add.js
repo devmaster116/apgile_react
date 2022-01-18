@@ -59,7 +59,7 @@ const Add = (props) => {
         },
         item_page: {
           type: "advanceSelect",
-          label: "Item Page",
+          label: "Item#",
           name: "item_page",
           target:`items/19/pages`,
           required: true,
