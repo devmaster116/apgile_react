@@ -43,7 +43,7 @@ const columns = [
       console.log(cell,row, "cell");
       return (
           <div>
-             <img width={30} height={40} alt="background" src={row?.logo?.url}></img>
+             <img width={30} height={40} alt="background" src={row?.logo?.thumbnail}></img>
           </div>
       )
   },

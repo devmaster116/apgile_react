@@ -15,7 +15,7 @@ const columns = [
   },
   
   {
-    dataField: "week_day",
+    dataField: "week_day_name",
     text: "Weekday",
     align: "center",
     sort: true,

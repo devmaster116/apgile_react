@@ -18,7 +18,7 @@ const Add = (props) => {
     description: {
       type: "text",
       label: "Description",
-      required: true,
+      // required: true,
       name: "description",
       col: 3,
     },

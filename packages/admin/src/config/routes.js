@@ -41,6 +41,8 @@ import CompanyPackageAdd from "./../components/Company Package/Add";
 import AreaAdd from "./../components/Area/Add";
 import AreaList from "./../components/Area/List";
 
+import UserAdd from "./../components/ExtendedUser/Add";
+
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
@@ -112,6 +114,7 @@ const routes = [
 	{path : "/company-setup/add" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
+	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 	
 	
 

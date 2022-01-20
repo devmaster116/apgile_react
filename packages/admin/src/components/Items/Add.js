@@ -33,7 +33,7 @@ class ItemAdd extends Component {
           location_id: {
             type: "advanceSelect",
             label: "Location",
-            target: "locations",
+            target: "locations?limit=1000",
             // optionLabel: 'title',
             async: true,
             required: true,
@@ -44,7 +44,7 @@ class ItemAdd extends Component {
         };
 
         return (
-            <Card className="animated fadeIn">
+            <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
                 <CardHeader>
                    Add New Item
                 </CardHeader>

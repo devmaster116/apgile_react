@@ -2,7 +2,7 @@ import React from "react";
 
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
-const ExtendBranchAdd = (props) =>  {
+const ExtendBranchAdd = () =>  {
     // let id = props.match.params;
     let fields = {
         // lat: {},
@@ -19,6 +19,9 @@ const ExtendBranchAdd = (props) =>  {
             type:"text",
             label:"secondary phone no"
         },
+        company:{
+            target:'companies?limit=1000'
+        }
        
     }
 

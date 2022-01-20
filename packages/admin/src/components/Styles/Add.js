@@ -18,7 +18,7 @@ const {id} = props.match.params;
     company_id: {
       type: "advanceSelect",
       label: "Select Company",
-      target: 'companies',
+      target: 'companies?limit=1000',
       async: true,
       name: "company_id",
       required: true,

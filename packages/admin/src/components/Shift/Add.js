@@ -18,7 +18,7 @@ const fields = {
   team_id: {
       type: 'advanceSelect',
       label: "Team",
-      target: 'teams',
+      target: 'teams?limit=1000',
       async: true,
       name: 'team_id',
       multi:true,
@@ -28,7 +28,7 @@ const fields = {
   company_id: {
     type: 'advanceSelect',
     label: "Select Company",
-    target: 'companies',
+    target: 'companies?limit=1000',
     async: true,
     name: 'company_id',
     // multi:true,

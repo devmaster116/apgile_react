@@ -6,8 +6,8 @@ import React from "react";
 
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
-const Add = (props) => {
-    let id = props.match.params.id;
+const Add = () => {
+    // let id = props.match.params.id;
     let fields = {
         // lat: {},
         // lng: {},

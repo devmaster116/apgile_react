@@ -9,7 +9,7 @@ const List = () => {
      useEffect(() => {
        let ls =  JSON.parse(localStorage.getItem('currentUser'));
        setCompanyID(ls?.company?.id);
-    },)
+    },[companyID])
 
     const defaultSorted = [{ dataField: "id", order: "desc" }];
     const columns = [

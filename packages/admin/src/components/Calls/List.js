@@ -11,7 +11,7 @@ const filters = {
   company_id: {
     type: "advanceSelect",
     label: "Company",
-    target: 'companies',
+    target: 'companies?limit=1000',
     async: true,
     name: "company_id",
     required: true,
@@ -20,7 +20,7 @@ const filters = {
   branch_id: {
     type: "advanceSelect",
     label: "Branch",
-    target: 'branches',
+    target: 'branches?limit=1000',
     async: true,
     name: "branch_id",
     required: true,

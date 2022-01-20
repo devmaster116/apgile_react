@@ -1,11 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
+
+  const [targetPoint, setTargetID] = useState(`items/19/pages`);
   const { id } = props.match.params;
 
+  const handleTarget = (row,col)=> {
+    setTimeout(() => {
+     console.log(col?.value,'kkk');
+     setTargetID(`items/${col?.value}/pages`)
+    }, 1000);
+   
+  } 
   let fields = {
     name: {
       type: "text",
@@ -55,15 +64,22 @@ const Add = (props) => {
           target: "items",
           name: "item_id",
           col: 6,
-          // onChange: (value) => console.log(value)
+          optionValue: 'id',
+          optionLabel: 'name',
+          async:true,
+          callback : (row,col) => handleTarget(row,col)
         },
-        item_page: {
+        page_id: {
           type: "advanceSelect",
           label: "Item#",
-          name: "item_page",
-          target:`items/19/pages`,
+          name: "page_id",
+          target:targetPoint,
           required: true,
+          key:'target',
+          optionValue: 'id',
+          optionLabel: 'name',
           col: 6,
+          async:true
         },
       },
     },
