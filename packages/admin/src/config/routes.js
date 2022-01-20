@@ -28,6 +28,7 @@ import ExtendBranchAdd from "./../components/ExtendBranch/Add";
 
 import CompanyList from "./../components/ExtendCompany/List";
 import CompanyAdd from "./../components/ExtendCompany/Add";
+import CompanyDetail from "./../components/ExtendCompany/Detail";
 
 import ShiftAdd from "./../components/Shift/Add";
 import ShiftsList from "./../components/Shift/List";
@@ -80,8 +81,8 @@ const routes = [
 	{path : "/areas/:id/edit" ,exact : true ,  roles:['super-admin'],component : AreaAdd},
 	// {path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
 	{path : "/pages/area/add" ,exact : true ,  roles:['super-admin'],component : AreaAdd},
-	
-	
+
+
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
 
 	{path : "/calls" ,exact : true ,  roles:['super-admin'],component : CallList},
@@ -98,8 +99,9 @@ const routes = [
 
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
-	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
-	
+	{ path: '/admin/company/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
+	{ path: '/admin/company/:id/details', exact: true, roles:['super-admin'], component: CompanyDetail },
+
 
 	{path : "/owner/shifts" ,exact : true ,  roles:['super-admin'],component : ShiftsList},
 	{path : "/shifts/add" ,exact : true ,  roles:['super-admin'],component : ShiftAdd},
@@ -115,10 +117,10 @@ const routes = [
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
 	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
-	
-	
 
-	
+
+
+
 ];
 
 export default routes;
