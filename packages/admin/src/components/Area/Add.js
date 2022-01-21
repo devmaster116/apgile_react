@@ -47,7 +47,7 @@ const Add = (props) => {
       optionLabel: 'username',
       required: true,
       // async: true,
-      // multi:true,
+      multi:true,
       name: 'user_id',
       col: 4
   },
@@ -61,6 +61,7 @@ const Add = (props) => {
         item_id: {
           type: "advanceSelect",
           label: "Select Item Type",
+          required:true,
           target: "items",
           name: "item_id",
           col: 6,

@@ -95,6 +95,12 @@ export default {
         icon: "fas fa-map-marker-alt",
         to: "/owner/locations",
       },
+      styles: {
+        phrase: "Styles",
+        to: "/owner/styles",
+        roles: ["super-admin"],
+        icon: "fas fa-broom",
+      },
       items: {
         phrase: "Items",
         order: 1,
@@ -167,8 +173,8 @@ export default {
     icon: "fas fa-pager",
     children: {
       page: {
-        phrase: "Page",
-        to: "/pages/page",
+        phrase: "QR Codes",
+        to: "/pages/qr-codes",
         roles: ["super-admin"],
         icon: "fas fa-pager",
       },
@@ -178,13 +184,7 @@ export default {
         roles: ["super-admin"],
         icon: "fas fa-warehouse",
       },
-      styles: {
-        phrase: "Styles",
-        to: "/pages/styles",
-        roles: ["super-admin"],
-
-        icon: "fas fa-broom",
-      },
+    
     },
   },
 };

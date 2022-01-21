@@ -84,7 +84,7 @@ const VendorsList = () => {
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
-              addRoute="/pages/styles/add"
+              addRoute="/owner/styles/add"
 
             //   customButton={{
             //     name: "Download PDF",

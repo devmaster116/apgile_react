@@ -131,7 +131,7 @@ const Add = (props) => {
             name="pages"
             repeater={true}
             // initialValues={props.location.aboutProps}
-            redirect="pages/page"
+            redirect="pages/qr-codes"
             // handleSameValueFields={["name"]}
           />
         </CardBody>

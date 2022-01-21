@@ -75,7 +75,7 @@ const routes = [
 	{path : "/pages/page/add" ,exact : true ,  roles:['super-admin'],component : PageAdd},
 	{path : "/pages/:id/edit" ,exact : true ,  roles:['super-admin'],component : PageAdd},
 	{path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
-	{path : "/pages/page" ,exact : true ,  roles:['super-admin'],component : PagesList},
+	{path : "/pages/qr-codes" ,exact : true ,  roles:['super-admin'],component : PagesList},
 
 	{path : "/pages/area" ,exact : true ,  roles:['super-admin'],component : AreaList},
 	{path : "/areas/:id/edit" ,exact : true ,  roles:['super-admin'],component : AreaAdd},
@@ -88,8 +88,8 @@ const routes = [
 	{path : "/calls" ,exact : true ,  roles:['super-admin'],component : CallList},
 	{ path: '/callS/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: CallDetail },
 
-	{path : "/pages/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
-	{ path: '/pages/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
+	{path : "/owner/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
+	{ path: '/owner/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 	{ path: '/styles/:id/edit', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 
 

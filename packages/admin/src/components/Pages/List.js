@@ -9,6 +9,8 @@ const VendorsList = (props) => {
   const [show, setShow] = useState(false);
   const [pages, setPages] = useState(false);
   const [Loader, setLoader] = useState(false);
+  const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
+  const [itemTypeTarget, setItemTypeTarget] = useState('items?limit=1000');
   const [ID, setID] = useState(0);
 
   useEffect(() => {
@@ -27,6 +29,46 @@ const VendorsList = (props) => {
     }
   }, [ID])
 
+ 
+const filters = {
+  company_id: {
+    type: 'advanceSelect',
+    optionValue: 'id',
+    optionLabel: 'name',
+    label: "Company",
+    target: 'companies?limit=1000',
+    async: true,
+    name: "company_id",
+    callback:(data,col)=>{
+      setTimeout(() => {
+      console.log(col,"data")
+      setBranchTarget(`branches?limit=1000&company_id=${col?.value}`)
+    }, 0)}
+    // required: true,
+
+  },
+  branch_id: {
+    type: "advanceSelect",
+    label: "Branch",
+    target: branchTarget,
+    callback:(data,col)=>{setItemTypeTarget(col?.value)},
+    async: true,
+    name: "branch_id",
+    // required: true,
+
+  },
+  item_type: {
+    type: "advanceSelect",
+    label: "Branch",
+    target: itemTypeTarget,
+    async: true,
+    name: "item_type",
+    // required: true,
+
+  },
+}
+
+
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
     {
@@ -38,13 +80,13 @@ const VendorsList = (props) => {
 
     {
       dataField: "name",
-      text: "Username",
+      text: "Name",
       align: "center",
       sort: true,
     },
     {
       dataField: "description",
-      text: "Descriptiond",
+      text: "Description",
       align: "center",
       sort: true,
     },
@@ -68,6 +110,15 @@ const VendorsList = (props) => {
       sort: true,
     },
     {
+      dataField: "last_used",
+      text: "Last Call",
+      align: "center",
+      sort: true,
+    },
+
+
+    
+    {
       isDummyField: true,
       align: "center",
       text: "QR Code",
@@ -75,7 +126,7 @@ const VendorsList = (props) => {
       formatter: (cell, row) => {
         return (
         <Button color="primary" onClick={() => {
-          setID(row.id) 
+         setID(row?.id)
           }}
           >
             View QR Code
@@ -83,14 +134,24 @@ const VendorsList = (props) => {
         );
       },
     },
+
+  
   ];
+
+  const downloadPdf = () => {
+    // console.log(pages?.qr_code?.url,"ll");
+    var link = document.createElement('a');
+    link.href = pages?.qr_code?.url?.url;
+    link.download = 'file.pdf';
+    link.dispatchEvent(new MouseEvent('click'));
+  }
 
 
   return (
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Pages"/>
+          <Header title="All Pages" />
           <CardBody>
             <RemoteTable
               entity="pages"
@@ -102,16 +163,17 @@ const VendorsList = (props) => {
               hideDelete={false}
               // addRoute="/pages/page/add"
 
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
-            //   query={queryParams}
+                customButton={{
+                  name: "Download PDF",
+                  color: "warning",
+                  callback: downloadPdf,
+                }}
+                filters={filters}
+                showAdvanceFilters = {true}
+              //   Query={query}
+              //   query={queryParams}
             />
-            
-             
+
             <Modal
               style={{ textAlign: "center" }}
               show={show}
@@ -119,20 +181,23 @@ const VendorsList = (props) => {
               aria-labelledby="contained-modal-title-vcenter"
               centered
             >
-              {
-                Loader ?
-                  <Spinner animation="border" role="status" className='mx-auto'>
-                    <span className="visually-hidden">Loading...</span>
-                  </Spinner> : <img
+              {Loader ? (
+                <Spinner animation="border" role="status" className="mx-auto">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              ) : (
+                <>
+                  <img
                     className="mx-auto"
                     width={400}
                     height={360}
                     alt="background"
                     src={pages?.qr_code?.url}
                   ></img>
-              }
+                  <p><b>{pages?.description}</b></p>
+                </>
+              )}
             </Modal>
-            
           </CardBody>
         </Card>
       </div>

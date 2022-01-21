@@ -26,13 +26,13 @@ const Add = (props) => {
       name: "phone1",
       col: 4,
     },
-    phone2: {
-      type: "text",
-      label: "company secondary phone",
-      required: true,
-      name: "phone2",
-      col: 4,
-    },
+    // phone2: {
+    //   type: "text",
+    //   label: "company secondary phone",
+    //   required: true,
+    //   name: "phone2",
+    //   col: 4,
+    // },
 
     address: {
       type: "text",
@@ -57,18 +57,18 @@ const Add = (props) => {
     b_phone1: {
       parent: "branch",
       type: "text",
-      label: "branch phone 1",
+      label: "branch phone",
       name: "b_phone1",
       col: 4,
     },
-    b_phone2: {
-      parent: "branch",
-      type: "text",
-      label: "branch phone 2",
-      required: true,
-      name: "b_phone2",
-      col: 4,
-    },
+    // b_phone2: {
+    //   parent: "branch",
+    //   type: "text",
+    //   label: "branch phone 2",
+    //   required: true,
+    //   name: "b_phone2",
+    //   col: 4,
+    // },
     addr1: {
       parent: "address",
       type: "text",
