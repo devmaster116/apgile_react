@@ -4,8 +4,7 @@ import { Card, CardBody, Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import { Modal, Spinner } from "react-bootstrap/";
 import api from "@evenlogics/whf-api";
-
-const List = (props) => {
+const VendorsList = (props) => {
 
   const [show, setShow] = useState(false);
   const [pages, setPages] = useState(false);
@@ -20,7 +19,6 @@ const List = (props) => {
        setLoader(bool)
         api.request("get", `/pages/${ID}`)
           .then(({ data }) => {
-            console.log(data,"ggggg");
             setPages(data)
             setShow(true);
             setTimeout(() => {
@@ -53,7 +51,7 @@ const filters = {
     type: "advanceSelect",
     label: "Branch",
     target: branchTarget,
-    callback:(data,col)=>{setItemTypeTarget(`items?limit=1000&item_id=${col?.value}`)},
+    callback:(data,col)=>{setItemTypeTarget(col?.value)},
     async: true,
     name: "branch_id",
     // required: true,
@@ -137,40 +135,15 @@ const filters = {
       },
     },
 
-
-    {
-      isDummyField: true,
-      align: "center",
-      text: "QR Code",
-      sort: true,
-      formatter: (cell, row) => {
-        return (
-        <Button color="warning" onClick={() => {
-          downloadPdf(row?.id)
-          }}
-          >
-            Download QR Code
-          </Button>
-        );
-      },
-    },
   
   ];
 
-  const downloadPdf = (id) => {
-    
-    api.request("get", `/pages/${id}/generate-pdf`)
-    .then(({ data }) => {
-      console.log(data,"ggggg");
-      var link = document.createElement('a');
-      link.href = data?.pdf_qr_code?.url;
-      link.target= '_blank'
-      link.download = 'file.pdf';
-      link.dispatchEvent(new MouseEvent('click'));
-    })
-    .catch((error) => console.log(error));
+  const downloadPdf = () => {
     // console.log(pages?.qr_code?.url,"ll");
-    
+    var link = document.createElement('a');
+    link.href = pages?.qr_code?.url?.url;
+    link.download = 'file.pdf';
+    link.dispatchEvent(new MouseEvent('click'));
   }
 
 
@@ -190,11 +163,11 @@ const filters = {
               hideDelete={false}
               // addRoute="/pages/page/add"
 
-                // customButton={{
-                //   name: "Download PDF",
-                //   color: "warning",
-                //   callback: downloadPdf,
-                // }}
+                customButton={{
+                  name: "Download PDF",
+                  color: "warning",
+                  callback: downloadPdf,
+                }}
                 filters={filters}
                 showAdvanceFilters = {true}
               //   Query={query}
@@ -232,4 +205,4 @@ const filters = {
   );
 };
 
-export default List;
+export default VendorsList;

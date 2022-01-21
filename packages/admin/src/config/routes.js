@@ -24,6 +24,7 @@ import StylesList from "./../components/Styles/List";
 
 import PagesList from "./../components/Pages/List";
 import ExtendBranchAdd from "./../components/ExtendBranch/Add";
+import ExtendBranchList from "./../components/ExtendBranch/List";
 
 
 import CompanyList from "./../components/ExtendCompany/List";
@@ -93,9 +94,9 @@ const routes = [
 	{ path: '/styles/:id/edit', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 
 
-
+	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
 	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
-	{ path: '/entity/branches/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendBranchAdd },
+	{ path: '/branches/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendBranchAdd },
 
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },

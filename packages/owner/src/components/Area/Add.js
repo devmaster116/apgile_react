@@ -1,18 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
+
+  const [targetPoint, setTargetID] = useState(`items/19/pages`);
   const { id } = props.match.params;
 
+  const handleTarget = (row,col)=> {
+    setTimeout(() => {
+     console.log(col?.value,'kkk');
+     setTargetID(`items/${col?.value}/pages`)
+    }, 1000);
+   
+  } 
   let fields = {
     name: {
       type: "text",
       label: "Name",
       required: true,
       name: "name",
-      col: 3,
+      col: 4,
     },
 
     description: {
@@ -20,27 +29,28 @@ const Add = (props) => {
       label: "Description",
       // required: true,
       name: "description",
-      col: 3,
+      col: 4,
     },
 
-    style_id: {
+    branch_id: {
       type: "advanceSelect",
-      label: "Select Style",
-      target: "styles",
-      // optionValue: "id",
-      // optionLabel: "role_id",
-      name: "style_id",
-      col: 3,
+      label: "Select Branch",
+      target: "branches",
+      name: "branch_id",
+      col: 4,
       required: true,
     },
-    location_id: {
-      type: "advanceSelect",
-      label: "Select Location",
-      target: "locations",
-      name: "location_id",
-      col: 3,
+    user_id: {
+      type: 'advanceSelect',
+      label: "Users",
+      target: 'users',
+      optionLabel: 'username',
       required: true,
-    },
+      // async: true,
+      multi:true,
+      name: 'user_id',
+      col: 4
+  },
     area: {
       type: "dynamicFields",
       condition: true,
@@ -51,18 +61,26 @@ const Add = (props) => {
         item_id: {
           type: "advanceSelect",
           label: "Select Item Type",
+          required:true,
           target: "items",
-          // optionValue: "id",
-          // optionLabel: "role_id",
           name: "item_id",
           col: 6,
+          optionValue: 'id',
+          optionLabel: 'name',
+          async:true,
+          callback : (row,col) => handleTarget(row,col)
         },
-        qty: {
-          type: "number",
-          label: "Quantity",
-          name: "qty",
+        page_id: {
+          type: "advanceSelect",
+          label: "Item#",
+          name: "page_id",
+          target:targetPoint,
           required: true,
+          key:'target',
+          optionValue: 'id',
+          optionLabel: 'name',
           col: 6,
+          async:true
         },
       },
     },
@@ -121,21 +139,18 @@ const Add = (props) => {
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Page" />
+        <Header title="Add New Area"/>
         <CardBody>
           <FormGenerator
-            targetEntity="pages"
+            targetEntity="areas"
             // getValues={this.handleValue}
             fields={fields}
             targetId={id}
-            name="pages"
+            name="areas"
             repeater={true}
             // initialValues={props.location.aboutProps}
-            redirect="pages/qr-codes"
+            redirect="/area"
             // handleSameValueFields={["name"]}
-             
-            
-
           />
         </CardBody>
       </Card>

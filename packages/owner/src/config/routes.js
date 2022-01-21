@@ -7,6 +7,28 @@ import CompanyBranchAdd from "../components/CompanyBranch/Add";
 import UserList from "./../components/Users/List";
 import UserAdd from "./../components/Users/Add";
 
+import TeamsList from "./../components/Teams/List";
+import TeamsAdd from "./../components/Teams/Add";
+
+import ShiftsList from "./../components/Shift/List";
+import ShiftAdd from "./../components/Shift/Add";
+
+
+import RoastersList from "./../components/Roaster/List";
+import RoasterAdd from "./../components/Roaster/Add";
+
+import LocationsList from "./../components/Locations/List";
+import LocationAdd from "./../components/Locations/Add";
+
+import ItemsList from "./../components/Items/List";
+import ItemAdd from "./../components/Items/Add";
+
+import AreasList from "./../components/Area/List";
+import AreaAdd from "./../components/Area/Add";
+
+import PagesList from "./../components/Pages/List";
+import PageAdd from "./../components/Pages/Add";
+
 const routes = [
 	
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false,},
@@ -19,6 +41,37 @@ const routes = [
 	{ path: '/users-extended', exact : true,component: UserList,isPublic: false},
 	{ path: '/users/add', exact : true,component: UserAdd,isPublic: false},
 	{ path: '/users/:id/edit', exact : true,component: UserAdd,isPublic: false},
+
+
+	{ path: '/teams', exact : true,component: TeamsList,isPublic: false},
+	{ path: '/teams/add', exact : true,component: TeamsAdd,isPublic: false},
+	{ path: '/teams/:id/edit', exact : true,component: TeamsAdd,isPublic: false},
+
+	{ path: '/shifts', exact : true,component: ShiftsList,isPublic: false},
+	{ path: '/shifts/add', exact : true,component: ShiftAdd,isPublic: false},
+	{ path: '/shifts/:id/edit', exact : true,component: ShiftAdd,isPublic: false},
+
+	{ path: '/roasters', exact : true,component: RoastersList,isPublic: false},
+	{ path: '/roasters/add', exact : true,component: RoasterAdd,isPublic: false},
+	{ path: '/roasters/:id/edit', exact : true,component: RoasterAdd,isPublic: false},
+
+	
+	{ path: '/locations', exact : true,component: LocationsList,isPublic: false},
+	{ path: '/locations/add', exact : true,component: LocationAdd,isPublic: false},
+	{ path: '/locations/:id/edit', exact : true,component: LocationAdd,isPublic: false},
+
+
+	{ path: '/items', exact : true,component: ItemsList,isPublic: false},
+	{ path: '/items/add', exact : true,component: ItemAdd,isPublic: false},
+	{ path: '/items/:id/edit', exact : true,component: ItemAdd,isPublic: false},
+
+	{ path: '/areas', exact : true,component: AreasList,isPublic: false},
+	{ path: '/areas/add', exact : true,component: AreaAdd,isPublic: false},
+	{ path: '/areas/:id/edit', exact : true,component: AreaAdd,isPublic: false},
+
+	{ path: '/qr-codes', exact : true,component: PagesList,isPublic: false},
+	{ path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
+	{ path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
 	
 ];
 

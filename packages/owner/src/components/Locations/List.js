@@ -5,19 +5,6 @@ import { withTranslation } from 'react-i18next';
 
 class LocationsList extends Component {
 	render() {
-
-		const filters = {
-			company_id: {
-			  type: "advanceSelect",
-			  label: "Company",
-			  target: 'companies?limit=1000',
-			  async: true,
-			  name: "company_id",
-			  required: true,
-			  col: 12 + ' col-xl-3 mt-2',
-			}
-		  }
-
 		const columns = [
 			{
 				dataField: 'id',
@@ -69,9 +56,7 @@ class LocationsList extends Component {
 							customEntity="locations"
 							columns={columns}
 							sort={defaultSorted}
-							addRoute="/owner/locations/add"
-							filters={filters}
-							showAdvanceFilters = {true}
+							addRoute="/locations/add"
 							{...this.props.remoteTableFields}
 						/>
 					</CardBody>

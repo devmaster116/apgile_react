@@ -74,7 +74,7 @@ const Add = (props) => {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          target:targetPoint,
+          target:`items/18/pages`,
           required: true,
           key:'target',
           optionValue: 'id',

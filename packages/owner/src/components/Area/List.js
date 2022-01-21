@@ -6,26 +6,6 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 const List = () => {
 
-  const filters = {
-    company_id: {
-      type: "advanceSelect",
-      label: "Company",
-      target: 'companies?limit=1000',
-      async: true,
-      name: "company_id",
-      required: true,
-      col: 12 + ' col-xl-3 ',
-    },
-    branch_id: {
-      type: "advanceSelect",
-      label: "Branch",
-      target: 'branches?limit=1000',
-      async: true,
-      name: "branch_id",
-      required: true,
-      col: 12 + ' col-xl-3 ',
-    },
-  }
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
@@ -85,9 +65,7 @@ const List = () => {
               hideEdit={false}
               hideDetail={true}
               hideDelete={false}
-              addRoute="/pages/area/add"
-              filters={filters}
-              showAdvanceFilters = {true}
+              addRoute="/areas/add"
 
             //   customButton={{
             //     name: "Download PDF",
