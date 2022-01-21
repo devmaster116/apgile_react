@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {DetailView} from '@evenlogics/whf-ra-components';
+// import {DetailView} from '@evenlogics/whf-ra-components';
 
 export default class CompanyDetail extends Component {
 	render() {
