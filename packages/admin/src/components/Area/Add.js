@@ -15,6 +15,7 @@ const Add = (props) => {
     }, 1000);
    
   } 
+  console.log(targetPoint,"targetPoint");
   let fields = {
     name: {
       type: "text",

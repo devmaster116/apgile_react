@@ -3,7 +3,7 @@ import React from "react";
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
 const ExtendBranchAdd = (props) =>  {
-    let id = props.match.params;
+    // let id = props.match.params;
     let fields = {
         phone1:{
             col:6,
