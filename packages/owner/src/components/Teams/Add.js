@@ -1,12 +1,16 @@
-import React, {Component} from 'react';
+import React, { useState,useEffect } from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {withTranslation} from 'react-i18next';
 
-class TeamsAdd extends Component {
-
-    render() {
-        const {id} = this.props.match.params;
+const TeamsAdd = (props) => {
+    
+    const [companyID, setCompanyID] = useState(null)
+    useEffect(() => {
+      let ls =  JSON.parse(localStorage.getItem('currentUser'));
+      setCompanyID(ls?.company?.id);
+   },[companyID])
+    
+        const {id} = props.match.params;
 
         const fields = {
             name: {
@@ -19,7 +23,7 @@ class TeamsAdd extends Component {
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
-                target: 'branches',
+                target: `branches?company_id=${companyID}`,
                 // async: true,
                 name: 'branch_id',
                 required: true,
@@ -28,7 +32,7 @@ class TeamsAdd extends Component {
             location_id: {
                 type: 'advanceSelect',
                 label: "Location",
-                target: 'locations',
+                target: `locations?company_id=${companyID}`,
                 // optionValue: "id",
                 // optionLabel: "name",
                 // async: true,
@@ -39,7 +43,7 @@ class TeamsAdd extends Component {
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
-                target: 'users',
+                target: `users?company_id=${companyID}`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,
@@ -49,7 +53,7 @@ class TeamsAdd extends Component {
             user_id: {
                 type: 'advanceSelect',
                 label: "Users",
-                target: 'users',
+                target: `users?company_id=${companyID}`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,
@@ -68,19 +72,19 @@ class TeamsAdd extends Component {
                 <CardBody>
                     <FormGenerator
                         targetEntity="teams"
-                        getValues={this.handleValue}
+                        // getValues={handleValue}
                         fields={fields}
                         targetId={id}
                         name="phrases"
                         repeater={true}
-                        initialValues={this.props.location.aboutProps}
+                        initialValues={props.location.aboutProps}
                         redirect="teams"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
         );
-    }
+    
 }
 
-export default withTranslation()(TeamsAdd);
+export default TeamsAdd;

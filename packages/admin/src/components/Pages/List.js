@@ -29,7 +29,7 @@ const List = (props) => {
           })
           .catch((error) => console.log(error));
     }
-  }, [ID])
+  },[ID])
 
  
 const filters = {
@@ -173,6 +173,8 @@ const filters = {
       link.href = data?.pdf_qr_code?.url;
       link.target= '_blank'
       link.download = 'file.pdf';
+      // link.download = data?.pdf_qr_code?.url?.split("/")?.pop();
+
       link.dispatchEvent(new MouseEvent('click'));
     })
     .catch((error) => console.log(error));

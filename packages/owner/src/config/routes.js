@@ -29,6 +29,13 @@ import AreaAdd from "./../components/Area/Add";
 import PagesList from "./../components/Pages/List";
 import PageAdd from "./../components/Pages/Add";
 
+import StaffList from "./../components/Staff/List";
+import StaffAdd from "./../components/Staff/Add";
+
+import SettingList from "./../components/Settings/List";
+import SettingAdd from "./../components/Settings/Add";
+
+
 const routes = [
 	
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false,},
@@ -72,6 +79,16 @@ const routes = [
 	{ path: '/qr-codes', exact : true,component: PagesList,isPublic: false},
 	{ path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
 	{ path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
+	
+
+	{ path: '/staff', exact : true,component: StaffList,isPublic: false},
+	{ path: '/staff/add', exact : true,component: StaffAdd,isPublic: false},
+	{ path: '/staff/:id/edit', exact : true,component: StaffAdd,isPublic: false},
+
+	{ path: '/setting', exact : true,component: SettingList,isPublic: false},
+	{ path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
+	{ path: '/setting/:id/edit', exact : true,component: SettingAdd,isPublic: false}
+
 	
 ];
 

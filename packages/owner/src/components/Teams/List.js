@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
-import { withTranslation } from 'react-i18next';
 
-class TeamsList extends Component {
-	render() {
+const TeamsList = (props) => {
+
+	const [companyID, setCompanyID] = useState(null)
+     useEffect(() => {
+       let ls =  JSON.parse(localStorage.getItem('currentUser'));
+       setCompanyID(ls?.company?.id);
+    },[companyID])
+
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
 			{
@@ -28,9 +33,7 @@ class TeamsList extends Component {
 		
 		];
 
-		if (this.props.extendedFields) {
-			this.props.extendedFields.forEach(field => columns.push(field))
-		}
+		
 
 		const defaultSorted = [
 			{
@@ -47,17 +50,17 @@ class TeamsList extends Component {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="teams"
-							customEntity="teams"
+							entity={`teams?company_id=${companyID}`}
+							customEntity={`teams?company_id=${companyID}`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="teams/add"
-							{...this.props.remoteTableFields}
+							{...props.remoteTableFields}
 						/>
 					</CardBody>
 				</Card>
 			</div>
 		);
 	}
-}
-export default withTranslation()(TeamsList);
+
+export default TeamsList;
