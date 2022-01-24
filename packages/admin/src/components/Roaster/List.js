@@ -67,7 +67,7 @@ const List = () => {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All roasters" />
+          <Header title="All Roasters" />
           <CardBody>
             <RemoteTable
               entity="rosters"

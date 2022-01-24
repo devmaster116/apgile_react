@@ -1,21 +1,42 @@
-import React, { Component } from 'react';
+import React, { useState} from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
-import { withTranslation } from 'react-i18next';
 
-class LocationsList extends Component {
-	render() {
+const LocationsList = (props) => {
+
+	const [target, setTarget] = useState('branches');
+	
+	const companiesChangeHandler = (data) => {
+		console.log(data,"lll");
+        setTimeout(() => {
+            setTarget(`branches/${data.value}/all`)
+        }, 0);
+    }
 
 		const filters = {
 			company_id: {
 			  type: "advanceSelect",
 			  label: "Company",
 			  target: 'companies?limit=1000',
-			  async: true,
+			//   async: true,
 			  name: "company_id",
+			  optionValue: 'id',
+			  optionLabel: 'name',
 			  required: true,
 			  col: 12 + ' col-xl-3 mt-2',
-			}
+			  callback: (data) => companiesChangeHandler(data)
+			},
+			branch_id: {
+				type: "advanceSelect",
+				label: "Branch",
+				target: target,
+				async: true,
+				name: "branch_id",
+				optionValue: 'id',
+                optionLabel: 'name',
+				required: true,
+				col: 12 + ' col-xl-3 mt-2',
+			  }
 		  }
 
 		const columns = [
@@ -46,9 +67,7 @@ class LocationsList extends Component {
 			
 		];
 
-		if (this.props.extendedFields) {
-			this.props.extendedFields.forEach(field => columns.push(field))
-		}
+		
 
 		const defaultSorted = [
 			{
@@ -72,12 +91,12 @@ class LocationsList extends Component {
 							addRoute="/owner/locations/add"
 							filters={filters}
 							showAdvanceFilters = {true}
-							{...this.props.remoteTableFields}
+							{...props.remoteTableFields}
 						/>
 					</CardBody>
 				</Card>
 			</div>
 		);
 	}
-}
-export default withTranslation()(LocationsList);
+
+export default LocationsList;

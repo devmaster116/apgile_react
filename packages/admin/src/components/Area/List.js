@@ -6,20 +6,32 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 const List = () => {
 
+  // const [target, setTarget] = useState('branches');
+	
+	// const companiesChangeHandler = (data) => {
+	// 	console.log(data,"lll");
+  //       setTimeout(() => {
+  //           setTarget(`branches/${data.value}/all`)
+  //       }, 0);
+  //   }
+
+
   const filters = {
-    company_id: {
-      type: "advanceSelect",
-      label: "Company",
-      target: 'companies?limit=1000',
-      async: true,
-      name: "company_id",
-      required: true,
-      col: 12 + ' col-xl-3 ',
-    },
+    // company_id: {
+    //   type: "advanceSelect",
+    //   label: "Company",
+    //   target: 'companies?limit=1000',
+    //   async: true,
+    //   name: "company_id",
+    //   required: true,
+    //   col: 12 + ' col-xl-3 ',
+		//   callback: (data) => companiesChangeHandler(data)
+
+    // },
     branch_id: {
       type: "advanceSelect",
       label: "Branch",
-      target: 'branches?limit=1000',
+      target: 'branches',
       async: true,
       name: "branch_id",
       required: true,

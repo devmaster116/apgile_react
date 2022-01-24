@@ -28,6 +28,8 @@ class LocationsAdd extends Component {
                 target: 'branches',
                 async: true,
                 required:true,
+                optionValue: 'id',
+                optionLabel: 'name',
                 name: 'branch_id',
                 col: 6
             },

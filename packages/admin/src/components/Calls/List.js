@@ -1,12 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
 
 
 
 const List = () => {
- 
+  const [target, setTarget] = useState("branches");
 
+  const companiesChangeHandler = (data) => {
+    console.log(data, "lll");
+    setTimeout(() => {
+      setTarget(`branches/${data.value}/all`);
+    }, 0);
+  };
 const filters = {
   company_id: {
     type: "advanceSelect",
@@ -16,11 +22,13 @@ const filters = {
     name: "company_id",
     required: true,
     col: 12 + ' col-xl-3 ',
+    callback: (data) => companiesChangeHandler(data)
+
   },
   branch_id: {
     type: "advanceSelect",
     label: "Branch",
-    target: 'branches?limit=1000',
+    target: target,
     async: true,
     name: "branch_id",
     required: true,

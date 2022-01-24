@@ -40,11 +40,12 @@ const filters = {
     label: "Company",
     target: 'companies?limit=1000',
     async: true,
+    col: 12 + ' col-xl-3 mt-2',
     name: "company_id",
     callback:(data,col)=>{
       setTimeout(() => {
       console.log(col,"data")
-      setBranchTarget(`branches?limit=1000&company_id=${col?.value}`)
+      setBranchTarget(`branches/${data.value}/all`)
     }, 0)}
     // required: true,
 
@@ -56,15 +57,19 @@ const filters = {
     callback:(data,col)=>{setItemTypeTarget(`items?limit=1000&item_id=${col?.value}`)},
     async: true,
     name: "branch_id",
+    col: 12 + ' col-xl-3 mt-2',
+
     // required: true,
 
   },
   item_type: {
     type: "advanceSelect",
-    label: "Branch",
+    label: "Item",
     target: itemTypeTarget,
     async: true,
     name: "item_type",
+    col: 12 + ' col-xl-3 mt-2',
+
     // required: true,
 
   },
@@ -146,6 +151,7 @@ const filters = {
       formatter: (cell, row) => {
         return (
         <Button color="warning" onClick={() => {
+          console.log(row?.id,"kkkk");
           downloadPdf(row?.id)
           }}
           >
@@ -158,10 +164,11 @@ const filters = {
   ];
 
   const downloadPdf = (id) => {
+    console.log(id,"id in api call");
     
     api.request("get", `/pages/${id}/generate-pdf`)
     .then(({ data }) => {
-      console.log(data,"ggggg");
+      console.log(data?.pdf_qr_code?.url,"ggggg");
       var link = document.createElement('a');
       link.href = data?.pdf_qr_code?.url;
       link.target= '_blank'
@@ -178,7 +185,7 @@ const filters = {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Pages" />
+          <Header title="All QR Codes" />
           <CardBody>
             <RemoteTable
               entity="pages"

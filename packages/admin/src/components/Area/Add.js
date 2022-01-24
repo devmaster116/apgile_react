@@ -8,11 +8,11 @@ const Add = (props) => {
   const [targetPoint, setTargetID] = useState(`items/19/pages`);
   const { id } = props.match.params;
 
-  const handleTarget = (row,col)=> {
+  const handleTarget = (data)=> {
     setTimeout(() => {
-     console.log(col?.value,'kkk');
-     setTargetID(`items/${col?.value}/pages`)
-    }, 1000);
+     console.log(data?.value,'kkk');
+     setTargetID(`items/${data?.value}/pages`)
+    }, 0);
    
   } 
   console.log(targetPoint,"targetPoint");
@@ -63,21 +63,21 @@ const Add = (props) => {
           type: "advanceSelect",
           label: "Select Item Type",
           required:true,
-          target: "items",
+          target: "items?limit=1000",
           name: "item_id",
           col: 6,
           optionValue: 'id',
           optionLabel: 'name',
           async:true,
-          callback : (row,col) => handleTarget(row,col)
+          handleChange : (data) => handleTarget(data)
         },
         page_id: {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          target:`items/18/pages`,
+          target:targetPoint,
           required: true,
-          key:'target',
+          // key:'target',
           optionValue: 'id',
           optionLabel: 'name',
           col: 6,
@@ -94,7 +94,7 @@ const Add = (props) => {
     },
     customer_required: {
       type: "switch",
-      label: "Customer Required",
+      label: "Customer Name",
       required: true,
       name: "customer_required",
       col: 2,
