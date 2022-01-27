@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
 
@@ -6,6 +6,25 @@ import RemoteTable from "@evenlogics/whf-remote-table";
 
 const List = () => {
  
+  const [companyID, setCompanyID] = useState(null)
+	const [userRole, setUserRole] = useState(null)
+  const [branchID, setBranchID] = useState(null)
+  const [query, setQuery] = useState(false)
+
+
+  useEffect(() => {
+    let ls =  JSON.parse(localStorage.getItem('currentUser'));
+   let roled = ls?.roles?.map(role => setUserRole(role));
+//    setUserRole(roled)
+   console.log(roled);
+    setCompanyID(ls?.branch?.company_id);
+    setBranchID(ls?.branch?.id);
+    setQuery(true);
+    
+ },[companyID,userRole,branchID]);
+
+ console.log(userRole,"role");
+
 
 const filters = {
   company_id: {
@@ -83,15 +102,18 @@ const filters = {
         </CardHeader>
         <CardBody>
           <RemoteTable
-            entity="calls"
-            customEntity="calls"
+            entity= { userRole?.includes("supervisor") ? `calls?branch_id=${branchID}` : "calls"}
+            customEntity={ userRole?.includes("supervisor") ? `calls?branch_id=${branchID}` : "calls"}
             columns={columns}
             sort={defaultSorted}
             hideEdit={true}
-            filters={filters}
-            showAdvanceFilters = {true}
+            filters={ userRole?.includes("supervisor") ? null : filters}
+            showAdvanceFilters ={true}
+            hideActionCol={ userRole?.includes("supervisor") ? true : false}
             // addRoute="/call/add"
             //   {props.remoteTableFields}
+            Query={query}
+
           />
         </CardBody>
       </Card>

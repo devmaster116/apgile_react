@@ -3,7 +3,7 @@ export default {
     phrase: "Dashboard",
     to: "/dashboard",
     order: 10,
-    roles: ["super-admin"],
+    roles: ["super-admin","admin"],
     icon: "fas fa-tachometer-alt",
     badge: {
       color: "info",
@@ -51,6 +51,7 @@ export default {
     phrase: 'Entities',
     order:20,
     to: '/entity',
+    roles: ["super-admin"],
     icon: 'fas fa-building',
     hasRoute: false,
     children: {
@@ -82,7 +83,6 @@ export default {
     to: "/owner",
     order: 100,
     roles: ["super-admin"],
-
     icon: "fas fa-mobile",
     // roles:['admin'],
     hasRoute: false,
@@ -165,7 +165,7 @@ export default {
     icon: "fas fa-phone-square-alt",
   },
   pages: {
-    phrase: "Pages",
+    phrase: "QR Code",
     roles: ["super-admin"],
 
     order: 135,
@@ -187,4 +187,103 @@ export default {
     
     },
   },
+
+  //COMPANY ADMIN
+
+//  staff: {
+//     phrase: "Staff",
+//     order: 320,
+//     to: "/staff",
+//     icon: "fas fa-users",
+//     roles: ["admin"],
+//   },
+//   teams: {
+//     phrase: "Teams",
+//     order: 321,
+//     to: "/teams",
+//     roles: ["admin"],
+//     icon: "fas fa-users",
+//   },
+ 
+//   shifts: {
+//     phrase: "Shifts",
+//     roles: ["admin"],
+//     order: 322,
+//     to: "/shifts",
+//     icon: "fas fa-stopwatch",
+//   },
+//   roaster: {
+//     phrase: "Roaster",
+//     roles: ["admin"],
+//     order: 323,
+//     to: "/roasters",
+//     icon: "fas fa-landmark",
+//   },
+//   location: {
+//     phrase: "Locations",
+//     order: 326,
+//     icon: "fas fa-map-marker-alt",
+//     to: "/locations",
+//     roles: ["admin"],
+//   },
+//   items: {
+//     phrase: "Items",
+//     order: 328,
+//     roles: ["admin"],
+//     icon: "fas fa-box",
+//     to: "/items",
+//   },
+//   Area: {
+//     phrase: "Area",
+//     to: "/areas",
+//     order: 329,
+//     roles: ["admin"],
+//     icon: "fas fa-warehouse",
+//   },
+//   QR_Code: {
+//     phrase: "QR Codes",
+//     to: "/qr-codes",
+//     roles: ["admin","supervisor"],
+//     order: 331,
+//     icon: "fas fa-pager",
+//   },
+//   setting: {
+//     phrase: "Settings",
+//     to: "/setting",
+//     roles: ["admin"],
+//     order: 332,
+//     icon: "fas fa-pager",
+//   },
+  // entity: {
+  //   phrase: "Branch",
+  //   order: 102,
+  //   to: "/owner",
+  //   hide: true,
+  //   roles: ["admin"],
+  //   children: {
+  //     person: {
+  //       phrase: "Users",
+  //       order: 1,
+  //       hide: true,
+  //       roles: ["admin"],
+  //     },
+  //     branch: {
+  //       phrase: "Branch",
+  //       order: 1,
+  //       hide: false,
+  //       to: "/owner/branches",
+  //       roles: ["admin"],
+  //     },
+  //     company: {
+  //       phrase: "Company",
+  //       order: 3,
+  //       hide: true,
+  //       roles: ["admin"],
+  //     },
+  //   },
+  // },
+
+
+
+
 };

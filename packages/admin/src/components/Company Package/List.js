@@ -39,6 +39,9 @@ const List = () => {
         sort: true,
       },
     ]
+ 
+   
+
     return (
         <div>
             <Card className="animated fadeIn">
@@ -53,6 +56,8 @@ const List = () => {
               hideDetail={true}
               hideDelete={false}
               addRoute="/company-setup/add"
+              
+
             />
             
           </CardBody>

@@ -5,10 +5,23 @@ import RemoteTable from '@evenlogics/whf-remote-table';
 const TeamsList = (props) => {
 
 	const [companyID, setCompanyID] = useState(null)
-     useEffect(() => {
-       let ls =  JSON.parse(localStorage.getItem('currentUser'));
-       setCompanyID(ls?.company?.id);
-    },[companyID])
+	const [userRole, setUserRole] = useState(null)
+    const [branchID, setBranchID] = useState(null)
+    const [query, setQuery] = useState(false)
+
+   
+  useEffect(() => {
+    let ls =  JSON.parse(localStorage.getItem('currentUser'));
+   let roled = ls?.roles?.map(role => setUserRole(role));
+//    setUserRole(roled)
+   console.log(roled);
+    setCompanyID(ls?.branch?.company_id);
+    setBranchID(ls?.branch?.id);
+    setQuery(true);
+    
+ },[companyID,userRole,branchID]);
+
+	console.log(userRole,"role");
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
@@ -50,11 +63,13 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`teams?company_id=${companyID}`}
-							customEntity={`teams?company_id=${companyID}`}
+							entity= { userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : `teams?company_id=${companyID}`}
+							customEntity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : `teams?company_id=${companyID}`}
+							hideActionCol={ userRole?.includes("supervisor") ? true : false}
 							columns={columns}
+							Query={query}
 							sort={defaultSorted}
-							addRoute="teams/add"
+							addRoute={ userRole?.includes("supervisor") ? null : "teams/add"}
 							{...props.remoteTableFields}
 						/>
 					</CardBody>

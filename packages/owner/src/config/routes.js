@@ -35,6 +35,9 @@ import StaffAdd from "./../components/Staff/Add";
 import SettingList from "./../components/Settings/List";
 import SettingAdd from "./../components/Settings/Add";
 
+import CallsList from "./../components/Calls/List";
+
+
 
 const routes = [
 	
@@ -87,8 +90,9 @@ const routes = [
 
 	{ path: '/setting', exact : true,component: SettingList,isPublic: false},
 	{ path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
-	{ path: '/setting/:id/edit', exact : true,component: SettingAdd,isPublic: false}
+	{ path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
 
+	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 	
 ];
 

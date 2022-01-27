@@ -49,7 +49,7 @@ class LocationsAdd extends Component {
                         repeater={true}
                         // initialValues={this.props.location.aboutProps}
                         
-                        redirect="/locations"
+                        redirect="locations"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>

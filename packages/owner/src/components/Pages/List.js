@@ -4,7 +4,8 @@ import { Card, CardBody, Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import { Modal, Spinner } from "react-bootstrap/";
 import api from "@evenlogics/whf-api";
-const VendorsList = (props) => {
+
+const VendorsList = () => {
 
   const [show, setShow] = useState(false);
   const [pages, setPages] = useState(false);
@@ -12,6 +13,11 @@ const VendorsList = (props) => {
   const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
   const [itemTypeTarget, setItemTypeTarget] = useState('items?limit=1000');
   const [ID, setID] = useState(0);
+  const [companyID, setCompanyID] = useState(null)
+  const [branchID, setBranchID] = useState(null)
+	const [userRole, setUserRole] = useState(null)
+  const [query, setQuery] = useState(false)
+
 
   useEffect(() => {
     let bool = true;
@@ -28,6 +34,21 @@ const VendorsList = (props) => {
           .catch((error) => console.log(error));
     }
   }, [ID])
+
+  useEffect(() => {
+    let ls =  JSON.parse(localStorage.getItem('currentUser'));
+   let roled = ls?.roles?.map(role => setUserRole(role));
+//    setUserRole(roled)
+   console.log(roled);
+   setBranchID(ls?.branch?.id); 
+    setCompanyID(ls?.branch?.company_id);
+    setQuery(!query);
+    
+ },[companyID,userRole,branchID]);
+
+  console.log(userRole,"userRole");
+  console.log(branchID,"branchID");
+  console.log(companyID,"companyID");
 
  
 const filters = {
@@ -151,16 +172,16 @@ const filters = {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Pages" />
+          <Header title="All QR Codes" />
           <CardBody>
             <RemoteTable
-              entity="pages"
-              customEntity="pages"
+              entity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : "pages"}
+              customEntity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : "pages"}
               columns={columns}
               sort={defaultSorted}
               hideEdit={true}
               hideDetail={true}
-              hideDelete={false}
+              disableDelete={userRole?.includes("supervisor") ? true : false}
               // addRoute="/pages/page/add"
 
                 customButton={{
@@ -168,9 +189,9 @@ const filters = {
                   color: "warning",
                   callback: downloadPdf,
                 }}
-                filters={filters}
+                filters={ userRole?.includes("supervisor") ? null : filters}
                 showAdvanceFilters = {true}
-              //   Query={query}
+                Query={query}
               //   query={queryParams}
             />
 

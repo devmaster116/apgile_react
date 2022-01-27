@@ -10057,6 +10057,11 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+owner@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/owner/-/owner-0.1.0.tgz#14d91146b445a110dd44ec23b5ba4af6c3cdbd64"
+  integrity sha1-FNkRRrRFoRDdROwjtbpK9sPNvWQ=
+
 p-each-series@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-each-series/-/p-each-series-1.0.0.tgz#930f3d12dd1f50e7434457a22cd6f04ac6ad7f71"
@@ -11683,6 +11688,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-loader-spinner@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-5.1.0.tgz#d0d927ba554ad16fc2cc4e09955df8fdbb54491c"
+  integrity sha512-+t6Fo0HQH0/8pGRcyE18V9D2kPcnNIe2LBBfuE+9jsRqE+g66lt+BkEo8TY23tP5gmCcyUxIW3efn92YhoSLWQ==
 
 react-onclickoutside@^6.10.0:
   version "6.12.1"

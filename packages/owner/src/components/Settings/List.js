@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
-import { withTranslation } from 'react-i18next';
 
-class ItemsList extends Component {
-	render() {
+const List = (props) => {
+
 		const columns = [
 			{
 				dataField: 'id',
@@ -13,29 +12,40 @@ class ItemsList extends Component {
 				sort: true
 			},
 			{
-				dataField: 'name',
-				text: 'Name',
+				dataField: 'branch_id',
+				text: 'Branch Id',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'description',
-				text: 'Description',
+				dataField: 'escalation_hop',
+				text: 'Escalation Hop',
 				align: 'center',
 				sort: true
 			},
-			// {
-			// 	dataField: 'branch.name',
-			// 	text: 'Branch Name',
-			// 	align: 'center',
-			// 	sort: true
-			// },
+			{
+				dataField: 'throttle_wait',
+				text: 'Throttle Wait',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'wait_time',
+				text: 'Wait Time',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'cycle',
+				text: 'Cycle',
+				align: 'center',
+				sort: true
+			},
+			
 			
 		];
 
-		if (this.props.extendedFields) {
-			this.props.extendedFields.forEach(field => columns.push(field))
-		}
+		
 
 		const defaultSorted = [
 			{
@@ -52,17 +62,17 @@ class ItemsList extends Component {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="items"
-							customEntity="items"
+							entity="branch-settings"
+							customEntity="branch-settings"
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/setting/add"
-							{...this.props.remoteTableFields}
+							{...props.remoteTableFields}
 						/>
 					</CardBody>
 				</Card>
 			</div>
 		);
-	}
+	
 }
-export default withTranslation()(ItemsList);
+export default List;

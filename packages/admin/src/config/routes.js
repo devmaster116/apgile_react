@@ -43,14 +43,28 @@ import CompanyPackageAdd from "./../components/Company Package/Add";
 import AreaAdd from "./../components/Area/Add";
 import AreaList from "./../components/Area/List";
 
+
 import UserAdd from "./../components/ExtendedUser/Add";
+
+import ValidateAsOwner from "./../components/ValidateAsOwner";
+// import SettingList from "./../components/Settings/List";
+// import SettingAdd from "./../components/Settings/Add";
+
+// import AdminTeamsDetail from "./../../../owner/src/components/Teams/Detail";
+// import AdminTeamsList from "./../../../owner/src/components/Teams/List";
+
+// import StaffList from "./../components/Staff/List";
+// import StaffAdd from "./../components/Staff/Add";
+
+// import AdminShiftsList from "./../../../owner/src/components/Shift/List";
+// import AdminShiftAdd from "./../../../owner/src/components/Shift/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 
 const routes = [
-	{ path: '/dashboard', name: 'Dashboard',  roles:['super-admin'],component: Dashboard, isPublic: false },
+	{ path: '/dashboard', name: 'Dashboard',  roles:['super-admin','admin'],component: Dashboard, isPublic: false },
 
 	{ path: '/owner/items', exact: true, name: 'Terms',  roles:['super-admin'],component: ItemsList, isPublic: true },
 	{ path: '/owner/items/add', exact: true, name: 'Add',  roles:['super-admin'],component: ItemAdd },
@@ -118,9 +132,53 @@ const routes = [
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
 	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
+	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
+
+	
+	
+	
+	
+	
+	// { path: '/staff', exact : true,roles:['admin'],component: StaffList},
+	// { path: '/staff/add', exact : true,component: StaffAdd},
+	// { path: '/staff/:id/edit', exact : true,component: StaffAdd},
 
 
+	// { path: '/shifts', exact : true,component: AdminShiftsList,isPublic:false},
+	// { path: '/shifts/add', exact : true,component: AdminShiftAdd,isPublic: false},
+	// { path: '/shifts/:id/edit', exact : true,component: AdminShiftAdd,isPublic: false},
 
+	// { path: '/teams', exact : true,component: AdminTeamsAdd,isPublic: false},
+	// { path: '/teams/add', exact : true,component: AdminTeamsDetail,isPublic: false},
+	// { path: '/teams/:id/edit', exact : true,component: AdminTeamsAdd,isPublic: false},
+
+	// {path : "/roasters" ,exact : true ,component : RoasterList},
+	// {path : "/roasters/add" ,exact : true,component : RoasterAdd},
+	// {path : "/rosters/:id/edit" ,exact : true,component : RoasterAdd},
+
+	// { path: '/locations', exact: true, name: 'Terms', component: LocationsList,},
+	// { path: '/locations/add', exact: true, name: 'Add',component: LocationsAdd },
+	// { path: '/locations/:id/edit', exact: true, name: 'Edit',component: LocationsAdd },
+	// // { path: '/owner/locations/:id/details', exact: true, name: 'Edit',component: LocationsDetail },
+
+	// { path: '/items', exact: true, name: 'Terms',component: ItemsList },
+	// { path: '/items/add', exact: true, name: 'Add',component: ItemAdd },
+	// { path: '/items/:id/edit', exact: true, name: 'Edit', component: ItemAdd },
+
+	// {path : "/areas" ,exact : true ,component : AreaList},
+	// {path : "/areas/:id/edit" ,exact : true ,component : AreaAdd},
+	// // {path : "/pages/:id/details" ,exact : true ,  roles:['super-admin'],component : PageDetails},
+	// {path : "/areas/add" ,exact : true ,component : AreaAdd},
+
+
+	// { path: '/qr-codes', exact : true,component: PagesList,isPublic: false},
+	// { path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
+	// { path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
+
+	// { path: '/setting', exact : true,component: SettingList,isPublic: false},
+	// { path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
+	// { path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
+	
 
 ];
 

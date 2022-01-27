@@ -23,7 +23,7 @@ const TeamsAdd = (props) => {
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
-                target: `branches?company_id=${companyID}`,
+                target: `branches?company_id=${companyID}?limit=1000`,
                 // async: true,
                 name: 'branch_id',
                 required: true,
@@ -32,7 +32,7 @@ const TeamsAdd = (props) => {
             location_id: {
                 type: 'advanceSelect',
                 label: "Location",
-                target: `locations?company_id=${companyID}`,
+                target: `locations?company_id=${companyID}?limit=1000`,
                 // optionValue: "id",
                 // optionLabel: "name",
                 // async: true,
@@ -43,7 +43,7 @@ const TeamsAdd = (props) => {
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
-                target: `users?company_id=${companyID}`,
+                target: `users?company_id=${companyID}?limit=1000`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,
@@ -53,7 +53,7 @@ const TeamsAdd = (props) => {
             user_id: {
                 type: 'advanceSelect',
                 label: "Users",
-                target: `users?company_id=${companyID}`,
+                target: `users?company_id=${companyID}?limit=1000`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,

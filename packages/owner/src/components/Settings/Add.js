@@ -1,45 +1,62 @@
-import React, {Component} from 'react';
+import React, { useState,useEffect }  from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {withTranslation} from 'react-i18next';
 
-class ItemAdd extends Component {
+const Add = (props) => {
 
-    render() {
-        const {id} = this.props.match.params;
+  const [companyID, setCompanyID] = useState(null)
+	useEffect(() => {
+	  let ls =  JSON.parse(localStorage.getItem('currentUser'));
+	  setCompanyID(ls?.company?.id);
+   },[companyID]);
+
+   console.log(companyID,"llll");
+    
+        const {id} = props.match.params;
+
+        
 
         const fields = {
-          name: {
+
+          branch_id :{
+              type: "advanceSelect",
+              label: "Branch",
+              target: `branches/${companyID}/all?limit=1000`,
+              // optionLabel: 'title',
+              async: true,
+              required: true,
+              name: "branch_id",
+              col: 6,
+          },
+          wait_time: {
             type: "text",
-            label: "Name",
+            label: "Wait Time",
             required: true,
-            name: "name",
+            name: "wait_time",
             col: 6,
           },
-          description: {
+          escalation_hop: {
             type: "text",
-            label: "Description",
+            label: "Escalation Hop",
             // required: true,
-            name: "description",
+            name: "escalation_hop",
             col: 6,
           },
-          qty: {
+          cycle: {
             type: "number",
-            label: "Quantity",
+            label: "Cycle",
             required: true,
-            name: "qty",
+            name: "cycle",
             col: 6,
           },
-          location_id: {
-            type: "advanceSelect",
-            label: "Location",
-            target: "locations?limit=1000",
-            // optionLabel: 'title',
-            async: true,
+          throttle_wait: {
+            type: "number",
+            label: "Throttle Wait",
             required: true,
-            name: "location_id",
+            name: "throttle_wait",
             col: 6,
           },
+        
           
         };
 
@@ -50,21 +67,21 @@ class ItemAdd extends Component {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="items"
-                        getValues={this.handleValue}
+                        targetEntity="branch-settings"
+                        // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
                         name="items"
                         repeater={true}
-                        initialValues={this.props.location.aboutProps}
+                        initialValues={props.location.aboutProps}
                         
-                        redirect="/items"
+                        redirect="setting"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
         );
-    }
+    
 }
 
-export default withTranslation()(ItemAdd);
+export default Add;

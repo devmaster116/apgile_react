@@ -14,5 +14,8 @@
     "build:stagging": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react-loader-spinner": "^5.1.0"
   }
 }
