@@ -32,6 +32,9 @@ import PageAdd from "./../components/Pages/Add";
 import StaffList from "./../components/Staff/List";
 import StaffAdd from "./../components/Staff/Add";
 
+import ValidateAsOwner from "./../components/ValidateAsOwner";
+
+
 import SettingList from "./../components/Settings/List";
 import SettingAdd from "./../components/Settings/Add";
 
@@ -93,6 +96,9 @@ const routes = [
 	{ path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
+
+	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
+
 	
 ];
 

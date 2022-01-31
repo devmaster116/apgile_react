@@ -18,12 +18,5 @@ export default [
         order: 8
     },
 
-    {
-        name: 'validate',
-        component: require("../components/ValidateAsOwner"),
-        status: true,
-        order: 10
-    },
-   
     
 ];

@@ -17,6 +17,7 @@ import PageAdd from "./../components/Pages/Add";
 import PageDetails from "./../components/Pages/Detail"
 
 import CallList from "./../components/Calls/List";
+import CallAssigned from "./../components/Calls/Add";
 import CallDetail from "./../components/Calls/Detail";
 
 import StyleAdd from "./../components/Styles/Add";
@@ -46,7 +47,6 @@ import AreaList from "./../components/Area/List";
 
 import UserAdd from "./../components/ExtendedUser/Add";
 
-import ValidateAsOwner from "./../components/ValidateAsOwner";
 // import SettingList from "./../components/Settings/List";
 // import SettingAdd from "./../components/Settings/Add";
 
@@ -101,7 +101,8 @@ const routes = [
 	// {path : "/promotions/:id/edit" ,exact : true , component : PageAdd},
 
 	{path : "/calls" ,exact : true ,  roles:['super-admin'],component : CallList},
-	{ path: '/callS/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: CallDetail },
+	{ path: '/calls/:id/details', exact: true, name: 'Edit',  roles:['super-admin'],component: CallDetail },
+	{ path: '/calls/:id/assigned', exact: true, name: 'Edit',  roles:['super-admin'],component: CallAssigned },
 
 	{path : "/owner/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
 	{ path: '/owner/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
@@ -132,7 +133,6 @@ const routes = [
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
 	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
-	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 
 	
 	

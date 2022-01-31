@@ -25,17 +25,17 @@ class TeamsAdd extends Component {
                 required: true,
                 col: 4
             },
-            location_id: {
-                type: 'advanceSelect',
-                label: "Location",
-                target: 'locations',
-                // optionValue: "id",
-                // optionLabel: "name",
-                // async: true,
-                name: 'location_id',
-                required: true,
-                col: 4,
-            },
+            // location_id: {
+            //     type: 'advanceSelect',
+            //     label: "Location",
+            //     target: 'locations',
+            //     // optionValue: "id",
+            //     // optionLabel: "name",
+            //     // async: true,
+            //     name: 'location_id',
+            //     required: true,
+            //     col: 4,
+            // },
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",

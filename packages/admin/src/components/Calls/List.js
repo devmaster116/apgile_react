@@ -1,10 +1,10 @@
 import React,{useState} from "react";
-import { Card, CardBody, CardHeader } from "reactstrap";
+import { Card, CardBody, CardHeader,Button } from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
 
 
 
-const List = () => {
+const List = (props) => {
   const [target, setTarget] = useState("branches");
 
   const companiesChangeHandler = (data) => {
@@ -31,6 +31,17 @@ const filters = {
     target: target,
     async: true,
     name: "branch_id",
+    required: true,
+    col: 12 + ' col-xl-3 ',
+    // callback: (data) => companiesChangeHandler(data)
+
+  },
+  call_status: {
+    type: "advanceSelect",
+    label: "Call Status",
+    target: "call-logs/status-list",
+    async: true,
+    name: "call_status",
     required: true,
     col: 12 + ' col-xl-3 ',
   },
@@ -74,6 +85,19 @@ const filters = {
       align: "center",
       sort: true,
     },
+    {
+      isDummyField: true,
+      align: "center",
+      text: "Call Manage",
+      sort: true,
+      formatter: (cell, row) => {
+        return (
+          <Button color="warning" onClick={() => props?.history?.push(`/calls/${row?.id}/assigned`)}>
+            Assign Call
+          </Button>
+        );
+      },
+    },
   ];
 
   const defaultSorted = [
@@ -100,6 +124,11 @@ const filters = {
             showAdvanceFilters = {true}
             // addRoute="/call/add"
             //   {props.remoteTableFields}
+            // customButton={{
+            //   name: "Assigned to",
+            //   color: "warning",
+            //   callback: (data) => companyLogin(data),
+            // }}
           />
         </CardBody>
       </Card>

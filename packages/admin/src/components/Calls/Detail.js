@@ -11,7 +11,7 @@ const Detail = (props) => {
 	const [callDetail, setCallDetail] = useState([]);
 
 	useEffect(() => {
-		api.request("get",`/calls/${props.match.params.id}`)
+		api.request("get",`/call-logs/detail/${props.match.params.id}`)
         .then(({data}) => {
 			console.log(data,"data")
 			setCallDetail(data)
@@ -23,14 +23,18 @@ const Detail = (props) => {
 
   return (
     <Card className="animated fadeIn">
-      <Header title="Call Details"/>
+      <Header title="Call Details" />
       <CardBody>
-        <Accordion defaultActiveKey="1">
+       
+
+        {/* <Accordion defaultActiveKey="1">
         <CustomAccordion tabId="1" title="General Detail" data={callDetail}/>
         <CustomAccordion tabId="2" title="Branch Detail" data={callDetail?.location?.branch} />
         <CustomAccordion tabId="3" title="Location Detail" data={callDetail?.location}/>
+        </Accordion> */}
         {/* <CustomAccordion tabId="4" title="Location Detail"/> */}
-        </Accordion>
+
+        {/* <p>Hello</p> */}
       </CardBody>
     </Card>
   );

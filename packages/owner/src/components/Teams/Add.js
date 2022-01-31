@@ -5,9 +5,11 @@ import {FormGenerator} from '@evenlogics/whf-form-generator';
 const TeamsAdd = (props) => {
     
     const [companyID, setCompanyID] = useState(null)
+    const [company, setCompany] = useState(null)
     useEffect(() => {
       let ls =  JSON.parse(localStorage.getItem('currentUser'));
       setCompanyID(ls?.company?.id);
+      setCompany(ls?.company);
    },[companyID])
     
         const {id} = props.match.params;
@@ -22,7 +24,7 @@ const TeamsAdd = (props) => {
             },
             branch_id: {
                 type: 'advanceSelect',
-                label: "Branch",
+                label: `${company?.name} Branch`,
                 target: `branches?company_id=${companyID}?limit=1000`,
                 // async: true,
                 name: 'branch_id',

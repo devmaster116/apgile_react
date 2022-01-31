@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState,useEffect } from 'react';
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
+
+  const [companyID, setCompanyID] = useState(null)
+    // const [company, setCompany] = useState(null)
+    useEffect(() => {
+      let ls =  JSON.parse(localStorage.getItem('currentUser'));
+      setCompanyID(ls?.company?.id);
+      // setCompany(ls?.company);
+   },[companyID])
 
 const {id} = props.match.params;
 
@@ -25,16 +33,16 @@ const fields = {
       required: true,
       col: 4
   },
-  company_id: {
-    type: 'advanceSelect',
-    label: "Select Company",
-    target: 'companies?limit=1000',
-    async: true,
-    name: 'company_id',
-    // multi:true,
-    required: true,
-    col: 4
-},
+//   company_id: {
+//     type: 'advanceSelect',
+//     label: "Select Company",
+//     target: 'companies?limit=1000',
+//     async: true,
+//     name: 'company_id',
+//     // multi:true,
+//     required: true,
+//     col: 4
+// },
   shift_time: {
       type: 'timeRange',
       label: 'Shift Time',
@@ -43,7 +51,9 @@ const fields = {
       col: 4
   },
 };
-
+const extraVals = {
+  company_id : companyID
+}
   return (
     <div>
       <Card className="animated fadeIn">
@@ -57,8 +67,10 @@ const fields = {
             name="shifts"
             // repeater={true}
             // initialValues={props.location.aboutProps}
-            redirect="/shifts"
+            redirect="shifts"
             // handleSameValueFields={["title", "slug"]}
+            extraVals={extraVals}
+
           />
         </CardBody>
       </Card>

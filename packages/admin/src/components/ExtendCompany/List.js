@@ -5,6 +5,7 @@ import { Header } from "@evenlogics/whf-ra-components";
 import api from "@evenlogics/whf-api";
 
 
+
 const defaultSorted = [{ dataField: "id", order: "asc" }];
 const columns = [
   {
@@ -13,13 +14,6 @@ const columns = [
     align: "center",
     sort: true,
   },
-//   {
-//     dataField: "address",
-//     text: "Address",
-//     align: "center",
-//     sort: true,
-//   },
-  
   {
     dataField: "name",
     text: "Name",
@@ -38,35 +32,27 @@ const columns = [
     align: "center",
     sort: true,
   },
-
-  
  
 ];
 
 
-const List = (props) => {
+const List = () => {
+
+
   const companyLogin = (data) => {
-    console.log(data, "lll");
-    const payload = {
-      username: "ownerjWV",
-    };
-    api
-      .request("post", "/auto-login", payload)
-      .then(({data}) => (
-        // let oldUser = JSON.parse(localStorage?.getItem('currentUser'));
-        // localStorage.setItem('previousUser',JSON.stringify(oldUser));
-        // localStorage.setItem('currentUser',JSON.stringify({...data,authToken:data?.api_token.toString()}));
-        // window.location.reload("/");
-        window.open('#/validateAsOwner/kjfgdgfuilkjhfgdf','_blank',)
-        // window.open(`/dummy&name=n`);
-        // <Link to="/dummy" />
-      //   props.history.push({
-      //     pathname: '/dummy',
-      //     search: "?" + new URLSearchParams({auth_tokken: "abcdefghijk"}).toString(),
-      //     // target:'_blank'
-      // })
-      ))
-      .catch((error) => console.log(error));
+    console.log(data?.owner,"data company");
+    let currentUser = JSON.parse(localStorage?.getItem('currentUser'));
+    console.log(currentUser?.authToken,"current User Token");
+    let payload = {
+      // id : data?.user?.id,
+      id : data?.owner,
+    }
+    api.request("post","/generate-token",payload,currentUser?.authToken).then((data) => {
+      console.log(data?.data?.token,"data");
+      window.open(`http://localhost:3006/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`,'_blank')
+   }).catch((error) => console.log(error)); 
+   
+    
   };
   
   return (
@@ -77,8 +63,8 @@ const List = (props) => {
 
           <CardBody>
             <RemoteTable
-              entity="companies"
-              customEntity="companies"
+              entity="companies?limit=1000"
+              customEntity="companies?limit=1000"
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
