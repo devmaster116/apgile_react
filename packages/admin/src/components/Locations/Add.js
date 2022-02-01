@@ -25,7 +25,7 @@ class LocationsAdd extends Component {
             branch_id: {
                 type: 'advanceSelect',
                 label: "Branch",
-                target: 'branches',
+                target: 'branches?limit=1000000',
                 async: true,
                 required:true,
                 optionValue: 'id',
