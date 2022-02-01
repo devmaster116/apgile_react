@@ -19,7 +19,7 @@ useEffect(() => {
         setTargetUser(data?.users?.map((user)=>({value:user?.id?.toString(),label:user?.username})))
     })
     .catch((error) => console.log(error));
-}, []);
+}, [id]);
 
 
 

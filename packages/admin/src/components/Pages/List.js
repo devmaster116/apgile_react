@@ -8,7 +8,7 @@ import api from "@evenlogics/whf-api";
 const List = (props) => {
 
   const [show, setShow] = useState(false);
-  const [query, setQuery] = useState(false);
+  // const [query, setQuery] = useState(false);
   const [pages, setPages] = useState(false);
   const [Loader, setLoader] = useState(false);
   const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
@@ -207,7 +207,7 @@ const filters = {
                 // }}
                 filters={filters}
                 showAdvanceFilters = {true}
-                Query={query}
+                // Query={query}
               //   query={queryParams}
             />
 

@@ -1,20 +1,20 @@
 
 import React,{useEffect,useState} from "react";
 import { Card, CardBody } from "reactstrap";
-import Accordion from "react-bootstrap/Accordion";
-import CustomAccordion from "../CustomAccordion";
+// import Accordion from "react-bootstrap/Accordion";
+// import CustomAccordion from "../CustomAccordion";
 import { Header } from "@evenlogics/whf-ra-components";
 import api from "@evenlogics/whf-api";
 
 const Detail = (props) => {
 
-	const [callDetail, setCallDetail] = useState([]);
+	// const [callDetail, setCallDetail] = useState([]);
 
 	useEffect(() => {
 		api.request("get",`/call-logs/detail/${props.match.params.id}`)
         .then(({data}) => {
 			console.log(data,"data")
-			setCallDetail(data)
+			// setCallDetail(data)
         })
         .catch((error) => console.log(error));
 
