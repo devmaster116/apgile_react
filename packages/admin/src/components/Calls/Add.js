@@ -40,7 +40,7 @@ useEffect(() => {
     },
     action_id: {
       type: "advanceSelect",
-      label: "Assigned By",
+      label: "Action Status",
       target: "call-logs/status-list",
       name: "action_id",
       col: 3,

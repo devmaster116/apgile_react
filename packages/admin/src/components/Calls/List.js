@@ -20,17 +20,17 @@ const filters = {
     target: 'companies?limit=1000',
     async: true,
     name: "company_id",
-    required: true,
+    // required: true,
     col: 12 + ' col-xl-3 ',
     callback: (data) => companiesChangeHandler(data)
 
   },
-  branch_id: {
+  location_branch_id: {
     type: "advanceSelect",
     label: "Branch",
     target: target,
     async: true,
-    name: "branch_id",
+    name: "location_branch_id",
     required: true,
     col: 12 + ' col-xl-3 ',
     // callback: (data) => companiesChangeHandler(data)
@@ -74,6 +74,18 @@ const filters = {
       sort: true,
     },
     {
+      dataField: "assigned_to",
+      text: "Assigned To",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "elayed_response",
+      text: "Delayed Response Time",
+      align: "center",
+      sort: true,
+    },
+    {
       dataField: "location.name",
       text: "Location",
       align: "center",
@@ -85,19 +97,19 @@ const filters = {
       align: "center",
       sort: true,
     },
-    {
-      isDummyField: true,
-      align: "center",
-      text: "Call Manage",
-      sort: true,
-      formatter: (cell, row) => {
-        return (
-          <Button color="warning" onClick={() => props?.history?.push(`/calls/${row?.id}/assigned`)}>
-            Assign Call
-          </Button>
-        );
-      },
-    },
+    // {
+    //   isDummyField: true,
+    //   align: "center",
+    //   text: "Call Manage",
+    //   sort: true,
+    //   formatter: (cell, row) => {
+    //     return (
+    //       <Button color="warning" onClick={() => props?.history?.push(`/calls/${row?.id}/assigned`)}>
+    //         Assign Call
+    //       </Button>
+    //     );
+    //   },
+    // },
   ];
 
   const defaultSorted = [
@@ -120,15 +132,16 @@ const filters = {
             columns={columns}
             sort={defaultSorted}
             hideEdit={true}
+            hideDetail={true}
             filters={filters}
             showAdvanceFilters = {true}
             // addRoute="/call/add"
             //   {props.remoteTableFields}
-            // customButton={{
-            //   name: "Assigned to",
-            //   color: "warning",
-            //   callback: (data) => companyLogin(data),
-            // }}
+            customButton={{
+              name: "Assigned Call",
+              color: "warning",
+              callback: (data) => props?.history?.push(`/calls/${data?.id}/assigned`),
+            }}
           />
         </CardBody>
       </Card>

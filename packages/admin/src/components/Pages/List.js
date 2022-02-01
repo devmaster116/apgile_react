@@ -8,6 +8,7 @@ import api from "@evenlogics/whf-api";
 const List = (props) => {
 
   const [show, setShow] = useState(false);
+  const [query, setQuery] = useState(false);
   const [pages, setPages] = useState(false);
   const [Loader, setLoader] = useState(false);
   const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
@@ -168,11 +169,11 @@ const filters = {
     
     api.request("get", `/pages/${id}/generate-pdf`)
     .then(({ data }) => {
-      console.log(data?.pdf_qr_code?.url,"ggggg");
+      console.log(data?.pdf_qr_codes?.url,"ggggg");
       var link = document.createElement('a');
-      link.href = data?.pdf_qr_code?.url;
+      link.href = data?.pdf_qr_codes?.url;
       link.target= '_blank'
-      link.download = 'file.pdf';
+      link.download = `qrcode.pdf`;
       // link.download = data?.pdf_qr_code?.url?.split("/")?.pop();
 
       link.dispatchEvent(new MouseEvent('click'));
@@ -206,7 +207,7 @@ const filters = {
                 // }}
                 filters={filters}
                 showAdvanceFilters = {true}
-              //   Query={query}
+                Query={query}
               //   query={queryParams}
             />
 
