@@ -36,7 +36,7 @@ const Add = (props) => {
     branch_id: {
       type: "advanceSelect",
       label: "Select Branch",
-      target: "branches",
+      target: "branches?limit=1000000",
       name: "branch_id",
       col: 4,
       required: true,
