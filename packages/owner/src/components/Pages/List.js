@@ -44,7 +44,7 @@ const VendorsList = () => {
     setCompanyID(ls?.branch?.company_id);
     setQuery(!query);
     
- },[companyID,userRole,branchID]);
+ },[companyID,query,userRole,branchID]);
 
   console.log(userRole,"userRole");
   console.log(branchID,"branchID");
