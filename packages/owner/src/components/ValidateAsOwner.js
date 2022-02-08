@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "@evenlogics/whf-api";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Watch } from "react-loader-spinner";
 
 const ValidateAsOwner = (props) => {
