@@ -170,14 +170,14 @@ name: "customer_management",
 order: 11,
 phrase: "Customer Management",
 to: "/calls",
-roles: ["supervisor"],
+roles: ["supervisor","staff"],
 icon: "fas fa-headset",
 children: {
   customer_calls: {
     phrase: "Customer Calls",
     order: 1,
     to: "/calls",
-    roles: ["supervisor"],
+    roles: ["supervisor","staff"],
     icon: "fas fa-phone-square-alt",
   },
   kitchen_calls: {
@@ -192,5 +192,16 @@ children: {
 },
 },
 
+
+//Staff Nav
+
+profile: {
+  phrase: "Profile",
+  name: "profile",
+  order: 15,
+  to: "/profile",
+  icon: "fas fa-users",
+  roles: ["staff"],
+},
 
 };

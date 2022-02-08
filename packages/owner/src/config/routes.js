@@ -1,5 +1,5 @@
 import Dashboard from "./../components/Dashboard";
-import ProfileList from "./../components/Profile/List";
+import ProfileDetail from "./../components/Profile/Detail";
 
 import CompanyBranchList from "../components/CompanyBranch/List";
 import CompanyBranchAdd from "../components/CompanyBranch/Add";
@@ -45,7 +45,7 @@ import CallsList from "./../components/Calls/List";
 const routes = [
 	
 	{ path: '/dashboard', name: 'Dashboard', component: Dashboard, isPublic: false,},
-	{ path: '/profiles/profile-list', exact : true,component: ProfileList,isPublic: false},
+	{ path: '/profile', exact : true,component: ProfileDetail,isPublic: false},
 	
 	{ path: '/owner/branches', exact : true,component: CompanyBranchList,isPublic: false},
 	{ path: '/owner/branches/add', exact : true,component: CompanyBranchAdd,isPublic: false},

@@ -111,11 +111,11 @@ const routes = [
 
 	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
 	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
-	{ path: '/branches/:id/edit', exact: true, name: 'Edit',  roles:['super-admin'],component: ExtendBranchAdd },
+	{ path: '/branches/:id/edit', exact: true,  roles:['super-admin'],component: ExtendBranchAdd },
 
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
-	{ path: '/admin/company/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
+	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
 	{ path: '/admin/company/:id/details', exact: true, roles:['super-admin'], component: CompanyDetail },
 
 

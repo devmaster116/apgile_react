@@ -6,7 +6,10 @@ import api from "@evenlogics/whf-api";
 
 
 
-const defaultSorted = [{ dataField: "id", order: "asc" }];
+
+const List = (props) => {
+
+  
 const columns = [
   {
     dataField: "id",
@@ -35,8 +38,7 @@ const columns = [
  
 ];
 
-
-const List = () => {
+const defaultSorted = [{ dataField: 'id', order: 'desc' }];
 
 
   const companyLogin = (data) => {
@@ -49,7 +51,7 @@ const List = () => {
     }
     api.request("post","/generate-token",payload,currentUser?.authToken).then((data) => {
       console.log(data?.data?.token,"data");
-      window.open(`http://localhost:3006/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`,'_blank')
+      window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`,'_blank')
    }).catch((error) => console.log(error)); 
    
     
@@ -63,8 +65,8 @@ const List = () => {
 
           <CardBody>
             <RemoteTable
-              entity="companies?limit=1000"
-              customEntity="companies?limit=1000"
+              entity="companies"
+              customEntity="companies"
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
@@ -79,6 +81,8 @@ const List = () => {
               }}
               // Query={query}
               // query={queryParams}
+							// {...props.remoteTableFields}
+
             />
           </CardBody>
         </Card>

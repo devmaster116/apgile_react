@@ -47,7 +47,8 @@ const Add = (props) =>  {
             col:6,
             type:"advanceSelect",
             target:"branches",
-            label:"select branch"
+            label:"select branch",
+            name:"branch_id"
         },
         gender_id:{
             col:6,
@@ -63,7 +64,7 @@ const Add = (props) =>  {
     }
 
     let deleteFields =['permissions','lang']; 
-    return <UserAdd  deleteFields={deleteFields} extendedFields={fields} noEdit={false} />;
+    return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} noEdit={false} />;
 
 }
 

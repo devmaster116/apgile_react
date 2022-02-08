@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
+// import AsyncSelect from 'react-select/async';
 import { Header } from "@evenlogics/whf-ra-components";
 import api from "@evenlogics/whf-api";
 
@@ -19,6 +20,8 @@ useEffect(() => {
         setTargetUser(data?.users?.map((user)=>({value:user?.id?.toString(),label:user?.username})))
     })
     .catch((error) => console.log(error));
+
+    
 }, [id]);
 
 
@@ -30,8 +33,8 @@ useEffect(() => {
     target_user: {
       type: "advanceSelect",
       label: "Select Staff",
-      target:'users',
-      optionLabel:'username',
+      target:`call-logs/staff-list/${id}`,
+      optionLabel:'first_name',
       optionId:'id',
     //   multi:true,
     //   name: "target_user",

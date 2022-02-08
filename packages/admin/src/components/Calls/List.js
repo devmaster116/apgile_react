@@ -10,7 +10,7 @@ const List = (props) => {
   const companiesChangeHandler = (data) => {
     console.log(data, "lll");
     setTimeout(() => {
-      setTarget(`branches/${data.value}/all`);
+      setTarget(`branches/${data.value}/all?limit=1000`);
     }, 0);
   };
 const filters = {
@@ -31,17 +31,17 @@ const filters = {
     target: target,
     async: true,
     name: "location_branch_id",
-    required: true,
+    // required: true,
     col: 12 + ' col-xl-3 ',
     // callback: (data) => companiesChangeHandler(data)
 
   },
-  call_status: {
+  status_id: {
     type: "advanceSelect",
     label: "Call Status",
-    target: "call-logs/status-list",
+    target: "call/status-list?limit=1000",
     async: true,
-    name: "call_status",
+    name: "status_id",
     required: true,
     col: 12 + ' col-xl-3 ',
   },
@@ -79,12 +79,12 @@ const filters = {
       align: "center",
       sort: true,
     },
-    {
-      dataField: "elayed_response",
-      text: "Delayed Response Time",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "delayed_response",
+    //   text: "Delayed Response Time",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
       dataField: "location.name",
       text: "Location",
@@ -132,7 +132,7 @@ const filters = {
             columns={columns}
             sort={defaultSorted}
             hideEdit={true}
-            hideDetail={true}
+            // hideDetail={true}
             filters={filters}
             showAdvanceFilters = {true}
             // addRoute="/call/add"

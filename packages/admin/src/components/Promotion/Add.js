@@ -61,7 +61,7 @@ const {id} = props.match.params;
     branch_id: {
       type: "advanceSelect",
       label: "Select Branch",
-      target: "branches",
+      target: "branches?limit=1000",
       optionLabel: "name",
       name: "branch_id",
       col: 4,
@@ -82,7 +82,7 @@ const {id} = props.match.params;
             // getInitialValues={this.getInitialValues}
             // debug={false}
             // extraVals={extraVals}
-            redirect="redirectURL"
+            redirect="promotions"
             // repeater={true}
           />
         </CardBody>

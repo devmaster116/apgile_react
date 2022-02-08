@@ -15,7 +15,6 @@ const List = () => {
   useEffect(() => {
     let ls =  JSON.parse(localStorage.getItem('currentUser'));
    let roled = ls?.roles?.map(role => setUserRole(role));
-//    setUserRole(roled)
    console.log(roled);
     setCompanyID(ls?.branch?.company_id);
     setBranchID(ls?.branch?.id);
@@ -107,11 +106,9 @@ const filters = {
             columns={columns}
             sort={defaultSorted}
             hideEdit={true}
-            filters={ userRole?.includes("supervisor") ? null : filters}
+            filters={ userRole?.includes("supervisor" && "staff") ? null : filters}
             showAdvanceFilters ={true}
-            hideActionCol={ userRole?.includes("supervisor") ? true : false}
-            // addRoute="/call/add"
-            //   {props.remoteTableFields}
+            hideActionCol={ userRole === "supervisor" ||  userRole === "staff" ? true : false}
             Query={query}
 
           />

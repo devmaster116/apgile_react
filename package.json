@@ -16,6 +16,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "react-loader-spinner": "^5.1.0"
+    "react-loader-spinner": "^5.1.0",
+    "react-select": "^5.2.2",
+    "react-switch": "^6.0.0"
   }
 }
