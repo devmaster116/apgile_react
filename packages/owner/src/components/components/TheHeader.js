@@ -24,9 +24,11 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
+    const [companyName, setCompanyName] = useState();
 
     useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
+        setCompanyName(ls?.company?.name)
         api.request("get",`/branches/${ls?.branch?.company_id}/all`)
         .then(({data}) => {
             console.log(data,"data")
@@ -62,6 +64,7 @@ const TheHeader = (props) => {
     const onBranchChange = (data) => {
         // connect here with Redux action and dispatch
      props.changeBranch(data);
+    //  window.location.reload();
     }
 
     return (
@@ -82,7 +85,7 @@ const TheHeader = (props) => {
 
         <CHeaderNav className="d-md-down-none mr-auto">
           <CHeaderNavItem className="px-3">
-            <CHeaderNavLink to="/dashboard">Company Name</CHeaderNavLink>
+            <CHeaderNavLink to="/dashboard">{companyName}</CHeaderNavLink>
           </CHeaderNavItem>
           <Select
             // value={this.state.value}
@@ -128,8 +131,8 @@ const TheHeader = (props) => {
 
 const mapStateToProps = state => {
     return {
-       
-    }
+      //  company_name : state.companyName
+      }
 }
 
 const mapDispatchToProps = dispatch => {

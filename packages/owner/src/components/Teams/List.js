@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
+import {connect} from "react-redux";
 
 const TeamsList = (props) => {
 
@@ -11,17 +12,14 @@ const TeamsList = (props) => {
 
    
   useEffect(() => {
-    let ls =  JSON.parse(localStorage.getItem('currentUser'));
-   let roled = ls?.roles?.map(role => setUserRole(role));
-//    setUserRole(roled)
-   console.log(roled);
+    let ls = JSON.parse(localStorage.getItem("currentUser"));
     setCompanyID(ls?.branch?.company_id);
     setBranchID(ls?.branch?.id);
-    setQuery(true);
+	let roled = ls?.roles?.map(role => setUserRole(role));
+    setQuery(!query);
     
- },[companyID,userRole,branchID]);
+ },[companyID,userRole,branchID,props?.BranchID]);
 
-	console.log(userRole,"role");
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
@@ -63,8 +61,8 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity= { userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : `teams?company_id=${companyID}`}
-							customEntity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : `teams?company_id=${companyID}`}
+							entity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : props?.BranchID !== null ? `teams?branch_id=${props?.BranchID}` :`teams?company_id=${companyID}` }
+							customEntity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : props?.BranchID !== null ? `teams?company_id=${companyID}&branch_id=${props?.BranchID}` :`teams?company_id=${companyID}` }
 							hideActionCol={ userRole?.includes("supervisor") ? true : false}
 							columns={columns}
 							Query={query}
@@ -78,4 +76,12 @@ const TeamsList = (props) => {
 		);
 	}
 
-export default TeamsList;
+
+const mapStateToProps = state => {
+    return {
+       BranchID : state.selectedBranchId
+      }
+}
+
+export default connect(mapStateToProps,null)(TeamsList);
+

@@ -1,20 +1,40 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import api from "@evenlogics/whf-api";
+
 
 const Add = (props) => {
 
-  const [targetPoint, setTargetID] = useState(`items/19/pages`);
+  // const [targetPoint, setTargetID] = useState(`items/19/pages`);
   const { id } = props.match.params;
+  const [options, setOptions] = useState([]);
+
+
+  useEffect(() => {
+    console.log("working render");
+  }, [options]);
+  
+
 
   const handleTarget = (row,col)=> {
-    setTimeout(() => {
+    
      console.log(col?.value,'kkk');
-     setTargetID(`items/${col?.value}/pages`)
-    }, 1000);
+     api.request("get",`/items/${col?.value}/pages`)
+        .then(({data}) => {
+            console.log(data,"item data")
+           let optionsArr =  data?.map((detail)=>(
+                {value:detail?.id,label:detail?.name}
+            ))
+            setOptions(optionsArr)
+        })
+        .catch((error) => console.log(error));
+ 
    
   } 
+
+  console.log(options,"options");
   let fields = {
     name: {
       type: "text",
@@ -74,14 +94,16 @@ const Add = (props) => {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          target:targetPoint,
+          // target:targetPoint,
           required: true,
-          key:'target',
-          optionValue: 'id',
-          optionLabel: 'name',
+          // key:'target',
+          // optionValue: 'id',
+          // optionLabel: 'name',
+          options: options,
           col: 6,
-          async:true
+          // async:true
         },
+    
       },
     },
     message_box: {
@@ -98,42 +120,6 @@ const Add = (props) => {
       name: "customer_required",
       col: 2,
     },
-
-    // last_used: {
-    //   type: "date",
-    //   label: "Last Used",
-    //   name: "last_used",
-    //   required: true,
-    //   col: 4,
-    // },
-
-    // branch_id: {
-    //   type: "advanceSelect",
-    //   label: "Branch",
-    //   target: 'branches',
-    //   async: true,
-    //   name: "branch_id",
-    //   required: true,
-    //   col: 4,
-    // },
-
-    // location_id: {
-    //   type: "advanceSelect",
-    //   label: "Select Location",
-    //   target: "locations",
-    //   // optionValue: "id",
-    //   // optionLabel: "role_id",
-    //   name: "location_id",
-    //   col: 4,
-    //   required: true,
-    // },
-
-    // logo:{
-    //   type:"filePic",
-    //   name: "logo",
-    //   col: 4,
-    //   required: true,
-    // }
   };
 
   return (

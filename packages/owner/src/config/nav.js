@@ -3,7 +3,7 @@ export default {
         phrase: "Dashboard",
         to: "/dashboard",
         order: 8,
-        // roles: ["admin"],
+        roles: ["admin"],
         icon: "fas fa-tachometer-alt",
         badge: {
             color: "info",
@@ -15,13 +15,13 @@ export default {
         order: 20,
         to: "/staff",
         icon: "fas fa-users",
-        // roles: ["admin"],
+        roles: ["admin"],
     },
     teams: {
         phrase: "Teams",
         order: 21,
         to: "/teams",
-        // roles: ["admin"],
+        roles: ["admin"],
         icon: "fas fa-users",
     },
 

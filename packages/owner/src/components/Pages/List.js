@@ -4,14 +4,15 @@ import { Card, CardBody, Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import { Modal, Spinner } from "react-bootstrap/";
 import api from "@evenlogics/whf-api";
+import {connect} from "react-redux";
 
-const VendorsList = () => {
+const VendorsList = (props) => {
 
   const [show, setShow] = useState(false);
   const [pages, setPages] = useState(false);
   const [Loader, setLoader] = useState(false);
-  const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
-  const [itemTypeTarget, setItemTypeTarget] = useState('items?limit=1000');
+  // const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
+  // const [itemTypeTarget, setItemTypeTarget] = useState('items?limit=1000');
   const [ID, setID] = useState(0);
   const [companyID, setCompanyID] = useState(null)
   const [branchID, setBranchID] = useState(null)
@@ -37,57 +38,53 @@ const VendorsList = () => {
 
   useEffect(() => {
     let ls =  JSON.parse(localStorage.getItem('currentUser'));
-   let roled = ls?.roles?.map(role => setUserRole(role));
-//    setUserRole(roled)
-   console.log(roled);
-   setBranchID(ls?.branch?.id); 
+    let roled = ls?.roles?.map(role => setUserRole(role));
+    setUserRole(roled)
+    console.log(roled);
+    setBranchID(ls?.branch?.id); 
     setCompanyID(ls?.branch?.company_id);
     setQuery(!query);
-    
- },[companyID,query,userRole,branchID]);
+    console.log(companyID,"companyID");
+ },[props?.BranchID]);
 
-  console.log(userRole,"userRole");
-  console.log(branchID,"branchID");
-  console.log(companyID,"companyID");
 
- 
-const filters = {
-  company_id: {
-    type: 'advanceSelect',
-    optionValue: 'id',
-    optionLabel: 'name',
-    label: "Company",
-    target: 'companies?limit=1000',
-    async: true,
-    name: "company_id",
-    callback:(data,col)=>{
-      setTimeout(() => {
-      console.log(col,"data")
-      setBranchTarget(`branches?limit=1000&company_id=${col?.value}`)
-    }, 0)}
-    // required: true,
+// const filters = {
+//   company_id: {
+//     type: 'advanceSelect',
+//     optionValue: 'id',
+//     optionLabel: 'name',
+//     label: "Company",
+//     target: 'companies?limit=1000',
+//     async: true,
+//     name: "company_id",
+//     callback:(data,col)=>{
+//       setTimeout(() => {
+//       console.log(col,"data")
+//       setBranchTarget(`branches?limit=1000&company_id=${col?.value}`)
+//     }, 0)}
+//     // required: true,
 
-  },
-  branch_id: {
-    type: "advanceSelect",
-    label: "Branch",
-    target: branchTarget,
-    callback:(data,col)=>{setItemTypeTarget(col?.value)},
-    async: true,
-    name: "branch_id",
-    // required: true,
+//   },
+//   branch_id: {
+//     type: "advanceSelect",
+//     label: "Branch",
+//     target: branchTarget,
+//     callback:(data,col)=>{setItemTypeTarget(`items?limit=1000?item_type_id=${col?.value}`)},
+//     async: true,
+//     name: "branch_id",
+//     // required: true,
 
-  },
-  item_type: {
-    type: "advanceSelect",
-    label: "Branch",
-    target: itemTypeTarget,
-    async: true,
-    name: "item_type",
-    // required: true,
+//   },
+//   item_type: {
+//     type: "advanceSelect",
+//     label: "Item",
+//     target: itemTypeTarget,
+//     async: true,
+//     name: "item_type",
+//     // required: true,
 
-  },
-}
+//   },
+// }
 
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
@@ -175,8 +172,8 @@ const filters = {
           <Header title="All QR Codes" />
           <CardBody>
             <RemoteTable
-              entity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : "pages"}
-              customEntity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : "pages"}
+              entity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
+              customEntity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={true}
@@ -189,7 +186,7 @@ const filters = {
                   color: "warning",
                   callback: downloadPdf,
                 }}
-                filters={ userRole?.includes("supervisor") ? null : filters}
+                // filters={ userRole?.includes("supervisor") ? null : filters}
                 showAdvanceFilters = {true}
                 Query={query}
               //   query={queryParams}
@@ -226,4 +223,11 @@ const filters = {
   );
 };
 
-export default VendorsList;
+const mapStateToProps = state => {
+  return {
+     BranchID : state.selectedBranchId
+    }
+}
+
+
+export default connect(mapStateToProps,null)(VendorsList);

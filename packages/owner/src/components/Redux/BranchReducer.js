@@ -1,6 +1,6 @@
 
 const initialState = {
-  selectedBranchId: 0,
+  selectedBranchId: null,
   companyName: "TestCompany"
 };
 
@@ -9,8 +9,8 @@ const BranchReducer = (state = initialState, action) => {
     case "CHANGE_BRANCH":
         console.log(action?.payload,"paylaod");
       return {
-          selectedBranchId : action.payload.value,
-          companyName : action.payload.label,
+        ...state,
+          selectedBranchId : action.payload.value,         
       };
 
     default:

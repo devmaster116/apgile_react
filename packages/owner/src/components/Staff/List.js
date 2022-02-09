@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 
 const ItemsList = (props) => {
+	
 	const [companyID, setCompanyID] = useState(null)
 	useEffect(() => {
 	  let ls =  JSON.parse(localStorage.getItem('currentUser'));

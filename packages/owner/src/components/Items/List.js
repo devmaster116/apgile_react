@@ -1,10 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
-import { withTranslation } from 'react-i18next';
+import {connect} from "react-redux";
 
-class ItemsList extends Component {
-	render() {
+
+const ItemsList = (props) => {
+
+	const [query, setQuery] = useState(false);
+
+	useEffect(() => {
+	    	// let ls = JSON.parse(localStorage.getItem("currentUser"));
+		// setCompanyID(ls?.branch?.company_id);
+			setQuery(!query)
+		}, [props?.BranchID]);
+
+
+
+
 		const columns = [
 			{
 				dataField: 'id',
@@ -24,17 +36,11 @@ class ItemsList extends Component {
 				align: 'center',
 				sort: true
 			},
-			// {
-			// 	dataField: 'branch.name',
-			// 	text: 'Branch Name',
-			// 	align: 'center',
-			// 	sort: true
-			// },
 			
 		];
 
-		if (this.props.extendedFields) {
-			this.props.extendedFields.forEach(field => columns.push(field))
+		if (props.extendedFields) {
+			props.extendedFields.forEach(field => columns.push(field))
 		}
 
 		const defaultSorted = [
@@ -52,17 +58,24 @@ class ItemsList extends Component {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="items"
-							customEntity="items"
+							entity={props?.BranchID !== null ? `items?branch_id=${props?.BranchID}`:`items`}
+							customEntity={props?.BranchID !== null ? `items?branch_id=${props?.BranchID}`:`items`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/items/add"
-							{...this.props.remoteTableFields}
+							{...props.remoteTableFields}
+							Query={query}
 						/>
 					</CardBody>
 				</Card>
 			</div>
 		);
-	}
 }
-export default withTranslation()(ItemsList);
+const mapStateToProps = state => {
+	return {
+	   BranchID : state.selectedBranchId
+	  }
+  }
+  
+  
+export default connect(mapStateToProps,null)(ItemsList);

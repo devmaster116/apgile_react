@@ -51,7 +51,7 @@ const {id} = props.match.params;
             // getInitialValues={this.getInitialValues}
             // debug={false}
             // extraVals={extraVals}
-            redirect="/roasters"
+            redirect="roasters"
             // repeater={true}
           />
         </CardBody>

@@ -1,12 +1,23 @@
-import React from "react";
+import React,{ useEffect,useState } from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import {connect} from "react-redux";
 
 
+const List = (props) => {
 
-const defaultSorted = [{ dataField: "id", order: "asc" }];
+	const [query, setQuery] = useState(false);
+  // const [companyID, setCompanyID] = useState(null)
 
+  const defaultSorted = [{ dataField: "id", order: "asc" }];
+
+  useEffect(() => {
+    let ls = JSON.parse(localStorage.getItem("currentUser"));
+    // setCompanyID(ls?.branch?.company_id);
+		setQuery(!query)
+	}, [props?.BranchID]);
+	
 const columns = [
   { dataField: 'id', text: 'ID', align: 'center', sort: true },
   {
@@ -45,7 +56,6 @@ const columns = [
 
 ];
 
-const List = () => {
   return (
     <div>
       <div>
@@ -53,21 +63,15 @@ const List = () => {
           <Header title="All Shifts" />
           <CardBody>
             <RemoteTable
-              entity="shifts"
-              customEntity="shifts"
+              entity={props?.BranchID !== null ? `shifts?branch_id=${props?.BranchID}`:`shifts`}
+              customEntity={props?.BranchID !== null ? `shifts?branch_id=${props?.BranchID}`:`shifts`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
               addRoute="/shifts/add"
-
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
+              Query={query}
             //   query={queryParams}
             />
           </CardBody>
@@ -77,4 +81,11 @@ const List = () => {
   );
 };
 
-export default List;
+const mapStateToProps = state => {
+  return {
+     BranchID : state.selectedBranchId
+    }
+}
+
+
+export default connect(mapStateToProps,null)(List);

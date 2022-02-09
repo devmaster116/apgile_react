@@ -58,7 +58,7 @@ class ItemAdd extends Component {
                         repeater={true}
                         initialValues={this.props.location.aboutProps}
                         
-                        redirect="/items"
+                        redirect="items"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
