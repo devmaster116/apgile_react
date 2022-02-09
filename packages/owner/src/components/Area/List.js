@@ -13,8 +13,9 @@ const List = (props) => {
   useEffect(() => {
     let ls = JSON.parse(localStorage.getItem("currentUser"));
     // setCompanyID(ls?.branch?.company_id);
+    console.log(ls,"ls");
 		setQuery(!query)
-	}, [props?.BranchID]);
+	}, [query,props?.BranchID]);
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [

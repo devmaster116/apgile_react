@@ -9,7 +9,7 @@ const LocationsList  = (props) => {
 	// console.log(props?.match?.params,"id");
 	useEffect(() => {
 		setQuery(!query)
-	}, [props?.BranchID]);
+	}, [query,props?.BranchID]);
 	
 
 		const columns = [

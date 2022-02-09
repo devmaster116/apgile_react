@@ -16,9 +16,10 @@ const TeamsList = (props) => {
     setCompanyID(ls?.branch?.company_id);
     setBranchID(ls?.branch?.id);
 	let roled = ls?.roles?.map(role => setUserRole(role));
+	console.log(roled,"roled");
     setQuery(!query);
     
- },[companyID,userRole,branchID,props?.BranchID]);
+ },[query,companyID,userRole,branchID,props?.BranchID]);
 
 
 		const columns = [

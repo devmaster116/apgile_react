@@ -43,6 +43,7 @@ const TheHeader = (props) => {
     
     const dispatch = useDispatch();
     const asideShow = useSelector((state) => state.asideShow);
+    console.log(asideShow,"asideShow");
     const darkMode = useSelector((state) => state.darkMode);
     const sidebarShow = useSelector((state) => state.sidebarShow);
 

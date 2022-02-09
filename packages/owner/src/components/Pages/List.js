@@ -45,7 +45,7 @@ const VendorsList = (props) => {
     setCompanyID(ls?.branch?.company_id);
     setQuery(!query);
     console.log(companyID,"companyID");
- },[props?.BranchID]);
+ },[props?.BranchID,companyID,query]);
 
 
 // const filters = {
