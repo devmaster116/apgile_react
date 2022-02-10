@@ -20,22 +20,21 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
-    /* eslint-disable */
     useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
         let roled = ls?.roles?.map(role => role);
+        console.log(roled,"roled")
         api.request("get",`/branches/${ls?.company?.id}/all`)
         .then(({data}) => {
            let optionsArr =  data?.map((detail)=>({value:detail?.id,label:detail?.name}))
             setOptions(optionsArr)
         }).catch((error) => console.log(error));
-        setInitialData({
+        roled !== undefined &&  setInitialData({
           companyName:ls?.company?.name,
           companyId:ls?.company?.id,
           userRole:roled[0]
         });
     }, []);
-    /* eslint-disable */
     const dispatch = useDispatch();
     const asideShow = useSelector((state) => state.asideShow);
     console.log(asideShow,"asideShow");
