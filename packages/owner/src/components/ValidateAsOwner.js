@@ -3,7 +3,7 @@ import api from "@evenlogics/whf-api";
 // import { Watch } from "react-loader-spinner";
 
 const ValidateAsOwner = (props) => {
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     setLoader(true);
