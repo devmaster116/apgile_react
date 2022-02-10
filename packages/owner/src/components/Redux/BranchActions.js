@@ -6,3 +6,12 @@ export const changeBranch = (data) => {
     }
 
 }
+
+export const setReduxData = (data) => {
+    console.log(data,"setReduxData");
+    return {
+        type : "SET_REDUX_DATA",
+        payload:data,
+    }
+
+}

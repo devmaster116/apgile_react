@@ -10,35 +10,47 @@ const ItemsList = (props) => {
 	  setCompanyID(ls?.company?.id);
    },[companyID]);
 
-   console.log(companyID,"llll");
+//    useEffect(() => {
+// 	window.location.reload()
+//     },[]);
 
 	const columns = [
-		{
-			dataField: 'id',
-			text: 'ID',
-			align: 'center',
-			sort: true
-		},
-		{
-			dataField: 'username',
-			text: 'Name',
-			align: 'center',
-			sort: true
-		},
-		{
-			dataField: 'description',
-			text: 'Description',
-			align: 'center',
-			sort: true
-		},
-		// {
-		// 	dataField: 'branch.name',
-		// 	text: 'Branch Name',
-		// 	align: 'center',
-		// 	sort: true
-		// },
-		
-	];
+    {
+      dataField: "id",
+      text: "ID",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "username",
+      text: "Username",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "first_name",
+      text: "First Name",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "email",
+      text: "Email",
+      align: "center",
+      sort: true,
+    },
+    {
+      isDummyField: true,
+      align: "center",
+      text: "Role",
+      sort: true,
+      formatter: (cell, row) => {
+        return row.roles.map((rol) => {
+          return <span key={rol.id}>{rol?.name}</span>
+        });
+      },
+    },
+  ];
 
 	
 

@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import {useSelector, useDispatch,connect} from "react-redux";
-import {changeBranch} from "../Redux/BranchActions";
+import {changeBranch,setReduxData} from "../Redux/BranchActions";
 import Select from 'react-select';
 import api from "@evenlogics/whf-api";
 import {
@@ -11,10 +11,6 @@ import {
     CHeaderNavLink,
     CSubheader,
     CToggler,
-    // CDropdown,
-    // CDropdownToggle,
-    // CDropdownMenu,
-    // CDropdownItem
 } from "@evenlogics/react";
 
 
@@ -24,20 +20,20 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
-    const [companyName, setCompanyName] = useState();
 
     useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
-        setCompanyName(ls?.company?.name)
-        api.request("get",`/branches/${ls?.branch?.company_id}/all`)
+        let roled = ls?.roles?.map(role => role);
+        api.request("get",`/branches/${ls?.company?.id}/all`)
         .then(({data}) => {
-            console.log(data,"data")
-           let optionsArr =  data?.map((detail)=>(
-                {value:detail?.id,label:detail?.name}
-            ))
+           let optionsArr =  data?.map((detail)=>({value:detail?.id,label:detail?.name}))
             setOptions(optionsArr)
-        })
-        .catch((error) => console.log(error));
+        }).catch((error) => console.log(error));
+        setInitialData({
+          companyName:ls?.company?.name,
+          companyId:ls?.company?.id,
+          userRole:roled[0]
+        });
         
     }, []);
     
@@ -63,9 +59,10 @@ const TheHeader = (props) => {
     };
 
     const onBranchChange = (data) => {
-        // connect here with Redux action and dispatch
      props.changeBranch(data);
-    //  window.location.reload();
+    }
+    const setInitialData = (data) => {
+     props.setReduxData(data);
     }
 
     return (
@@ -86,7 +83,7 @@ const TheHeader = (props) => {
 
         <CHeaderNav className="d-md-down-none mr-auto">
           <CHeaderNavItem className="px-3">
-            <CHeaderNavLink to="/dashboard">{companyName}</CHeaderNavLink>
+            <CHeaderNavLink to="/dashboard">{props?.companyName}</CHeaderNavLink>
           </CHeaderNavItem>
           <Select
             // value={this.state.value}
@@ -99,13 +96,6 @@ const TheHeader = (props) => {
             onChange={onBranchChange}
             options={options}
           />
-          {/* <CDropdown variant="nav-item">
-                    <CDropdownToggle color="secondary">Current Branch</CDropdownToggle>
-                    <CDropdownMenu>
-                        <CDropdownItem href="#">Branch # 1</CDropdownItem>
-                        <CDropdownItem href="#">Branch # 2</CDropdownItem>
-                    </CDropdownMenu>
-                </CDropdown> */}
         </CHeaderNav>
 
         <CHeaderNav className="px-3">
@@ -132,13 +122,16 @@ const TheHeader = (props) => {
 
 const mapStateToProps = state => {
     return {
-      //  company_name : state.companyName
+       companyName : state.companyName,
+       userRole : state.userRole,
+       companyId : state.companyId,
       }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeBranch : (valueObj) => dispatch(changeBranch(valueObj))
+        changeBranch : (valueObj) => dispatch(changeBranch(valueObj)),
+        setReduxData : (valueObj) => dispatch(setReduxData(valueObj))
     }
 }
 

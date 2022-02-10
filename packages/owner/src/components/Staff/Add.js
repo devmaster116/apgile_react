@@ -1,44 +1,123 @@
-import React, {Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {withTranslation} from 'react-i18next';
 
-class ItemAdd extends Component {
+const ItemAdd = (props) => {
 
-    render() {
-        const {id} = this.props.match.params;
+  const [companyID, setCompanyID] = useState(null)
+	useEffect(() => {
+	  let ls =  JSON.parse(localStorage.getItem('currentUser'));
+	  setCompanyID(ls?.company?.id);
+   },[companyID]);
+
+   console.log(companyID,"llll");
+    
+
+        const {id} = props.match.params;
 
         const fields = {
-          name: {
+          "Personal Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+          },
+          first_name: {
             type: "text",
-            label: "Name",
+            label: "First Name",
             required: true,
-            name: "name",
-            col: 6,
+            name: "first_name",
+            col: 4,
           },
-          description: {
+          last_name:{
             type: "text",
-            label: "Description",
-            // required: true,
-            name: "description",
-            col: 6,
-          },
-          qty: {
-            type: "number",
-            label: "Quantity",
+            label: "Last Name",
             required: true,
-            name: "qty",
-            col: 6,
+            name: "last_name",
+            col: 4,
           },
-          location_id: {
+          gender_id: {
+            required:true,
             type: "advanceSelect",
-            label: "Location",
-            target: "locations?limit=1000",
-            // optionLabel: 'title',
-            async: true,
+            options: [
+              {
+                value: "1",
+                label: "Male",
+              },
+              {
+                value: "2",
+                label: "Female",
+              },
+              {
+                value: "3",
+                label: "Other",
+              },
+            ],
+            label: "Gender",
+            name: "gender_id",
+            col: 4,
+          },
+          email:{
+            type: "email",
+            label: "Email",
             required: true,
-            name: "location_id",
-            col: 6,
+            name: "email",
+            col: 4,
+          },
+          phone1:{
+            type: "text",
+            label: "Phone Number",
+            required: true,
+            name: "phone1",
+            col: 4,
+          },
+
+          "Account Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+          },
+          username:{
+            type: "text",
+            label: "Username",
+            required: true,
+            name: "title",
+            col: 4,
+          },
+
+          password: {
+            // parent: "user",
+            type: "password",
+            label: "Password",
+            name: "password",
+            required:true,
+            col: 4,
+          },
+          password_confirmation: {
+            // parent: "user",
+            oneOf: "password",
+            type: "password",
+            required:true,
+            label: "Password Confirmation",
+            name: "password_confirmation",
+            col: 4,
+          },
+          role_id: {
+            // parent: "user",
+            type: "advanceSelect",
+            label: "Role",
+            name: "role_id",
+            target: "roles",
+            required:true,
+            col: 4,
+          },
+         
+          branch_id: {
+            type: "advanceSelect",
+            label: "Select Branch",
+            target: `branches/${companyID}/all?limit=1000`,
+            required: true,
+            name: "branch_id",
+            col: 4,
           },
           
         };
@@ -50,21 +129,20 @@ class ItemAdd extends Component {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="items"
-                        getValues={this.handleValue}
+                        targetEntity="users"
+                        // getValues={handleValue}
                         fields={fields}
                         targetId={id}
                         name="items"
                         repeater={true}
-                        initialValues={this.props.location.aboutProps}
+                        initialValues={props.location.aboutProps}
                         
-                        redirect="/items"
+                        redirect="staff"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
         );
     }
-}
 
-export default withTranslation()(ItemAdd);
+export default ItemAdd;

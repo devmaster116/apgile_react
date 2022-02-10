@@ -1,0 +1,10 @@
+.c-header-nav{
+    /* margin: auto; */
+    /* width: 35%; */
+    margin-left: 26%;
+}
+
+.c-header-nav-item{
+    font-size: large;
+    font-weight: bold;
+}
