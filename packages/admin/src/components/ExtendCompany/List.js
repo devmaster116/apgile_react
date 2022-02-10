@@ -51,7 +51,7 @@ const defaultSorted = [{ dataField: 'id', order: 'desc' }];
     }
     api.request("post","/generate-token",payload,currentUser?.authToken).then((data) => {
       console.log(data?.data?.token,"data");
-      window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`,'_blank')
+      window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${data?.data?.token}`,'_blank')
    }).catch((error) => console.log(error)); 
    
     
