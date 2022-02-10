@@ -20,6 +20,7 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
+    /* eslint-disable */
     useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
         let roled = ls?.roles?.map(role => role);
@@ -35,6 +36,7 @@ const TheHeader = (props) => {
           userRole:roled[0]
         });
     }, []);
+    /* eslint-enable */
     const dispatch = useDispatch();
     const asideShow = useSelector((state) => state.asideShow);
     console.log(asideShow,"asideShow");
