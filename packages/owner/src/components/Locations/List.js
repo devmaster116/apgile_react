@@ -7,9 +7,10 @@ const LocationsList  = (props) => {
 	const [query, setQuery] = useState(false);
     // const {id} = props.match.params;
 	// console.log(props?.match?.params,"id");
+	
 	useEffect(() => {
 		setQuery(!query)
-	}, [query,props?.BranchID]);
+	}, [query,props.BranchID]);
 	
 
 		const columns = [
