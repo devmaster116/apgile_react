@@ -35,7 +35,7 @@ const TheHeader = (props) => {
           userRole:roled[0]
         });
         
-    }, []);
+    }, [setInitialData]);
     
     const dispatch = useDispatch();
     const asideShow = useSelector((state) => state.asideShow);

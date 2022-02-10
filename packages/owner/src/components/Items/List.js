@@ -12,7 +12,7 @@ const ItemsList = (props) => {
 	    	// let ls = JSON.parse(localStorage.getItem("currentUser"));
 		// setCompanyID(ls?.branch?.company_id);
 			setQuery(!query)
-		}, [query,props?.BranchID]);
+		}, [query,props.BranchID]);
 
 
 

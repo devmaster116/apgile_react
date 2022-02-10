@@ -15,7 +15,7 @@ const List = (props) => {
     // setCompanyID(ls?.branch?.company_id);
     console.log(ls,"ls");
 		setQuery(!query)
-	}, [query,props?.BranchID]);
+	}, [query,props.BranchID]);
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [

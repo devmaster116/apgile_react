@@ -19,7 +19,7 @@ const TeamsList = (props) => {
 	console.log(roled,"roled");
     setQuery(!query);
     
- },[query,companyID,userRole,branchID,props?.BranchID]);
+ },[query,companyID,userRole,branchID,props.BranchID]);
 
 
 		const columns = [
