@@ -14,7 +14,7 @@ const ValidateAsOwner = (props) => {
     api.request("post", "/auto-login", payload, bearerToken)
       .then(({ data }) => {
         localStorage.setItem("currentUser",JSON.stringify({ ...data, authToken: data?.api_token }));
-        window.location.replace("https://js.gotomy.dev/call-btn-j/owner")
+        window.location.replace("https://js.gotomy.dev/call-btn-j/owner/#/dashboard")
         window.location.reload()
       })
       .catch((error) => console.log(error));
