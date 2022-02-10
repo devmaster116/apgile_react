@@ -6,7 +6,7 @@ const ValidateAsOwner = (props) => {
   // const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    setLoader(true);
+    // setLoader(true);
     const payload = {
       token: props?.match?.params?.token?.split("&")[0],
     };
