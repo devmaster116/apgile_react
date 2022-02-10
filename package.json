@@ -11,7 +11,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start:admin": "react-scripts start",
     "build": "react-scripts build",
-    "build:stagging": "env-cmd -f .env.staging react-scripts build",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -19,5 +19,11 @@
     "react-loader-spinner": "^5.1.0",
     "react-select": "^5.2.2",
     "react-switch": "^6.0.0"
+  },
+   "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }
