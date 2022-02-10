@@ -43,7 +43,7 @@ const ValidateAsOwner = (props) => {
           ariaLabel="loading"
         />
       ) : (
-        window.location.replace("https://js.gotomy.dev/call-btn-j/owner/#/")
+        window.location.replace("https://js.gotomy.dev/call-btn-j/owner")
       )}
     </>
   );
