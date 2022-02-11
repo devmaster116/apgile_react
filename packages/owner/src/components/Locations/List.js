@@ -5,14 +5,10 @@ import {connect} from "react-redux";
 
 const LocationsList  = (props) => {
 	const [query, setQuery] = useState(false);
-    // const {id} = props.match.params;
-	// console.log(props?.match?.params,"id");
-	
 	useEffect(() => {
-		setQuery(!query)
-	}, [query,props.BranchID]);
+		setQuery((prev)=>!prev)
+	}, [props.BranchID]);
 	
-
 		const columns = [
 			{
 				dataField: 'id',
@@ -52,6 +48,21 @@ const LocationsList  = (props) => {
 			}
 		];
 
+		const calculateParams = () => {
+			let params ;
+			if(props?.BranchID === null){
+			   params = {
+				company_id:props?.companyId
+			  }
+			}else{
+			  params = {
+				company_id:props?.companyId, 
+				branch_id:props?.BranchID
+			  }
+			}
+			return params;   
+		  }
+
 		return (
 			<div className="animated">
 				<Card>
@@ -60,13 +71,14 @@ const LocationsList  = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={props?.BranchID !== null ? `locations?branch_id=${props?.BranchID}` : "locations"}
-							customEntity={props?.BranchID !== null ? `locations?branch_id=${props?.BranchID}` : "locations"}
+							entity={`locations`}
+							customEntity={`locations`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}
+							query={calculateParams()}
 							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>
@@ -78,7 +90,10 @@ const LocationsList  = (props) => {
 
 const mapStateToProps = state => {
     return {
-       BranchID : state.selectedBranchId
+        BranchID : state.selectedBranchId,
+       companyName : state.companyName,
+       companyId : state.companyId,
+       userRole : state.userRole
       }
 }
 

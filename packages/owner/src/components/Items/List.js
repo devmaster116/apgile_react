@@ -7,12 +7,9 @@ import {connect} from "react-redux";
 const ItemsList = (props) => {
 
 	const [query, setQuery] = useState(false);
-
 	useEffect(() => {
-	    	// let ls = JSON.parse(localStorage.getItem("currentUser"));
-		// setCompanyID(ls?.branch?.company_id);
-			setQuery(!query)
-		}, [query,props.BranchID]);
+		setQuery((prev)=>!prev)
+		}, [props.BranchID]);
 
 
 
@@ -50,6 +47,21 @@ const ItemsList = (props) => {
 			}
 		];
 
+		const calculateParams = () => {
+			let params ;
+			if(props?.BranchID === null){
+			   params = {
+				company_id:props?.companyId
+			  }
+			}else{
+			  params = {
+				company_id:props?.companyId, 
+				branch_id:props?.BranchID
+			  }
+			}
+			return params;   
+		  }
+
 		return (
 			<div className="animated">
 				<Card>
@@ -58,13 +70,14 @@ const ItemsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={props?.BranchID !== null ? `items?branch_id=${props?.BranchID}`:`items`}
-							customEntity={props?.BranchID !== null ? `items?branch_id=${props?.BranchID}`:`items`}
+							entity={`items`}
+							customEntity={`items`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/items/add"
 							{...props.remoteTableFields}
 							Query={query}
+							query={calculateParams()}
 						/>
 					</CardBody>
 				</Card>
@@ -73,7 +86,10 @@ const ItemsList = (props) => {
 }
 const mapStateToProps = state => {
 	return {
-	   BranchID : state.selectedBranchId
+		BranchID : state.selectedBranchId,
+		companyName : state.companyName,
+		companyId : state.companyId,
+		userRole : state.userRole
 	  }
   }
   

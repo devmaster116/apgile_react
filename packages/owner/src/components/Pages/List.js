@@ -6,17 +6,12 @@ import { Modal, Spinner } from "react-bootstrap/";
 import api from "@evenlogics/whf-api";
 import {connect} from "react-redux";
 
-const VendorsList = (props) => {
+const List = (props) => {
 
   const [show, setShow] = useState(false);
   const [pages, setPages] = useState(false);
   const [Loader, setLoader] = useState(false);
-  // const [branchTarget, setBranchTarget] = useState('branches?limit=1000');
-  // const [itemTypeTarget, setItemTypeTarget] = useState('items?limit=1000');
   const [ID, setID] = useState(0);
-  const [companyID, setCompanyID] = useState(null)
-  const [branchID, setBranchID] = useState(null)
-	const [userRole, setUserRole] = useState(null)
   const [query, setQuery] = useState(false)
 
 
@@ -36,16 +31,10 @@ const VendorsList = (props) => {
     }
   }, [ID])
 
-  useEffect(() => {
-    let ls =  JSON.parse(localStorage.getItem('currentUser'));
-    let roled = ls?.roles?.map(role => setUserRole(role));
-    setUserRole(roled)
-    console.log(roled);
-    setBranchID(ls?.branch?.id); 
-    setCompanyID(ls?.branch?.company_id);
-    setQuery(!query);
-    console.log(companyID,"companyID");
- },[props.BranchID,companyID,query]);
+
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+	}, [props.BranchID]);
 
 
 // const filters = {
@@ -143,12 +132,20 @@ const VendorsList = (props) => {
       sort: true,
       formatter: (cell, row) => {
         return (
-        <Button color="primary" onClick={() => {
-         setID(row?.id)
-          }}
-          >
-            View QR Code
-          </Button>
+          <>
+            <Button
+            className="mb-2"
+              color="primary"
+              onClick={() => {
+                setID(row?.id);
+              }}
+            >
+              View QR Code
+            </Button>
+            <Button color="warning" onClick={() => downloadPdf(row?.id)}>
+              Download QR Code
+            </Button>
+          </>
         );
       },
     },
@@ -156,13 +153,32 @@ const VendorsList = (props) => {
   
   ];
 
-  const downloadPdf = () => {
-    // console.log(pages?.qr_code?.url,"ll");
-    var link = document.createElement('a');
-    link.href = pages?.qr_code?.url?.url;
-    link.download = 'file.pdf';
-    link.dispatchEvent(new MouseEvent('click'));
+  const downloadPdf = (id) => {
+    api.request("get", `/pages/${id}/generate-pdf`)
+    .then(({ data }) => {
+      var link = document.createElement('a');
+      link.href = data?.pdf_qr_codes?.url;
+      link.target= '_blank'
+      link.download = `qrcode.pdf`;
+      link.dispatchEvent(new MouseEvent('click'));
+    })
+    .catch((error) => console.log(error));
   }
+
+  const calculateParams = () => {
+    let params ;
+    if(props?.BranchID === null){
+       params = {
+      company_id:props?.companyId
+      }
+    }else{
+      params = {
+      company_id:props?.companyId, 
+      branch_id:props?.BranchID
+      }
+    }
+    return params;   
+    }
 
 
   return (
@@ -172,24 +188,27 @@ const VendorsList = (props) => {
           <Header title="All QR Codes" />
           <CardBody>
             <RemoteTable
-              entity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
-              customEntity={userRole?.includes("supervisor") ? `pages?branch_id=${branchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
+              // entity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
+              // customEntity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
+              entity={`pages`}
+              customEntity={`pages`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={true}
               hideDetail={true}
-              disableDelete={userRole?.includes("supervisor") ? true : false}
-              // addRoute="/pages/page/add"
+              disableDelete={props?.userRole === "supervisor" ? true : false}
+             
 
-                customButton={{
-                  name: "Download PDF",
-                  color: "warning",
-                  callback: downloadPdf,
-                }}
+                // customButton={{
+                //   name: "Download PDF",
+                //   color: "warning",
+                //   callback: downloadPdf,
+                // }}
                 // filters={ userRole?.includes("supervisor") ? null : filters}
                 showAdvanceFilters = {true}
                 Query={query}
-              //   query={queryParams}
+                query={calculateParams()}
+
             />
 
             <Modal
@@ -225,9 +244,12 @@ const VendorsList = (props) => {
 
 const mapStateToProps = state => {
   return {
-     BranchID : state.selectedBranchId
+    BranchID : state.selectedBranchId,
+    companyName : state.companyName,
+    companyId : state.companyId,
+    userRole : state.userRole
     }
 }
 
 
-export default connect(mapStateToProps,null)(VendorsList);
+export default connect(mapStateToProps,null)(List);

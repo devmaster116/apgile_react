@@ -33,16 +33,6 @@ const fields = {
       required: true,
       col: 4
   },
-//   company_id: {
-//     type: 'advanceSelect',
-//     label: "Select Company",
-//     target: 'companies?limit=1000',
-//     async: true,
-//     name: 'company_id',
-//     // multi:true,
-//     required: true,
-//     col: 4
-// },
   shift_time: {
       type: 'timeRange',
       label: 'Shift Time',

@@ -9,13 +9,24 @@ const List = (props) => {
 
 
 	const [query, setQuery] = useState(false);
-
-  useEffect(() => {
-    let ls = JSON.parse(localStorage.getItem("currentUser"));
-    // setCompanyID(ls?.branch?.company_id);
-    console.log(ls,"ls");
-		setQuery(!query)
-	}, [query,props.BranchID]);
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+	}, [props.BranchID]);
+	
+  const calculateParams = () => {
+    let params ;
+    if(props?.BranchID === null){
+       params = {
+      company_id:props?.companyId
+      }
+    }else{
+      params = {
+      company_id:props?.companyId, 
+      branch_id:props?.BranchID
+      }
+    }
+    return params;   
+    }
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
@@ -59,6 +70,7 @@ const List = (props) => {
               hideDelete={false}
               addRoute="/areas/add"
               Query={query}
+              query={calculateParams()}
             />      
           </CardBody>
         </Card>
@@ -69,7 +81,10 @@ const List = (props) => {
 
 const mapStateToProps = state => {
   return {
-     BranchID : state.selectedBranchId
+       BranchID : state.selectedBranchId,
+       companyName : state.companyName,
+       companyId : state.companyId,
+       userRole : state.userRole
     }
 }
 

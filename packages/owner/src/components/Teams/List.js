@@ -9,10 +9,7 @@ const TeamsList = (props) => {
       setQuery((prev) => !prev);
     }, [props.BranchID]);
 
- console.log(props?.BranchID,"branch ID")
- console.log(props?.companyName,"companyName")
- console.log(props?.companyId,"companyId ID")
- console.log(props?.userRole,"userRole")
+
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },

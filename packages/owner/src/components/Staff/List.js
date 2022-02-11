@@ -1,18 +1,14 @@
 import React, { useState,useEffect } from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
+import {connect} from "react-redux";
 
 const ItemsList = (props) => {
 	
-	const [companyID, setCompanyID] = useState(null)
-	useEffect(() => {
-	  let ls =  JSON.parse(localStorage.getItem('currentUser'));
-	  setCompanyID(ls?.company?.id);
-   },[companyID]);
-
-//    useEffect(() => {
-// 	window.location.reload()
-//     },[]);
+  const [query, setQuery] = useState(false);
+  useEffect(() => {
+    setQuery((prev) => !prev);
+  }, [props.BranchID]);
 
 	const columns = [
     {
@@ -61,6 +57,22 @@ const ItemsList = (props) => {
 		}
 	];
 
+  
+// const calculateParams = () => {
+//   let params ;
+//   if(props?.BranchID === null){
+//      params = {
+//       company_id:props?.companyId
+//     }
+//   }else{
+//     params = {
+//       company_id:props?.companyId, 
+//       branch_id:props?.BranchID
+//     }
+//   }
+//   return params;   
+// }
+
 		return (
 			<div className="animated">
 				<Card>
@@ -69,12 +81,14 @@ const ItemsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`all-users/${companyID}`}
-							customEntity={`all-users/${companyID}`}
+							entity={`all-users/${props?.companyId}`}
+							customEntity={`all-users/${props?.companyId}`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/staff/add"
 							{...props.remoteTableFields}
+              Query={query}
+              // query={calculateParams()}
 						/>
 					</CardBody>
 				</Card>
@@ -82,4 +96,14 @@ const ItemsList = (props) => {
 		);
 	
 }
-export default ItemsList;
+
+const mapStateToProps = state => {
+  return {
+     BranchID : state.selectedBranchId,
+     companyName : state.companyName,
+     companyId : state.companyId,
+     userRole : state.userRole
+    }
+}
+
+export default connect(mapStateToProps,null)(ItemsList);

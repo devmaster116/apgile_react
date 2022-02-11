@@ -8,17 +8,11 @@ import {connect} from "react-redux";
 const List = (props) => {
 
 	const [query, setQuery] = useState(false);
-  // const [companyID, setCompanyID] = useState(null)
-
-  const defaultSorted = [{ dataField: "id", order: "asc" }];
-
   useEffect(() => {
-    let ls = JSON.parse(localStorage.getItem("currentUser"));
-    // setCompanyID(ls?.branch?.company_id);
-    console.log(ls,"ls");
-		setQuery(!query)
-	}, [query,props.BranchID]);
-	
+    setQuery(!query);
+  }, [props.BranchID]);
+
+const defaultSorted = [{ dataField: "id", order: "asc" }];
 const columns = [
   { dataField: 'id', text: 'ID', align: 'center', sort: true },
   {
@@ -46,7 +40,6 @@ const columns = [
     text: "Team Supervisor",
     sort: true,
     formatter: (cell, row) => {
-      console.log(row.teams, "row.teams");
     return  row?.teams?.map((team)=>{
       return ( <span key={row.id}>
          {team?.supervisor?.username}
@@ -57,6 +50,21 @@ const columns = [
 
 ];
 
+const calculateParams = () => {
+  let params ;
+  if(props?.BranchID === null){
+     params = {
+      company_id:props?.companyId
+    }
+  }else{
+    params = {
+      company_id:props?.companyId, 
+      branch_id:props?.BranchID
+    }
+  }
+  return params;   
+}
+
   return (
     <div>
       <div>
@@ -64,8 +72,8 @@ const columns = [
           <Header title="All Shifts" />
           <CardBody>
             <RemoteTable
-              entity={props?.BranchID !== null ? `shifts?branch_id=${props?.BranchID}`:`shifts`}
-              customEntity={props?.BranchID !== null ? `shifts?branch_id=${props?.BranchID}`:`shifts`}
+              entity={`shifts`}
+              customEntity={`shifts`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
@@ -73,7 +81,7 @@ const columns = [
               hideDelete={false}
               addRoute="/shifts/add"
               Query={query}
-            //   query={queryParams}
+              query={calculateParams()}
             />
           </CardBody>
         </Card>
@@ -84,7 +92,10 @@ const columns = [
 
 const mapStateToProps = state => {
   return {
-     BranchID : state.selectedBranchId
+       BranchID : state.selectedBranchId,
+       companyName : state.companyName,
+       companyId : state.companyId,
+       userRole : state.userRole
     }
 }
 
