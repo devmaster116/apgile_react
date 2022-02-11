@@ -17,49 +17,77 @@ export default {
         icon: "fas fa-users",
         roles: ["admin"],
     },
-    teams: {
-        phrase: "Teams",
+
+    owner: {
+        phrase: "Manage Team",
+        to: "/owner",
         order: 21,
-        to: "/teams",
         roles: ["admin"],
         icon: "fas fa-users",
-    },
-
-    shifts: {
-        phrase: "Shifts",
-        roles: ["admin"],
-        order: 22,
-        to: "/shifts",
-        icon: "fas fa-stopwatch",
-    },
-    roaster: {
-        phrase: "Roaster",
-        roles: ["admin"],
-        order: 23,
-        to: "/roasters",
-        icon: "fas fa-landmark",
-    },
-    location: {
-        phrase: "Locations",
-        order: 26,
-        icon: "fas fa-map-marker-alt",
+        // roles:['admin'],
+        hasRoute: false,
+        children: {
+         
+            teams: {
+                phrase: "Teams",
+                order: 21,
+                to: "/teams",
+                roles: ["admin"],
+                icon: "fas fa-users",
+            },
+        
+            shifts: {
+                phrase: "Shifts",
+                roles: ["admin"],
+                order: 22,
+                to: "/shifts",
+                icon: "fas fa-stopwatch",
+            },
+            roaster: {
+                phrase: "Roaster",
+                roles: ["admin"],
+                order: 23,
+                to: "/roasters",
+                icon: "fas fa-landmark",
+            },
+        },
+      },
+    
+      locations: {
+        phrase: "Location Management",
         to: "/locations",
+        order: 26,
         roles: ["admin"],
-    },
-    items: {
-        phrase: "Items",
-        order: 28,
-        roles: ["admin"],
-        icon: "fas fa-box",
-        to: "/items",
-    },
-    Area: {
-        phrase: "Area",
-        to: "/areas",
-        order: 29,
-        roles: ["admin"],
-        icon: "fas fa-warehouse",
-    },
+        icon: "fas fa-map-marker-alt",
+        // roles:['admin'],
+        hasRoute: false,
+        children: {
+            Area: {
+                phrase: "Area",
+                to: "/areas",
+                order: 1,
+                roles: ["admin"],
+                icon: "fas fa-warehouse",
+            },
+            location: {
+                phrase: "Locations",
+                order: 2,
+                icon: "fas fa-map-marker-alt",
+                to: "/locations",
+                roles: ["admin"],
+            },
+            items: {
+                phrase: "Items",
+                order: 3,
+                roles: ["admin"],
+                icon: "fas fa-box",
+                to: "/items",
+            },
+           
+        },
+      },
+
+  
     QR_Code: {
         phrase: "QR Codes",
         to: "/qr-codes",

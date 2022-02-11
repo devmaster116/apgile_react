@@ -9,7 +9,7 @@ const List = (props) => {
 
 	const [query, setQuery] = useState(false);
   useEffect(() => {
-    setQuery(!query);
+    setQuery((prev)=>!prev);
   }, [props.BranchID]);
 
 const defaultSorted = [{ dataField: "id", order: "asc" }];

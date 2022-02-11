@@ -95,27 +95,28 @@ export default {
     // roles:['admin'],
     hasRoute: false,
     children: {
-     
+      Area: {
+        phrase: "Area",
+        to: "/pages/area",
+        order: 1,
+        roles: ["super-admin"],
+        icon: "fas fa-warehouse",
+      },
     location: {
     phrase: "Locations",
     roles: ["super-admin"],
-    order: 1,
+    order: 2,
     icon: "fas fa-map-marker-alt",
     to: "/owner/locations",
   },
   items: {
     phrase: "Items",
-    order: 1,
+    order: 3,
     roles: ["super-admin"],
     icon: "fas fa-box",
     to: "/owner/items",
   },
-  Area: {
-    phrase: "Area",
-    to: "/pages/area",
-    roles: ["super-admin"],
-    icon: "fas fa-warehouse",
-  },
+
     },
   },
 
