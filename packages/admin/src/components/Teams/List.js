@@ -82,6 +82,7 @@ const TeamsList = (props) =>  {
 							customEntity="teams"
 							columns={columns}
 							sort={defaultSorted}
+							hideDetail={true}
 							addRoute="/owner/teams/add"
 							filters={filters}
 							showAdvanceFilters={true}

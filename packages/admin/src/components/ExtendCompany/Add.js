@@ -14,7 +14,7 @@ const Add = (props) => {
     },
     name: {
       type: "text",
-      label: "company name",
+      label: "Company Name",
       required: true,
       name: "name",
       col: 4,
@@ -22,14 +22,14 @@ const Add = (props) => {
     b_name: {
       // parent: "branch",
       type: "text",
-      label: "branch name",
+      label: "Branch Name",
       required: true,
       name: "b_name",
       col: 4,
     },
     phone1: {
       type: "text",
-      label: "company phone",
+      label: "Company Phone",
       required: true,
       name: "phone1",
       col: 4,
@@ -38,7 +38,7 @@ const Add = (props) => {
     country: {
       // parent: "address",
       type: "text",
-      label: "country",
+      label: "Country",
       required: true,
       name: "country",
       col: 4,
@@ -46,7 +46,7 @@ const Add = (props) => {
     city: {
       // parent: "address",
       type: "text",
-      label: "city",
+      label: "City",
       required: true,
       name: "city",
       col: 4,
@@ -54,7 +54,7 @@ const Add = (props) => {
     zip_code: {
       // parent: "address",
       type: "text",
-      label: "zipcode",
+      label: "Zipcode",
       required: true,
       name: "zip_code",
       col: 4,
@@ -70,43 +70,6 @@ const Add = (props) => {
       name: "addr1",
       col: 12,
     },
-    // phone2: {
-    //   type: "text",
-    //   label: "company secondary phone",
-    //   required: true,
-    //   name: "phone2",
-    //   col: 4,
-    // },
-
-    // address: {
-    //   type: "text",
-    //   label: "company address",
-    //   required: true,
-    //   name: "address",
-    //   col: 12,
-    // },
-    // "Branch Details": {
-    //   isDummyField: true,
-    //   type: "h4",
-    //   col: 12,
-    // },
-   
-    // b_phone1: {
-    //   parent: "branch",
-    //   type: "text",
-    //   label: "branch phone",
-    //   name: "b_phone1",
-    //   col: 4,
-    // },
-    // b_phone2: {
-    //   parent: "branch",
-    //   type: "text",
-    //   label: "branch phone 2",
-    //   required: true,
-    //   name: "b_phone2",
-    //   col: 4,
-    // },
-    
 
     "User Details": {
       isDummyField: true,
@@ -126,7 +89,7 @@ const Add = (props) => {
     first_name: {
       // parent: "user",
       type: "text",
-      label: "first name",
+      label: "First Name",
       name: "first_name",
       required:true,
       col: 4,
@@ -134,7 +97,7 @@ const Add = (props) => {
     last_name: {
       // parent: "user",
       type: "text",
-      label: "last name",
+      label: "Last Name",
       name: "last_name",
       required:true,
       col: 4,
@@ -142,7 +105,7 @@ const Add = (props) => {
     email: {
       // parent: "user",
       type: "email",
-      label: "email",
+      label: "Email",
       name: "email",
       required:true,
       col: 4,
@@ -150,7 +113,7 @@ const Add = (props) => {
     password: {
       // parent: "user",
       type: "password",
-      label: "password",
+      label: "Password",
       name: "password",
       required:true,
       col: 4,
@@ -160,7 +123,7 @@ const Add = (props) => {
       oneOf: "password",
       type: "password",
       required:true,
-      label: "password confirmation",
+      label: "Password Confirmation",
       name: "password_confirmation",
       col: 4,
     },
@@ -182,7 +145,7 @@ const Add = (props) => {
           label: "Other",
         },
       ],
-      label: "gender",
+      label: "Gender",
       name: "gender_id",
       col: 4,
     },
@@ -198,7 +161,7 @@ const Add = (props) => {
     u_phone1: {
         // parent: "user",
         type: "text",
-        label: "user phone",
+        label: "User Phone",
         name: "u_phone1",
         required:true,
         col: 4,

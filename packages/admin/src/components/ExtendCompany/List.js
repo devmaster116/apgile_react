@@ -69,8 +69,8 @@ const defaultSorted = [{ dataField: 'id', order: 'desc' }];
               customEntity="companies"
               columns={columns}
               sort={defaultSorted}
-              hideEdit={false}
-              hideDetail={false}
+              hideEdit={true}
+              hideDetail={true}
               hideDelete={false}
               addRoute="/admin/company/add"
 

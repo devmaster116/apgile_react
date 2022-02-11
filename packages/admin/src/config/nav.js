@@ -10,41 +10,6 @@ export default {
       text: "NEW",
     },
   },
-
-  // entity: {
-  //   phrase: "Entity",
-  //   order: 20,
-  //   roles: ["super-admin"],
-  //   // roles:['admin'],
-  //   children: {
-  //     person: {
-  //       phrase: "Users",
-  //       roles: ["super-admin"],
-
-  //       order: 1,
-  //     },
-  //     branch: {
-  //       phrase: "Branch",
-  //       roles: ["super-admin"],
-
-  //       order: 2,
-  //     },
-  //     company: {
-  //       phrase: "Company",
-  //       roles: ["super-admin"],
-
-  //       order: 3,
-  //     },
-  //     // company_package: {
-  //     //   phrase: "Company Package",
-  //     //   order: 4,
-  //     //   to: "/company-setup",
-  //     //   icon: "fas fa-box-open",
-  //     //   roles: ["super-admin"],
-  //     // },
-  //   },
-  // },
-
   entity: {
     _tag: 'CSidebarNavDropdown',
     name: 'Entity',
@@ -55,60 +20,44 @@ export default {
     icon: 'fas fa-building',
     hasRoute: false,
     children: {
-      branch: {
-        name: 'Branch',
-        phrase: 'Branch',
-        icon: 'fas fa-list',
-        to: '/entity/branches'
-      },
+   
       company: {
         name: 'Company',
-        phrase: 'Company',
-        icon: 'fas fa-list',
+        phrase: 'All Companies',
+        order:0,
+        icon:"fas fa-calendar-plus",
         to: '/admin/companies'
+      },
+      branch: {
+        name: 'Branch',
+        phrase: 'All Branches',
+        order:1,
+        icon: 'fas fa-code-branch',
+        to: '/entity/branches'
       },
       person: {
         name: 'Person',
-        phrase: 'User',
-        icon: 'fas fa-list',
+        phrase: 'All Users',
+        order:2,
+        icon: 'fas fa-users',
         to: '/users'
       }
     }
   },
 
 
+ 
 
   owner: {
-    phrase: "Manage App",
+    phrase: "Manage Team",
     to: "/owner",
     order: 100,
     roles: ["super-admin"],
-    icon: "fas fa-mobile",
+    icon: "fas fa-users",
     // roles:['admin'],
     hasRoute: false,
     children: {
-      location: {
-        phrase: "Locations",
-        roles: ["super-admin"],
-
-        order: 1,
-        icon: "fas fa-map-marker-alt",
-        to: "/owner/locations",
-      },
-      styles: {
-        phrase: "Styles",
-        to: "/owner/styles",
-        roles: ["super-admin"],
-        icon: "fas fa-broom",
-      },
-      items: {
-        phrase: "Items",
-        order: 1,
-        roles: ["super-admin"],
-
-        icon: "fas fa-box",
-        to: "/owner/items",
-      },
+     
       team: {
         phrase: "Teams",
         roles: ["super-admin"],
@@ -135,6 +84,49 @@ export default {
       },
     },
   },
+
+  
+  locations: {
+    phrase: "Location Management",
+    to: "/locations",
+    order: 110,
+    roles: ["super-admin"],
+    icon: "fas fa-map-marker-alt",
+    // roles:['admin'],
+    hasRoute: false,
+    children: {
+     
+    location: {
+    phrase: "Locations",
+    roles: ["super-admin"],
+    order: 1,
+    icon: "fas fa-map-marker-alt",
+    to: "/owner/locations",
+  },
+  items: {
+    phrase: "Items",
+    order: 1,
+    roles: ["super-admin"],
+    icon: "fas fa-box",
+    to: "/owner/items",
+  },
+  Area: {
+    phrase: "Area",
+    to: "/pages/area",
+    roles: ["super-admin"],
+    icon: "fas fa-warehouse",
+  },
+    },
+  },
+
+  styles: {
+    phrase: "Styles",
+    order:111,
+    to: "/owner/styles",
+    roles: ["super-admin"],
+    icon: "fas fa-broom",
+  },
+
   customer: {
     hide: true,
     order: 1,
@@ -164,29 +156,17 @@ export default {
     order: 115,
     icon: "fas fa-phone-square-alt",
   },
-  pages: {
-    phrase: "QR Code",
-    roles: ["super-admin"],
-
-    order: 135,
-    to: "/pages",
-    icon: "fas fa-pager",
-    children: {
       page: {
         phrase: "QR Codes",
+         order: 135,
         to: "/pages/qr-codes",
         roles: ["super-admin"],
         icon: "fas fa-pager",
       },
-      Area: {
-        phrase: "Area",
-        to: "/pages/area",
-        roles: ["super-admin"],
-        icon: "fas fa-warehouse",
-      },
     
-    },
-  },
+    
+  
+  
 
   //COMPANY ADMIN
 

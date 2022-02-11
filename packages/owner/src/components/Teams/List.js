@@ -4,23 +4,15 @@ import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
 
 const TeamsList = (props) => {
+    const [query, setQuery] = useState(false);
+    useEffect(() => {
+      setQuery((prev) => !prev);
+    }, [props.BranchID]);
 
-	const [companyID, setCompanyID] = useState(null)
-	const [userRole, setUserRole] = useState(null)
-    const [branchID, setBranchID] = useState(null)
-    const [query, setQuery] = useState(false)
-
-   
-  useEffect(() => {
-    let ls = JSON.parse(localStorage.getItem("currentUser"));
-    setCompanyID(ls?.branch?.company_id);
-    setBranchID(ls?.branch?.id);
-	let roled = ls?.roles?.map(role => setUserRole(role));
-	console.log(roled,"roled");
-    setQuery(!query);
-    
- },[query,companyID,userRole,branchID,props.BranchID]);
-
+ console.log(props?.BranchID,"branch ID")
+ console.log(props?.companyName,"companyName")
+ console.log(props?.companyId,"companyId ID")
+ console.log(props?.userRole,"userRole")
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
@@ -62,13 +54,13 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : props?.BranchID !== null ? `teams?branch_id=${props?.BranchID}` :`teams?company_id=${companyID}` }
-							customEntity={ userRole?.includes("supervisor") ? `teams?branch_id=${branchID}` : props?.BranchID !== null ? `teams?company_id=${companyID}&branch_id=${props?.BranchID}` :`teams?company_id=${companyID}` }
-							hideActionCol={ userRole?.includes("supervisor") ? true : false}
+							entity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							hideActionCol={ props?.userRole === "supervisor" ? true : false}
 							columns={columns}
 							Query={query}
 							sort={defaultSorted}
-							addRoute={ userRole?.includes("supervisor") ? null : "teams/add"}
+							addRoute={ props?.userRole === "supervisor" ? null : "teams/add"}
 							{...props.remoteTableFields}
 						/>
 					</CardBody>
@@ -80,7 +72,10 @@ const TeamsList = (props) => {
 
 const mapStateToProps = state => {
     return {
-       BranchID : state.selectedBranchId
+       BranchID : state.selectedBranchId,
+       companyName : state.companyName,
+       companyId : state.companyId,
+       userRole : state.userRole
       }
 }
 

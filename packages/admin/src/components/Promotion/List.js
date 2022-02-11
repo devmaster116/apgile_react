@@ -4,15 +4,11 @@ import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 
-
-
-
-const VendorsList = () => {
+const List = () => {
 
   const [target, setTarget] = useState("branches");
 
 	const companiesChangeHandler = (data) => {
-	  console.log(data, "lll");
 	  setTimeout(() => {
 		setTarget(`branches/${data.value}/all`);
 	  }, 0);
@@ -23,7 +19,6 @@ const VendorsList = () => {
       type: "advanceSelect",
       label: "Company",
       target: 'companies?limit=1000',
-    //   async: true,
       name: "company_id",
       optionValue: 'id',
       optionLabel: 'name',
@@ -111,18 +106,12 @@ const VendorsList = () => {
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
-              hideDetail={false}
+              hideDetail={true}
               hideDelete={false}
               addRoute="/promotions/add"
               filters={filters}
               showAdvanceFilters={true}
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
-            //   query={queryParams}
+
             />
           </CardBody>
         </Card>
@@ -131,4 +120,4 @@ const VendorsList = () => {
   );
 };
 
-export default VendorsList;
+export default List;

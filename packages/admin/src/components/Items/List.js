@@ -86,6 +86,7 @@ const ItemsList = (props) => {
             sort={defaultSorted}
             addRoute="/owner/items/add"
             filters={filters}
+						hideDetail={true}
             showAdvanceFilters={true}
             {...props.remoteTableFields}
           />

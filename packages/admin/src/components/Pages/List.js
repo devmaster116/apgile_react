@@ -93,14 +93,8 @@ const filters = {
       sort: true,
     },
     {
-      dataField: "description",
-      text: "Description",
-      align: "center",
-      sort: true,
-    },
-    {
-      dataField: "total_calls",
-      text: "Total Calls",
+      dataField: "branch.name",
+      text: "Branch",
       align: "center",
       sort: true,
     },
@@ -110,13 +104,19 @@ const filters = {
       align: "center",
       sort: true,
     },
-
+    // {
+    //   dataField: "description",
+    //   text: "Description",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
-      dataField: "location.branch.name",
-      text: "Branch Name",
+      dataField: "total_calls",
+      text: "Total Calls",
       align: "center",
       sort: true,
     },
+
     {
       dataField: "last_used",
       text: "Last Call",
@@ -133,34 +133,48 @@ const filters = {
       sort: true,
       formatter: (cell, row) => {
         return (
-        <Button color="primary" onClick={() => {
-         setID(row?.id)
-          }}
-          >
-            View QR Code
-          </Button>
+          <>
+            <Button
+              color="primary"
+              className="mb-2"
+              onClick={() => {
+                setID(row?.id);
+              }}
+            >
+              View QR Code
+            </Button>
+            <Button
+              color="warning"
+              onClick={() => {
+                console.log(row?.id, "kkkk");
+                downloadPdf(row?.id);
+              }}
+            >
+              Download QR Code
+            </Button>
+          </>
         );
       },
     },
 
 
-    {
-      isDummyField: true,
-      align: "center",
-      text: "QR Code",
-      sort: true,
-      formatter: (cell, row) => {
-        return (
-        <Button color="warning" onClick={() => {
-          console.log(row?.id,"kkkk");
-          downloadPdf(row?.id)
-          }}
-          >
-            Download QR Code
-          </Button>
-        );
-      },
-    },
+    // {
+    //   isDummyField: true,
+    //   align: "center",
+    //   text: "QR Code",
+    //   sort: true,
+    //   formatter: (cell, row) => {
+    //     return (
+    //     <Button color="warning" onClick={() => {
+    //       console.log(row?.id,"kkkk");
+    //       downloadPdf(row?.id)
+    //       }}
+    //       >
+    //         Download QR Code
+    //       </Button>
+    //     );
+    //   },
+    // },
   
   ];
 

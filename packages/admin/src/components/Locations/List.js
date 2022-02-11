@@ -88,6 +88,7 @@ const LocationsList = (props) => {
 							customEntity="locations"
 							columns={columns}
 							sort={defaultSorted}
+							hideDetail={true}
 							addRoute="/owner/locations/add"
 							filters={filters}
 							showAdvanceFilters = {true}

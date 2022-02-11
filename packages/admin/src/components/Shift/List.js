@@ -93,7 +93,7 @@ const List = () => {
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
-              hideDetail={false}
+              hideDetail={true}
               hideDelete={false}
               filters={filters}
 							showAdvanceFilters={true}

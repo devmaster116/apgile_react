@@ -38,57 +38,63 @@ const columns = [
     align: "center",
     sort: true,
   },
-  
+  {
+    dataField: "company",
+    text: "Company",
+    align: "center",
+    sort: true,
+  },
   {
     dataField: "name",
-    text: "Name",
+    text: "Style Title",
     align: "center",
     sort: true,
   },
+ 
   {
     dataField: "font_color",
-    text: "Font Color",
+    text: "Font",
     align: "center",
     sort: true,
   },
-  {
-    dataField: "bg_color",
-    text: "Background Color",
-    align: "center",
-    sort: true,
-  },
+  // {
+  //   dataField: "bg_color",
+  //   text: "Background Color",
+  //   align: "center",
+  //   sort: true,
+  // },
 
-  {
+  // {
    
-    isDummyField: true,
-    align: "center",
-    text: "Logo",
-    sort: true,
-    formatter: (cell, row) => {
-      console.log(cell,row, "cell");
-      return (
-          <div>
-             <img width={30} height={40} alt="background" src={row?.logo?.thumbnail}></img>
-          </div>
-      )
-  },
-  },
+  //   isDummyField: true,
+  //   align: "center",
+  //   text: "Logo",
+  //   sort: true,
+  //   formatter: (cell, row) => {
+  //     console.log(cell,row, "cell");
+  //     return (
+  //         <div>
+  //            <img width={30} height={40} alt="background" src={row?.logo?.thumbnail}></img>
+  //         </div>
+  //     )
+  // },
+  // },
   
-  {
+  // {
   
-    isDummyField: true,
-    align: "center",
-    text: "Background Image",
-    sort: true,
-    formatter: (cell, row) => {
-      console.log(cell,row, "cell");
-      return (
-          <div>
-             <img width={30} height={40} alt="background" src={row?.bg_image?.thumbnail}></img>
-          </div>
-      )
-  },
-  },
+  //   isDummyField: true,
+  //   align: "center",
+  //   text: "Background Image",
+  //   sort: true,
+  //   formatter: (cell, row) => {
+  //     console.log(cell,row, "cell");
+  //     return (
+  //         <div>
+  //            <img width={30} height={40} alt="background" src={row?.bg_image?.thumbnail}></img>
+  //         </div>
+  //     )
+  // },
+  // },
 
   
  
@@ -107,19 +113,11 @@ const VendorsList = () => {
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
-              hideDetail={false}
+              hideDetail={true}
               hideDelete={false}
               filters={filters}
 							showAdvanceFilters = {true}
               addRoute="/owner/styles/add"
-
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
-            //   query={queryParams}
             />
           </CardBody>
         </Card>

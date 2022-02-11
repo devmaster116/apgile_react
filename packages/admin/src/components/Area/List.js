@@ -100,14 +100,6 @@ const List = () => {
               addRoute="/pages/area/add"
               filters={filters}
               showAdvanceFilters = {true}
-
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
-            //   query={queryParams}
             />      
           </CardBody>
         </Card>

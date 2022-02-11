@@ -5,16 +5,13 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
 const {id} = props.match.params;
+
   let fields = {
-    // style_id: {
-    //   type: "advanceSelect",
-    //   label: "Select Style",
-    //   target: 'styles',
-    //   async: true,
-    //   name: "style_id",
-    //   required: true,
-    //   col: 4,
-    // },
+    "Add Company Style": {
+      isDummyField: true,
+      type: "h4",
+      col: 12,
+    },
     company_id: {
       type: "advanceSelect",
       label: "Select Company",
@@ -24,16 +21,23 @@ const {id} = props.match.params;
       required: true,
       col: 4,
     },
+
+    "Style Details": {
+      isDummyField: true,
+      type: "h4",
+      col: 12,
+    },
+
     name: {
       type: "text",
-      label: "Name",
+      label: "Title",
       required: true,
       name: "name",
       col: 4,
     },
     font_color: {
       type: "text",
-      label: "Font Color",
+      label: "Font",
       required: true,
       name: "font_color",
       col: 4,
@@ -45,24 +49,23 @@ const {id} = props.match.params;
       name: "bg_color",
       col: 4,
     },
-    // other: {
-    //   type: "text",
-    //   label: "Others",
-    //   name: "other",
-    //   required: true,
-    //   col: 4,
-    // },
+
+    "Media": {
+      isDummyField: true,
+      type: "h4",
+      col: 12,
+    },
 
     logo: {
       type: "filePic",
-      label: "Logo",
+      label: "Add Logo",
       name: "logo",
       required: true,
       col: 4,
     },
     bg_image:{
       type: "filePic",
-      label: "Background Image",
+      label: "Add Background Image",
       name: "bg_image",
       required: true,
       col: 4,
