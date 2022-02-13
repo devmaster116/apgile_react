@@ -9,7 +9,7 @@ import api from "@evenlogics/whf-api";
 
 const List = (props) => {
 
-  
+
 const columns = [
   {
     dataField: "id",
@@ -35,7 +35,7 @@ const columns = [
     align: "center",
     sort: true,
   },
- 
+
 ];
 
 const defaultSorted = [{ dataField: 'id', order: 'desc' }];
@@ -52,11 +52,11 @@ const defaultSorted = [{ dataField: 'id', order: 'desc' }];
     api.request("post","/generate-token",payload,currentUser?.authToken).then((data) => {
       console.log(data?.data?.token,"data");
       window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`,'_blank')
-   }).catch((error) => console.log(error)); 
-   
-    
+   }).catch((error) => console.log(error));
+
+
   };
-  
+
   return (
     <div>
       <div>
@@ -75,7 +75,7 @@ const defaultSorted = [{ dataField: 'id', order: 'desc' }];
               addRoute="/admin/company/add"
 
               customButton={{
-                name: "Login As Owner",
+                name: "Manage Company",
                 color: "warning",
                 callback: (data) => companyLogin(data),
               }}

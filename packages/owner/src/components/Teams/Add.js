@@ -1,18 +1,25 @@
 import React, { useState,useEffect } from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
+import {connect} from "react-redux";
 
 const TeamsAdd = (props) => {
-    
+
     const [companyID, setCompanyID] = useState(null)
     const [company, setCompany] = useState(null)
+    const [query, setQuery] = useState(false)
+
     useEffect(() => {
       let ls =  JSON.parse(localStorage.getItem('currentUser'));
       setCompanyID(ls?.company?.id);
       setCompany(ls?.company);
-   },[companyID])
-    
+      setQuery((prev) => !prev);
+   },[companyID, props.BranchID]);
+
         const {id} = props.match.params;
+        const extraVals =  {
+            branch_id: props.BranchID
+        };
 
         const fields = {
             name: {
@@ -22,15 +29,15 @@ const TeamsAdd = (props) => {
                 name: 'name',
                 col: 4
             },
-            branch_id: {
-                type: 'advanceSelect',
-                label: `${company?.name} Branch`,
-                target: `branches?company_id=${companyID}?limit=1000`,
-                // async: true,
-                name: 'branch_id',
-                required: true,
-                col: 4
-            },
+            // branch_id: {
+            //     type: 'advanceSelect',
+            //     label: `${company?.name} Branch`,
+            //     target: `branches?company_id=${companyID}?limit=1000`,
+            //     // async: true,
+            //     name: 'branch_id',
+            //     required: true,
+            //     col: 4
+            // },
             location_id: {
                 type: 'advanceSelect',
                 label: "Location",
@@ -63,6 +70,12 @@ const TeamsAdd = (props) => {
                 name: 'user_id',
                 col: 4
             },
+            branch_id: {
+                type: 'hidden',
+                // async: true,
+                name: 'branch_id',
+                col: 4
+            },
 
         };
 
@@ -79,14 +92,23 @@ const TeamsAdd = (props) => {
                         targetId={id}
                         name="phrases"
                         repeater={true}
-                        initialValues={props.location.aboutProps}
+                        extraVals={extraVals}
                         redirect="teams"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
         );
-    
+
 }
 
-export default TeamsAdd;
+const mapStateToProps = state => {
+    return {
+        BranchID : state.selectedBranchId,
+        companyName : state.companyName,
+        companyId : state.companyId,
+        userRole : state.userRole
+    }
+}
+
+export default connect(mapStateToProps,null)(TeamsAdd);

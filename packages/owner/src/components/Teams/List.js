@@ -9,8 +9,6 @@ const TeamsList = (props) => {
       setQuery((prev) => !prev);
     }, [props.BranchID]);
 
-
-
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
 			{
@@ -31,10 +29,10 @@ const TeamsList = (props) => {
 				align: 'center',
 				sort: true
 			},
-		
+
 		];
 
-		
+
 
 		const defaultSorted = [
 			{
@@ -52,7 +50,9 @@ const TeamsList = (props) => {
 					<CardBody>
 						<RemoteTable
 							entity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
-							customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							// entity="teams"
+							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							customEntity="teams"
 							hideActionCol={ props?.userRole === "supervisor" ? true : false}
 							columns={columns}
 							Query={query}
