@@ -9,7 +9,7 @@ const ItemsList = (props) => {
 	const [query, setQuery] = useState(false);
 	useEffect(() => {
 		setQuery((prev)=>!prev)
-		}, [props.BranchID]);
+		}, [props.branchId]);
 
 
 
@@ -33,7 +33,7 @@ const ItemsList = (props) => {
 				align: 'center',
 				sort: true
 			},
-			
+
 		];
 
 		if (props.extendedFields) {
@@ -49,17 +49,17 @@ const ItemsList = (props) => {
 
 		const calculateParams = () => {
 			let params ;
-			if(props?.BranchID === null){
+			if(props?.branchId === null){
 			   params = {
 				company_id:props?.companyId
 			  }
 			}else{
 			  params = {
-				company_id:props?.companyId, 
-				branch_id:props?.BranchID
+				company_id:props?.companyId,
+				branch_id:props?.branchId
 			  }
 			}
-			return params;   
+			return params;
 		  }
 
 		return (
@@ -86,12 +86,12 @@ const ItemsList = (props) => {
 }
 const mapStateToProps = state => {
 	return {
-		BranchID : state.selectedBranchId,
+		branchId : state.selectedBranchId,
 		companyName : state.companyName,
 		companyId : state.companyId,
 		userRole : state.userRole
 	  }
   }
-  
-  
+
+
 export default connect(mapStateToProps,null)(ItemsList);

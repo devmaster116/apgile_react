@@ -34,7 +34,7 @@ const List = (props) => {
 
 	useEffect(() => {
 		setQuery((prev)=>!prev)
-	}, [props.BranchID]);
+	}, [props.branchId]);
 
 
 // const filters = {
@@ -124,7 +124,7 @@ const List = (props) => {
     },
 
 
-    
+
     {
       isDummyField: true,
       align: "center",
@@ -150,7 +150,7 @@ const List = (props) => {
       },
     },
 
-  
+
   ];
 
   const downloadPdf = (id) => {
@@ -167,17 +167,17 @@ const List = (props) => {
 
   const calculateParams = () => {
     let params ;
-    if(props?.BranchID === null){
+    if(props?.branchId === null){
        params = {
       company_id:props?.companyId
       }
     }else{
       params = {
-      company_id:props?.companyId, 
-      branch_id:props?.BranchID
+      company_id:props?.companyId,
+      branch_id:props?.branchId
       }
     }
-    return params;   
+    return params;
     }
 
 
@@ -188,8 +188,8 @@ const List = (props) => {
           <Header title="All QR Codes" />
           <CardBody>
             <RemoteTable
-              // entity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
-              // customEntity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `pages?branch_id=${props?.BranchID}`:`pages`}
+              // entity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
+              // customEntity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
               entity={`pages`}
               customEntity={`pages`}
               columns={columns}
@@ -197,7 +197,7 @@ const List = (props) => {
               hideEdit={true}
               hideDetail={true}
               disableDelete={props?.userRole === "supervisor" ? true : false}
-             
+
 
                 // customButton={{
                 //   name: "Download PDF",
@@ -244,7 +244,7 @@ const List = (props) => {
 
 const mapStateToProps = state => {
   return {
-    BranchID : state.selectedBranchId,
+    branchId : state.selectedBranchId,
     companyName : state.companyName,
     companyId : state.companyId,
     userRole : state.userRole

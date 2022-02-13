@@ -7,7 +7,7 @@ const TeamsList = (props) => {
     const [query, setQuery] = useState(false);
     useEffect(() => {
       setQuery((prev) => !prev);
-    }, [props.BranchID]);
+    }, [props.branchId]);
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
@@ -49,9 +49,9 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							entity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
 							// entity="teams"
-							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.BranchID}` : props?.BranchID !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.BranchID}` :`teams?company_id=${props?.companyId}` }
+							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
 							customEntity="teams"
 							hideActionCol={ props?.userRole === "supervisor" ? true : false}
 							columns={columns}
@@ -69,7 +69,7 @@ const TeamsList = (props) => {
 
 const mapStateToProps = state => {
     return {
-       BranchID : state.selectedBranchId,
+       branchId : state.selectedBranchId,
        companyName : state.companyName,
        companyId : state.companyId,
        userRole : state.userRole

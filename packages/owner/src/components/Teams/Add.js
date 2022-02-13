@@ -14,11 +14,11 @@ const TeamsAdd = (props) => {
       setCompanyID(ls?.company?.id);
       setCompany(ls?.company);
       setQuery((prev) => !prev);
-   },[companyID, props.BranchID]);
+   },[companyID, props.branchId]);
 
         const {id} = props.match.params;
         const extraVals =  {
-            branch_id: props.BranchID
+            branch_id: props.branchId
         };
 
         const fields = {
@@ -104,7 +104,7 @@ const TeamsAdd = (props) => {
 
 const mapStateToProps = state => {
     return {
-        BranchID : state.selectedBranchId,
+        branchId : state.selectedbranchId,
         companyName : state.companyName,
         companyId : state.companyId,
         userRole : state.userRole

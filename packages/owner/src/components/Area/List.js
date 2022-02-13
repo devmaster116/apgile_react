@@ -11,21 +11,21 @@ const List = (props) => {
 	const [query, setQuery] = useState(false);
 	useEffect(() => {
 		setQuery((prev)=>!prev)
-	}, [props.BranchID]);
-	
+	}, [props.branchId]);
+
   const calculateParams = () => {
     let params ;
-    if(props?.BranchID === null){
+    if(props?.branchId === null){
        params = {
       company_id:props?.companyId
       }
     }else{
       params = {
-      company_id:props?.companyId, 
-      branch_id:props?.BranchID
+      company_id:props?.companyId,
+      branch_id:props?.branchId
       }
     }
-    return params;   
+    return params;
     }
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
@@ -49,7 +49,7 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
-    
+
   ];
 
 
@@ -60,9 +60,9 @@ const List = (props) => {
           <Header title="All Areas"/>
           <CardBody>
             <RemoteTable
-             
-              entity={props?.BranchID !== null ? `areas?branch_id=${props?.BranchID}`:`areas`}
-              customEntity={props?.BranchID !== null ? `areas?branch_id=${props?.BranchID}`:`areas`}
+
+              entity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
+              customEntity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
@@ -71,7 +71,7 @@ const List = (props) => {
               addRoute="/areas/add"
               Query={query}
               query={calculateParams()}
-            />      
+            />
           </CardBody>
         </Card>
       </div>
@@ -81,7 +81,7 @@ const List = (props) => {
 
 const mapStateToProps = state => {
   return {
-       BranchID : state.selectedBranchId,
+       branchId : state.selectedBranchId,
        companyName : state.companyName,
        companyId : state.companyId,
        userRole : state.userRole
