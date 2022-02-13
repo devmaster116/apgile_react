@@ -99,7 +99,7 @@ const TeamsAdd = (props) => {
 
 const mapStateToProps = state => {
     return {
-        branchId : state.selectedbranchId,
+        branchId : state.selectedBranchId,
         companyName : state.companyName,
         companyId : state.companyId,
         userRole : state.userRole
