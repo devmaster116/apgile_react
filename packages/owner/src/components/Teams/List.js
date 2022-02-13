@@ -7,7 +7,7 @@ const TeamsList = (props) => {
     const [query, setQuery] = useState(false);
     useEffect(() => {
       setQuery((prev) => !prev);
-    }, [props.branchId]);
+    });
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
@@ -49,7 +49,7 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
+							entity={ `${props?.branchId}/teams` }
 							// entity="teams"
 							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
 							customEntity="teams"

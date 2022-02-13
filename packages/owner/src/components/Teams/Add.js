@@ -5,18 +5,6 @@ import {connect} from "react-redux";
 
 const TeamsAdd = (props) => {
 
-    const [companyID, setCompanyID] = useState(null)
-    const [company, setCompany] = useState(null)
-    const [query, setQuery] = useState(false)
-
-    useEffect(() => {
-      let ls =  JSON.parse(localStorage.getItem('currentUser'));
-      setCompanyID(ls?.company?.id);
-      setCompany(ls?.company);
-      setQuery((prev) => !prev);
-   },[companyID, props.branchId]);
-
-    console.log(props.branchId, 'branch');
         const {id} = props.match.params;
         const extraVals =  {
             branch_id: props.branchId
@@ -30,19 +18,10 @@ const TeamsAdd = (props) => {
                 name: 'name',
                 col: 4
             },
-            // branch_id: {
-            //     type: 'advanceSelect',
-            //     label: `${company?.name} Branch`,
-            //     target: `branches?company_id=${companyID}?limit=1000`,
-            //     // async: true,
-            //     name: 'branch_id',
-            //     required: true,
-            //     col: 4
-            // },
             location_id: {
                 type: 'advanceSelect',
                 label: "Location",
-                target: `locations?company_id=${companyID}?limit=1000`,
+                target: `${props.branchId}/locations`,
                 // optionValue: "id",
                 // optionLabel: "name",
                 // async: true,
@@ -53,7 +32,7 @@ const TeamsAdd = (props) => {
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
-                target: `users?company_id=${companyID}?limit=1000`,
+                target: `${props.branchId}/users`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,
@@ -63,7 +42,7 @@ const TeamsAdd = (props) => {
             user_id: {
                 type: 'advanceSelect',
                 label: "Users",
-                target: `users?company_id=${companyID}?limit=1000`,
+                target: `${props.branchId}/users`,
                 optionLabel: 'username',
                 required: true,
                 // async: true,
@@ -81,7 +60,7 @@ const TeamsAdd = (props) => {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="teams"
+                        targetEntity={`${props.branchId}/teams`}
                         // getValues={handleValue}
                         fields={fields}
                         targetId={id}
