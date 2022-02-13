@@ -7,25 +7,13 @@ const TeamsList = (props) => {
     const [query, setQuery] = useState(false);
     useEffect(() => {
       setQuery((prev) => !prev);
-    });
+    }, [props.branchId]);
 
 		const columns = [
 			{ dataField: 'id', text: 'ID', align: 'center', sort: true },
 			{
 				dataField: 'name',
 				text: 'Name',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'supervisor.username',
-				text: 'Supervisor Name',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'branch.name',
-				text: 'Branch Name',
 				align: 'center',
 				sort: true
 			},
