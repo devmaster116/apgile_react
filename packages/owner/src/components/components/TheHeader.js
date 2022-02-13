@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch, connect} from "react-redux";
-import {changeBranch, setReduxData} from "../Redux/BranchActions";
+import {changeBranch} from "../Redux/BranchActions";
 import Select from 'react-select';
 import api from "@evenlogics/whf-api";
 import {
@@ -28,17 +28,9 @@ const TheHeader = (props) => {
         api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
-                setOptions(optionsArr)
+                setOptions(optionsArr);
 
-                if (optionsArr.length > 0) {
-                    props.changeBranch(optionsArr[0]);
-                }
             }).catch((error) => console.log(error));
-        roled !== undefined && setInitialData({
-            companyName: ls?.company?.name,
-            companyId: ls?.company?.id,
-            userRole: roled[0]
-        });
     }, []);
     /* eslint-enable */
     const dispatch = useDispatch();
@@ -63,9 +55,6 @@ const TheHeader = (props) => {
 
     const onBranchChange = (data) => {
         props.changeBranch(data);
-    }
-    const setInitialData = (data) => {
-        props.setReduxData(data);
     }
 
     return (
@@ -133,8 +122,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeBranch: (valueObj) => dispatch(changeBranch(valueObj)),
-        setReduxData: (valueObj) => dispatch(setReduxData(valueObj))
+        changeBranch: (valueObj) => dispatch(changeBranch(valueObj))
     }
 }
 

@@ -16,6 +16,7 @@ const TeamsAdd = (props) => {
       setQuery((prev) => !prev);
    },[companyID, props.branchId]);
 
+    console.log(props.branchId, 'branch');
         const {id} = props.match.params;
         const extraVals =  {
             branch_id: props.branchId
@@ -69,13 +70,7 @@ const TeamsAdd = (props) => {
                 multi:true,
                 name: 'user_id',
                 col: 4
-            },
-            branch_id: {
-                type: 'hidden',
-                // async: true,
-                name: 'branch_id',
-                col: 4
-            },
+            }
 
         };
 

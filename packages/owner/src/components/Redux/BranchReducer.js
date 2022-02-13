@@ -12,19 +12,23 @@ const BranchReducer = (state = initialState, action) => {
         console.log(action?.payload,"CHANGE_BRANCH");
       return {
         ...state,
-          selectedBranchId : action.payload.value,         
-          // companyName : action.payload.companyName,         
-          // companyId : action.payload.companyId,         
-          // userRole : action.payload.userRole,         
+          selectedBranchId : action.payload.value
       };
-      case "SET_REDUX_DATA" : 
+    case "SET_COMPANY":
+      console.log(action?.payload,"SET_COMPANY");
+      return {
+        ...state,
+        companyName : action.payload.name,
+        companyId : action.payload.id,
+      };
+      case "SET_REDUX_DATA" :
       console.log(action?.payload,"SET_REDUX_DATA");
       return {
         ...state,
-          // selectedBranchId : action.payload.value,         
-          companyName : action.payload.companyName,         
-          companyId : action.payload.companyId,         
-          userRole : action.payload.userRole,         
+          selectedBranchId : action.payload.selectedBranchId,
+          companyName : action.payload.companyName,
+          companyId : action.payload.companyId,
+          userRole : action.payload.userRole,
       };
 
     default:

@@ -9,9 +9,9 @@ const store = createStore(BranchReducer, persistedState);
 store.subscribe(throttle(() => {
     saveState({
         selectedBranchId : store.getState().selectedBranchId,
-        // companyName : action.payload.companyName,
-        // companyId : action.payload.companyId,
-        // userRole : action.payload.userRole,
+        companyName : store.getState().companyName,
+        companyId : store.getState().companyId,
+        userRole : store.getState().userRole,
     });
 }, 1000));
 
