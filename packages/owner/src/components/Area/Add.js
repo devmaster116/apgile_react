@@ -3,6 +3,7 @@ import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import api from "@evenlogics/whf-api";
+import {connect} from "react-redux";
 
 
 const Add = (props) => {
@@ -52,14 +53,14 @@ const Add = (props) => {
       col: 4,
     },
 
-    branch_id: {
-      type: "advanceSelect",
-      label: "Select Branch",
-      target: "branches",
-      name: "branch_id",
-      col: 4,
-      required: true,
-    },
+    // branch_id: {
+    //   type: "advanceSelect",
+    //   label: "Select Branch",
+    //   target:`owner/${props.companyId}/all`,
+    //   name: "branch_id",
+    //   col: 4,
+    //   required: true,
+    // },
     user_id: {
       type: 'advanceSelect',
       label: "Users",
@@ -78,18 +79,18 @@ const Add = (props) => {
       name: "area",
       col: 4,
       schema: {
-        item_id: {
-          type: "advanceSelect",
-          label: "Select Item Type",
-          required:true,
-          target: "items",
-          name: "item_id",
-          col: 6,
-          optionValue: 'id',
-          optionLabel: 'name',
-          async:true,
-          callback : (row,col) => handleTarget(row,col)
-        },
+        // item_id: {
+        //   type: "advanceSelect",
+        //   label: "Select Item Type",
+        //   required:true,
+        //   target: "items",
+        //   name: "item_id",
+        //   col: 6,
+        //   optionValue: 'id',
+        //   optionLabel: 'name',
+        //   async:true,
+        //   callback : (row,col) => handleTarget(row,col)
+        // },
         page_id: {
           type: "advanceSelect",
           label: "Item#",
@@ -144,4 +145,13 @@ const Add = (props) => {
   );
 };
 
-export default Add;
+const mapStateToProps = state => {
+  return {
+    branchId : state.selectedBranchId,
+    companyId : state.companyId,
+
+    }
+}
+
+
+export default connect(mapStateToProps,null)(Add);

@@ -6,11 +6,9 @@ import {connect} from "react-redux";
 
 const Add = (props) => {
 
-  // const [companyID, setCompanyID] = useState(null)
-    // const [company, setCompany] = useState(null)
-  	const [query, setQuery] = useState(false);
-   useEffect(() => {
-    setQuery((prev)=>!prev);
+	const [query, setQuery] = useState(false);
+  useEffect(() => {
+    setQuery((prev) => !prev);
   }, [props.branchId]);
 
 const {id} = props.match.params;
@@ -50,7 +48,7 @@ const fields = {
         <Header title="Add New Shift" />
         <CardBody>
           <FormGenerator
-            targetEntity="shifts"
+            targetEntity={`${props.branchId}/shifts`}
             // getValues={this.handleValue}
             fields={fields}
             targetId={id}
@@ -71,9 +69,6 @@ const fields = {
 const mapStateToProps = state => {
   return {
       branchId : state.selectedBranchId,
-      companyName : state.companyName,
-      companyId : state.companyId,
-      userRole : state.userRole
   }
 }
 
