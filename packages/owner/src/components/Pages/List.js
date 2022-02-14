@@ -19,7 +19,7 @@ const List = (props) => {
     let bool = true;
     if (ID !== 0) {
        setLoader(bool)
-        api.request("get", `/pages/${ID}`)
+        api.request("get", `/${props?.branchId}/pages/${ID}`)
           .then(({ data }) => {
             setPages(data)
             setShow(true);
@@ -154,7 +154,7 @@ const List = (props) => {
   ];
 
   const downloadPdf = (id) => {
-    api.request("get", `/pages/${id}/generate-pdf`)
+    api.request("get", `/${props?.branchId}/pages/${id}/generate-pdf`)
     .then(({ data }) => {
       var link = document.createElement('a');
       link.href = data?.pdf_qr_codes?.url;

@@ -17,7 +17,7 @@ const {id} = props.match.params;
     week_day: {
       type: 'advanceSelect',
       label: "Week Day",
-      target: `public/week-day-list`,
+      target: `${props.branchId}/week-day-list`,
       // async: true,
       name: 'week_day',
       // multi:true,
@@ -42,7 +42,7 @@ const {id} = props.match.params;
         <Header title="Add New Roaster" />
         <CardBody>
           <FormGenerator
-            targetEntity="rosters"
+            targetEntity={`${props.branchId}/rosters`}
             fields={fields}
             targetId={id}
             name="rosters"

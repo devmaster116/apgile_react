@@ -66,10 +66,10 @@ const Add = (props) => {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          target:`${props.branchId}/items/pages`,
+          target:`${props.branchId}/items-pages`,
           required: true,
-          optionValue: 'id',
-          optionLabel: 'name',
+          // optionValue: 'id',
+          // optionLabel: 'name',
           col: 12,
         },
     
@@ -97,12 +97,14 @@ const Add = (props) => {
         <Header title="Add New Area"/>
         <CardBody>
           <FormGenerator
-            targetEntity="areas"
+            targetEntity={`${props.branchId}/areas`}
             fields={fields}
             targetId={id}
             name="areas"
             repeater={true}
-            redirect="/area"
+            redirect="areas"
+            extraVals={{branch_id: props.branchId}}
+
           />
         </CardBody>
       </Card>

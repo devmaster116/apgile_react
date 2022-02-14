@@ -44,6 +44,10 @@ const TeamsAdd = (props) => {
                 label: "Users",
                 target: `${props.branchId}/users`,
                 optionLabel: 'username',
+                optionValue: "id",
+                key:'username',
+
+                // optionId: 'id',
                 required: true,
                 // async: true,
                 multi:true,
