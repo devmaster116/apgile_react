@@ -133,12 +133,13 @@ const routes = [
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
 	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
+	{path : "/users/:id/edit" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 
-	
-	
-	
-	
-	
+
+
+
+
+
 	// { path: '/staff', exact : true,roles:['admin'],component: StaffList},
 	// { path: '/staff/add', exact : true,component: StaffAdd},
 	// { path: '/staff/:id/edit', exact : true,component: StaffAdd},
@@ -178,7 +179,7 @@ const routes = [
 	// { path: '/setting', exact : true,component: SettingList,isPublic: false},
 	// { path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
 	// { path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
-	
+
 
 ];
 
