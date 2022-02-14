@@ -3,31 +3,24 @@ import React from "react";
 import UserAdd from "@evenlogics/whf-ra-user/dist/User/Add";
 
 const Add = (props) =>  {
-    // let id = props.match.params;
     let fields = {
          username: {
           type: 'text',
-          label: 'title',
+          label: 'username',
           required: true,
-          // parent: 'address',
-          name: 'title',
           col: 6
         },
         first_name:{
             col:6,
             type:"text",
-            label:"first name",        
+            label:"first name",
         },
         last_name:{
             col:6,
             type:"text",
-            label:"last name",        
+            label:"last name",
         },
-        // lat: {},
-        // lng: {},
-        // state:false,  
-        // addr:false,
-      
+
         roles: {
             type: 'advanceSelect',
             target: 'roles',
@@ -47,7 +40,7 @@ const Add = (props) =>  {
             col:6,
             type:"advanceSelect",
             target:"branches",
-            label:"select branch",
+            label:"Select Branch",
             name:"branch_id"
         },
         gender_id:{
@@ -60,11 +53,11 @@ const Add = (props) =>  {
            ],
             label:"select gender"
         }
-       
+
     }
 
-    let deleteFields =['permissions','lang']; 
-    return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} noEdit={false} />;
+    let deleteFields =['permissions','lang'];
+    return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} match={props.match} />;
 
 }
 

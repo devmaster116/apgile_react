@@ -8,14 +8,14 @@ const ExtendBranchAdd = (props) =>  {
         phone1:{
             col:6,
             type:"text",
-            label:"phone",    
-            required:true,    
+            label:"phone",
+            required:true,
             name:"phone1"
         },
         phone2:{
             col:6,
             type:"text",
-            required:true,    
+            required:true,
             label:"secondary phone no",
             name:"phone2"
 
@@ -28,11 +28,11 @@ const ExtendBranchAdd = (props) =>  {
             col:6,
             label:"Select Company"
         }
-       
+
     }
 
-    let deleteFields =['lat','lng',"addr2","state"]; 
-    return <BranchAdd deleteFields = {deleteFields} extendedFields={fields} noEdit={false} />;
+    let deleteFields =['lat','lng',"addr2","state"];
+    return <BranchAdd deleteFields = {deleteFields} extendedFields={fields} noEdit={false} match={props.match} />;
 
 }
 
