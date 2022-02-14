@@ -42,20 +42,14 @@ const columns = [
           <CardBody>
             <RemoteTable
               entity={`${props?.branchId}/rosters`}
-              customEntity={`${props?.branchId}/rosters`}
+              customEntity={`rosters`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
               hideDetail={false}
               hideDelete={false}
               addRoute="/roasters/add"
-            //   customButton={{
-            //     name: "Download PDF",
-            //     color: "warning",
-            //     callback: downloadPdf,
-            //   }}
-            //   Query={query}
-            //   query={queryParams}
+              Query={query}
             />
           </CardBody>
         </Card>
@@ -67,9 +61,6 @@ const columns = [
 const mapStateToProps = state => {
   return {
     branchId : state.selectedBranchId,
-    companyName : state.companyName,
-    companyId : state.companyId,
-    userRole : state.userRole
     }
 }
 

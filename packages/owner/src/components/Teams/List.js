@@ -40,7 +40,7 @@ const TeamsList = (props) => {
 							entity={`${props?.branchId}/teams` }
 							// entity="teams"
 							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
-							customEntity={`${props?.branchId}/teams`}
+							customEntity={`teams`}
 							hideActionCol={ props?.userRole === "supervisor" ? true : false}
 							columns={columns}
 							Query={query}

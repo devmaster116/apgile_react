@@ -50,20 +50,7 @@ const columns = [
 
 ];
 
-const calculateParams = () => {
-  let params ;
-  if(props?.branchId === null){
-     params = {
-      company_id:props?.companyId
-    }
-  }else{
-    params = {
-      // company_id:props?.companyId,
-      branch_id:props?.branchId
-    }
-  }
-  return params;
-}
+
 
   return (
     <div>

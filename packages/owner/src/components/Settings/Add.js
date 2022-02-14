@@ -1,33 +1,14 @@
-import React, { useState,useEffect }  from 'react';
+import React  from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
+import {connect} from "react-redux";
+
 
 const Add = (props) => {
 
-  const [companyID, setCompanyID] = useState(null)
-	useEffect(() => {
-	  let ls =  JSON.parse(localStorage.getItem('currentUser'));
-	  setCompanyID(ls?.company?.id);
-   },[companyID]);
-
-   console.log(companyID,"llll");
-    
         const {id} = props.match.params;
 
-        
-
         const fields = {
-
-          branch_id :{
-              type: "advanceSelect",
-              label: "Branch",
-              target: `branches/${companyID}/all?limit=1000`,
-              // optionLabel: 'title',
-              async: true,
-              required: true,
-              name: "branch_id",
-              col: 6,
-          },
           wait_time: {
             type: "text",
             label: "Wait Time",
@@ -67,14 +48,14 @@ const Add = (props) => {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="branch-settings"
+                        targetEntity={`${props.branchId}/branch-settings`}
                         // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
                         name="items"
                         repeater={true}
                         initialValues={props.location.aboutProps}
-                        
+                        extraVals={{branch_id: props.branchId}}
                         redirect="setting"
                         handleSameValueFields={['title', 'slug']}
                     />
@@ -84,4 +65,11 @@ const Add = (props) => {
     
 }
 
-export default Add;
+const mapStateToProps = state => {
+	return {
+		branchId : state.selectedBranchId,
+	  }
+  }
+
+
+export default connect(mapStateToProps,null)(Add);

@@ -64,7 +64,7 @@ const List = (props) => {
               // entity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
               // customEntity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
               entity={`${props?.branchId}/areas`}
-              customEntity={`${props?.branchId}/areas`}
+              customEntity={`areas`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}

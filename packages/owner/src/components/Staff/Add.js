@@ -5,11 +5,10 @@ import {connect} from "react-redux";
 
 const ItemAdd = (props) => {
 
-    const [companyID, setCompanyID] = useState(null)
-    useEffect(() => {
-        let ls = JSON.parse(localStorage.getItem('currentUser'));
-        setCompanyID(ls?.company?.id);
-    }, [companyID]);
+    const [query, setQuery] = useState(false)
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+	}, [props.branchId]);
 
     const {id} = props.match.params;
 
@@ -128,7 +127,7 @@ const ItemAdd = (props) => {
 
                     redirect="staff"
                     handleSameValueFields={['title', 'slug']}
-
+                    Query={query}
                     extraVals={{branch_id: props.branchId}}
                 />
             </CardBody>

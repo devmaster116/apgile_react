@@ -66,7 +66,7 @@ const routes = [
 
 	{ path: '/roasters', exact : true,component: RoastersList,isPublic: false},
 	{ path: '/roasters/add', exact : true,component: RoasterAdd,isPublic: false},
-	{ path: '/roasters/:id/edit', exact : true,component: RoasterAdd,isPublic: false},
+	{ path: '/rosters/:id/edit', exact : true,component: RoasterAdd,isPublic: false},
 
 	
 	{ path: '/locations', exact : true,component: LocationsList,isPublic: false},

@@ -15,25 +15,8 @@ const Add = (props) => {
 
   useEffect(() => {
     console.log("working render");
-  }, [options]);
+  }, [props.branchId]);
   
-
-
-  const handleTarget = (row,col)=> {
-    
-     console.log(col?.value,'kkk');
-     api.request("get",`/items/${col?.value}/pages`)
-        .then(({data}) => {
-            console.log(data,"item data")
-           let optionsArr =  data?.map((detail)=>(
-                {value:detail?.id,label:detail?.name}
-            ))
-            setOptions(optionsArr)
-        })
-        .catch((error) => console.log(error));
- 
-   
-  } 
 
   console.log(options,"options");
   let fields = {
@@ -64,7 +47,7 @@ const Add = (props) => {
     user_id: {
       type: 'advanceSelect',
       label: "Users",
-      target: 'users',
+      target: `${props.branchId}/users`,
       optionLabel: 'username',
       required: true,
       // async: true,
@@ -77,32 +60,17 @@ const Add = (props) => {
       condition: true,
       label: "Area",
       name: "area",
-      col: 4,
+      col: 12,
       schema: {
-        // item_id: {
-        //   type: "advanceSelect",
-        //   label: "Select Item Type",
-        //   required:true,
-        //   target: "items",
-        //   name: "item_id",
-        //   col: 6,
-        //   optionValue: 'id',
-        //   optionLabel: 'name',
-        //   async:true,
-        //   callback : (row,col) => handleTarget(row,col)
-        // },
         page_id: {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          // target:targetPoint,
+          target:`${props.branchId}/items/pages`,
           required: true,
-          // key:'target',
-          // optionValue: 'id',
-          // optionLabel: 'name',
-          options: options,
-          col: 6,
-          // async:true
+          optionValue: 'id',
+          optionLabel: 'name',
+          col: 12,
         },
     
       },
@@ -130,14 +98,11 @@ const Add = (props) => {
         <CardBody>
           <FormGenerator
             targetEntity="areas"
-            // getValues={this.handleValue}
             fields={fields}
             targetId={id}
             name="areas"
             repeater={true}
-            // initialValues={props.location.aboutProps}
             redirect="/area"
-            // handleSameValueFields={["name"]}
           />
         </CardBody>
       </Card>

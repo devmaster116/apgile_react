@@ -1,12 +1,17 @@
-import React, {Component} from 'react';
+import React,  { useState,useEffect } from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {withTranslation} from 'react-i18next';
+import {connect} from "react-redux";
 
-class ItemAdd extends Component {
 
-    render() {
-        const {id} = this.props.match.params;
+const ItemAdd = (props) => {
+
+  const [query, setQuery] = useState(false);
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+		}, [props.branchId]);
+
+        const {id} = props.match.params;
 
         const fields = {
           name: {
@@ -33,7 +38,7 @@ class ItemAdd extends Component {
           location_id: {
             type: "advanceSelect",
             label: "Location",
-            target: "locations?limit=1000",
+            target: `${props.branchId}/locations?limit=1000`,
             // optionLabel: 'title',
             async: true,
             required: true,
@@ -50,13 +55,13 @@ class ItemAdd extends Component {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="items"
-                        getValues={this.handleValue}
+                        targetEntity={`${props.branchId}/items`}
+                        // getValues={handleValue}
                         fields={fields}
                         targetId={id}
                         name="items"
                         repeater={true}
-                        initialValues={this.props.location.aboutProps}
+                        initialValues={props.location.aboutProps}
                         
                         redirect="items"
                         handleSameValueFields={['title', 'slug']}
@@ -65,6 +70,13 @@ class ItemAdd extends Component {
             </Card>
         );
     }
-}
 
-export default withTranslation()(ItemAdd);
+
+const mapStateToProps = state => {
+	return {
+		branchId : state.selectedBranchId,
+	  }
+  }
+
+
+export default connect(mapStateToProps,null)(ItemAdd);

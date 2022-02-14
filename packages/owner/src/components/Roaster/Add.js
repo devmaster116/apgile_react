@@ -1,35 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import {connect} from "react-redux";
 
 const Add = (props) => {
+
+  // const [query, setQuery] = useState(false);
+  // useEffect(() => {
+  //   setQuery((prev) => !prev);
+  // }, [props.branchId]);
+  
+
 const {id} = props.match.params;
   let fields = {
     week_day: {
       type: 'advanceSelect',
       label: "Week Day",
-      target: 'rosters/week-day-list',
+      target: `public/week-day-list`,
       // async: true,
       name: 'week_day',
       // multi:true,
       required: true,
       col: 4
   },
-    branch_id: {
-      type: 'advanceSelect',
-      label: "Branch",
-      target: 'branches',
-      // async: true,
-      name: 'branch_id',
-      required: true,
-      col: 4
-  },
-
   shift_id: {
     type: 'advanceSelect',
     label: "Shifts",
-    target: 'shifts',
+    target: `${props.branchId}/shifts`,
     // async: true,
     name: 'shift_id',
     required: true,
@@ -48,11 +46,8 @@ const {id} = props.match.params;
             fields={fields}
             targetId={id}
             name="rosters"
-            // getInitialValues={this.getInitialValues}
-            // debug={false}
-            // extraVals={extraVals}
+            extraVals={{branch_id: props.branchId}}
             redirect="roasters"
-            // repeater={true}
           />
         </CardBody>
       </Card>
@@ -60,4 +55,11 @@ const {id} = props.match.params;
   );
 };
 
-export default Add;
+const mapStateToProps = state => {
+  return {
+    branchId : state.selectedBranchId,
+    }
+}
+
+
+export default connect(mapStateToProps,null)(Add);

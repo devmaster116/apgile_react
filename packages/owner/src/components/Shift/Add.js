@@ -8,6 +8,7 @@ const Add = (props) => {
 
 	const [query, setQuery] = useState(false);
   useEffect(() => {
+    console.log(query)
     setQuery((prev) => !prev);
   }, [props.branchId]);
 
@@ -39,9 +40,9 @@ const fields = {
       col: 4
   },
 };
-// const extraVals = {
-//   company_id : companyID
-// }
+const extraVals = {
+  branch_id : props.branchId
+}
   return (
     <div>
       <Card className="animated fadeIn">
@@ -49,16 +50,11 @@ const fields = {
         <CardBody>
           <FormGenerator
             targetEntity={`${props.branchId}/shifts`}
-            // getValues={this.handleValue}
             fields={fields}
             targetId={id}
             name="shifts"
-            // repeater={true}
-            // initialValues={props.location.aboutProps}
             redirect="shifts"
-            // handleSameValueFields={["title", "slug"]}
-            // extraVals={extraVals}
-
+            extraVals={extraVals}
           />
         </CardBody>
       </Card>

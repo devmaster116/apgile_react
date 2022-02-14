@@ -20,6 +20,7 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
+    // const [options, setOptions] = useState([]);
     /* eslint-disable */
     useEffect(() => {
         let ls = JSON.parse(localStorage.getItem('currentUser'));
@@ -29,7 +30,9 @@ const TheHeader = (props) => {
             .then(({data}) => {
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
                 setOptions(optionsArr);
-
+                // if (optionsArr.length > 0) {
+                //     props.changeBranch(optionsArr[0]);
+                // }
             }).catch((error) => console.log(error));
     }, []);
     /* eslint-enable */
@@ -87,6 +90,7 @@ const TheHeader = (props) => {
                     classNamePrefix="select"
                     onChange={onBranchChange}
                     options={options}
+                    // value={options[0]}
                 />}
             </CHeaderNav>
 

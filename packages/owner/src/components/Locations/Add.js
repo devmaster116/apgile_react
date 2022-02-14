@@ -1,12 +1,16 @@
-import React, {Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {withTranslation} from 'react-i18next';
+import {connect} from "react-redux";
 
-class LocationsAdd extends Component {
+const LocationsAdd = (props) =>  {
 
-    render() {
-        const {id} = this.props.match.params;
+    const [query, setQuery] = useState(false);
+    useEffect(() => {
+      setQuery((prev) => !prev);
+    }, [props.branchId]);
+
+        const {id} = props.match.params;
 
         const fields = {
             name: {
@@ -22,15 +26,15 @@ class LocationsAdd extends Component {
                 name: 'description',
                 col: 6
             },
-            branch_id: {
-                type: 'advanceSelect',
-                label: "Branch",
-                target: 'branches',
-                async: true,
-                required:true,
-                name: 'branch_id',
-                col: 6
-            },
+            // branch_id: {
+            //     type: 'advanceSelect',
+            //     label: "Branch",
+            //     target: 'branches',
+            //     async: true,
+            //     required:true,
+            //     name: 'branch_id',
+            //     col: 6
+            // },
          
         };
 
@@ -41,21 +45,27 @@ class LocationsAdd extends Component {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity="locations"
-                        getValues={this.handleValue}
+                        targetEntity={`${props.branchId}/locations`}
+                        // getValues={handleValue}
                         fields={fields}
                         targetId={id}
                         name="locations"
-                        repeater={true}
-                        // initialValues={this.props.location.aboutProps}
-                        
+                        // repeater={true}
+                        // initialValues={props.location.aboutProps}
+                        extraVals={{branch_id: props.branchId}}
                         redirect="locations"
-                        handleSameValueFields={['title', 'slug']}
+                        // handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
         );
-    }
 }
 
-export default withTranslation()(LocationsAdd);
+const mapStateToProps = state => {
+    return {
+       branchId : state.selectedBranchId,
+      
+      }
+}
+
+export default connect(mapStateToProps,null)(LocationsAdd);
