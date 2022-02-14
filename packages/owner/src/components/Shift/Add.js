@@ -2,16 +2,16 @@ import React, { useState,useEffect } from 'react';
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import {connect} from "react-redux";
 
 const Add = (props) => {
 
-  const [companyID, setCompanyID] = useState(null)
+  // const [companyID, setCompanyID] = useState(null)
     // const [company, setCompany] = useState(null)
-    useEffect(() => {
-      let ls =  JSON.parse(localStorage.getItem('currentUser'));
-      setCompanyID(ls?.company?.id);
-      // setCompany(ls?.company);
-   },[companyID])
+  	const [query, setQuery] = useState(false);
+   useEffect(() => {
+    setQuery((prev)=>!prev);
+  }, [props.branchId]);
 
 const {id} = props.match.params;
 
@@ -26,7 +26,7 @@ const fields = {
   team_id: {
       type: 'advanceSelect',
       label: "Team",
-      target: 'teams?limit=1000',
+      target: `${props.branchId}/teams?limit=1000`,
       async: true,
       name: 'team_id',
       multi:true,
@@ -41,9 +41,9 @@ const fields = {
       col: 4
   },
 };
-const extraVals = {
-  company_id : companyID
-}
+// const extraVals = {
+//   company_id : companyID
+// }
   return (
     <div>
       <Card className="animated fadeIn">
@@ -59,7 +59,7 @@ const extraVals = {
             // initialValues={props.location.aboutProps}
             redirect="shifts"
             // handleSameValueFields={["title", "slug"]}
-            extraVals={extraVals}
+            // extraVals={extraVals}
 
           />
         </CardBody>
@@ -68,4 +68,13 @@ const extraVals = {
   );
 };
 
-export default Add;
+const mapStateToProps = state => {
+  return {
+      branchId : state.selectedBranchId,
+      companyName : state.companyName,
+      companyId : state.companyId,
+      userRole : state.userRole
+  }
+}
+
+export default connect(mapStateToProps,null)(Add);

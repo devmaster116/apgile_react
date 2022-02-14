@@ -165,20 +165,20 @@ const List = (props) => {
     .catch((error) => console.log(error));
   }
 
-  const calculateParams = () => {
-    let params ;
-    if(props?.branchId === null){
-       params = {
-      company_id:props?.companyId
-      }
-    }else{
-      params = {
-      company_id:props?.companyId,
-      branch_id:props?.branchId
-      }
-    }
-    return params;
-    }
+  // const calculateParams = () => {
+  //   let params ;
+  //   if(props?.branchId === null){
+  //      params = {
+  //     company_id:props?.companyId
+  //     }
+  //   }else{
+  //     params = {
+  //     company_id:props?.companyId,
+  //     branch_id:props?.branchId
+  //     }
+  //   }
+  //   return params;
+  //   }
 
 
   return (
@@ -190,8 +190,8 @@ const List = (props) => {
             <RemoteTable
               // entity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
               // customEntity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
-              entity={`pages`}
-              customEntity={`pages`}
+              entity={`${props?.branchId}/pages`}
+              customEntity={`${props?.branchId}/pages`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={true}
@@ -207,7 +207,7 @@ const List = (props) => {
                 // filters={ userRole?.includes("supervisor") ? null : filters}
                 showAdvanceFilters = {true}
                 Query={query}
-                query={calculateParams()}
+                // query={calculateParams()}
 
             />
 

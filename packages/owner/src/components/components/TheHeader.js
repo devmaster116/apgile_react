@@ -24,7 +24,7 @@ const TheHeader = (props) => {
     useEffect(() => {
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         let roled = ls?.roles?.map(role => role)
-
+         console.log(ls,"ls")
         api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))

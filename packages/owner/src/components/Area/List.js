@@ -13,20 +13,20 @@ const List = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-  const calculateParams = () => {
-    let params ;
-    if(props?.branchId === null){
-       params = {
-      company_id:props?.companyId
-      }
-    }else{
-      params = {
-      company_id:props?.companyId,
-      branch_id:props?.branchId
-      }
-    }
-    return params;
-    }
+  // const calculateParams = () => {
+  //   let params ;
+  //   if(props?.branchId === null){
+  //      params = {
+  //     company_id:props?.companyId
+  //     }
+  //   }else{
+  //     params = {
+  //     company_id:props?.companyId,
+  //     branch_id:props?.branchId
+  //     }
+  //   }
+  //   return params;
+  //   }
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
@@ -61,8 +61,10 @@ const List = (props) => {
           <CardBody>
             <RemoteTable
 
-              entity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
-              customEntity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
+              // entity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
+              // customEntity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
+              entity={`${props?.branchId}/areas`}
+              customEntity={`${props?.branchId}/areas`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
@@ -70,7 +72,7 @@ const List = (props) => {
               hideDelete={false}
               addRoute="/areas/add"
               Query={query}
-              query={calculateParams()}
+              // query={calculateParams()}
             />
           </CardBody>
         </Card>

@@ -58,7 +58,7 @@ const calculateParams = () => {
     }
   }else{
     params = {
-      company_id:props?.companyId,
+      // company_id:props?.companyId,
       branch_id:props?.branchId
     }
   }
@@ -72,7 +72,7 @@ const calculateParams = () => {
           <Header title="All Shifts" />
           <CardBody>
             <RemoteTable
-              entity={`shifts`}
+              entity={`${props?.branchId}/shifts`}
               customEntity={`shifts`}
               columns={columns}
               sort={defaultSorted}
@@ -81,7 +81,7 @@ const calculateParams = () => {
               hideDelete={false}
               addRoute="/shifts/add"
               Query={query}
-              query={calculateParams()}
+              // query={calculateParams()}
             />
           </CardBody>
         </Card>

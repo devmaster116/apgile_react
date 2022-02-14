@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {connect} from "react-redux";
 import RemoteTable from "@evenlogics/whf-remote-table";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 
+const List = (props) => {
+  const [query, setQuery] = useState(false)
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+	}, [props.branchId]);
 
-const defaultSorted = [{ dataField: "id", order: "desc" }];
+  const defaultSorted = [{ dataField: "id", order: "desc" }];
 const columns = [
   {
     dataField: "id",
@@ -26,43 +32,8 @@ const columns = [
     align: "center",
     sort: true,
   },
-  // {
-  //   dataField: "branch.phone1",
-  //   text: "Branch Phone",
-  //   align: "center",
-  //   sort: true,
-  // },
-  
-  // {
-  //   dataField: "title",
-  //   text: "Title",
-  //   align: "center",
-  //   sort: true,
-  // },
- 
-  // {
-  //   dataField: "description",
-  //   text: "Description",
-  //   align: "center",
-  //   sort: true,
-  // },
-  // {
-  //   dataField: "valid_from",
-  //   text: "valid_from",
-  //   align: "center",
-  //   sort: true,
-  // },
-  // {
-  //   dataField: "valid_till",
-  //   text: "valid_till",
-  //   align: "center",
-  //   sort: true,
-  // },
-  
- 
 ];
 
-const List = () => {
   return (
     <div>
       <div>
@@ -70,8 +41,8 @@ const List = () => {
           <Header title="All roasters" />
           <CardBody>
             <RemoteTable
-              entity="rosters"
-              customEntity="rosters"
+              entity={`${props?.branchId}/rosters`}
+              customEntity={`${props?.branchId}/rosters`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
@@ -93,4 +64,14 @@ const List = () => {
   );
 };
 
-export default List;
+const mapStateToProps = state => {
+  return {
+    branchId : state.selectedBranchId,
+    companyName : state.companyName,
+    companyId : state.companyId,
+    userRole : state.userRole
+    }
+}
+
+
+export default connect(mapStateToProps,null)(List);

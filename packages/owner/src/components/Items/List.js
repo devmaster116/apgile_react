@@ -47,20 +47,20 @@ const ItemsList = (props) => {
 			}
 		];
 
-		const calculateParams = () => {
-			let params ;
-			if(props?.branchId === null){
-			   params = {
-				company_id:props?.companyId
-			  }
-			}else{
-			  params = {
-				company_id:props?.companyId,
-				branch_id:props?.branchId
-			  }
-			}
-			return params;
-		  }
+		// const calculateParams = () => {
+		// 	let params ;
+		// 	if(props?.branchId === null){
+		// 	   params = {
+		// 		company_id:props?.companyId
+		// 	  }
+		// 	}else{
+		// 	  params = {
+		// 		company_id:props?.companyId,
+		// 		branch_id:props?.branchId
+		// 	  }
+		// 	}
+		// 	return params;
+		//   }
 
 		return (
 			<div className="animated">
@@ -70,14 +70,14 @@ const ItemsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`items`}
-							customEntity={`items`}
+							entity={`${props?.branchId}/items`}
+							customEntity={`${props?.branchId}/items`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/items/add"
 							{...props.remoteTableFields}
 							Query={query}
-							query={calculateParams()}
+							// query={calculateParams()}
 						/>
 					</CardBody>
 				</Card>

@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
+import {connect} from "react-redux";
 
 const List = (props) => {
+
+	const [query, setQuery] = useState(false)
+
+	useEffect(() => {
+		setQuery((prev)=>!prev)
+	}, [props.branchId]);
 
 		const columns = [
 			{
@@ -62,8 +69,8 @@ const List = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity="branch-settings"
-							customEntity="branch-settings"
+							entity={`${props?.branchId}/branch-settings`}
+							customEntity={`${props?.branchId}/branch-settings`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/setting/add"
@@ -75,4 +82,14 @@ const List = (props) => {
 		);
 	
 }
-export default List;
+const mapStateToProps = state => {
+	return {
+	  branchId : state.selectedBranchId,
+	  companyName : state.companyName,
+	  companyId : state.companyId,
+	  userRole : state.userRole
+	  }
+  }
+  
+  
+  export default connect(mapStateToProps,null)(List);

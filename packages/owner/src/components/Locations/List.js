@@ -71,14 +71,14 @@ const LocationsList  = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`locations`}
+							entity={`${props?.branchId}/locations`}
 							customEntity={`locations`}
 							columns={columns}
 							sort={defaultSorted}
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}
-							query={calculateParams()}
+							
 							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>

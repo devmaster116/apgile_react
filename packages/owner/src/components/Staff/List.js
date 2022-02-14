@@ -10,6 +10,8 @@ const ItemsList = (props) => {
         setQuery((prev) => !prev);
     }, [props.branchId]);
 
+    console.log(props?.branchId,"branchid")
+
     const columns = [
         {
             dataField: "id",
