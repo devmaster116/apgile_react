@@ -8,12 +8,12 @@ const Add = (props) => {
 
 	const [query, setQuery] = useState(false);
   useEffect(() => {
-    console.log(query)
+    
     setQuery((prev) => !prev);
   }, [props.branchId]);
 
 const {id} = props.match.params;
-
+console.log(query)
 const fields = {
   name: {
       type: 'text',

@@ -29,51 +29,12 @@ const List = (props) => {
           })
           .catch((error) => console.log(error));
     }
-  }, [ID])
+  }, [ID,props.branchId])
 
 
 	useEffect(() => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
-
-
-// const filters = {
-//   company_id: {
-//     type: 'advanceSelect',
-//     optionValue: 'id',
-//     optionLabel: 'name',
-//     label: "Company",
-//     target: 'companies?limit=1000',
-//     async: true,
-//     name: "company_id",
-//     callback:(data,col)=>{
-//       setTimeout(() => {
-//       console.log(col,"data")
-//       setBranchTarget(`branches?limit=1000&company_id=${col?.value}`)
-//     }, 0)}
-//     // required: true,
-
-//   },
-//   branch_id: {
-//     type: "advanceSelect",
-//     label: "Branch",
-//     target: branchTarget,
-//     callback:(data,col)=>{setItemTypeTarget(`items?limit=1000?item_type_id=${col?.value}`)},
-//     async: true,
-//     name: "branch_id",
-//     // required: true,
-
-//   },
-//   item_type: {
-//     type: "advanceSelect",
-//     label: "Item",
-//     target: itemTypeTarget,
-//     async: true,
-//     name: "item_type",
-//     // required: true,
-
-//   },
-// }
 
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];

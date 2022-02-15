@@ -37,7 +37,9 @@ const TheHeader = (props) => {
     }, []);
     /* eslint-enable */
     const dispatch = useDispatch();
+      /* eslint-disable */
     const asideShow = useSelector((state) => state.asideShow);
+   /* eslint-enable */  
     const darkMode = useSelector((state) => state.darkMode);
     const sidebarShow = useSelector((state) => state.sidebarShow);
 

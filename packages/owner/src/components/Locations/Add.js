@@ -9,7 +9,7 @@ const LocationsAdd = (props) =>  {
     useEffect(() => {
       setQuery((prev) => !prev);
     }, [props.branchId]);
-
+    console.log(query,"query")
         const {id} = props.match.params;
 
         const fields = {

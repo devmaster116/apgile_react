@@ -48,7 +48,7 @@ class TeamsAdd extends Component {
             },
             user_id: {
                 type: 'advanceSelect',
-                label: "Users",
+                label: "Team Members",
                 target: 'users',
                 optionLabel: 'username',
                 required: true,

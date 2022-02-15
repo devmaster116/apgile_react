@@ -1,11 +1,13 @@
 import React, {useEffect} from "react";
 import api from "@evenlogics/whf-api";
 import {Watch} from "react-loader-spinner";
-import {useSelector, useDispatch, connect} from "react-redux";
+import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 
 const ValidateAsOwner = (props) => {
 
+
+      /* eslint-disable */
     useEffect(() => {
         // setLoader(true);
         const payload = {
@@ -29,7 +31,7 @@ const ValidateAsOwner = (props) => {
             })
             .catch((error) => console.log(error));
     }, [props.match.params.token]);
-
+ /* eslint-enable */
     const setInitialData = (data) => {
         props.setReduxData(data);
     }

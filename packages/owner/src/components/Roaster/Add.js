@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";

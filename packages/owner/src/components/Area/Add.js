@@ -9,7 +9,7 @@ const Add = (props) => {
 
   const [targetPoint, setTargetID] = useState(`${props.branchId}/items-pages`);
   const { id } = props.match.params;
-  const [options, setOptions] = useState([]);
+  // const [options, setOptions] = useState([]);
 
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Add = (props) => {
   }
   
 
-  console.log(options,"options");
+  // console.log(options,"options");
   let fields = {
     name: {
       type: "text",
