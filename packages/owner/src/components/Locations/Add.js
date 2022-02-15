@@ -26,6 +26,13 @@ const LocationsAdd = (props) =>  {
                 name: 'description',
                 col: 6
             },
+            auto: {
+                type: "switch",
+                label: "Auto Assign Staff",
+                name: "auto_assign",
+                required: true,
+                col: 3,
+            },
             // branch_id: {
             //     type: 'advanceSelect',
             //     label: "Branch",
@@ -35,7 +42,7 @@ const LocationsAdd = (props) =>  {
             //     name: 'branch_id',
             //     col: 6
             // },
-         
+
         };
 
         return (
@@ -64,7 +71,7 @@ const LocationsAdd = (props) =>  {
 const mapStateToProps = state => {
     return {
        branchId : state.selectedBranchId,
-      
+
       }
 }
 
