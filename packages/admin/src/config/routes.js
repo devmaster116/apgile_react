@@ -47,18 +47,6 @@ import AreaList from "./../components/Area/List";
 
 import UserAdd from "./../components/ExtendedUser/Add";
 
-// import SettingList from "./../components/Settings/List";
-// import SettingAdd from "./../components/Settings/Add";
-
-// import AdminTeamsDetail from "./../../../owner/src/components/Teams/Detail";
-// import AdminTeamsList from "./../../../owner/src/components/Teams/List";
-
-// import StaffList from "./../components/Staff/List";
-// import StaffAdd from "./../components/Staff/Add";
-
-// import AdminShiftsList from "./../../../owner/src/components/Shift/List";
-// import AdminShiftAdd from "./../../../owner/src/components/Shift/Add";
-
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 

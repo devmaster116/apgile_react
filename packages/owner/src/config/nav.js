@@ -100,7 +100,7 @@ export default {
         to: "/setting",
         roles: ["admin"],
         order: 32,
-        icon: "fas fa-pager",
+        icon: "fas fa-cogs",
     },
     entity: {
         phrase: "Branch",
@@ -167,6 +167,16 @@ export default {
             },
         },
     },
+
+    
+  Promotion: {
+    phrase: "Promotion",
+    to: "/promotions",
+    roles: ["admin"],
+    order: 33,
+    // roles:['super-admin','staff-admin'],
+    icon: "fas fa-ad",
+  },
 
 
 //SUPERVISOR NAV

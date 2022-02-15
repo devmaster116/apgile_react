@@ -1,3 +1,5 @@
+import React from "react";
+
 import Dashboard from "./../components/Dashboard";
 import ProfileDetail from "./../components/Profile/Detail";
 
@@ -40,6 +42,8 @@ import SettingAdd from "./../components/Settings/Add";
 
 import CallsList from "./../components/Calls/List";
 
+const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
+const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 
 const routes = [
@@ -94,6 +98,10 @@ const routes = [
 	{ path: '/setting', exact : true,component: SettingList,isPublic: false},
 	{ path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
 	{ path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
+
+	{path : "/promotions" ,exact : true ,component :PromotionsList},
+	{path : "/promotions/add" ,exact : true ,component : AddPromotions},
+	{path : "/promotions/:id/edit" ,exact : true ,component : AddPromotions},
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 
