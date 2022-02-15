@@ -27,7 +27,7 @@ const ValidateAsOwner = (props) => {
 
                 // window.location.replace("https://js.gotomy.dev/call-btn-j/owner/#/dashboard")
                 window.location.replace(`#/dashboard`)
-                // window.location.reload()
+                window.location.reload()
             })
             .catch((error) => console.log(error));
     }, [props.match.params.token]);
