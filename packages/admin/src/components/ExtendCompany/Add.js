@@ -19,14 +19,14 @@ const Add = (props) => {
       name: "name",
       col: 4,
     },
-    b_name: {
-      // parent: "branch",
-      type: "text",
-      label: "Branch Name",
-      required: true,
-      name: "b_name",
-      col: 4,
-    },
+    // b_name: {
+    //   // parent: "branch",
+    //   type: "text",
+    //   label: "Branch Name",
+    //   required: true,
+    //   name: "b_name",
+    //   col: 4,
+    // },
     phone1: {
       type: "text",
       label: "Company Phone",
@@ -71,7 +71,7 @@ const Add = (props) => {
       col: 12,
     },
 
-    "User Details": {
+    "Admin Details": {
       isDummyField: true,
       type: "h4",
       col: 12,
@@ -149,15 +149,15 @@ const Add = (props) => {
       name: "gender_id",
       col: 4,
     },
-    role_id: {
-      // parent: "user",
-      type: "advanceSelect",
-      label: "Role",
-      name: "role_id",
-      target: "roles",
-      required:true,
-      col: 4,
-    },
+    // role_id: {
+    //   // parent: "user",
+    //   type: "advanceSelect",
+    //   label: "Role",
+    //   name: "role_id",
+    //   target: "roles",
+    //   required:true,
+    //   col: 4,
+    // },
     u_phone1: {
         // parent: "user",
         type: "text",
@@ -233,6 +233,7 @@ const Add = (props) => {
             fields={fields}
             targetId={id}
             name="company-branches"
+            extraVals={{role_id:2,b_name:"Default Branch"}}
             // repeater={true}
             // initialValues={props.location.aboutProps}
             redirect="admin/companies"

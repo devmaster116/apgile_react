@@ -41,7 +41,7 @@ const TeamsAdd = (props) => {
             },
             user_id: {
                 type: 'advanceSelect',
-                label: "Users",
+                label: "Team Members",
                 target: `${props.branchId}/users`,
                 optionLabel: 'username',
                 optionValue: "id",
