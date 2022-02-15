@@ -60,8 +60,6 @@ const Add = (props) => {
         role_id: {
             type: 'advanceSelect',
             target: 'roles',
-            // async: true,
-            // multi: true,
             name: 'role_id',
             label: 'Role',
             col: 6
