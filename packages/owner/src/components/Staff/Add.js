@@ -73,13 +73,41 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-        username: {
-            type: "text",
-            label: "Username",
-            required: true,
+        // title: {
+        //     // parent: "user",
+        //     type: "advanceSelect",
+        //     label: "Title",
+        //     target:"title-list",
+        //     name: "title",
+        //     // optionLabel:"title",
+        //     // optionValue:"id",
+        //     // callback: (data)=> console.log(data,"data"),
+        //     required:true,
+        //     col: 4,
+        //   },
+
+        title: {
+            // parent: "user",
+            required:true,
+            type: "advanceSelect",
+            options: [
+              {
+                value: "1",
+                label: "Mr",
+              },
+              {
+                value: "2",
+                label: "Mrs",
+              },
+              {
+                value: "3",
+                label: "Ms",
+              },
+            ],
+            label: "Title",
             name: "title",
             col: 4,
-        },
+          },
 
         password: {
             // parent: "user",

@@ -82,7 +82,7 @@ const TheHeader = (props) => {
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to="/dashboard">{props?.companyName}</CHeaderNavLink>
                 </CHeaderNavItem>
-                {options.length > 1 && <Select
+                 <Select
                     // value={this.state.value}
                     // isMulti
                     // styles={styles}
@@ -93,7 +93,7 @@ const TheHeader = (props) => {
                     onChange={onBranchChange}
                     options={options}
                     // value={options[0]}
-                />}
+                />
             </CHeaderNav>
 
             <CHeaderNav className="px-2">

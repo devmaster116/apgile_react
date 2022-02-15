@@ -1,9 +1,15 @@
-import React from "react";
+import React,{ useEffect} from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import {connect} from "react-redux";
 
 const Add = (props) => {
+
+  useEffect(() => {
+  }, [props.branchId]);
+
+
 const {id} = props.match.params;
   let fields = {
     title: {
@@ -58,32 +64,28 @@ const {id} = props.match.params;
       // required: true,
       col: 4,
     },
-    branch_id: {
-      type: "advanceSelect",
-      label: "Select Branch",
-      target: "branches?limit=1000",
-      optionLabel: "name",
-      name: "branch_id",
-      col: 4,
-      required: true,
-    },
   };
-
+ const extraVal = id ? {
+  _method : "PUT",
+   branch_id:props.branchId
+  } : {
+   branch_id:props.branchId
+  };
   return (
     <div>
       <Card className="animated fadeIn">
         <Header title="Add New Promotion" />
         <CardBody>
           <FormGenerator
-            targetEntity="promotions"
+            targetEntity={`${props.branchId}/promotions`}
             fields={fields}
             targetId={id}
             name="promotions"
             // getInitialValues={this.getInitialValues}
             // debug={false}
-            // extraVals={extraVals}
+            extraVals={extraVal}
+            // extraVals={{branch_id:props.branchId}}
             redirect="promotions"
-            // repeater={true}
           />
         </CardBody>
       </Card>
@@ -91,4 +93,14 @@ const {id} = props.match.params;
   );
 };
 
-export default Add;
+const mapStateToProps = state => {
+  return {
+       branchId : state.selectedBranchId,
+       companyName : state.companyName,
+       companyId : state.companyId,
+       userRole : state.userRole
+    }
+}
+
+
+export default connect(mapStateToProps,null)(Add);

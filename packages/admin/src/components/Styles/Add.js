@@ -72,6 +72,10 @@ const {id} = props.match.params;
     },
   };
 
+  const extraVal = {
+    _method : "PUT"
+  }
+
   return (
     <div>
       <Card className="animated fadeIn">
@@ -85,7 +89,8 @@ const {id} = props.match.params;
             name="styles"
             repeater={true}
             initialValues={props.location.aboutProps}
-            redirect="/owner/styles"
+            extraVals={id && extraVal}
+            redirect="owner/styles"
             handleSameValueFields={["title", "slug"]}
           />
         </CardBody>

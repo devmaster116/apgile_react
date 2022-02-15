@@ -5,17 +5,29 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
 
-  const [targetPoint, setTargetID] = useState(`items/19/pages`);
+  const [branchUser, setBranchUser] = useState('users');
+  const [locations, setLocations] = useState('locations');
+  const [branchId, setBranchId] = useState(0);
+  const [items, setItems] = useState('items-pages');
   const { id } = props.match.params;
 
-  const handleTarget = (data)=> {
+  
+
+  const changeBranchHandler = (data)=> {
     setTimeout(() => {
-     console.log(data?.value,'kkk');
-     setTargetID(`items/${data?.value}/pages`)
+      setBranchId(data?.value);
+     console.log(data?.value,'data');
+     setBranchUser(`branch/${data?.value}/users`)
+     setLocations(`branch/${data?.value}/locations`)
     }, 0);
-   
   } 
-  console.log(targetPoint,"targetPoint");
+
+  const handleChangeLocation = (data) => {
+    setTimeout(() => {
+      console.log(data?.value,'data');
+      setItems(`location/${data?.value}/items`)
+     }, 1);
+  } 
   let fields = {
     name: {
       type: "text",
@@ -40,51 +52,46 @@ const Add = (props) => {
       name: "branch_id",
       col: 4,
       required: true,
+      callback: (data) => changeBranchHandler(data)
     },
     user_id: {
       type: 'advanceSelect',
       label: "Users",
-      target: 'users',
+      target: branchUser,
       optionLabel: 'username',
       required: true,
-      // async: true,
+      async: true,
       multi:true,
       name: 'user_id',
       col: 4
   },
-    area: {
-      type: "dynamicFields",
-      condition: true,
-      label: "Area",
-      name: "area",
-      col: 4,
-      schema: {
-        item_id: {
+  
+        location_id: {
           type: "advanceSelect",
-          label: "Select Item Type",
+          label: "Select Location",
           required:true,
-          target: "items?limit=1000",
-          name: "item_id",
-          col: 6,
-          optionValue: 'id',
-          optionLabel: 'name',
+          target: locations,
+          name: "location_id",
+          col: 4,
+          // optionValue: 'id',
+          // optionLabel: 'name',
           async:true,
-          handleChange : (data) => handleTarget(data)
+          callback : (data) => handleChangeLocation(data)
         },
         page_id: {
           type: "advanceSelect",
           label: "Item#",
           name: "page_id",
-          target:targetPoint,
+          target:items,
           required: true,
+          multi:true,
           // key:'target',
-          optionValue: 'id',
-          optionLabel: 'name',
-          col: 6,
+          // optionValue: 'id',
+          // optionLabel: 'name',
+          col: 4,
           async:true
         },
-      },
-    },
+      
     message_box: {
       type: "switch",
       label: "Message",

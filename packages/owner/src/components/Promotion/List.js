@@ -91,7 +91,6 @@ const List = (props) => {
               addRoute="/promotions/add"
               Query={query}
 
-
             />
           </CardBody>
         </Card>
