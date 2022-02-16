@@ -10,24 +10,21 @@ export default {
             text: "NEW",
         },
     },
-    staff: {
-        phrase: "Staff",
-        order: 20,
-        to: "/staff",
-        icon: "fas fa-users",
-        roles: ["admin"],
-    },
-
     owner: {
         phrase: "Manage Team",
         to: "/owner",
         order: 21,
         roles: ["admin"],
         icon: "fas fa-users",
-        // roles:['admin'],
         hasRoute: false,
         children: {
-
+            staff: {
+                phrase: "Staff",
+                order: 20,
+                to: "/staff",
+                icon: "fas fa-users",
+                roles: ["admin"],
+            },
             teams: {
                 phrase: "Teams",
                 order: 21,
@@ -35,7 +32,6 @@ export default {
                 roles: ["admin"],
                 icon: "fas fa-users",
             },
-
             shifts: {
                 phrase: "Shifts",
                 roles: ["admin"],
@@ -62,13 +58,6 @@ export default {
         // roles:['admin'],
         hasRoute: false,
         children: {
-            Area: {
-                phrase: "Area",
-                to: "/areas",
-                order: 1,
-                roles: ["admin"],
-                icon: "fas fa-warehouse",
-            },
             location: {
                 phrase: "Locations",
                 order: 2,
@@ -83,7 +72,13 @@ export default {
                 icon: "fas fa-box",
                 to: "/items",
             },
-
+            Area: {
+                phrase: "Area",
+                to: "/areas",
+                order: 1,
+                roles: ["admin"],
+                icon: "fas fa-warehouse",
+            },
         },
       },
 
