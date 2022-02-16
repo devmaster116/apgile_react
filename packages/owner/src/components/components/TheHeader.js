@@ -62,6 +62,8 @@ const TheHeader = (props) => {
      let selected =  options.map((opt)=>{
             if(opt.value === data.value){
                 return opt
+            }else {
+                return opt
             }
         })
         setSelectedOption(selected.value);
