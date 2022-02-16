@@ -12,6 +12,7 @@ const Add = (props) => {
   const { id } = props.match.params;
 
   
+console.log(branchId,"BranchID");
 
   const changeBranchHandler = (data)=> {
     setTimeout(() => {
