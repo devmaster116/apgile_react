@@ -27,12 +27,12 @@ const List = (props) => {
       sort: true,
     },
     
-    {
-      dataField: "username",
-      text: "username",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "user.username",
+    //   text: "username",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
       dataField: "branch.name",
       text: "Branch",

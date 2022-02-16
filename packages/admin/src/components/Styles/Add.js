@@ -5,7 +5,7 @@ import { Header } from "@evenlogics/whf-ra-components";
 
 const Add = (props) => {
 const {id} = props.match.params;
-
+console.log(id,"id")
   let fields = {
     "Add Company Style": {
       isDummyField: true,
@@ -87,11 +87,11 @@ const {id} = props.match.params;
             fields={fields}
             targetId={id}
             name="styles"
-            repeater={true}
-            initialValues={props.location.aboutProps}
+            // repeater={true}
+            // initialValues={props.location.aboutProps}
             extraVals={id && extraVal}
             redirect="owner/styles"
-            handleSameValueFields={["title", "slug"]}
+            // handleSameValueFields={["title", "slug"]}
           />
         </CardBody>
       </Card>

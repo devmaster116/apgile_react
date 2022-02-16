@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 const ItemAdd = (props) => {
 
   const [query, setQuery] = useState(false);
+  const [openQrCode, setOpenQrCode] = useState(false);
 	useEffect(() => {
 		setQuery((prev)=>!prev)
 		}, [props.branchId]);
@@ -29,22 +30,53 @@ const ItemAdd = (props) => {
             col: 6,
           },
           qty: {
-            type: "number",
-            label: "Quantity",
-            required: true,
-            name: "qty",
-            col: 6,
-          },
-          location_id: {
-            type: "advanceSelect",
-            label: "Location",
-            target: `${props.branchId}/locations?limit=1000`,
-            // optionLabel: 'title',
-            async: true,
-            required: true,
-            name: "location_id",
-            col: 6,
-          },
+                type: "number",
+                label: "Quantity",
+                required: true,
+                name: "qty",
+                col: 6,
+              },
+              location_id: {
+                type: "advanceSelect",
+                label: "Location",
+                target: `${props.branchId}/locations?limit=1000`,
+                // optionLabel: 'title',
+                async: true,
+                required: true,
+                name: "location_id",
+                col: 6,
+              },
+
+          // message_box: {
+          //   type: "switch",
+          //   label: "Message",
+          //   name: "message_box",
+          //   required: true,
+          //   col: 2,
+          // },
+    
+          // ...(openQrCode && 
+          //   {qty: {
+          //     type: "number",
+          //     label: "Quantity",
+          //     required: true,
+          //     name: "qty",
+          //     col: 6,
+          //   },
+          //   location_id: {
+          //     type: "advanceSelect",
+          //     label: "Location",
+          //     target: `${props.branchId}/locations?limit=1000`,
+          //     // optionLabel: 'title',
+          //     async: true,
+          //     required: true,
+          //     name: "location_id",
+          //     col: 6,
+          //   }}
+          //  ),  
+
+           
+      
           
         };
 
@@ -62,7 +94,6 @@ const ItemAdd = (props) => {
                         name="items"
                         repeater={true}
                         initialValues={props.location.aboutProps}
-                        
                         redirect="items"
                         handleSameValueFields={['title', 'slug']}
                     />
@@ -70,8 +101,6 @@ const ItemAdd = (props) => {
             </Card>
         );
     }
-
-
 const mapStateToProps = state => {
 	return {
 		branchId : state.selectedBranchId,

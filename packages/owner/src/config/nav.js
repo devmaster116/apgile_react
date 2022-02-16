@@ -97,7 +97,7 @@ export default {
     },
     setting: {
         phrase: "Settings",
-        to: "/setting",
+        to: "/setting/add",
         roles: ["admin"],
         order: 32,
         icon: "fas fa-cogs",

@@ -94,7 +94,7 @@ const TheHeader = (props) => {
              </CHeaderNavLink>
            }  
           </CHeaderNavItem>
-          {props.userRole === "admin" && (
+          {props.userRole === "admin" && options.length > 1 && (
             <Select
               // value={this.state.value}
               // isMulti

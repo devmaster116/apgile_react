@@ -13,36 +13,50 @@ const LocationsAdd = (props) =>  {
         const {id} = props.match.params;
 
         const fields = {
-            name: {
-                type: 'text',
-                label: 'Name',
-                required: true,
-                name: 'name',
-                col: 6
-            },
-            description: {
-                type: 'text',
-                label: "Description",
-                name: 'description',
-                col: 6
-            },
-            auto: {
-                type: "switch",
-                label: "Auto Assign Staff",
-                name: "auto_assign",
-                required: true,
-                col: 3,
-            },
-            // branch_id: {
-            //     type: 'advanceSelect',
-            //     label: "Branch",
-            //     target: 'branches',
-            //     async: true,
-            //     required:true,
-            //     name: 'branch_id',
-            //     col: 6
-            // },
+          name: {
+            type: "text",
+            label: "Name",
+            required: true,
+            name: "name",
+            col: 6,
+          },
+          description: {
+            type: "text",
+            label: "Description",
+            name: "description",
+            col: 6,
+          },
+          auto: {
+            type: "switch",
+            label: "Auto Assign Staff",
+            name: "auto_assign",
+            required: true,
+            col: 3,
+          },
 
+          message_box: {
+            type: "switch",
+            label: "Message",
+            name: "message_box",
+            required: true,
+            col: 2,
+          },
+          customer_required: {
+            type: "switch",
+            label: "Customer Required",
+            required: true,
+            name: "customer_required",
+            col: 2,
+          },
+          // branch_id: {
+          //     type: 'advanceSelect',
+          //     label: "Branch",
+          //     target: 'branches',
+          //     async: true,
+          //     required:true,
+          //     name: 'branch_id',
+          //     col: 6
+          // },
         };
 
         return (
@@ -56,7 +70,7 @@ const LocationsAdd = (props) =>  {
                         // getValues={handleValue}
                         fields={fields}
                         targetId={id}
-                        name="locations"
+                        // name="locations"
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         extraVals={{branch_id: props.branchId}}

@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 
 const Add = (props) => {
 
-        const {id} = props.match.params;
+        const id = props.branchId;
 
         const fields = {
           wait_time: {
@@ -48,11 +48,11 @@ const Add = (props) => {
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
-                        targetEntity={`${props.branchId}/branch-settings`}
+                        targetEntity={`${props.branchId}/setting`}
                         // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="items"
+                        name="setting"
                         repeater={true}
                         initialValues={props.location.aboutProps}
                         extraVals={{branch_id: props.branchId}}

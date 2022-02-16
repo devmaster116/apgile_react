@@ -94,7 +94,7 @@ const routes = [
 
 	{path : "/owner/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
 	{ path: '/owner/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
-	{ path: '/styles/:id/edit', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
+	{ path: '/styles/:id/edit', exact: true,  roles:['super-admin'],component: StyleAdd },
 
 
 	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },

@@ -84,20 +84,6 @@ const Add = (props) => {
       col: 6,
     },
 
-    message_box: {
-      type: "switch",
-      label: "Message",
-      name: "message_box",
-      required: true,
-      col: 2,
-    },
-    customer_required: {
-      type: "switch",
-      label: "Customer Required",
-      required: true,
-      name: "customer_required",
-      col: 2,
-    },
   };
 
   return (
