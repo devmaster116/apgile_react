@@ -27,7 +27,7 @@ export default {
         // roles:['admin'],
         hasRoute: false,
         children: {
-         
+
             teams: {
                 phrase: "Teams",
                 order: 21,
@@ -35,7 +35,7 @@ export default {
                 roles: ["admin"],
                 icon: "fas fa-users",
             },
-        
+
             shifts: {
                 phrase: "Shifts",
                 roles: ["admin"],
@@ -52,7 +52,7 @@ export default {
             },
         },
       },
-    
+
       locations: {
         phrase: "Location Management",
         to: "/locations",
@@ -83,11 +83,11 @@ export default {
                 icon: "fas fa-box",
                 to: "/items",
             },
-           
+
         },
       },
 
-  
+
     QR_Code: {
         phrase: "QR Codes",
         to: "/qr-codes",
@@ -168,7 +168,7 @@ export default {
         },
     },
 
-    
+
   Promotion: {
     phrase: "Promotion",
     to: "/promotions",
@@ -207,14 +207,14 @@ export default {
         order: 11,
         phrase: "Customer Management",
         to: "/calls",
-        roles: ["supervisor"],
+        roles: ["admin", "supervisor"],
         icon: "fas fa-headset",
         children: {
             customer_calls: {
                 phrase: "Customer Calls",
                 order: 1,
                 to: "/calls",
-                roles: ["supervisor"],
+                roles: ["admin", "supervisor"],
                 icon: "fas fa-phone-square-alt",
             },
             kitchen_calls: {
@@ -223,7 +223,7 @@ export default {
                 order: 2,
                 phrase: "Kitchen Calls",
                 to: "/kitchen-calls",
-                roles: ["supervisor"],
+                roles: ["admin", "supervisor"],
                 icon: "fas fa-tty",
             },
         },
