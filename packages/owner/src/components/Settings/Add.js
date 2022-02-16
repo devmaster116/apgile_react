@@ -6,8 +6,8 @@ import {connect} from "react-redux";
 
 const Add = (props) => {
 
-    const id = props.branchId;
-     console.log(id,"id")
+        const {id} = props.match.params;
+
         const fields = {
           wait_time: {
             type: "text",
