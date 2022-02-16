@@ -20,24 +20,24 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
-    // const [options, setOptions] = useState([]);
+    const [selectedOption, setSelectedOption] = useState(0);
     /* eslint-disable */
     useEffect(() => {
+
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         let roled = ls?.roles?.map(role => role)
-         console.log(ls,"ls")
-        api.request("get", `/branches/${ls?.company?.id}/all`)
+         props.userRole === "admin" &&  api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
                 setOptions(optionsArr);
-                // if (optionsArr.length > 0) {
-                //     props.changeBranch(optionsArr[0]);
-                // }
+                if (optionsArr.length > 0) {
+                    props.changeBranch(optionsArr[0]);
+                }
             }).catch((error) => console.log(error));
     }, []);
-    /* eslint-enable */
+
+
     const dispatch = useDispatch();
-      /* eslint-disable */
     const asideShow = useSelector((state) => state.asideShow);
    /* eslint-enable */  
     const darkMode = useSelector((state) => state.darkMode);
@@ -59,61 +59,73 @@ const TheHeader = (props) => {
     };
 
     const onBranchChange = (data) => {
+     let selected =  options.map((opt)=>{
+            if(opt.value === data.value){
+                return opt
+            }
+        })
+        setSelectedOption(selected.value);
         props.changeBranch(data);
     }
 
     return (
-        <CHeader withSubheader>
-            <CToggler
-                inHeader
-                className="ml-md-3 d-lg-none"
-                onClick={toggleSidebarMobile}
+      <CHeader withSubheader>
+        <CToggler
+          inHeader
+          className="ml-md-3 d-lg-none"
+          onClick={toggleSidebarMobile}
+        />
+        <CToggler
+          inHeader
+          className="ml-3 d-md-down-none"
+          onClick={toggleSidebar}
+        />
+        <CHeaderBrand className="mx-auto d-lg-none">
+          <Logo type="mobile" />
+        </CHeaderBrand>
+
+        <CHeaderNav className="d-md-down-none mr-auto">
+          <CHeaderNavItem className="px-3">
+           {
+               props.userRole === "admin" && <CHeaderNavLink to="/dashboard">
+               {props?.companyName}
+             </CHeaderNavLink>
+           }  
+          </CHeaderNavItem>
+          {props.userRole === "admin" && (
+            <Select
+              // value={this.state.value}
+              // isMulti
+              // styles={styles}
+              // isClearable={this.state.value.some((v) => !v.isFixed)}
+              name="branches"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={onBranchChange}
+              options={options}
+              value={options[selectedOption]}
             />
-            <CToggler
-                inHeader
-                className="ml-3 d-md-down-none"
-                onClick={toggleSidebar}
-            />
-            <CHeaderBrand className="mx-auto d-lg-none">
-                <Logo type="mobile"/>
-            </CHeaderBrand>
+          )}
+        </CHeaderNav>
 
-            <CHeaderNav className="d-md-down-none mr-auto">
-                <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to="/dashboard">{props?.companyName}</CHeaderNavLink>
-                </CHeaderNavItem>
-                 <Select
-                    // value={this.state.value}
-                    // isMulti
-                    // styles={styles}
-                    // isClearable={this.state.value.some((v) => !v.isFixed)}
-                    name="branches"
-                    className="basic-multi-select"
-                    classNamePrefix="select"
-                    onChange={onBranchChange}
-                    options={options}
-                    // value={options[0]}
-                />
-            </CHeaderNav>
+        <CHeaderNav className="px-2">
+          <LanguageSelector />
+          <CToggler
+            inHeader
+            className="ml-3 d-md-down-none"
+            onClick={() => dispatch({ type: "set", darkMode: !darkMode })}
+            title="Toggle Light/Dark Mode"
+          >
+            <i className="fas fa-moon c-d-dark-none" />
+            <i className="fas fa-sun c-d-default-none" />
+          </CToggler>
 
-            <CHeaderNav className="px-2">
-                <LanguageSelector/>
-                <CToggler
-                    inHeader
-                    className="ml-3 d-md-down-none"
-                    onClick={() => dispatch({type: "set", darkMode: !darkMode})}
-                    title="Toggle Light/Dark Mode"
-                >
-                    <i className="fas fa-moon c-d-dark-none"/>
-                    <i className="fas fa-sun c-d-default-none"/>
-                </CToggler>
-
-                <Logout/>
-            </CHeaderNav>
-            <CSubheader className="px-3 justify-content-between">
-                <Breadcrumbs/>
-            </CSubheader>
-        </CHeader>
+          <Logout />
+        </CHeaderNav>
+        <CSubheader className="px-3 justify-content-between">
+          <Breadcrumbs />
+        </CSubheader>
+      </CHeader>
     );
 };
 
@@ -123,6 +135,7 @@ const mapStateToProps = state => {
         companyName: state.companyName,
         userRole: state.userRole,
         companyId: state.companyId,
+        branchId : state.selectedBranchId,
     }
 }
 

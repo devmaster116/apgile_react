@@ -45,7 +45,7 @@ const {id} = props.match.params;
     bg_color: {
       type: "text",
       label: "Background Color",
-      required: true,
+      // required: true,
       name: "bg_color",
       col: 4,
     },
@@ -67,7 +67,7 @@ const {id} = props.match.params;
       type: "filePic",
       label: "Add Background Image",
       name: "bg_image",
-      required: true,
+      // required: true,
       col: 4,
     },
   };

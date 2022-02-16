@@ -12,12 +12,12 @@ const List = (props) => {
 	}, [props.branchId]);
 
 		const columns = [
-			{
-				dataField: 'id',
-				text: 'ID',
-				align: 'center',
-				sort: true
-			},
+			// {
+			// 	dataField: 'id',
+			// 	text: 'ID',
+			// 	align: 'center',
+			// 	sort: true
+			// },
 			{
 				dataField: 'branch_id',
 				text: 'Branch Id',
@@ -56,7 +56,7 @@ const List = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'id',
+				dataField: 'branch_id',
 				order: 'desc'
 			}
 		];
@@ -93,4 +93,4 @@ const mapStateToProps = state => {
   }
   
   
-  export default connect(mapStateToProps,null)(List);
+export default connect(mapStateToProps,null)(List);

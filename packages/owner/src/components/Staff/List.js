@@ -70,6 +70,7 @@ const ItemsList = (props) => {
                         customEntity="staff"
                         columns={columns}
                         sort={defaultSorted}
+                        hideDetail={true}
                         addRoute="/staff/add"
                         {...props.remoteTableFields}
                         Query={query}

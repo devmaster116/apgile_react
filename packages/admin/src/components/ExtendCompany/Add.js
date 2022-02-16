@@ -129,7 +129,7 @@ const Add = (props) => {
     },
     gender_id: {
       // parent: "user",
-      required:true,
+      // required:true,
       type: "advanceSelect",
       options: [
         {
@@ -163,7 +163,7 @@ const Add = (props) => {
         type: "text",
         label: "User Phone",
         name: "u_phone1",
-        required:true,
+        // required:true,
         col: 4,
       },
 

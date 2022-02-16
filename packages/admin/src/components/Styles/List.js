@@ -4,103 +4,50 @@ import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 
 
-const filters = {
-  company_id: {
-    type: "advanceSelect",
-    label: "Company",
-    target: 'companies?limit=1000',
-  //   async: true,
-    name: "company_id",
-    optionValue: 'id',
-    optionLabel: 'name',
-    required: true,
-    col: 12 + ' col-xl-3 mt-2',
-    // callback: (data) => companiesChangeHandler(data)
-  },
-  // branch_id: {
-  //   type: "advanceSelect",
-  //   label: "Branch",
-  //   target: target,
-  //   async: true,
-  //   name: "branch_id",
-  //   optionValue: 'id',
-  //           optionLabel: 'name',
-  //   required: true,
-  //   col: 12 + ' col-xl-3 mt-2',
-  //   }
-  }
 
-const defaultSorted = [{ dataField: "id", order: "asc" }];
-const columns = [
-  {
-    dataField: "id",
-    text: "ID",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "company",
-    text: "Company",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "name",
-    text: "Style Title",
-    align: "center",
-    sort: true,
-  },
- 
-  {
-    dataField: "font_color",
-    text: "Font",
-    align: "center",
-    sort: true,
-  },
-  // {
-  //   dataField: "bg_color",
-  //   text: "Background Color",
-  //   align: "center",
-  //   sort: true,
-  // },
-
-  // {
-   
-  //   isDummyField: true,
-  //   align: "center",
-  //   text: "Logo",
-  //   sort: true,
-  //   formatter: (cell, row) => {
-  //     console.log(cell,row, "cell");
-  //     return (
-  //         <div>
-  //            <img width={30} height={40} alt="background" src={row?.logo?.thumbnail}></img>
-  //         </div>
-  //     )
-  // },
-  // },
+const List = () => {
+  const filters = {
+    company_id: {
+      type: "advanceSelect",
+      label: "Company",
+      target: 'companies?limit=1000',
+      name: "company_id",
+      optionValue: 'id',
+      optionLabel: 'name',
+      required: true,
+      col: 12 + ' col-xl-3 mt-2',
+    }
+    }
   
-  // {
+  const defaultSorted = [{ dataField: "id", order: "asc" }];
+  const columns = [
+    {
+      dataField: "id",
+      text: "ID",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "company.name",
+      text: "Company",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "name",
+      text: "Style Title",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "font_color",
+      text: "Font",
+      align: "center",
+      sort: true,
+    },
   
-  //   isDummyField: true,
-  //   align: "center",
-  //   text: "Background Image",
-  //   sort: true,
-  //   formatter: (cell, row) => {
-  //     console.log(cell,row, "cell");
-  //     return (
-  //         <div>
-  //            <img width={30} height={40} alt="background" src={row?.bg_image?.thumbnail}></img>
-  //         </div>
-  //     )
-  // },
-  // },
-
+  ];
   
- 
-];
-
-const VendorsList = () => {
   return (
     <div>
       <div>
@@ -116,7 +63,7 @@ const VendorsList = () => {
               hideDetail={true}
               hideDelete={false}
               filters={filters}
-							showAdvanceFilters = {true}
+							showAdvanceFilters ={true}
               addRoute="/owner/styles/add"
             />
           </CardBody>
@@ -126,4 +73,4 @@ const VendorsList = () => {
   );
 };
 
-export default VendorsList;
+export default List;

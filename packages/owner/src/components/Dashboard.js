@@ -17,13 +17,13 @@ const Dashboard = (props) => {
 
             // window.location.replace("https://js.gotomy.dev/call-btn-j/owner/#/dashboard")
             // window.location.replace(`#/dashboard`)
-            window.location.reload();
         }
 
     });
 
     const setInitialData = (data) => {
         props.setReduxData(data);
+        window.location.reload();
     }
 
     return (

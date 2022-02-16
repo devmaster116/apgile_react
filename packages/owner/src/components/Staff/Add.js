@@ -37,15 +37,15 @@ const ItemAdd = (props) => {
             type: "advanceSelect",
             options: [
                 {
-                    value: "1",
+                    value: 1,
                     label: "Male",
                 },
                 {
-                    value: "2",
+                    value: 2,
                     label: "Female",
                 },
                 {
-                    value: "3",
+                    value: 3,
                     label: "Other",
                 },
             ],
@@ -132,6 +132,8 @@ const ItemAdd = (props) => {
             label: "Role",
             name: "role_id",
             target: "roles",
+            optionValue: 'id',
+            optionLabel: 'name',
             required: true,
             col: 4,
         }
