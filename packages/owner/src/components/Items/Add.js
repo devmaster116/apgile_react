@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 const ItemAdd = (props) => {
 
   const [query, setQuery] = useState(false);
-  const [openQrCode, setOpenQrCode] = useState(false);
+  // const [openQrCode, setOpenQrCode] = useState(false);
 	useEffect(() => {
 		setQuery((prev)=>!prev)
 		}, [props.branchId]);
