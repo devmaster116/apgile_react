@@ -57,6 +57,7 @@ const ItemsList = (props) => {
 							entity={`${props?.branchId}/items`}
 							customEntity={`items`}
 							columns={columns}
+							hideDetail={true}
 							sort={defaultSorted}
 							addRoute="/items/add"
 							{...props.remoteTableFields}

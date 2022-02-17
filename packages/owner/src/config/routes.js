@@ -41,6 +41,8 @@ import SettingList from "./../components/Settings/List";
 import SettingAdd from "./../components/Settings/Add";
 
 import CallsList from "./../components/Calls/List";
+import KitchenCalls from "./../components/KitchenCalls/List";
+
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -104,6 +106,9 @@ const routes = [
 	{path : "/promotions/:id/edit" ,exact : true ,component : AddPromotions},
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
+
+	{ path: '/kitchen-calls', exact : true,component: KitchenCalls,isPublic: false},
+	
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 

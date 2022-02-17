@@ -56,7 +56,7 @@ const Add = (props) => {
                         repeater={true}
                         initialValues={props.location.aboutProps}
                         extraVals={{branch_id: props.branchId}}
-                        redirect="setting"
+                        redirect="setting/add"
                         handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>

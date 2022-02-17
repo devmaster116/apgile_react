@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 const KithcenCallList  = (props) => {
 	const [query, setQuery] = useState(false);
@@ -19,18 +20,25 @@ const KithcenCallList  = (props) => {
 				sort: true
 			},
 			{
-				dataField: 'name',
-				text: 'Name',
+				dataField: 'call.location_name',
+				text: 'Location',
 				align: 'center',
 				sort: true
 			},
 			{
-				dataField: 'description',
-				text: 'Description',
+				dataField: 'action',
+				text: 'Status',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'user.username',
+				text: 'Received By',
 				align: 'center',
 				sort: true
 			},
 		
+			
 
 		];
 
@@ -44,24 +52,34 @@ const KithcenCallList  = (props) => {
 				order: 'desc'
 			}
 		];
-
+		const reverseCall = (data) => {
+			console.log(data,"data")
+			api.request("patch",`/${props?.branchId}/kitchen-call/${data.id}`).then(() => { setQuery(!query)}).catch((error) => console.log(error));
+		  }
 		return (
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>Locations List</strong>
+						<strong>Kitchen Calls List</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`${props?.branchId}/locations`}
-							customEntity={`locations`}
+							entity={`${props?.branchId}/kitchen-call`}
+							customEntity={`kitchen-call`}
 							columns={columns}
 							sort={defaultSorted}
 							hideDetail={true}
-							addRoute="/locations/add"
+							hideEdit={true}
+							// addRoute="/kitchen-call/add"
 							{...props.remoteTableFields}
 							Query={query}
-							
+							customButton={{
+								name: "Reverse Call",
+								color: "warning",
+								classes:"text-white",
+								callback: (data) => {reverseCall(data)}  
+								  
+							  }}
 							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>

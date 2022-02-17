@@ -43,6 +43,7 @@ const TeamsList = (props) => {
 							customEntity={`teams`}
 							hideActionCol={ props?.userRole === "supervisor" ? true : false}
 							columns={columns}
+							hideDetail={true}
 							Query={query}
 							sort={defaultSorted}
 							addRoute={ props?.userRole === "supervisor" ? null : "teams/add"}

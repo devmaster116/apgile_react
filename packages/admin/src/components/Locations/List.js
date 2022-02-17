@@ -48,16 +48,16 @@ const LocationsList = (props) => {
 			},
 			{
 				dataField: 'name',
-				text: 'Location',
+				text: 'Name',
 				align: 'center',
 				sort: true
 			},
-			// {
-			// 	dataField: 'description',
-			// 	text: 'Description',
-			// 	align: 'center',
-			// 	sort: true
-			// },
+			{
+				dataField: 'description',
+				text: 'Description',
+				align: 'center',
+				sort: true
+			},
 			{
 				dataField: 'branch.name',
 				text: 'Branch',

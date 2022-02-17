@@ -2,13 +2,33 @@ import React, {useState, useEffect} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false)
+    const [optionsArr, setOptionsArr] = useState([])
 	useEffect(() => {
+        let ls =  JSON.parse(localStorage.getItem('currentUser'));
+        let isAdmin = ls?.roles[0];
+        var rolesArray=[];
+        api.request("get","/roles")
+        .then(({data}) => {
+          rolesArray = data?.filter((role)=>(
+             role.name !== "super-admin"
+          ))
+          let newOption = rolesArray?.map((role)=>{
+            return {value:role.id,label:role.name}
+          })
+          setOptionsArr(newOption);
+        })
+        .catch((error) => console.log(error));
 		setQuery((prev)=>!prev)
+
 	}, [props.branchId]);
+
+
+    console.log(optionsArr,"optionsArr")
 
     const {id} = props.match.params;
 
@@ -126,18 +146,19 @@ const ItemAdd = (props) => {
             name: "password_confirmation",
             col: 4,
         },
-        role_id: {
+       ...(optionsArr.length > 0 ) && { role_id: {
             // parent: "user",
             type: "advanceSelect",
             label: "Role",
             name: "role_id",
-            target: "roles",
-            optionValue: 'id',
-            optionLabel: 'name',
+            // target: "roles",
+            options:optionsArr,
+            // optionValue: 'value',
+            // optionLabel: 'label',
             required: true,
             col: 4,
         }
-
+    }
     };
 
     return (
