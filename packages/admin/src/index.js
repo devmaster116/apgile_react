@@ -1,6 +1,4 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Button} from "reactstrap";
 import customNav from "./config/nav";
 global.customNavGlobal = customNav;
 global.customRoutes = require("./config/routes");
