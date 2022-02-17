@@ -10,7 +10,8 @@ const ItemAdd = (props) => {
     const [optionsArr, setOptionsArr] = useState([])
 	useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
-        let isAdmin = ls?.roles[0];
+        // let isAdmin = ls?.roles[0];
+        console.log(ls,"ls")
         var rolesArray=[];
         api.request("get","/roles")
         .then(({data}) => {
