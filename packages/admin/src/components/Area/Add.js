@@ -93,20 +93,20 @@ console.log(branchId,"BranchID");
           async:true
         },
       
-    message_box: {
-      type: "switch",
-      label: "Message",
-      name: "message_box",
-      required: true,
-      col: 2,
-    },
-    customer_required: {
-      type: "switch",
-      label: "Customer Name",
-      required: true,
-      name: "customer_required",
-      col: 2,
-    },
+    // message_box: {
+    //   type: "switch",
+    //   label: "Message",
+    //   name: "message_box",
+    //   required: true,
+    //   col: 2,
+    // },
+    // customer_required: {
+    //   type: "switch",
+    //   label: "Customer Name",
+    //   required: true,
+    //   name: "customer_required",
+    //   col: 2,
+    // },
 
     // last_used: {
     //   type: "date",

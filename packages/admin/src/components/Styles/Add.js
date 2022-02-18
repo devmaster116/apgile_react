@@ -138,8 +138,8 @@ const Add = (props) => {
               values,
               setFieldValue,
               handleSubmit,
-              errors,
-              touched
+              // errors,
+              // touched
             }) => (
               <form onSubmit={handleSubmit}>
                 <Row className="mb-3">
@@ -364,7 +364,7 @@ const Add = (props) => {
                   </Form.Group>
                 </Row>
 
-                {true && (
+                {/* {true && (
                   <div className={'row'}>
                     <div className={'col-12'}>
                       <code>
@@ -378,7 +378,7 @@ const Add = (props) => {
                       <pre>Touched: {JSON.stringify(touched, null, 2)}</pre>
                     </div>
                   </div>
-                )}
+                )} */}
               </form>
             )}
           </Formik>
