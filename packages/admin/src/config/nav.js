@@ -140,13 +140,27 @@ export default {
   },
 
   Promotion: {
-    phrase: "Promotion",
+    phrase: "Manage Promotions",
     to: "/promotions",
     roles: ["super-admin"],
-
     order: 138,
-    // roles:['super-admin','staff-admin'],
     icon: "fas fa-ad",
+    children: {
+      categories: {
+        phrase: "Categories",
+        order: 1,
+        to: "/categories",
+        roles: ["super-admin"],
+        icon: "fas fa-users",
+      },
+      promotions: {
+        phrase: "Promotion",
+        order: 2,
+        to: "/promotions",
+        roles: ["super-admin"],
+        icon: "fas fa-ad",
+      },
+    },
   },
 
   calls: {

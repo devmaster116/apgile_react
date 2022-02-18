@@ -40,6 +40,16 @@ const {id} = props.match.params;
       name: "description",
       col: 4,
     },
+    category_id: {
+      type: "advanceSelect",
+      label: "Select Category",
+      target: `${props.branchId}/categories`,
+      optionLabel: "title",
+      name: "category_id",
+      async:true,
+      col: 4,
+      required: true,
+    },
     valid_from: {
       type: "date",
       dateFormat:'yyyy/MM/dd',

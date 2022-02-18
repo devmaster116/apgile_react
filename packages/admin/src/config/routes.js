@@ -44,6 +44,8 @@ import CompanyPackageAdd from "./../components/Company Package/Add";
 import AreaAdd from "./../components/Area/Add";
 import AreaList from "./../components/Area/List";
 
+import CategoriesList from "./../components/PromotionCategories/List";
+import CategoriesAdd from "./../components/PromotionCategories/Add";
 
 import UserAdd from "./../components/ExtendedUser/Add";
 
@@ -73,6 +75,11 @@ const routes = [
 	{path : "/promotions" ,exact : true ,  roles:['super-admin'],component :PromotionsList},
 	{path : "/promotions/add" ,exact : true ,  roles:['super-admin'],component : AddPromotions},
 	{path : "/promotions/:id/edit" ,exact : true ,  roles:['super-admin'],component : AddPromotions},
+
+
+	{path : "/categories" ,exact : true ,component :CategoriesList},
+	{path : "/categories/add" ,exact : true ,component :CategoriesAdd},
+	{path : "/categories/:id/edit" ,exact : true ,component :CategoriesAdd},
 
 	// {path : "/pages" ,exact : true , component : PagesList},
 	{path : "/pages/page/add" ,exact : true ,  roles:['super-admin'],component : PageAdd},

@@ -34,6 +34,24 @@ const {id} = props.match.params;
       name: "description",
       col: 4,
     },
+    branch_id: {
+      type: "advanceSelect",
+      label: "Select Branch",
+      target: "branches?limit=1000",
+      optionLabel: "name",
+      name: "branch_id",
+      col: 4,
+      required: true,
+    },
+    category_id: {
+      type: "advanceSelect",
+      label: "Select Category",
+      target: "categories?limit=1000",
+      optionLabel: "title",
+      name: "category_id",
+      col: 4,
+      required: true,
+    },
     valid_from: {
       type: "date",
       dateFormat:'yyyy/MM/dd',
@@ -58,15 +76,7 @@ const {id} = props.match.params;
       // required: true,
       col: 4,
     },
-    branch_id: {
-      type: "advanceSelect",
-      label: "Select Branch",
-      target: "branches?limit=1000",
-      optionLabel: "name",
-      name: "branch_id",
-      col: 4,
-      required: true,
-    },
+  
   };
 
   return (

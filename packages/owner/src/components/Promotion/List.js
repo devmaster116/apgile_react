@@ -1,8 +1,9 @@
 import React,{ useEffect,useState } from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody,Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 
 const List = (props) => {
@@ -18,11 +19,27 @@ const List = (props) => {
 	//   }, 0);
 	// };
 
+  const changeStatus = (data) => {
+    console.log(data,"data")
+    api.request("post",`/${props.branchId}/status/${data?.id}`)
+    .then((data) => {
+        console.log(data)
+        setQuery(!query)
+    })
+    .catch((error) => console.log(error));
+  }
+
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
     {
       dataField: "id",
       text: "ID",
+      align: "center",
+      sort: true,
+    },
+    {
+      dataField: "title",
+      text: "Title",
       align: "center",
       sort: true,
     },
@@ -33,25 +50,26 @@ const List = (props) => {
     //   align: "center",
     //   sort: true,
     // },
+    // {
+    //   dataField: "branch.name",
+    //   text: "Branch",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
-      dataField: "branch.name",
-      text: "Branch",
+      dataField: "category.title",
+      text: "Category",
       align: "center",
       sort: true,
     },
-    {
-      dataField: "branch.phone1",
-      text: "Branch Phone",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "branch.phone1",
+    //   text: "Branch Phone",
+    //   align: "center",
+    //   sort: true,
+    // },
     
-    {
-      dataField: "title",
-      text: "Title",
-      align: "center",
-      sort: true,
-    },
+    
    
     {
       dataField: "description",
@@ -59,17 +77,32 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
+    
     {
       dataField: "valid_from",
-      text: "valid_from",
+      text: "Valid From",
       align: "center",
       sort: true,
     },
     {
       dataField: "valid_till",
-      text: "valid_till",
+      text: "Valid Till",
       align: "center",
       sort: true,
+    },
+
+    {
+      isDummyField: true,
+      align: "center",
+      text: "Status",
+      sort: true,
+      formatter: (cell, row) => {
+        return (
+          <Button color={row?.status_id ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+            {row?.status_id === 0 ? "Active" : "Inactive"}
+          </Button>
+        );
+      },
     },
     
    
