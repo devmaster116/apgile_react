@@ -33,7 +33,27 @@ class LocationsAdd extends Component {
                 name: 'branch_id',
                 col: 6
             },
-         
+            auto: {
+                type: "switch",
+                label: "Auto Assign Staff",
+                name: "auto_assign",
+                required: true,
+                col: 2,
+              },
+            message_box: {
+                type: "switch",
+                label: "Message",
+                name: "message_box",
+                required: true,
+                col: 2,
+              },
+              customer_required: {
+                type: "switch",
+                label: "Customer Name",
+                required: true,
+                name: "customer_required",
+                col: 2,
+              },
         };
 
         return (
