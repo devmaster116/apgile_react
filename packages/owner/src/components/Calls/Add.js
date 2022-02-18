@@ -22,7 +22,7 @@ useEffect(() => {
     .catch((error) => console.log(error));
 
     
-}, [id]);
+}, [id,props.branchId]);
 
 
 
