@@ -140,6 +140,7 @@ const filters = {
             customButton={{
               name: "Assigned Call",
               color: "warning",
+              classes:"text-white",
               callback: (data) => props?.history?.push(`/calls/${data?.id}/assigned`),
             }}
           />

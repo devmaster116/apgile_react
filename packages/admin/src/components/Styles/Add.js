@@ -72,7 +72,7 @@ const Add = (props) => {
     if (id && values.logo === null) {
       delete values.logo;
     }
-    if (id && values.bg_image === null) {
+    if ((id && values.bg_image === null) || (values.bg_image === null) ) {
       delete values.bg_image;
     }
     Object.keys(values).forEach((key) => {
@@ -138,6 +138,8 @@ const Add = (props) => {
               values,
               setFieldValue,
               handleSubmit,
+              errors,
+              touched
             }) => (
               <form onSubmit={handleSubmit}>
                 <Row className="mb-3">
@@ -362,7 +364,7 @@ const Add = (props) => {
                   </Form.Group>
                 </Row>
 
-                {/* {true && (
+                {true && (
                   <div className={'row'}>
                     <div className={'col-12'}>
                       <code>
@@ -376,7 +378,7 @@ const Add = (props) => {
                       <pre>Touched: {JSON.stringify(touched, null, 2)}</pre>
                     </div>
                   </div>
-                )} */}
+                )}
               </form>
             )}
           </Formik>

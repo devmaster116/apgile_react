@@ -20,7 +20,7 @@ const Add = (props) => {
             target: `${props.branchId}/week-day-list`,
             // async: true,
             name: 'week_day',
-            // multi:true,
+            multi:true,
             required: true,
             col: 4
         },

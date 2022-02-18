@@ -42,6 +42,8 @@ import SettingAdd from "./../components/Settings/Add";
 
 import CallsList from "./../components/Calls/List";
 import KitchenCalls from "./../components/KitchenCalls/List";
+import CallAssigned from "./../components/Calls/Add";
+import CallDetail from "./../components/Calls/Detail";
 
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
@@ -108,6 +110,8 @@ const routes = [
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 
 	{ path: '/kitchen-calls', exact : true,component: KitchenCalls,isPublic: false},
+	{ path: '/calls/:id/assigned', exact : true,component:CallAssigned ,isPublic: false},
+	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},
 	
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},

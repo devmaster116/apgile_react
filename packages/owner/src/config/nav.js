@@ -209,7 +209,7 @@ export default {
                 phrase: "Customer Calls",
                 order: 1,
                 to: "/calls",
-                roles: ["supervisor"],
+                roles: ["admin","supervisor"],
                 icon: "fas fa-phone-square-alt",
             },
             kitchen_calls: {

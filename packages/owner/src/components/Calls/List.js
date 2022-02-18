@@ -10,26 +10,26 @@ const List = (props) => {
         setQuery((prev) => !prev);
     }, [props.branchId]);
 
-    const filters = {
-        company_id: {
-            type: "advanceSelect",
-            label: "Company",
-            target: 'companies?limit=1000',
-            async: true,
-            name: "company_id",
-            required: true,
-            col: 12 + ' col-xl-3 ',
-        },
-        branch_id: {
-            type: "advanceSelect",
-            label: "Branch",
-            target: 'branches?limit=1000',
-            async: true,
-            name: "branch_id",
-            required: true,
-            col: 12 + ' col-xl-3 ',
-        },
-    }
+    // const filters = {
+    //     company_id: {
+    //         type: "advanceSelect",
+    //         label: "Company",
+    //         target: 'companies?limit=1000',
+    //         async: true,
+    //         name: "company_id",
+    //         required: true,
+    //         col: 12 + ' col-xl-3 ',
+    //     },
+    //     branch_id: {
+    //         type: "advanceSelect",
+    //         label: "Branch",
+    //         target: 'branches?limit=1000',
+    //         async: true,
+    //         name: "branch_id",
+    //         required: true,
+    //         col: 12 + ' col-xl-3 ',
+    //     },
+    // }
 
     const columns = [
         {dataField: "id", text: "ID", align: "center", sort: true},
@@ -91,9 +91,16 @@ const List = (props) => {
                         columns={columns}
                         sort={defaultSorted}
                         hideEdit={true}
-                        filters={props.userRole?.includes("supervisor" && "staff") ? null : filters}
-                        showAdvanceFilters={true}
+                        // filters={props.userRole?.includes("supervisor" && "staff") ? null : filters}
+                        // showAdvanceFilters={true}
+                        hideDetail={false}
                         hideActionCol={props.userRole === "supervisor" || props.userRole === "staff" ? true : false}
+                        customButton={{
+                            name: "Assigned Call",
+                            color: "warning",
+                            classes:"text-white",
+                            callback: (data) => props?.history?.push(`/calls/${data?.id}/assigned`),
+                          }}
                         Query={query}
 
                     />
