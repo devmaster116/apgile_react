@@ -43,10 +43,10 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
-    
+
     // {
-    //   dataField: "user.username",
-    //   text: "username",
+    //   dataField: "user.full_name",
+    //   text: "full_name",
     //   align: "center",
     //   sort: true,
     // },
@@ -68,16 +68,16 @@ const List = (props) => {
     //   align: "center",
     //   sort: true,
     // },
-    
-    
-   
+
+
+
     {
       dataField: "description",
       text: "Description",
       align: "center",
       sort: true,
     },
-    
+
     {
       dataField: "valid_from",
       text: "Valid From",
@@ -104,8 +104,8 @@ const List = (props) => {
         );
       },
     },
-    
-   
+
+
   ];
   return (
     <div>

@@ -19,16 +19,10 @@ const columns = [
     align: "center",
     sort: true,
   },
-  
+
   {
     dataField: "week_day_name",
     text: "Weekday",
-    align: "center",
-    sort: true,
-  },
-  {
-    dataField: "branch_name",
-    text: "Branch",
     align: "center",
     sort: true,
   },

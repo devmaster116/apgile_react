@@ -20,20 +20,8 @@ const ItemsList = (props) => {
             sort: true,
         },
         {
-            dataField: "username",
-            text: "Username",
-            align: "center",
-            sort: true,
-        },
-        {
             dataField: "first_name",
             text: "First Name",
-            align: "center",
-            sort: true,
-        },
-        {
-            dataField: "email",
-            text: "Email",
             align: "center",
             sort: true,
         },

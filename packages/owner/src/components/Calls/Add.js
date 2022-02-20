@@ -16,12 +16,11 @@ useEffect(() => {
     setAction_user(ls?.id);
     api.request("get",`${props.branchId}/calls/${id}`)
     .then(({data}) => {
-        console.log(data,"data")
         setTargetUser(data?.users?.map((user)=>({value:user?.id?.toString(),label:user?.username})))
     })
     .catch((error) => console.log(error));
 
-    
+
 }, [id,props.branchId]);
 
 

@@ -22,7 +22,7 @@ const Add = (props) => {
       setTargetID(`${props.branchId}/location/${data?.value}/items`)
     }, 0);
   }
-  
+
 
   // console.log(options,"options");
   let fields = {
@@ -54,7 +54,7 @@ const Add = (props) => {
       type: "advanceSelect",
       label: "Users",
       target: `${props.branchId}/users`,
-      optionLabel: "username",
+      optionLabel: "full_name",
       required: true,
       multi: true,
       async:true,

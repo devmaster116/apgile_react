@@ -42,7 +42,7 @@ const columns = [
     formatter: (cell, row) => {
     return  row?.teams?.map((team)=>{
       return ( <span key={row.id}>
-         {team?.supervisor?.username}
+         {team?.supervisor?.first_name}
         </span> )
       })
     },

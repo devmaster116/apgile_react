@@ -24,17 +24,23 @@ const columns = [
     sort: true,
   },
   {
+    dataField: "address.city",
+    text: "City",
+    align: "center",
+    sort: true,
+  },
+  {
     dataField: "phone1",
     text: "Phone",
     align: "center",
     sort: true,
   },
-  {
-    dataField: "phone2",
-    text: "Secondary Number",
-    align: "center",
-    sort: true,
-  },
+  // {
+  //   dataField: "phone2",
+  //   text: "Secondary Number",
+  //   align: "center",
+  //   sort: true,
+  // },
 
 ];
 

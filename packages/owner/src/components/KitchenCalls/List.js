@@ -10,7 +10,7 @@ const KithcenCallList  = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-	
+
 
 		const columns = [
 			{
@@ -32,13 +32,13 @@ const KithcenCallList  = (props) => {
 				sort: true
 			},
 			{
-				dataField: 'user.username',
+				dataField: 'user.full_name',
 				text: 'Received By',
 				align: 'center',
 				sort: true
 			},
-		
-			
+
+
 
 		];
 
@@ -77,8 +77,8 @@ const KithcenCallList  = (props) => {
 								name: "Reverse Call",
 								color: "warning",
 								classes:"text-white",
-								callback: (data) => {reverseCall(data)}  
-								  
+								callback: (data) => {reverseCall(data)}
+
 							  }}
 							// customEditLink = {`locations/:id/edit`}
 						/>
