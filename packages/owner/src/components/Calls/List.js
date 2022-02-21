@@ -63,12 +63,6 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
-        {
-            dataField: "location.branch.name",
-            text: "Branch",
-            align: "center",
-            sort: true,
-        },
     ];
 
     const defaultSorted = [
