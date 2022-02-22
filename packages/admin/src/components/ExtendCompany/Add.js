@@ -71,7 +71,7 @@ const Add = (props) => {
       col: 12,
     },
 
-    "Admin Details": {
+    "Company Admin Details": {
       isDummyField: true,
       type: "h4",
       col: 12,

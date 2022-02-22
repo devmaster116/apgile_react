@@ -38,6 +38,60 @@ const Add = (props) => {
             col: 6,
           },
         
+          "Social Media Link": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+          },
+          facebook:{
+            type: "text",
+            label: "Facebook",
+            // required: true,
+            name: "facebook",
+            col: 6,
+          },
+          instagram:{
+            type: "text",
+            label: "Instagram",
+            // required: true,
+            name: "instagram",
+            col: 6,
+          },
+          linkedin : {
+            type: "text",
+            label: "Linkedin",
+            // required: true,
+            name: "linkedin",
+            col: 6,
+          },
+          youtube : {
+            type: "text",
+            label: "Youtube",
+            // required: true,
+            name: "youtube",
+            col: 6,
+          },
+          reddit: {
+            type: "text",
+            label: "Reddit",
+            // required: true,
+            name: "reddit",
+            col: 6,
+          },
+          pinterest : {
+            type: "text",
+            label: "Pinterest",
+            // required: true,
+            name: "pinterest",
+            col: 6,
+          },
+          twitter: {
+            type: "text",
+            label: "Twitter",
+            // required: true,
+            name: "twitter",
+            col: 6,
+          }
           
         };
 
@@ -53,11 +107,11 @@ const Add = (props) => {
                         fields={fields}
                         targetId={id}
                         name="setting"
-                        repeater={true}
-                        initialValues={props.location.aboutProps}
+                        // repeater={true}
+                        // initialValues={props.location.aboutProps}
                         extraVals={{branch_id: props.branchId}}
                         redirect="setting/add"
-                        handleSameValueFields={['title', 'slug']}
+                        // handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>

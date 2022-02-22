@@ -111,6 +111,7 @@ const routes = [
 
 	{path : "/categories" ,exact : true ,component :CategoriesList},
 	{path : "/categories/add" ,exact : true ,component :CategoriesAdd},
+	{path : "/categories/:id/edit" ,exact : true ,component :CategoriesAdd},
 	
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
