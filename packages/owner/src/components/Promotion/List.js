@@ -69,15 +69,6 @@ const List = (props) => {
     //   sort: true,
     // },
 
-
-
-    {
-      dataField: "description",
-      text: "Description",
-      align: "center",
-      sort: true,
-    },
-
     // {
     //   dataField: "valid_from",
     //   text: "Valid From",
@@ -92,14 +83,13 @@ const List = (props) => {
     // },
 
     {
-      isDummyField: true,
       align: "center",
       text: "Status",
       sort: true,
       formatter: (cell, row) => {
         return (
-          <Button color={row?.status_id ? "success" : "danger"} onClick={()=>changeStatus(row)}>
-            {row?.status_id === 0 ? "Active" : "Inactive"}
+          <Button color={row?.status ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+            {row?.status === 0 ? "Active" : "Inactive"}
           </Button>
         );
       },
