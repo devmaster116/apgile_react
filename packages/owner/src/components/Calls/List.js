@@ -46,6 +46,12 @@ const List = (props) => {
             sort: true,
         },
         {
+            dataField: "page.name",
+            text: "Area",
+            align: "center",
+            sort: true,
+        },
+        {
             dataField: "completed_at",
             text: "Completed At",
             align: "center",
