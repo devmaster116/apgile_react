@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 
 const LocationsAdd = (props) => {
 
-    const [query, setQuery] = useState(false);
+    // const [query, setQuery] = useState(false);
     useEffect(() => {
-        setQuery((prev) => !prev);
+        // setQuery((prev) => !prev);
     }, [props.branchId]);
     const {id} = props.match.params;
 

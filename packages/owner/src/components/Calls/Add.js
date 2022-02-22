@@ -9,16 +9,16 @@ import {connect} from "react-redux";
 const Add = (props) => {
     const {id} = props.match.params;
 
-    const [targetUser, setTargetUser] = useState([]);
+    // const [targetUser, setTargetUser] = useState([]);
     const [action_user, setAction_user] = useState();
     useEffect(() => {
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         setAction_user(ls?.id);
-        api.request("get", `/${props.branchId}/calls/${id}`)
-            .then(({data}) => {
-                setTargetUser(data?.users?.map((user) => ({value: user?.id?.toString(), label: user?.username})))
-            })
-            .catch((error) => console.log(error));
+        // api.request("get", `/${props.branchId}/calls/${id}`)
+        //     .then(({data}) => {
+        //         setTargetUser(data?.users?.map((user) => ({value: user?.id?.toString(), label: user?.username})))
+        //     })
+        //     .catch((error) => console.log(error));
 
 
     }, [id, props.branchId]);
