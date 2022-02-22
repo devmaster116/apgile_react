@@ -11,7 +11,7 @@ export default {
         },
     },
     owner: {
-        phrase: "Manage Team",
+        phrase: "Manage Teams",
         to: "/owner",
         order: 21,
         roles: ["admin"],

@@ -14,30 +14,30 @@ const Add = (props) => {
             label: "Wait Time",
             required: true,
             name: "wait_time",
-            col: 6,
+            col: 3,
           },
           escalation_hop: {
             type: "text",
             label: "Escalation Hop",
             // required: true,
             name: "escalation_hop",
-            col: 6,
+            col: 3,
           },
           cycle: {
             type: "number",
             label: "Cycle",
             required: true,
             name: "cycle",
-            col: 6,
+            col: 3,
           },
           throttle_wait: {
             type: "number",
             label: "Throttle Wait",
             required: true,
             name: "throttle_wait",
-            col: 6,
+            col: 3,
           },
-        
+
           "Social Media Links": {
             isDummyField: true,
             type: "h4",
@@ -92,7 +92,7 @@ const Add = (props) => {
             name: "twitter",
             col: 6,
           }
-          
+
         };
 
         return (
@@ -116,7 +116,7 @@ const Add = (props) => {
                 </CardBody>
             </Card>
         );
-    
+
 }
 
 const mapStateToProps = state => {

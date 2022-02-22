@@ -1,15 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 
 const LocationsAdd = (props) => {
 
-    // const [query, setQuery] = useState(false);
+    const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
     const {id} = props.match.params;
+
+    const manageTeamField = data => {
+        console.log('value set', data);
+        if(typeof data.value !== 'undefined' && data.value)
+            setShowTeam(false);
+        else
+            setShowTeam(true);
+    };
 
     const fields = {
         name: {
@@ -17,43 +25,14 @@ const LocationsAdd = (props) => {
             label: "Name",
             required: true,
             name: "name",
-            col: 6,
+            col: 4,
         },
         description: {
             type: "text",
             label: "Description",
             name: "description",
-            col: 6,
+            col: 4,
         },
-        // team: {
-        //     type: "advanceSelect",
-        //     label: "Team",
-        //     target: `${props.branchId}/teams?limit=1000`,
-        //     // optionLabel: 'title',
-        //     multi: true,
-        //     async: true,
-        //     // required: true,
-        //     name: "team",
-        //     col: 4,
-        // },
-        // shifts: {
-        //     type: "advanceSelect",
-        //     label: "Shifts",
-        //     target: `${props.branchId}/shifts?limit=1000`,
-        //     // optionLabel: 'title',
-        //     multi: true,
-        //     async: true,
-        //     // required: true,
-        //     col: 4,
-        // },
-        auto: {
-            type: "switch",
-            label: "Auto Assign Staff",
-            name: "auto_assign",
-            required: true,
-            col: 3,
-        },
-
         message_box: {
             type: "switch",
             label: "Message",
@@ -68,6 +47,38 @@ const LocationsAdd = (props) => {
             name: "customer_required",
             col: 2,
         },
+        auto: {
+            type: "switch",
+            label: "Auto Assign Staff",
+            name: "auto_assign",
+            required: true,
+            col: 2,
+            callback: (data) => manageTeamField(data)
+        },
+        team: {
+            type: "advanceSelect",
+            label: "Team",
+            target: `${props.branchId}/teams?limit=1000`,
+            // optionLabel: 'title',
+            multi: true,
+            async: true,
+            // required: true,
+            name: "team",
+            col: 4,
+            condition: showTeam
+        },
+        // shifts: {
+        //     type: "advanceSelect",
+        //     label: "Shifts",
+        //     target: `${props.branchId}/shifts?limit=1000`,
+        //     // optionLabel: 'title',
+        //     multi: true,
+        //     async: true,
+        //     // required: true,
+        //     col: 4,
+        // },
+
+
         // branch_id: {
         //     type: 'advanceSelect',
         //     label: "Branch",

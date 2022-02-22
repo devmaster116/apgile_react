@@ -32,8 +32,8 @@ const TeamsAdd = (props) => {
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
-                target: `${props.branchId}/users`,
-                optionLabel: 'first_name',
+                target: `${props.branchId}/role-users/supervisor`,
+                optionLabel: 'full_name',
                 required: true,
                 // async: true,
                 name: 'supervisor_id',
@@ -42,7 +42,8 @@ const TeamsAdd = (props) => {
             user_id: {
                 type: 'advanceSelect',
                 label: "Team Members",
-                target: `${props.branchId}/users`,
+                // target: `${props.branchId}/users`,
+                target: `${props.branchId}/role-users/staff`,
                 optionLabel: 'full_name',
                 optionValue: "id",
                 key:'full_name',

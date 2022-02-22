@@ -16,14 +16,14 @@ const Add = (props) => {
             optionLabel: 'first_name',
             optionId: 'id',
             async: true,
-            col: 3,
+            col: 4,
         },
          ...(!id  && {os: {
             type: "text",
             label: "Operating System",
             required: true,
             name: "os",
-            col: 6,
+            col: 4,
           }}),
 
           ...(!id  && {device: {
@@ -31,9 +31,9 @@ const Add = (props) => {
             label: "Device Name",
             // required: true,
             name: "device",
-            col: 6,
+            col: 4,
           }}),
-          
+
         };
 
         return (
@@ -57,7 +57,7 @@ const Add = (props) => {
                 </CardBody>
             </Card>
         );
-    
+
 }
 
 const mapStateToProps = state => {
