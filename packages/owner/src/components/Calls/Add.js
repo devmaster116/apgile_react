@@ -14,14 +14,7 @@ const Add = (props) => {
         console.log(props.location.state,"props.location.state.")
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         setAction_user(ls?.id);
-        // api.request("get", `/${props.branchId}/calls/${id}`)
-        //     .then(({data}) => {
-        //         setTargetUser(data?.users?.map((user) => ({value: user?.id?.toString(), label: user?.username})))
-        //     })
-        //     .catch((error) => console.log(error));
-
-
-    }, [id, props.branchId]);
+    }, [id, props.branchId, props.location.state]);
 
 
     let fields = {
