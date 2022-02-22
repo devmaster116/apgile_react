@@ -78,18 +78,18 @@ const List = (props) => {
       sort: true,
     },
 
-    {
-      dataField: "valid_from",
-      text: "Valid From",
-      align: "center",
-      sort: true,
-    },
-    {
-      dataField: "valid_till",
-      text: "Valid Till",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "valid_from",
+    //   text: "Valid From",
+    //   align: "center",
+    //   sort: true,
+    // },
+    // {
+    //   dataField: "valid_till",
+    //   text: "Valid Till",
+    //   align: "center",
+    //   sort: true,
+    // },
 
     {
       isDummyField: true,
@@ -111,7 +111,7 @@ const List = (props) => {
     <div>
       <div>
         <Card className="animated fadeIn">
-          <Header title="All Promotions" />
+          <Header title="All Sections" />
           <CardBody>
             <RemoteTable
               entity={`${props?.branchId}/promotions`}

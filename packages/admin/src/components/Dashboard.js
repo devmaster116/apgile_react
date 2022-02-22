@@ -13,10 +13,10 @@ const Dashboard = () => {
     <div>
 		{
 		counter === 2 && <p>hello</p>
-		
-		} 
+
+		}
 		{console.log(counter,"counter")}
-      <h3>White Falcon Dashboard</h3>
+      <h3>Adroit Dashboard</h3>
     </div>
   );
 };

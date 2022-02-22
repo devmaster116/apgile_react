@@ -50,23 +50,23 @@ const {id} = props.match.params;
       col: 4,
       required: true,
     },
-    valid_from: {
-      type: "date",
-      dateFormat:'yyyy/MM/dd',
-      label: "Valid From",
-      name: "valid_from",
-      // required: true,
-      col: 4,
-    },
-
-    valid_till: {
-      type: "date",
-      dateFormat:"yyyy/MM/dd",
-      label: "Valid Until",
-      name: "valid_till",
-      // required: true,
-      col: 4,
-    },
+    // valid_from: {
+    //   type: "date",
+    //   dateFormat:'yyyy/MM/dd',
+    //   label: "Valid From",
+    //   name: "valid_from",
+    //   // required: true,
+    //   col: 4,
+    // },
+    //
+    // valid_till: {
+    //   type: "date",
+    //   dateFormat:"yyyy/MM/dd",
+    //   label: "Valid Until",
+    //   name: "valid_till",
+    //   // required: true,
+    //   col: 4,
+    // },
     promotion_image: {
       type: "filePic",
       label: "Promotion Image",
@@ -84,7 +84,7 @@ const {id} = props.match.params;
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Promotion" />
+        <Header title="Add New Section" />
         <CardBody>
           <FormGenerator
             targetEntity={`${props.branchId}/promotions`}

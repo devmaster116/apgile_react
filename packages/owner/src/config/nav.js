@@ -163,7 +163,7 @@ export default {
   },
 
   Promotion: {
-    phrase: "Manage Promotions",
+    phrase: "Site Content",
     to: "/promotions",
     roles: ["admin"],
     order: 33,
@@ -177,7 +177,7 @@ export default {
         icon: "fas fa-users",
       },
       promotions: {
-        phrase: "Promotion",
+        phrase: "Sections",
         order: 2,
         to: "/promotions",
         roles: ["admin"],
@@ -185,7 +185,7 @@ export default {
       },
     },
   },
-  
+
 
   //SUPERVISOR NAV
 
