@@ -38,6 +38,26 @@ const Add = (props) => {
             col: 3,
           },
 
+          "Site Content": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+          },
+
+          page_title:{
+            type: "text",
+            label: "Title",
+            // required: true,
+            col: 6,
+          },
+
+          page_subtitle:{
+            type: "text",
+            label: "Sub Title",
+            // required: true,
+            col: 6,
+          },
+
           "Social Media Links": {
             isDummyField: true,
             type: "h4",
