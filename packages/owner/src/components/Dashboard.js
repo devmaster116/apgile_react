@@ -28,7 +28,7 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <h3>White Falcon Dashboards</h3>
+            <h3>Adroit Dashboards</h3>
         </div>
     );
 };

@@ -93,7 +93,10 @@ const List = (props) => {
                             name: "Assigned Call",
                             color: "warning",
                             classes:"text-white",
-                            callback: (data) => props?.history?.push(`/calls/${data?.id}/assigned`),
+                            callback: (data) => props?.history?.push({
+                                pathname: `/calls/${data?.id}/assigned`,
+                                state: data?.location.id
+                            })
                           }}
                         Query={query}
 

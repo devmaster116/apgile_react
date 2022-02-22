@@ -11,52 +11,55 @@ const List = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-		const columns = [
-			// {
-			// 	dataField: 'id',
-			// 	text: 'ID',
-			// 	align: 'center',
-			// 	sort: true
-			// },
-			{
-				dataField: 'branch_id',
-				text: 'Branch Id',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'escalation_hop',
-				text: 'Escalation Hop',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'throttle_wait',
-				text: 'Throttle Wait',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'wait_time',
-				text: 'Wait Time',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'cycle',
-				text: 'Cycle',
-				align: 'center',
-				sort: true
-			},
-			
-			
-		];
+	const columns = [
+		
+		{
+			dataField: 'id',
+			text: 'ID',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'user.username',
+			text: 'Username',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'branch.name',
+			text: 'Branch',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'os',
+			text: 'Operating System',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'device',
+			text: 'Device',
+			align: 'center',
+			sort: true
+		},
+	
+		{
+			dataField: 'uuid',
+			text: 'Uuid',
+			align: 'center',
+			sort: true
+		},
+		
+		
+	];
+
 
 		
 
 		const defaultSorted = [
 			{
-				dataField: 'branch_id',
+				dataField: 'id',
 				order: 'desc'
 			}
 		];
@@ -65,15 +68,16 @@ const List = (props) => {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>All Setting</strong>
+						<strong>All Watches</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`${props?.branchId}/branch-settings`}
-							customEntity={`branch-settings`}
+							entity={`${props?.branchId}/watches`}
+							customEntity={`watches`}
 							columns={columns}
+							hideDetail={true}
 							sort={defaultSorted}
-							addRoute="/setting/add"
+							addRoute="/watches/add"
 							{...props.remoteTableFields}
 							Query={query}
 						/>
@@ -86,7 +90,9 @@ const List = (props) => {
 const mapStateToProps = state => {
 	return {
 	  branchId : state.selectedBranchId,
-	
+	  companyName : state.companyName,
+	  companyId : state.companyId,
+	  userRole : state.userRole
 	  }
   }
   

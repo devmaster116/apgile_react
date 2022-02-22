@@ -11,7 +11,6 @@ const ItemAdd = (props) => {
 	useEffect(() => {
         let ls =  JSON.parse(localStorage.getItem('currentUser'));
         // let isAdmin = ls?.roles[0];
-        console.log(ls,"ls")
         var rolesArray=[];
         api.request("get","/roles")
         .then(({data}) => {
@@ -38,6 +37,28 @@ const ItemAdd = (props) => {
             isDummyField: true,
             type: "h4",
             col: 12,
+        },
+        title: {
+            // parent: "user",
+            required:true,
+            type: "advanceSelect",
+            options: [
+                {
+                    value: "1",
+                    label: "Mr",
+                },
+                {
+                    value: "2",
+                    label: "Mrs",
+                },
+                {
+                    value: "3",
+                    label: "Ms",
+                },
+            ],
+            label: "Title",
+            name: "title",
+            col: 2,
         },
         first_name: {
             type: "text",
@@ -72,21 +93,21 @@ const ItemAdd = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 4,
+            col: 2,
         },
         email: {
             type: "email",
             label: "Email",
             required: true,
             name: "email",
-            col: 4,
+            col: 6,
         },
         phone1: {
             type: "text",
             label: "Phone Number",
             // required: true,
             name: "phone1",
-            col: 4,
+            col: 6,
         },
 
         "Account Details": {
@@ -106,29 +127,6 @@ const ItemAdd = (props) => {
         //     required:true,
         //     col: 4,
         //   },
-
-        title: {
-            // parent: "user",
-            required:true,
-            type: "advanceSelect",
-            options: [
-              {
-                value: "1",
-                label: "Mr",
-              },
-              {
-                value: "2",
-                label: "Mrs",
-              },
-              {
-                value: "3",
-                label: "Ms",
-              },
-            ],
-            label: "Title",
-            name: "title",
-            col: 4,
-          },
 
         password: {
             // parent: "user",

@@ -11,6 +11,7 @@ const Add = (props) => {
     // const [targetUser, setTargetUser] = useState([]);
     const [action_user, setAction_user] = useState();
     useEffect(() => {
+        console.log(props.location.state,"props.location.state.")
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         setAction_user(ls?.id);
         // api.request("get", `/${props.branchId}/calls/${id}`)
@@ -24,10 +25,10 @@ const Add = (props) => {
 
 
     let fields = {
-        target_user: {
+        user_id: {
             type: "advanceSelect",
             label: "Select Staff",
-            target: `${props.branchId}/call-logs/staff-list/${id}`,
+            target: `${props.branchId}/users`,
             optionLabel: 'first_name',
             optionId: 'id',
             async: true,
@@ -40,7 +41,7 @@ const Add = (props) => {
         action_id: {
             type: "advanceSelect",
             label: "Action Status",
-            target: `${props.branchId}/call-logs/status-list`,
+            target: `${props.branchId}/call/status-list`,
             name: "action_id",
             col: 3,
             required: true,
@@ -56,9 +57,9 @@ const Add = (props) => {
                 <Header title="Assigned Call"/>
                 <CardBody>
                     <FormGenerator
-                        targetEntity={`/${props.branchId}/call-logs`}
+                        targetEntity={`${props.branchId}/kitchen-call`}
                         fields={fields}
-                        name="call-logs"
+                        name="kitchen-call"
                         repeater={true}
                         redirect="calls"
                         extraVals={{

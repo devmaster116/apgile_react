@@ -38,7 +38,7 @@ const Add = (props) => {
             col: 6,
           },
         
-          "Social Media Link": {
+          "Social Media Links": {
             isDummyField: true,
             type: "h4",
             col: 12,

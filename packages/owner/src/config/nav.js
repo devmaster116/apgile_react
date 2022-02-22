@@ -162,11 +162,20 @@ export default {
     },
   },
 
+  watches: {
+    name: "watches",
+    order: 33,
+    phrase: "Watches",
+    roles: ["admin"],
+    to: "/watches",
+    hide: false,
+    icon: "fas fa-stopwatch"
+  },
   Promotion: {
-    phrase: "Manage Promotions",
+    phrase: "Site Content",
     to: "/promotions",
     roles: ["admin"],
-    order: 33,
+    order: 34,
     icon: "fas fa-ad",
     children: {
       categories: {
@@ -177,7 +186,7 @@ export default {
         icon: "fas fa-users",
       },
       promotions: {
-        phrase: "Promotion",
+        phrase: "Sections",
         order: 2,
         to: "/promotions",
         roles: ["admin"],
@@ -185,7 +194,7 @@ export default {
       },
     },
   },
-  
+
 
   //SUPERVISOR NAV
 
