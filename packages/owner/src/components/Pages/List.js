@@ -3,8 +3,12 @@ import RemoteTable from "@evenlogics/whf-remote-table";
 import {Card, CardBody, Button, ButtonGroup} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {Modal, Spinner} from "react-bootstrap/";
+import EasyEdit from 'react-easy-edit';
 import api from "@evenlogics/whf-api";
+import "../../style/style.css";
 import {connect} from "react-redux";
+import Swal from "sweetalert2";
+
 // import {ButtonGroup} from "react-bootstrap";
 
 const List = (props) => {
@@ -37,7 +41,29 @@ const List = (props) => {
         setQuery((prev) => !prev)
     }, [props.branchId]);
 
+const save = (value,data) => {
+    console.log(data,"data")
+    console.log(value,"data")
+    let payload = {
+        name : value
+    }
+    api.request("put", `/${props?.branchId}/page/${data.id}`,payload)
+    .then(() => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Successfully saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        setQuery((prev) => !prev)
+    }).catch((error) => console.log(error));
+}
 
+
+const cancel = () => {
+    console.log("cancelled")
+}
     const defaultSorted = [{dataField: "id", order: "desc"}];
     const columns = [
         {
@@ -48,11 +74,34 @@ const List = (props) => {
         },
 
         {
-            dataField: "name",
-            text: "Name",
+            isDummyField: true,
             align: "center",
+            text: "Page Title",
             sort: true,
+            formatter: (cell, row) => (
+                // <div className="bg-info">
+               <EasyEdit
+                type="text"
+                value={row?.name}
+                onSave={(value)=>save(value,row)}
+                onCancel={cancel}
+                saveButtonStyle="btn btn-success h-10 w-15 ml-1"
+                saveButtonLabel="Save"
+                cancelButtonLabel="Cancel"
+                cancelButtonStyle="btn h-10 w-15 ml-1"
+                attributes={{ name: "awesome-input", id: 1}}
+                instructions="Edit the name"
+              />
+            //   </div>
+            )
         },
+
+        // {
+        //     dataField: "name",
+        //     text: "Name",
+        //     align: "center",
+        //     sort: true,
+        // },
         {
             dataField: "location.name",
             text: "Location",

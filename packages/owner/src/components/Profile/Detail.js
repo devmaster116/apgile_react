@@ -6,7 +6,9 @@ import Switch from "react-switch";
 import api from "@evenlogics/whf-api";
 import { Spinner } from "react-bootstrap/";
 import Swal from "sweetalert2";
-const Detail = () => {
+import {connect} from "react-redux";
+
+const Detail = (props) => {
 
 
 	const [switchState, setSwitchState] = useState(false);
@@ -18,7 +20,7 @@ const Detail = () => {
     setLoader(true);
     let ls =  JSON.parse(localStorage.getItem('currentUser'));
     console.log(ls,"ls object");
-    api.request("get",`/user-profile/${ls?.id}`).then(({data}) => {
+    api.request("get",`/${props.branchId}/user-profile/${ls?.id}`).then(({data}) => {
       console.log(data?.user,"worked");
       setUserData(data?.user)
       setSwitchState(data?.user?.is_online)
@@ -26,7 +28,7 @@ const Detail = () => {
     setLoader(false);
     })
     .catch((error) => console.log(error));
-  }, [switchState]);
+  }, [switchState,props.branchId]);
 
   const handleChange = (value) => {
     console.log(value,"value");
@@ -108,4 +110,12 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+
+const mapStateToProps = state => {
+  return {
+      branchId : state.selectedBranchId,
+      userRole : state.userRole
+    }
+}
+
+export default connect(mapStateToProps,null)(Detail);

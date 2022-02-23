@@ -12,10 +12,30 @@ const ItemsList = (props) => {
 
     console.log(props?.branchId,"branchid")
 
+    const filters = {
+        role_id: {
+          type: "advanceSelect",
+          label: "Roles",
+          target: "roles",
+          classes:"mt-5",
+          async: true,
+          name: "role_id",
+          required: true,
+          col:4
+        
+      }
+    }
+
     const columns = [
         {
             dataField: "id",
             text: "ID",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "username",
+            text: "User Name",
             align: "center",
             sort: true,
         },
@@ -28,7 +48,7 @@ const ItemsList = (props) => {
         {
             isDummyField: true,
             align: "center",
-            text: "Role",
+            text: "User Role",
             sort: true,
             formatter: (cell, row) => {
                 return row.roles.map((rol) => {
@@ -54,11 +74,13 @@ const ItemsList = (props) => {
                 </CardHeader>
                 <CardBody>
                     <RemoteTable
-                        entity={`${props?.branchId}/users` }
+                        entity={`${props?.branchId}/users`}
                         customEntity="staff"
                         columns={columns}
                         sort={defaultSorted}
                         hideDetail={true}
+                        filters={filters}
+                        showAdvanceFilters = {true}
                         addRoute="/staff/add"
                         {...props.remoteTableFields}
                         Query={query}

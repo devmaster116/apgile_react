@@ -30,6 +30,24 @@ const ItemsList = (props) => {
 				align: 'center',
 				sort: true
 			},
+			{
+				dataField: 'prefix',
+				text: 'Prefix',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'postfix',
+				text: 'Postfix',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'starting_number',
+				text: 'Starting Number',
+				align: 'center',
+				sort: true
+			},
 
 		];
 

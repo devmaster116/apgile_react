@@ -118,13 +118,13 @@ export default {
     //     },
     // },
     //
-    // styles: {
-    //     phrase: "Styles",
-    //     order: 111,
-    //     to: "/owner/styles",
-    //     roles: ["super-admin"],
-    //     icon: "fas fa-broom",
-    // },
+    styles: {
+        phrase: "Styles",
+        order: 111,
+        to: "/owner/styles",
+        roles: ["super-admin"],
+        icon: "fas fa-broom",
+    },
 
     customer: {
         hide: true,

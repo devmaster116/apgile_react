@@ -13,15 +13,12 @@ const List = (props) => {
     setQuery((prev)=>!prev);
   }, [props.branchId]);
 
-	// const companiesChangeHandler = (data) => {
-	//   setTimeout(() => {
-	// 	setTarget(`branches/${data.value}/all`);
-	//   }, 0);
-	// };
-
   const changeStatus = (data) => {
-    console.log(data,"data")
-    api.request("post",`/${props.branchId}/status/${data?.id}`)
+    console.log(data?.status,"data")
+    let payload = {
+      status:!data?.status
+    }
+    api.request("put",`/${props.branchId}/promotion/status/${data?.id}`,payload)
     .then((data) => {
         console.log(data)
         setQuery(!query)
@@ -43,53 +40,21 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
-
-    // {
-    //   dataField: "user.full_name",
-    //   text: "full_name",
-    //   align: "center",
-    //   sort: true,
-    // },
-    // {
-    //   dataField: "branch.name",
-    //   text: "Branch",
-    //   align: "center",
-    //   sort: true,
-    // },
     {
       dataField: "category.title",
       text: "Category",
       align: "center",
       sort: true,
     },
-    // {
-    //   dataField: "branch.phone1",
-    //   text: "Branch Phone",
-    //   align: "center",
-    //   sort: true,
-    // },
-
-    // {
-    //   dataField: "valid_from",
-    //   text: "Valid From",
-    //   align: "center",
-    //   sort: true,
-    // },
-    // {
-    //   dataField: "valid_till",
-    //   text: "Valid Till",
-    //   align: "center",
-    //   sort: true,
-    // },
-
     {
       align: "center",
       text: "Status",
       sort: true,
       formatter: (cell, row) => {
+        console.log(row?.status,"status")
         return (
-          <Button color={row?.status ? "success" : "danger"} onClick={()=>changeStatus(row)}>
-            {row?.status === 0 ? "Active" : "Inactive"}
+          <Button color={row?.status === 1 ? "danger" : "success"} onClick={()=>changeStatus(row)}>
+            {row?.status === 1 ? "Inactive" : "Active"}
           </Button>
         );
       },

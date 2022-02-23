@@ -4,3 +4,13 @@
     font-size: large;
     font-weight: bold;
 }
+
+.table-bordered thead td, .table-bordered thead th {
+    border-bottom-width: 2px;
+    text-align: center;
+}
+
+
+.table-filters.col{
+margin-top: 10px;
+}

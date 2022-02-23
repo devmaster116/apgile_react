@@ -7,37 +7,59 @@ import api from "@evenlogics/whf-api";
 const List = (props) => {
 
     const columns = [
-        {
-            dataField: "id",
-            text: "ID",
-            align: "center",
-            sort: true,
+      {
+        dataField: "id",
+        text: "ID",
+        align: "center",
+        sort: true,
+      },
+      {
+        isDummyField: true,
+        align: "center",
+        text: "Company Logo",
+        sort: true,
+        formatter: (cell, row) => {
+            console.log(row,"row")
+          return (
+            <img
+            width="40"
+            height="30"
+              src={row?.style?.logo?.url}
+              alt="image.png"
+            />
+          );
         },
-        {
-            dataField: "name",
-            text: "Name",
-            align: "center",
-            sort: true,
-        },
-        {
-            dataField: "address.city",
-            text: "City",
-            align: "center",
-            sort: true,
-        },
-        {
-            dataField: "phone1",
-            text: "Phone",
-            align: "center",
-            sort: true,
-        },
-        // {
-        //   dataField: "phone2",
-        //   text: "Secondary Number",
-        //   align: "center",
-        //   sort: true,
-        // },
-
+      },
+      {
+        dataField: "name",
+        text: "Company Name",
+        align: "center",
+        sort: true,
+      },
+    //   {
+    //     dataField: "address.city",
+    //     text: "City",
+    //     align: "center",
+    //     sort: true,
+    //   },
+      {
+        dataField: "phone1",
+        text: "Phone Number",
+        align: "center",
+        sort: true,
+      },
+      {
+        dataField: "address.country",
+        text: "Country",
+        align: "center",
+        sort: true,
+      },
+      // {
+      //   dataField: "phone2",
+      //   text: "Secondary Number",
+      //   align: "center",
+      //   sort: true,
+      // },
     ];
 
     const defaultSorted = [{dataField: 'id', order: 'desc'}];
@@ -74,6 +96,7 @@ const List = (props) => {
                             customButton={{
                                 name: "Manage Company",
                                 color: "warning",
+                                classes:"text-white",
                                 callback: (data) => companyLogin(data),
                             }}
                             // Query={query}

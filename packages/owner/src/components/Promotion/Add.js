@@ -50,23 +50,6 @@ const Add = (props) => {
             name: "description",
             col: 4,
         },
-        // valid_from: {
-        //   type: "date",
-        //   dateFormat:'yyyy/MM/dd',
-        //   label: "Valid From",
-        //   name: "valid_from",
-        //   // required: true,
-        //   col: 4,
-        // },
-        //
-        // valid_till: {
-        //   type: "date",
-        //   dateFormat:"yyyy/MM/dd",
-        //   label: "Valid Until",
-        //   name: "valid_till",
-        //   // required: true,
-        //   col: 4,
-        // },
         promotion_image: {
             type: "filePic",
             label: "Promotion Image",

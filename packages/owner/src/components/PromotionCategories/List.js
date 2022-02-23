@@ -1,8 +1,9 @@
 import React,{ useEffect,useState } from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody,Button } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 
 const List = (props) => {
@@ -12,6 +13,18 @@ const List = (props) => {
     setQuery((prev)=>!prev);
   }, [props.branchId]);
 
+  const changeStatus = (data) => {
+    console.log(data?.status,"data")
+    let payload = {
+      status:!data?.status
+    }
+    api.request("put",`/${props.branchId}/category/status/${data?.id}`,payload)
+    .then((data) => {
+        console.log(data)
+        setQuery(!query)
+    })
+    .catch((error) => console.log(error));
+  }
 
   const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
@@ -33,6 +46,19 @@ const List = (props) => {
       text: "Sub Title",
       align: "center",
       sort: true,
+    },
+    {
+      align: "center",
+      text: "Status",
+      sort: true,
+      formatter: (cell, row) => {
+        console.log(row?.status,"status")
+        return (
+          <Button color={row?.status === 1 ? "danger" : "success"} onClick={()=>changeStatus(row)}>
+            {row?.status === 1 ? "Inactive" : "Active"}
+          </Button>
+        );
+      },
     },
     
     // {

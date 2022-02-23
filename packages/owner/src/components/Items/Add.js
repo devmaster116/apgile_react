@@ -46,35 +46,36 @@ const ItemAdd = (props) => {
             name: "location_id",
             col: 6,
         },
+        prefix: {
+            type: "text",
+            label: "Prefix",
+            required: true,
+            name: "prefix",
+            col: 6,
+        },
+        postfix: {
+            type: "text",
+            label: "Postfix",
+            required: true,
+            name: "postfix",
+            col: 6,
+        },
+        starting_number : {
+            type: "number",
+            label: "Starting Number",
+            required: true,
+            name: "starting_number",
+            col: 6,
+        },
+        increments : {
+            type: "number",
+            label: "Increments",
+            required: true,
+            name: "increments",
+            col: 6,
+        },
 
-        // message_box: {
-        //   type: "switch",
-        //   label: "Message",
-        //   name: "message_box",
-        //   required: true,
-        //   col: 2,
-        // },
-
-        // ...(openQrCode &&
-        //   {qty: {
-        //     type: "number",
-        //     label: "Quantity",
-        //     required: true,
-        //     name: "qty",
-        //     col: 6,
-        //   },
-        //   location_id: {
-        //     type: "advanceSelect",
-        //     label: "Location",
-        //     target: `${props.branchId}/locations?limit=1000`,
-        //     // optionLabel: 'title',
-        //     async: true,
-        //     required: true,
-        //     name: "location_id",
-        //     col: 6,
-        //   }}
-        //  ),
-
+       
 
     };
 

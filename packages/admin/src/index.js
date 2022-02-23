@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/style.css";
 import customNav from "./config/nav";
 global.customNavGlobal = customNav;
 global.customRoutes = require("./config/routes");
