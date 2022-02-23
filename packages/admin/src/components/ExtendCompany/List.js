@@ -25,7 +25,7 @@ const List = (props) => {
             width="40"
             height="30"
               src={row?.style?.logo?.url}
-              alt="image.png"
+              alt="logo"
             />
           );
         },
