@@ -27,19 +27,21 @@ const Add = (props) =>  {
     let fields = {
          username: {
           type: 'text',
-          label: 'username',
+          label: 'Username',
           required: true,
           col: 6
         },
         first_name:{
             col:6,
             type:"text",
-            label:"first name",
+            label:"First Name",
+            // required:true,
         },
         last_name:{
             col:6,
             type:"text",
-            label:"last name",
+            label:"Last Name",
+            // required:true,
         },
 
         roles: {
@@ -48,21 +50,24 @@ const Add = (props) =>  {
             // async: true,
             // multi: false,
             // options:optionsArr,
+            required:true,
             name: 'role_id',
-            label:'roles',
+            label:'Roles',
             col: 6
           },
 
         phone1:{
             col:6,
             type:"text",
-            label:"phone"
+            label:"Phone",
+            maxlength:14
         },
         branch_id:{
             col:6,
             type:"advanceSelect",
             target:"branches",
             label:"Select Branch",
+            required:true,
             name:"branch_id"
         },
         gender_id:{
@@ -73,7 +78,9 @@ const Add = (props) =>  {
                {value:"2",label:"Female"},
                {value:"3",label:"Other"},
            ],
-            label:"select gender"
+            label:"Select Gender",
+            required:true,
+
         }
 
     }

@@ -66,12 +66,14 @@ const List = (props) => {
 
 
     const companyLogin = (data) => {
+      console.log(data,"data")
         let currentUser = JSON.parse(localStorage?.getItem('currentUser'));
         let payload = {
             // id : data?.user?.id,
-            id: data?.owner,
+            id: data?.owner_id,
         }
         api.request("post", "/generate-token", payload, currentUser?.authToken).then((data) => {
+          console.log(data,"data")
             window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`, "_self")
         }).catch((error) => console.log(error));
     };

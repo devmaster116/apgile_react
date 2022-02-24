@@ -24,13 +24,15 @@ const ExtendBranchAdd = (props) =>  {
             type:"text",
             label:"Phone",
             required:true,
+            maxlength:13,
             name:"phone1"
         },
         phone2:{
             col:3,
             type:"text",
             label:"Secondary Phone",
-            name:"phone2"
+            name:"phone2",
+            maxlength:13,
         },
         addr1:{
             parent: 'address',

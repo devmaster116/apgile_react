@@ -22,22 +22,22 @@ const filters = {
 
             {
                 dataField: 'id',
-                text: 'id',
+                text: 'Id',
                 align: 'center',
                 sort: true
               }, {
                 dataField: 'name',
-                text: 'name',
+                text: 'Company Name',
                 align: 'center',
                 sort: true
               }, {
                 dataField: 'phone1',
-                text: 'phone',
+                text: 'Company Phone',
                 align: 'center',
                 sort: true
               }, {
                 dataField: 'company_name',
-                text: 'company',
+                text: 'Company',
                 align: 'center',
                 sort: true
               }
