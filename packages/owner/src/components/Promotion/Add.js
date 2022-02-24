@@ -54,13 +54,14 @@ const Add = (props) => {
             type: "filePic",
             label: "Promotion Image",
             name: "promotion_image",
-            // required: true,
+            required: true,
             col: 4,
         },
         status: {
             type: "switch",
             label: "Status",
             required: true,
+            name:"status",
             col: 2
         }
     };

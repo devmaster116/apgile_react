@@ -31,6 +31,28 @@ const Add = (props) =>  {
           required: true,
           col: 6
         },
+        title: {
+            // parent: "user",
+            required:true,
+            type: "advanceSelect",
+            options: [
+                {
+                    value: "1",
+                    label: "Mr",
+                },
+                {
+                    value: "2",
+                    label: "Mrs",
+                },
+                {
+                    value: "3",
+                    label: "Ms",
+                },
+            ],
+            label: "Title",
+            name: "title",
+            col: 6,
+        },
         first_name:{
             col:6,
             type:"text",
