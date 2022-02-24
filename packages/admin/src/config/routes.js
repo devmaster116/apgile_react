@@ -130,7 +130,7 @@ const routes = [
 
 	
 	{path : "/owner/users" ,exact : true ,  roles:['super-admin'],component : UserList},
-	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
+	{path : "/owner/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 	{path : "/users/:id/edit" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 
 
