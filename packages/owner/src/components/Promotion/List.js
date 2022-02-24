@@ -35,13 +35,32 @@ const List = (props) => {
       sort: true,
     },
     {
+      isDummyField: true,
+      align: "center",
+      text: "Promotion Logo",
+      sort: true,
+      formatter: (cell, row) => {
+          console.log(row,"row")
+        return (
+          <img
+          width="60"
+          height="60"
+          style={{borderRadius:"50%",objectFit:"contain"}}
+            src={row?.promotion_image?.url}
+            alt="logo"
+          />
+        );
+      },
+    },
+    {
       dataField: "title",
       text: "Title",
       align: "center",
       sort: true,
     },
+    
     {
-      dataField: "category.title",
+      dataField: "category_sub_title",
       text: "Category",
       align: "center",
       sort: true,

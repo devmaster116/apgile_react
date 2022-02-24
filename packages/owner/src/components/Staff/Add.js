@@ -36,28 +36,7 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-        title: {
-            // parent: "user",
-            required:true,
-            type: "advanceSelect",
-            options: [
-                {
-                    value: "1",
-                    label: "Mr",
-                },
-                {
-                    value: "2",
-                    label: "Mrs",
-                },
-                {
-                    value: "3",
-                    label: "Ms",
-                },
-            ],
-            label: "Title",
-            name: "title",
-            col: 2,
-        },
+      
         first_name: {
             type: "text",
             label: "First Name",
@@ -91,7 +70,7 @@ const ItemAdd = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 2,
+            col: 4,
         },
         email: {
             type: "email",
@@ -113,6 +92,28 @@ const ItemAdd = (props) => {
             isDummyField: true,
             type: "h4",
             col: 12,
+        },
+          title: {
+            // parent: "user",
+            required:true,
+            type: "advanceSelect",
+            options: [
+                {
+                    value: "1",
+                    label: "Mr",
+                },
+                {
+                    value: "2",
+                    label: "Mrs",
+                },
+                {
+                    value: "3",
+                    label: "Ms",
+                },
+            ],
+            label: "Title",
+            name: "title",
+            col: 4,
         },
         // title: {
         //     // parent: "user",
