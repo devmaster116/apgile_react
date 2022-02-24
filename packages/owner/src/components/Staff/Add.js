@@ -101,7 +101,7 @@ const ItemAdd = (props) => {
             // required: true,
             name: "phone1",
             maxlength:14,
-            col: 6,
+            col: 4,
         },
 
         "Account Details": {

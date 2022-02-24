@@ -37,7 +37,7 @@ const List = (props) => {
     {
       isDummyField: true,
       align: "center",
-      text: "Promotion Logo",
+      text: "Promotion Banner",
       sort: true,
       formatter: (cell, row) => {
           console.log(row,"row")
