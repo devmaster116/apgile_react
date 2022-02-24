@@ -105,6 +105,7 @@ const ItemAdd = (props) => {
             label: "Phone Number",
             // required: true,
             name: "phone1",
+            maxlength:14,
             col: 6,
         },
 
@@ -170,11 +171,11 @@ const ItemAdd = (props) => {
                     fields={fields}
                     targetId={id}
                     name="items"
-                    repeater={true}
+                    // repeater={true}
                     initialValues={props.location.aboutProps}
 
                     redirect="staff"
-                    handleSameValueFields={['title', 'slug']}
+                    // handleSameValueFields={['title', 'slug']}
                     Query={query}
                     extraVals={{branch_id: props.branchId}}
                 />
