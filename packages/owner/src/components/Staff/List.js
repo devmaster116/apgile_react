@@ -2,28 +2,56 @@ import React, {useState, useEffect} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 const ItemsList = (props) => {
 
     const [query, setQuery] = useState(false);
+    const [optionsArr, setOptionsArr] = useState([])
     useEffect(() => {
+        var rolesArray=[];
+        api.request("get","/roles")
+        .then(({data}) => {
+          rolesArray = data?.filter((role)=>(
+             role.name !== "super-admin"
+          ))
+          let newOption = rolesArray?.map((role)=>{
+            return {value:role.id,label:role.name}
+          })
+          setOptionsArr(newOption);
+        })
+        .catch((error) => console.log(error));
         setQuery((prev) => !prev);
     }, [props.branchId]);
+
 
     console.log(props?.branchId,"branchid")
 
     const filters = {
+
         role_id: {
-          type: "advanceSelect",
-          label: "Roles",
-          target: "roles",
-          classes:"mt-5",
-          async: true,
-          name: "role_id",
-          required: true,
-          col:4
+            // parent: "user",
+            type: "advanceSelect",
+            label: "Role",
+            name: "role_id",
+            // target: "roles",
+            options:optionsArr,
+            // optionValue: 'value',
+            // optionLabel: 'label',
+            required: true,
+            col: 4,
+        }
+    //     role_id: {
+    //       type: "advanceSelect",
+    //       label: "Roles",
+    //       target: "roles",
+    //       classes:"mt-5",
+    //       async: true,
+    //       name: "role_id",
+    //       required: true,
+    //       col:4
         
-      }
+    //   }
     }
 
     const columns = [

@@ -96,9 +96,9 @@ const Add = (props) =>  {
             col:6,
             type:"advanceSelect",
            options:[
-               {value:"1",label:"Male"},
-               {value:"2",label:"Female"},
-               {value:"3",label:"Other"},
+               {value:1,label:"Male"},
+               {value:2,label:"Female"},
+               {value:3,label:"Other"},
            ],
             label:"Select Gender",
             required:true,

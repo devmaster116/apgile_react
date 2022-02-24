@@ -3,3 +3,7 @@
     border-bottom-width: 2px;
     text-align: center;
 }
+
+.c-subheader {
+    display: none !important;
+}

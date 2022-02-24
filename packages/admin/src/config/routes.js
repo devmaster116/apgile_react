@@ -48,6 +48,7 @@ import CategoriesList from "./../components/PromotionCategories/List";
 import CategoriesAdd from "./../components/PromotionCategories/Add";
 
 import UserAdd from "./../components/ExtendedUser/Add";
+import UserList from "./../components/ExtendedUser/List";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -127,6 +128,8 @@ const routes = [
 	{path : "/company-setup/add" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
+	
+	{path : "/owner/users" ,exact : true ,  roles:['super-admin'],component : UserList},
 	{path : "/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 	{path : "/users/:id/edit" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 

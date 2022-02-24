@@ -40,7 +40,7 @@ export default {
                 phrase: 'All Users',
                 order: 2,
                 icon: 'fas fa-users',
-                to: '/users'
+                to: '/owner/users'
             }
         }
     },

@@ -164,7 +164,7 @@ const Add = (props) => {
             type: "text",
             label: "User Phone",
             name: "u_phone1",
-            // required:true,
+            required:true,
             col: 4,
         },
 
