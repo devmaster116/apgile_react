@@ -13,7 +13,7 @@ const Detail = (props) => {
   useEffect(() => {
     setLoader(true);
     api
-      .request("get", `/styles/${id}`)
+      .request("get", `/branches/${id}`)
       .then(({ data }) => {
         console.log(data, "data");
         setUserData(data);
@@ -24,7 +24,7 @@ const Detail = (props) => {
 
   return (
     <Card className="animated fadeIn">
-      <Header title="Style Details" />
+      <Header title="Branch Details" />
       <CardBody>
         {Loader ? (
           <div className="text-center">
@@ -34,7 +34,7 @@ const Detail = (props) => {
           <Row>
             {Object.keys(userData)?.map(
               (userKey, index) =>
-                Array.isArray(userData[userKey]) === false && typeof userData[userKey] !== 'object' && (
+                Array.isArray(userData[userKey]) === false && (
                   <React.Fragment key={index}>
                  {
                    typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col

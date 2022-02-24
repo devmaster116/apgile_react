@@ -29,7 +29,7 @@ const Add = (props) => {
         link: {
             type: "text",
             label: "Link",
-            required: true,
+            // required: true,
             name: "link",
             col: 3,
         },
@@ -52,7 +52,7 @@ const Add = (props) => {
         },
         promotion_image: {
             type: "filePic",
-            label: "Promotion Image",
+            label: "Promotion Banner",
             name: "promotion_image",
             required: true,
             col: 4,

@@ -60,7 +60,7 @@ const List = () => {
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
-              hideDetail={true}
+              // hideDetail={true}
               hideDelete={false}
               filters={filters}
 							showAdvanceFilters ={true}

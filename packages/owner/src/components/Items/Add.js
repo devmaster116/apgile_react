@@ -49,14 +49,14 @@ const ItemAdd = (props) => {
         prefix: {
             type: "text",
             label: "Prefix",
-            required: true,
+            // required: true,
             name: "prefix",
             col: 6,
         },
         postfix: {
             type: "text",
             label: "Postfix",
-            required: true,
+            // required: true,
             name: "postfix",
             col: 6,
         },

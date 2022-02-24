@@ -53,11 +53,21 @@ const Add = (props) => {
             label: "Team Member",
             target: `${props.branchId}/users`,
             optionLabel: "full_name",
-            required: true,
+            // required: true,
             multi: true,
             async: true,
             name: "user_id",
             col: 4,
+        },
+        supervisor_id: {
+            type: 'advanceSelect',
+            label: "Select Supervisor",
+            target: `${props.branchId}/role-users/supervisor`,
+            optionLabel: 'full_name',
+            required: true,
+            // async: true,
+            name: 'supervisor_id',
+            col: 4
         },
         location_id: {
             type: "advanceSelect",
@@ -67,7 +77,7 @@ const Add = (props) => {
             required: true,
             // multi:true,
             async: true,
-            col: 6,
+            col: 4,
             callback: (data) => locationChangeHandler(data)
         },
 
@@ -79,7 +89,7 @@ const Add = (props) => {
             required: true,
             async: true,
             multi: true,
-            col: 6,
+            col: 4,
         },
 
     };

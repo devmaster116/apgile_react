@@ -74,7 +74,7 @@ const ItemsList = (props) => {
         },
     },
     {
-      dataField: "branch.name",
+      dataField: "branch_name",
       text: "Branch",
       align: "center",
       sort: true,
@@ -108,7 +108,7 @@ const ItemsList = (props) => {
             sort={defaultSorted}
             addRoute="users/add"
             filters={filters}
-			// hideDetail={true}
+			      hideDetail={false}
             showAdvanceFilters={true}
             {...props.remoteTableFields}
           />

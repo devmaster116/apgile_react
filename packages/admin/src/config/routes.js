@@ -22,10 +22,12 @@ import CallDetail from "./../components/Calls/Detail";
 
 import StyleAdd from "./../components/Styles/Add";
 import StylesList from "./../components/Styles/List";
+import StylesDetail from "./../components/Styles/Detail";
 
 import PagesList from "./../components/Pages/List";
 import ExtendBranchAdd from "./../components/ExtendBranch/Add";
 import ExtendBranchList from "./../components/ExtendBranch/List";
+import ExtendBranchDetail from "./../components/ExtendBranch/Detail";
 
 
 import CompanyList from "./../components/ExtendCompany/List";
@@ -49,13 +51,16 @@ import CategoriesAdd from "./../components/PromotionCategories/Add";
 
 import UserAdd from "./../components/ExtendedUser/Add";
 import UserList from "./../components/ExtendedUser/List";
+import UserDetail from "./../components/ExtendedUser/Detail";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 
 const routes = [
-	{ path: '/dashboard', name: 'Dashboard',  roles:['super-admin','admin'],component: Dashboard, isPublic: false },
+
+	{ path: '/', exact : true, component: Dashboard, isPublic: false,},
+	{ path: '/dashboard', exact : true,name: 'Dashboard', component: Dashboard, isPublic: false,},
 
 	{ path: '/owner/items', exact: true, name: 'Terms',  roles:['super-admin'],component: ItemsList, isPublic: true },
 	{ path: '/owner/items/add', exact: true, name: 'Add',  roles:['super-admin'],component: ItemAdd },
@@ -103,12 +108,15 @@ const routes = [
 	{path : "/owner/styles" ,exact : true ,  roles:['super-admin'],component : StylesList},
 	{ path: '/owner/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 	{ path: '/styles/:id/edit', exact: true,  roles:['super-admin'],component: StyleAdd },
+	{ path: '/styles/:id/details', exact: true,  roles:['super-admin'],component: StylesDetail },
+	
 
 
 	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
 	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
 	{ path: '/branches/:id/edit', exact: true,  roles:['super-admin'],component: ExtendBranchAdd },
-
+	{ path: '/branches/:id/details', exact: true,  roles:['super-admin'],component: ExtendBranchDetail},
+	
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
 	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
@@ -132,6 +140,7 @@ const routes = [
 	{path : "/owner/users" ,exact : true ,  roles:['super-admin'],component : UserList},
 	{path : "/owner/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 	{path : "/users/:id/edit" ,exact : true ,  roles:['super-admin'],component : UserAdd},
+	{path : "/users/:id/details" ,exact : true ,  roles:['super-admin'],component : UserDetail},
 
 
 
