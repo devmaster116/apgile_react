@@ -1,35 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
+import {Card, CardBody, CardHeader} from 'reactstrap';
+import {FormGenerator} from '@evenlogics/whf-form-generator';
 
-import UserAdd from "@evenlogics/whf-ra-user/dist/User/Add";
 
 const Add = (props) =>  {
 
-    // const [optionsArr, setOptionsArr] = useState([])
-    // useEffect(() => {
-    //     let ls =  JSON.parse(localStorage.getItem('currentUser'));
-    //     let isAdmin = ls?.roles[0];
-    //     var rolesArray=[];
-    //     api.request("get","/roles")
-    //     .then(({data}) => {
-    //       rolesArray = data?.filter((role)=>(
-    //          role.name !== isAdmin
-    //       ))
-    //       let newOption = rolesArray?.map((role)=>{
-    //         return {value:role.id,label:role.name}
-    //       })
-    //       setOptionsArr(newOption);
-    //     })
-    //     .catch((error) => console.log(error));
-      
-    // }, [])
 
+    const {id} = props.match.params;
+    
+  const [target, setTarget] = useState('branches');
+	
+  const companiesChangeHandler = (data) => {
+      console.log(data,"lll");
+      setTimeout(() => {
+          setTarget(`branches/${data.value}/all`)
+      }, 0);
+  }
 
     let fields = {
-         username: {
-          type: 'text',
-          label: 'Username',
-          required: true,
-          col: 6
+
+        "Personal Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
         },
         title: {
             // parent: "user",
@@ -51,20 +44,67 @@ const Add = (props) =>  {
             ],
             label: "Title",
             name: "title",
-            col: 6,
+            col: 4,
         },
         first_name:{
-            col:6,
+            col:4,
             type:"text",
             label:"First Name",
             // required:true,
         },
         last_name:{
-            col:6,
+            col:4,
             type:"text",
             label:"Last Name",
             // required:true,
         },
+        phone1:{
+            col:4,
+            type:"text",
+            label:"Phone",
+            maxlength:14
+        },
+
+        
+        "Account Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+        },
+
+         username: {
+          type: 'text',
+          label: 'Username',
+          required: true,
+          col: 4
+        },
+        email: {
+            // parent: "user",
+            type: "email",
+            label: "Email",
+            name: "email",
+            required: true,
+            col: 4,
+        },
+        password: {
+            // parent: "user",
+            type: "password",
+            label: "Password",
+            name: "password",
+            required: true,
+            col: 4,
+        },
+        password_confirmation: {
+            // parent: "user",
+            oneOf: "password",
+            type: "password",
+            required: true,
+            label: "Password Confirmation",
+            name: "password_confirmation",
+            col: 4,
+        },
+      
+     
 
         roles: {
             type: 'advanceSelect',
@@ -75,25 +115,10 @@ const Add = (props) =>  {
             required:true,
             name: 'role_id',
             label:'Roles',
-            col: 6
+            col: 4
           },
-
-        phone1:{
-            col:6,
-            type:"text",
-            label:"Phone",
-            maxlength:14
-        },
-        branch_id:{
-            col:6,
-            type:"advanceSelect",
-            target:"branches",
-            label:"Select Branch",
-            required:true,
-            name:"branch_id"
-        },
-        gender_id:{
-            col:6,
+          gender_id:{
+            col:4,
             type:"advanceSelect",
            options:[
                {value:1,label:"Male"},
@@ -103,12 +128,57 @@ const Add = (props) =>  {
             label:"Select Gender",
             required:true,
 
-        }
+        },
+
+      
+        company_id:{
+            col:4,
+            type:"advanceSelect",
+            target:"companies?limit=1000",
+            label:"Select Company",
+            required:true,
+            name:"company_id",
+            callback: (data) => companiesChangeHandler(data)
+        },
+        branch_id:{
+            col:4,
+            type:"advanceSelect",
+            target:target,
+            label:"Select Branch",
+            required:true,
+            async:true,
+            name:"branch_id"
+        },
+     
 
     }
 
-    let deleteFields =['permissions','lang'];
-    return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} match={props.match} />;
+
+    return (
+        <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
+            <CardHeader>
+                Add New User
+            </CardHeader>
+            <CardBody>
+                <FormGenerator
+                    targetEntity="users"
+                    // getValues={handleValue}
+                    fields={fields}
+                    targetId={id}
+                    name="users"
+                    // repeater={true}
+                    // initialValues={props.users.aboutProps}
+
+                    redirect="users"
+                    // handleSameValueFields={['title', 'slug']}
+                    // Query={query}
+                    // extraVals={{branch_id: props.branchId}}
+                />
+            </CardBody>
+        </Card>
+    );
+  
+    // return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} match={props.match} />;
 
 }
 

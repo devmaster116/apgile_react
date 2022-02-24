@@ -36,6 +36,28 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
+        title: {
+            // parent: "user",
+            required:true,
+            type: "advanceSelect",
+            options: [
+                {
+                    value: "1",
+                    label: "Mr",
+                },
+                {
+                    value: "2",
+                    label: "Mrs",
+                },
+                {
+                    value: "3",
+                    label: "Ms",
+                },
+            ],
+            label: "Title",
+            name: "title",
+            col: 4,
+        },
       
         first_name: {
             type: "text",
@@ -72,13 +94,7 @@ const ItemAdd = (props) => {
             name: "gender_id",
             col: 4,
         },
-        email: {
-            type: "email",
-            label: "Email",
-            required: true,
-            name: "email",
-            col: 6,
-        },
+       
         phone1: {
             type: "text",
             label: "Phone Number",
@@ -93,28 +109,7 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-          title: {
-            // parent: "user",
-            required:true,
-            type: "advanceSelect",
-            options: [
-                {
-                    value: "1",
-                    label: "Mr",
-                },
-                {
-                    value: "2",
-                    label: "Mrs",
-                },
-                {
-                    value: "3",
-                    label: "Ms",
-                },
-            ],
-            label: "Title",
-            name: "title",
-            col: 4,
-        },
+         
         // title: {
         //     // parent: "user",
         //     type: "advanceSelect",
@@ -127,7 +122,13 @@ const ItemAdd = (props) => {
         //     required:true,
         //     col: 4,
         //   },
-
+        email: {
+            type: "email",
+            label: "Email",
+            required: true,
+            name: "email",
+            col: 4,
+        },
         password: {
             // parent: "user",
             type: "password",
