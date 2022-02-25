@@ -28,6 +28,14 @@ const Add = (props) => {
             col: 6,
         },
 
+        // addrsss: {
+        //     // parent: "address",
+        //     type: "location",
+        //     label: "Address",
+        //     required: true,
+        //     col: 12,
+        // },
+
         addr1: {
             // parent: "address",
             type: "text",
@@ -243,7 +251,7 @@ const Add = (props) => {
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
                         // handleSameValueFields={["title", "slug"]}
-                        // debug={true}
+                        debug={true}
                     />
                 </CardBody>
             </Card>
