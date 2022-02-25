@@ -1,9 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
+import { getMastHelper } from "./getMaskHelper";
+
 
 const Add = (props) => {
+
+    const [maskedValue, setMaskedValue] = useState("+99-99-9999")
+
+    const companyChangeHandler = (value) => {
+        console.log(value,"value")
+        setTimeout(() => {    
+            let returnMask = getMastHelper(value?.value)
+               setMaskedValue(returnMask);
+        }, 1);
+       
+    }
+
+
     const {id} = props.match.params;
 
     const fields = {
@@ -17,17 +32,26 @@ const Add = (props) => {
             label: "Company Name",
             required: true,
             name: "name",
-            col: 6,
+            col: 4,
+        },
+        country: {
+            // parent: "user",
+            type: "advanceSelect",
+            label: "Country",
+            // defaultValue:{value:"US",label:"US"},
+            optionValue: "code",
+            target: "countries?limit=1000",
+            required: true,
+            col: 4,
+            callback: (data) => companyChangeHandler(data)
         },
         phone1: {
             type: "masked",
-            mask: '99/99/9999',
-            maskChar: '_',
-            alwaysShowMask: true,
+            mask: maskedValue,
             label: "Company Phone",
             required: true,
             name: "phone1",
-            col: 6,
+            col: 4,
         },
 
         // addrsss: {
@@ -53,7 +77,7 @@ const Add = (props) => {
             label: "City",
             required: true,
             name: "city",
-            col: 2,
+            col: 3,
         },
 
         state: {
@@ -61,7 +85,7 @@ const Add = (props) => {
             type: "text",
             label: "State",
             name: "state",
-            col: 2,
+            col: 3,
         },
 
         zip_code: {
@@ -70,18 +94,10 @@ const Add = (props) => {
             label: "Zipcode",
             required: true,
             name: "zip_code",
-            col: 2,
-        },
-
-        country: {
-            // parent: "user",
-            type: "advanceSelect",
-            label: "Country",
-            optionValue: "code",
-            target: "countries?limit=1000",
-            required: true,
             col: 3,
         },
+
+     
 
         "Admin Details": {
             isDummyField: true,
@@ -173,12 +189,13 @@ const Add = (props) => {
         u_phone1: {
             // parent: "user",
             type: "masked",
-            mask: "+999-999-9999",
+            mask: maskedValue,
             label: "User Phone",
             name: "u_phone1",
             required:true,
             col: 4,
         },
+        
 
 
         "Style Details": {
@@ -253,7 +270,7 @@ const Add = (props) => {
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
                         // handleSameValueFields={["title", "slug"]}
-                        // debug={true}
+                        debug={true}
                     />
                 </CardBody>
             </Card>

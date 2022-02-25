@@ -69,11 +69,11 @@ const TeamsAdd = (props) => {
                         // getValues={handleValue}
                         fields={fields}
                         targetId={id}
-                        name="phrases"
-                        repeater={true}
+                        name="teams"
+                        // repeater={true}
                         extraVals={extraVals}
                         redirect="teams"
-                        handleSameValueFields={['title', 'slug']}
+                        // handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
