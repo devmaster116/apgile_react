@@ -12,12 +12,12 @@ const KithcenCallList  = (props) => {
 	
 
 		const columns = [
-			{
-				dataField: 'id',
-				text: 'ID',
-				align: 'center',
-				sort: true
-			},
+			// {
+			// 	dataField: 'id',
+			// 	text: 'ID',
+			// 	align: 'center',
+			// 	sort: true
+			// },
 			{
 				dataField: 'name',
 				text: 'Name',
@@ -40,7 +40,7 @@ const KithcenCallList  = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'id',
+				dataField: 'name',
 				order: 'desc'
 			}
 		];

@@ -20,12 +20,7 @@ const filters = {
   }
 		const columns = [
 
-            {
-                dataField: 'id',
-                text: 'Id',
-                align: 'center',
-                sort: true
-              }, {
+			   {
                 dataField: 'name',
                 text: 'Company Name',
                 align: 'center',
@@ -50,7 +45,7 @@ const filters = {
 
 		const defaultSorted = [
 			{
-				dataField: 'id',
+				dataField: 'name',
 				order: 'desc'
 			}
 		];

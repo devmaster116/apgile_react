@@ -64,14 +64,14 @@ const save = (value,data) => {
 const cancel = () => {
     console.log("cancelled")
 }
-    const defaultSorted = [{dataField: "id", order: "desc"}];
+    const defaultSorted = [{dataField: "location.name", order: "desc"}];
     const columns = [
-        {
-            dataField: "id",
-            text: "ID",
-            align: "center",
-            sort: true,
-        },
+        // {
+        //     dataField: "id",
+        //     text: "ID",
+        //     align: "center",
+        //     sort: true,
+        // },
 
         {
             isDummyField: true,

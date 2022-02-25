@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
-import { getMastHelper } from "./getMaskHelper";
+import { getMaskHelper } from "./getMaskHelper";
 
 
 const Add = (props) => {
@@ -12,7 +12,7 @@ const Add = (props) => {
     const companyChangeHandler = (value) => {
         console.log(value,"value")
         setTimeout(() => {    
-            let returnMask = getMastHelper(value?.value)
+            let returnMask = getMaskHelper(value?.value)
                setMaskedValue(returnMask);
         }, 1);
        
@@ -94,6 +94,13 @@ const Add = (props) => {
             label: "Zipcode",
             required: true,
             name: "zip_code",
+            col: 3,
+        },
+        location:{
+            type:"location",
+            label: "Location",
+            required: true,
+            name: "location",
             col: 3,
         },
 
@@ -270,7 +277,7 @@ const Add = (props) => {
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
                         // handleSameValueFields={["title", "slug"]}
-                        debug={true}
+                        // debug={true}
                     />
                 </CardBody>
             </Card>

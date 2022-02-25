@@ -19,14 +19,14 @@ const List = () => {
     }
     }
   
-  const defaultSorted = [{ dataField: "id", order: "desc" }];
+  const defaultSorted = [{ dataField: "name", order: "desc" }];
   const columns = [
-    {
-      dataField: "id",
-      text: "ID",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "id",
+    //   text: "ID",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
       dataField: "company.name",
       text: "Company",

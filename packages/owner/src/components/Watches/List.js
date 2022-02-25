@@ -13,12 +13,12 @@ const List = (props) => {
 
 	const columns = [
 		
-		{
-			dataField: 'id',
-			text: 'ID',
-			align: 'center',
-			sort: true
-		},
+		// {
+		// 	dataField: 'id',
+		// 	text: 'ID',
+		// 	align: 'center',
+		// 	sort: true
+		// },
 		{
 			dataField: 'user.username',
 			text: 'Username',
@@ -59,7 +59,7 @@ const List = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'id',
+				dataField: 'user.username',
 				order: 'desc'
 			}
 		];

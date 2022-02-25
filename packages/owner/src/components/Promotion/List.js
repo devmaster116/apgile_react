@@ -26,14 +26,14 @@ const List = (props) => {
     .catch((error) => console.log(error));
   }
 
-  const defaultSorted = [{ dataField: "id", order: "desc" }];
+  const defaultSorted = [{ dataField: "title", order: "desc" }];
   const columns = [
-    {
-      dataField: "id",
-      text: "ID",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "id",
+    //   text: "ID",
+    //   align: "center",
+    //   sort: true,
+    // },
     {
       isDummyField: true,
       align: "center",

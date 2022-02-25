@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-
+// import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
 
 const Add = (props) =>  {
 
@@ -9,13 +9,19 @@ const Add = (props) =>  {
     const {id} = props.match.params;
     
   const [target, setTarget] = useState('branches');
+//   const [maskedValue, setMaskedValue] = useState("+99-99-9999")
+
 	
   const companiesChangeHandler = (data) => {
       console.log(data,"lll");
       setTimeout(() => {
+        //   let returnMask = getMaskHelper(data?.value)
+        //   setMaskedValue(returnMask);
           setTarget(`branches/${data.value}/all`)
-      }, 0);
+      }, 1);
   }
+
+
 
     let fields = {
 
@@ -59,10 +65,12 @@ const Add = (props) =>  {
             // required:true,
         },
         phone1:{
-            col:4,
-            type:"text",
-            label:"Phone",
-            maxlength:14
+            type: "text",
+            // mask: maskedValue,
+            label: "Phone",
+            required: true,
+            name: "phone1",
+            col: 4,
         },
 
         

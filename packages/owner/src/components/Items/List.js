@@ -12,12 +12,12 @@ const ItemsList = (props) => {
 		}, [props.branchId]);
 
 		const columns = [
-			{
-				dataField: 'id',
-				text: 'ID',
-				align: 'center',
-				sort: true
-			},
+			// {
+			// 	dataField: 'id',
+			// 	text: 'ID',
+			// 	align: 'center',
+			// 	sort: true
+			// },
 			{
 				dataField: 'name',
 				text: 'Name',
@@ -57,7 +57,7 @@ const ItemsList = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'id',
+				dataField: 'name',
 				order: 'desc'
 			}
 		];

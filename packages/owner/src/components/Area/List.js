@@ -28,14 +28,14 @@ const List = (props) => {
   //   return params;
   //   }
 
-  const defaultSorted = [{ dataField: "id", order: "desc" }];
+  const defaultSorted = [{ dataField: "name", order: "desc" }];
   const columns = [
-    {
-      dataField: "id",
-      text: "ID",
-      align: "center",
-      sort: true,
-    },
+    // {
+    //   dataField: "id",
+    //   text: "ID",
+    //   align: "center",
+    //   sort: true,
+    // },
 
     {
       dataField: "name",
