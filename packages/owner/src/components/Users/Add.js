@@ -27,6 +27,7 @@ const Add = (props) => {
           type:"text",
           label:"company",
       },  
+     
         phone1:{
             col:6,
             type:"text",

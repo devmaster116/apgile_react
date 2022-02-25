@@ -37,6 +37,16 @@ const Add = (props) => {
             name: "throttle_wait",
             col: 3,
           },
+          // timezone:{
+          //   type: 'advanceSelect',
+          //   label: "Time Zone",
+          //   target: 'https://maps.googleapis.com/maps/api/timezone/json?location=39.6034810%2C-119.6822510&timestamp=1331161200&key=AIzaSyAqJxkc1a0TqV8ED9ThtsvwJcQoRTlIzhY&libraries=places&v=weekly',
+          //   // async: true,
+          //   name: 'timezone',
+          //   // multi:true,
+          //   required: true,
+          //   col: 4
+          // },
 
           "Site Content": {
             isDummyField: true,

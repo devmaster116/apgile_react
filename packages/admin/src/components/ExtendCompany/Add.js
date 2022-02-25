@@ -21,7 +21,9 @@ const Add = (props) => {
         },
         phone1: {
             type: "masked",
-            mask: "+999-999-9999",
+            mask: '99/99/9999',
+            maskChar: '_',
+            alwaysShowMask: true,
             label: "Company Phone",
             required: true,
             name: "phone1",
