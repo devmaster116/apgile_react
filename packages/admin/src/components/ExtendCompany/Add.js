@@ -20,7 +20,8 @@ const Add = (props) => {
             col: 6,
         },
         phone1: {
-            type: "text",
+            type: "masked",
+            mask: "+999-999-9999",
             label: "Company Phone",
             required: true,
             name: "phone1",
@@ -161,7 +162,8 @@ const Add = (props) => {
         // },
         u_phone1: {
             // parent: "user",
-            type: "text",
+            type: "masked",
+            mask: "+999-999-9999",
             label: "User Phone",
             name: "u_phone1",
             required:true,
@@ -184,14 +186,16 @@ const Add = (props) => {
         // },
         font_color: {
             // parent:"style",
-            type: "text",
+            type: "color",
+            defaultValue: "#000000",
             label: "Font Color",
             required: true,
             name: "font_color",
             col: 3,
         },
         bg_color: {
-            type: "text",
+            type: "color",
+            defaultValue: "#ffffff",
             // parent:"style",
             label: "Background Color",
             // required: true,
@@ -239,6 +243,7 @@ const Add = (props) => {
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
                         // handleSameValueFields={["title", "slug"]}
+                        // debug={true}
                     />
                 </CardBody>
             </Card>
