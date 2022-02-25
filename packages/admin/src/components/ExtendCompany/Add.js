@@ -251,7 +251,7 @@ const Add = (props) => {
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
                         // handleSameValueFields={["title", "slug"]}
-                        debug={true}
+                        // debug={true}
                     />
                 </CardBody>
             </Card>
