@@ -8,11 +8,11 @@ const ExtendBranchAdd = (props) =>  {
 
     const companyChangeHandler = (value) => {
         console.log(value,"value")
-        setTimeout(() => {    
+        setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
                setMaskedValue(returnMask);
         }, 1);
-       
+
     }
     // let id = props.match.params;
     let fields = {
@@ -29,7 +29,7 @@ const ExtendBranchAdd = (props) =>  {
             name:"company_id",
             col:3,
             label:"Select Company",
-           
+
         },
         phone1:{
             type: "masked",
@@ -47,7 +47,7 @@ const ExtendBranchAdd = (props) =>  {
             name:"phone2",
             required:true,
             col:3,
-         
+
         },
         addr1:{
             parent: 'address',
@@ -78,14 +78,14 @@ const ExtendBranchAdd = (props) =>  {
             name: 'zip_code',
             col: 2
         },
-        location:{
-            type:"location",
-            label: "Location",
-            placeholder:"Enter Location Address",
-            required: true,
-            name: "location",
-            col: 3,
-        },
+        // location:{
+        //     type:"location",
+        //     label: "Location",
+        //     placeholder:"Enter Location Address",
+        //     required: true,
+        //     name: "location",
+        //     col: 3,
+        // },
 
         country: {
             parent: 'address',
@@ -95,7 +95,7 @@ const ExtendBranchAdd = (props) =>  {
             target: "countries?limit=1000",
             required: true,
             col: 3,
-            callback: (data) => companyChangeHandler(data)  
+            callback: (data) => companyChangeHandler(data)
         },
     }
 
