@@ -89,13 +89,6 @@ export default {
         order: 31,
         icon: "fas fa-pager",
     },
-    setting: {
-        phrase: "Settings",
-        to: "/setting/add",
-        roles: ["admin"],
-        order: 32,
-        icon: "fas fa-cogs",
-    },
     entity: {
         phrase: "Branch",
         order: 102,
@@ -124,7 +117,13 @@ export default {
             },
         },
     },
-
+    setting: {
+        phrase: "Settings",
+        to: "/setting/add",
+        roles: ["admin"],
+        order: 100,
+        icon: "fas fa-cogs",
+    },
     user: {
         _tag: "CSidebarNavDropdown",
         name: "User",

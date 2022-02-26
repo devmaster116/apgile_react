@@ -66,7 +66,6 @@ const List = (props) => {
 
 
     const companyLogin = (data) => {
-      console.log(data,"data")
         let currentUser = JSON.parse(localStorage?.getItem('currentUser'));
         let payload = {
             // id : data?.user?.id,

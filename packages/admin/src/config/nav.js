@@ -10,40 +10,64 @@ export default {
             text: "NEW",
         },
     },
-    entity: {
-        _tag: 'CSidebarNavDropdown',
-        name: 'Entity',
-        phrase: 'Entities',
+    company: {
+        name: 'Company',
+        phrase: 'Companies',
         order: 20,
-        to: '/entity',
-        roles: ["super-admin"],
-        icon: 'fas fa-building',
-        hasRoute: false,
-        children: {
-
-            company: {
-                name: 'Company',
-                phrase: 'All Companies',
-                order: 0,
-                icon: "fas fa-calendar-plus",
-                to: '/admin/companies'
-            },
-            branch: {
-                name: 'Branch',
-                phrase: 'All Branches',
-                order: 1,
-                icon: 'fas fa-code-branch',
-                to: '/entity/branches'
-            },
-            person: {
-                name: 'Person',
-                phrase: 'All Users',
-                order: 2,
-                icon: 'fas fa-users',
-                to: '/owner/users'
-            }
-        }
+        icon: "fas fa-calendar-plus",
+        to: '/admin/companies'
     },
+    branch: {
+        name: 'Branch',
+        phrase: 'Branches',
+        order: 30,
+        icon: 'fas fa-code-branch',
+        to: '/entity/branches'
+    },
+    persons: {
+        name: 'Person',
+        phrase: 'Manage Users',
+        order: 40,
+        icon: 'fas fa-users',
+        to: '/owner/users'
+    },
+    entity: {
+        hide: true
+    },
+    // entity: {
+    //     _tag: 'CSidebarNavDropdown',
+    //     name: 'Entity',
+    //     phrase: 'Entities',
+    //     order: 20,
+    //     to: '/entity',
+    //     roles: ["super-admin"],
+    //     icon: 'fas fa-building',
+    //     hasRoute: false,
+    //     children: {
+    //
+    //         company: {
+    //             name: 'Company',
+    //             phrase: 'All Companies',
+    //             order: 0,
+    //             icon: "fas fa-calendar-plus",
+    //             to: '/admin/companies'
+    //         },
+    //         branch: {
+    //             name: 'Branch',
+    //             phrase: 'All Branches',
+    //             order: 1,
+    //             icon: 'fas fa-code-branch',
+    //             to: '/entity/branches'
+    //         },
+    //         person: {
+    //             name: 'Person',
+    //             phrase: 'All Users',
+    //             order: 2,
+    //             icon: 'fas fa-users',
+    //             to: '/owner/users'
+    //         }
+    //     }
+    // },
 
 
     // owner: {
@@ -118,13 +142,13 @@ export default {
     //     },
     // },
     //
-    styles: {
-        phrase: "Styles",
-        order: 111,
-        to: "/owner/styles",
-        roles: ["super-admin"],
-        icon: "fas fa-broom",
-    },
+    // styles: {
+    //     phrase: "Styles",
+    //     order: 111,
+    //     to: "/owner/styles",
+    //     roles: ["super-admin"],
+    //     icon: "fas fa-broom",
+    // },
 
     customer: {
         hide: true,

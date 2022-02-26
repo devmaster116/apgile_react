@@ -235,7 +235,7 @@ const Add = (props) => {
             label: "Font Color",
             required: true,
             name: "font_color",
-            col: 3,
+            col: 2,
         },
         bg_color: {
             type: "color",
@@ -244,7 +244,7 @@ const Add = (props) => {
             label: "Background Color",
             // required: true,
             name: "bg_color",
-            col: 3,
+            col: 2,
         },
         // other: {
         //   type: "text",
@@ -266,7 +266,7 @@ const Add = (props) => {
             label: "Background Image",
             name: "bg_image",
             // required: true,
-            col: 3,
+            col: 5,
         },
 
     };
