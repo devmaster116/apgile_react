@@ -90,7 +90,7 @@ const List = (props) => {
                             customEntity="companies"
                             columns={columns}
                             sort={defaultSorted}
-                            hideEdit={true}
+                            // hideEdit={true}
                             hideDetail={true}
                             hideDelete={false}
                             addRoute="/admin/company/add"

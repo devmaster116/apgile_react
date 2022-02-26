@@ -1,10 +1,11 @@
 export const getMaskHelper = (countryCode) => {
 
+  console.log(countryCode, 'country');
     switch (countryCode) {
       case "US":
         return '+1 (999) 999-9999';
 
-      case "UK":
+      case "GB":
         return '+44 9999 999999';
 
       case "CA":

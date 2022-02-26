@@ -10,16 +10,19 @@ const Add = (props) => {
     const [maskedValue, setMaskedValue] = useState("+99-99-9999")
 
     const companyChangeHandler = (value) => {
-        console.log(value,"value")
-        setTimeout(() => {    
+        setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
                setMaskedValue(returnMask);
         }, 1);
-       
+
     }
 
 
     const {id} = props.match.params;
+    let showAddFields = true;
+    if(typeof id != 'undefined' && id) {
+        showAddFields = false;
+    }
 
     const fields = {
         "Company Details": {
@@ -96,20 +99,21 @@ const Add = (props) => {
             name: "zip_code",
             col: 3,
         },
-        location:{
-            type:"location",
-            label: "Location",
-            required: true,
-            name: "location",
-            col: 3,
-        },
+        // location:{
+        //     type:"location",
+        //     label: "Location",
+        //     required: true,
+        //     name: "location",
+        //     col: 3,
+        // },
 
-     
+
 
         "Admin Details": {
             isDummyField: true,
             type: "h4",
             col: 12,
+            condition: showAddFields
         },
         title: {
             // parent: "user",
@@ -119,6 +123,7 @@ const Add = (props) => {
             name: "title",
             required: true,
             col: 2,
+            condition: showAddFields
         },
 
         first_name: {
@@ -128,6 +133,7 @@ const Add = (props) => {
             name: "first_name",
             required: true,
             col: 3,
+            condition: showAddFields
         },
         last_name: {
             // parent: "user",
@@ -136,6 +142,7 @@ const Add = (props) => {
             name: "last_name",
             required: true,
             col: 3,
+            condition: showAddFields
         },
         gender_id: {
             // parent: "user",
@@ -158,6 +165,7 @@ const Add = (props) => {
             label: "Gender",
             name: "gender_id",
             col: 2,
+            condition: showAddFields
         },
         email: {
             // parent: "user",
@@ -166,6 +174,7 @@ const Add = (props) => {
             name: "email",
             required: true,
             col: 2,
+            condition: showAddFields
         },
         password: {
             // parent: "user",
@@ -174,6 +183,7 @@ const Add = (props) => {
             name: "password",
             required: true,
             col: 4,
+            condition: showAddFields
         },
         password_confirmation: {
             // parent: "user",
@@ -183,6 +193,7 @@ const Add = (props) => {
             label: "Password Confirmation",
             name: "password_confirmation",
             col: 4,
+            condition: showAddFields
         },
         // role_id: {
         //   // parent: "user",
@@ -201,9 +212,8 @@ const Add = (props) => {
             name: "u_phone1",
             required:true,
             col: 4,
+            condition: showAddFields
         },
-        
-
 
         "Style Details": {
             isDummyField: true,
