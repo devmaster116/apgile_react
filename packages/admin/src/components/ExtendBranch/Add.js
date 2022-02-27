@@ -12,7 +12,7 @@ const ExtendBranchAdd = (props) =>  {
         setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
                setMaskedValue(returnMask);
-            if (value?.value == 'US') {
+            if (value?.value === 'US') {
                 setShowStates(true);
             }
         }, 1);
