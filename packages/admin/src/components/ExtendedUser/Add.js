@@ -1,26 +1,25 @@
-import React,{useState} from "react";
+import React, {useState} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
+import {getMaskHelper} from "@facepays/common";
 
-const Add = (props) =>  {
+const Add = (props) => {
 
 
     const {id} = props.match.params;
-    
-  const [target, setTarget] = useState('branches');
+    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
+    const [target, setTarget] = useState('branches');
 //   const [maskedValue, setMaskedValue] = useState("+99-99-9999")
 
-	
-  const companiesChangeHandler = (data) => {
-      console.log(data,"lll");
-      setTimeout(() => {
-        //   let returnMask = getMaskHelper(data?.value)
-        //   setMaskedValue(returnMask);
-          setTarget(`branches/${data.value}/all`)
-      }, 1);
-  }
 
+    const companiesChangeHandler = (data) => {
+        setTimeout(() => {
+            // let returnMask = getMaskHelper(data?.value)
+            // setMaskedValue(returnMask);
+            setTarget(`branches/${data.value}/all`)
+        }, 1);
+    }
 
 
     let fields = {
@@ -32,7 +31,7 @@ const Add = (props) =>  {
         },
         title: {
             // parent: "user",
-            required:true,
+            required: true,
             type: "advanceSelect",
             options: [
                 {
@@ -52,39 +51,40 @@ const Add = (props) =>  {
             name: "title",
             col: 4,
         },
-        first_name:{
-            col:4,
-            type:"text",
-            label:"First Name",
-            // required:true,
-        },
-        last_name:{
-            col:4,
-            type:"text",
-            label:"Last Name",
-            // required:true,
-        },
-        phone1:{
-            type: "text",
-            // mask: maskedValue,
-            label: "Phone",
-            required: true,
-            name: "phone1",
+        first_name: {
             col: 4,
+            type: "text",
+            label: "First Name",
+            // required:true,
+        },
+        last_name: {
+            col: 4,
+            type: "text",
+            label: "Last Name",
+            // required:true,
+        },
+        phone1: {
+            // parent: "user",
+            type: "masked",
+            mask: maskedValue,
+            label: "Phone",
+            name: "u_phone1",
+            required: true,
+            col: 4
         },
 
-        
+
         "Account Details": {
             isDummyField: true,
             type: "h4",
             col: 12,
         },
 
-         username: {
-          type: 'text',
-          label: 'Username',
-          required: true,
-          col: 4
+        username: {
+            type: 'text',
+            label: 'Username',
+            required: true,
+            col: 4
         },
         email: {
             // parent: "user",
@@ -111,8 +111,7 @@ const Add = (props) =>  {
             name: "password_confirmation",
             col: 4,
         },
-      
-     
+
 
         roles: {
             type: 'advanceSelect',
@@ -120,44 +119,44 @@ const Add = (props) =>  {
             // async: true,
             // multi: false,
             // options:optionsArr,
-            required:true,
+            required: true,
             name: 'role_id',
-            label:'Roles',
+            label: 'Roles',
             col: 4
-          },
-          gender_id:{
-            col:4,
-            type:"advanceSelect",
-           options:[
-               {value:1,label:"Male"},
-               {value:2,label:"Female"},
-               {value:3,label:"Other"},
-           ],
-            label:"Select Gender",
-            required:true,
+        },
+        gender_id: {
+            col: 4,
+            type: "advanceSelect",
+            options: [
+                {value: 1, label: "Male"},
+                {value: 2, label: "Female"},
+                {value: 3, label: "Other"},
+            ],
+            label: "Select Gender",
+            required: true,
 
         },
 
-      
-        company_id:{
-            col:4,
-            type:"advanceSelect",
-            target:"companies?limit=1000",
-            label:"Select Company",
-            required:true,
-            name:"company_id",
+
+        company_id: {
+            col: 4,
+            type: "advanceSelect",
+            target: "companies?limit=1000",
+            label: "Select Company",
+            required: true,
+            name: "company_id",
             callback: (data) => companiesChangeHandler(data)
         },
-        branch_id:{
-            col:4,
-            type:"advanceSelect",
-            target:target,
-            label:"Select Branch",
-            required:true,
-            async:true,
-            name:"branch_id"
+        branch_id: {
+            col: 4,
+            type: "advanceSelect",
+            target: target,
+            label: "Select Branch",
+            required: true,
+            async: true,
+            name: "branch_id"
         },
-     
+
 
     }
 
@@ -185,7 +184,7 @@ const Add = (props) =>  {
             </CardBody>
         </Card>
     );
-  
+
     // return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} match={props.match} />;
 
 }
