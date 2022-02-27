@@ -7,7 +7,6 @@ import api from "@evenlogics/whf-api";
 const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
-    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999");
     const [optionsArr, setOptionsArr] = useState([])
 	useEffect(() => {
         var rolesArray=[];
