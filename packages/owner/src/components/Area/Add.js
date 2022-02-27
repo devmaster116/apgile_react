@@ -59,16 +59,6 @@ const Add = (props) => {
             name: "user_id",
             col: 4,
         },
-        supervisor_id: {
-            type: 'advanceSelect',
-            label: "Select Supervisor",
-            target: `${props.branchId}/role-users/supervisor`,
-            optionLabel: 'full_name',
-            required: true,
-            // async: true,
-            name: 'supervisor_id',
-            col: 4
-        },
         location_id: {
             type: "advanceSelect",
             label: "Select Location",
