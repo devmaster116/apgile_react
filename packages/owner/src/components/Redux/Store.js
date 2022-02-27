@@ -12,6 +12,7 @@ store.subscribe(throttle(() => {
         companyName : store.getState().companyName,
         companyId : store.getState().companyId,
         userRole : store.getState().userRole,
+        phoneMask : store.getState().phoneMask,
     });
 }, 1000));
 

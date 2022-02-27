@@ -6,7 +6,8 @@ import api from "@evenlogics/whf-api";
 
 const ItemAdd = (props) => {
 
-    const [query, setQuery] = useState(false)
+    const [query, setQuery] = useState(false);
+    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999");
     const [optionsArr, setOptionsArr] = useState([])
 	useEffect(() => {
         var rolesArray=[];
@@ -23,10 +24,8 @@ const ItemAdd = (props) => {
         .catch((error) => console.log(error));
 		setQuery((prev)=>!prev)
 
-	}, [props.branchId]);
+	}, [props.branchId, props.phoneMask]);
 
-
-    console.log(optionsArr,"optionsArr")
 
     const {id} = props.match.params;
 
@@ -58,7 +57,7 @@ const ItemAdd = (props) => {
             name: "title",
             col: 4,
         },
-      
+
         first_name: {
             type: "text",
             label: "First Name",
@@ -94,13 +93,19 @@ const ItemAdd = (props) => {
             name: "gender_id",
             col: 4,
         },
-       
+
         phone1: {
-            type: "text",
-            label: "Phone Number",
-            // required: true,
-            name: "phone1",
-            maxlength:14,
+            // type: "text",
+            // label: "Phone Number",
+            // // required: true,
+            // name: "phone1",
+            // maxlength:14,
+            // col: 4,
+            type: "masked",
+            mask: props.phoneMask,
+            label: "User Phone",
+            name: "u_phone1",
+            required:true,
             col: 4,
         },
 
@@ -109,7 +114,7 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-         
+
         // title: {
         //     // parent: "user",
         //     type: "advanceSelect",
@@ -189,6 +194,7 @@ const ItemAdd = (props) => {
 const mapStateToProps = state => {
   return {
     branchId : state.selectedBranchId,
+    phoneMask : state.phoneMask,
     companyName : state.companyName,
     companyId : state.companyId,
     userRole : state.userRole

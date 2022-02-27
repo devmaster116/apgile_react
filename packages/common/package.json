@@ -1,0 +1,18 @@
+{
+  "name": "@facepays/common",
+  "version": "1.0.0",
+  "description": "This package contains commonly used code amoung both panels",
+  "author": "Muhammad Faisal <faisal@karigar.co>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

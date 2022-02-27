@@ -3,7 +3,8 @@ const initialState = {
   selectedBranchId: null,
   companyName: "TestCompany",
   companyId:null,
-  userRole:null
+  userRole:null,
+  phoneMask:null
 };
 
 const BranchReducer = (state = initialState, action) => {
@@ -29,6 +30,7 @@ const BranchReducer = (state = initialState, action) => {
           companyName : action.payload.companyName,
           companyId : action.payload.companyId,
           userRole : action.payload.userRole,
+          phoneMask : action.payload.phoneMask,
       };
 
     default:

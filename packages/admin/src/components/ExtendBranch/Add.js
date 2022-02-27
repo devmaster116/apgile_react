@@ -1,5 +1,6 @@
 import React,{useState} from "react";
-import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
+// import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
+import { getMaskHelper } from "@facepays/common";
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
 const ExtendBranchAdd = (props) =>  {

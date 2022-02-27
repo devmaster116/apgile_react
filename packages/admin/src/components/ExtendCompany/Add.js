@@ -2,12 +2,13 @@ import React,{useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
-import { getMaskHelper } from "./getMaskHelper";
+// import { getMaskHelper } from "./getMaskHelper";
+import { getMaskHelper } from "@facepays/common";
 
 
 const Add = (props) => {
 
-    const [maskedValue, setMaskedValue] = useState("+99-99-9999")
+    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
 
     const companyChangeHandler = (value) => {
         setTimeout(() => {

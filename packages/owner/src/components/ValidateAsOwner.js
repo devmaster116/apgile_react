@@ -3,6 +3,7 @@ import api from "@evenlogics/whf-api";
 import {Watch} from "react-loader-spinner";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
+import {getMaskHelper} from "@facepays/common";
 
 const ValidateAsOwner = (props) => {
 
@@ -22,7 +23,8 @@ const ValidateAsOwner = (props) => {
                     companyName: data?.company?.name,
                     companyId: data?.company?.id,
                     selectedBranchId: data?.branch?.id,
-                    userRole: data?.roles[0]
+                    userRole: data?.roles[0],
+                    phoneMask: getMaskHelper(data?.branch_address?.country)
                 });
 
                 // window.location.replace("https://js.gotomy.dev/call-btn-j/owner/#/dashboard")
