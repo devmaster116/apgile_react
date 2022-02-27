@@ -1,19 +1,23 @@
-import React,{useState} from "react";
+import React, {useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 // import { getMaskHelper } from "./getMaskHelper";
-import { getMaskHelper } from "@facepays/common";
+import {getMaskHelper, statesOptionList} from "@facepays/common";
 
 
 const Add = (props) => {
 
     const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
+    const [showStates, setShowStates] = useState(false)
 
     const companyChangeHandler = (value) => {
         setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
-               setMaskedValue(returnMask);
+            setMaskedValue(returnMask);
+            if (value?.value == 'US') {
+                setShowStates(true);
+            }
         }, 1);
 
     }
@@ -21,7 +25,7 @@ const Add = (props) => {
 
     const {id} = props.match.params;
     let showAddFields = true;
-    if(typeof id != 'undefined' && id) {
+    if (typeof id != 'undefined' && id) {
         showAddFields = false;
     }
 
@@ -90,6 +94,18 @@ const Add = (props) => {
             label: "State",
             name: "state",
             col: 3,
+            condition: !showStates
+        },
+
+        state_list: {
+            // parent: "user",
+            // required:true,
+            type: "advanceSelect",
+            options: statesOptionList(),
+            label: "State",
+            name: "state",
+            col: 3,
+            condition: showStates
         },
 
         zip_code: {
@@ -107,7 +123,6 @@ const Add = (props) => {
         //     name: "location",
         //     col: 3,
         // },
-
 
 
         "Admin Details": {
@@ -211,7 +226,7 @@ const Add = (props) => {
             mask: maskedValue,
             label: "User Phone",
             name: "u_phone1",
-            required:true,
+            required: true,
             col: 4,
             condition: showAddFields
         },

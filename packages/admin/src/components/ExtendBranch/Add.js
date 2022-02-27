@@ -1,17 +1,20 @@
 import React,{useState} from "react";
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
-import { getMaskHelper } from "@facepays/common";
+import {getMaskHelper, statesOptionList} from "@facepays/common";
 import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 
 const ExtendBranchAdd = (props) =>  {
 
-    const [maskedValue, setMaskedValue] = useState("+99-99-9999")
+    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
+    const [showStates, setShowStates] = useState(false)
 
     const companyChangeHandler = (value) => {
-        console.log(value,"value")
         setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
                setMaskedValue(returnMask);
+            if (value?.value == 'US') {
+                setShowStates(true);
+            }
         }, 1);
 
     }
@@ -64,12 +67,24 @@ const ExtendBranchAdd = (props) =>  {
             required:true,
             label:"City",
         },
-        state:{
-            parent: 'address',
-            col:2,
-            type:"text",
-            required:true,
-            label:"State",
+        state: {
+            // parent: "address",
+            type: "text",
+            label: "State",
+            name: "state",
+            col: 2,
+            condition: !showStates
+        },
+
+        state_list: {
+            // parent: "user",
+            // required:true,
+            type: "advanceSelect",
+            options: statesOptionList(),
+            label: "State",
+            name: "state",
+            col: 2,
+            condition: showStates
         },
         zip_code: {
             parent: 'address',
@@ -88,11 +103,16 @@ const ExtendBranchAdd = (props) =>  {
         //     col: 3,
         // },
 
+        // country: {
+        //     hide: true,
+        //     hidden: true
+        // },
         country: {
             parent: 'address',
             type: "advanceSelect",
             label: "Country",
             optionValue: "code",
+            name: 'country',
             target: "countries?limit=1000",
             required: true,
             col: 3,
