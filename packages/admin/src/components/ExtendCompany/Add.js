@@ -22,8 +22,8 @@ const Add = (props) => {
 
     }
 
-
     const {id} = props.match.params;
+    console.log('ID HERE', id);
     let showAddFields = true;
     if (typeof id != 'undefined' && id) {
         showAddFields = false;
@@ -235,6 +235,7 @@ const Add = (props) => {
             isDummyField: true,
             type: "h4",
             col: 12,
+            condition: showAddFields
         },
         // s_name: {
         //     // parent:"style",
@@ -252,6 +253,7 @@ const Add = (props) => {
             required: true,
             name: "font_color",
             col: 2,
+            condition: showAddFields
         },
         bg_color: {
             type: "color",
@@ -261,6 +263,7 @@ const Add = (props) => {
             // required: true,
             name: "bg_color",
             col: 2,
+            condition: showAddFields
         },
         // other: {
         //   type: "text",
@@ -276,6 +279,7 @@ const Add = (props) => {
             name: "logo",
             required: true,
             col: 3,
+            condition: showAddFields
         },
         bg_image: {
             type: "filePic",
@@ -283,6 +287,7 @@ const Add = (props) => {
             name: "bg_image",
             // required: true,
             col: 5,
+            condition: showAddFields
         },
 
     };
@@ -302,6 +307,8 @@ const Add = (props) => {
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
+                        noEdit={false}
+                        // match={props.match}
                         // handleSameValueFields={["title", "slug"]}
                         // debug={true}
                     />
