@@ -24,13 +24,13 @@ export default {
         icon: 'fas fa-code-branch',
         to: '/entity/branches'
     },
-    // persons: {
-    //     name: 'Person',
-    //     phrase: 'Manage Users',
-    //     order: 40,
-    //     icon: 'fas fa-users',
-    //     to: '/owner/users'
-    // },
+    persons: {
+        name: 'Person',
+        phrase: 'Manage Users',
+        order: 40,
+        icon: 'fas fa-users',
+        to: '/owner/users'
+    },
     entity: {
         hide: true
     },

@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
-import {getMaskHelper} from "@facepays/common";
+// import {getMaskHelper} from "@facepays/common";
 
 const Add = (props) => {
 
 
     const {id} = props.match.params;
-    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
+    // const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
     const [target, setTarget] = useState('branches');
 //   const [maskedValue, setMaskedValue] = useState("+99-99-9999")
 
@@ -66,7 +66,7 @@ const Add = (props) => {
         phone1: {
             // parent: "user",
             type: "masked",
-            mask: maskedValue,
+            mask: "+1 (999) 999-9999",
             label: "Phone",
             name: "u_phone1",
             required: true,
