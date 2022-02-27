@@ -59,7 +59,7 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 
 const routes = [
 
-	{ path: '/', exact : true, component: Dashboard, isPublic: false,},
+	{ path: '/', exact : true, component: Dashboard, roles:['super-admin'], isPublic: false,},
 	{ path: '/dashboard', exact : true,name: 'Dashboard', component: Dashboard, isPublic: false,},
 
 	{ path: '/owner/items', exact: true, name: 'Terms',  roles:['super-admin'],component: ItemsList, isPublic: true },
@@ -109,14 +109,14 @@ const routes = [
 	{ path: '/owner/styles/add', exact: true, name: 'Add',  roles:['super-admin'],component: StyleAdd },
 	{ path: '/styles/:id/edit', exact: true,  roles:['super-admin'],component: StyleAdd },
 	{ path: '/styles/:id/details', exact: true,  roles:['super-admin'],component: StylesDetail },
-	
+
 
 
 	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
 	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
 	{ path: '/branches/:id/edit', exact: true,  roles:['super-admin'],component: ExtendBranchAdd },
 	{ path: '/branches/:id/details', exact: true,  roles:['super-admin'],component: ExtendBranchDetail},
-	
+
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
 	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
@@ -136,7 +136,7 @@ const routes = [
 	{path : "/company-setup/add" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 	{path : "/company-setups/:id/edit" ,exact : true ,  roles:['super-admin'], component : CompanyPackageAdd},
 
-	
+
 	{path : "/owner/users" ,exact : true ,  roles:['super-admin'],component : UserList},
 	{path : "/owner/users/add" ,exact : true ,  roles:['super-admin'],component : UserAdd},
 	{path : "/users/:id/edit" ,exact : true ,  roles:['super-admin'],component : UserAdd},
