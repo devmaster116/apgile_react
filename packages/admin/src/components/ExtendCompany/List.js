@@ -73,7 +73,7 @@ const List = (props) => {
         }
         api.request("post", "/generate-token", payload, currentUser?.authToken).then((data) => {
           console.log(data,"data")
-            window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`, "_self")
+            window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`, "_blank")
         }).catch((error) => console.log(error));
     };
 
