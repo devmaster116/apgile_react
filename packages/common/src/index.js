@@ -1,5 +1,8 @@
 import phoneArray from './phone-masks.json';
 import usStates from './us-states.json';
+import timezones from './timezones.json';
+
+import {jsonToOptionList} from "./helpers";
 export const getMaskHelper = (countryCode) => {
 
     if(typeof phoneArray[countryCode] != 'undefined' && phoneArray[countryCode]) {
@@ -10,14 +13,9 @@ export const getMaskHelper = (countryCode) => {
 }
 
 export const statesOptionList = () => {
-    let options = [];
-    for (const key in usStates){
-        options.push( {
-            value: key,
-            label: usStates[key],
-        });
-    }
+    return jsonToOptionList(usStates);
+}
 
-
-    return options;
+export const timezonesOptions = () => {
+    return jsonToOptionList(timezones);
 }

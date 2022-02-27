@@ -20,21 +20,14 @@ const ItemAdd = (props) => {
             label: "Name",
             required: true,
             name: "name",
-            col: 6,
+            col: 2,
         },
         description: {
             type: "text",
             label: "Description",
             // required: true,
             name: "description",
-            col: 6,
-        },
-        qty: {
-            type: "number",
-            label: "Quantity",
-            required: true,
-            name: "qty",
-            col: 6,
+            col: 2,
         },
         location_id: {
             type: "advanceSelect",
@@ -44,38 +37,48 @@ const ItemAdd = (props) => {
             async: true,
             required: true,
             name: "location_id",
-            col: 6,
+            col: 2,
         },
         prefix: {
             type: "text",
             label: "Prefix",
             // required: true,
             name: "prefix",
-            col: 6,
+            col: 2,
         },
         postfix: {
             type: "text",
             label: "Postfix",
             // required: true,
             name: "postfix",
-            col: 6,
+            col: 2,
+        },
+        qty: {
+            type: "number",
+            label: "Quantity",
+            required: true,
+            name: "qty",
+            defaultValue: 1,
+            col: 2,
         },
         starting_number : {
             type: "number",
             label: "Starting Number",
             required: true,
+            defaultValue: 1,
             name: "starting_number",
-            col: 6,
+            col: 2,
         },
         increments : {
             type: "number",
             label: "Increments",
             required: true,
+            defaultValue: 1,
             name: "increments",
-            col: 6,
+            col: 2,
         },
 
-       
+
 
     };
 
