@@ -2,6 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
+import {formPageTitle} from "@facepays/common";
 
 const TeamsAdd = (props) => {
 
@@ -18,7 +19,7 @@ const TeamsAdd = (props) => {
                 name: 'name',
                 col: 4
             },
-           
+
             supervisor_id: {
                 type: 'advanceSelect',
                 label: "Supervisor",
@@ -51,7 +52,7 @@ const TeamsAdd = (props) => {
         return (
             <Card className="animated fadeIn">
                 <CardHeader>
-                    Add New Team
+                    {formPageTitle('Team', id)}
                 </CardHeader>
                 <CardBody>
                     <FormGenerator

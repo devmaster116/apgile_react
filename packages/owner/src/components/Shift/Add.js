@@ -3,12 +3,13 @@ import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
+import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
 
 	const [query, setQuery] = useState(false);
   useEffect(() => {
-    
+
     setQuery((prev) => !prev);
   }, [props.branchId]);
 
@@ -46,7 +47,7 @@ const extraVals = {
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Shift" />
+        <Header title={formPageTitle('Shift', id)} />
         <CardBody>
           <FormGenerator
             targetEntity={`${props.branchId}/shifts`}

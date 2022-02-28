@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
+import {formPageTitle} from "@facepays/common";
 
 const LocationsAdd = (props) => {
 
@@ -104,7 +105,7 @@ const LocationsAdd = (props) => {
     return (
         <Card className="animated fadeIn">
             <CardHeader>
-                Add New Location
+                {formPageTitle('Location', id)}
             </CardHeader>
             <CardBody>
                 <FormGenerator

@@ -19,3 +19,12 @@ export const statesOptionList = () => {
 export const timezonesOptions = () => {
     return jsonToOptionList(timezones);
 }
+
+export const formPageTitle = (entity, id) => {
+
+    if(id) {
+        return 'Edit ' + entity;
+    }
+
+    return 'Add ' + entity;
+}

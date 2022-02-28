@@ -2,6 +2,7 @@ import React from "react";
 import { FormGenerator } from "@evenlogics/whf-form-generator";
 import { Card, CardBody } from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
+import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
   const { id } = props.match.params;
@@ -121,7 +122,7 @@ const Add = (props) => {
   return (
     <div>
       <Card className="animated fadeIn">
-        <Header title="Add New Page" />
+        <Header title={formPageTitle("Page", id)} />
         <CardBody>
           <FormGenerator
             targetEntity="pages"
