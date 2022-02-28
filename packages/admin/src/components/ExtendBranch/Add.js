@@ -76,7 +76,7 @@ const ExtendBranchAdd = (props) =>  {
             label:"City",
         },
         state: {
-            // parent: "address",
+            parent: "address",
             type: "text",
             label: "State",
             name: "state",

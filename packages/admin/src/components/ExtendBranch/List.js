@@ -61,7 +61,7 @@ class List extends Component {
                             customEntity="branches"
                             columns={columns}
                             sort={defaultSorted}
-                            // hideDetail={true}
+                            hideDetail={true}
                             // hideEdit={true}
                             addRoute="/entity/branches/add"
                             filters={filters}
