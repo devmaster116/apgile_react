@@ -141,6 +141,14 @@ const Add = (props) => {
         //     col: 2,
         //     condition: showAddFields
         // },
+        username:{
+            type: "text",
+            label: "Username",
+            name: "username",
+            required: true,
+            col: 3,
+            condition: showAddFields
+        },
 
         first_name: {
             // parent: "user",
@@ -180,7 +188,7 @@ const Add = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 2,
+            col: 3,
             condition: showAddFields
         },
         email: {
