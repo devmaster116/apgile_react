@@ -60,7 +60,7 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 const routes = [
 
 	{ path: '/', exact : true, component: Dashboard, roles:['super-admin'], isPublic: false,},
-	{ path: '/dashboard', exact : true,name: 'Dashboard', component: Dashboard, isPublic: false,},
+	{ path: '/dashboard', exact : true, name: 'Dashboard', roles:['super-admin'], component: Dashboard, isPublic: false,},
 
 	{ path: '/owner/items', exact: true, name: 'Terms',  roles:['super-admin'],component: ItemsList, isPublic: true },
 	{ path: '/owner/items/add', exact: true, name: 'Add',  roles:['super-admin'],component: ItemAdd },
