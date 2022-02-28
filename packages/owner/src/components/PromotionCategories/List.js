@@ -54,7 +54,7 @@ const List = (props) => {
         console.log(row?.status,"status")
         return (
           <Button color={row?.status === 1 ? "danger" : "success"} onClick={()=>changeStatus(row)}>
-            {row?.status === 1 ? "Inactive" : "Active"}
+            {row?.status === 1 ? "Active" : "Inactive"}
           </Button>
         );
       },
