@@ -7,14 +7,14 @@ const Add = (props) => {
 
     const [branchUser, setBranchUser] = useState('users');
     const [locations, setLocations] = useState('locations');
-    const [branchId, setBranchId] = useState(0);
+    // const [branchId, setBranchId] = useState(0);
     const [items, setItems] = useState('items-pages');
     const {id} = props.match.params;
 
 
     const changeBranchHandler = (data) => {
         setTimeout(() => {
-            setBranchId(data?.value);
+            // setBranchId(data?.value);
             console.log(data?.value, 'data');
             setBranchUser(`branch/${data?.value}/users`)
             setLocations(`branch/${data?.value}/locations`)
