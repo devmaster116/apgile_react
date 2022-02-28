@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
-import {Card, CardBody, Button, ButtonGroup} from "reactstrap";
+import {Card, CardBody, Button} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {Modal, Spinner} from "react-bootstrap/";
 import EasyEdit from 'react-easy-edit';
@@ -115,10 +115,19 @@ const cancel = () => {
             sort: true,
         },
         {
-            dataField: "last_used",
+            isDummyField: true,
             text: "Last Call",
             align: "center",
             sort: true,
+            formatter: (cell, row) => {
+                console.log(row?.last_used)
+                return (
+                        <span className="badge badge-dark">
+                             {new Date(row?.last_used).toDateString()}
+                        </span>
+                        
+                );
+            },
         },
 
 
@@ -129,8 +138,9 @@ const cancel = () => {
             sort: true,
             formatter: (cell, row) => {
                 return (
-                    <ButtonGroup size="sm">
+                    <div className="button-tables">
                         <Button
+                        size="sm"
                             color="primary"
                             onClick={() => {
                                 setID(row?.id);
@@ -138,13 +148,18 @@ const cancel = () => {
                         >
                             View QR Code
                         </Button>
-                        <Button color="secondary" onClick={() => openPage(row)}>
+                        <Button  
+                        size="sm"
+                        className="mx-auto"
+                        color="secondary" onClick={() => openPage(row)}>
                             View Page
                         </Button>
-                        <Button color="warning" onClick={() => downloadPdf(row)}>
+                        <Button 
+                        size="sm"
+                        color="warning" onClick={() => downloadPdf(row)}>
                             Download QR Code
                         </Button>
-                    </ButtonGroup>
+                    </div>
                 );
             },
         },

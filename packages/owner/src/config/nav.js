@@ -178,6 +178,7 @@ export default {
         icon: "fas fa-ad",
         children: {
             categories: {
+                name: "categories",
                 phrase: "Categories",
                 order: 1,
                 to: "/categories",

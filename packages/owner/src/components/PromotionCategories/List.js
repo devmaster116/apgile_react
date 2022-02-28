@@ -79,12 +79,13 @@ const List = (props) => {
           <CardBody>
             <RemoteTable
               entity={`${props?.branchId}/categories`}
-              customEntity="categories"
+              customEntity={`categories`}
               columns={columns}
               sort={defaultSorted}
               hideEdit={false}
               hideDetail={true}
               hideDelete={false}
+							{...props.remoteTableFields}
               addRoute="/categories/add"
               Query={query}
 

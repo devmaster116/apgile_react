@@ -52,12 +52,23 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
+
         {
-            dataField: "completed_at",
+            isDummyField: true,
             text: "Completed At",
             align: "center",
             sort: true,
+            formatter: (cell, row) => {
+                console.log(row?.completed_at)
+                return (
+                        <span className="badge badge-dark">
+                             {new Date(row?.completed_at).toDateString()}
+                        </span>
+                        
+                );
+            },
         },
+    
         {
             dataField: "status",
             text: "Status",

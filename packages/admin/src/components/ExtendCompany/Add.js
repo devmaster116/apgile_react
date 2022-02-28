@@ -256,7 +256,7 @@ const Add = (props) => {
         font_color: {
             // parent:"style",
             type: "color",
-            defaultValue: "#000000",
+            color: 'rgb(0, 0, 0)',
             label: "Font Color",
             required: true,
             name: "font_color",
@@ -265,7 +265,7 @@ const Add = (props) => {
         },
         bg_color: {
             type: "color",
-            defaultValue: "#ffffff",
+            color: "#FFFFFF",
             // parent:"style",
             label: "Background Color",
             // required: true,
