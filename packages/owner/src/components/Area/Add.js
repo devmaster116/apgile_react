@@ -22,6 +22,10 @@ const Add = (props) => {
         }, 0);
     }
 
+    const getInitialValues = (data) => {
+        console.log('data', data);
+    }
+
 
     // console.log(options,"options");
     let fields = {
@@ -98,7 +102,7 @@ const Add = (props) => {
                         repeater={true}
                         redirect="areas"
                         extraVals={{branch_id: props.branchId}}
-
+                        getInitialValues={getInitialValues}
                     />
                 </CardBody>
             </Card>

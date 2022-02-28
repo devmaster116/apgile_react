@@ -12,16 +12,22 @@ const Add = (props) => {
 
     const {id} = props.match.params;
     let fields = {
+        name: {
+            type: "text",
+            label: "Name",
+            required: true,
+            col: 3,
+        },
         title: {
             type: "text",
-            label: "Category Title",
+            label: "Title",
             required: true,
             col: 3,
         },
         sub_title: {
             type: "text",
-            label: "Category Sub Title",
-            required: true,
+            label: "Sub Title",
+            // required: true,
             col: 3,
         },
         sort_order: {
@@ -55,7 +61,7 @@ const Add = (props) => {
                         targetId={id}
                         name="categories"
                         // getInitialValues={this.getInitialValues}
-                        // debug={false}
+                        // debug={true}
                         extraVals={extraVal}
                         // extraVals={{branch_id:props.branchId}}
                         redirect="categories"

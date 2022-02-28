@@ -58,9 +58,9 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
-    
+
     {
-      dataField: "category_sub_title",
+      dataField: "category_name",
       text: "Category",
       align: "center",
       sort: true,

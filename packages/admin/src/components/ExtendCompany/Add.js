@@ -131,16 +131,16 @@ const Add = (props) => {
             col: 12,
             condition: showAddFields
         },
-        title: {
-            // parent: "user",
-            type: "advanceSelect",
-            label: "Title",
-            target: "title-list",
-            name: "title",
-            required: true,
-            col: 2,
-            condition: showAddFields
-        },
+        // title: {
+        //     // parent: "user",
+        //     type: "advanceSelect",
+        //     label: "Title",
+        //     target: "title-list",
+        //     name: "title",
+        //     required: true,
+        //     col: 2,
+        //     condition: showAddFields
+        // },
 
         first_name: {
             // parent: "user",
@@ -192,23 +192,33 @@ const Add = (props) => {
             col: 2,
             condition: showAddFields
         },
+        u_phone1: {
+            // parent: "user",
+            type: "masked",
+            mask: maskedValue,
+            label: "Phone",
+            name: "u_phone1",
+            required: true,
+            col: 2,
+            condition: showAddFields
+        },
         password: {
             // parent: "user",
             type: "password",
             label: "Password",
             name: "password",
-            required: true,
-            col: 4,
+            required: !id,
+            col: 2,
             condition: showAddFields
         },
         password_confirmation: {
             // parent: "user",
             oneOf: "password",
             type: "password",
-            required: true,
+            required: !id,
             label: "Password Confirmation",
             name: "password_confirmation",
-            col: 4,
+            col: 2,
             condition: showAddFields
         },
         // role_id: {
@@ -220,16 +230,6 @@ const Add = (props) => {
         //   required:true,
         //   col: 4,
         // },
-        u_phone1: {
-            // parent: "user",
-            type: "masked",
-            mask: maskedValue,
-            label: "User Phone",
-            name: "u_phone1",
-            required: true,
-            col: 4,
-            condition: showAddFields
-        },
 
         "Style Details": {
             isDummyField: true,
@@ -295,7 +295,7 @@ const Add = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle('Company', id)} />
+                <Header title={formPageTitle('Company', id)}/>
                 <CardBody>
                     <FormGenerator
                         targetEntity="company-branches"

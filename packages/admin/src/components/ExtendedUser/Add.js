@@ -30,48 +30,67 @@ const Add = (props) => {
             type: "h4",
             col: 12,
         },
-        title: {
-            // parent: "user",
-            required: true,
-            type: "advanceSelect",
-            options: [
-                {
-                    value: "1",
-                    label: "Mr",
-                },
-                {
-                    value: "2",
-                    label: "Mrs",
-                },
-                {
-                    value: "3",
-                    label: "Ms",
-                },
-            ],
-            label: "Title",
-            name: "title",
-            col: 4,
-        },
+        // title: {
+        //     // parent: "user",
+        //     required: true,
+        //     type: "advanceSelect",
+        //     options: [
+        //         {
+        //             value: "1",
+        //             label: "Mr",
+        //         },
+        //         {
+        //             value: "2",
+        //             label: "Mrs",
+        //         },
+        //         {
+        //             value: "3",
+        //             label: "Ms",
+        //         },
+        //     ],
+        //     label: "Title",
+        //     name: "title",
+        //     col: 4,
+        // },
         first_name: {
-            col: 4,
+            col: 3,
             type: "text",
             label: "First Name",
-            // required:true,
+            required: true,
         },
         last_name: {
-            col: 4,
+            col: 3,
             type: "text",
             label: "Last Name",
-            // required:true,
+            required: true,
+        },
+        gender_id: {
+            col: 2,
+            type: "advanceSelect",
+            options: [
+                {value: 1, label: "Male"},
+                {value: 2, label: "Female"},
+                {value: 3, label: "Other"},
+            ],
+            label: "Gender",
+            // required: true,
+        },
+        email: {
+            // parent: "user",
+            type: "email",
+            label: "Email",
+            name: "email",
+            required: true,
+            col: 2,
         },
         phone1: {
             // parent: "user",
             type: "masked",
             mask: "+1 (999) 999-9999",
             label: "Phone",
-            name: "u_phone1",
+            // name: "u_phone1",
             required: true,
-            col: 4
+            col: 2
         },
 
 
@@ -87,27 +106,20 @@ const Add = (props) => {
             required: true,
             col: 4
         },
-        email: {
-            // parent: "user",
-            type: "email",
-            label: "Email",
-            name: "email",
-            required: true,
-            col: 4,
-        },
+
         password: {
             // parent: "user",
             type: "password",
             label: "Password",
             name: "password",
-            required: true,
+            required: !id,
             col: 4,
         },
         password_confirmation: {
             // parent: "user",
             oneOf: "password",
             type: "password",
-            required: true,
+            required: !id,
             label: "Password Confirmation",
             name: "password_confirmation",
             col: 4,
@@ -125,18 +137,6 @@ const Add = (props) => {
             label: 'Roles',
             col: 4
         },
-        gender_id: {
-            col: 4,
-            type: "advanceSelect",
-            options: [
-                {value: 1, label: "Male"},
-                {value: 2, label: "Female"},
-                {value: 3, label: "Other"},
-            ],
-            label: "Select Gender",
-            required: true,
-
-        },
 
 
         company_id: {
@@ -146,19 +146,20 @@ const Add = (props) => {
             label: "Select Company",
             required: true,
             name: "company_id",
+            condition: !id,
             callback: (data) => companiesChangeHandler(data)
         },
+
         branch_id: {
             col: 4,
             type: "advanceSelect",
             target: target,
             label: "Select Branch",
             required: true,
+            condition: !id,
             async: true,
             name: "branch_id"
         },
-
-
     }
 
 

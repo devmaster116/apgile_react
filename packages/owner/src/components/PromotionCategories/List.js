@@ -34,16 +34,15 @@ const List = (props) => {
     //   align: "center",
     //   sort: true,
     // },
-    
     {
-      dataField: "title",
-      text: "Title",
+      dataField: "name",
+      text: "Name",
       align: "center",
       sort: true,
     },
     {
-      dataField: "sub_title",
-      text: "Sub Title",
+      dataField: "title",
+      text: "Title",
       align: "center",
       sort: true,
     },
@@ -60,17 +59,17 @@ const List = (props) => {
         );
       },
     },
-    
+
     // {
     //   dataField: "branch.name",
     //   text: "Branch",
     //   align: "center",
     //   sort: true,
     // },
-  
 
-    
-   
+
+
+
   ];
   return (
     <div>

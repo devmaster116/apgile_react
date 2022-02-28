@@ -9,22 +9,22 @@ const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
     const [optionsArr, setOptionsArr] = useState([])
-	useEffect(() => {
-        var rolesArray=[];
-        api.request("get","/roles")
-        .then(({data}) => {
-          rolesArray = data?.filter((role)=>(
-             role.name !== "super-admin"
-          ))
-          let newOption = rolesArray?.map((role)=>{
-            return {value:role.id,label:role.name}
-          })
-          setOptionsArr(newOption);
-        })
-        .catch((error) => console.log(error));
-		setQuery((prev)=>!prev)
+    useEffect(() => {
+        var rolesArray = [];
+        api.request("get", "/roles")
+            .then(({data}) => {
+                rolesArray = data?.filter((role) => (
+                    role.name !== "super-admin"
+                ))
+                let newOption = rolesArray?.map((role) => {
+                    return {value: role.id, label: role.name}
+                })
+                setOptionsArr(newOption);
+            })
+            .catch((error) => console.log(error));
+        setQuery((prev) => !prev)
 
-	}, [props.branchId, props.phoneMask]);
+    }, [props.branchId, props.phoneMask]);
 
 
     const {id} = props.match.params;
@@ -35,42 +35,42 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-        title: {
-            // parent: "user",
-            required:true,
-            type: "advanceSelect",
-            options: [
-                {
-                    value: "1",
-                    label: "Mr",
-                },
-                {
-                    value: "2",
-                    label: "Mrs",
-                },
-                {
-                    value: "3",
-                    label: "Ms",
-                },
-            ],
-            label: "Title",
-            name: "title",
-            col: 4,
-        },
+        // title: {
+        //     // parent: "user",
+        //     required:true,
+        //     type: "advanceSelect",
+        //     options: [
+        //         {
+        //             value: "1",
+        //             label: "Mr",
+        //         },
+        //         {
+        //             value: "2",
+        //             label: "Mrs",
+        //         },
+        //         {
+        //             value: "3",
+        //             label: "Ms",
+        //         },
+        //     ],
+        //     label: "Title",
+        //     name: "title",
+        //     col: 4,
+        // },
 
         first_name: {
             type: "text",
             label: "First Name",
             required: true,
             name: "first_name",
-            col: 4,
+            col: 3,
         },
         last_name: {
             type: "text",
             label: "Last Name",
             required: true,
             name: "last_name",
-            col: 4,
+            col: 3,
         },
         gender_id: {
             // required: true,
@@ -91,9 +91,16 @@ const ItemAdd = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 4,
+            col: 2,
         },
 
+        email: {
+            type: "email",
+            label: "Email",
+            required: true,
+            name: "email",
+            col: 2,
+        },
         phone1: {
             // type: "text",
             // label: "Phone Number",
@@ -103,16 +110,22 @@ const ItemAdd = (props) => {
             // col: 4,
             type: "masked",
             mask: props.phoneMask,
-            label: "User Phone",
-            name: "u_phone1",
-            required:true,
-            col: 4,
+            label: "Phone",
+            required: true,
+            col: 2,
         },
+
 
         "Account Details": {
             isDummyField: true,
             type: "h4",
             col: 12,
+        },
+        username: {
+            type: 'text',
+            label: 'Username',
+            required: true,
+            col: 4
         },
 
         // title: {
@@ -127,43 +140,37 @@ const ItemAdd = (props) => {
         //     required:true,
         //     col: 4,
         //   },
-        email: {
-            type: "email",
-            label: "Email",
-            required: true,
-            name: "email",
-            col: 4,
-        },
         password: {
             // parent: "user",
             type: "password",
             label: "Password",
             name: "password",
-            required: true,
+            required: !id,
             col: 4,
         },
         password_confirmation: {
             // parent: "user",
             oneOf: "password",
             type: "password",
-            required: true,
+            required: !id,
             label: "Password Confirmation",
             name: "password_confirmation",
             col: 4,
         },
-       ...(optionsArr.length > 0 ) && { role_id: {
-            // parent: "user",
-            type: "advanceSelect",
-            label: "Role",
-            name: "role_id",
-            // target: "roles",
-            options:optionsArr,
-            // optionValue: 'value',
-            // optionLabel: 'label',
-            required: true,
-            col: 4,
+        ...(optionsArr.length > 0) && {
+            role_id: {
+                // parent: "user",
+                type: "advanceSelect",
+                label: "Role",
+                name: "role_id",
+                // target: "roles",
+                options: optionsArr,
+                // optionValue: 'value',
+                // optionLabel: 'label',
+                required: true,
+                col: 4,
+            }
         }
-    }
     };
 
     return (
@@ -184,6 +191,7 @@ const ItemAdd = (props) => {
                     redirect="staff"
                     // handleSameValueFields={['title', 'slug']}
                     Query={query}
+                    // debug={true}
                     extraVals={{branch_id: props.branchId}}
                 />
             </CardBody>
@@ -192,13 +200,13 @@ const ItemAdd = (props) => {
 }
 
 const mapStateToProps = state => {
-  return {
-    branchId : state.selectedBranchId,
-    phoneMask : state.phoneMask,
-    companyName : state.companyName,
-    companyId : state.companyId,
-    userRole : state.userRole
-  }
+    return {
+        branchId: state.selectedBranchId,
+        phoneMask: state.phoneMask,
+        companyName: state.companyName,
+        companyId: state.companyId,
+        userRole: state.userRole
+    }
 }
 
-export default connect(mapStateToProps,null)(ItemAdd);
+export default connect(mapStateToProps, null)(ItemAdd);

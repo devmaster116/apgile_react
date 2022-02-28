@@ -73,7 +73,7 @@ const LocationsAdd = (props) => {
             label: "Select Supervisor",
             target: `${props.branchId}/role-users/supervisor`,
             optionLabel: 'full_name',
-            required: true,
+            // required: true,
             // async: true,
             name: 'supervisor_id',
             col: 3,
