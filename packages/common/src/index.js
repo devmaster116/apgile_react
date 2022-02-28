@@ -3,6 +3,7 @@ import usStates from './us-states.json';
 import timezones from './timezones.json';
 
 import {jsonToOptionList} from "./helpers";
+
 export const getMaskHelper = (countryCode) => {
 
     if(typeof phoneArray[countryCode] != 'undefined' && phoneArray[countryCode]) {

@@ -178,7 +178,7 @@ const Add = (props) => {
                     // repeater={true}
                     // initialValues={props.users.aboutProps}
 
-                    redirect="users"
+                    redirect="owner/users"
                     // handleSameValueFields={['title', 'slug']}
                     // Query={query}
                     // extraVals={{branch_id: props.branchId}}
