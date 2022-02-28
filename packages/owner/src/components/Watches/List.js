@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardBody, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardHeader,Button } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 const List = (props) => {
 
@@ -11,8 +12,20 @@ const List = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
+	const changeStatus = (data) => {
+		let payload = {
+			status:!data?.status
+		}
+		api.request("put",`/${props.branchId}/watch/status/${data?.id}`,payload)
+			.then((data) => {
+				console.log(data)
+				setQuery(!query)
+			})
+			.catch((error) => console.log(error));
+	}
+
 	const columns = [
-		
+
 		// {
 		// 	dataField: 'id',
 		// 	text: 'ID',
@@ -43,19 +56,32 @@ const List = (props) => {
 			align: 'center',
 			sort: true
 		},
-	
+		{
+			align: "center",
+			text: "Status",
+			sort: true,
+			formatter: (cell, row) => {
+				console.log(row?.status,"status")
+				return (
+					<Button color={row?.status === 1 ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+						{row?.status === 1 ? "Active" : "Inactive"}
+					</Button>
+				);
+			},
+		},
+
 		{
 			dataField: 'uuid',
 			text: 'Uuid',
 			align: 'center',
 			sort: true
 		},
-		
-		
+
+
 	];
 
 
-		
+
 
 		const defaultSorted = [
 			{
@@ -85,7 +111,7 @@ const List = (props) => {
 				</Card>
 			</div>
 		);
-	
+
 }
 const mapStateToProps = state => {
 	return {
@@ -95,6 +121,6 @@ const mapStateToProps = state => {
 	  userRole : state.userRole
 	  }
   }
-  
-  
+
+
 export default connect(mapStateToProps,null)(List);
