@@ -64,10 +64,10 @@ const Detail = (props) => {
             if (Array.isArray(userData[userKey]) === false) {
               return (
                 <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
                     <b>{userKey}</b>
                   </Col>
-                  <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
                     {userData[userKey]}
                   </Col>
 
@@ -79,10 +79,10 @@ const Detail = (props) => {
             } else {
               return userData[userKey].map((role, index) => (
                 <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
                     <b>{userKey}</b>
                   </Col>
-                  <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
                     {role?.name}
                   </Col>
 
@@ -93,10 +93,10 @@ const Detail = (props) => {
               ));
             }
           })}
-          <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+          <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
             <b>Available</b>
           </Col>
-          <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+          <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
             <Switch
               onChange={handleChange}
               checked={switchState}

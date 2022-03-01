@@ -160,12 +160,16 @@ const cancel = () => {
                         <Button  
                         size="sm"
                         className="mx-auto"
+
                         color="secondary" onClick={() => openPage(row)}>
                             View Page
                         </Button>
                         <Button 
                         size="sm"
-                        color="warning" onClick={() => downloadPdf(row)}>
+                        color="warning" 
+                        className="text-white"
+                        
+                        onClick={() => downloadPdf(row)}>
                             Download QR Code
                         </Button>
                     </div>

@@ -15,8 +15,7 @@ const Add = (props) => {
         setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
             setMaskedValue(returnMask);
-            value?.value === 'US' ? setShowStates(true) : setShowStates(false) 
-            
+            value?.value === 'US' ? setShowStates(true) : setShowStates(false)      
         }, 1);
 
     }

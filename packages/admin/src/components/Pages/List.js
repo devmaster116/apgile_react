@@ -145,6 +145,7 @@ const filters = {
             </Button>
             <Button
               color="warning"
+              classes="text-white"
               onClick={() => {
                 console.log(row?.id, "kkkk");
                 downloadPdf(row?.id);

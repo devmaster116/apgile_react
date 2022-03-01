@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
+import api from "@evenlogics/whf-api";
+import { toast } from 'react-toastify';
 
 const ItemsList = (props) => {
   const [target, setTarget] = useState("branches");
+  const [query, setQuery] = useState(false);
 
   const companiesChangeHandler = (data) => {
     console.log(data, "lll");
@@ -79,12 +82,6 @@ const ItemsList = (props) => {
       align: "center",
       sort: true,
     },
-    // {
-    // 	dataField: 'branch.name',
-    // 	text: 'Branch Name',
-    // 	align: 'center',
-    // 	sort: true
-    // },
   ];
 
   const defaultSorted = [
@@ -93,6 +90,21 @@ const ItemsList = (props) => {
       order: "desc",
     },
   ];
+
+
+  const deleteUser = (data) => {
+    api.request("delete", `/users/${data?.id}`)
+    .then((data) => {
+      console.log(data.message,"message")
+      toast.success(data.message)
+      setQuery(!query)
+      },3000)
+      .catch((error) =>{
+         toast.error(`Error ! ${error.response.data.message}`)
+      }
+        )
+    }
+
 
   return (
     <div className="animated">
@@ -109,8 +121,16 @@ const ItemsList = (props) => {
             addRoute="users/add"
             filters={filters}
 			      hideDetail={false}
+            disableDelete={true}
+            Query={query}
             showAdvanceFilters={true}
             {...props.remoteTableFields}
+            customButton={{
+              name: "Delete",
+              color: "danger",
+              classes:"text-white",
+              callback: (data) => deleteUser(data),
+          }}
           />
         </CardBody>
       </Card>
