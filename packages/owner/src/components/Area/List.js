@@ -1,8 +1,9 @@
 import React,{ useEffect,useState } from "react";
 import RemoteTable from "@evenlogics/whf-remote-table";
-import { Card, CardBody} from "reactstrap";
+import { Card, CardBody,Button} from "reactstrap";
 import { Header } from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 
 const List = (props) => {
@@ -13,21 +14,17 @@ const List = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-  // const calculateParams = () => {
-  //   let params ;
-  //   if(props?.branchId === null){
-  //      params = {
-  //     company_id:props?.companyId
-  //     }
-  //   }else{
-  //     params = {
-  //     company_id:props?.companyId,
-  //     branch_id:props?.branchId
-  //     }
-  //   }
-  //   return params;
-  //   }
-
+   const changeStatus = (data) => {
+    let payload = {
+			status:!data?.status
+		}
+    api.request("put",`/${props.branchId}/areas/status/${data?.id}`,payload)
+    .then((data) => {
+      console.log(data)
+      setQuery(!query)
+    })
+    .catch((error) => console.log(error));
+   }
   const defaultSorted = [{ dataField: "name", order: "desc" }];
   const columns = [
     // {
@@ -49,6 +46,19 @@ const List = (props) => {
       align: "center",
       sort: true,
     },
+    {
+			align: "center",
+			text: "Status",
+			sort: true,
+			formatter: (cell, row) => {
+				console.log(row?.status,"status")
+				return (
+					<Button color={row?.status === true ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+						{row?.status === true ? "Active" : "Inactive"}
+					</Button>
+				);
+			},
+		},
 
   ];
 
