@@ -19,6 +19,16 @@ const TeamsAdd = (props) => {
                 name: 'name',
                 col: 4
             },
+            location_id: {
+                type: 'advanceSelect',
+                label: "Locations",
+                target: `${props.branchId}/locations`,
+                // optionLabel: 'full_name',
+                required: true,
+                // async: true,
+                name: 'location_id',
+                col: 4
+            },
 
             supervisor_id: {
                 type: 'advanceSelect',
