@@ -63,16 +63,21 @@ const Detail = (props) => {
           {Object.keys(userData)?.map((userKey, index) => {
             if (Array.isArray(userData[userKey]) === false) {
               return (
-                userKey !== 'is_online' &&  <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
-                    <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
-                  </Col>
+                userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && <React.Fragment key={index}>
+                  {
+                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                     <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
+                   </Col>
+                  }
+                  {
+                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col xl="3" lg="3" md="3" sm="6" className="mt-3 text-capitalize">
+                      {userData[userKey]}
+                    </Col>
+                  }
+{/*                  
                   <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
                     {userData[userKey]}
-                  </Col>
-
-                  <br />
-                  <br />
+                  </Col> */}
                   <br />
                 </React.Fragment>
               );
@@ -85,9 +90,6 @@ const Detail = (props) => {
                   <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
                     {role?.name}
                   </Col>
-
-                  <br />
-                  <br />
                   <br />
                 </React.Fragment>
               ));
