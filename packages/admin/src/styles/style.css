@@ -4,6 +4,11 @@
     text-align: center;
 }
 
-.c-subheader {
+/* .c-subheader {
     display: none !important;
+} */
+
+
+#breadcrumb{
+    text-transform: capitalize;
 }

@@ -92,7 +92,7 @@ const List = (props) => {
                             // hideEdit={true}
                             hideDetail={true}
                             hideDelete={false}
-                            addRoute="/admin/company/add"
+                            addRoute="/admin/companies/add"
 
                             customButton={{
                                 name: "Manage Company",

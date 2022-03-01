@@ -118,7 +118,7 @@ const routes = [
 	{ path: '/branches/:id/details', exact: true,  roles:['super-admin'],component: ExtendBranchDetail},
 
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
-	{ path: '/admin/company/add', exact: true, roles:['super-admin'],component: CompanyAdd },
+	{ path: '/admin/companies/add', exact: true, roles:['super-admin'],component: CompanyAdd },
 	{ path: '/companies/:id/edit', exact: true, roles:['super-admin'],component: CompanyAdd },
 	{ path: '/admin/company/:id/details', exact: true, roles:['super-admin'], component: CompanyDetail },
 

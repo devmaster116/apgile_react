@@ -14,3 +14,7 @@
 .table-filters.col{
 margin-top: 10px;
 }
+
+#breadcrumb{
+    text-transform: capitalize;
+}
