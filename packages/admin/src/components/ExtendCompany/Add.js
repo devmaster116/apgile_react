@@ -93,7 +93,7 @@ const Add = (props) => {
             label: "State",
             name: "state",
             col: 3,
-            condition: showStates === false ? true : false
+            condition: !showStates
         },
 
         state_list: {
