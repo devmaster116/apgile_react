@@ -250,7 +250,7 @@ const cancel = () => {
                                         alt="background"
                                         src={"data:image/png;base64," + pages?.qr_code}
                                     ></img>
-                                    <p><b>{pages?.description}</b></p>
+                                    <p><b>{pages?.name}</b></p>
                                 </>
                             )}
                         </Modal>
