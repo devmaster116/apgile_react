@@ -14,7 +14,7 @@ class List extends Component {
                 target: 'companies?limit=1000',
                 async: true,
                 name: "company_id",
-                required: true,
+                // required: true,
                 col: 12 + ' col-xl-3 mt-2',
             }
         }

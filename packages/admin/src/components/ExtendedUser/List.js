@@ -21,7 +21,7 @@ const ItemsList = (props) => {
       name: "company_id",
       optionValue: "id",
       optionLabel: "name",
-      required: true,
+      // required: true,
       col: 12 + " col-xl-3 mt-2",
       callback: (data) => companiesChangeHandler(data),
     },
@@ -33,7 +33,7 @@ const ItemsList = (props) => {
       name: "branch_id",
       optionValue: "id",
       optionLabel: "name",
-      required: true,
+      // required: true,
       col: 12 + " col-xl-3 mt-2",
     },
     role_id: {
@@ -44,7 +44,7 @@ const ItemsList = (props) => {
         name: "role_id",
         // optionValue: "id",
         // optionLabel: "name",
-        required: true,
+        // required: true,
         col: 12 + " col-xl-3 mt-2",
       },
   };
