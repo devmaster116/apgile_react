@@ -162,7 +162,7 @@ export default {
     },
 
     watches: {
-        name: "watches",
+        name: "Watches",
         order: 33,
         phrase: "Watches",
         roles: ["admin"],
@@ -170,7 +170,7 @@ export default {
         hide: false,
         icon: "fas fa-stopwatch"
     },
-    Promotion: {
+    promotion: {
         phrase: "Site Content",
         to: "/promotions",
         roles: ["admin"],
@@ -180,14 +180,14 @@ export default {
             categories: {
                 name: "categories",
                 phrase: "Categories",
-                order: 1,
+                order: 0,
                 to: "/categories",
                 roles: ["admin"],
                 icon: "fas fa-users",
             },
-            promotions: {
+            sections: {
                 phrase: "Sections",
-                order: 2,
+                order: 1,
                 to: "/promotions",
                 roles: ["admin"],
                 icon: "fas fa-ad",

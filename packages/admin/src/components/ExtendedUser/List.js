@@ -64,6 +64,7 @@ const ItemsList = (props) => {
       text: "Username",
       align: "center",
       sort: true,
+      
     },
     {
         isDummyField: true,

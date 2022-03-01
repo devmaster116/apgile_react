@@ -63,11 +63,11 @@ const Detail = (props) => {
           {Object.keys(userData)?.map((userKey, index) => {
             if (Array.isArray(userData[userKey]) === false) {
               return (
-                <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
-                    <b>{userKey}</b>
+                userKey !== 'is_online' &&  <React.Fragment key={index}>
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                    <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                   </Col>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
                     {userData[userKey]}
                   </Col>
 
@@ -79,10 +79,10 @@ const Detail = (props) => {
             } else {
               return userData[userKey].map((role, index) => (
                 <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
-                    <b>{userKey}</b>
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                    <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                   </Col>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
+                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
                     {role?.name}
                   </Col>
 
@@ -93,10 +93,10 @@ const Detail = (props) => {
               ));
             }
           })}
-          <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
+          <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
             <b>Available</b>
           </Col>
-          <Col xl="3" lg="3" md="3" sm="3" className="mt-3">
+          <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
             <Switch
               onChange={handleChange}
               checked={switchState}

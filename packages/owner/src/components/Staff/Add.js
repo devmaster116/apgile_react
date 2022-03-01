@@ -125,6 +125,7 @@ const ItemAdd = (props) => {
             type: 'text',
             label: 'Username',
             required: true,
+            disabled:id ? true : false,
             col: 4
         },
 

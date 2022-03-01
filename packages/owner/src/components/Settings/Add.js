@@ -16,6 +16,7 @@ const Add = (props) => {
             required: true,
             name: "wait_time",
             col: 3,
+            min:0
           },
           escalation_hop: {
             type: "number",
@@ -23,6 +24,8 @@ const Add = (props) => {
             // required: true,
             name: "escalation_hop",
             col: 3,
+            min:0
+
           },
           cycle: {
             type: "number",
@@ -30,6 +33,8 @@ const Add = (props) => {
             required: true,
             name: "cycle",
             col: 3,
+            min:0
+
           },
           throttle_wait: {
             type: "number",
@@ -37,6 +42,8 @@ const Add = (props) => {
             required: true,
             name: "throttle_wait",
             col: 3,
+            min:0
+
           },
           // timezone:{
           //   type: 'advanceSelect',

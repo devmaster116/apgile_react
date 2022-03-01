@@ -31,64 +31,79 @@ const Add = (props) => {
 
     // console.log(options,"options");
     let fields = {
-        name: {
-            type: "text",
-            label: "Name",
-            required: true,
-            name: "name",
-            col: 4,
-        },
+      name: {
+        type: "text",
+        label: "Name",
+        required: true,
+        name: "name",
+        col: 4,
+      },
 
-        description: {
-            type: "text",
-            label: "Description",
-            // required: true,
-            name: "description",
-            col: 4,
-        },
+      description: {
+        type: "text",
+        label: "Description",
+        // required: true,
+        name: "description",
+        col: 4,
+      },
 
-        // branch_id: {
-        //   type: "advanceSelect",
-        //   label: "Select Branch",
-        //   target:`owner/${props.companyId}/all`,
-        //   name: "branch_id",
-        //   col: 4,
-        //   required: true,
-        // },
-        user_id: {
-            type: "advanceSelect",
-            label: "Team Member",
-            target: `${props.branchId}/users`,
-            optionLabel: "full_name",
-            // required: true,
-            multi: true,
-            async: true,
-            name: "user_id",
-            col: 4,
-        },
-        location_id: {
-            type: "advanceSelect",
-            label: "Select Location",
-            name: "location_id",
-            target: `${props.branchId}/locations`,
-            required: true,
-            // multi:true,
-            async: true,
-            col: 4,
-            callback: (data) => locationChangeHandler(data)
-        },
+      // branch_id: {
+      //   type: "advanceSelect",
+      //   label: "Select Branch",
+      //   target:`owner/${props.companyId}/all`,
+      //   name: "branch_id",
+      //   col: 4,
+      //   required: true,
+      // },
+      supervisor_id: {
+        type: "advanceSelect",
+        label: "Select Supervisor",
+        target: `${props.branchId}/role-users/supervisor`,
+        optionLabel: "full_name",
+        required: true,
+        // async: true,
+        name: "supervisor_id",
+        col: 4,
+        // condition: !showTeam
+      },
+      user_id: {
+        type: "advanceSelect",
+        label: "Team Members",
+        // target: `${props.branchId}/users`,
+        target: `${props.branchId}/role-users/staff`,
+        optionLabel: "full_name",
+        optionValue: "id",
+        key: "full_name",
 
-        page_id: {
-            type: "advanceSelect",
-            label: "Item#",
-            name: "page_id",
-            target: targetPoint,
-            required: true,
-            async: true,
-            multi: true,
-            col: 4,
-        },
+        // optionId: 'id',
+        required: true,
+        // async: true,
+        multi: true,
+        name: "user_id",
+        col: 4,
+      },
+      location_id: {
+        type: "advanceSelect",
+        label: "Select Location",
+        name: "location_id",
+        target: `${props.branchId}/locations`,
+        required: true,
+        // multi:true,
+        async: true,
+        col: 4,
+        callback: (data) => locationChangeHandler(data),
+      },
 
+      page_id: {
+        type: "advanceSelect",
+        label: "Item#",
+        name: "page_id",
+        target: targetPoint,
+        required: true,
+        async: true,
+        multi: true,
+        col: 4,
+      },
     };
 
     return (
