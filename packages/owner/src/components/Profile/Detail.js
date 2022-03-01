@@ -63,7 +63,7 @@ const Detail = (props) => {
           {Object.keys(userData)?.map((userKey, index) => {
             if (Array.isArray(userData[userKey]) === false) {
               return (
-                userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && <React.Fragment key={index}>
+                userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && userKey !== 'gender_id' &&  userData[userKey] !== "" && <React.Fragment key={index}>
                   {
                      typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
                      <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
