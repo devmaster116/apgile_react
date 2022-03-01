@@ -63,8 +63,8 @@ const List = (props) => {
 			formatter: (cell, row) => {
 				console.log(row?.status,"status")
 				return (
-					<Button color={row?.status === 1 ? "success" : "danger"} onClick={()=>changeStatus(row)}>
-						{row?.status === 1 ? "Active" : "Inactive"}
+					<Button color={row?.status === true ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+						{row?.status === true ? "Active" : "Inactive"}
 					</Button>
 				);
 			},
