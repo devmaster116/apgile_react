@@ -15,9 +15,8 @@ const Add = (props) => {
         setTimeout(() => {
             let returnMask = getMaskHelper(value?.value)
             setMaskedValue(returnMask);
-            if (value?.value === 'US') {
-                setShowStates(true);
-            }
+            value?.value === 'US' ? setShowStates(true) : setShowStates(false) 
+            
         }, 1);
 
     }
@@ -94,7 +93,7 @@ const Add = (props) => {
             label: "State",
             name: "state",
             col: 3,
-            condition: !showStates
+            condition: showStates === false ? true : false
         },
 
         state_list: {
