@@ -55,7 +55,7 @@ const Add = (props) => {
             type: "filePic",
             label: "Promotion Banner",
             name: "promotion_image",
-            required: true,
+            required: id ? false : true,
             col: 4,
         },
         status: {

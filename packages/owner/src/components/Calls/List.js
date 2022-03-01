@@ -41,17 +41,24 @@ const List = (props) => {
           
         },
         {
-            dataField: "message",
-            text: "Message",
-            align: "center",
-            sort: true,
-        },
-        {
             dataField: "page.name",
             text: "Area",
             align: "center",
             sort: true,
         },
+        {
+            dataField: "location.name",
+            text: "Location",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "message",
+            text: "Message",
+            align: "center",
+            sort: true,
+        },
+       
 
         {
             isDummyField: true,
@@ -84,12 +91,7 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
-        {
-            dataField: "location.name",
-            text: "Location",
-            align: "center",
-            sort: true,
-        },
+      
     ];
 
     const defaultSorted = [

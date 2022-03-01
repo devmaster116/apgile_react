@@ -20,7 +20,7 @@ const KithcenCallList  = (props) => {
 			// 	sort: true
 			// },
 			{
-				dataField: 'call.location_name',
+				dataField: 'location_name',
 				text: 'Location',
 				align: 'center',
 				sort: true
@@ -48,7 +48,7 @@ const KithcenCallList  = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'call.location_name',
+				dataField: 'location_name',
 				order: 'desc'
 			}
 		];

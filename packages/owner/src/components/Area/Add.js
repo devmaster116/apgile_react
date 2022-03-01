@@ -8,18 +8,20 @@ import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
 
-    const [targetPoint, setTargetID] = useState(`${props.branchId}/items-pages`);
     const {id} = props.match.params;
+    const [targetPoint, setTargetID] = useState(id ? `${props.branchId}/items-page/${id}` : `${props.branchId}/items-pages`);
     // const [options, setOptions] = useState([]);
 
 
     useEffect(() => {
-    }, [props.branchId, targetPoint]);
+    }, [props.branchId]);
 
     const locationChangeHandler = (data) => {
         setTimeout(() => {
-            setTargetID(`${props.branchId}/location/${data?.value}/items`)
-        }, 0);
+            // setTargetID(`${props.branchId}/location/${data?.value}/items`)
+            setTargetID(`${props.branchId}/items-page/${data?.value}`)
+            
+        }, 10);
     }
 
     const getInitialValues = (data) => {
