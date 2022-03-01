@@ -120,13 +120,22 @@ const cancel = () => {
             align: "center",
             sort: true,
             formatter: (cell, row) => {
-                console.log(row?.last_used)
-                return (
-                        <span className="badge badge-dark">
-                             {new Date(row?.last_used).toDateString()}
-                        </span>
-                        
-                );
+                if(row?.last_used){
+                    var now = new Date(row?.last_used);
+                    now.setSeconds(0, 0);
+                    var stamp = now
+                      .toISOString()
+                      .replace(/T/, " ")
+                      .replace(/:00.000Z/, "");
+                    console.log(stamp)
+                    return (
+                            <span className="badge badge-dark">
+                                 {stamp}
+                            </span>
+                            
+                    )
+                }
+               
             },
         },
 
