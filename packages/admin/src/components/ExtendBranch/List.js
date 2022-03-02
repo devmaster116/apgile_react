@@ -8,12 +8,12 @@ class List extends Component {
 
 
         const filters = {
-            company_id: {
+            company_company_id: {
                 type: "advanceSelect",
                 label: "Company",
                 target: 'companies?limit=1000',
                 async: true,
-                name: "company_id",
+                name: "company_company_id",
                 // required: true,
                 col: 12 + ' col-xl-3 mt-2',
             }

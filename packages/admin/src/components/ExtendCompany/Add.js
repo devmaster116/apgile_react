@@ -8,7 +8,7 @@ import {formPageTitle, getMaskHelper, statesOptionList} from "@facepays/common";
 
 const Add = (props) => {
 
-    const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
+    const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
 
     const companyChangeHandler = (value) => {

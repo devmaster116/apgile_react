@@ -28,23 +28,23 @@ const ItemsList = (props) => {
       col: 12 + " col-xl-3 mt-2",
       callback: (data) => companiesChangeHandler(data),
     },
-    branch_id: {
+    userDetail_branch_id: {
       type: "advanceSelect",
       label: "Branch",
       target: target,
       async: true,
-      name: "branch_id",
+      name: "userDetail_branch_id",
       optionValue: "id",
       optionLabel: "name",
       // required: true,
       col: 12 + " col-xl-3 mt-2",
     },
-    role_id: {
+    roles_role_id: {
         type: "advanceSelect",
         label: "Role",
         target: "roles",
         async: true,
-        name: "role_id",
+        name: "roles_role_id",
         // optionValue: "id",
         // optionLabel: "name",
         // required: true,
