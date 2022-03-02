@@ -20,7 +20,7 @@ const Add = (props) => {
         setTimeout(() => {
             // setTargetID(`${props.branchId}/location/${data?.value}/items`)
             setTargetID(`${props.branchId}/items-page/${data?.value}`)
-            
+
         }, 10);
     }
 
@@ -55,17 +55,6 @@ const Add = (props) => {
       //   col: 4,
       //   required: true,
       // },
-      supervisor_id: {
-        type: "advanceSelect",
-        label: "Select Supervisor",
-        target: `${props.branchId}/role-users/supervisor`,
-        optionLabel: "full_name",
-        required: true,
-        // async: true,
-        name: "supervisor_id",
-        col: 4,
-        // condition: !showTeam
-      },
       user_id: {
         type: "advanceSelect",
         label: "Team Members",
