@@ -29,11 +29,11 @@ const ItemsList = (props) => {
 
     const filters = {
 
-        role_id: {
+        roles_role_id: {
             // parent: "user",
             type: "advanceSelect",
             label: "Role",
-            name: "role_id",
+            name: "roles_role_id",
             // target: "roles",
             options:optionsArr,
             // optionValue: 'value',

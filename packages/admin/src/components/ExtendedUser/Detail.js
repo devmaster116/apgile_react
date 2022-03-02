@@ -36,23 +36,21 @@ const Detail = (props) => {
               (userKey, index) => {
                 if (Array.isArray(userData[userKey]) === false){
                  return <React.Fragment key={index}>
-                { typeof userData[userKey] !== 'number' && userData[userKey] !== null &&   <Col
-                      xl="3"
-                      lg="3" 
-                      md="3"
-                      sm="6"
+                { typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && <Col
+                      xl="2"
+                      lg="2" 
+                      md="2"
+                      sm="2"
                       className="mt-3 text-capitalize"
                     >
                       <b>{userKey?.replace(/\d+/g, "").replace("_", " ")}</b>
                     </Col>
                 }
                 {
-                    typeof userData[userKey] !== 'number' && userData[userKey] !== null && <>  <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                    typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && <>  <Col xl="2" lg="2" md="2" sm="2" className="mt-3">
                     {userData[userKey]}
                   </Col>
-                  <br/>
-                  <br/>
-                  <br/>
+                 
                   </>
                 }
                     
@@ -60,16 +58,14 @@ const Detail = (props) => {
                 } else {
                     return userData[userKey].map((role, index) => (
                       <React.Fragment key={index}>
-                        <Col xl="3" lg="3" md="3" sm="6" className="mt-3 text-capitalize">
+                        <Col xl="2" lg="2" md="2" sm="2" className="mt-3 text-capitalize">
                           <b>{userKey?.replace(/\d+/g, "").replace("_", " ")}</b>
                         </Col>
-                        <Col xl="3" lg="3" md="3" sm="6" className="mt-3">
+                        <Col xl="2" lg="2" md="2" sm="2" className="mt-3">
                           {role?.name}
                         </Col>
               
-                        <br />
-                        <br />
-                        <br />
+                        
                       </React.Fragment>
                     ))
                   }
