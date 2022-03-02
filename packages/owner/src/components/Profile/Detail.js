@@ -13,7 +13,7 @@ const Detail = (props) => {
 
 	const [switchState, setSwitchState] = useState(false);
 	const [userData, setUserData] = useState([]);
-  const [Loader, setLoader] = useState(false);
+  const [Loader, setLoader] = useState(true);
 
 
 	useEffect(() => {
@@ -51,57 +51,64 @@ const Detail = (props) => {
     <Card className="animated fadeIn">
       <Header title="User Details" />
       <CardBody>
-        {
-          Loader ? (
-            <div className="text-center">
-               <Spinner animation="border" role="status" className="mx-auto"  />
-           
-            </div>
-           
-          ): (
-            <Row>
-          {Object.keys(userData)?.map((userKey, index) => {
-            if (Array.isArray(userData[userKey]) === false) {
-              return (
-                userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && userKey !== 'gender_id' &&  userData[userKey] !== "" && <React.Fragment key={index}>
-                  {
-                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col sm="2" className="mb-4 text-capitalize">
-                     <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
-                   </Col>
-                  }
-                  {
-                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col sm="2" className="mb-4" style={{whiteSpace:"nowrap"}}>
-                      {userData[userKey]}
+        {Loader ? (
+          <div className="text-center">
+            <Spinner animation="border" role="status" className="mx-auto" />
+          </div>
+        ) : (
+          <Row>
+            {Object.keys(userData)?.map((userKey, index) => {
+              if (Array.isArray(userData[userKey]) === false) {
+                return (
+                  userKey !== "is_online" &&
+                  userKey !== "title" &&
+                  userKey !== "title_name" &&
+                  userKey !== "full_name" &&
+                  userKey !== "gender_id" &&
+                  userData[userKey] !== "" && (
+                    <React.Fragment key={index}>
+                      {typeof userData[userKey] !== "number" &&
+                        userData[userKey] !== null && (
+                          <Col sm="2" className="mb-4 text-capitalize">
+                            <b>
+                              {userKey.replace(/\d+/g, "").replace("_", " ")}
+                            </b>
+                          </Col>
+                        )}
+                      {typeof userData[userKey] !== "number" &&
+                        userData[userKey] !== null && (
+                          <Col
+                            sm="2"
+                            className="mb-4"
+                            style={{ whiteSpace: "nowrap" }}
+                          >
+                            {userData[userKey]}
+                          </Col>
+                        )}
+                    </React.Fragment>
+                  )
+                );
+              } else {
+                return userData[userKey].map((role, index) => (
+                  <React.Fragment key={index}>
+                    <Col sm="2" className="text-capitalize">
+                      <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                     </Col>
-                  }          
-                </React.Fragment>
-              );
-            } else {
-              return userData[userKey].map((role, index) => (
-                <React.Fragment key={index}>
-                  <Col sm="2" className="text-capitalize">
-                    <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
-                  </Col>
-                  <Col sm="2" className="text-capitalize">
-                    {role?.name}
-                  </Col>
-                 
-                </React.Fragment>
-              ));
-            }
-          })}
-          <Col sm="2" className="mt-1 text-capitalize">
-            <b>Available</b>
-          </Col>
-          <Col sm="2" className="mt-1 text-capitalize">
-            <Switch
-              onChange={handleChange}
-              checked={switchState}
-            />
-          </Col>
-        </Row>
-          )
-        } 
+                    <Col sm="2" className="text-capitalize">
+                      {role?.name}
+                    </Col>
+                  </React.Fragment>
+                ));
+              }
+            })}
+            <Col sm="2" className="mt-1 text-capitalize">
+              <b>Available</b>
+            </Col>
+            <Col sm="2" className="mt-1 text-capitalize">
+              <Switch onChange={handleChange} checked={switchState} />
+            </Col>
+          </Row>
+        )}
       </CardBody>
     </Card>
   );

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
-import Profile from "./Profile/Detail";
+// import Profile from "./Profile/Detail";
 
 const Dashboard = (props) => {
 
@@ -29,7 +29,7 @@ const Dashboard = (props) => {
     return (
         <div>
             {
-                props?.userRole === "staff" ? <Profile /> :  <h3>Adroit Dashboards</h3>
+                props?.userRole === "staff" ? props.history.push('/profile') : <h3>Adroit Dashboards</h3>
             }
            
         </div>
