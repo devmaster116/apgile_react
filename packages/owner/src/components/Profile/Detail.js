@@ -37,7 +37,7 @@ const Detail = (props) => {
    let payload = {
     status,
    }
-   api.request("post",`/set-online-status`,payload)
+   api.request("post",`/${props?.branchId}/set-online-status`,payload)
        .then(() => {
          console.log("worked");
          Swal.fire(
@@ -65,40 +65,35 @@ const Detail = (props) => {
               return (
                 userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && userKey !== 'gender_id' &&  userData[userKey] !== "" && <React.Fragment key={index}>
                   {
-                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col xl="2" lg="2" md="2" sm="2" className="mt-3 text-capitalize">
                      <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                    </Col>
                   }
                   {
-                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col xl="3" lg="3" md="3" sm="6" className="mt-3 text-capitalize">
+                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col xl="2" lg="2" md="2" sm="2" className="mt-3 text-capitalize">
                       {userData[userKey]}
                     </Col>
-                  }
-{/*                  
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
-                    {userData[userKey]}
-                  </Col> */}
-                  <br />
+                  }          
                 </React.Fragment>
               );
             } else {
               return userData[userKey].map((role, index) => (
                 <React.Fragment key={index}>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                  <Col xl="2" lg="2" md="2" sm="2" className="mt-2 text-capitalize">
                     <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                   </Col>
-                  <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+                  <Col xl="2" lg="2" md="2" sm="2" className="mt-2 text-capitalize">
                     {role?.name}
                   </Col>
-                  <br />
+                 
                 </React.Fragment>
               ));
             }
           })}
-          <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+          <Col xl="2" lg="2" md="2" sm="2" className="mt-1 text-capitalize">
             <b>Available</b>
           </Col>
-          <Col xl="3" lg="3" md="3" sm="3" className="mt-3 text-capitalize">
+          <Col xl="2" lg="2" md="2" sm="2" className="mt-1 text-capitalize">
             <Switch
               onChange={handleChange}
               checked={switchState}

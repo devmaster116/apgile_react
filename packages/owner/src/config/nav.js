@@ -255,4 +255,12 @@ export default {
         icon: "fas fa-users",
         roles: ["staff"],
     },
+    calls: {
+        phrase: "Calls",
+        name: "calls",
+        order: 16,
+        to: "/user-calls",
+        icon: "fas fa-phone-square-alt",
+        roles: ["staff"],
+    },
 };

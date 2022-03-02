@@ -1,7 +1,9 @@
 import React from "react";
 
 import Dashboard from "./../components/Dashboard";
+
 import ProfileDetail from "./../components/Profile/Detail";
+import StaffCalls from "./../components/Profile/Calls";
 
 import CompanyBranchList from "../components/CompanyBranch/List";
 import CompanyBranchAdd from "../components/CompanyBranch/Add";
@@ -61,7 +63,9 @@ const routes = [
 
 	{ path: '/', exact : true, component: Dashboard, roles:['admin','supervisor','staff'], isPublic: false,},
 	{ path: '/dashboard', exact : true,name: 'Dashboard',roles:['admin','supervisor','staff'], component: Dashboard, isPublic: false,},
+	
 	{ path: '/profile', exact : true,component: ProfileDetail,isPublic: false},
+	{ path: '/user-calls', exact : true,component: StaffCalls,isPublic: false},
 	
 	{ path: '/owner/branches', exact : true,component: CompanyBranchList,isPublic: false},
 	{ path: '/owner/branches/add', exact : true,component: CompanyBranchAdd,isPublic: false},
