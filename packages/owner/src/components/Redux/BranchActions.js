@@ -19,3 +19,12 @@ export const setReduxData = (data) => {
     }
 
 }
+
+
+export const setBranches = (data) => {
+    return {
+        type : "SET_BRANCHES",
+        payload: data,
+    }
+
+}

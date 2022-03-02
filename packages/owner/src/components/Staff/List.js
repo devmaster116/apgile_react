@@ -38,7 +38,7 @@ const ItemsList = (props) => {
             options:optionsArr,
             // optionValue: 'value',
             // optionLabel: 'label',
-            required: true,
+            // required: true,
             col: 4,
         }
     //     role_id: {

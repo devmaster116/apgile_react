@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
-
+import Profile from "./Profile/Detail";
 
 const Dashboard = (props) => {
 
@@ -28,7 +28,10 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <h3>Adroit Dashboards</h3>
+            {
+                props?.userRole === "staff" ? <Profile /> :  <h3>Adroit Dashboards</h3>
+            }
+           
         </div>
     );
 };

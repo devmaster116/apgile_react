@@ -63,6 +63,7 @@ const Add = (props) => {
                 'a': '[A-Za-z]',
                 '*': '[A-Za-z0-9]'
               },
+            className:"phoneMask"
         },
 
         // addrsss: {
@@ -211,7 +212,13 @@ const Add = (props) => {
             name: "u_phone1",
             required: true,
             col: 2,
-            condition: showAddFields
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
+            condition: showAddFields,
+         className:"phoneMask"
         },
         password: {
             // parent: "user",

@@ -57,7 +57,13 @@ const ExtendBranchAdd = (props) =>  {
             label:"Phone",
             required:true,
             // maxlength:13,
-            name:"phone1"
+            name:"phone1",
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
+              className:"phoneMask"
         },
         addr1:{
             parent: 'address',

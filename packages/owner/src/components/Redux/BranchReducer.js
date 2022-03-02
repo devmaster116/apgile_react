@@ -4,7 +4,8 @@ const initialState = {
   companyName: "TestCompany",
   companyId:null,
   userRole:null,
-  phoneMask:null
+  phoneMask:null,
+  branches:[],
 };
 
 const BranchReducer = (state = initialState, action) => {
@@ -22,6 +23,13 @@ const BranchReducer = (state = initialState, action) => {
         companyName : action.payload.name,
         companyId : action.payload.id,
       };
+      case "SET_BRANCHES":
+        console.log(action?.payload,"SET_BRANCHES");
+        return {
+          ...state,
+          branches : action.payload,
+        };
+
       case "SET_REDUX_DATA" :
       console.log(action?.payload,"SET_REDUX_DATA");
       return {

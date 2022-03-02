@@ -80,7 +80,7 @@ const cancel = () => {
             sort: true,
             formatter: (cell, row) => (
                 // <div className="bg-info">
-               <EasyEdit
+             props.userRole === "admin" ? <EasyEdit
                 type="text"
                 value={row?.name}
                 onSave={(value)=>save(value,row)}
@@ -91,7 +91,7 @@ const cancel = () => {
                 cancelButtonStyle="btn h-10 w-15 ml-1"
                 attributes={{ name: "awesome-input", id: 1}}
                 instructions="Edit the name"
-              />
+              /> : <p>{row?.name}</p>
             //   </div>
             )
         },
@@ -213,14 +213,14 @@ const cancel = () => {
                         <RemoteTable
                             // entity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
                             // customEntity={props?.userRole === "supervisor" ? `pages?branch_id=${props?.branchId}` : props?.branchId !== null ? `pages?branch_id=${props?.branchId}`:`pages`}
-                            entity={`${props?.branchId}/pages`}
+                            entity={props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-pages` : `${props?.branchId}/pages`}
                             customEntity={`${props?.branchId}/pages`}
                             columns={columns}
                             sort={defaultSorted}
                             hideEdit={true}
                             hideDetail={true}
                             disableDelete={props?.userRole === "supervisor" ? true : false}
-
+                            hideActionCol = {props?.userRole === "supervisor" ? true : false}
 
                             // customButton={{
                             //   name: "Download PDF",

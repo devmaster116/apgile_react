@@ -9,6 +9,7 @@ const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
     const [optionsArr, setOptionsArr] = useState([])
+    // const [phoneMask, setPhoneMask] = useState(props?.phoneMask)
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -23,8 +24,9 @@ const ItemAdd = (props) => {
             })
             .catch((error) => console.log(error));
         setQuery((prev) => !prev)
-
-    }, [props.branchId, props.phoneMask]);
+        // setPhoneMask(props?.phoneMask);
+        console.log("Triggers")
+    }, [props.branchId]);
 
 
     const {id} = props.match.params;
@@ -35,28 +37,6 @@ const ItemAdd = (props) => {
             type: "h4",
             col: 12,
         },
-        // title: {
-        //     // parent: "user",
-        //     required:true,
-        //     type: "advanceSelect",
-        //     options: [
-        //         {
-        //             value: "1",
-        //             label: "Mr",
-        //         },
-        //         {
-        //             value: "2",
-        //             label: "Mrs",
-        //         },
-        //         {
-        //             value: "3",
-        //             label: "Ms",
-        //         },
-        //     ],
-        //     label: "Title",
-        //     name: "title",
-        //     col: 4,
-        // },
 
         first_name: {
             type: "text",
@@ -102,17 +82,12 @@ const ItemAdd = (props) => {
             col: 2,
         },
         phone1: {
-            // type: "text",
-            // label: "Phone Number",
-            // // required: true,
-            // name: "phone1",
-            // maxlength:14,
-            // col: 4,
             type: "masked",
-            mask: props.phoneMask,
+            mask: props?.phoneMask,
             label: "Phone",
             required: true,
             col: 2,
+            className:"phoneMask"
         },
 
 
@@ -128,19 +103,6 @@ const ItemAdd = (props) => {
             disabled:id ? true : false,
             col: 4
         },
-
-        // title: {
-        //     // parent: "user",
-        //     type: "advanceSelect",
-        //     label: "Title",
-        //     target:"title-list",
-        //     name: "title",
-        //     // optionLabel:"title",
-        //     // optionValue:"id",
-        //     // callback: (data)=> console.log(data,"data"),
-        //     required:true,
-        //     col: 4,
-        //   },
         password: {
             // parent: "user",
             type: "password",

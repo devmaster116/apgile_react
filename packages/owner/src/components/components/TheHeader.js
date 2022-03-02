@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch, connect} from "react-redux";
-import {changeBranch} from "../Redux/BranchActions";
+import {changeBranch,setBranches} from "../Redux/BranchActions";
 import Select from 'react-select';
 import api from "@evenlogics/whf-api";
 import {
@@ -30,6 +30,7 @@ const TheHeader = (props) => {
             .then(({data}) => {
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
                 setOptions(optionsArr);
+                props.setBranches(data);
                 if (optionsArr.length > 0) {
                     props.changeBranch(optionsArr[0]);
                 }
@@ -143,7 +144,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeBranch: (valueObj) => dispatch(changeBranch(valueObj))
+        changeBranch: (valueObj) => dispatch(changeBranch(valueObj)),
+        setBranches: (valueObj) => dispatch(setBranches(valueObj))
     }
 }
 

@@ -86,11 +86,17 @@ const Add = (props) => {
         phone1: {
             // parent: "user",
             type: "masked",
-            mask: "+1 (999) 999-9999",
+            mask: "+1 (000) 000-0000",
             label: "Phone",
             // name: "u_phone1",
             required: true,
-            col: 2
+            col: 2,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
+           className:"phoneMask"
         },
 
 

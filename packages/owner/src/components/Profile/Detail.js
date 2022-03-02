@@ -65,12 +65,12 @@ const Detail = (props) => {
               return (
                 userKey !== 'is_online' && userKey !== 'title' && userKey !== 'title_name' && userKey !== 'full_name' && userKey !== 'gender_id' &&  userData[userKey] !== "" && <React.Fragment key={index}>
                   {
-                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col xl="2" lg="2" md="2" sm="2" className="mt-3 text-capitalize">
+                     typeof userData[userKey] !== 'number' && userData[userKey] !== null &&  <Col sm="2" className="mb-4 text-capitalize">
                      <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                    </Col>
                   }
                   {
-                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col xl="2" lg="2" md="2" sm="2" className="mt-3 text-capitalize">
+                      typeof userData[userKey] !== 'number' && userData[userKey] !== null && <Col sm="2" className="mb-4" style={{whiteSpace:"nowrap"}}>
                       {userData[userKey]}
                     </Col>
                   }          
@@ -79,10 +79,10 @@ const Detail = (props) => {
             } else {
               return userData[userKey].map((role, index) => (
                 <React.Fragment key={index}>
-                  <Col xl="2" lg="2" md="2" sm="2" className="mt-2 text-capitalize">
+                  <Col sm="2" className="text-capitalize">
                     <b>{userKey.replace(/\d+/g, "").replace("_", " ")}</b>
                   </Col>
-                  <Col xl="2" lg="2" md="2" sm="2" className="mt-2 text-capitalize">
+                  <Col sm="2" className="text-capitalize">
                     {role?.name}
                   </Col>
                  
@@ -90,10 +90,10 @@ const Detail = (props) => {
               ));
             }
           })}
-          <Col xl="2" lg="2" md="2" sm="2" className="mt-1 text-capitalize">
+          <Col sm="2" className="mt-1 text-capitalize">
             <b>Available</b>
           </Col>
-          <Col xl="2" lg="2" md="2" sm="2" className="mt-1 text-capitalize">
+          <Col sm="2" className="mt-1 text-capitalize">
             <Switch
               onChange={handleChange}
               checked={switchState}

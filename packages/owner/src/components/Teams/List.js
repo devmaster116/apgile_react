@@ -23,6 +23,20 @@ const TeamsList = (props) => {
 				align: 'center',
 				sort: true
 			},
+			{
+				isDummyField: true,
+				align: "center",
+				text: "Team Members",
+				sort: true,
+				formatter: (cell, row) => {
+				return row?.users?.map(users =>{
+				 return users && <span>
+                           {users?.username}
+					</span>
+				})
+				},
+			},
+
 
 		];
 
@@ -43,7 +57,7 @@ const TeamsList = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`${props?.branchId}/teams` }
+							entity={props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-team` : `${props?.branchId}/teams`}
 							// entity="teams"
 							// customEntity={ props?.userRole === "supervisor" ? `teams?branch_id=${props?.branchId}` : props?.branchId !== null ? `teams?company_id=${props?.companyId}&branch_id=${props?.branchId}` :`teams?company_id=${props?.companyId}` }
 							customEntity={`teams`}
