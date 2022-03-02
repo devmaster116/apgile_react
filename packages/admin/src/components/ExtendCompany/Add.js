@@ -58,6 +58,11 @@ const Add = (props) => {
             required: true,
             name: "phone1",
             col: 4,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
 
         // addrsss: {
