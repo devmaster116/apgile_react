@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 // import { getMaskHelper } from "./getMaskHelper";
 import {formPageTitle, getMaskHelper, statesOptionList} from "@facepays/common";
+import api from "@evenlogics/whf-api";
 
 
 const Add = (props) => {
@@ -11,17 +12,26 @@ const Add = (props) => {
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
 
+
+    const {id} = props.match.params;
+
     const companyChangeHandler = (value) => {
-        setTimeout(() => {
-            let returnMask = getMaskHelper(value?.value)
+        setTimeout(() => {    
+            console.log(value,"value")      
+            let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);
-            value?.value === 'US' ? setShowStates(true) : setShowStates(false)      
+            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)      
         }, 1);
 
     }
 
-    const {id} = props.match.params;
-    console.log('ID HERE', id);
+  useEffect(() => { 
+   id && api.request("get", `/company-branches/${id}`).then(({data}) => {    
+        companyChangeHandler(data?.address?.country)
+      }).catch((error) => console.log(error));
+  
+  }, [id])
+  
     let showAddFields = true;
     if (typeof id != 'undefined' && id) {
         showAddFields = false;

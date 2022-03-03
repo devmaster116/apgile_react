@@ -109,7 +109,7 @@ const List = (props) => {
                 </CardHeader>
                 <CardBody>
                     <RemoteTable
-                        entity={`${props.branchId}/calls`}
+                        entity={props.userRole === "supervisor" ? `${props.branchId}/supervisor-calls` : `${props.branchId}/calls` }
                         customEntity="calls"
                         columns={columns}
                         sort={defaultSorted}

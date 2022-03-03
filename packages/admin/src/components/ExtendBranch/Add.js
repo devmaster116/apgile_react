@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
 import {getMaskHelper, statesOptionList} from "@facepays/common";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
@@ -6,22 +6,32 @@ import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {formPageTitle} from '@facepays/common';
 // import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
+import api from "@evenlogics/whf-api";
+
 
 const ExtendBranchAdd = (props) =>  {
 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
+    const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-        setTimeout(() => {
-            let returnMask = getMaskHelper(value?.value)
-               setMaskedValue(returnMask);
-               value?.value === 'US' ? setShowStates(true) : setShowStates(false) 
+        setTimeout(() => {    
+            console.log(value,"value")      
+            let returnMask = getMaskHelper( id ? value : value?.value)
+            setMaskedValue(returnMask);
+            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)      
         }, 1);
 
     }
 
-    const {id} = props.match.params;
+    useEffect(() => { 
+        id && api.request("get", `/branches/${id}`).then(({data}) => {    
+             companyChangeHandler(data?.address?.country)
+           }).catch((error) => console.log(error));
+       
+       }, [id])
+
 
     let fields = {
         name: {

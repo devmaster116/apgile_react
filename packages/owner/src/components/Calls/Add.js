@@ -22,15 +22,12 @@ const Add = (props) => {
         user_id: {
             type: "advanceSelect",
             label: "Select Staff",
-            target: `${props.branchId}/users`,
+            target: props?.userRole === "supervisor" ? `${props.branchId}/team-users/${id}` :`${props.branchId}/users`,
             optionLabel: 'first_name',
             optionId: 'id',
+            required:true,
             async: true,
-
-            //   multi:true,
-            //   name: "target_user",
             col: 3,
-            //   required: true,
         },
         action_id: {
             type: "advanceSelect",
@@ -71,6 +68,7 @@ const Add = (props) => {
 const mapStateToProps = state => {
     return {
         branchId: state.selectedBranchId,
+        userRole: state.userRole
     }
 }
 
