@@ -25,12 +25,17 @@ const ExtendBranchAdd = (props) =>  {
 
     }
 
+       /* eslint-disable */
+
+
     useEffect(() => { 
         id && api.request("get", `/branches/${id}`).then(({data}) => {    
              companyChangeHandler(data?.address?.country)
            }).catch((error) => console.log(error));
        
        }, [id])
+   
+       /* eslint-enable */
 
 
     let fields = {

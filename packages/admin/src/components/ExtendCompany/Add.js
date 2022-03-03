@@ -25,12 +25,15 @@ const Add = (props) => {
 
     }
 
+       /* eslint-disable */
+
   useEffect(() => { 
    id && api.request("get", `/company-branches/${id}`).then(({data}) => {    
         companyChangeHandler(data?.address?.country)
       }).catch((error) => console.log(error));
   
   }, [id])
+       /* eslint-enable */
   
     let showAddFields = true;
     if (typeof id != 'undefined' && id) {
