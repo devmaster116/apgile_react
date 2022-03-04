@@ -63,14 +63,14 @@ const routes = [
 
 	{ path: '/', exact : true, component: Dashboard, roles:['admin','supervisor','staff'], isPublic: false,},
 	{ path: '/dashboard', exact : true,name: 'Dashboard',roles:['admin','supervisor','staff'], component: Dashboard, isPublic: false,},
-	
+
 	{ path: '/profile', exact : true,component: ProfileDetail,isPublic: false},
 	{ path: '/user-calls', exact : true,component: StaffCalls,isPublic: false},
-	
+
 	{ path: '/owner/branches', exact : true,component: CompanyBranchList,isPublic: false},
 	{ path: '/owner/branches/add', exact : true,component: CompanyBranchAdd,isPublic: false},
 	{ path: '/branches/10/all/15/edit', exact : true,component: CompanyBranchAdd,isPublic: false},
-	
+
 	{ path: '/users-extended', exact : true,component: UserList,isPublic: false},
 	{ path: '/users/add', exact : true,component: UserAdd,isPublic: false},
 	{ path: '/users/:id/edit', exact : true,component: UserAdd,isPublic: false},
@@ -88,7 +88,7 @@ const routes = [
 	{ path: '/roasters/add', exact : true,component: RoasterAdd,isPublic: false},
 	{ path: '/rosters/:id/edit', exact : true,component: RoasterAdd,isPublic: false},
 
-	
+
 	{ path: '/locations', exact : true,component: LocationsList,isPublic: false},
 	{ path: '/locations/add', exact : true,component: LocationAdd,isPublic: false},
 	{ path: '/locations/:id/edit', exact : true,component: LocationAdd,isPublic: false},
@@ -105,7 +105,7 @@ const routes = [
 	{ path: '/qr-codes', exact : true,component: PagesList,isPublic: false},
 	{ path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
 	{ path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
-	
+
 
 	{ path: '/staff', exact : true,component: StaffList,isPublic: false},
 	{ path: '/staff/add', exact : true,component: StaffAdd,isPublic: false},
@@ -123,23 +123,23 @@ const routes = [
 	{path : "/categories" ,exact : true ,component :CategoriesList},
 	{path : "/categories/add" ,exact : true ,component :CategoriesAdd},
 	{path : "/categories/:id/edit" ,exact : true ,component :CategoriesAdd},
-	
+
 
 	{path : "/watches" ,exact : true ,component :WatchesList},
 	{path : "/watches/add" ,exact : true ,component :WatchesAdd},
 	{path : "/watches/:id/edit" ,exact : true ,component :WatchesAdd},
 
-	
+
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 
 	{ path: '/kitchen-calls', exact : true,component: KitchenCalls,isPublic: false},
-	{ path: '/calls/:id/assigned', exact : true,component:CallAssigned ,isPublic: false},
+	{ path: '/calls/:id/edit', exact : true,component:CallAssigned ,isPublic: false},
 	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},
-	
+
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 
-	
+
 ];
 
 export default routes;
