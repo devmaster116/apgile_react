@@ -74,9 +74,16 @@ const cancel = () => {
         // },
 
         {
+            dataField: "item.name",
+            text: "Item",
+            align: "center",
+            sort: true,
+        },
+
+        {
             isDummyField: true,
             align: "center",
-            text: "Page Title",
+            text: "Unique Code",
             sort: true,
             formatter: (cell, row) => (
                 // <div className="bg-info">
@@ -95,13 +102,6 @@ const cancel = () => {
             //   </div>
             )
         },
-
-        // {
-        //     dataField: "name",
-        //     text: "Name",
-        //     align: "center",
-        //     sort: true,
-        // },
         {
             dataField: "location.name",
             text: "Location",
@@ -132,10 +132,10 @@ const cancel = () => {
                             <span className="badge badge-dark">
                                  {stamp}
                             </span>
-                            
+
                     )
                 }
-               
+
             },
         },
 
@@ -157,18 +157,18 @@ const cancel = () => {
                         >
                             View QR Code
                         </Button>
-                        <Button  
+                        <Button
                         size="sm"
                         className="mx-auto"
 
                         color="secondary" onClick={() => openPage(row)}>
                             View Page
                         </Button>
-                        <Button 
+                        <Button
                         size="sm"
-                        color="warning" 
+                        color="warning"
                         className="text-white"
-                        
+
                         onClick={() => downloadPdf(row)}>
                             Download QR Code
                         </Button>
