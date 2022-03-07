@@ -41,7 +41,7 @@ const List = (props) => {
         // },
         {
             dataField: "staff_name",
-            text: "Staff",
+            text: "Assigned To",
             align: "center"
         },
         {
