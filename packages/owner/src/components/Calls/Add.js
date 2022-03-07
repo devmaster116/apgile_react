@@ -3,8 +3,6 @@ import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
-import {formPageTitle} from "@facepays/common";
-
 
 const Add = (props) => {
     const {id} = props.match.params;
@@ -19,23 +17,21 @@ const Add = (props) => {
 
 
     let fields = {
-        user_id: {
+        staff_id: {
             type: "advanceSelect",
-            label: "Select Staff",
-            target: props?.userRole === "supervisor" ? `${props.branchId}/team-users` :`${props.branchId}/users`,
-            optionLabel: 'first_name',
+            label: "Change Staff",
+            target: props?.userRole === "supervisor" ? `${props.branchId}/team-users/${id}` :`${props.branchId}/users`,
+            optionLabel: 'full_name',
             optionId: 'id',
-            required:true,
             async: true,
             col: 3,
         },
-        action_id: {
+
+        status_id: {
             type: "advanceSelect",
-            label: "Action Status",
+            label: "Change Status",
             target: `${props.branchId}/call/status-list`,
-            name: "action_id",
             col: 3,
-            required: true,
             async: true,
         },
 
@@ -45,12 +41,13 @@ const Add = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle('Calls', id)} />
+                <Header title="Modify Call" />
                 <CardBody>
                     <FormGenerator
-                        targetEntity={`${props.branchId}/kitchen-call`}
+                        targetEntity={`${props.branchId}/calls`}
                         fields={fields}
-                        name="kitchen-call"
+                        targetId={id}
+                        name="calls"
                         repeater={true}
                         redirect="calls"
                         extraVals={{

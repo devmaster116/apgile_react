@@ -16,25 +16,25 @@ const Add = (props) => {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-        setTimeout(() => {    
-            console.log(value,"value")      
+        setTimeout(() => {
+            console.log(value,"value")
             let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);
-            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)      
+            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)
         }, 1);
 
     }
 
        /* eslint-disable */
 
-  useEffect(() => { 
-   id && api.request("get", `/company-branches/${id}`).then(({data}) => {    
+  useEffect(() => {
+   id && api.request("get", `/company-branches/${id}`).then(({data}) => {
         companyChangeHandler(data?.address?.country)
       }).catch((error) => console.log(error));
-  
+
   }, [id])
        /* eslint-enable */
-  
+
     let showAddFields = true;
     if (typeof id != 'undefined' && id) {
         showAddFields = false;
@@ -281,7 +281,6 @@ const Add = (props) => {
             type: "color",
             defaultValue: "#00000",
             label: "Font Color",
-            required: true,
             name: "font_color",
             col: 2,
             condition: showAddFields

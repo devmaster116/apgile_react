@@ -32,13 +32,17 @@ const List = (props) => {
     // }
 
     const columns = [
-        // {dataField: "id", text: "ID", align: "center"},
+        {dataField: "id", text: "ID", align: "center", hidden: true},
+        // {
+        //     dataField: "cus_name",
+        //     text: "Customer Name",
+        //     align: "center",
+        //     sort: true,
+        // },
         {
-            dataField: "cus_name",
-            text: "Customer Name",
-            align: "center",
-            sort: true,
-          
+            dataField: "staff_name",
+            text: "Staff",
+            align: "center"
         },
         {
             dataField: "page.name",
@@ -58,7 +62,7 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
-       
+
 
         {
             isDummyField: true,
@@ -78,25 +82,25 @@ const List = (props) => {
                             <span className="badge badge-dark">
                                  {stamp}
                             </span>
-                            
+
                     )
                 }
-               
+
             },
         },
-    
+
         {
             dataField: "status",
             text: "Status",
             align: "center",
             sort: true,
         },
-      
+
     ];
 
     const defaultSorted = [
         {
-            dataField: "cus_name",
+            dataField: "id",
             order: "asc",
         },
     ];
@@ -113,21 +117,21 @@ const List = (props) => {
                         customEntity="calls"
                         columns={columns}
                         sort={defaultSorted}
-                        hideEdit={true}
+                        hideEdit={false}
                         // filters={props.userRole?.includes("supervisor" && "staff") ? null : filters}
                         // showAdvanceFilters={true}
                         hideDetail={props.userRole === "supervisor" ? true : false}
                         disableDelete={props.userRole === "supervisor" ? true : false}
                         hideActionCol={props.userRole === "staff" ? true : false}
-                        customButton={{
-                            name: "Assigned Call",
-                            color: "warning",
-                            classes:"text-white",
-                            callback: (data) => props?.history?.push({
-                                pathname: `/calls/${data?.id}/assigned`,
-                                state: data?.location.id
-                            })
-                          }}
+                        // customButton={{
+                        //     name: "Assigned Call",
+                        //     color: "warning",
+                        //     classes:"text-white",
+                        //     callback: (data) => props?.history?.push({
+                        //         pathname: `/calls/${data?.id}/assigned`,
+                        //         state: data?.location.id
+                        //     })
+                        //   }}
                         Query={query}
 
                     />
