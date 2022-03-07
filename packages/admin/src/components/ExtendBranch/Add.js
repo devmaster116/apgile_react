@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
-import {getMaskHelper, statesOptionList} from "@facepays/common";
+import {getMaskHelper, statesOptionList, timezonesOptions} from "@facepays/common";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
@@ -16,11 +16,11 @@ const ExtendBranchAdd = (props) =>  {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-        setTimeout(() => {    
-            console.log(value,"value")      
+        setTimeout(() => {
+            console.log(value,"value")
             let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);
-            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)      
+            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)
         }, 1);
 
     }
@@ -28,13 +28,13 @@ const ExtendBranchAdd = (props) =>  {
        /* eslint-disable */
 
 
-    useEffect(() => { 
-        id && api.request("get", `/branches/${id}`).then(({data}) => {    
+    useEffect(() => {
+        id && api.request("get", `/branches/${id}`).then(({data}) => {
              companyChangeHandler(data?.address?.country)
            }).catch((error) => console.log(error));
-       
+
        }, [id])
-   
+
        /* eslint-enable */
 
 
@@ -121,19 +121,104 @@ const ExtendBranchAdd = (props) =>  {
             name: 'zip_code',
             col: 3
         },
-        // location:{
-        //     type:"location",
-        //     label: "Location",
-        //     placeholder:"Enter Location Address",
-        //     required: true,
-        //     name: "location",
-        //     col: 3,
-        // },
 
-        // country: {
-        //     hide: true,
-        //     hidden: true
-        // },
+        "Settings": {
+            isDummyField: true,
+            type: "h4",
+            col: 12
+        },
+
+        wait_time: {
+            parent: 'settings',
+            type: "number",
+            label: "Wait Time",
+            required: true,
+            col: 2,
+            min:0
+        },
+        escalation_hop: {
+            parent: 'settings',
+            type: "number",
+            label: "Escalation Hop",
+            // required: true,
+            col: 2,
+            min:0
+
+        },
+        cycle: {
+            parent: 'settings',
+            type: "number",
+            label: "Cycle",
+            required: true,
+            col: 2,
+            min:0
+
+        },
+        throttle_wait: {
+            parent: 'settings',
+            type: "number",
+            label: "Throttle Wait",
+            required: true,
+            col: 2,
+            min:0
+
+        },
+
+        max_users:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. Users",
+            required: true,
+            col: 2
+        },
+
+        max_watches:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. Watches",
+            required: true,
+            col: 2
+        },
+
+        max_codes:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. QR Codes",
+            required: true,
+            col: 2
+        },
+
+        "Site Content": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+        },
+
+        page_subtitle:{
+            parent: 'settings',
+            type: "text",
+            label: "Sub Title",
+            // required: true,
+            col: 4,
+        },
+
+        page_title:{
+            parent: 'settings',
+            type: "text",
+            label: "Title",
+            // required: true,
+            col: 4,
+        },
+
+        timezone: {
+            parent: 'settings',
+            type: "advanceSelect",
+            label: "Timezone",
+            name: "timezone",
+            required: true,
+            options: timezonesOptions(),
+            col: 4,
+        }
     }
 
     return (

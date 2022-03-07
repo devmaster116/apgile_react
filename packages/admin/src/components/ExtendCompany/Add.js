@@ -262,6 +262,41 @@ const Add = (props) => {
         //   col: 4,
         // },
 
+        "Limits": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+            condition: showAddFields
+        },
+
+        maxusers:{
+            type: "number",
+            label: "Max. Users",
+            name: "max_users",
+            required: true,
+            col: 2,
+            condition: showAddFields
+        },
+
+        watches:{
+            type: "number",
+            label: "Max. Watches",
+            name: "max_watches",
+            required: true,
+            col: 2,
+            condition: showAddFields
+        },
+
+        qrcodes:{
+            type: "number",
+            label: "Max. QR Codes",
+            name: "max_codes",
+            required: true,
+            col: 2,
+            condition: showAddFields
+        },
+
+
         "Style Details": {
             isDummyField: true,
             type: "h4",
