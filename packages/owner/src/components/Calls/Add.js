@@ -22,7 +22,7 @@ const Add = (props) => {
         user_id: {
             type: "advanceSelect",
             label: "Select Staff",
-            target: props?.userRole === "supervisor" ? `${props.branchId}/team-users/${id}` :`${props.branchId}/users`,
+            target: props?.userRole === "supervisor" ? `${props.branchId}/team-users` :`${props.branchId}/users`,
             optionLabel: 'first_name',
             optionId: 'id',
             required:true,

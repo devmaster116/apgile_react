@@ -20,11 +20,15 @@ const TheLayout = (props) => {
 
     return (
         <div className={classes}>
-            <TheSidebar/>
+            {
+                JSON.parse(localStorage.getItem('currentUser'))&& <TheSidebar/>
+            }
+           
             <TheAside/>
             <Provider store={store}>
                 <div className="c-wrapper">
-                    <TheHeader/>
+               { JSON.parse(localStorage.getItem('currentUser'))&& <TheHeader/>}
+                    
                     <ErrorBoundary>
                         <div className="c-body">
                             <TheContent/>
