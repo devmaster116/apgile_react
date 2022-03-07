@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader,Button } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
 import api from "@evenlogics/whf-api";
+import { toast } from 'react-toastify';
 
 const List = (props) => {
 
@@ -21,7 +22,7 @@ const List = (props) => {
 				console.log(data)
 				setQuery(!query)
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => toast.error(`${error.response.data.message}`));
 	}
 
 	const columns = [
@@ -103,7 +104,7 @@ const List = (props) => {
 							columns={columns}
 							hideDetail={true}
 							sort={defaultSorted}
-							addRoute="/watches/add"
+							// addRoute="/watches/add"
 							{...props.remoteTableFields}
 							Query={query}
 						/>

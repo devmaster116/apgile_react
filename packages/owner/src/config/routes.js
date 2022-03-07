@@ -126,7 +126,7 @@ const routes = [
 
 
 	{path : "/watches" ,exact : true ,component :WatchesList},
-	{path : "/watches/add" ,exact : true ,component :WatchesAdd},
+	// {path : "/watches/add" ,exact : true ,component :WatchesAdd},
 	{path : "/watches/:id/edit" ,exact : true ,component :WatchesAdd},
 
 
