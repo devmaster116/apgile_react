@@ -164,14 +164,16 @@ const cancel = () => {
                         color="secondary" onClick={() => openPage(row)}>
                             View Page
                         </Button>
-                        <Button
-                        size="sm"
-                        color="warning"
-                        className="text-white"
-
-                        onClick={() => downloadPdf(row)}>
-                            Download QR Code
-                        </Button>
+                     {
+                         props?.userRole !== "supervisor" && <Button
+                         size="sm"
+                         color="warning"
+                         className="text-white"
+ 
+                         onClick={() => downloadPdf(row)}>
+                             Download QR Code
+                         </Button>
+                     }  
                     </div>
                 );
             },

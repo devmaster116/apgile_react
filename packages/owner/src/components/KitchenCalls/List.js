@@ -1,8 +1,10 @@
 import React, { useEffect,useState } from 'react';
-import { Card, CardBody, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardHeader,Button } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
 import api from "@evenlogics/whf-api";
+import { toast } from 'react-toastify';
+
 
 const KithcenCallList  = (props) => {
 	const [query, setQuery] = useState(false);
@@ -10,7 +12,19 @@ const KithcenCallList  = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-
+	const deleteUser = (id) => {
+		console.log(id,"id")
+		api.request("delete", `/${props?.branchId}/kitchen-call/${id}`)
+		.then((data) => {
+		  console.log(data.message,"message")
+		  toast.success(data.message)
+		  setQuery(!query)
+		  },3000)
+		  .catch((error) =>{
+			 toast.error(`Error ! ${error.response.data.message}`)
+		  }
+			)
+		}
 
 		const columns = [
 			// {
@@ -37,10 +51,43 @@ const KithcenCallList  = (props) => {
 				align: 'center',
 				sort: true
 			},
+			
+			{
+				isDummyField: true,
+				align: "center",
+				text: "Action",
+				sort: true,
+				formatter: (cell, row) => {
+					console.log(row,"row")
+					return (
+						<div className="button-tables">
+						<Button
+							size="sm"
+								color="danger"
+						      	className="mx-auto"
+								onClick={() => {deleteUser(row?.id)}}
+							>
+								Delete
+							</Button>
+
+						{	
+						row?.call?.status_id !== 8 && <Button
+							size="sm"
+							className="mx-auto text-white"
+							color="warning" onClick={() => reverseCall(row.id)}>
+								Reverse Call
+							</Button>
+			         	}
+						</div>
+					);
+				},
+			},
 
 
 
 		];
+
+	
 
 		if (props.extendedFields) {
 			props.extendedFields.forEach(field => columns.push(field))
@@ -52,9 +99,9 @@ const KithcenCallList  = (props) => {
 				order: 'desc'
 			}
 		];
-		const reverseCall = (data) => {
-			console.log(data,"data")
-			api.request("patch",`/${props?.branchId}/kitchen-call/${data.id}`).then(() => { setQuery(!query)}).catch((error) => console.log(error));
+		const reverseCall = (id) => {
+			console.log(id,"data")
+			api.request("patch",`/${props?.branchId}/kitchen-call/${id}`).then(() => { setQuery(!query)}).catch((error) => console.log(error));
 		  }
 		return (
 			<div className="animated">
@@ -73,13 +120,14 @@ const KithcenCallList  = (props) => {
 							// addRoute="/kitchen-call/add"
 							{...props.remoteTableFields}
 							Query={query}
-							customButton={{
-								name: "Reverse Call",
-								color: "warning",
-								classes:"text-white",
-								callback: (data) => {reverseCall(data)}
+							hideActionCol={true}
+							// customButton={{
+							// 	name: "Reverse Call",
+							// 	color: "warning",
+							// 	classes:"text-white",
+							// 	callback: (data) => {reverseCall(data)}
 
-							  }}
+							//   }}
 							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>
