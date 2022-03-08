@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/style.css";
 import customNav from "./config/nav";
 global.customNavGlobal = customNav;
 global.customRoutes = require("./config/routes");
@@ -13,7 +12,7 @@ global.customNavElements = false;
 // global.customNavElements= isAdmin?.includes(true) && <Button color="danger" onClick={() => logoutAsAdmin()}>Switch To Admin</Button>
 require(`@evenlogics/whf-reactadmin`);
 
-
+require("./styles/style.css")
 // const logoutAsAdmin = () => {
 
 //       let oldUser = JSON.parse(localStorage?.getItem('previousUser'));
