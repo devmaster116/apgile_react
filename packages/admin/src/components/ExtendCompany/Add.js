@@ -69,7 +69,7 @@ const Add = (props) => {
         type: "masked",
         mask: maskedValue,
         label: "Company Phone",
-        required: true,
+        // required: true,
         name: "phone1",
         col: 4,
         formatChars: {
