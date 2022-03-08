@@ -53,6 +53,13 @@ import UserAdd from "./../components/ExtendedUser/Add";
 import UserList from "./../components/ExtendedUser/List";
 import UserDetail from "./../components/ExtendedUser/Detail";
 
+
+import SuperAdminAdd from "./../components/SuperAdmins/Add";
+import SuperAdminList from "./../components/SuperAdmins/List";
+import SuperAdminDetail from "./../components/SuperAdmins/Detail";
+
+import ChangePassowrd from "./../components/ChangePassword/Add";
+
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
@@ -143,8 +150,13 @@ const routes = [
 	{path : "/users/:id/details" ,exact : true ,  roles:['super-admin'],component : UserDetail},
 
 
-
-
+	{path : "/super-admins" ,exact : true ,  roles:['super-admin'],component : SuperAdminList},
+	{path : "/super-admins/add" ,exact : true ,  roles:['super-admin'],component : SuperAdminAdd},
+	{path : "/super-admins/:id/edit" ,exact : true ,  roles:['super-admin'],component : SuperAdminAdd},
+	{path : "/super-admins/:id/details" ,exact : true ,  roles:['super-admin'],component : SuperAdminDetail},
+	
+	{path : "/change-password" ,exact : true ,  roles:['super-admin'],component : ChangePassowrd},
+	
 
 
 	// { path: '/staff', exact : true,roles:['admin'],component: StaffList},

@@ -43,7 +43,7 @@ const LocationsAdd = (props) => {
         },
         customer_required: {
             type: "switch",
-            label: "Customer Name",
+            label: "Include Customer Name",
             // required: true,
             name: "customer_required",
             col: 2,
