@@ -231,7 +231,7 @@ const ExtendBranchAdd = (props) =>  {
                         // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="branches"
+                        name={id ? "editForm" : ""}
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         redirect="entity/branches"

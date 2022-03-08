@@ -181,7 +181,7 @@ const Add = (props) => {
                     // getValues={handleValue}
                     fields={fields}
                     targetId={id}
-                    name="users"
+                    name={id ? "editForm" : ""}
                     // repeater={true}
                     // initialValues={props.users.aboutProps}
 

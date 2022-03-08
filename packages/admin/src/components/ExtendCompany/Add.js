@@ -367,7 +367,7 @@ const Add = (props) => {
                         // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="company-branches"
+                        name={id ? "editForm" : ""}
                         extraVals={{role_id: 2, b_name: "Default Branch"}}
                         // repeater={true}
                         // initialValues={props.location.aboutProps}

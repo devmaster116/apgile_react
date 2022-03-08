@@ -25,4 +25,10 @@ background-repeat: no-repeat;
 background-size: cover;
 } */
 
+
+
+form[name="editForm"] button[type="reset"]{
+    display: none;
+    }
+
     
