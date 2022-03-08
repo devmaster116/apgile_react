@@ -11,7 +11,7 @@ const Add = (props) => {
 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
-    const [color, setColor] = useState('')
+    // const [color, setColor] = useState('')
 
 
     const {id} = props.match.params;
