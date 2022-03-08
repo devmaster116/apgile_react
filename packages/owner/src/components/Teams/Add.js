@@ -70,7 +70,7 @@ const TeamsAdd = (props) => {
                         // getValues={handleValue}
                         fields={fields}
                         targetId={id}
-                        name="teams"
+                        name={id ? "editForm" : ""}
                         // repeater={true}
                         extraVals={extraVals}
                         redirect="teams"

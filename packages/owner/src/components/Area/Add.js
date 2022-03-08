@@ -104,7 +104,7 @@ const Add = (props) => {
                         targetEntity={`${props.branchId}/areas`}
                         fields={fields}
                         targetId={id}
-                        name="areas"
+                        name={id ? "editForm" : ""}
                         repeater={true}
                         redirect="areas"
                         extraVals={{branch_id: props.branchId}}

@@ -9,6 +9,8 @@ const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
     const [optionsArr, setOptionsArr] = useState([])
+    const {id} = props.match.params;
+
     // const [phoneMask, setPhoneMask] = useState(props?.phoneMask)
     useEffect(() => {
         var rolesArray = [];
@@ -29,7 +31,6 @@ const ItemAdd = (props) => {
     }, [props.branchId]);
 
 
-    const {id} = props.match.params;
 
     const fields = {
         "Personal Details": {
@@ -77,7 +78,7 @@ const ItemAdd = (props) => {
         email: {
             type: "email",
             label: "Email",
-            required: true,
+            // required: true,
             name: "email",
             col: 2,
         },
@@ -87,7 +88,12 @@ const ItemAdd = (props) => {
             label: "Phone",
             required: true,
             col: 2,
-            className:"phoneMask"
+            className:"phoneMask",
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
 
 
@@ -147,7 +153,7 @@ const ItemAdd = (props) => {
                     // getValues={handleValue}
                     fields={fields}
                     targetId={id}
-                    name="items"
+                    name={id ? "editForm" : ""}
                     // repeater={true}
                     initialValues={props.location.aboutProps}
 

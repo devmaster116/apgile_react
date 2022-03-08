@@ -59,7 +59,7 @@ const Add = (props) => {
                         targetEntity={`${props.branchId}/categories`}
                         fields={fields}
                         targetId={id}
-                        name="categories"
+                        name={id ? "editForm" : ""}
                         // getInitialValues={this.getInitialValues}
                         // debug={true}
                         extraVals={extraVal}

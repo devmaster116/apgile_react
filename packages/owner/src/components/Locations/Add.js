@@ -36,7 +36,7 @@ const LocationsAdd = (props) => {
         },
         message_box: {
             type: "switch",
-            label: "Message",
+            label: "Include Message",
             name: "message_box",
             // required: true,
             col: 2,
@@ -113,7 +113,7 @@ const LocationsAdd = (props) => {
                     // getValues={handleValue}
                     fields={fields}
                     targetId={id}
-                    // name="locations"
+                    name={id ? "editForm" : ""}
                     // repeater={true}
                     // initialValues={props.location.aboutProps}
                     extraVals={{branch_id: props.branchId}}

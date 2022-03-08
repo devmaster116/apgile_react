@@ -143,7 +143,7 @@ const Add = (props) => {
                         // getValues={this.handleValue}
                         fields={fields}
                         targetId={id}
-                        name="setting"
+                        name={id ? "editForm" : ""}
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         extraVals={{branch_id: props.branchId}}

@@ -97,7 +97,7 @@ const ItemAdd = (props) => {
                     // getValues={handleValue}
                     fields={fields}
                     targetId={id}
-                    name="items"
+                    name={id ? "editForm" : ""}
                     repeater={true}
                     initialValues={props.location.aboutProps}
                     redirect="items"

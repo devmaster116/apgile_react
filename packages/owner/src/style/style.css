@@ -22,3 +22,7 @@ margin-top: 10px;
 .phoneMask{
     outline: 0 !important;
 }
+
+form[name="editForm"] button[type="reset"]{
+display: none;
+}

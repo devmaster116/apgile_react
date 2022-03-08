@@ -27,65 +27,85 @@ const KithcenCallList  = (props) => {
 		}
 
 		const columns = [
-			// {
-			// 	dataField: 'id',
-			// 	text: 'ID',
-			// 	align: 'center',
-			// 	sort: true
-			// },
-			{
-				dataField: 'location_name',
-				text: 'Location',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'action',
-				text: 'Status',
-				align: 'center',
-				sort: true
-			},
-			{
-				dataField: 'user.full_name',
-				text: 'Received By',
-				align: 'center',
-				sort: true
-			},
-			
-			{
-				isDummyField: true,
-				align: "center",
-				text: "Action",
-				sort: true,
-				formatter: (cell, row) => {
-					console.log(row,"row")
-					return (
-						<div className="button-tables">
-						<Button
-							size="sm"
-								color="danger"
-						      	className="mx-auto"
-								onClick={() => {deleteUser(row?.id)}}
-							>
-								Delete
-							</Button>
+      // {
+      // 	dataField: 'id',
+      // 	text: 'ID',
+      // 	align: 'center',
+      // 	sort: true
+      // },
 
-						{	
-						row?.call?.status_id !== 8 && <Button
-							size="sm"
-							className="mx-auto text-white"
-							color="warning" onClick={() => reverseCall(row.id)}>
-								Reverse Call
-							</Button>
-			         	}
-						</div>
-					);
-				},
-			},
+      {
+        isDummyField: true,
+        text: "Time Call Created",
+        align: "center",
+        sort: true,
+        formatter: (cell, row) => {
+          if (row?.created_at) {
+            return <span className="badge badge-dark">{row?.created_at}</span>;
+          }
+        },
+      },
+    
+      {
+        dataField: "call.staff_name",
+        text: "Staff Member",
+        align: "center",
+        sort: true,
+      },
+      {
+        dataField: "location_name",
+        text: "Location",
+        align: "center",
+        sort: true,
+      },
+      {
+        dataField: "action",
+        text: "Status",
+        align: "center",
+        sort: true,
+      },
+      {
+        dataField: "",
+        text: "Received At",
+        align: "center",
+        sort: true,
+      },
 
+      {
+        isDummyField: true,
+        align: "center",
+        text: "Action",
+        sort: true,
+        formatter: (cell, row) => {
+          console.log(row, "row");
+          return (
+            <div className="button-tables">
+              <Button
+                size="sm"
+                color="danger"
+                className="mx-auto"
+                onClick={() => {
+                  deleteUser(row?.id);
+                }}
+              >
+                Delete
+              </Button>
 
-
-		];
+              {row?.call?.status_id !== 8 && (
+                <Button
+                  size="sm"
+                  className="mx-auto text-white"
+                  color="warning"
+                  onClick={() => reverseCall(row.id)}
+                >
+                  Reverse Call
+                </Button>
+              )}
+            </div>
+          );
+        },
+      },
+    ];
 
 	
 
