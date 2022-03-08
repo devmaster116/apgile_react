@@ -33,7 +33,7 @@ const Add = (props) => {
             label: "Password",
             name: "password",
             required: !id,
-            col: 4,
+            col: 3,
           },
       }),
 
@@ -45,7 +45,7 @@ const Add = (props) => {
           required: !id,
           label: "Password Confirmation",
           name: "password_confirmation",
-          col: 4,
+          col: 3,
         },
       }),
     };
