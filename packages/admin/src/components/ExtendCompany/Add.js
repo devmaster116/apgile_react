@@ -69,7 +69,7 @@ const Add = (props) => {
         type: "masked",
         mask: maskedValue,
         label: "Company Phone",
-        // required: true,
+        required: true,
         name: "phone1",
         col: 4,
         formatChars: {
@@ -213,7 +213,7 @@ const Add = (props) => {
         type: "email",
         label: "Email",
         name: "email",
-        required: true,
+        // required: true,
         col: 2,
         condition: showAddFields,
       },
@@ -223,7 +223,7 @@ const Add = (props) => {
         mask: maskedValue,
         label: "Phone",
         name: "u_phone1",
-        required: true,
+        // required: true,
         col: 2,
         formatChars: {
           0: "[0-9]",

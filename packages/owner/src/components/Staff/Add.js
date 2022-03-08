@@ -86,7 +86,7 @@ const ItemAdd = (props) => {
             type: "masked",
             mask: props?.phoneMask,
             label: "Phone",
-            required: true,
+            // required: true,
             col: 2,
             className:"phoneMask",
             formatChars: {

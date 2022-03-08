@@ -80,7 +80,7 @@ const Add = (props) => {
             type: "email",
             label: "Email",
             name: "email",
-            required: true,
+            // required: true,
             col: 2,
         },
         phone1: {
@@ -89,7 +89,7 @@ const Add = (props) => {
             mask: "+1 (000) 000-0000",
             label: "Phone",
             // name: "u_phone1",
-            required: true,
+            // required: true,
             col: 2,
             formatChars: {
                 '0': '[0-9]',
