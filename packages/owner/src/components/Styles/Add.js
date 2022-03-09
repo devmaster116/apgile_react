@@ -59,7 +59,7 @@ const StyleAdd = (props) => {
         return (
             <Card className="animated fadeIn">
                 <CardHeader>
-                    {formPageTitle('Style', id)}
+                    Manage Style
                 </CardHeader>
                 <CardBody>
                     <FormGenerator
@@ -71,9 +71,6 @@ const StyleAdd = (props) => {
                         // repeater={true}
                         extraVals={extraVals}
                         redirect="style"
-                        debug={true}
-                        linearizeData={true}
-                        // handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>
