@@ -31,16 +31,16 @@ export default {
         icon: 'fas fa-users',
         to: '/owner/users'
     },
-    superAdmins: {
-        name: 'superAdmins',
-        phrase: 'Super Admins',
-        order: 41,
-        icon: 'fas fa-users',
-        to: '/super-admins'
-    },
+    // superAdmins: {
+    //     name: 'superAdmins',
+    //     phrase: 'Super Admins',
+    //     order: 41,
+    //     icon: 'fas fa-users',
+    //     to: '/super-admins'
+    // },
     changePassword: {
         name: 'changePassword',
-        phrase: 'Change Password',
+        phrase: 'Change Admin Password',
         order: 42,
         icon: 'fas fa-key',
         to: '/change-password'

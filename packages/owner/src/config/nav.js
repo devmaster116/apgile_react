@@ -119,7 +119,7 @@ export default {
     },
     setting: {
         phrase: "Settings",
-        to: "/setting/add",
+        to: "/settings",
         roles: ["admin"],
         order: 100,
         icon: "fas fa-cogs",
@@ -189,6 +189,13 @@ export default {
                 phrase: "Sections",
                 order: 1,
                 to: "/promotions",
+                roles: ["admin"],
+                icon: "fas fa-ad",
+            },
+            style: {
+                phrase: "Style",
+                order: 1,
+                to: "/style",
                 roles: ["admin"],
                 icon: "fas fa-ad",
             },

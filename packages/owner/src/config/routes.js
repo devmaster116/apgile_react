@@ -39,7 +39,6 @@ import StaffAdd from "./../components/Staff/Add";
 import ValidateAsOwner from "./../components/ValidateAsOwner";
 
 
-import SettingList from "./../components/Settings/List";
 import SettingAdd from "./../components/Settings/Add";
 
 import CallsList from "./../components/Calls/List";
@@ -52,6 +51,9 @@ import CategoriesAdd from "./../components/PromotionCategories/Add";
 
 import WatchesList from "./../components/Watches/List";
 import WatchesAdd from "./../components/Watches/Add";
+
+
+import StyleAdd from "./../components/Styles/Add";
 
 
 
@@ -111,13 +113,14 @@ const routes = [
 	{ path: '/staff/add', exact : true,component: StaffAdd,isPublic: false},
 	{ path: '/staff/:id/edit', exact : true,component: StaffAdd,isPublic: false},
 
-	{ path: '/setting', exact : true,component: SettingList,isPublic: false},
-	{ path: '/setting/add', exact : true,component: SettingAdd,isPublic: false},
-	{ path: '/branch-settings/:id/edit', exact : true,component: SettingAdd,isPublic: false},
+	{ path: '/settings', exact : true,component: SettingAdd,isPublic: false},
 
 	{path : "/promotions" ,exact : true ,component :PromotionsList},
 	{path : "/promotions/add" ,exact : true ,component : AddPromotions},
 	{path : "/promotions/:id/edit" ,exact : true ,component : AddPromotions},
+
+
+	{path : "/style" ,exact : true ,component : StyleAdd},
 
 
 	{path : "/categories" ,exact : true ,component :CategoriesList},

@@ -13,23 +13,23 @@ const List = (props) => {
       //   align: "center",
       //   sort: true,
       // },
-      {
-        isDummyField: true,
-        align: "center",
-        text: "Company Logo",
-        sort: true,
-        formatter: (cell, row) => {
-            console.log(row,"row")
-          return (
-            <img
-            width="40"
-            height="30"
-              src={row?.style?.logo?.url}
-              alt="logo"
-            />
-          );
-        },
-      },
+      // {
+      //   isDummyField: true,
+      //   align: "center",
+      //   text: "Company Logo",
+      //   sort: true,
+      //   formatter: (cell, row) => {
+      //       console.log(row,"row")
+      //     return (
+      //       <img
+      //       width="40"
+      //       height="30"
+      //         src={row?.style?.logo?.url}
+      //         alt="logo"
+      //       />
+      //     );
+      //   },
+      // },
       {
         dataField: "name",
         text: "Company Name",

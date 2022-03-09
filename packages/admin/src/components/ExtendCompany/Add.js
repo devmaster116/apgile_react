@@ -18,7 +18,6 @@ const Add = (props) => {
 
     const companyChangeHandler = (value) => {
         setTimeout(() => {
-            console.log(value,"value")
             let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);
             (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)
