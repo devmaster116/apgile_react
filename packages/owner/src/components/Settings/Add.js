@@ -23,24 +23,24 @@ const Add = (props) => {
             label: "Wait Time",
             required: true,
             name: "wait_time",
-            col: 3,
+            col: 2,
             min: 0
         },
-        escalation_hop: {
-            type: "number",
-            label: "Escalation Hop",
-            // required: true,
-            name: "escalation_hop",
-            col: 3,
-            min: 0
-
-        },
+        // escalation_hop: {
+        //     type: "number",
+        //     label: "Escalation Hop",
+        //     // required: true,
+        //     name: "escalation_hop",
+        //     col: 3,
+        //     min: 0
+        //
+        // },
         cycle: {
             type: "number",
             label: "Cycle",
             required: true,
             name: "cycle",
-            col: 3,
+            col: 2,
             min: 0
 
         },
@@ -49,9 +49,16 @@ const Add = (props) => {
             label: "Throttle Wait",
             required: true,
             name: "throttle_wait",
-            col: 3,
+            col: 2,
             min: 0
 
+        },
+
+        qrcode_details: {
+            type: "switch",
+            label: "Show location on QR Codes",
+            // required: true,
+            col: 3,
         },
 
         "Site Content": {
@@ -64,14 +71,21 @@ const Add = (props) => {
             type: "text",
             label: "Sub Title",
             // required: true,
-            col: 4,
+            col: 3,
         },
 
         page_title: {
             type: "text",
             label: "Title",
             // required: true,
-            col: 4,
+            col: 3,
+        },
+
+        page_footer: {
+            type: "text",
+            label: "Footer Text",
+            // required: true,
+            col: 3,
         },
 
         timezone: {
@@ -80,7 +94,7 @@ const Add = (props) => {
             name: "timezone",
             required: true,
             options: timezonesOptions(),
-            col: 4,
+            col: 3,
         },
 
         "Social Media Links": {
