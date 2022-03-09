@@ -14,5 +14,11 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@coreui/react": "^4.1.2",
+    "@coreui/react-pro": "^4.1.4",
+    "chart.js": "^3.7.1",
+    "react-chartjs-2": "^4.0.1"
   }
 }
