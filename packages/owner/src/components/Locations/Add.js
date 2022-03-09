@@ -27,12 +27,23 @@ const LocationsAdd = (props) => {
             name: "name",
             col: 3,
         },
-        description: {
-            type: "text",
-            label: "Description",
-            name: "description",
+        supervisor_id: {
+            type: 'advanceSelect',
+            label: "Select Supervisor",
+            target: `${props.branchId}/role-users/supervisor`,
+            optionLabel: 'full_name',
+            required: true,
+            // async: true,
+            name: 'supervisor_id',
             col: 3,
+            condition: !showTeam
         },
+        // description: {
+        //     type: "text",
+        //     label: "Description",
+        //     name: "description",
+        //     col: 3,
+        // },
         message_box: {
             type: "switch",
             label: "Include Message",
@@ -66,17 +77,6 @@ const LocationsAdd = (props) => {
             name: "team",
             col: 3,
             condition: showTeam
-        },
-        supervisor_id: {
-            type: 'advanceSelect',
-            label: "Select Supervisor",
-            target: `${props.branchId}/role-users/supervisor`,
-            optionLabel: 'full_name',
-            required: true,
-            // async: true,
-            name: 'supervisor_id',
-            col: 3,
-            condition: !showTeam
         },
         // shifts: {
         //     type: "advanceSelect",

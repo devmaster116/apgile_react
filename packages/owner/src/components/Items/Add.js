@@ -23,13 +23,13 @@ const ItemAdd = (props) => {
             name: "name",
             col: 2,
         },
-        description: {
-            type: "text",
-            label: "Description",
-            // required: true,
-            name: "description",
-            col: 2,
-        },
+        // description: {
+        //     type: "text",
+        //     label: "Description",
+        //     // required: true,
+        //     name: "description",
+        //     col: 2,
+        // },
         location_id: {
             type: "advanceSelect",
             label: "Location",
@@ -70,7 +70,7 @@ const ItemAdd = (props) => {
             value: 1,
             name: "starting_number",
             min:0,
-            col: 2,
+            col: 1,
         },
         increments : {
             type: "number",
@@ -79,7 +79,7 @@ const ItemAdd = (props) => {
             value: 1,
             name: "increments",
             min:1,
-            col: 2,
+            col: 1,
         },
 
 

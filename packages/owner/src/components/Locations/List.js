@@ -9,7 +9,7 @@ const KithcenCallList  = (props) => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-	
+
 
 		const columns = [
 			// {
@@ -24,13 +24,13 @@ const KithcenCallList  = (props) => {
 				align: 'center',
 				sort: true
 			},
-			{
-				dataField: 'description',
-				text: 'Description',
-				align: 'center',
-				sort: true
-			},
-		
+			// {
+			// 	dataField: 'description',
+			// 	text: 'Description',
+			// 	align: 'center',
+			// 	sort: true
+			// },
+
 
 		];
 
@@ -61,7 +61,7 @@ const KithcenCallList  = (props) => {
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}
-							
+
 							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>

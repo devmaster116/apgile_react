@@ -24,12 +24,12 @@ const ItemsList = (props) => {
 				align: 'center',
 				sort: true
 			},
-			{
-				dataField: 'description',
-				text: 'Description',
-				align: 'center',
-				sort: true
-			},
+			// {
+			// 	dataField: 'description',
+			// 	text: 'Description',
+			// 	align: 'center',
+			// 	sort: true
+			// },
 			{
 				dataField: 'prefix',
 				text: 'Prefix',
