@@ -28,13 +28,13 @@ const Add = (props) => {
             type: "text",
             label: "Sub Title",
             // required: true,
-            col: 3,
+            col: 2,
         },
         sort_order: {
             type: "number",
             label: "Sort Order",
             defaultValue: 10,
-            col: 3,
+            col: 2,
         },
         status: {
             type: "switch",
