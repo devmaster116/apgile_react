@@ -33,12 +33,6 @@ const List = (props) => {
 
     const columns = [
         {dataField: "id", text: "ID", align: "center", hidden: true},
-        // {
-        //     dataField: "cus_name",
-        //     text: "Customer Name",
-        //     align: "center",
-        //     sort: true,
-        // },
         {
             dataField: "staff_name",
             text: "Assigned To",
@@ -62,7 +56,37 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
+        {
+            dataField: "cus_name",
+            text: "Customer",
+            align: "center",
+            sort: true,
+        },
 
+        {
+            isDummyField: true,
+            text: "Created At",
+            align: "center",
+            sort: true,
+            formatter: (cell, row) => {
+                if(row?.created_at){
+                    var now = new Date(row?.created_at);
+                    now.setSeconds(0, 0);
+                    var stamp = now
+                        .toISOString()
+                        .replace(/T/, " ")
+                        .replace(/:00.000Z/, "");
+                    console.log(stamp)
+                    return (
+                        <span className="badge badge-dark">
+                                 {stamp}
+                            </span>
+
+                    )
+                }
+
+            },
+        },
 
         {
             isDummyField: true,
