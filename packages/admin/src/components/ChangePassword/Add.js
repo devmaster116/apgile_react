@@ -21,7 +21,7 @@ const Add = (props) => {
         type: "password",
         label: "Current Password",
         name: "current_password",
-        // required: !id,
+        required: true,
         col: 4,
       },
         password: {
@@ -29,7 +29,7 @@ const Add = (props) => {
             type: "password",
             label: "New Password",
             name: "password",
-            // required: !id,
+            required: true,
             col: 4,
           },
       

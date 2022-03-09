@@ -20,8 +20,9 @@ const ExtendBranchAdd = (props) =>  {
             console.log(value,"value")
             let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);
-            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)
-        }, 1);
+            console.log("working");
+            (id ? value : value?.value) === "US" ? setShowStates(true) : setShowStates(false)
+        }, 0);
 
     }
 
@@ -99,6 +100,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "text",
             label: "State",
             name: "state",
+            defaultValue:" ",
             col: 3,
             condition: !showStates
         },

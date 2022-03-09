@@ -17,6 +17,8 @@ const Add = (props) => {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
+      console.log(value.options,"value")
+      //  return value.options?.map((data) => { data.value === "US" && console.log(data,"conditon match")})
         setTimeout(() => {
             let returnMask = getMaskHelper( id ? value : value?.value)
             setMaskedValue(returnMask);

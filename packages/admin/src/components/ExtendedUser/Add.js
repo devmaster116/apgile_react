@@ -15,11 +15,19 @@ const Add = (props) => {
 
 
     const companiesChangeHandler = (data) => {
+
+        console.log(data,"data")
         setTimeout(() => {
             // let returnMask = getMaskHelper(data?.value)
             // setMaskedValue(returnMask);
             setTarget(`branches/${data.value}/all`)
         }, 1);
+    }
+
+    const branchesChangeHandler = (data) => {
+
+        console.log(data,"data")
+      
     }
 
 
@@ -165,7 +173,9 @@ const Add = (props) => {
             required: true,
             condition: !id,
             async: true,
-            name: "branch_id"
+            name: "branch_id",
+            callback: (data) => branchesChangeHandler(data)
+
         },
     }
 

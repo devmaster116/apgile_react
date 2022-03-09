@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
-import {formPageTitle} from "@facepays/common";
+// import {formPageTitle} from "@facepays/common";
 
 const StyleAdd = (props) => {
 

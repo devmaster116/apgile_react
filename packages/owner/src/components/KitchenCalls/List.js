@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 
 const KithcenCallList  = (props) => {
 	const [query, setQuery] = useState(false);
+  const [minDate, setMinDate] = useState('');
+
 	useEffect(() => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
@@ -26,14 +28,54 @@ const KithcenCallList  = (props) => {
 			)
 		}
 
-		const columns = [
-      // {
-      // 	dataField: 'id',
-      // 	text: 'ID',
-      // 	align: 'center',
-      // 	sort: true
-      // },
+    const filters = {
+ 
+     location_id: {
+         type: "advanceSelect",
+         label: "Select Location",
+         target: `${props?.branchId}/locations`,
+         async: true,
+         col: 12 + ' col-sm-3  ',
+     },
+    
+     call_status:{
+         type: "advanceSelect",
+         label: "Select Status",
+         target: `${props.branchId}/call/status-list`,
+         optionLabel: 'name',
+         optionId: 'id',
+         async: true,
+         col: 12 + ' col-sm-3  ',
+     },
+     user_id:{
+         type: "advanceSelect",
+         label: "Select Staff Member",
+         target: `${props?.branchId}/role-users/staff`,
+         optionLabel:"username",
+         async: true,
+         col: 12 + ' col-sm-3  ',
+     },
+     start_date:{
+         type:"date",
+         label:"Select Start Date",
+         col: 12 + ' col-sm-3  ',
+         getValue:(data) => {
+             setTimeout(() => {
+             setMinDate(data?.value)
+         }, 0)
+     }
+     },
+     end_date:{
+         type:"date",
+         label:"Select End Date",
+         col: 12 + ' col-sm-3  ',
+         placeholderText: minDate ? "" : "Please select the start date",
+         disabled:minDate ? false : true,
+         minDate:minDate,
+     }
+ }
 
+		const columns = [
       {
         isDummyField: true,
         text: "Time Call Created",
@@ -131,24 +173,17 @@ const KithcenCallList  = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={props.userRole === "supervisor" ? `${props?.branchId}/supervisor-kitchen-calls` : `${props?.branchId}/kitchen-call`}
+							entity={props.userRole === "supervisor" ? `${props?.branchId}/supervisor-kitchen-calls` : `${props?.branchId}/internal-call`}
 							customEntity={`kitchen-call`}
 							columns={columns}
 							sort={defaultSorted}
 							hideDetail={true}
 							hideEdit={true}
-							// addRoute="/kitchen-call/add"
+              filters={filters}
+              showAdvancedFilter={true}
 							{...props.remoteTableFields}
 							Query={query}
 							hideActionCol={true}
-							// customButton={{
-							// 	name: "Reverse Call",
-							// 	color: "warning",
-							// 	classes:"text-white",
-							// 	callback: (data) => {reverseCall(data)}
-
-							//   }}
-							// customEditLink = {`locations/:id/edit`}
 						/>
 					</CardBody>
 				</Card>
