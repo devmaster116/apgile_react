@@ -3,19 +3,14 @@ import {connect} from "react-redux";
 import {
     CCard,
     CCardBody,
-    CCardGroup,
-    CCardHeader, CCardLink, CCardSubtitle, CCardText, CCardTitle,
+    CCardTitle,
     CCol,
-    CLink,
-    CRow, CWidgetStatsA,
+    CRow,
     CWidgetStatsB,
-    CWidgetStatsC,
-    CWidgetStatsE,
-    CWidgetStatsF,
 } from '@coreui/react-pro';
 
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Pie, Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 // import Profile from "./Profile/Detail";
@@ -151,7 +146,7 @@ const Dashboard = (props) => {
                                 textColor="white"
                                 inverse
                                 value="4"
-                                title="Cancelled"
+                                title="Expiring"
                             />
                         </CCol>
                         <CCol xs={12} sm={4} lg={6}>
