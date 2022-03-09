@@ -160,12 +160,12 @@ const Add = (props) => {
             label: "Internal Places",
             name: "internal_places",
             // required: true,
-            col: 12,
+            col: 4,
             condition: true,
             schema: {
                 name: {
                     type: "text",
-                    label: "Name",
+                    label: "",
                     // required: true,
                     col: 12,
                 }
@@ -189,7 +189,7 @@ const Add = (props) => {
                     // initialValues={props.location.aboutProps}
                     extraVals={{branch_id: props.branchId}}
                     redirect="settings"
-                    debug={true}
+                    // debug={true}
                     // handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>

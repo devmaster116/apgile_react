@@ -13,7 +13,6 @@ const LocationsAdd = (props) => {
     const {id} = props.match.params;
 
     const manageTeamField = data => {
-        console.log('value set', data);
         if(typeof data.value !== 'undefined' && data.value)
             setShowTeam(false);
         else

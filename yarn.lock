@@ -1395,10 +1395,10 @@
   resolved "https://registry.yarnpkg.com/@evenlogics/whf-config/-/whf-config-1.2.3.tgz#e4e26e8e634b2c4846da464339d28b0bab918a6c"
   integrity sha512-HaTtMdbR2L+1m08w6RkyjZv8CH3jLf3h3GdRJd7sdDPRK1zBesn3tM8DUS1uwXRzH4Jq3S1TqkS1+iWfdr/Lqw==
 
-"@evenlogics/whf-form-generator@^1.4.18":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-form-generator/-/whf-form-generator-1.4.18.tgz#c3ba468f08798f3b069afe8ba10963f83f23ba3e"
-  integrity sha512-TMLHnf+VXwB1vCHjH40LuSjUGSIAj+DC4RHFSkHaaykK9hH28vBDnbvv8f0rB3lh/UXNA/s5ZUH8SUAHoLAHyA==
+"@evenlogics/whf-form-generator@^1.4.19":
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-form-generator/-/whf-form-generator-1.4.19.tgz#8d2052601b5daa0b3e11ab573cba5ee8773c0921"
+  integrity sha512-sF3FlCnm9PUNI+/80KDV+uvB1yNY0Npz3RQ1bgOjdX1cSfnIEvYgmMGqgxJUoj+ydd0695MdENywhdITk1/lqg==
   dependencies:
     "@evenlogics/whf-api" "^1.3.3"
     "@wojtekmaj/react-timerange-picker" "^3.0.0"
@@ -1430,46 +1430,46 @@
     dompurify "^2.1.1"
 
 "@evenlogics/whf-ra-customer@^1.3.5":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.4.18.tgz#d09ac496d140dd979fbfb4e9d571927b5062c0e1"
-  integrity sha512-hqIP8ID6zRt1cc8jSo5vA87zn3aC806cyo+dUms4fD8SuM8z3l5HZJ+GQTo2tLAo7tWSa+8lZckGruAlvipuMA==
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.4.19.tgz#d1ca9719edc3424dec3ef70dd7f266e55f697a99"
+  integrity sha512-mKPkFL/ajlR6UdCpTg+5BnepHsrokW1pudZtxa7E045oNtJUxbLtwdbGobX9AzwyukPZ8U3TZ8mgtDfvMZwbVw==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.18"
+    "@evenlogics/whf-reactadmin" "^1.4.19"
 
 "@evenlogics/whf-ra-entity@^1.3.5", "@evenlogics/whf-ra-entity@^1.4.3":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.18.tgz#ebda40d47f718a36ed522b429888ca5f079aa1e4"
-  integrity sha512-PXOwKqxbCAfwRKmrggjtGZxsLa33Ve0Qq9GAiboP9vgzYX6clz/xwwbj7YLGXZT5W+uzCaY285kO6w+f+wtBTA==
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.19.tgz#c473ce3f5d7511f73ff499bb4edc203892d3fb17"
+  integrity sha512-RdfQXZAiM5GfbU0iYprLs2D9rNFFILE+oCwX951AzsFiHq7nrOKzICMyDR4y/HiC5+IauhkgRuUnygBPt2h7vw==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.18"
+    "@evenlogics/whf-reactadmin" "^1.4.19"
 
 "@evenlogics/whf-ra-notifier@^1.3.5":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.18.tgz#3367588636151ab66cfeb9bb4722894222487be8"
-  integrity sha512-Bdk1wW2RSPVpnmMIo2ZxomsP/sT683ysVTEqhtBTj1r7IawfQSnX00+CRFcCQdCJptVXp+qyVNzpiCIxpfiqeQ==
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.19.tgz#4429ca7da4343427f7be6dbc9aef16f364f5c5da"
+  integrity sha512-0YSIm6sis+uwzYXvuD8OiskOdLNPvjqFkON6fuEQ2cBLxRavFFE+tGmsC4lElFTnFuMiRMJxpppybEXSdVQ40A==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.18"
+    "@evenlogics/whf-reactadmin" "^1.4.19"
 
 "@evenlogics/whf-ra-user@^1.3.5", "@evenlogics/whf-ra-user@^1.4.3":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.4.18.tgz#ffdd649f5beffbc2bc19edff6f16f3968a6fb420"
-  integrity sha512-ph8/epiJEku/HbCdMGboUxNOsFgrJxY31CdXUt8m8s4eriPxGF0h7Y0HF1uZqkYvp26XizCHlJF6uapTI31bnA==
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.4.19.tgz#53eb8eaea715b780d3088f3d1f16daf59d27e523"
+  integrity sha512-TffycmmLg+5qGjuplk3k8w0qlkAXLu4PTU+jHmdxn9g300WA6ET7RjxIq6u53vR+7HqaKEZ7TAT0OfLHDtcuLg==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.18"
+    "@evenlogics/whf-reactadmin" "^1.4.19"
 
-"@evenlogics/whf-reactadmin@^1.3.5", "@evenlogics/whf-reactadmin@^1.4.18":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.4.18.tgz#e082f18965f82665b565d1dc3bf293bcc330516c"
-  integrity sha512-HIsmaU58S8ZRhLcB+I86OgNIph9fDGFliXbCtqWvikfpHYzyO+pZF6+8uNoKQvWKrK0OEPt6B2pynMV9j1rE2A==
+"@evenlogics/whf-reactadmin@^1.3.5", "@evenlogics/whf-reactadmin@^1.4.19":
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.4.19.tgz#7e4a032160e5825645f183b9d78ea6497a335b9a"
+  integrity sha512-S9WGYM1tA8BDEX/8XAZIIcJcvS/Nsuql8Pau9OT4KtZGF9ojnck20Yq6pe0iMopiaSHyL98mSHQUUfGYCdWnFA==
   dependencies:
     "@evenlogics/coreui-pro" "^3.4.2"
     "@evenlogics/react" "^3.0.1"
     "@evenlogics/whf-api" "^1.3.3"
     "@evenlogics/whf-config" "^1.2.3"
-    "@evenlogics/whf-form-generator" "^1.4.18"
+    "@evenlogics/whf-form-generator" "^1.4.19"
     "@evenlogics/whf-ra-auth" "^1.4.14"
     "@evenlogics/whf-ra-components" "^1.4.6"
-    "@evenlogics/whf-remote-table" "^1.4.18"
+    "@evenlogics/whf-remote-table" "^1.4.19"
     "@fortawesome/fontawesome-free" "^5.15.3"
     axios "^0.19.2"
     axios-retry "^3.1.8"
@@ -1498,13 +1498,13 @@
     slugify "^1.4.5"
     uuid "^8.3.0"
 
-"@evenlogics/whf-remote-table@^1.4.18":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-remote-table/-/whf-remote-table-1.4.18.tgz#9a5244123f7a686a1806f36fd04941d968eb841a"
-  integrity sha512-ULmkoZyGkLTE+ucPmcs6vda6Tz+Gb9YlfzGKzVamJqu6U0BPntcXDzP+w/HEF5OK+DR97oXxoMAYCogsQ4zVIA==
+"@evenlogics/whf-remote-table@^1.4.19":
+  version "1.4.19"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-remote-table/-/whf-remote-table-1.4.19.tgz#39b0a20b796844aaa92bc3c7d7c7193c535595a0"
+  integrity sha512-ZjLz0XDA0rsQxP/lDEbVE5oKrwCTcmV31Yco0xcGcR4sNadA88IVjQuuazCK1u9MPqRVB+sTqCYWeX5QtCxj9Q==
   dependencies:
     "@evenlogics/whf-api" "^1.3.3"
-    "@evenlogics/whf-form-generator" "^1.4.18"
+    "@evenlogics/whf-form-generator" "^1.4.19"
     react-bootstrap-table-next "^4.0.3"
     react-bootstrap-table2-paginator "^2.1.2"
     react-csv "^2.0.3"
@@ -5698,9 +5698,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.4.76:
-  version "1.4.77"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.77.tgz#c26e454cb8721d4ebdae3e276c57cd32e51c32ed"
-  integrity sha512-fiDxw8mO9Ph1Z0bjX2sFTPpi0J0QkOiwOJF+5Q0J0baNc/F9lLePAvDPlnoxvbUYYMizqrKPeotRRkJ9LtxAew==
+  version "1.4.78"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.78.tgz#7a1cf853efafde2c4cf6e86facf3e5792d3541a5"
+  integrity sha512-o61+D/Lx7j/E0LIin/efOqeHpXhwi1TaQco9vUcRmr91m25SfZY6L5hWJDv/r+6kNjboFKgBw1LbfM0lbhuK6Q==
 
 elliptic@^6.5.3:
   version "6.5.4"
