@@ -1,6 +1,7 @@
 import phoneArray from './phone-masks.json';
 import usStates from './us-states.json';
 import timezones from './timezones.json';
+import colorArray from "./widgets-color.json";
 
 import {jsonToOptionList} from "./helpers";
 
@@ -12,6 +13,17 @@ export const getMaskHelper = (countryCode) => {
 
     return null;
 }
+
+
+export const getColor = (colorCode) => {
+    if(typeof colorArray[colorCode] != 'undefined' && colorArray[colorCode]) {
+        return colorArray[colorCode];
+    }
+    return null;
+}
+
+
+
 
 export const statesOptionList = () => {
     return jsonToOptionList(usStates);

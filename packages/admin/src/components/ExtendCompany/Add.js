@@ -323,7 +323,7 @@ const Add = (props) => {
       },
       bg_color: {
         type: "color",
-        defaultValue: "#000000",
+        defaultValue: "#ffffff",
         // parent:"style",
         label: "Background Color",
         // required: true,
