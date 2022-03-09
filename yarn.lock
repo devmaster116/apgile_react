@@ -1519,6 +1519,11 @@
     react-bootstrap-table2-paginator "^2.1.2"
     react-csv "^2.0.3"
 
+"@faker-js/faker@^6.0.0-beta.0":
+  version "6.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-6.0.0-beta.0.tgz#8d772b0c37ebc450e3a95114be549e8fd245f16f"
+  integrity sha512-7QdsX5ZqUEz87twuoKEJe7NHn6OHQsVYQpJcK0disnR0XuVb9FEgQUcsViard9OTNN/fG/nZT63V35vieOwZ4Q==
+
 "@fortawesome/fontawesome-free@^5.15.3":
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
@@ -6316,6 +6321,11 @@ extsprintf@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.1.tgz#8d172c064867f235c0c84a596806d279bf4bcc07"
   integrity sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==
+
+faker@^6.6.6:
+  version "6.6.6"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-6.6.6.tgz#e9529da0109dca4c7c5dbfeaadbd9234af943033"
+  integrity sha512-9tCqYEDHI5RYFQigXFwF1hnCwcWCOJl/hmll0lr5D2Ljjb0o4wphb69wikeJDz5qCEzXCoPvG6ss5SDP6IfOdg==
 
 fast-deep-equal@^3.1.1:
   version "3.1.3"

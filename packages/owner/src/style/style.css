@@ -26,3 +26,23 @@ margin-top: 10px;
 form[name="editForm"] button[type="reset"]{
 display: none;
 }
+
+.custom-button{
+    /* margin-top: 15% !important; */
+    height: 55% !important;
+    width: 55%;
+    font-size: medium !important;
+    font-style: bolder !important;
+    letter-spacing: 2px !important;
+}
+
+.timeline-buttons{
+    height: 55% !important;
+    width: max-content;
+    border-radius: 4px !important;
+    
+}
+
+/* label.active{
+    background-color: blueviolet;
+} */
