@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {
     CCard,
-    CCardBody,
+    CCardBody, CCardSubtitle,
     CCardTitle,
     CCol,
     CRow,
