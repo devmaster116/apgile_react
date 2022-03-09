@@ -26,12 +26,13 @@ const Dashboard = (props) => {
         window.location.reload();
     }
 
+    if(props?.userRole === "staff") {
+        props.history.push('/profile')
+    }
+
     return (
         <div>
-            {
-                props?.userRole === "staff" ? props.history.push('/profile') : <h3>Adroit Dashboards</h3>
-            }
-           
+            <h3>Adroit Dashboards</h3>
         </div>
     );
 };
