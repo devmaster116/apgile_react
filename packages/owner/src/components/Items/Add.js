@@ -21,7 +21,7 @@ const ItemAdd = (props) => {
             label: "Name",
             required: true,
             name: "name",
-            col: 2,
+            col: 3,
         },
         // description: {
         //     type: "text",
@@ -30,6 +30,20 @@ const ItemAdd = (props) => {
         //     name: "description",
         //     col: 2,
         // },
+        prefix: {
+            type: "text",
+            label: "Prefix",
+            // required: true,
+            name: "prefix",
+            col: 3,
+        },
+        postfix: {
+            type: "text",
+            label: "Postfix",
+            // required: true,
+            name: "postfix",
+            col: 3,
+        },
         location_id: {
             type: "advanceSelect",
             label: "Location",
@@ -38,22 +52,9 @@ const ItemAdd = (props) => {
             async: true,
             required: true,
             name: "location_id",
-            col: 2,
+            col: 3,
         },
-        prefix: {
-            type: "text",
-            label: "Prefix",
-            // required: true,
-            name: "prefix",
-            col: 2,
-        },
-        postfix: {
-            type: "text",
-            label: "Postfix",
-            // required: true,
-            name: "postfix",
-            col: 2,
-        },
+
         qty: {
             type: "number",
             label: "Quantity",
@@ -61,7 +62,7 @@ const ItemAdd = (props) => {
             name: "qty",
             value: 1,
             min:1,
-            col: 2,
+            col: 3,
         },
         starting_number : {
             type: "number",
@@ -70,7 +71,7 @@ const ItemAdd = (props) => {
             value: 1,
             name: "starting_number",
             min:0,
-            col: 1,
+            col: 3,
         },
         increments : {
             type: "number",
@@ -79,7 +80,7 @@ const ItemAdd = (props) => {
             value: 1,
             name: "increments",
             min:1,
-            col: 1,
+            col: 3,
         },
 
 

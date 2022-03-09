@@ -73,17 +73,17 @@ const cancel = () => {
         //     sort: true,
         // },
 
-        {
-            dataField: "item.name",
-            text: "Item",
-            align: "center",
-            sort: true,
-        },
+        // {
+        //     dataField: "item.name",
+        //     text: "Item",
+        //     align: "center",
+        //     sort: true,
+        // },
 
         {
             isDummyField: true,
             align: "center",
-            text: "Unique Code",
+            text: "Item",
             sort: true,
             formatter: (cell, row) => (
                 // <div className="bg-info">
@@ -162,11 +162,11 @@ const cancel = () => {
                          size="sm"
                          color="warning"
                          className="text-white"
- 
+
                          onClick={() => downloadPdf(row)}>
                              Download QR Code
                          </Button>
-                     }  
+                     }
                     </div>
                 );
             },
