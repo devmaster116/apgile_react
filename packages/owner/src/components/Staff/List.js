@@ -50,7 +50,7 @@ const ItemsList = (props) => {
     //       name: "role_id",
     //       required: true,
     //       col:4
-        
+
     //   }
     }
 
@@ -106,7 +106,7 @@ const ItemsList = (props) => {
                         customEntity="staff"
                         columns={columns}
                         sort={defaultSorted}
-                        hideDetail={true}
+                        // hideDetail={true}
                         filters={filters}
                         showAdvanceFilters = {true}
                         addRoute="/staff/add"

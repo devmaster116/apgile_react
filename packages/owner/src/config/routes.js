@@ -35,6 +35,7 @@ import PageAdd from "./../components/Pages/Add";
 
 import StaffList from "./../components/Staff/List";
 import StaffAdd from "./../components/Staff/Add";
+import StaffDetail from "./../components/Staff/Detail";
 
 import ValidateAsOwner from "./../components/ValidateAsOwner";
 
@@ -112,6 +113,7 @@ const routes = [
 	{ path: '/staff', exact : true,component: StaffList,isPublic: false},
 	{ path: '/staff/add', exact : true,component: StaffAdd,isPublic: false},
 	{ path: '/staff/:id/edit', exact : true,component: StaffAdd,isPublic: false},
+	{ path: '/staff/:id/details', exact : true,component: StaffDetail,isPublic: false},
 
 	{ path: '/settings', exact : true,component: SettingAdd,isPublic: false},
 
