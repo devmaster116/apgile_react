@@ -173,7 +173,7 @@ const KithcenCallList  = (props) => {
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={props.userRole === "supervisor" ? `${props?.branchId}/supervisor-kitchen-calls` : `${props?.branchId}/internal-call`}
+							entity={props.userRole === "supervisor" ? `${props?.branchId}/supervisor-kitchen-calls` : `${props?.branchId}/kitchen-call`}
 							customEntity={`kitchen-call`}
 							columns={columns}
 							sort={defaultSorted}

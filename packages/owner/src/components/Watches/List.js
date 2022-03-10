@@ -24,7 +24,17 @@ const List = (props) => {
 			})
 			.catch((error) => toast.error(`${error.response.data.message}`));
 	}
-
+	const filters = {
+		call_status: {
+		  type: "advanceSelect",
+		  label: "Select Call Status",
+		  target: `${props.branchId}/call/status-list`,
+		  optionLabel: "name",
+		  optionId: "id",
+		  async: true,
+		  col: 12 + " col-sm-3 Z-Index ",
+		},
+	  };
 	const columns = [
 
 		// {
@@ -39,12 +49,12 @@ const List = (props) => {
 			align: 'center',
 			sort: true
 		},
-		{
-			dataField: 'branch.name',
-			text: 'Branch',
-			align: 'center',
-			sort: true
-		},
+		// {
+		// 	dataField: 'branch.name',
+		// 	text: 'Branch',
+		// 	align: 'center',
+		// 	sort: true
+		// },
 		{
 			dataField: 'os',
 			text: 'Operating System',
@@ -107,6 +117,8 @@ const List = (props) => {
 							// addRoute="/watches/add"
 							{...props.remoteTableFields}
 							Query={query}
+							filters={filters}
+							showAdvancedFilters={true}
 						/>
 					</CardBody>
 				</Card>
