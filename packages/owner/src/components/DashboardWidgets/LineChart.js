@@ -40,14 +40,32 @@ export const  LineChart = (props) => {
     }, [props.data])
 
     // console.log(props?.data,"data")
-   
-   
+   const getTitle = (timeline) => {
+     switch (timeline) {
+       case "today":
+         return "Hours";
+       case "yesterday":
+         return "Hours";
+       case "week":
+         return "Days";
+       case "month":
+         return "Weeks";
+       case "last-month":
+         return "Weeks";
+       case "year":
+         return "Months";
+       default:
+         break;
+     }
+   };
+    const labels = [...Linelabels];
     const data =  {
+      labels,
         datasets: [
           {
-            label: 'Dataset 1',
-            data: Linedata,
-            labels: Linelabels,
+            label: props?.timeline.toUpperCase(),
+            data: [...Linedata],
+            // labels: ["today","yesterday"],
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
@@ -55,15 +73,7 @@ export const  LineChart = (props) => {
       };
       const options = {
         responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart',
-          },
-        },
+        scales: {x: { title: { display: true, text: getTitle(props.timeline) }},y: { title: { display: true, text: 'Calls' }}}  
       };  
- return  (Linelabels && Linedata) && <Line options={options} data={data} />;
+ return  (Linelabels && Linedata) && <Line  data={data} options={options} />;
 }

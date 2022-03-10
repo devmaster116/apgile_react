@@ -9,6 +9,36 @@ const TeamsList = (props) => {
       setQuery((prev) => !prev);
     }, [props.branchId]);
 
+	const filters = {
+	   location_id: {
+		   type: "advanceSelect",
+		   label: "Select Location",
+		   target: `${props?.branchId}/locations`,
+		   async: true,
+		   col: 12 + ' col-sm-3 Z-Index ',
+	   },
+	   
+	   supervisor_id: {
+		type: 'advanceSelect',
+		label: "Select Supervisor",
+		target: `${props.branchId}/role-users/supervisor`,
+		optionLabel: 'full_name',
+		// required: true,
+		// async: true,
+		col: 12 + ' col-sm-3 Z-Index ',
+   	},
+	  
+	   call_status:{
+		   type: "advanceSelect",
+		   label: "Select Call Status",
+		   target: `${props.branchId}/call/status-list`,
+		   optionLabel: 'name',
+		   optionId: 'id',
+		   async: true,
+		   col: 12 + ' col-sm-3 Z-Index ',
+	   },
+   }
+
 		const columns = [
 			// { dataField: 'id', text: 'ID', align: 'center', sort: true },
 			{
@@ -66,6 +96,8 @@ const TeamsList = (props) => {
 							hideDetail={true}
 							Query={query}
 							sort={defaultSorted}
+							filters={filters}
+							showAAdvancedFilters={true}
 							addRoute={ props?.userRole === "supervisor" ? null : "teams/add"}
 							{...props.remoteTableFields}
 						/>

@@ -64,21 +64,18 @@ const save = (value,data) => {
 const cancel = () => {
     console.log("cancelled")
 }
+const filters = {
+    location_id: {
+        type: "advanceSelect",
+        label: "Select Location",
+        target: `${props?.branchId}/locations`,
+        async: true,
+        col: 12 + ' col-sm-3  ',
+    },
+
+}
     const defaultSorted = [{dataField: "location.name", order: "desc"}];
     const columns = [
-        // {
-        //     dataField: "id",
-        //     text: "ID",
-        //     align: "center",
-        //     sort: true,
-        // },
-
-        // {
-        //     dataField: "item.name",
-        //     text: "Item",
-        //     align: "center",
-        //     sort: true,
-        // },
 
         {
             isDummyField: true,
@@ -108,29 +105,29 @@ const cancel = () => {
             align: "center",
             sort: true,
         },
-        {
-            dataField: "total_calls",
-            text: "Total Calls",
-            align: "center",
-            sort: true,
-        },
-        {
-            isDummyField: true,
-            text: "Last Call",
-            align: "center",
-            sort: true,
-            formatter: (cell, row) => {
-                if(row?.last_used){
-                    return (
-                            <span className="badge badge-dark">
-                                 {row?.last_used}
-                            </span>
+        // {
+        //     dataField: "total_calls",
+        //     text: "Total Calls",
+        //     align: "center",
+        //     sort: true,
+        // },
+        // {
+        //     isDummyField: true,
+        //     text: "Last Call",
+        //     align: "center",
+        //     sort: true,
+        //     formatter: (cell, row) => {
+        //         if(row?.last_used){
+        //             return (
+        //                     <span className="badge badge-dark">
+        //                          {row?.last_used}
+        //                     </span>
 
-                    )
-                }
+        //             )
+        //         }
 
-            },
-        },
+        //     },
+        // },
 
 
         {
@@ -226,7 +223,8 @@ const cancel = () => {
                             showAdvanceFilters={true}
                             Query={query}
                             // query={calculateParams()}
-
+                            filters={filters}
+                            showAdvancedFilters={true}
                         />
 
                         <Modal

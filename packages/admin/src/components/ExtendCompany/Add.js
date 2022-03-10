@@ -313,13 +313,15 @@ const Add = (props) => {
       // },
       font_color: {
         // parent:"style",
-        type: "color",
-        defaultValue: "#00000",
-        // color: { r: "241", g: "112", b: "19", a: "1" },
-        label: "Font Color",
-        name: "font_color",
-        col: 2,
-        condition: showAddFields,
+          // parent:"style",
+          type: "color",
+          defaultValue: "#00000",
+          // color: { r: "241", g: "112", b: "19", a: "1" },
+          label: "Font Color",
+          name: "font_color",
+          col: 2,
+          // condition: showAddFields,
+        
       },
       bg_color: {
         type: "color",

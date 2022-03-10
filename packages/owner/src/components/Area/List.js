@@ -26,6 +26,34 @@ const List = (props) => {
     .catch((error) => console.log(error));
    }
   const defaultSorted = [{ dataField: "name", order: "desc" }];
+
+
+  
+  const filters = {
+
+   location_id: {
+       type: "advanceSelect",
+       label: "Select Location",
+       target: `${props?.branchId}/locations`,
+       async: true,
+       col: 12 + ' col-sm-3  ',
+   },
+  
+   team_id:{
+       type: "advanceSelect",
+       label: "Select Team",
+       target: `${props?.branchId}/teams`,
+       async: true,
+       col: 12 + ' col-sm-3  ',
+   },
+   item_id:{
+    type: "advanceSelect",
+    label: "Select Item",
+    target: `${props?.branchId}/items`,
+    async: true,
+    col: 12 + ' col-sm-3  ',
+},
+}
   const columns = [
     // {
     //   dataField: "id",
@@ -82,6 +110,8 @@ const List = (props) => {
               hideDelete={false}
               addRoute="/areas/add"
               Query={query}
+              filters={filters}
+              showAdvancedFilters={true}
               // query={calculateParams()}
             />
           </CardBody>
