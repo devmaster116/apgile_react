@@ -181,6 +181,7 @@ const KithcenCallList  = (props) => {
 							hideEdit={true}
               filters={filters}
               showAdvancedFilter={true}
+              addRoute="/add-kitchen-call"
 							{...props.remoteTableFields}
 							Query={query}
 							hideActionCol={true}

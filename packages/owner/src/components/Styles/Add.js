@@ -12,44 +12,28 @@ const StyleAdd = (props) => {
 
         const fields = {
             font_color: {
-                // parent:"style",
                 type: "color",
-                defaultValue: "#00000",
-                // color: { r: "241", g: "112", b: "19", a: "1" },
                 label: "Font Color",
                 name: "font_color",
                 col: 2,
             },
             bg_color: {
                 type: "color",
-                defaultValue: "#000000",
-                // parent:"style",
                 label: "Background Color",
-                // required: true,
                 name: "bg_color",
                 col: 2,
                 handleChange:(data)=> console.log(data,"data")
             },
-            // other: {
-            //   type: "text",
-            //   label: "Others",
-            //   name: "other",
-            //   required: true,
-            //   col: 4,
-            // },
-
             logo: {
                 type: "filePic",
                 label: "Logo",
                 name: "logo",
-                // required: true,
                 col: 3
             },
             bg_image: {
                 type: "filePic",
                 label: "Background Image",
                 name: "bg_image",
-                // required: true,
                 col: 5
             }
 
@@ -70,6 +54,8 @@ const StyleAdd = (props) => {
                         // repeater={true}
                         extraVals={extraVals}
                         redirect="style"
+                        // debug={true}
+                        
                     />
                 </CardBody>
             </Card>
