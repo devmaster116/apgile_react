@@ -76,7 +76,6 @@ class TeamsAdd extends Component {
                         initialValues={this.props.location.aboutProps}
                         
                         redirect="owner/teams"
-                        handleSameValueFields={['title', 'slug']}
                     />
                 </CardBody>
             </Card>

@@ -61,8 +61,8 @@ const ItemAdd = (props) => {
             required: true,
             name: "qty",
             value: 1,
-            min:1,
-            col: 3,
+            min:10,
+            col: 2
         },
         starting_number : {
             type: "number",
@@ -70,8 +70,8 @@ const ItemAdd = (props) => {
             required: true,
             value: 1,
             name: "starting_number",
-            min:0,
-            col: 3,
+            min:1,
+            col: 2
         },
         increments : {
             type: "number",
@@ -80,7 +80,7 @@ const ItemAdd = (props) => {
             value: 1,
             name: "increments",
             min:1,
-            col: 3,
+            col: 2
         },
 
 

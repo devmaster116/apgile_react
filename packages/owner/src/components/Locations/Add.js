@@ -38,12 +38,7 @@ const LocationsAdd = (props) => {
             col: 3,
             condition: !showTeam
         },
-        // description: {
-        //     type: "text",
-        //     label: "Description",
-        //     name: "description",
-        //     col: 3,
-        // },
+
         message_box: {
             type: "switch",
             label: "Include Message",
@@ -78,27 +73,6 @@ const LocationsAdd = (props) => {
             col: 3,
             condition: showTeam
         },
-        // shifts: {
-        //     type: "advanceSelect",
-        //     label: "Shifts",
-        //     target: `${props.branchId}/shifts?limit=1000`,
-        //     // optionLabel: 'title',
-        //     multi: true,
-        //     async: true,
-        //     // required: true,
-        //     col: 4,
-        // },
-
-
-        // branch_id: {
-        //     type: 'advanceSelect',
-        //     label: "Branch",
-        //     target: 'branches',
-        //     async: true,
-        //     required:true,
-        //     name: 'branch_id',
-        //     col: 6
-        // },
     };
 
     return (

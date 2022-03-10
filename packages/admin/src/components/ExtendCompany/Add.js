@@ -17,7 +17,7 @@ const Add = (props) => {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-      console.log(value.options,"value")
+      console.log(value.value,"value")
       //  return value.options?.map((data) => { data.value === "US" && console.log(data,"conditon match")})
         setTimeout(() => {
             let returnMask = getMaskHelper( id ? value : value?.value)
@@ -253,15 +253,6 @@ const Add = (props) => {
         col: 2,
         condition: showAddFields,
       },
-      // role_id: {
-      //   // parent: "user",
-      //   type: "advanceSelect",
-      //   label: "Role",
-      //   name: "role_id",
-      //   target: "roles",
-      //   required:true,
-      //   col: 4,
-      // },
 
       Limits: {
         isDummyField: true,
@@ -303,19 +294,8 @@ const Add = (props) => {
         col: 12,
         condition: showAddFields,
       },
-      // s_name: {
-      //     // parent:"style",
-      //     type: "text",
-      //     label: "Name",
-      //     required: true,
-      //     name: "s_name",
-      //     col: 4,
-      // },
       font_color: {
-        // parent:"style",
         type: "color",
-        defaultValue: "#00000",
-        // color: { r: "241", g: "112", b: "19", a: "1" },
         label: "Font Color",
         name: "font_color",
         col: 2,
@@ -323,22 +303,12 @@ const Add = (props) => {
       },
       bg_color: {
         type: "color",
-        defaultValue: "#ffffff",
-        // parent:"style",
         label: "Background Color",
-        // required: true,
         name: "bg_color",
         col: 2,
         condition: showAddFields,
-        handleChange:(data)=> console.log(data,"data")
+        handleChange: (data) => console.log(data, "data"),
       },
-      // other: {
-      //   type: "text",
-      //   label: "Others",
-      //   name: "other",
-      //   required: true,
-      //   col: 4,
-      // },
 
       logo: {
         type: "filePic",
@@ -373,7 +343,7 @@ const Add = (props) => {
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
-                        noEdit={false}
+                        // noEdit={false}
                         // match={props.match}
                         // handleSameValueFields={["title", "slug"]}
                         // debug={true}

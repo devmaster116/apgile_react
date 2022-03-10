@@ -56,7 +56,7 @@ import WatchesAdd from "./../components/Watches/Add";
 
 import StyleAdd from "./../components/Styles/Add";
 
-
+import KitchenCallAdd from "./../components/KitchenCalls/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -137,7 +137,10 @@ const routes = [
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 
+	{ path: '/add-kitchen-call', exact : true,component: KitchenCallAdd,isPublic: false},
+
 	{ path: '/kitchen-calls', exact : true,component: KitchenCalls,isPublic: false},
+
 	{ path: '/calls/:id/edit', exact : true,component:CallAssigned ,isPublic: false},
 	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},
 

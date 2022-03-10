@@ -58,8 +58,10 @@ const Dashboard = (props) => {
                 let labelArr = []
                 let valueArr = []
                 Object.entries(data?.calls).forEach(([key, val], i) => {
-                    labelArr.push(key.toUpperCase());
-                    valueArr.push(val);
+                    if(key !== "total"){
+                        labelArr.push(key.toUpperCase());
+                        valueArr.push(val);
+                    }
                 })
                 setLabels(labelArr)
                 setDataValue(valueArr)
@@ -69,6 +71,7 @@ const Dashboard = (props) => {
 
             api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
                 let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+                optionsArr.unshift({value:"all",label:"All"})
                 setOptions(optionsArr);
             }).catch((error) => console.log(error));
         }, 1);
@@ -99,8 +102,10 @@ const Dashboard = (props) => {
             .then(({ data }) => {
                 setDashbaordData(data)
                 dashbaordData?.calls && Object.entries(dashbaordData?.calls).forEach(([key, val], i) => {
-                    labelArr.push(key.toUpperCase());
-                    valueArr.push(val);
+                  if(key !== "total"){
+                      labelArr.push(key.toUpperCase());
+                      valueArr.push(val);
+                  }
 
                 })
             })
@@ -139,9 +144,16 @@ const Dashboard = (props) => {
 
 
     const timelineChange = (e) =>{
-    console.log(e.target.value,"data")
     setTimeLine(e.target.value)
     }
+
+
+    const resetHandler = () => {
+        setSelectedOption(0)
+        setTimeLine("today")
+    }
+
+
 
     return (
         <div>
@@ -159,16 +171,8 @@ const Dashboard = (props) => {
                         value={options[selectedOption]}
                     />
                 </CCol>
-                <CCol sm={2}>
-                    <Button
-                        size="sm"
-                        color="danger"
-                        className="custom-button mb-1"
-                        onClick={() => setSelectedOption(-1)}
-                    >Reset</Button>
-                </CCol>
 
-                <CCol sm={6} className="mb-1">
+                <CCol sm={8} className="mb-1 text-right">
                     <div className="btn-group btn-group-toggle" data-toggle="buttons">
                         <label className={`btn btn-dark timeline-buttons mr-1 ${timeline === "today" ? "active" : ""}`}>
                             <input type="radio" name="options" id="option1" autocomplete="off" value="today" checked={timeline === "today"} onChange={timelineChange} /> Today
@@ -182,12 +186,23 @@ const Dashboard = (props) => {
                         <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "month" ? "active" : ""}`}>
                             <input type="radio" name="options" id="option4" value="month" autocomplete="off" onChange={timelineChange} /> This Month
                         </label>
+                        <label className={`btn btn-dark timeline-buttons  mr-2 ${timeline === "last-month" ? "active" : ""}`}>
+                            <input type="radio" name="options" id="option5" value="last-month" autocomplete="off" onChange={timelineChange}/> Last Month
+                        </label>
                         <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "year" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option5" value="year" autocomplete="off" onChange={timelineChange} /> This Year
+                            <input type="radio" name="options" id="option6" value="year" autocomplete="off" onChange={timelineChange} /> This Year
                         </label>
-                        <label className={`btn btn-dark timeline-buttons ${timeline === "previous-year" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option6" value="previous-year" autocomplete="off" onChange={timelineChange}/> Previous Year
-                        </label>
+                        {/* <label className={`btn btn-dark timeline-buttons ${timeline === "previous-year" ? "active" : ""}`}>
+                            <input type="radio" name="options" id="option7" value="previous-year" autocomplete="off" onChange={timelineChange}/> Previous Year
+                        </label> */}
+                        
+                        <Button
+                        size="sm"
+                        color="danger"
+                        className="mb-1 ml-1 reset-button timeline-buttons"
+                        onClick={() => resetHandler()}
+                        >Reset
+                        </Button>
                     </div>
                 </CCol>
             </CRow>
@@ -215,7 +230,7 @@ const Dashboard = (props) => {
                             <CCardSubtitle className="mb-2 text-medium-emphasis">
                                 Details of different call statuses
                             </CCardSubtitle>
-                           {dashbaordData && <LineChart data={dashbaordData}/> }
+                           {dashbaordData && <LineChart data={dashbaordData} timeline={timeline} /> }
                         </CCardBody>
                     </CCard>
                 </CCol>
@@ -232,7 +247,7 @@ const Dashboard = (props) => {
                             <Block title="Staff Online" value={dashbaordData?.staff_online} color="primary" />
                         </CCol>
                         <CCol xs={12} sm={4} lg={6}>
-                            <Block title="Areas Active" value={dashbaordData?.active_areas} color="secondary" font="balck" />
+                            <Block title="Areas Active" value={dashbaordData?.active_areas} color="secondary" font="black" />
                         </CCol>
                     </CRow>
                 </CCol>

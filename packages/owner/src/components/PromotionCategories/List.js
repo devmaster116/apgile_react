@@ -26,6 +26,18 @@ const List = (props) => {
     .catch((error) => console.log(error));
   }
 
+  const filters = {
+   call_status:{
+       type: "advanceSelect",
+       label: "Select Status",
+       target: `${props.branchId}/call/status-list`,
+       optionLabel: 'name',
+       optionId: 'id',
+       async: true,
+       col: 12 + ' col-sm-3  ',
+   },
+  
+}
   const defaultSorted = [{ dataField: "title", order: "desc" }];
   const columns = [
     // {
@@ -60,15 +72,6 @@ const List = (props) => {
       },
     },
 
-    // {
-    //   dataField: "branch.name",
-    //   text: "Branch",
-    //   align: "center",
-    //   sort: true,
-    // },
-
-
-
 
   ];
   return (
@@ -88,6 +91,8 @@ const List = (props) => {
 							{...props.remoteTableFields}
               addRoute="/categories/add"
               Query={query}
+              filters={filters}
+              showAdvancedFilters={true}
 
             />
           </CardBody>

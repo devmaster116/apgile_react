@@ -11,6 +11,16 @@ const ItemsList = (props) => {
 		setQuery((prev)=>!prev)
 		}, [props.branchId]);
 
+		const filters = {
+			location_id: {
+				type: "advanceSelect",
+				label: "Select Location",
+				target: `${props?.branchId}/locations`,
+				async: true,
+				col: 12 + ' col-sm-3  ',
+			},
+		 }
+
 		const columns = [
 			// {
 			// 	dataField: 'id',
@@ -80,6 +90,8 @@ const ItemsList = (props) => {
 							addRoute="/items/add"
 							{...props.remoteTableFields}
 							Query={query}
+							filters={filters}
+							showAdvancedFilters={true}
 						/>
 					</CardBody>
 				</Card>
