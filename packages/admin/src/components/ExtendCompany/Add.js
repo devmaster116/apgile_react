@@ -17,7 +17,7 @@ const Add = (props) => {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-      console.log(value.options,"value")
+      console.log(value.value,"value")
       //  return value.options?.map((data) => { data.value === "US" && console.log(data,"conditon match")})
         setTimeout(() => {
             let returnMask = getMaskHelper( id ? value : value?.value)
@@ -253,15 +253,6 @@ const Add = (props) => {
         col: 2,
         condition: showAddFields,
       },
-      // role_id: {
-      //   // parent: "user",
-      //   type: "advanceSelect",
-      //   label: "Role",
-      //   name: "role_id",
-      //   target: "roles",
-      //   required:true,
-      //   col: 4,
-      // },
 
       Limits: {
         isDummyField: true,
