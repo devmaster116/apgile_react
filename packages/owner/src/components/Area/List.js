@@ -37,13 +37,22 @@ const List = (props) => {
             col: 12 + ' col-sm-3  ',
         },
 
-        team_id: {
-            type: "advanceSelect",
-            label: "Select Team",
-            target: `${props?.branchId}/teams`,
-            async: true,
-            col: 12 + ' col-sm-3  ',
-        },
+        // team_id: {
+        //     type: "advanceSelect",
+        //     label: "Select Team",
+        //     target: `${props?.branchId}/teams`,
+        //     async: true,
+        //     col: 12 + ' col-sm-3  ',
+        // },
+
+        // user_id: {
+        //     type: "advanceSelect",
+        //     label: "Select Staff Member",
+        //     target: `${props?.branchId}/role-users/staff`,
+        //     optionLabel: "username",
+        //     async: true,
+        //     col: 12 + ' col-sm-3  ',
+        // },
         item_id: {
             type: "advanceSelect",
             label: "Select Item",
