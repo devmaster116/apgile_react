@@ -10,12 +10,12 @@ const Add = (props) => {
     const [showPlaces, setShowPlaces] = useState(false);
     const id = props.branchId;
 
-    const showInternalPlaces = (data) => {
-        if (typeof data.value !== 'undefined' && data.value)
-            setShowPlaces(false);
-        else
-            setShowPlaces(true);
-    }
+    // const showInternalPlaces = (data) => {
+    //     if (typeof data.value !== 'undefined' && data.value)
+    //         setShowPlaces(false);
+    //     else
+    //         setShowPlaces(true);
+    // }
 
     const getInitialValues = (data) => {
         setShowPlaces(data.internal_active);

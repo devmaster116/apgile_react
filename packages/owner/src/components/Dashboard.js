@@ -1,36 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Button } from 'reactstrap';
-import {
-    CCard,
-    CCardBody, CCardSubtitle,
-    CCardTitle,
-    CCol,
-    CRow,
-} from '@coreui/react-pro';
+import {CCol,CRow} from '@coreui/react-pro';
 import { getColor } from "@facepays/common";
-import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, 
-    PointElement,
-    LineElement,
-  } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,PointElement,LineElement} from 'chart.js';
 import api from "@evenlogics/whf-api";
 import Select from 'react-select';
 import { changeBranch, setCompany, setReduxData } from "./Redux/BranchActions";
 import Block from "./DashboardWidgets/Block";
 import "../style/style.css";
-import {LineChart} from "./DashboardWidgets/LineChart";
+import Graph from "./DashboardWidgets/Graph";
 
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,
-    PointElement,
-    LineElement
-    );
-
-
-    
-
-
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,PointElement,LineElement);
 const Dashboard = (props) => {
 
     const [dashbaordData, setDashbaordData] = useState([])
@@ -153,6 +134,8 @@ const Dashboard = (props) => {
         setTimeLine("today")
     }
 
+    const timelineArray = ["today","yesterday","week","month","last-month","year"];
+
 
 
     return (
@@ -174,27 +157,14 @@ const Dashboard = (props) => {
 
                 <CCol sm={8} className="mb-1 text-right">
                     <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label className={`btn btn-dark timeline-buttons mr-1 ${timeline === "today" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option1" autocomplete="off" value="today" checked={timeline === "today"} onChange={timelineChange} /> Today
-                        </label>
-                        <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "yesterday" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option2" value="yesterday" checked={timeline === "yesterday"} autocomplete="off" onChange={timelineChange} /> Yesterday
-                        </label>
-                        <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "week" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option3"  value="week" autocomplete="off" onChange={timelineChange} /> This Week
-                        </label>
-                        <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "month" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option4" value="month" autocomplete="off" onChange={timelineChange} /> This Month
-                        </label>
-                        <label className={`btn btn-dark timeline-buttons  mr-2 ${timeline === "last-month" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option5" value="last-month" autocomplete="off" onChange={timelineChange}/> Last Month
-                        </label>
-                        <label className={`btn btn-dark timeline-buttons mr-2 ${timeline === "year" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option6" value="year" autocomplete="off" onChange={timelineChange} /> This Year
-                        </label>
-                        {/* <label className={`btn btn-dark timeline-buttons ${timeline === "previous-year" ? "active" : ""}`}>
-                            <input type="radio" name="options" id="option7" value="previous-year" autocomplete="off" onChange={timelineChange}/> Previous Year
-                        </label> */}
+
+                        {
+                            timelineArray?.map((time,i)=>(
+                            <label key={i} className={`btn btn-dark timeline-buttons text-capitalize mr-1 ${timeline === time ? "active" : ""}`}>
+                            <input type="radio" name="options" id={`option${i}`} autocomplete="off" value={time} checked={timeline === time} onChange={timelineChange} /> {time}
+                           </label>
+                            ))
+                        }
                         
                         <Button
                         size="sm"
@@ -210,31 +180,9 @@ const Dashboard = (props) => {
             <br />
 
             <CRow>
-                <CCol lg={4}>
-                    <CCard>
-                        <CCardBody>
-                            <CCardTitle>Calls Data</CCardTitle>
-
-                            <CCardSubtitle className="mb-2 text-medium-emphasis">
-                                Details of different call statuses
-                            </CCardSubtitle>
-                            <Pie data={chartData} />
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-                <CCol lg={4}>
-                    <CCard>
-                        <CCardBody>
-                            <CCardTitle>Activity Time</CCardTitle>
-
-                            <CCardSubtitle className="mb-2 text-medium-emphasis">
-                                Details of different call statuses
-                            </CCardSubtitle>
-                           {dashbaordData && <LineChart data={dashbaordData} timeline={timeline} /> }
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-                <CCol lg={4}>
+                   <Graph type="pie" title="Calls Data" subtitle="Details of different call statuses" chartData={chartData} />
+                   <Graph type="line" title="Activity Time" subtitle=" Details of different call statuses" chartData={dashbaordData} timeline={timeline} />
+                  <CCol lg={4}>
                     <CRow>
                         {
                             dashbaordData?.calls && Object.entries(dashbaordData?.calls).map(([key, val], i) => (

@@ -3,7 +3,7 @@ import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
-import {formPageTitle} from "@facepays/common";
+// import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
 
