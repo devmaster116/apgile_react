@@ -176,7 +176,7 @@ const KithcenCallList = (props) => {
                         hideEdit={true}
                         filters={filters}
                         showAdvancedFilter={true}
-                        addRoute="/add-internal-call"
+                        // addRoute="/add-internal-call"
                         {...props.remoteTableFields}
                         Query={query}
                         hideActionCol={true}

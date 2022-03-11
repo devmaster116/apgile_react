@@ -250,7 +250,7 @@ const Add = (props) => {
         required: !id,
         label: "Password Confirmation",
         name: "password_confirmation",
-        col: 2,
+        col: 3,
         condition: showAddFields,
       },
 
