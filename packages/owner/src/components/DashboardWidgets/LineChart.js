@@ -21,9 +21,7 @@ ChartJS.register(
 );
 
 
-export const  LineChart = (props) => {
-
-  const {id} = props?.match?.params;
+export const LineChart = (props) => {
 
     const [Linelabels, setLineLabels] = useState([])
     const [Linedata, setLineData] = useState([])
@@ -49,7 +47,7 @@ export const  LineChart = (props) => {
      secondLinedata && setSecondLineData(secondLinedata);
     }, [props.data])
 
-    // console.log(props?.data,"data")
+    console.log(props?.staff,"data")
    const getTitle = (timeline) => {
      switch (timeline) {
        case "today":
@@ -73,19 +71,19 @@ export const  LineChart = (props) => {
       labels,
         datasets: [
           {
-            label: id ? "Total" : props?.timeline.toUpperCase(),
+            label: props?.staff ? "Total" : props?.timeline.toUpperCase(),
             data: [...Linedata],
             // labels: ["today","yesterday"],
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
-          id && {
-            label: id ? "Completed" : props?.timeline.toUpperCase(),
-            data: [...SecondLinedata],
-            // labels: ["today","yesterday"],
-            borderColor: 'rgb(53, 162, 235)',
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          },
+          // props?.staff && {
+          //   label:props?.staff && "Completed",
+          //   data: [...SecondLinedata],
+          //   // labels: ["today","yesterday"],
+          //   borderColor: 'rgb(53, 162, 235)',
+          //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          // },
           
         ],
       };
