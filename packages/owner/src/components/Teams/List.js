@@ -34,7 +34,7 @@ const TeamsList = (props) => {
       type: "advanceSelect",
       label: "Select Team Member",
       target: `${props.branchId}/role-users/staff`,
-      optionLabel: "username",
+      optionLabel: "first_name",
       optionId: "id",
       async: true,
       col: 12 + " col-sm-3 Z-Index ",
