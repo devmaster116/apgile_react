@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
 import api from "@evenlogics/whf-api";
@@ -7,6 +7,26 @@ import { toast } from 'react-toastify';
 const ItemsList = (props) => {
   const [target, setTarget] = useState("branches");
   const [query, setQuery] = useState(false);
+
+
+  const [optionsArr, setOptionsArr] = useState([])
+
+    useEffect(() => {
+        var rolesArray = [];
+        api.request("get", "/roles")
+            .then(({data}) => {
+                rolesArray = data?.filter((role) => (
+                    role.name !== "super-admin"
+                ))
+                let newOption = rolesArray?.map((role) => {
+                    return {value: role.id, label: role.name}
+                })
+                setOptionsArr(newOption);
+            })
+            .catch((error) => console.log(error));
+
+    }, []);
+  
 
   const companiesChangeHandler = (data) => {
     console.log(data, "lll");
@@ -40,14 +60,14 @@ const ItemsList = (props) => {
       col: 12 + " col-xl-3 mt-2",
     },
     roles_role_id: {
-        type: "advanceSelect",
-        label: "Role",
-        target: "roles",
-        async: true,
-        name: "roles_role_id",
-        // optionValue: "id",
-        // optionLabel: "name",
-        // required: true,
+      type: 'advanceSelect',
+      options: optionsArr,
+      // async: true,
+      // multi: false,
+      // options:optionsArr,
+      required: true,
+      name: 'role_id',
+      label: 'Roles',
         col: 12 + " col-xl-3 mt-2",
       },
   };

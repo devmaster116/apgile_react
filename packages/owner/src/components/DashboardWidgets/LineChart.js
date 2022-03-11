@@ -23,20 +23,30 @@ ChartJS.register(
 
 export const  LineChart = (props) => {
 
+  const {id} = props?.match?.params;
+
     const [Linelabels, setLineLabels] = useState([])
     const [Linedata, setLineData] = useState([])
+    const [SecondLinedata, setSecondLineData] = useState([])
 
     useEffect(() => {
      var labels = [];
      var linedata = [];
+     var secondLinedata = [];
 
-    ( props?.data?.calls_grouped)  && Object.entries(props?.data?.calls_grouped).forEach(([key, val], i) => {
+     props?.data?.total_calls && Object.entries(props?.data?.total_calls).forEach(([key, val], i) => {
       labels.push(key);
       linedata.push(val);
      })
+
+     props?.data?.completed_calls && Object.entries(props?.data?.completed_calls).forEach(([key, val], i) => {
+      secondLinedata.push(val);
+     })
+
+
      labels && setLineLabels(labels);
      linedata && setLineData(linedata);
-      console.log(props?.data,"data")
+     secondLinedata && setSecondLineData(secondLinedata);
     }, [props.data])
 
     // console.log(props?.data,"data")
@@ -63,12 +73,20 @@ export const  LineChart = (props) => {
       labels,
         datasets: [
           {
-            label: props?.timeline.toUpperCase(),
+            label: id ? "Total" : props?.timeline.toUpperCase(),
             data: [...Linedata],
             // labels: ["today","yesterday"],
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
+          id && {
+            label: id ? "Completed" : props?.timeline.toUpperCase(),
+            data: [...SecondLinedata],
+            // labels: ["today","yesterday"],
+            borderColor: 'rgb(53, 162, 235)',
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          },
+          
         ],
       };
       const options = {
