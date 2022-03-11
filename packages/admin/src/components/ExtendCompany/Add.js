@@ -288,6 +288,14 @@ const Add = (props) => {
         condition: showAddFields,
       },
 
+      internal_active: {
+        type: "switch",
+        label: "Allow Internal Call",
+        required: true,
+        col: 2,
+        condition: showAddFields,
+      },
+
       "Style Details": {
         isDummyField: true,
         type: "h4",

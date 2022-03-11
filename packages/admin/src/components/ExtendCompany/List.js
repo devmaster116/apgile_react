@@ -6,42 +6,41 @@ import api from "@evenlogics/whf-api";
 
 const List = (props) => {
 
+    const filters = {
+        city: {
+            // parent: "address",
+            type: "text",
+            label: "City",
+            required: true,
+            name: "city",
+            col: 3,
+        },
+
+        state: {
+            // parent: "address",
+            type: "text",
+            label: "State",
+            name: "state",
+            col: 3,
+        },
+        address_country: {
+            type: "advanceSelect",
+            label: "Country",
+            // defaultValue:{value:"US",label:"US"},
+            optionValue: "code",
+            target: "countries?limit=1000",
+            required: true,
+            col: 4,
+        }
+    }
+
     const columns = [
-      // {
-      //   dataField: "id",
-      //   text: "ID",
-      //   align: "center",
-      //   sort: true,
-      // },
-      // {
-      //   isDummyField: true,
-      //   align: "center",
-      //   text: "Company Logo",
-      //   sort: true,
-      //   formatter: (cell, row) => {
-      //       console.log(row,"row")
-      //     return (
-      //       <img
-      //       width="40"
-      //       height="30"
-      //         src={row?.style?.logo?.url}
-      //         alt="logo"
-      //       />
-      //     );
-      //   },
-      // },
       {
         dataField: "name",
         text: "Company Name",
         align: "center",
         sort: true,
       },
-    //   {
-    //     dataField: "address.city",
-    //     text: "City",
-    //     align: "center",
-    //     sort: true,
-    //   },
       {
         dataField: "phone1",
         text: "Phone Number",
@@ -54,12 +53,6 @@ const List = (props) => {
         align: "center",
         sort: true,
       },
-      // {
-      //   dataField: "phone2",
-      //   text: "Secondary Number",
-      //   align: "center",
-      //   sort: true,
-      // },
     ];
 
     const defaultSorted = [{dataField: 'name', order: 'desc'}];
@@ -93,7 +86,7 @@ const List = (props) => {
                             hideDetail={true}
                             hideDelete={false}
                             addRoute="/admin/companies/add"
-
+                            filters={filters}
                             customButton={{
                                 name: "Manage Company",
                                 color: "warning",
