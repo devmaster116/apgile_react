@@ -9,7 +9,7 @@ import AddInternal from "./Add";
 
 const KithcenCallList = (props) => {
     const [query, setQuery] = useState(false);
-    const [minDate, setMinDate] = useState('');
+    // const [minDate, setMinDate] = useState('');
 
     useEffect(() => {
         setQuery((prev) => !prev)
