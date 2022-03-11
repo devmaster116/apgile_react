@@ -54,3 +54,12 @@ display: none;
 .Z-Index{
     z-index: 100;
 }
+
+.height-graph{
+    height:75%;
+}
+
+label.active{
+    background-color: cornflowerblue !important;
+    width: max-content;
+}
