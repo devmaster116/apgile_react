@@ -21,7 +21,7 @@ const ItemAdd = (props) => {
                 let newOption = rolesArray?.map((role) => {
                     return {value: role.id, label: role.name}
                 })
-                setOptionsArr(newOption);
+                newOption && setOptionsArr(newOption);
             })
             .catch((error) => console.log(error));
 

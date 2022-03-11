@@ -136,17 +136,15 @@ const Add = (props) => {
             col: 4,
         },
 
-
-        roles: {
-            type: 'advanceSelect',
-            options: optionsArr,
-            // async: true,
-            // multi: false,
-            // options:optionsArr,
-            required: true,
-            name: 'role_id',
-            label: 'Roles',
-            col: 4
+        ...(optionsArr.length > 0) && {
+            role_id: {
+                type: "advanceSelect",
+                label: "Role",
+                name: "role_id",
+                options: optionsArr,
+                required: true,
+                col: 4,
+            }
         },
 
 

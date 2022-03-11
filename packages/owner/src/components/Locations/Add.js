@@ -6,10 +6,10 @@ import {formPageTitle} from "@facepays/common";
 
 const LocationsAdd = (props) => {
 
-    const [showTeam, setShowTeam] = useState(false);
+    const [showTeam, setShowTeam] = useState(true);
     useEffect(() => {
         // setQuery((prev) => !prev);
-    }, [props.branchId]);
+    }, [props.branchId,showTeam]);
     const {id} = props.match.params;
 
     const manageTeamField = data => {
@@ -53,10 +53,16 @@ const LocationsAdd = (props) => {
             name: "customer_required",
             col: 2,
         },
+        "Manage Auto Assinged": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+        },
         auto: {
             type: "switch",
             label: "Auto Assign Staff",
             name: "auto_assign",
+            checked:true,
             // required: true,
             col: 2,
             callback: (data) => manageTeamField(data)
@@ -71,7 +77,7 @@ const LocationsAdd = (props) => {
             // required: true,
             name: "team",
             col: 3,
-            condition: showTeam
+            condition: showTeam === true ? true : false
         },
     };
 
