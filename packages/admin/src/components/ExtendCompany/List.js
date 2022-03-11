@@ -7,31 +7,27 @@ import api from "@evenlogics/whf-api";
 const List = (props) => {
 
     const filters = {
+        address_country: {
+            type: "advanceSelect",
+            label: "Country",
+            optionValue: "code",
+            target: "countries?limit=1000",
+            col: 4,
+        },
         city: {
-            // parent: "address",
             type: "text",
             label: "City",
-            required: true,
             name: "city",
             col: 3,
         },
 
         state: {
-            // parent: "address",
             type: "text",
             label: "State",
             name: "state",
             col: 3,
         },
-        address_country: {
-            type: "advanceSelect",
-            label: "Country",
-            // defaultValue:{value:"US",label:"US"},
-            optionValue: "code",
-            target: "countries?limit=1000",
-            required: true,
-            col: 4,
-        }
+      
     }
 
     const columns = [

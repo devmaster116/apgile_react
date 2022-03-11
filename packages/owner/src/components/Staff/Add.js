@@ -11,7 +11,6 @@ const ItemAdd = (props) => {
     const [optionsArr, setOptionsArr] = useState([])
     const {id} = props.match.params;
 
-    // const [phoneMask, setPhoneMask] = useState(props?.phoneMask)
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -26,8 +25,6 @@ const ItemAdd = (props) => {
             })
             .catch((error) => console.log(error));
         setQuery((prev) => !prev)
-        // setPhoneMask(props?.phoneMask);
-        console.log("Triggers")
     }, [props.branchId]);
 
 
@@ -78,7 +75,6 @@ const ItemAdd = (props) => {
         email: {
             type: "email",
             label: "Email",
-            // required: true,
             name: "email",
             col: 2,
         },
@@ -86,7 +82,6 @@ const ItemAdd = (props) => {
             type: "masked",
             mask: props?.phoneMask,
             label: "Phone",
-            // required: true,
             col: 2,
             className:"phoneMask",
             formatChars: {
@@ -110,7 +105,6 @@ const ItemAdd = (props) => {
             col: 4
         },
         password: {
-            // parent: "user",
             type: "password",
             label: "Password",
             name: "password",
@@ -118,7 +112,6 @@ const ItemAdd = (props) => {
             col: 4,
         },
         password_confirmation: {
-            // parent: "user",
             oneOf: "password",
             type: "password",
             required: !id,
@@ -128,14 +121,10 @@ const ItemAdd = (props) => {
         },
         ...(optionsArr.length > 0) && {
             role_id: {
-                // parent: "user",
                 type: "advanceSelect",
                 label: "Role",
                 name: "role_id",
-                // target: "roles",
                 options: optionsArr,
-                // optionValue: 'value',
-                // optionLabel: 'label',
                 required: true,
                 col: 4,
             }
@@ -150,17 +139,12 @@ const ItemAdd = (props) => {
             <CardBody>
                 <FormGenerator
                     targetEntity={`${props.branchId}/users`}
-                    // getValues={handleValue}
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    // repeater={true}
                     initialValues={props.location.aboutProps}
-
                     redirect="staff"
-                    // handleSameValueFields={['title', 'slug']}
                     Query={query}
-                    // debug={true}
                     extraVals={{branch_id: props.branchId}}
                 />
             </CardBody>

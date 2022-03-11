@@ -24,7 +24,7 @@ const TeamsAdd = (props) => {
                 label: "Locations",
                 target: `${props.branchId}/locations`,
                 // optionLabel: 'full_name',
-                required: true,
+                // required: true,
                 // async: true,
                 name: 'location_id',
                 col: 4
