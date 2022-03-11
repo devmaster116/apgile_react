@@ -134,7 +134,7 @@ const Detail = (props) => {
 
 		  <CRow>
                    <Graph type="pie" title="Calls Data" subtitle="Details of different call statuses" chartData={chartData} />
-                   <Graph type="line" title="Activity Time" subtitle=" Details of different call statuses" chartData={chartData} timeline={timeline} staff={true} />
+                   <Graph type="line" title="Activity Time" subtitle=" Details of different call statuses" chartData={chartData} timeline={timeline} staff="True" />
             </CRow>
         </CardBody>
       </Card>

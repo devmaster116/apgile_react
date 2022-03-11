@@ -25,7 +25,7 @@ export const LineChart = (props) => {
 
     const [Linelabels, setLineLabels] = useState([])
     const [Linedata, setLineData] = useState([])
-    const [SecondLinedata, setSecondLineData] = useState([])
+    // const [SecondLinedata, setSecondLineData] = useState([])
 
     useEffect(() => {
      var labels = [];
@@ -44,10 +44,10 @@ export const LineChart = (props) => {
 
      labels && setLineLabels(labels);
      linedata && setLineData(linedata);
-     secondLinedata && setSecondLineData(secondLinedata);
+    //  secondLinedata && setSecondLineData(secondLinedata);
     }, [props.data])
 
-    console.log(props?.staff,"data")
+    console.log(props.staff,"data")
    const getTitle = (timeline) => {
      switch (timeline) {
        case "today":
