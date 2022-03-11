@@ -5,36 +5,55 @@ import {Header} from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
-
 const Add = (props) => {
 
     const {id} = props.match.params;
     const [showArea, setShowArea] = useState(false);
+    const [targetPoint, setTargetID] = useState(id ? `${props.branchId}/items-page/${id}/0` : `${props.branchId}/items-pages`);
+
+    const locationChangeHandler = async (data) => {
+        await data;
+        console.log(data.value);
+        if(data.value) {
+            setTargetID(`${props.branchId}/items-page/${data?.value}/0`);
+            setShowArea(true);
+        } else {
+            setShowArea(false);
+        }
+    }
+
     let fields = {
-      location_id: {
-        type: "advanceSelect",
-        label: "Select Location",
-        name: "location_id",
-        target: `${props.branchId}/locations`,
-        required: true,
-        async:true,
-        col: 4,
-        callback: () => setShowArea(true),
-      },
-
-
-      ...(showArea && {
-        area_id: {
+        internal_place: {
             type: "advanceSelect",
-            label: "Select Area",
-            name: "area_id",
-            target: `${props.branchId}/areas`,
+            label: "Call Place",
+            target: `${props.branchId}/call-places`,
+            optionValue: 'name',
             required: true,
-            async:true,
-            disabled:showArea === false ? true : false,
-            col: 4,
-          },
-      })
+            async: true,
+            col: 3,
+        },
+
+        location_id: {
+            type: "advanceSelect",
+            label: "Select Location",
+            name: "location_id",
+            target: `${props.branchId}/locations`,
+            required: true,
+            async: true,
+            col: 3,
+            callback: (data) => locationChangeHandler(data),
+        },
+
+        page_id: {
+            type: "advanceSelect",
+            label: "Item#",
+            name: "page_id",
+            target: targetPoint,
+            condition: showArea,
+            required: true,
+            async: true,
+            col: 3,
+        },
 
 
     };
@@ -42,10 +61,10 @@ const Add = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle("Kitchen Call", id)} />
+                <Header title="New Call"/>
                 <CardBody>
                     <FormGenerator
-                        targetEntity={`${props.branchId}/add-kitchen-call`}
+                        targetEntity={`${props.branchId}/internal-call`}
                         fields={fields}
                         targetId={id}
                         name={id ? "editForm" : ""}

@@ -17,6 +17,10 @@ const Add = (props) => {
             setShowPlaces(true);
     }
 
+    const getInitialValues = (data) => {
+        setShowPlaces(data.internal_active);
+    }
+
     const fields = {
         wait_time: {
             type: "number",
@@ -156,16 +160,17 @@ const Add = (props) => {
             isDummyField: true,
             type: "h4",
             col: 12,
+            condition: showPlaces
         },
 
-        internal_active: {
-            type: "switch",
-            label: "Activate Internal Calls",
-            name: "internal_active",
-            // required: true,
-            col: 12,
-            callback: (data) => showInternalPlaces(data)
-        },
+        // internal_active: {
+        //     type: "switch",
+        //     label: "Activate Internal Calls",
+        //     name: "internal_active",
+        //     // required: true,
+        //     col: 12,
+        //     callback: (data) => showInternalPlaces(data)
+        // },
     };
 
     if(showPlaces) {
@@ -204,6 +209,7 @@ const Add = (props) => {
                     extraVals={{branch_id: props.branchId}}
                     redirect="settings"
                     // debug={true}
+                    getInitialValues={getInitialValues}
                     // handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>

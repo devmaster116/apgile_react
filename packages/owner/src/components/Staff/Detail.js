@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import {Card, CardBody, CardHeader, Button} from 'reactstrap';
+import { connect } from "react-redux";
 import Block from "../DashboardWidgets/Block";
 import {CCol,CRow} from "@coreui/react-pro";
 import api from "@evenlogics/whf-api";
