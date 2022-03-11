@@ -190,6 +190,14 @@ const ExtendBranchAdd = (props) =>  {
             col: 2
         },
 
+        internal_active: {
+            parent: 'settings',
+            type: "switch",
+            label: "Allow Internal Call",
+            required: true,
+            col: 2
+        },
+
         "Site Content": {
             isDummyField: true,
             type: "h4",
