@@ -27,15 +27,16 @@ const List = (props) => {
   }
 
   const filters = {
-   call_status:{
-       type: "advanceSelect",
-       label: "Select Status",
-       target: `${props.branchId}/call/status-list`,
-       optionLabel: 'name',
-       optionId: 'id',
-       async: true,
-       col: 12 + ' col-sm-3  ',
-   },
+    status:{
+      type: "advanceSelect",
+      label: "Select Status",
+     //  target: `${props.branchId}/call/status-list`,
+     options:[
+       {label:"Active",value:1},
+       {label:"Inactive",value:2},
+     ],
+      col: 12 + ' col-sm-3  ',
+  },
   
 }
   const defaultSorted = [{ dataField: "title", order: "desc" }];

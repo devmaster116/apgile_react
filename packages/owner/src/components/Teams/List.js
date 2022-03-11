@@ -30,11 +30,11 @@ const TeamsList = (props) => {
       },
     }),
 
-    call_status: {
+    staff: {
       type: "advanceSelect",
-      label: "Select Call Status",
-      target: `${props.branchId}/call/status-list`,
-      optionLabel: "name",
+      label: "Select Team Member",
+      target: `${props.branchId}/role-users/staff`,
+      optionLabel: "username",
       optionId: "id",
       async: true,
       col: 12 + " col-sm-3 Z-Index ",
@@ -63,7 +63,7 @@ const TeamsList = (props) => {
 				formatter: (cell, row) => {
 				return row?.users?.map(users =>{
 				 return users && <span>
-                           {users?.username}
+                           {users?.username}{","}
 					</span>
 				})
 				},

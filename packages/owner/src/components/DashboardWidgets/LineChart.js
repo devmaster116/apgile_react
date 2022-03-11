@@ -30,7 +30,7 @@ export const  LineChart = (props) => {
      var labels = [];
      var linedata = [];
 
-     props?.data?.calls_grouped && Object.entries(props?.data?.calls_grouped).forEach(([key, val], i) => {
+    ( props?.data?.calls_grouped)  && Object.entries(props?.data?.calls_grouped).forEach(([key, val], i) => {
       labels.push(key);
       linedata.push(val);
      })

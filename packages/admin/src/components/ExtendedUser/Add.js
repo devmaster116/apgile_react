@@ -1,11 +1,29 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {formPageTitle} from "@facepays/common";
 // import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
 // import {getMaskHelper} from "@facepays/common";
+import api from "@evenlogics/whf-api";
+
 
 const Add = (props) => {
+    const [optionsArr, setOptionsArr] = useState([])
+    useEffect(() => {
+        var rolesArray = [];
+        api.request("get", "/roles")
+            .then(({data}) => {
+                rolesArray = data?.filter((role) => (
+                    role.name !== "super-admin"
+                ))
+                let newOption = rolesArray?.map((role) => {
+                    return {value: role.id, label: role.name}
+                })
+                setOptionsArr(newOption);
+            })
+            .catch((error) => console.log(error));
+
+    }, []);
 
 
     const {id} = props.match.params;
@@ -38,28 +56,6 @@ const Add = (props) => {
             type: "h4",
             col: 12,
         },
-        // title: {
-        //     // parent: "user",
-        //     required: true,
-        //     type: "advanceSelect",
-        //     options: [
-        //         {
-        //             value: "1",
-        //             label: "Mr",
-        //         },
-        //         {
-        //             value: "2",
-        //             label: "Mrs",
-        //         },
-        //         {
-        //             value: "3",
-        //             label: "Ms",
-        //         },
-        //     ],
-        //     label: "Title",
-        //     name: "title",
-        //     col: 4,
-        // },
         first_name: {
             col: 3,
             type: "text",
@@ -143,7 +139,7 @@ const Add = (props) => {
 
         roles: {
             type: 'advanceSelect',
-            target: 'roles',
+            options: optionsArr,
             // async: true,
             // multi: false,
             // options:optionsArr,

@@ -37,13 +37,14 @@ const List = (props) => {
        col: 12 + ' col-sm-3 ',
    },
   
-   call_status:{
+   status:{
        type: "advanceSelect",
        label: "Select Status",
-       target: `${props.branchId}/call/status-list`,
-       optionLabel: 'name',
-       optionId: 'id',
-       async: true,
+      //  target: `${props.branchId}/call/status-list`,
+      options:[
+        {label:"Active",value:1},
+        {label:"Inactive",value:2},
+      ],
        col: 12 + ' col-sm-3  ',
    },
 

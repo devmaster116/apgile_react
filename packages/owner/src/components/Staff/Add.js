@@ -24,6 +24,8 @@ const ItemAdd = (props) => {
                 setOptionsArr(newOption);
             })
             .catch((error) => console.log(error));
+
+            console.log(props?.phoneMask,"phone mask")
         setQuery((prev) => !prev)
     }, [props.branchId]);
 
