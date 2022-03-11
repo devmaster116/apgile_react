@@ -38,15 +38,6 @@ const KithcenCallList = (props) => {
             col: 12 + ' col-sm-3  ',
         },
 
-        call_status: {
-            type: "advanceSelect",
-            label: "Select Status",
-            target: `${props.branchId}/call/status-list`,
-            optionLabel: 'name',
-            optionId: 'id',
-            async: true,
-            col: 12 + ' col-sm-3  ',
-        },
         user_id: {
             type: "advanceSelect",
             label: "Select Staff Member",
@@ -55,24 +46,25 @@ const KithcenCallList = (props) => {
             async: true,
             col: 12 + ' col-sm-3  ',
         },
-        start_date: {
-            type: "date",
-            label: "Select Start Date",
-            col: 12 + ' col-sm-3  ',
-            getValue: (data) => {
-                setTimeout(() => {
-                    setMinDate(data?.value)
-                }, 0)
-            }
-        },
-        end_date: {
-            type: "date",
-            label: "Select End Date",
-            col: 12 + ' col-sm-3  ',
-            placeholderText: minDate ? "" : "Please select the start date",
-            disabled: minDate ? false : true,
-            minDate: minDate,
-        }
+
+        // start_date: {
+        //     type: "date",
+        //     label: "Select Start Date",
+        //     col: 12 + ' col-sm-3  ',
+        //     getValue: (data) => {
+        //         setTimeout(() => {
+        //             setMinDate(data?.value)
+        //         }, 0)
+        //     }
+        // },
+        // end_date: {
+        //     type: "date",
+        //     label: "Select End Date",
+        //     col: 12 + ' col-sm-3  ',
+        //     placeholderText: minDate ? "" : "Please select the start date",
+        //     disabled: minDate ? false : true,
+        //     minDate: minDate,
+        // }
     }
 
     const columns = [

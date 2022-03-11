@@ -60,7 +60,6 @@ const ItemAdd = (props) => {
             label: "Quantity",
             required: true,
             name: "qty",
-            value: 1,
             min:10,
             col: 2
         },
@@ -68,7 +67,6 @@ const ItemAdd = (props) => {
             type: "number",
             label: "Starting Number",
             required: true,
-            value: 1,
             name: "starting_number",
             min:1,
             col: 2
@@ -77,15 +75,24 @@ const ItemAdd = (props) => {
             type: "number",
             label: "Increments",
             required: true,
-            value: 1,
             name: "increments",
             min:1,
             col: 2
         },
 
-
-
     };
+
+    let initialValues = props.location.aboutProps;
+
+    if(typeof initialValues === 'undefined' ) {
+        initialValues = {
+            about: props.location.aboutProps,
+            qty: 10,
+            starting_number: 1,
+            increments: 1,
+        };
+    }
+
 
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
@@ -100,8 +107,9 @@ const ItemAdd = (props) => {
                     targetId={id}
                     name={id ? "editForm" : ""}
                     repeater={true}
-                    initialValues={props.location.aboutProps}
+                    initialValues={initialValues}
                     redirect="items"
+                    // debug={true}
                     handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>

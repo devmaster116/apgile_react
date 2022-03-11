@@ -13,13 +13,6 @@ const List = (props) => {
 
 
     const filters = {
-         area_id: {
-            type: "advanceSelect",
-            label: "Select Area",
-            target: `${props?.branchId}/areas`,
-            async: true,
-            col: 12 + ' col-sm-3 ',
-        },
         location_id: {
             type: "advanceSelect",
             label: "Select Location",
@@ -27,7 +20,7 @@ const List = (props) => {
             async: true,
             col: 12 + ' col-sm-3  ',
         },
-       
+
         call_status:{
             type: "advanceSelect",
             label: "Select Status",
@@ -37,31 +30,24 @@ const List = (props) => {
             async: true,
             col: 12 + ' col-sm-3  ',
         },
-        team_id:{
-            type: "advanceSelect",
-            label: "Select Team",
-            target: `${props?.branchId}/teams`,
-            async: true,
-            col: 12 + ' col-sm-3  ',
-        },
-        start_date:{
-            type:"date",
-            label:"Select Start Date",
-            col: 12 + ' col-sm-3  ',
-            getValue:(data) => {
-                setTimeout(() => {
-                setMinDate(data?.value)
-            }, 0)
-        }
-        },
-        end_date:{
-            type:"date",
-            label:"Select End Date",
-            col: 12 + ' col-sm-3  ',
-            placeholderText: minDate ? "" : "Please select the start date",
-            disabled:minDate ? false : true,
-            minDate:minDate,
-        }
+        // start_date:{
+        //     type:"date",
+        //     label:"Select Start Date",
+        //     col: 12 + ' col-sm-3  ',
+        //     getValue:(data) => {
+        //         setTimeout(() => {
+        //         setMinDate(data?.value)
+        //     }, 0)
+        // }
+        // },
+        // end_date:{
+        //     type:"date",
+        //     label:"Select End Date",
+        //     col: 12 + ' col-sm-3  ',
+        //     placeholderText: minDate ? "" : "Please select the start date",
+        //     disabled:minDate ? false : true,
+        //     minDate:minDate,
+        // }
     }
 
     const columns = [
