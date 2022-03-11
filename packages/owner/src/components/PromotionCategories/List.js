@@ -32,8 +32,8 @@ const List = (props) => {
       label: "Select Status",
      //  target: `${props.branchId}/call/status-list`,
      options:[
-       {label:"Active",value:1},
-       {label:"Inactive",value:2},
+       {label:"Active",value:"1"},
+       {label:"Inactive",value:"0"},
      ],
       col: 12 + ' col-sm-3  ',
   },

@@ -20,7 +20,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tool
 
 
 
-const Graph = ({type,title,subtitle,chartData,timeline}) => {
+const Graph = ({type,title,subtitle,chartData,timeline,staff}) => {
 
     const components = {
         pie: Pie,
@@ -35,7 +35,7 @@ const Graph = ({type,title,subtitle,chartData,timeline}) => {
           <CCardSubtitle className="mb-2 text-medium-emphasis">
              {subtitle}
           </CCardSubtitle>
-          <SpecificStory data={chartData} timeline={timeline} />  
+          <SpecificStory data={chartData} timeline={timeline} staff={staff} />  
         </CCardBody>
       </CCard>
     </CCol>

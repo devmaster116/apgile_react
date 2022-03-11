@@ -25,7 +25,7 @@ export const LineChart = (props) => {
 
     const [Linelabels, setLineLabels] = useState([])
     const [Linedata, setLineData] = useState([])
-    // const [SecondLinedata, setSecondLineData] = useState([])
+    const [SecondLinedata, setSecondLineData] = useState([])
 
     useEffect(() => {
      var labels = [];
@@ -44,10 +44,9 @@ export const LineChart = (props) => {
 
      labels && setLineLabels(labels);
      linedata && setLineData(linedata);
-    //  secondLinedata && setSecondLineData(secondLinedata);
+     secondLinedata && setSecondLineData(secondLinedata);
     }, [props.data])
 
-    console.log(props.staff,"data")
    const getTitle = (timeline) => {
      switch (timeline) {
        case "today":
@@ -66,26 +65,25 @@ export const LineChart = (props) => {
          break;
      }
    };
+  //  const doubleDataSet = [];
+   const dataSet = [ 
+     {
+        label: props?.staff !== undefined ? "Total" : props?.timeline.toUpperCase(),
+        data: [...Linedata],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    }
+    ];
+    props?.staff !== undefined && dataSet.push({
+      label:"Completed",
+      data: [...SecondLinedata],
+      borderColor:  'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    })
     const labels = [...Linelabels];
     const data =  {
       labels,
-        datasets: [
-          {
-            label: props?.staff ? "Total" : props?.timeline.toUpperCase(),
-            data: [...Linedata],
-            // labels: ["today","yesterday"],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-          // props?.staff && {
-          //   label:props?.staff && "Completed",
-          //   data: [...SecondLinedata],
-          //   // labels: ["today","yesterday"],
-          //   borderColor: 'rgb(53, 162, 235)',
-          //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          // },
-          
-        ],
+        datasets:dataSet
       };
       const options = {
         responsive: true,
