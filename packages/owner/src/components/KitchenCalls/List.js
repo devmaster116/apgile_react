@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Card, CardBody, CardHeader, Button} from 'reactstrap';
+import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
-import api from "@evenlogics/whf-api";
-import {toast} from 'react-toastify';
+// import api from "@evenlogics/whf-api";
+// import {toast} from 'react-toastify';
 import AddInternal from "./Add";
 
 
@@ -15,18 +15,18 @@ const KithcenCallList = (props) => {
         setQuery((prev) => !prev)
     }, [props.branchId]);
 
-    const deleteUser = (id) => {
-        api.request("delete", `/${props?.branchId}/internal-call/${id}`)
-            .then((data) => {
-                console.log(data.message, "message")
-                toast.success(data.message)
-                setQuery(!query)
-            }, 3000)
-            .catch((error) => {
-                    toast.error(`Error ! ${error.response.data.message}`)
-                }
-            )
-    }
+    // const deleteUser = (id) => {
+    //     api.request("delete", `/${props?.branchId}/internal-call/${id}`)
+    //         .then((data) => {
+    //             console.log(data.message, "message")
+    //             toast.success(data.message)
+    //             setQuery(!query)
+    //         }, 3000)
+    //         .catch((error) => {
+    //                 toast.error(`Error ! ${error.response.data.message}`)
+    //             }
+    //         )
+    // }
 
     const filters = {
 
@@ -160,12 +160,12 @@ const KithcenCallList = (props) => {
             order: 'desc'
         }
     ];
-    const reverseCall = (id) => {
-        console.log(id, "data")
-        api.request("patch", `/${props?.branchId}/internal-call/${id}`).then(() => {
-            setQuery(!query)
-        }).catch((error) => console.log(error));
-    }
+    // const reverseCall = (id) => {
+    //     console.log(id, "data")
+    //     api.request("patch", `/${props?.branchId}/internal-call/${id}`).then(() => {
+    //         setQuery(!query)
+    //     }).catch((error) => console.log(error));
+    // }
     return (
         <div className="animated">
             <AddInternal match={props.match}/>

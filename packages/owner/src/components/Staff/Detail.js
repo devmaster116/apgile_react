@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Block from "../DashboardWidgets/Block";
 import {CCol,CRow} from "@coreui/react-pro";
 import api from "@evenlogics/whf-api";
-import {connect} from "react-redux";
 import { getColor } from "@facepays/common";
 import Graph from '../DashboardWidgets/Graph';
 import "../../style/style.css";
@@ -80,7 +79,7 @@ const Detail = (props) => {
 
 
   return (
-    <div>
+   <div>
       <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
         <CardHeader>
           <b>Details</b>
