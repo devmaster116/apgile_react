@@ -297,6 +297,7 @@ const Add = (props) => {
       font_color: {
         type: "color",
         label: "Font Color",
+        defaultValue: "#000000",
         name: "font_color",
         col: 2,
         condition: showAddFields,
@@ -304,6 +305,7 @@ const Add = (props) => {
       bg_color: {
         type: "color",
         label: "Background Color",
+        defaultValue: "#ffffff",
         name: "bg_color",
         col: 2,
         condition: showAddFields,
