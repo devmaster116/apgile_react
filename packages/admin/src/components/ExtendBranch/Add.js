@@ -37,7 +37,7 @@ const ExtendBranchAdd = (props) =>  {
 
 
     let fields = {
-        name: {
+        branch_name: {
             col:3,
             type:"text",
             label:"Name",
@@ -63,14 +63,13 @@ const ExtendBranchAdd = (props) =>  {
             col: 3,
             callback: (data) => companyChangeHandler(data)
         },
-        phone1:{
+        branch_phone1:{
             type: "masked",
             mask: maskedValue,
             col:3,
             label:"Phone",
-            required:true,
+            // required:true,
             // maxlength:13,
-            name:"phone1",
             formatChars: {
                 '0': '[0-9]',
                 'a': '[A-Za-z]',
@@ -121,6 +120,118 @@ const ExtendBranchAdd = (props) =>  {
             col: 3
         },
 
+        "Admin Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+
+        },
+        // title: {
+        //     // parent: "user",
+        //     type: "advanceSelect",
+        //     label: "Title",
+        //     target: "title-list",
+        //     name: "title",
+        //     required: true,
+        //     col: 2,
+        //     condition: showAddFields
+        // },
+        username: {
+            type: "text",
+            label: "Username",
+            name: "username",
+            disabled: id ? true : false,
+            required: true,
+            col: 3,
+
+        },
+
+        first_name: {
+            // parent: "user",
+            type: "text",
+            label: "First Name",
+            name: "first_name",
+            required: true,
+            col: 3,
+
+        },
+        last_name: {
+            // parent: "user",
+            type: "text",
+            label: "Last Name",
+            name: "last_name",
+            required: true,
+            col: 3,
+
+        },
+        gender_id: {
+            // parent: "user",
+            // required:true,
+            type: "advanceSelect",
+            options: [
+                {
+                    value: "1",
+                    label: "Male",
+                },
+                {
+                    value: "2",
+                    label: "Female",
+                },
+                {
+                    value: "3",
+                    label: "Other",
+                },
+            ],
+            label: "Gender",
+            name: "gender_id",
+            col: 3,
+
+        },
+        email: {
+            // parent: "user",
+            type: "email",
+            label: "Email",
+            name: "email",
+            // required: true,
+            col: 2,
+
+        },
+        u_phone1: {
+            // parent: "user",
+            type: "masked",
+            mask: maskedValue,
+            label: "Phone",
+            name: "u_phone1",
+            // required: true,
+            col: 2,
+            formatChars: {
+                0: "[0-9]",
+                a: "[A-Za-z]",
+                "*": "[A-Za-z0-9]",
+            },
+
+            className: "phoneMask",
+        },
+        password: {
+            // parent: "user",
+            type: "password",
+            label: "Password",
+            name: "password",
+            required: !id,
+            col: 2,
+
+        },
+        password_confirmation: {
+            // parent: "user",
+            oneOf: "password",
+            type: "password",
+            required: !id,
+            label: "Password Confirmation",
+            name: "password_confirmation",
+            col: 3,
+
+        },
+
         "Settings": {
             isDummyField: true,
             type: "h4",
@@ -134,15 +245,6 @@ const ExtendBranchAdd = (props) =>  {
             required: true,
             col: 2,
             min:0
-        },
-        escalation_hop: {
-            parent: 'settings',
-            type: "number",
-            label: "Escalation Hop",
-            // required: true,
-            col: 2,
-            min:0
-
         },
         cycle: {
             parent: 'settings',
@@ -225,13 +327,48 @@ const ExtendBranchAdd = (props) =>  {
             required: true,
             options: timezonesOptions(),
             col: 4,
-        }
+        },
+
+        "Style Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12
+        },
+        font_color: {
+            type: "color",
+            label: "Font Color",
+            defaultValue: "#000000",
+            name: "font_color",
+            col: 2,
+        },
+        bg_color: {
+            type: "color",
+            label: "Background Color",
+            defaultValue: "#ffffff",
+            name: "bg_color",
+            col: 2
+        },
+
+        logo: {
+            type: "filePic",
+            label: "Logo",
+            name: "logo",
+            // required: true,
+            col: 3
+        },
+        bg_image: {
+            type: "filePic",
+            label: "Background Image",
+            name: "bg_image",
+            // required: true,
+            col: 5
+        },
     }
 
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle('Branch', id)} />
+                <Header title={formPageTitle('Outlet', id)} />
                 <CardBody>
                     <FormGenerator
                         targetEntity="branches"

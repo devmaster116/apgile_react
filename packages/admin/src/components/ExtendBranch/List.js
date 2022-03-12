@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
-
+import api from "@evenlogics/whf-api";
 
 class List extends Component {
     render() {
@@ -49,11 +49,24 @@ class List extends Component {
             }
         ];
 
+        const companyLogin = (data) => {
+            let currentUser = JSON.parse(localStorage?.getItem('currentUser'));
+            console.log(data);
+            let payload = {
+                // id : data?.user?.id,
+                id: data?.owner_id,
+            }
+            api.request("post", "/generate-token", payload, currentUser?.authToken).then((data) => {
+                console.log(data,"data")
+                window.open(`${process.env.REACT_APP_OWNER_PANEL_URL}/#/validateAsOwner/${data?.data?.token}&${currentUser?.authToken}`, "_blank")
+            }).catch((error) => console.log(error));
+        };
+
         return (
             <div className="animated">
                 <Card>
                     <CardHeader>
-                        <strong>Branches List</strong>
+                        <strong>Outlets List</strong>
                     </CardHeader>
                     <CardBody>
                         <RemoteTable
@@ -67,6 +80,12 @@ class List extends Component {
                             filters={filters}
                             showAdvanceFilters={true}
                             {...this.props.remoteTableFields}
+                            customButton={{
+                                name: "Manage Outlet",
+                                color: "warning",
+                                classes:"text-white",
+                                callback: (data) => companyLogin(data),
+                            }}
                         />
                     </CardBody>
                 </Card>
