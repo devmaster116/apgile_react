@@ -31,21 +31,26 @@ export const LineChart = (props) => {
      var labels = [];
      var linedata = [];
      var secondLinedata = [];
+   if(props?.staff === false ||  props?.staff === undefined){
+    props?.data?.calls_grouped && Object.entries(props?.data?.calls_grouped).forEach(([key, val], i) => {
+      labels.push(key);
+      linedata.push(val);
+     })
+   }  
 
-     props?.data?.total_calls && Object.entries(props?.data?.total_calls).forEach(([key, val], i) => {
+     props?.staff === true && props?.data?.completed_calls && Object.entries(props?.data?.completed_calls).forEach(([key, val], i) => {
       labels.push(key);
       linedata.push(val);
      })
 
-     props?.data?.completed_calls && Object.entries(props?.data?.completed_calls).forEach(([key, val], i) => {
+     props?.staff === true && props?.data?.total_calls && Object.entries(props?.data?.total_calls).forEach(([key, val], i) => {
+      // labels.push(key);
       secondLinedata.push(val);
      })
-
-
      labels && setLineLabels(labels);
      linedata && setLineData(linedata);
      secondLinedata && setSecondLineData(secondLinedata);
-    }, [props.data])
+    }, [props.data,props.staff])
 
    const getTitle = (timeline) => {
      switch (timeline) {
@@ -66,16 +71,19 @@ export const LineChart = (props) => {
      }
    };
   //  const doubleDataSet = [];
+
+
+
    const dataSet = [ 
      {
-        label: props?.staff !== undefined ? "Total" : props?.timeline.toUpperCase(),
+        label: props?.staff === true ? "Completed" : props?.timeline.toUpperCase(),
         data: [...Linedata],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
     }
     ];
-    props?.staff !== undefined && dataSet.push({
-      label:"Completed",
+    props?.staff === true && dataSet.push({
+      label:"Total",
       data: [...SecondLinedata],
       borderColor:  'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -89,5 +97,5 @@ export const LineChart = (props) => {
         responsive: true,
         scales: {x: { title: { display: true, text: getTitle(props.timeline) }},y: { title: { display: true, text: 'Calls' }}}  
       };  
- return  (Linelabels && Linedata) && <Line  data={data} options={options} />;
+ return  (Linelabels) && <Line className='height-graph' data={data} options={options} />;
 }

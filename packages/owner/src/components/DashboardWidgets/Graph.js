@@ -29,7 +29,7 @@ const Graph = ({type,title,subtitle,chartData,timeline,staff}) => {
     const SpecificStory = components[type];
   return (
     <CCol lg={4} >
-      <CCard className="height-graph">
+      <CCard >
         <CCardBody>
           <CCardTitle>{title}</CCardTitle>
           <CCardSubtitle className="mb-2 text-medium-emphasis">
