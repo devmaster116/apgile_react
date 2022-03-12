@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {formPageTitle} from "@facepays/common";
@@ -34,7 +34,7 @@ const Add = (props) => {
 
     const companiesChangeHandler = (data) => {
 
-        console.log(data,"data")
+        console.log(data, "data")
         setTimeout(() => {
             // let returnMask = getMaskHelper(data?.value)
             // setMaskedValue(returnMask);
@@ -44,8 +44,8 @@ const Add = (props) => {
 
     const branchesChangeHandler = (data) => {
 
-        console.log(data,"data")
-      
+        console.log(data, "data")
+
     }
 
 
@@ -99,8 +99,8 @@ const Add = (props) => {
                 '0': '[0-9]',
                 'a': '[A-Za-z]',
                 '*': '[A-Za-z0-9]'
-              },
-           className:"phoneMask"
+            },
+            className: "phoneMask"
         },
 
 
@@ -114,7 +114,7 @@ const Add = (props) => {
             type: 'text',
             label: 'Username',
             required: true,
-            disabled:id ? true : false,
+            disabled: id ? true : false,
             col: 4
         },
 

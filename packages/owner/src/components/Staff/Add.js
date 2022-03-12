@@ -8,6 +8,7 @@ import {formPageTitle} from "@facepays/common";
 const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
+    const [showPasscode, setShowPasscode] = useState(false);
     const [optionsArr, setOptionsArr] = useState([])
     const {id} = props.match.params;
 
@@ -28,6 +29,24 @@ const ItemAdd = (props) => {
         setQuery((prev) => !prev)
     }, [props.branchId]);
 
+
+    const roleChanged = async (data) => {
+        await data.value;
+        if(data.value == 3 || data.value == 4) {
+            setShowPasscode(true);
+        } else {
+            setShowPasscode(false);
+        }
+    }
+
+    const getInitialValues = async (data) => {
+        await data;
+        if(data.role_id == 3 || data.role_id == 4) {
+            setShowPasscode(true);
+        } else {
+            setShowPasscode(false);
+        }
+    }
 
 
     const fields = {
@@ -127,9 +146,18 @@ const ItemAdd = (props) => {
                 name: "role_id",
                 options: optionsArr,
                 required: true,
-                col: 4,
+                col: 2,
+                callback: (data) => roleChanged(data)
             }
-        }
+        },
+        passcode: {
+            type: "number",
+            required: !id,
+            maxLength: 4,
+            condition: showPasscode,
+            label: "Passcode",
+            col: 2,
+        },
     };
 
     return (
@@ -147,6 +175,7 @@ const ItemAdd = (props) => {
                     redirect="staff"
                     Query={query}
                     extraVals={{branch_id: props.branchId}}
+                    getInitialValues={getInitialValues}
                 />
             </CardBody>
         </Card>
