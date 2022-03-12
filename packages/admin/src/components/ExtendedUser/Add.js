@@ -9,6 +9,7 @@ import api from "@evenlogics/whf-api";
 
 const Add = (props) => {
     const [optionsArr, setOptionsArr] = useState([])
+    const [showPasscode, setShowPasscode] = useState(false)
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -33,8 +34,6 @@ const Add = (props) => {
 
 
     const companiesChangeHandler = (data) => {
-
-        console.log(data, "data")
         setTimeout(() => {
             // let returnMask = getMaskHelper(data?.value)
             // setMaskedValue(returnMask);
@@ -42,10 +41,22 @@ const Add = (props) => {
         }, 1);
     }
 
-    const branchesChangeHandler = (data) => {
+    const roleChanged = async (data) => {
+        await data.value;
+        if(data.value == 3 || data.value == 4) {
+            setShowPasscode(true);
+        } else {
+            setShowPasscode(false);
+        }
+    }
 
-        console.log(data, "data")
-
+    const getInitialValues = async (data) => {
+        await data;
+        if(data.role_id == 3 || data.role_id == 4) {
+            setShowPasscode(true);
+        } else {
+            setShowPasscode(false);
+        }
     }
 
 
@@ -143,13 +154,23 @@ const Add = (props) => {
                 name: "role_id",
                 options: optionsArr,
                 required: true,
-                col: 4,
+                col: 2,
+                callback: roleChanged
             }
+        },
+
+        passcode: {
+            type: "number",
+            required: !id,
+            maxLength: 4,
+            condition: showPasscode,
+            label: "Passcode",
+            col: 2,
         },
 
 
         company_id: {
-            col: 4,
+            col: 3,
             type: "advanceSelect",
             target: "companies?limit=1000",
             label: "Select Company",
@@ -160,16 +181,14 @@ const Add = (props) => {
         },
 
         branch_id: {
-            col: 4,
+            col: 3,
             type: "advanceSelect",
             target: target,
             label: "Select Branch",
             required: true,
             condition: !id,
             async: true,
-            name: "branch_id",
-            callback: (data) => branchesChangeHandler(data)
-
+            name: "branch_id"
         },
     }
 
@@ -188,7 +207,7 @@ const Add = (props) => {
                     name={id ? "editForm" : ""}
                     // repeater={true}
                     // initialValues={props.users.aboutProps}
-
+                    getInitialValues={getInitialValues}
                     redirect="owner/users"
                     // handleSameValueFields={['title', 'slug']}
                     // Query={query}
