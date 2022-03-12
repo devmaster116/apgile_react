@@ -37,7 +37,7 @@ const ExtendBranchAdd = (props) =>  {
 
 
     let fields = {
-        branch_name: {
+        name: {
             col:3,
             type:"text",
             label:"Name",

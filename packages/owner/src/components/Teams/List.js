@@ -63,7 +63,7 @@ const TeamsList = (props) => {
 				formatter: (cell, row) => {
 				return row?.users?.map(users =>{
 				 return users && <span>
-                           {users?.username}{","}
+                           {users?.username+`,`}
 					</span>
 				})
 				},
