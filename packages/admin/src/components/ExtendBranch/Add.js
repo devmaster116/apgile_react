@@ -228,7 +228,7 @@ const ExtendBranchAdd = (props) =>  {
             required: !id,
             label: "Password Confirmation",
             name: "password_confirmation",
-            col: 3,
+            col: 2,
 
         },
 
