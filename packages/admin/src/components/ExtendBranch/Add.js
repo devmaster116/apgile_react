@@ -378,7 +378,7 @@ const ExtendBranchAdd = (props) =>  {
                         name={id ? "editForm" : ""}
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
-                        redirect="entity/branches"
+                        redirect="entity/outlets"
                         // noEdit={true}
                         // match={props.match}
                         // handleSameValueFields={["title", "slug"]}
