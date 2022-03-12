@@ -40,7 +40,7 @@ const ExtendBranchAdd = (props) =>  {
 
 
     let fields = {
-        name: {
+        branch_name: {
             col:3,
             type:"text",
             label:"Name",
@@ -66,14 +66,13 @@ const ExtendBranchAdd = (props) =>  {
             col: 3,
             callback: (data) => companyChangeHandler(data)
         },
-        phone1:{
+        branch_phone1:{
             type: "masked",
             mask: maskedValue,
             col:3,
             label:"Phone",
             // required:true,
             // maxlength:13,
-            name:"phone1",
             formatChars: {
                 '0': '[0-9]',
                 'a': '[A-Za-z]',
