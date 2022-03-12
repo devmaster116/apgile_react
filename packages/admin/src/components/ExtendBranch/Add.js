@@ -385,7 +385,7 @@ const ExtendBranchAdd = (props) =>  {
                         // noEdit={true}
                         // match={props.match}
                         // handleSameValueFields={["title", "slug"]}
-                        debug={true}
+                        // debug={true}
                     />
                 </CardBody>
             </Card>
