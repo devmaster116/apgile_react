@@ -17,13 +17,10 @@ const ExtendBranchAdd = (props) =>  {
 
     const companyChangeHandler = (value) => {
         setTimeout(() => {
-            console.log(value,"value")
-            let returnMask = getMaskHelper( id ? value : value?.value)
-            setMaskedValue(returnMask);
-            console.log("working");
-            (id ? value : value?.value) === "US" ? setShowStates(true) : setShowStates(false)
+            value.value && setMaskedValue((prev) => prev = getMaskHelper(value.value))
+            value.value === "US" ? setShowStates(true) : setShowStates(false)
         }, 0);
-
+       value?.value === "US" ? setShowStates(true) : setShowStates(false)
     }
 
        /* eslint-disable */
@@ -31,7 +28,7 @@ const ExtendBranchAdd = (props) =>  {
 
     useEffect(() => {
         id && api.request("get", `/branches/${id}`).then(({data}) => {
-             companyChangeHandler(data?.address?.country)
+             companyChangeHandler({value :data?.address?.country})
            }).catch((error) => console.log(error));
 
        }, [id])

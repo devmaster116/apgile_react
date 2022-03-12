@@ -17,25 +17,25 @@ const Add = (props) => {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value) => {
-      console.log(value.value,"value")
-      //  return value.options?.map((data) => { data.value === "US" && console.log(data,"conditon match")})
-        setTimeout(() => {
-            let returnMask = getMaskHelper( id ? value : value?.value)
-            setMaskedValue(returnMask);
-            (id ? value : value?.value) === 'US' ? setShowStates(true) : setShowStates(false)
-        }, 1);
+      setTimeout(() => {
+          value.value && setMaskedValue((prev) => prev = getMaskHelper(value.value))
+          value.value === "US" ? setShowStates(true) : setShowStates(false)
+      }, 0);
+     value?.value === "US" ? setShowStates(true) : setShowStates(false)
+  }
 
-    }
+     /* eslint-disable */
 
-       /* eslint-disable */
 
   useEffect(() => {
-   id && api.request("get", `/company-branches/${id}`).then(({data}) => {
-        companyChangeHandler(data?.address?.country)
-      }).catch((error) => console.log(error));
+      id && api.request("get", `/branches/${id}`).then(({data}) => {
+           companyChangeHandler({value :data?.address?.country})
+         }).catch((error) => console.log(error));
 
-  }, [id])
-       /* eslint-enable */
+     }, [id])
+
+     /* eslint-enable */
+
 
     let showAddFields = true;
     if (typeof id != 'undefined' && id) {

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch, connect} from "react-redux";
-import {changeBranch,setBranches} from "../Redux/BranchActions";
+import {changeBranch,setBranches,setPhoneMask} from "../Redux/BranchActions";
+import {getMaskHelper} from "@facepays/common";
 import Select from 'react-select';
 import api from "@evenlogics/whf-api";
 import {
@@ -21,6 +22,7 @@ const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState(0);
+    const [companyAllBranches, setCompanyAllBranches] = useState([]);
     /* eslint-disable */
     useEffect(() => {
 
@@ -28,6 +30,7 @@ const TheHeader = (props) => {
         let roled = ls?.roles?.map(role => role)
          props.userRole === "admin" &&  api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
+                setCompanyAllBranches(data)
                 let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
                 setOptions(optionsArr);
                 props.setBranches(data);
@@ -60,6 +63,10 @@ const TheHeader = (props) => {
     };
 
     const onBranchChange = (data) => {
+         companyAllBranches && companyAllBranches.map((branches)=>
+         branches?.id === data?.value && props.setPhoneMask(getMaskHelper(branches.address.country))
+   )
+
      let selected =  options.map((opt)=>{
             if(opt.value === data.value){
                 return opt
@@ -145,7 +152,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         changeBranch: (valueObj) => dispatch(changeBranch(valueObj)),
-        setBranches: (valueObj) => dispatch(setBranches(valueObj))
+        setBranches: (valueObj) => dispatch(setBranches(valueObj)),
+        setPhoneMask: (valueObj) => dispatch(setPhoneMask(valueObj)),
     }
 }
 

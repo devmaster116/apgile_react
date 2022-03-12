@@ -28,3 +28,10 @@ export const setBranches = (data) => {
     }
 
 }
+export const setPhoneMask = (data) => {
+    return {
+        type : "SET_PHONE_MASK",
+        payload: data,
+    }
+
+}

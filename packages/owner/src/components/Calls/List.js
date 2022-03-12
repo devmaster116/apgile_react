@@ -21,7 +21,7 @@ const List = (props) => {
             col: 12 + ' col-sm-3  ',
         },
 
-        call_status:{
+        status:{
             type: "advanceSelect",
             label: "Select Status",
             target: `${props.branchId}/call/status-list`,
@@ -59,7 +59,7 @@ const List = (props) => {
         },
         {
             dataField: "page.name",
-            text: "Area",
+            text: "QR Code",
             align: "center",
             sort: true,
         },
