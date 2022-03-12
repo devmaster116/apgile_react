@@ -349,7 +349,7 @@ const Add = (props) => {
                         fields={fields}
                         targetId={id}
                         name={id ? "editForm" : ""}
-                        extraVals={{role_id: 2, b_name: "Default Branch"}}
+                        extraVals={{role_id: 2, b_name: "Default Outlet"}}
                         // repeater={true}
                         // initialValues={props.location.aboutProps}
                         redirect="admin/companies"
