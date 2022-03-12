@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import api from "@evenlogics/whf-api";
+import { toast } from 'react-toastify';
 
 class List extends Component {
     render() {
@@ -51,10 +52,13 @@ class List extends Component {
 
         const companyLogin = (data) => {
             let currentUser = JSON.parse(localStorage?.getItem('currentUser'));
-            console.log(data);
+            if(typeof data.manager_id === 'undefined') {
+                toast.error(`Sorry, no manager user is available`)
+            }
+
             let payload = {
                 // id : data?.user?.id,
-                id: data?.owner_id,
+                id: data?.manager_id,
             }
             api.request("post", "/generate-token", payload, currentUser?.authToken).then((data) => {
                 console.log(data,"data")
