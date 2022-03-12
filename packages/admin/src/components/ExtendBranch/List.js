@@ -81,7 +81,7 @@ class List extends Component {
                             showAdvanceFilters={true}
                             {...this.props.remoteTableFields}
                             customButton={{
-                                name: "Manage Branch",
+                                name: "Manage Outlet",
                                 color: "warning",
                                 classes:"text-white",
                                 callback: (data) => companyLogin(data),
