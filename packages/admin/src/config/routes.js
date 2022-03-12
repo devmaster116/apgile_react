@@ -119,10 +119,10 @@ const routes = [
 
 
 
-	{ path: '/entity/branches', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
-	{ path: '/entity/branches/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
-	{ path: '/branches/:id/edit', exact: true,  roles:['super-admin'],component: ExtendBranchAdd },
-	{ path: '/branches/:id/details', exact: true,  roles:['super-admin'],component: ExtendBranchDetail},
+	{ path: '/entity/outlets', exact: true, name: 'List',  roles:['super-admin'],component: ExtendBranchList },
+	{ path: '/entity/outlets/add', exact: true, name: 'Add',  roles:['super-admin'],component: ExtendBranchAdd },
+	{ path: '/outlets/:id/edit', exact: true,  roles:['super-admin'],component: ExtendBranchAdd },
+	{ path: '/outlets/:id/details', exact: true,  roles:['super-admin'],component: ExtendBranchDetail},
 
 	{ path: '/admin/companies', exact: true,  roles:['super-admin'],component: CompanyList },
 	{ path: '/admin/companies/add', exact: true, roles:['super-admin'],component: CompanyAdd },
@@ -154,9 +154,9 @@ const routes = [
 	{path : "/super-admins/add" ,exact : true ,  roles:['super-admin'],component : SuperAdminAdd},
 	{path : "/super-admins/:id/edit" ,exact : true ,  roles:['super-admin'],component : SuperAdminAdd},
 	{path : "/super-admins/:id/details" ,exact : true ,  roles:['super-admin'],component : SuperAdminDetail},
-	
+
 	{path : "/change-password" ,exact : true ,  roles:['super-admin'],component : ChangePassowrd},
-	
+
 
 
 	// { path: '/staff', exact : true,roles:['admin'],component: StaffList},

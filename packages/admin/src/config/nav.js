@@ -17,12 +17,12 @@ export default {
         icon: "fas fa-calendar-plus",
         to: '/admin/companies'
     },
-    branch: {
+    outlet: {
         name: 'Outlet',
         phrase: 'Outlets',
         order: 30,
         icon: 'fas fa-code-branch',
-        to: '/entity/branches'
+        to: '/entity/outlets'
     },
     persons: {
         name: 'Person',

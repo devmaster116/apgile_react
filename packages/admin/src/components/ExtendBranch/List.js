@@ -75,12 +75,12 @@ class List extends Component {
                     <CardBody>
                         <RemoteTable
                             entity="branches"
-                            customEntity="branches"
+                            customEntity="outlets"
                             columns={columns}
                             sort={defaultSorted}
                             hideDetail={true}
                             // hideEdit={true}
-                            addRoute="/entity/branches/add"
+                            addRoute="/entity/outlets/add"
                             filters={filters}
                             showAdvanceFilters={true}
                             {...this.props.remoteTableFields}
