@@ -18,8 +18,8 @@ export default {
         to: '/admin/companies'
     },
     branch: {
-        name: 'Branch',
-        phrase: 'Branches',
+        name: 'Outlet',
+        phrase: 'Outlets',
         order: 30,
         icon: 'fas fa-code-branch',
         to: '/entity/branches'

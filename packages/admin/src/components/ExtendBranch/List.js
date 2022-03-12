@@ -53,7 +53,7 @@ class List extends Component {
             <div className="animated">
                 <Card>
                     <CardHeader>
-                        <strong>Branches List</strong>
+                        <strong>Outlets List</strong>
                     </CardHeader>
                     <CardBody>
                         <RemoteTable
