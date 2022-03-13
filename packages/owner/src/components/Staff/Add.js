@@ -151,9 +151,9 @@ const ItemAdd = (props) => {
             }
         },
         passcode: {
-            type: "number",
+            type: "masked",
+            mask: "9999",
             required: !id,
-            maxLength: 4,
             condition: showPasscode,
             label: "Passcode",
             col: 2,
