@@ -32,7 +32,7 @@ const ItemAdd = (props) => {
 
     const roleChanged = async (data) => {
         await data.value;
-        if(parseInt(data.value === 3) || parseInt(data.value === 4)) {
+        if(parseInt(data.value) === 3 || parseInt(data.value) === 4) {
             setShowPasscode(true);
         } else {
             setShowPasscode(false);
@@ -41,7 +41,7 @@ const ItemAdd = (props) => {
 
     const getInitialValues = async (data) => {
         await data;
-        if(parseInt(data.role_id === 3) || parseInt(data.role_id === 4)) {
+        if(parseInt(data.role_id) === 3 || parseInt(data.role_id) === 4) {
             setShowPasscode(true);
         } else {
             setShowPasscode(false);

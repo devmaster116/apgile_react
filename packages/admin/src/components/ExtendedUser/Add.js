@@ -43,7 +43,7 @@ const Add = (props) => {
 
     const roleChanged = async (data) => {
         await data.value;
-        if(parseInt(data.value === 3) || parseInt(data.value === 4)) {
+        if(parseInt(data.value)  === 3 || parseInt(data.value) === 4) {
             setShowPasscode(true);
         } else {
             setShowPasscode(false);
