@@ -50,10 +50,12 @@ const ItemAdd = (props) => {
 
 
     const fields = {
-        "Personal Details": {
-            isDummyField: true,
-            type: "h4",
-            col: 12,
+        username: {
+            type: 'text',
+            label: 'Username',
+            required: true,
+            disabled:id ? true : false,
+            col: 3
         },
 
         first_name: {
@@ -89,6 +91,11 @@ const ItemAdd = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
+            col: 2,
+        },
+
+        dummy1: {
+            isDummyField: true,
             col: 1,
         },
 
@@ -112,24 +119,12 @@ const ItemAdd = (props) => {
         },
 
 
-        "Account Details": {
-            isDummyField: true,
-            type: "h4",
-            col: 12,
-        },
-        username: {
-            type: 'text',
-            label: 'Username',
-            required: true,
-            disabled:id ? true : false,
-            col: 4
-        },
         password: {
             type: "password",
             label: "Password",
             name: "password",
             required: !id,
-            col: 4,
+            col: 2,
         },
         password_confirmation: {
             oneOf: "password",
@@ -137,7 +132,7 @@ const ItemAdd = (props) => {
             required: !id,
             label: "Password Confirmation",
             name: "password_confirmation",
-            col: 4,
+            col: 2,
         },
         ...(optionsArr.length > 0) && {
             role_id: {
@@ -157,6 +152,11 @@ const ItemAdd = (props) => {
             condition: showPasscode,
             label: "Passcode",
             col: 2,
+        },
+
+        hidden2: {
+            type: 'hidden',
+            col: 1
         },
     };
 
