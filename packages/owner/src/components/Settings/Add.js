@@ -16,7 +16,7 @@ const Add = (props) => {
     //     else
     //         setShowPlaces(true);
     // }
-
+console.log(showPlaces,"showPlaces")
     const getInitialValues = (data) => {
         setShowPlaces(data.internal_active);
     }
