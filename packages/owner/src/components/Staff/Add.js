@@ -115,7 +115,12 @@ const ItemAdd = (props) => {
             type: "masked",
             mask: props?.phoneMask,
             label: "Phone",
-            col: 2
+            col: 2,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
 
         ...(optionsArr.length > 0) && {

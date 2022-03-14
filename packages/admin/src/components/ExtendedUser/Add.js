@@ -105,7 +105,12 @@ const Add = (props) => {
             label: "Phone",
             // name: "u_phone1",
             // required: true,
-            col: 2
+            col: 2,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
 
 

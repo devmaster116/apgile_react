@@ -5,11 +5,33 @@ import {connect} from "react-redux";
 
 const KithcenCallList  = (props) => {
 	const [query, setQuery] = useState(false);
+    const [minDate, setMinDate] = useState('');
+
 	useEffect(() => {
 		setQuery((prev)=>!prev)
 	}, [props.branchId]);
 
-
+	
+	const filters = {
+		start_date:{
+            type:"date",
+            label:"Select Start Date",
+            col: 12 + ' col-sm-2  ',
+            getValue:(data) => {
+                setTimeout(() => {
+                setMinDate(data?.value)
+            }, 0)
+        }
+        },
+        end_date:{
+            type:"date",
+            label:"Select End Date",
+            col: 12 + ' col-sm-2  ',
+            placeholderText: minDate ? "" : "Please select the start date",
+            disabled:minDate ? false : true,
+            minDate:minDate,
+        }
+    };
 
 		const columns = [
 			// {
@@ -64,6 +86,8 @@ const KithcenCallList  = (props) => {
 							columns={columns}
 							sort={defaultSorted}
 							hideDetail={true}
+							filters={filters}
+							showAAdvancedFilters={true}
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}

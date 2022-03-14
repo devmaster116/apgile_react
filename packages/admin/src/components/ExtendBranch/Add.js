@@ -67,7 +67,12 @@ const ExtendBranchAdd = (props) =>  {
             type: "masked",
             mask: maskedValue,
             col:2,
-            label:"Phone"
+            label:"Phone",
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
         addr1:{
             parent: 'address',
@@ -199,7 +204,12 @@ const ExtendBranchAdd = (props) =>  {
             label: "Phone",
             name: "u_phone1",
             // required: true,
-            col: 2
+            col: 2,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
         password: {
             // parent: "user",

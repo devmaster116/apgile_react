@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 
 const TeamsList = (props) => {
     const [query, setQuery] = useState(false);
+    const [minDate, setMinDate] = useState('');
     useEffect(() => {
         setQuery((prev) => !prev);
     }, [props.branchId]);
@@ -15,7 +16,7 @@ const TeamsList = (props) => {
             label: "Select Location",
             target: `${props?.branchId}/locations`,
             async: true,
-            col: 12 + " col-sm-3 Z-Index ",
+            col: 12 + " col-sm-2 Z-Index ",
         },
 
         ...(props.userRole !== "supervisor" && {
@@ -26,7 +27,7 @@ const TeamsList = (props) => {
                 optionLabel: "full_name",
                 // required: true,
                 // async: true,
-                col: 12 + " col-sm-3 Z-Index ",
+                col: 12 + " col-sm-2 Z-Index ",
             },
         }),
 
@@ -37,8 +38,26 @@ const TeamsList = (props) => {
             optionLabel: "first_name",
             optionId: "id",
             async: true,
-            col: 12 + " col-sm-3 Z-Index ",
+            col: 12 + " col-sm-2 Z-Index ",
         },
+        start_date:{
+            type:"date",
+            label:"Select Start Date",
+            col: 12 + ' col-sm-2  ',
+            getValue:(data) => {
+                setTimeout(() => {
+                setMinDate(data?.value)
+            }, 0)
+        }
+        },
+        end_date:{
+            type:"date",
+            label:"Select End Date",
+            col: 12 + ' col-sm-2  ',
+            placeholderText: minDate ? "" : "Please select the start date",
+            disabled:minDate ? false : true,
+            minDate:minDate,
+        }
     };
 
     const columns = [

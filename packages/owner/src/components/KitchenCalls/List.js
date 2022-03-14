@@ -9,7 +9,7 @@ import AddInternal from "./Add";
 
 const KithcenCallList = (props) => {
     const [query, setQuery] = useState(false);
-    // const [minDate, setMinDate] = useState('');
+    const [minDate, setMinDate] = useState('');
 
     useEffect(() => {
         setQuery((prev) => !prev)
@@ -35,7 +35,7 @@ const KithcenCallList = (props) => {
             label: "Select Location",
             target: `${props?.branchId}/locations`,
             async: true,
-            col: 12 + ' col-sm-3  ',
+            col: 12 + ' col-sm-2  ',
         },
 
         user_id: {
@@ -44,27 +44,27 @@ const KithcenCallList = (props) => {
             target: `${props?.branchId}/role-users/staff`,
             optionLabel: "username",
             async: true,
-            col: 12 + ' col-sm-3  ',
+            col: 12 + ' col-sm-2  ',
         },
 
-        // start_date: {
-        //     type: "date",
-        //     label: "Select Start Date",
-        //     col: 12 + ' col-sm-3  ',
-        //     getValue: (data) => {
-        //         setTimeout(() => {
-        //             setMinDate(data?.value)
-        //         }, 0)
-        //     }
-        // },
-        // end_date: {
-        //     type: "date",
-        //     label: "Select End Date",
-        //     col: 12 + ' col-sm-3  ',
-        //     placeholderText: minDate ? "" : "Please select the start date",
-        //     disabled: minDate ? false : true,
-        //     minDate: minDate,
-        // }
+        start_date: {
+            type: "date",
+            label: "Select Start Date",
+            col: 12 + ' col-sm-2  ',
+            getValue: (data) => {
+                setTimeout(() => {
+                    setMinDate(data?.value)
+                }, 0)
+            }
+        },
+        end_date: {
+            type: "date",
+            label: "Select End Date",
+            col: 12 + ' col-sm-2  ',
+            placeholderText: minDate ? "" : "Please select the start date",
+            disabled: minDate ? false : true,
+            minDate: minDate,
+        }
     }
 
     const columns = [

@@ -7,6 +7,8 @@ import api from "@evenlogics/whf-api";
 const ItemsList = (props) => {
 
     const [query, setQuery] = useState(false);
+    const [minDate, setMinDate] = useState('');
+
     const [optionsArr, setOptionsArr] = useState([])
     useEffect(() => {
         var rolesArray=[];
@@ -34,12 +36,30 @@ const ItemsList = (props) => {
             type: "advanceSelect",
             label: "Role",
             name: "roles_role_id",
+            col: 12 + ' col-sm-2  ',
             // target: "roles",
             options:optionsArr,
             // optionValue: 'value',
             // optionLabel: 'label',
             // required: true,
-            col: 4,
+        },
+        start_date:{
+            type:"date",
+            label:"Select Start Date",
+            col: 12 + ' col-sm-2  ',
+            getValue:(data) => {
+                setTimeout(() => {
+                setMinDate(data?.value)
+            }, 0)
+        }
+        },
+        end_date:{
+            type:"date",
+            label:"Select End Date",
+            col: 12 + ' col-sm-2  ',
+            placeholderText: minDate ? "" : "Please select the start date",
+            disabled:minDate ? false : true,
+            minDate:minDate,
         }
     //     role_id: {
     //       type: "advanceSelect",
