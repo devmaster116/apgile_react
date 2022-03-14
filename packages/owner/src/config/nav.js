@@ -124,6 +124,13 @@ export default {
         order: 100,
         icon: "fas fa-cogs",
     },
+    internal_calls: {
+        phrase: "Internal Places",
+        to: "/internal-places",
+        roles: ["admin", "manager"],
+        order: 100,
+        icon: "fas fa-cogs",
+    },
     user: {
         _tag: "CSidebarNavDropdown",
         name: "User",

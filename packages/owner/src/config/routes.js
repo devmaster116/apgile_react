@@ -41,6 +41,7 @@ import ValidateAsOwner from "./../components/ValidateAsOwner";
 
 
 import SettingAdd from "./../components/Settings/Add";
+import InternalCalls from "./../components/InternalCalls/Form";
 
 import CallsList from "./../components/Calls/List";
 import KitchenCalls from "./../components/KitchenCalls/List";
@@ -116,6 +117,7 @@ const routes = [
 	{ path: '/staff/:id/details', exact : true,component: StaffDetail,isPublic: false},
 
 	{ path: '/settings', exact : true,component: SettingAdd,isPublic: false},
+	{ path: '/internal-places', exact : true,component: InternalCalls,isPublic: false},
 
 	{path : "/promotions" ,exact : true ,component :PromotionsList},
 	{path : "/promotions/add" ,exact : true ,component : AddPromotions},
