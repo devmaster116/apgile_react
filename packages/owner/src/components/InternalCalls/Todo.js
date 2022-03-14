@@ -14,14 +14,7 @@ const Todo = (props) =>  {
 
   useEffect(() => {
     api.request("get",`/${props.branchId}/call-places`).then(({data}) => {
-        // let labelArr = []
-        // let valueArr = []
-        // Object.entries(data?.calls).forEach(([key, val], i) => {
-        //     if(key !== "total"){
-        //         labelArr.push(key.toUpperCase());
-        //         valueArr.push(val);
-        //     }
-        // })
+        setItems(data)
         console.log(data,"data")
       })
       .catch((error) => console.log(error));
@@ -34,7 +27,11 @@ const Todo = (props) =>  {
   }
  const handleAdd = e => {
     if (text !== "") {
-      const item = [...items,text];
+      const item = [...items,{name:text}];
+    let payload = {
+        places:item
+    }
+      api.request("post",`/${props.branchId}/call-places`,payload).then(() => {}).catch((error) => console.log(error));
       setItems(item);
       setText("");
     }
@@ -44,28 +41,32 @@ const Todo = (props) =>  {
     const item = Olditems.filter((element, i) => {
       return i !== id
     })
+    let payload = {
+        places:item
+    }
+    api.request("post",`/${props.branchId}/call-places`,payload).then(() => {}).catch((error) => console.log(error));
     setItems(item)
   }
  
     return (
       <div className="container-fluid my-5">
         <div className="row">
-          <div className="col-sm-6 mx-auto text-white shadow-lg p-3">
+          <div className="col-sm-8 mx-auto text-white shadow-lg p-3">
             <h2 className="text-center"> Today's Calls </h2>
             <div className="container-fluid">
               <div className="row">
-                <div className="col-9">
+                <div className="col-xl-9 col-lg-9 col-md-9 col-sm-6 col-xs-6">
                   <input type="text" className="form-control" placeholder="Add Call Here" value={text} onChange={handleChange} />
                 </div>
-                <div className="col-2">
-                  <button className="btn btn-warning px-5 font-weight-bold" onClick={handleAdd}>Add</button>
+                <div className="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                  <button className="btn btn-warning px-5 font-weight-bold text-white" onClick={handleAdd}>Add</button>
                 </div>
               </div>
               <div className="conatiner">
                 <ul className="list-unstyled row m-5">
                   {
                     items.map((value, i) => {
-                      return <Plan key={i} id={i} value={value} sendData={handleDelete} />
+                      return <Plan key={i} id={i} value={value.name} sendData={handleDelete} />
                     })
                   }
                 </ul>
