@@ -44,13 +44,49 @@ const Add = (props) => {
             col: 3,
             required: true,
         },
+        week_day: {
+            type: 'advanceSelect',
+            label: "Week Day",
+            target: `${props.branchId}/week-day-list`,
+            // async: true,
+            name: 'week_day',
+            multi:true,
+            required: true,
+            col: 12 + ' col-xl-2 col-lg-3 col-md-6  ',
+        },
+        time: {
+            type: 'timeRange',
+            label: 'Time',
+            // required: true,
+            name: 'time',
+            col: 12 + ' col-xl-3 col-lg-3 col-md-6  ',
+        },
         description: {
             type: "textarea",
             label: "Description",
             // required: true,
             name: "description",
-            col: 4,
+            col: 12 + ' col-xl-5 col-lg-3 col-md-6  ',
         },
+        status: {
+            type: "switch",
+            label: "Status",
+            required: true,
+            name:"status",
+            col: 12 + ' col-xl-2 col-lg-3 col-md-6  ',
+        },
+     
+       
+        dummy: {
+            col: 3,
+            isDummyField: true
+        },
+
+        "Media Details": {
+            isDummyField: true,
+            type: "h4",
+            col: 12,
+          },
         promotion_image: {
             type: "filePic",
             label: "Promotion Banner",
@@ -58,17 +94,7 @@ const Add = (props) => {
             required: id ? false : true,
             col: 4,
         },
-        dummy: {
-            col: 3,
-            isDummyField: true
-        },
-        status: {
-            type: "switch",
-            label: "Status",
-            required: true,
-            name:"status",
-            col: 2
-        }
+    
     };
     const extraVal = id ? {
         _method: "PUT",
