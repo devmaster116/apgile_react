@@ -1,14 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
-import {FormGenerator} from '@evenlogics/whf-form-generator';
+// import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
-import {timezonesOptions} from '@facepays/common';
-
+// import {timezonesOptions} from '@facepays/common';
+import Todo from "./Todo";
 
 const Form = (props) => {
 
-    const [showPlaces, setShowPlaces] = useState(false);
-    const id = props.branchId;
 
 
     return (
@@ -17,7 +15,7 @@ const Form = (props) => {
                 Internal Calls
             </CardHeader>
             <CardBody>
-
+                  <Todo/>
             </CardBody>
         </Card>
     );
