@@ -312,7 +312,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "text",
             label: "Sub Title",
             // required: true,
-            col: 4,
+            col: 3,
         },
 
         page_title:{
@@ -320,7 +320,15 @@ const ExtendBranchAdd = (props) =>  {
             type: "text",
             label: "Title",
             // required: true,
-            col: 4,
+            col: 3,
+        },
+
+        page_footer:{
+            parent: 'settings',
+            type: "text",
+            label: "Footer",
+            // required: true,
+            col: 3,
         },
 
         timezone: {
@@ -330,7 +338,7 @@ const ExtendBranchAdd = (props) =>  {
             name: "timezone",
             required: true,
             options: timezonesOptions(),
-            col: 4,
+            col: 3,
         },
 
         "Style Details": {
