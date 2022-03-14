@@ -72,13 +72,7 @@ const Add = (props) => {
         label: "Company Phone",
         // required: true,
         name: "phone1",
-        col: 2,
-        formatChars: {
-          0: "[0-9]",
-          a: "[A-Za-z]",
-          "*": "[A-Za-z0-9]",
-        },
-        className: "phoneMask",
+        col: 2
       },
 
       dummy1: {
@@ -237,13 +231,7 @@ const Add = (props) => {
         name: "u_phone1",
         // required: true,
         col: 2,
-        formatChars: {
-          0: "[0-9]",
-          a: "[A-Za-z]",
-          "*": "[A-Za-z0-9]",
-        },
-        condition: showAddFields,
-        className: "phoneMask",
+        condition: showAddFields
       },
       password: {
         // parent: "user",

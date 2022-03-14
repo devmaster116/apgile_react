@@ -89,7 +89,7 @@ const ItemAdd = (props) => {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 2,
+            col: 1,
         },
 
         email: {
