@@ -82,7 +82,7 @@ const Add = (props) => {
 
       dummy1: {
         isDummyField: true,
-        hidden: true
+        col: 1
       },
 
 
@@ -217,6 +217,7 @@ const Add = (props) => {
 
       dummy2: {
         isDummyField: true,
+        col: 1
       },
 
       email: {
@@ -235,11 +236,6 @@ const Add = (props) => {
         label: "Phone",
         name: "u_phone1",
         // required: true,
-        formatChars: {
-          '0': '[0-9]',
-          'a': '[A-Za-z]',
-          '*': '[A-Za-z0-9]'
-        },
         col: 2,
         condition: showAddFields
       },
@@ -302,6 +298,18 @@ const Add = (props) => {
         name: "max_codes",
         required: true,
         col: 1,
+        condition: showAddFields,
+      },
+
+      dummy3: {
+        isDummyField: true,
+        col:2
+      },
+
+      page_footer: {
+        type: "text",
+        label: "Page Footer",
+        col: 3,
         condition: showAddFields,
       },
 
