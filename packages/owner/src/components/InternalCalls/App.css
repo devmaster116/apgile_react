@@ -37,3 +37,22 @@
     transform: rotate(360deg);
   }
 }
+/* 
+.row {
+    background-color: darkslategray;
+  } */
+  input[type="text"] {
+    background: transparent;
+    color: black;
+  }
+  input[type="text"]:focus {
+    background: transparent;
+    color: black;
+  }
+
+
+  .shadow {
+      color: rgb(70, 63, 63);
+  }
+
+ /*   background-color: darkslategray; */

@@ -57,7 +57,7 @@ const Add = (props) => {
         time: {
             type: 'timeRange',
             label: 'Time',
-            // required: true,
+            required: true,
             name: 'time',
             col: 12 + ' col-xl-3 col-lg-3 col-md-6  ',
         },
