@@ -70,6 +70,12 @@ const List = (props) => {
         // },
 
         {
+            dataField: "created_at",
+            text: "Created At",
+            align: "center",
+            sort: true,
+        },
+        {
             dataField: "name",
             text: "Area Name",
             align: "center",

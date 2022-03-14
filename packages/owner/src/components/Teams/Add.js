@@ -21,7 +21,7 @@ const TeamsAdd = (props) => {
             },
             location_id: {
                 type: 'advanceSelect',
-                label: "Locations",
+                label: "Location",
                 target: `${props.branchId}/locations`,
                 // optionLabel: 'full_name',
                 // required: true,

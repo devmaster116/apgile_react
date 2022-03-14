@@ -37,7 +37,7 @@ const List = (props) => {
      ],
       col: 12 + ' col-sm-3  ',
   },
-  
+
 }
   const defaultSorted = [{ dataField: "title", order: "desc" }];
   const columns = [
@@ -47,6 +47,12 @@ const List = (props) => {
     //   align: "center",
     //   sort: true,
     // },
+    {
+      dataField: "created_at",
+      text: "Created At",
+      align: "center",
+      sort: true,
+    },
     {
       dataField: "name",
       text: "Name",

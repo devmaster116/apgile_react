@@ -19,17 +19,23 @@ const KithcenCallList  = (props) => {
 			// 	sort: true
 			// },
 			{
+				dataField: "created_at",
+				text: "Created At",
+				align: "center",
+				sort: true,
+			},
+			{
 				dataField: 'name',
 				text: 'Name',
 				align: 'center',
 				sort: true
 			},
-			// {
-			// 	dataField: 'description',
-			// 	text: 'Description',
-			// 	align: 'center',
-			// 	sort: true
-			// },
+			{
+				dataField: 'description',
+				text: 'Description',
+				align: 'center',
+				sort: true
+			},
 
 
 		];

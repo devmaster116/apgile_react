@@ -58,6 +58,10 @@ const Add = (props) => {
             required: id ? false : true,
             col: 4,
         },
+        dummy: {
+            col: 3,
+            isDummyField: true
+        },
         status: {
             type: "switch",
             label: "Status",
@@ -75,7 +79,7 @@ const Add = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle('Section', id)}/>
+                <Header title={formPageTitle('Promotion', id)}/>
                 <CardBody>
                     <FormGenerator
                         targetEntity={`${props.branchId}/promotions`}

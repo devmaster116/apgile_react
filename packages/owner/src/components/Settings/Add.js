@@ -22,12 +22,19 @@ const Add = (props) => {
     }
 
     const fields = {
+        qrcode_details: {
+            type: "switch",
+            label: "Show location on QR Codes",
+            // required: true,
+            col: 3,
+        },
+
         wait_time: {
             type: "number",
             label: "Wait Time",
             required: true,
             name: "wait_time",
-            col: 2,
+            col: 1,
             min: 0
         },
         // escalation_hop: {
@@ -44,7 +51,7 @@ const Add = (props) => {
             label: "Cycle",
             required: true,
             name: "cycle",
-            col: 2,
+            col: 1,
             min: 0
 
         },
@@ -53,29 +60,17 @@ const Add = (props) => {
             label: "Throttle Wait",
             required: true,
             name: "throttle_wait",
-            col: 2,
+            col: 1,
             min: 0
 
         },
 
-        qrcode_details: {
-            type: "switch",
-            label: "Show location on QR Codes",
-            // required: true,
-            col: 3,
-        },
+
 
         "Site Content": {
             isDummyField: true,
             type: "h4",
             col: 12,
-        },
-
-        page_subtitle: {
-            type: "text",
-            label: "Sub Title",
-            // required: true,
-            col: 3,
         },
 
         page_title: {
@@ -85,12 +80,19 @@ const Add = (props) => {
             col: 3,
         },
 
-        page_footer: {
+        page_subtitle: {
             type: "text",
-            label: "Footer Text",
+            label: "Sub Title",
             // required: true,
             col: 3,
         },
+
+        // page_footer: {
+        //     type: "text",
+        //     label: "Footer Text",
+        //     // required: true,
+        //     col: 3,
+        // },
 
         timezone: {
             type: "advanceSelect",

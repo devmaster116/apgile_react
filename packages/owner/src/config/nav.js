@@ -186,7 +186,7 @@ export default {
                 icon: "fas fa-users",
             },
             sections: {
-                phrase: "Sections",
+                phrase: "Promotions",
                 order: 1,
                 to: "/promotions",
                 roles: ["admin", "manager"],

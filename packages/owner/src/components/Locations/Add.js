@@ -25,7 +25,12 @@ const LocationsAdd = (props) => {
             label: "Name",
             required: true,
             name: "name",
-            col: 3,
+            col: 2,
+        },
+        description: {
+            type: 'text',
+            label: 'Description',
+            col: 3
         },
         supervisor_id: {
             type: 'advanceSelect',
@@ -37,6 +42,11 @@ const LocationsAdd = (props) => {
             name: 'supervisor_id',
             col: 3,
             condition: !showTeam
+        },
+
+        dummy: {
+            isDummyField: true,
+            col: 4
         },
 
         message_box: {

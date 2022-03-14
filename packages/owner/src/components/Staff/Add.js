@@ -9,6 +9,7 @@ const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
     const [showPasscode, setShowPasscode] = useState(false);
+    const [showPassword, setShowPassword] = useState(true);
     const [optionsArr, setOptionsArr] = useState([])
     const {id} = props.match.params;
 
@@ -32,19 +33,24 @@ const ItemAdd = (props) => {
 
     const roleChanged = async (data) => {
         await data.value;
-        if(parseInt(data.value) === 3 || parseInt(data.value) === 4) {
-            setShowPasscode(true);
-        } else {
-            setShowPasscode(false);
-        }
+        decidePasswordLogic(data.value);
     }
 
     const getInitialValues = async (data) => {
         await data;
-        if(parseInt(data.role_id) === 3 || parseInt(data.role_id) === 4) {
+        decidePasswordLogic(data.role_id);
+    }
+
+    const decidePasswordLogic = (role) => {
+        role = parseInt(role);
+        if(role === 3 || role === 4) {
             setShowPasscode(true);
+            if(role === 3) {
+                setShowPassword(false);
+            }
         } else {
             setShowPasscode(false);
+            setShowPassword(true);
         }
     }
 
@@ -109,31 +115,9 @@ const ItemAdd = (props) => {
             type: "masked",
             mask: props?.phoneMask,
             label: "Phone",
-            col: 2,
-            className:"phoneMask",
-            formatChars: {
-                '0': '[0-9]',
-                'a': '[A-Za-z]',
-                '*': '[A-Za-z0-9]'
-              },
+            col: 2
         },
 
-
-        password: {
-            type: "password",
-            label: "Password",
-            name: "password",
-            required: !id,
-            col: 2,
-        },
-        password_confirmation: {
-            oneOf: "password",
-            type: "password",
-            required: !id,
-            label: "Password Confirmation",
-            name: "password_confirmation",
-            col: 2,
-        },
         ...(optionsArr.length > 0) && {
             role_id: {
                 type: "advanceSelect",
@@ -147,10 +131,27 @@ const ItemAdd = (props) => {
         },
         passcode: {
             type: "masked",
-            mask: "9999",
+            mask: "0000",
             required: !id,
             condition: showPasscode,
             label: "Passcode",
+            col: 1,
+        },
+        password: {
+            type: "password",
+            label: "Password",
+            name: "password",
+            required: !id,
+            condition: showPassword,
+            col: 2,
+        },
+        password_confirmation: {
+            oneOf: "password",
+            type: "password",
+            required: !id,
+            condition: showPassword,
+            label: "Password Confirmation",
+            name: "password_confirmation",
             col: 2,
         },
 

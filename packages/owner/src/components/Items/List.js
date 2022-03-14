@@ -29,6 +29,12 @@ const ItemsList = (props) => {
 			// 	sort: true
 			// },
 			{
+				dataField: "created_at",
+				text: "Created At",
+				align: "center",
+				sort: true,
+			},
+			{
 				dataField: 'name',
 				text: 'Name',
 				align: 'center',
@@ -55,6 +61,12 @@ const ItemsList = (props) => {
 			{
 				dataField: 'starting_number',
 				text: 'Starting Number',
+				align: 'center',
+				sort: true
+			},
+			{
+				dataField: 'location.name',
+				text: 'Location',
 				align: 'center',
 				sort: true
 			},

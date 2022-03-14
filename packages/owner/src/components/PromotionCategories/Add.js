@@ -37,6 +37,10 @@ const Add = (props) => {
             min:0,
             col: 2,
         },
+        dummy: {
+            col: 2,
+            isDummyField: true
+        },
         status: {
             type: "switch",
             label: "Status",
