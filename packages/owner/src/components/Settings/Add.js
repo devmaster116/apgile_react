@@ -158,12 +158,12 @@ const Add = (props) => {
             col: 6,
         },
 
-        "Internal Calls": {
-            isDummyField: true,
-            type: "h4",
-            col: 12,
-            condition: showPlaces
-        },
+        // "Internal Calls": {
+        //     isDummyField: true,
+        //     type: "h4",
+        //     col: 12,
+        //     condition: showPlaces
+        // },
 
         // internal_active: {
         //     type: "switch",
@@ -175,24 +175,24 @@ const Add = (props) => {
         // },
     };
 
-    if(showPlaces) {
-        fields['internal_places'] = {
-            type: "dynamicFields",
-            label: "Internal Places",
-            name: "internal_places",
-            // required: true,
-            col: 4,
-            condition: true,
-            schema: {
-                name: {
-                    type: "text",
-                    label: "",
-                    // required: true,
-                    col: 12,
-                }
-            }
-        }
-    }
+    // if(showPlaces) {
+    //     fields['internal_places'] = {
+    //         type: "dynamicFields",
+    //         label: "Internal Places",
+    //         name: "internal_places",
+    //         // required: true,
+    //         col: 4,
+    //         condition: true,
+    //         schema: {
+    //             name: {
+    //                 type: "text",
+    //                 label: "",
+    //                 // required: true,
+    //                 col: 12,
+    //             }
+    //         }
+    //     }
+    // }
 
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
