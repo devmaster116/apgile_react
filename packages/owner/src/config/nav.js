@@ -128,7 +128,7 @@ export default {
         phrase: "Internal Places",
         to: "/internal-places",
         roles: ["admin", "manager"],
-        order: 100,
+        order: 101,
         icon: "fas fa-cogs",
     },
     user: {

@@ -56,7 +56,7 @@ const Todo = (props) =>  {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-xl-9 col-lg-9 col-md-9 col-sm-6 col-xs-6">
-                  <input type="text" className="form-control" placeholder="Add Call Here" value={text} onChange={handleChange} />
+                  <input type="text" className="form-control" placeholder="Add call places here" value={text} onChange={handleChange} />
                 </div>
                 <div className="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-xs-6">
                   <button className="btn btn-warning px-5 font-weight-bold text-white" onClick={handleAdd}>Add</button>

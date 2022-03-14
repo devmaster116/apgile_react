@@ -10,6 +10,7 @@ const List = (props) => {
 
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
+    const [pages,setPages] = useState(`${props?.branchId}/pages`)
 
     useEffect(() => {
         setQuery((prev) => !prev)
@@ -26,6 +27,13 @@ const List = (props) => {
             })
             .catch((error) => console.log(error));
     }
+
+    
+    const handleChangeLocation = (data) => {
+        setTimeout(() => {
+            setPages(`${props?.branchId}/location/${data?.value}/pages`)
+        }, 1);
+    }
     const defaultSorted = [{dataField: "name", order: "desc"}];
 
 
@@ -37,6 +45,8 @@ const List = (props) => {
             target: `${props?.branchId}/locations`,
             async: true,
             col: 12 + ' col-sm-2  ',
+            callback: (data) => handleChangeLocation(data)
+
         },
 
         // team_id: {
@@ -55,10 +65,10 @@ const List = (props) => {
         //     async: true,
         //     col: 12 + ' col-sm-3  ',
         // },
-        item_id: {
+        page_id: {
             type: "advanceSelect",
             label: "Select Item",
-            target: `${props?.branchId}/items`,
+            target: pages,
             async: true,
             col: 12 + ' col-sm-2  ',
         },

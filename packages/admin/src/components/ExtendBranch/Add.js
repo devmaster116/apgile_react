@@ -167,15 +167,15 @@ const ExtendBranchAdd = (props) =>  {
             type: "advanceSelect",
             options: [
                 {
-                    value: "1",
+                    value: 1,
                     label: "Male",
                 },
                 {
-                    value: "2",
+                    value: 2,
                     label: "Female",
                 },
                 {
-                    value: "3",
+                    value: 3,
                     label: "Other",
                 },
             ],

@@ -12,7 +12,7 @@ const Form = (props) => {
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
             <CardHeader>
-                Internal Calls
+                Internal Places
             </CardHeader>
             <CardBody>
                   <Todo/>
