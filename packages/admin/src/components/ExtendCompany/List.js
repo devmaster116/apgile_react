@@ -3,6 +3,7 @@ import RemoteTable from "@evenlogics/whf-remote-table";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import api from "@evenlogics/whf-api";
+import {fullAddressFormat} from "@facepays/common";
 
 const List = (props) => {
 
@@ -27,7 +28,7 @@ const List = (props) => {
             name: "state",
             col: 3,
         },
-      
+
     }
 
     const columns = [
@@ -37,18 +38,26 @@ const List = (props) => {
         align: "center",
         sort: true,
       },
+        {
+            dataField: "address",
+            text: "Address",
+            align: "center",
+            sort: true,
+            formatter: (cell, row) => {
+                if(row?.address){
+                    return (
+                        fullAddressFormat(row.address)
+                    )
+                }
+
+            },
+        },
       {
         dataField: "phone1",
         text: "Phone Number",
         align: "center",
         sort: true,
-      },
-      {
-        dataField: "address.country",
-        text: "Country",
-        align: "center",
-        sort: true,
-      },
+      }
     ];
 
     const defaultSorted = [{dataField: 'name', order: 'desc'}];

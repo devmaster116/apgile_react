@@ -38,7 +38,7 @@ const ExtendBranchAdd = (props) =>  {
 
     let fields = {
         name: {
-            col:3,
+            col:4,
             type:"text",
             label:"Name",
             required:true,
@@ -66,7 +66,7 @@ const ExtendBranchAdd = (props) =>  {
         branch_phone1:{
             type: "masked",
             mask: maskedValue,
-            col:3,
+            col:2,
             label:"Phone",
             // required:true,
             // maxlength:13,
@@ -79,7 +79,7 @@ const ExtendBranchAdd = (props) =>  {
         },
         addr1:{
             parent: 'address',
-            col:3,
+            col:4,
             type:"text",
             required:true,
             label:"Address",
@@ -117,7 +117,7 @@ const ExtendBranchAdd = (props) =>  {
             label: "Zip Code",
             required: true,
             name: 'zip_code',
-            col: 3
+            col: 1
         },
 
         "Admin Details": {
@@ -184,8 +184,12 @@ const ExtendBranchAdd = (props) =>  {
             ],
             label: "Gender",
             name: "gender_id",
-            col: 3,
+            col: 2,
 
+        },
+
+        dummy2: {
+            isDummyField: true,
         },
         email: {
             // parent: "user",
@@ -193,7 +197,7 @@ const ExtendBranchAdd = (props) =>  {
             label: "Email",
             name: "email",
             // required: true,
-            col: 2,
+            col: 3,
 
         },
         u_phone1: {
@@ -238,12 +242,49 @@ const ExtendBranchAdd = (props) =>  {
             col: 12
         },
 
+        internal_active: {
+            parent: 'settings',
+            type: "switch",
+            label: "Allow Internal Calls",
+            required: true,
+            col: 2
+        },
+
+        max_users:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. Users",
+            required: true,
+            col: 1
+        },
+
+        max_watches:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. Watches",
+            required: true,
+            col: 1
+        },
+
+        max_codes:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. QR Codes",
+            required: true,
+            col: 1
+        },
+
+        spacer: {
+            type: "hidden",
+            col: 1,
+        },
+
         wait_time: {
             parent: 'settings',
             type: "number",
             label: "Wait Time",
             required: true,
-            col: 2,
+            col: 1,
             min:0
         },
         cycle: {
@@ -251,7 +292,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Cycle",
             required: true,
-            col: 2,
+            col: 1,
             min:0
 
         },
@@ -260,41 +301,9 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Throttle Wait",
             required: true,
-            col: 2,
+            col: 1,
             min:0
 
-        },
-
-        max_users:{
-            parent: 'settings',
-            type: "number",
-            label: "Max. Users",
-            required: true,
-            col: 2
-        },
-
-        max_watches:{
-            parent: 'settings',
-            type: "number",
-            label: "Max. Watches",
-            required: true,
-            col: 2
-        },
-
-        max_codes:{
-            parent: 'settings',
-            type: "number",
-            label: "Max. QR Codes",
-            required: true,
-            col: 2
-        },
-
-        internal_active: {
-            parent: 'settings',
-            type: "switch",
-            label: "Allow Internal Call",
-            required: true,
-            col: 2
         },
 
         "Site Content": {

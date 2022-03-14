@@ -3,6 +3,7 @@ import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import api from "@evenlogics/whf-api";
 import { toast } from 'react-toastify';
+import {fullAddressFormat} from "@facepays/common";
 
 class List extends Component {
     render() {
@@ -26,15 +27,23 @@ class List extends Component {
                 align: 'center',
                 sort: true
             }, {
-                dataField: 'phone1',
-                text: 'Phone',
-                align: 'center',
-                sort: true
-            }, {
                 dataField: 'company_name',
                 text: 'Company',
                 align: 'center',
                 sort: true
+            },
+            {
+                dataField: "address",
+                text: "Address",
+                align: "center",
+                sort: true,
+                formatter: (cell, row) => {
+                    if(row?.address){
+                        return (
+                            fullAddressFormat(row.address)
+                        )
+                    }
+                },
             }
 
         ];

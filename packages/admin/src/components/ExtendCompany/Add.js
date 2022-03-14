@@ -53,7 +53,7 @@ const Add = (props) => {
         label: "Company Name",
         required: true,
         name: "name",
-        col: 4,
+        col: 5,
       },
       country: {
         // parent: "user",
@@ -72,7 +72,7 @@ const Add = (props) => {
         label: "Company Phone",
         // required: true,
         name: "phone1",
-        col: 4,
+        col: 2,
         formatChars: {
           0: "[0-9]",
           a: "[A-Za-z]",
@@ -80,6 +80,12 @@ const Add = (props) => {
         },
         className: "phoneMask",
       },
+
+      dummy1: {
+        isDummyField: true,
+        hidden: true
+      },
+
 
       // addrsss: {
       //     // parent: "address",
@@ -95,7 +101,7 @@ const Add = (props) => {
         label: "Address",
         required: true,
         name: "addr1",
-        col: 3,
+        col: 5,
       },
 
       city: {
@@ -112,7 +118,7 @@ const Add = (props) => {
         type: "text",
         label: "State",
         name: "state",
-        col: 3,
+        col: 2,
         condition: !showStates,
       },
 
@@ -123,7 +129,7 @@ const Add = (props) => {
         options: statesOptionList(),
         label: "State",
         name: "state",
-        col: 3,
+        col: 2,
         condition: showStates,
       },
 
@@ -133,7 +139,7 @@ const Add = (props) => {
         label: "Zipcode",
         required: true,
         name: "zip_code",
-        col: 3,
+        col: 1,
       },
       // location:{
       //     type:"location",
@@ -206,16 +212,21 @@ const Add = (props) => {
         ],
         label: "Gender",
         name: "gender_id",
-        col: 3,
+        col: 2,
         condition: showAddFields,
       },
+
+      dummy2: {
+        isDummyField: true,
+      },
+
       email: {
         // parent: "user",
         type: "email",
         label: "Email",
         name: "email",
         // required: true,
-        col: 2,
+        col: 3,
         condition: showAddFields,
       },
       u_phone1: {
@@ -250,7 +261,7 @@ const Add = (props) => {
         required: !id,
         label: "Password Confirmation",
         name: "password_confirmation",
-        col: 3,
+        col: 2,
         condition: showAddFields,
       },
 
@@ -261,12 +272,20 @@ const Add = (props) => {
         condition: showAddFields,
       },
 
+      internal_active: {
+        type: "switch",
+        label: "Allow Internal Calls",
+        required: true,
+        col: 2,
+        condition: showAddFields,
+      },
+
       maxusers: {
         type: "number",
         label: "Max. Users",
         name: "max_users",
         required: true,
-        col: 2,
+        col: 1,
         condition: showAddFields,
       },
 
@@ -275,7 +294,7 @@ const Add = (props) => {
         label: "Max. Watches",
         name: "max_watches",
         required: true,
-        col: 2,
+        col: 1,
         condition: showAddFields,
       },
 
@@ -284,15 +303,7 @@ const Add = (props) => {
         label: "Max. QR Codes",
         name: "max_codes",
         required: true,
-        col: 2,
-        condition: showAddFields,
-      },
-
-      internal_active: {
-        type: "switch",
-        label: "Allow Internal Call",
-        required: true,
-        col: 2,
+        col: 1,
         condition: showAddFields,
       },
 

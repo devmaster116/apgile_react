@@ -41,3 +41,8 @@ export const formPageTitle = (entity, id) => {
 
     return 'Add ' + entity;
 }
+
+
+export const fullAddressFormat = (address) => {
+    return address.addr1 + ' ' + address.city + ', ' + address.state + ' ' + address.country
+}
