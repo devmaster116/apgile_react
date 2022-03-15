@@ -10,6 +10,11 @@ import { changeBranch, setCompany, setReduxData } from "./Redux/BranchActions";
 import Block from "./DashboardWidgets/Block";
 import "../style/style.css";
 import Graph from "./DashboardWidgets/Graph";
+import DatePicker from "react-datepicker";
+import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import {Card, CardBody,CardHeader } from 'reactstrap';
+import BarChart from "./DashboardWidgets/BarChart"
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,PointElement,LineElement);
 const Dashboard = (props) => {
@@ -18,9 +23,14 @@ const Dashboard = (props) => {
     const [labels, setLabels] = useState([])
     const [dataValue, setDataValue] = useState([])
     const [selectedOption, setSelectedOption] = useState(0);
-    const [options, setOptions] = useState([]);
+    const [locationOptions, setLocationOptions] = useState([]);
+    const [itemsOptions, setItemsOptions] = useState([]);
+    const [areaOptions, setAreaOptions] = useState([]);
+    const [userOptions, setUserOptions] = useState([]);
     const [timeline, setTimeLine] = useState("today");
-
+    const [value, setValue] = useState(['10:00', '11:00']);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     useEffect(() => {
         if (!props.selectedBranchId) {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -35,7 +45,10 @@ const Dashboard = (props) => {
         /* eslint-disable */
 
         setTimeout(() => {
-            api.request("get", `/${props.selectedBranchId}/dashboard/${timeline}/all`).then(({ data }) => {
+            // let payload={}
+            api.request("get", `/${props.selectedBranchId}/dashboard-stats`).then(({ data }) => {
+                console.log(data,"dashboard data")
+
                 let labelArr = []
                 let valueArr = []
                 Object.entries(data?.calls).forEach(([key, val], i) => {
@@ -53,7 +66,28 @@ const Dashboard = (props) => {
             api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
                 let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
                 optionsArr.unshift({value:"all",label:"All"})
-                setOptions(optionsArr);
+                setLocationOptions(optionsArr);
+            }).catch((error) => console.log(error));
+
+            api.request("get", `/${props.selectedBranchId}/items`).then(({ data }) => {
+                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+                optionsArr.unshift({value:"all",label:"All"})
+                setItemsOptions(optionsArr);
+            }).catch((error) => console.log(error));
+
+            api.request("get", `/${props.selectedBranchId}/areas`).then(({ data }) => {
+                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+                optionsArr.unshift({value:"all",label:"All"})
+                setAreaOptions(optionsArr);
+            }).catch((error) => console.log(error));
+
+
+            api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
+                console.log(data,"user")
+
+                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
+                optionsArr.unshift({value:"all",label:"All"})
+                setUserOptions(optionsArr);
             }).catch((error) => console.log(error));
         }, 1);
 
@@ -64,11 +98,16 @@ const Dashboard = (props) => {
         window.location.reload();
     }
 
+
+
     if (props?.userRole === "staff") {
         props.history.push('/profile')
     }
+
+
+
     const onLocationChange = (data) => {
-        let selected = options.map((opt) => {
+        let selected = locationOptions.map((opt) => {
             if (opt.value === data.value) {
                 return opt;
             } else {
@@ -134,73 +173,193 @@ const Dashboard = (props) => {
         setTimeLine("today")
     }
 
-    const timelineArray = ["today","yesterday","week","month","last-month","year"];
+    // const timelineArray = ["Hour","Day"];
 
-
+const onTimeChange = (data) => {
+    console.log(data,"data")
+    setValue(data);
+}
 
     return (
-        <div>
-            <h3>Adroit Dashboards</h3>
+      <div>
+        <h3>Adroit Dashboards</h3>
 
-            <CRow className="align-items-end">
-                <CCol sm={4}>
-                    <label>Select Location</label>
-                    <Select
-                        name="locations"
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        onChange={onLocationChange}
-                        options={options}
-                        value={options[selectedOption]}
-                    />
-                </CCol>
+   
+        <Card className="animated fadeIn">
+            <CardHeader><b>Filter By Entity</b></CardHeader>
+        <CardBody>
+        <CRow className="align-items-end">
+        <CCol sm={3}>
+            <label>Select Location</label>
+            <Select
+              name="locations"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={onLocationChange}
+              options={locationOptions}
+              value={locationOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select Area</label>
+            <Select
+              name="areas"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={onLocationChange}
+              options={areaOptions}
+              value={areaOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select Item</label>
+            <Select
+              name="items"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={onLocationChange}
+              options={itemsOptions}
+              value={itemsOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select User</label>
+            <Select
+              name="users"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={onLocationChange}
+              options={userOptions}
+              value={userOptions[selectedOption]}
+            />
+          </CCol>
+        </CRow>
 
-                <CCol sm={8} className="mb-1 text-right">
-                    <div className="btn-group btn-group-toggle" data-toggle="buttons">
+        </CardBody>
+      </Card>
+        <Card className="animated fadeIn">
+        <CardHeader><b>Filter By Time</b></CardHeader>
+        <CardBody>
+        <CRow className="align-items-end">
+          <CCol sm={2}>
+            <label>Select Start Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              className="date-picker-custom"
+            />
+          </CCol>
 
-                        {
-                            timelineArray?.map((time,i)=>(
-                            <label key={i} className={`btn btn-dark timeline-buttons text-capitalize mr-1 ${timeline === time ? "active" : ""}`}>
-                            <input type="radio" name="options" id={`option${i}`} autocomplete="off" value={time} checked={timeline === time} onChange={timelineChange} /> {time}
-                           </label>
-                            ))
-                        }
-                        
-                        <Button
-                        size="sm"
-                        color="danger"
-                        className="mb-1 ml-1 reset-button timeline-buttons"
-                        onClick={() => resetHandler()}
-                        >Reset
-                        </Button>
-                    </div>
-                </CCol>
-            </CRow>
+          <CCol sm={2}>
+            <label>Select End Date</label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              className="date-picker-custom"
+            />
+          </CCol>
+          <CCol sm={4}>
+          <label>Select Time Range</label> <br/>
+            <TimeRangePicker  className="date-picker-custom" clockIcon={null} disableClock={true} onChange={onTimeChange} value={value} />
+          </CCol>
+          <CCol sm={1}>
+            <label
+              className={`btn btn-sm btn-dark timelineButton mr-1 ${
+                timeline === "hour" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="options"
+                id="option0"
+                autocomplete="off"
+                className="d-none"
+                value="hour"
+                checked={timeline === "hour"}
+                onChange={timelineChange}
+              />
+              Hour
+            </label>
+            </CCol>
+          <CCol sm={1}>
 
-            <br />
+            <label
+              className={`btn btn-sm btn-dark timelineButton mr-1 ${
+                timeline === "day" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="options"
+                id="option1"
+                autocomplete="off"
+                value="day"
+                className="d-none"
+                checked={timeline === "day"}
+                onChange={timelineChange}
+              />
+              Day
+            </label>
+            </CCol>
+          <CCol sm={1}>
+            <Button
+              size="sm"
+              color="danger"
+              className="btn btn-sm btn-danger timelineButton mb-2"
+              onClick={() => resetHandler()}
+            >
+              Reset
+            </Button>
+          </CCol>
+      </CRow>
 
+</CardBody>
+</Card>
+
+        <br />
+
+        <CRow>
+          <Graph
+            type="pie"
+            title="Calls Data"
+            subtitle="Details of different call statuses"
+            chartData={chartData}
+          />
+          <Graph
+            type="line"
+            title="Activity Time"
+            subtitle=" Details of different call statuses"
+            chartData={dashbaordData}
+            timeline={timeline}
+          />
+          <CCol lg={4}>
             <CRow>
-                   <Graph type="pie" title="Calls Data" subtitle="Details of different call statuses" chartData={chartData} />
-                   <Graph type="line" title="Activity Time" subtitle=" Details of different call statuses" chartData={dashbaordData} timeline={timeline} />
-                  <CCol lg={4}>
-                    <CRow>
-                        {
-                            dashbaordData?.calls && Object.entries(dashbaordData?.calls).map(([key, val], i) => (
-                                <CCol xs={12} sm={4} lg={6} key={i}>
-                                    <Block title={key} value={val} color={getColor(i)} />
-                                </CCol>
-                            ))
-                        }
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block title="Staff Online" value={dashbaordData?.staff_online} color="primary" />
-                        </CCol>
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block title="Areas Active" value={dashbaordData?.active_areas} color="secondary" font="black" />
-                        </CCol>
-                    </CRow>
-                </CCol>
+              {dashbaordData?.calls &&
+                Object.entries(dashbaordData?.calls).map(([key, val], i) => (
+                  <CCol xs={12} sm={4} lg={6} key={i}>
+                    <Block title={key} value={val} color={getColor(i)} />
+                  </CCol>
+                ))}
+              <CCol xs={12} sm={4} lg={6}>
+                <Block
+                  title="Staff Online"
+                  value={dashbaordData?.staff_online}
+                  color="primary"
+                />
+              </CCol>
+              <CCol xs={12} sm={4} lg={6}>
+                <Block
+                  title="Areas Active"
+                  value={dashbaordData?.active_areas}
+                  color="secondary"
+                  font="black"
+                />
+              </CCol>
             </CRow>
-        </div>
+          </CCol>
+          <BarChart />
+        </CRow>
+      </div>
     );
 };
 

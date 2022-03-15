@@ -10,13 +10,16 @@ import "../../style/style.css";
 
 const Detail = (props) => {
 
+
   const [userStats, setUserStats] = useState([])
   const [timeline, setTimeLine] = useState("today");
   const [labels, setLabels] = useState([])
   const [dataValue, setDataValue] = useState([])
 
+  let {id} = props.match.params;
+
 	useEffect(() => {
-	    api.request("get",`/${props.branchId}/user-stats/${timeline}/all`).then(({data}) => {
+	    api.request("get",`/${props.branchId}/user-stats/${timeline}/${id}/all`).then(({data}) => {
 			let labelArr = []
 			let valueArr = []
 			Object.entries(data?.calls).forEach(([key, val], i) => {
@@ -30,7 +33,7 @@ const Detail = (props) => {
 			setUserStats(data)
 		  })
 		  .catch((error) => console.log(error));
-	}, [props.branchId,timeline])
+	}, [props.branchId,timeline,id])
 	
 
 	
@@ -83,7 +86,7 @@ const Detail = (props) => {
       <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
         <CardHeader>
           <b>Details</b>
-          <Button size="sm" color="primary" className="float-right">
+          <Button size="sm" color="primary" className="float-right" onClick={()=>props.history.goBack()}>
             Go Back
           </Button>
         </CardHeader>
@@ -115,7 +118,7 @@ const Detail = (props) => {
                         <Button
                         size="sm"
                         color="danger"
-                        className="mb-1 ml-1 reset-button timeline-buttons"
+                        className="btn btn-sm btn-danger timelineButton"
                         onClick={() => resetHandler()}
                         >Reset
                         </Button>
