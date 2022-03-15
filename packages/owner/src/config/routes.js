@@ -117,7 +117,7 @@ const routes = [
 	{ path: '/staff/:id/details', exact : true,component: StaffDetail,isPublic: false},
 
 	{ path: '/settings', exact : true,component: SettingAdd,isPublic: false},
-	{ path: '/internal-places', exact : true,component: InternalCalls,isPublic: false},
+	{ path: '/internal-venues', exact : true,component: InternalCalls,isPublic: false},
 
 	{path : "/promotions" ,exact : true ,component :PromotionsList},
 	{path : "/promotions/add" ,exact : true ,component : AddPromotions},

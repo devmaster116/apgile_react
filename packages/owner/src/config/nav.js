@@ -124,12 +124,12 @@ export default {
         order: 100,
         icon: "fas fa-cogs",
     },
-    internal_calls: {
-        phrase: "Internal Places",
-        to: "/internal-places",
+    internal_venues: {
+        phrase: "Internal Venues",
+        to: "/internal-venues",
         roles: ["admin", "manager"],
         order: 101,
-        icon: "fas fa-cogs",
+        icon: "fas fa-building",
     },
     user: {
         _tag: "CSidebarNavDropdown",
@@ -197,14 +197,14 @@ export default {
                 order: 1,
                 to: "/promotions",
                 roles: ["admin", "manager"],
-                icon: "fas fa-ad",
+                icon: "fas fa-bullhorn",
             },
             style: {
                 phrase: "Style",
                 order: 1,
                 to: "/style",
                 roles: ["admin", "manager"],
-                icon: "fas fa-ad",
+                icon: "fas fa-brush",
             },
         },
     },

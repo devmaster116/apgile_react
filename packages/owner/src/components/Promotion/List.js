@@ -83,6 +83,30 @@ const List = (props) => {
             sort: true,
         },
         {
+            dataField: "created_at",
+            text: "Start Date",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "created_at",
+            text: "End Date",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "created_at",
+            text: "Days",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "created_at",
+            text: "Time Range",
+            align: "center",
+            sort: true,
+        },
+        {
             isDummyField: true,
             align: "center",
             text: "Promotion Banner",
