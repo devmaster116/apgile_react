@@ -42,7 +42,7 @@ const TeamsList = (props) => {
         },
         start_date:{
             type:"date",
-            label:"Select Start Date",
+            label:"Select From",
             col: 12 + ' col-sm-2  ',
             getValue:(data) => {
                 setTimeout(() => {
@@ -52,7 +52,7 @@ const TeamsList = (props) => {
         },
         end_date:{
             type:"date",
-            label:"Select End Date",
+            label:"Select To",
             col: 12 + ' col-sm-2  ',
             placeholderText: minDate ? "" : "Please select the start date",
             disabled:minDate ? false : true,
