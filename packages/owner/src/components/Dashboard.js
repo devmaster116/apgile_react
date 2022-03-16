@@ -97,7 +97,7 @@ const Dashboard = (props) => {
     }).catch((error) => console.log(error));
 
 
-    api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
+    api.request("get", `/${props.selectedBranchId}/role-users/staff`).then(({ data }) => {
         let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
         // optionsArr.unshift({value:"all",label:"All"})
         setUserOptions(optionsArr);
