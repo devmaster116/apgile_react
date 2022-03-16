@@ -72,12 +72,7 @@ const KithcenCallList  = (props) => {
 				align: 'center',
 				sort: true
 			},
-			{
-				dataField: 'start_time',
-				text: 'Start Time',
-				align: 'center',
-				sort: true
-			},
+
 			{
 				isDummyField: true,
 				text: "Start Time",
