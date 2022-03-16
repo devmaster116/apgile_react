@@ -59,25 +59,24 @@ const Add = (props) => {
             col: 8,
         },
 
-        week_day: {
+        weekdays: {
             type: 'advanceSelect',
             label: "Week Day",
             target: `${props.branchId}/week-day-list`,
             // async: true,
-            name: 'week_day',
             multi:true,
             // required: true,
             col: 2,
         },
 
-        startdate: {
+        valid_from: {
             type: 'date',
             label: 'Start Date',
             // required: true,
             col: 2
         },
 
-        enddate: {
+        valid_till: {
             type: 'date',
             label: 'End Date',
             // required: true,
