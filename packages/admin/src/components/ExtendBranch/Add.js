@@ -245,6 +245,14 @@ const ExtendBranchAdd = (props) =>  {
             col: 2
         },
 
+        dashboard: {
+            parent: 'settings',
+            type: "switch",
+            label: "Dashboard",
+            required: true,
+            col: 2
+        },
+
         max_users:{
             parent: 'settings',
             type: "number",

@@ -274,6 +274,14 @@ const Add = (props) => {
         condition: showAddFields,
       },
 
+      dashboard: {
+        type: "switch",
+        label: "Dashboard Stats",
+        required: true,
+        col: 2,
+        condition: showAddFields,
+      },
+
       maxusers: {
         type: "number",
         label: "Max. Users",
