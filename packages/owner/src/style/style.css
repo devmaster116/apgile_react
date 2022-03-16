@@ -68,3 +68,7 @@ label.active{
 .react-timerange-picker__wrapper {
     border: thin solid #ebedef !important;
 }
+
+.c-sidebar-brand > img {
+    cursor: default !important;
+    }

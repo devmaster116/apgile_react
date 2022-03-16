@@ -32,3 +32,6 @@ form[name="editForm"] button[type="reset"]{
     }
 
     
+.c-sidebar-brand > img {
+cursor: default !important;
+}
