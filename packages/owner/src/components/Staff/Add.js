@@ -41,8 +41,15 @@ const ItemAdd = (props) => {
     }
 
     const getInitialValues = async (data) => {
+      
         await data;
         decidePasswordLogic(data.role_id);
+        if(data?.role_id === 3){
+            console.log("if condition")
+            setShowPassword(false)
+            setShowPasscode(true)
+        }  
+        
     }
 
     const decidePasswordLogic = (role) => {
@@ -188,7 +195,7 @@ const ItemAdd = (props) => {
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    initialValues={props.location.aboutProps}
+                    // initialValues={props.location.aboutProps}
                     redirect="staff"
                     Query={query}
                     extraVals={{branch_id: props.branchId}}
