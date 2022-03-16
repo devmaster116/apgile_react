@@ -50,7 +50,7 @@ const BarChart = (props) => {
 
     }, [props.selectedBranchId,props.barData])
     
-
+console.log(selectedOption,"selectedOption")
 
     const options = {
         responsive: true,
