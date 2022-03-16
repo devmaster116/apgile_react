@@ -9,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 import {Card, CardBody,CardHeader } from 'reactstrap';
 import Select from 'react-select';
 import api from "@evenlogics/whf-api";
@@ -30,16 +29,26 @@ const BarChart = (props) => {
 
     const [selectedOption, setSelectedOption] = useState(0);
     const [teamsOptions, setTeamsOptions] = useState([]);
-    
+    const [Linelabels, setLineLabels] = useState([])
+    const [Linedata, setLineData] = useState([])
 
     useEffect(() => {
+      var labels = [];
+      var linedata = [];
         api.request("get", `/${props.selectedBranchId}/teams`).then(({ data }) => {
-            console.log(data,"user")
-            let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
+            let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
             optionsArr.unshift({value:"all",label:"All"})
             setTeamsOptions(optionsArr);
         }).catch((error) => console.log(error));
-    }, [props.selectedBranchId])
+
+        props?.barData?.calls_grouped?.team && Object.entries(props?.barData?.calls_grouped.team).forEach(([key, val], i) => {
+          labels.push(key);
+          linedata.push(val);
+         })
+         labels && setLineLabels(labels);
+         linedata && setLineData(linedata);
+
+    }, [props.selectedBranchId,props.barData])
     
 
 
@@ -51,19 +60,21 @@ const BarChart = (props) => {
           },
           title: {
             display: true,
-            text: 'Chart.js Bar Chart',
+            text: 'Teams Bar Chart',
           },
         },
       };
       
-      const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+      const labels = [...Linelabels];
       
        const data = {
         labels,
         datasets: [
           {
-            label: 'Dataset 2',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+            label: "Staff",
+            barThickness: 40,
+            barPercentage: 0.5,
+            data: [...Linedata],
             backgroundColor: '#fb6565',
           },
         ],
@@ -78,6 +89,7 @@ const BarChart = (props) => {
             }
         });
         setSelectedOption(selected.value);
+        props.onLocationChange(data,'team')
     };
       
   return (

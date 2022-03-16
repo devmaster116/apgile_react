@@ -117,7 +117,7 @@ const List = (props) => {
                     <img
                         width="60"
                         height="60"
-                        style={{borderRadius: "50%", objectFit: "contain"}}
+                        style={{borderRadius: "50%", objectFit: "cover"}}
                         src={row?.promotion_image?.url}
                         alt="logo"
                     />

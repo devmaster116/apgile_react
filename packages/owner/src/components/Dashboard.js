@@ -27,10 +27,24 @@ const Dashboard = (props) => {
     const [itemsOptions, setItemsOptions] = useState([]);
     const [areaOptions, setAreaOptions] = useState([]);
     const [userOptions, setUserOptions] = useState([]);
-    const [timeline, setTimeLine] = useState("today");
+    const [timeline, setTimeLine] = useState("hour");
     const [value, setValue] = useState(['10:00', '11:00']);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
+    const [dashboardPayload,setPayload] = useState({
+        start:startDate,
+        end:null,
+        time:value,
+        location:null,
+        item:null,
+        area:null,
+        user:null,
+        unit:timeline,
+        status:null,
+        team:null
+      });
+
     useEffect(() => {
         if (!props.selectedBranchId) {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -41,14 +55,9 @@ const Dashboard = (props) => {
                 userRole: currentUser?.roles[0]
             });
         }
-
         /* eslint-disable */
-
         setTimeout(() => {
-            // let payload={}
-            api.request("get", `/${props.selectedBranchId}/dashboard-stats`).then(({ data }) => {
-                console.log(data,"dashboard data")
-
+            api.request("post", `/${props.selectedBranchId}/dashboard-stats`,dashboardPayload).then(({ data }) => {
                 let labelArr = []
                 let valueArr = []
                 Object.entries(data?.calls).forEach(([key, val], i) => {
@@ -61,52 +70,66 @@ const Dashboard = (props) => {
                 setDataValue(valueArr)
                 setDashbaordData(data)
             })
-                .catch((error) => console.log(error));
-
-            api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
-                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
-                optionsArr.unshift({value:"all",label:"All"})
-                setLocationOptions(optionsArr);
-            }).catch((error) => console.log(error));
-
-            api.request("get", `/${props.selectedBranchId}/items`).then(({ data }) => {
-                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
-                optionsArr.unshift({value:"all",label:"All"})
-                setItemsOptions(optionsArr);
-            }).catch((error) => console.log(error));
-
-            api.request("get", `/${props.selectedBranchId}/areas`).then(({ data }) => {
-                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
-                optionsArr.unshift({value:"all",label:"All"})
-                setAreaOptions(optionsArr);
-            }).catch((error) => console.log(error));
-
-
-            api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
-                console.log(data,"user")
-
-                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
-                optionsArr.unshift({value:"all",label:"All"})
-                setUserOptions(optionsArr);
-            }).catch((error) => console.log(error));
+                .catch((error) => console.log(error));     
         }, 1);
 
-    }, [props.selectedBranchId,timeline]);
+    }, [props.selectedBranchId,dashboardPayload]);
+
+
+
+    useEffect(() => {
+      api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setLocationOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+    api.request("get", `/${props.selectedBranchId}/items`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setItemsOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+    api.request("get", `/${props.selectedBranchId}/areas`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setAreaOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+
+    api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setUserOptions(optionsArr);
+    }).catch((error) => console.log(error));
+    }, [props.selectedBranchId])
+    
+
+
+
     /* eslint-enable */
     const setInitialData = (data) => {
         props.setReduxData(data);
         window.location.reload();
     }
-
-
-
     if (props?.userRole === "staff") {
         props.history.push('/profile')
     }
 
 
 
-    const onLocationChange = (data) => {
+    const onLocationChange = (data,name) => {
+      if (name !== "user") {
+        setPayload({ ...dashboardPayload, [name]: data.value });
+      } else {
+        let arr = [];
+        arr = data?.map((user) => {
+          return user.value;
+        });
+        setPayload({ ...dashboardPayload, [name]: arr });
+      } 
+  
+      
         let selected = locationOptions.map((opt) => {
             if (opt.value === data.value) {
                 return opt;
@@ -116,24 +139,8 @@ const Dashboard = (props) => {
         });
         setSelectedOption(selected.value);
 
-        let labelArr = []
-        let valueArr = []
-        api.request("get", `/${props.selectedBranchId}/dashboard/${timeline}/${data.value}`)
-            .then(({ data }) => {
-                setDashbaordData(data)
-                dashbaordData?.calls && Object.entries(dashbaordData?.calls).forEach(([key, val], i) => {
-                  if(key !== "total"){
-                      labelArr.push(key.toUpperCase());
-                      valueArr.push(val);
-                  }
-
-                })
-            })
-            .catch((error) => console.log(error))
-        setLabels(labelArr)
-        setDataValue(valueArr)
-
     };
+
 
     const chartData = {
         labels: labels,
@@ -164,7 +171,11 @@ const Dashboard = (props) => {
 
 
     const timelineChange = (e) =>{
-    setTimeLine(e.target.value)
+         setTimeLine(e.target.value)
+         setPayload({
+           ...dashboardPayload,
+              unit:e.target.value
+         })
     }
 
 
@@ -173,18 +184,20 @@ const Dashboard = (props) => {
         setTimeLine("today")
     }
 
-    // const timelineArray = ["Hour","Day"];
+    console.log(dashboardPayload,"paylaod")
 
 const onTimeChange = (data) => {
-    console.log(data,"data")
     setValue(data);
+
+    setPayload({
+      ...dashboardPayload,
+         time: data
+    })
 }
 
     return (
       <div>
-        <h3>Adroit Dashboards</h3>
-
-   
+        <h3>Adroit Dashboards</h3> 
         <Card className="animated fadeIn">
             <CardHeader><b>Filter By Entity</b></CardHeader>
         <CardBody>
@@ -195,7 +208,7 @@ const onTimeChange = (data) => {
               name="locations"
               className="basic-multi-select"
               classNamePrefix="select"
-              onChange={onLocationChange}
+              onChange={(data)=>onLocationChange(data,"location")}
               options={locationOptions}
               value={locationOptions[selectedOption]}
             />
@@ -206,7 +219,7 @@ const onTimeChange = (data) => {
               name="areas"
               className="basic-multi-select"
               classNamePrefix="select"
-              onChange={onLocationChange}
+              onChange={(data)=>onLocationChange(data,"area")}
               options={areaOptions}
               value={areaOptions[selectedOption]}
             />
@@ -217,7 +230,7 @@ const onTimeChange = (data) => {
               name="items"
               className="basic-multi-select"
               classNamePrefix="select"
-              onChange={onLocationChange}
+              onChange={(data)=>onLocationChange(data,"item")}
               options={itemsOptions}
               value={itemsOptions[selectedOption]}
             />
@@ -228,9 +241,10 @@ const onTimeChange = (data) => {
               name="users"
               className="basic-multi-select"
               classNamePrefix="select"
-              onChange={onLocationChange}
+              onChange={(data)=>onLocationChange(data,"user")}
               options={userOptions}
               value={userOptions[selectedOption]}
+              isMulti
             />
           </CCol>
         </CRow>
@@ -245,8 +259,16 @@ const onTimeChange = (data) => {
             <label>Select Start Date</label>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) =>{
+                setStartDate(date)
+                setPayload({
+                  ...dashboardPayload,
+                     start: date
+                })
+              }
+              }
               className="date-picker-custom"
+              dateFormat="MM-dd-yyyy"
             />
           </CCol>
 
@@ -254,7 +276,15 @@ const onTimeChange = (data) => {
             <label>Select End Date</label>
             <DatePicker
               selected={endDate}
-              onChange={(date) => setEndDate(date)}
+              onChange={(date) => 
+                {
+                  setEndDate(date)
+                  setPayload({
+                    ...dashboardPayload,
+                       end: date
+                  })
+              }}
+              
               className="date-picker-custom"
             />
           </CCol>
@@ -264,7 +294,7 @@ const onTimeChange = (data) => {
           </CCol>
           <CCol sm={1}>
             <label
-              className={`btn btn-sm btn-dark timelineButton mr-1 ${
+              className={`btn btn-dark timelineButton mr-1 ${
                 timeline === "hour" ? "active" : ""
               }`}
             >
@@ -284,7 +314,7 @@ const onTimeChange = (data) => {
           <CCol sm={1}>
 
             <label
-              className={`btn btn-sm btn-dark timelineButton mr-1 ${
+              className={`btn btn-dark timelineButton mr-1 ${
                 timeline === "day" ? "active" : ""
               }`}
             >
@@ -305,7 +335,7 @@ const onTimeChange = (data) => {
             <Button
               size="sm"
               color="danger"
-              className="btn btn-sm btn-danger timelineButton mb-2"
+              className="btn btn-lg btn-danger timelineButton mb-2"
               onClick={() => resetHandler()}
             >
               Reset
@@ -357,7 +387,7 @@ const onTimeChange = (data) => {
               </CCol>
             </CRow>
           </CCol>
-          <BarChart />
+          <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
         </CRow>
       </div>
     );

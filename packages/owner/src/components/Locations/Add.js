@@ -30,7 +30,7 @@ const LocationsAdd = (props) => {
         description: {
             type: 'text',
             label: 'Description',
-            col: 3
+            col: 2
         },
         supervisor_id: {
             type: 'advanceSelect',
@@ -40,15 +40,50 @@ const LocationsAdd = (props) => {
             required: true,
             // async: true,
             name: 'supervisor_id',
-            col: 3,
+            col: 2,
             condition: !showTeam
         },
-
-        dummy: {
-            isDummyField: true,
-            col: 4
+        weekdays: {
+            type: 'advanceSelect',
+            label: "Week Day",
+            target: `${props.branchId}/week-day-list`,
+            // async: true,
+            name: 'weekdays',
+            multi:true,
+            required: true,
+            col: 2
+        },
+        start_time: {
+            type: "date",
+            label: "Start Time",
+            showTimeSelect:true,
+            showTimeSelectOnly:true,
+            required: true,
+            timeCaption:"Time",
+            dateFormat:"h:mm aa",
+            col: 12 + ' col-sm-2  ',
+        },
+        end_time: {
+            type: "date",
+            label: "End Time",
+            col: 12 + ' col-sm-2  ',
+            showTimeSelect:true,
+            required: true,
+            timeCaption:"Time",
+            dateFormat:"h:mm aa",
+            showTimeSelectOnly:true,
         },
 
+        // dummy: {
+        //     isDummyField: true,
+        //     col: 4
+        // },
+        status: {
+            type: "switch",
+            label: "Status",
+            required: true,
+            col: 2
+        },
         message_box: {
             type: "switch",
             label: "Include Message",
@@ -61,7 +96,7 @@ const LocationsAdd = (props) => {
             label: "Include Customer Name",
             // required: true,
             name: "customer_required",
-            col: 2,
+            col: 3,
         },
         "Manage Auto Assinged": {
             isDummyField: true,
