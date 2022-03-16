@@ -32,18 +32,18 @@ export const LineChart = (props) => {
      var linedata = [];
      var secondLinedata = [];
    if(props?.staff === false ||  props?.staff === undefined){
-    props?.data?.calls_grouped && Object.entries(props?.data?.calls_grouped).forEach(([key, val], i) => {
+    props?.data?.calls_grouped?.status && Object.entries(props?.data?.calls_grouped.status).forEach(([key, val], i) => {
       labels.push(key);
       linedata.push(val);
      })
    }  
 
-     props?.staff === true && props?.data?.completed_calls && Object.entries(props?.data?.completed_calls).forEach(([key, val], i) => {
+     props?.staff === true && props?.data?.completed_calls?.status && Object.entries(props?.data?.completed_calls?.status).forEach(([key, val], i) => {
       labels.push(key);
       linedata.push(val);
      })
 
-     props?.staff === true && props?.data?.total_calls && Object.entries(props?.data?.total_calls).forEach(([key, val], i) => {
+     props?.staff === true && props?.data?.total_calls?.status && Object.entries(props?.data?.total_calls?.status).forEach(([key, val], i) => {
       // labels.push(key);
       secondLinedata.push(val);
      })

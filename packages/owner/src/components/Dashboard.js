@@ -10,6 +10,11 @@ import { changeBranch, setCompany, setReduxData } from "./Redux/BranchActions";
 import Block from "./DashboardWidgets/Block";
 import "../style/style.css";
 import Graph from "./DashboardWidgets/Graph";
+import DatePicker from "react-datepicker";
+import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import {Card, CardBody,CardHeader } from 'reactstrap';
+import BarChart from "./DashboardWidgets/BarChart"
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,PointElement,LineElement);
 const Dashboard = (props) => {
@@ -18,8 +23,27 @@ const Dashboard = (props) => {
     const [labels, setLabels] = useState([])
     const [dataValue, setDataValue] = useState([])
     const [selectedOption, setSelectedOption] = useState(0);
-    const [options, setOptions] = useState([]);
-    const [timeline, setTimeLine] = useState("today");
+    const [locationOptions, setLocationOptions] = useState([]);
+    const [itemsOptions, setItemsOptions] = useState([]);
+    const [areaOptions, setAreaOptions] = useState([]);
+    const [userOptions, setUserOptions] = useState([]);
+    const [timeline, setTimeLine] = useState("hour");
+    const [value, setValue] = useState(['10:00', '11:00']);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
+    const [dashboardPayload,setPayload] = useState({
+        start:null,
+        end:null,
+        time:null,
+        location:null,
+        item:null,
+        area:null,
+        user:null,
+        unit:null,
+        status:null,
+        team:null
+      });
 
     useEffect(() => {
         if (!props.selectedBranchId) {
@@ -31,11 +55,9 @@ const Dashboard = (props) => {
                 userRole: currentUser?.roles[0]
             });
         }
-
         /* eslint-disable */
-
         setTimeout(() => {
-            api.request("get", `/${props.selectedBranchId}/dashboard/${timeline}/all`).then(({ data }) => {
+            api.request("post", `/${props.selectedBranchId}/dashboard-stats`,dashboardPayload).then(({ data }) => {
                 let labelArr = []
                 let valueArr = []
                 Object.entries(data?.calls).forEach(([key, val], i) => {
@@ -48,27 +70,67 @@ const Dashboard = (props) => {
                 setDataValue(valueArr)
                 setDashbaordData(data)
             })
-                .catch((error) => console.log(error));
-
-            api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
-                let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
-                optionsArr.unshift({value:"all",label:"All"})
-                setOptions(optionsArr);
-            }).catch((error) => console.log(error));
+                .catch((error) => console.log(error));     
         }, 1);
 
-    }, [props.selectedBranchId,timeline]);
+    }, [props.selectedBranchId,dashboardPayload]);
+
+
+
+    useEffect(() => {
+      api.request("get", `/${props.selectedBranchId}/locations`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setLocationOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+    api.request("get", `/${props.selectedBranchId}/items`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setItemsOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+    api.request("get", `/${props.selectedBranchId}/areas`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
+        optionsArr.unshift({value:"all",label:"All"})
+        setAreaOptions(optionsArr);
+    }).catch((error) => console.log(error));
+
+
+    api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
+        let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
+        // optionsArr.unshift({value:"all",label:"All"})
+        setUserOptions(optionsArr);
+    }).catch((error) => console.log(error));
+    }, [props.selectedBranchId])
+    
+
+
+
     /* eslint-enable */
     const setInitialData = (data) => {
         props.setReduxData(data);
         window.location.reload();
     }
-
     if (props?.userRole === "staff") {
         props.history.push('/profile')
     }
-    const onLocationChange = (data) => {
-        let selected = options.map((opt) => {
+
+
+
+    const onLocationChange = (data,name) => {
+      if (name !== "user") {
+        setPayload({ ...dashboardPayload, [name]: data.value });
+      } else {
+        let arr = [];
+        arr = data?.map((user) => {
+          return user.value;
+        });
+        setPayload({ ...dashboardPayload, [name]: arr });
+      } 
+  
+      
+        let selected = locationOptions.map((opt) => {
             if (opt.value === data.value) {
                 return opt;
             } else {
@@ -77,24 +139,8 @@ const Dashboard = (props) => {
         });
         setSelectedOption(selected.value);
 
-        let labelArr = []
-        let valueArr = []
-        api.request("get", `/${props.selectedBranchId}/dashboard/${timeline}/${data.value}`)
-            .then(({ data }) => {
-                setDashbaordData(data)
-                dashbaordData?.calls && Object.entries(dashbaordData?.calls).forEach(([key, val], i) => {
-                  if(key !== "total"){
-                      labelArr.push(key.toUpperCase());
-                      valueArr.push(val);
-                  }
-
-                })
-            })
-            .catch((error) => console.log(error))
-        setLabels(labelArr)
-        setDataValue(valueArr)
-
     };
+
 
     const chartData = {
         labels: labels,
@@ -125,7 +171,11 @@ const Dashboard = (props) => {
 
 
     const timelineChange = (e) =>{
-    setTimeLine(e.target.value)
+         setTimeLine(e.target.value)
+         setPayload({
+           ...dashboardPayload,
+              unit:e.target.value
+         })
     }
 
 
@@ -134,73 +184,212 @@ const Dashboard = (props) => {
         setTimeLine("today")
     }
 
-    const timelineArray = ["today","yesterday","week","month","last-month","year"];
+    console.log(dashboardPayload,"paylaod")
 
+const onTimeChange = (data) => {
+    setValue(data);
 
+    setPayload({
+      ...dashboardPayload,
+         time: data
+    })
+}
 
     return (
-        <div>
-            <h3>Adroit Dashboards</h3>
+      <div>
+        <h3>Adroit Dashboards</h3> 
+        <Card className="animated fadeIn">
+            <CardHeader><b>Filter By Entity</b></CardHeader>
+        <CardBody>
+        <CRow className="align-items-end">
+        <CCol sm={3}>
+            <label>Select Location</label>
+            <Select
+              name="locations"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(data)=>onLocationChange(data,"location")}
+              options={locationOptions}
+              value={locationOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select Area</label>
+            <Select
+              name="areas"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(data)=>onLocationChange(data,"area")}
+              options={areaOptions}
+              value={areaOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select Item</label>
+            <Select
+              name="items"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(data)=>onLocationChange(data,"item")}
+              options={itemsOptions}
+              value={itemsOptions[selectedOption]}
+            />
+          </CCol>
+          <CCol sm={3}>
+            <label>Select User</label>
+            <Select
+              name="users"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(data)=>onLocationChange(data,"user")}
+              options={userOptions}
+              // value={userOptions[selectedOption]}
+              isMulti
+            />
+          </CCol>
+        </CRow>
 
-            <CRow className="align-items-end">
-                <CCol sm={4}>
-                    <label>Select Location</label>
-                    <Select
-                        name="locations"
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        onChange={onLocationChange}
-                        options={options}
-                        value={options[selectedOption]}
-                    />
-                </CCol>
+        </CardBody>
+      </Card>
+        <Card className="animated fadeIn">
+        <CardHeader><b>Filter By Time</b></CardHeader>
+        <CardBody>
+        <CRow className="align-items-end">
+          <CCol sm={2}>
+            <label>Select Start Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) =>{
+                setStartDate(date)
+                setPayload({
+                  ...dashboardPayload,
+                     start: date
+                })
+              }
+              }
+              className="date-picker-custom"
+              dateFormat="MM-dd-yyyy"
+            />
+          </CCol>
 
-                <CCol sm={8} className="mb-1 text-right">
-                    <div className="btn-group btn-group-toggle" data-toggle="buttons">
+          <CCol sm={2}>
+            <label>Select End Date</label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => 
+                {
+                  setEndDate(date)
+                  setPayload({
+                    ...dashboardPayload,
+                       end: date
+                  })
+              }}
+              
+              className="date-picker-custom"
+            />
+          </CCol>
+          <CCol sm={4}>
+          <label>Select Time Range</label> <br/>
+            <TimeRangePicker  className="date-picker-custom" clockIcon={null} disableClock={true} onChange={onTimeChange} value={value} />
+          </CCol>
+          <CCol sm={1}>
+            <label
+              className={`btn btn-dark timelineButton mr-1 ${
+                timeline === "hour" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="options"
+                id="option0"
+                autocomplete="off"
+                className="d-none"
+                value="hour"
+                checked={timeline === "hour"}
+                onChange={timelineChange}
+              />
+              Hour
+            </label>
+            </CCol>
+          <CCol sm={1}>
 
-                        {
-                            timelineArray?.map((time,i)=>(
-                            <label key={i} className={`btn btn-dark timeline-buttons text-capitalize mr-1 ${timeline === time ? "active" : ""}`}>
-                            <input type="radio" name="options" id={`option${i}`} autocomplete="off" value={time} checked={timeline === time} onChange={timelineChange} /> {time}
-                           </label>
-                            ))
-                        }
-                        
-                        <Button
-                        size="sm"
-                        color="danger"
-                        className="mb-1 ml-1 reset-button timeline-buttons"
-                        onClick={() => resetHandler()}
-                        >Reset
-                        </Button>
-                    </div>
-                </CCol>
-            </CRow>
+            <label
+              className={`btn btn-dark timelineButton mr-1 ${
+                timeline === "day" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="options"
+                id="option1"
+                autocomplete="off"
+                value="day"
+                className="d-none"
+                checked={timeline === "day"}
+                onChange={timelineChange}
+              />
+              Day
+            </label>
+            </CCol>
+          <CCol sm={1}>
+            <Button
+              size="sm"
+              color="danger"
+              className="btn btn-lg btn-danger timelineButton mb-2"
+              onClick={() => resetHandler()}
+            >
+              Reset
+            </Button>
+          </CCol>
+      </CRow>
 
-            <br />
+</CardBody>
+</Card>
 
+        <br />
+
+        <CRow>
+          <Graph
+            type="pie"
+            title="Calls Data"
+            subtitle="Details of different call statuses"
+            chartData={chartData}
+          />
+          <Graph
+            type="line"
+            title="Activity Time"
+            subtitle=" Details of different call statuses"
+            chartData={dashbaordData}
+            timeline={timeline}
+          />
+          <CCol lg={4}>
             <CRow>
-                   <Graph type="pie" title="Calls Data" subtitle="Details of different call statuses" chartData={chartData} />
-                   <Graph type="line" title="Activity Time" subtitle=" Details of different call statuses" chartData={dashbaordData} timeline={timeline} />
-                  <CCol lg={4}>
-                    <CRow>
-                        {
-                            dashbaordData?.calls && Object.entries(dashbaordData?.calls).map(([key, val], i) => (
-                                <CCol xs={12} sm={4} lg={6} key={i}>
-                                    <Block title={key} value={val} color={getColor(i)} />
-                                </CCol>
-                            ))
-                        }
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block title="Staff Online" value={dashbaordData?.staff_online} color="primary" />
-                        </CCol>
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block title="Areas Active" value={dashbaordData?.active_areas} color="secondary" font="black" />
-                        </CCol>
-                    </CRow>
-                </CCol>
+              {dashbaordData?.calls &&
+                Object.entries(dashbaordData?.calls).map(([key, val], i) => (
+                  <CCol xs={12} sm={4} lg={6} key={i}>
+                    <Block title={key} value={val} color={getColor(i)} />
+                  </CCol>
+                ))}
+              <CCol xs={12} sm={4} lg={6}>
+                <Block
+                  title="Staff Online"
+                  value={dashbaordData?.staff_online}
+                  color="primary"
+                />
+              </CCol>
+              <CCol xs={12} sm={4} lg={6}>
+                <Block
+                  title="Areas Active"
+                  value={dashbaordData?.active_areas}
+                  color="secondary"
+                  font="black"
+                />
+              </CCol>
             </CRow>
-        </div>
+          </CCol>
+          <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
+        </CRow>
+      </div>
     );
 };
 

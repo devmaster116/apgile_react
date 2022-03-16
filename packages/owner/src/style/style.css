@@ -27,21 +27,13 @@ form[name="editForm"] button[type="reset"]{
 display: none;
 }
 
-.reset-button{
-    /* margin-top: 15% !important; */
-    /* height: 55% !important; */
-    width: 60%;
-    font-size: medium !important;
-    font-style: bolder !important;
-    letter-spacing: 2px !important;
-}
-
+/* 
 .timeline-buttons{
     height: 55% !important;
     width: max-content;
     border-radius: 4px !important;
     
-}
+} */
 
 .fs-4{
     font-size:medium !important;
@@ -61,5 +53,18 @@ display: none;
 
 label.active{
     background-color: cornflowerblue !important;
+    /* width: max-content; */
+}
+.timelineButton{
     width: max-content;
+   border-radius: 5px !important;
+}
+
+.date-picker-custom{
+    outline: none !important;
+    background: white !important;
+}
+
+.react-timerange-picker__wrapper {
+    border: thin solid #ebedef !important;
 }
