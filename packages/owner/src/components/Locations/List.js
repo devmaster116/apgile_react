@@ -36,8 +36,7 @@ const KithcenCallList  = (props) => {
 	const changeStatus = (data) => {
 		console.log(data,"data")
 		let payload = {
-			status:data?.status,
-
+			status: !data?.status,
 		}
 		api.request("put",`/${props?.branchId}/location/status/${data?.id}`,payload)
 		.then((data) => {
