@@ -99,7 +99,7 @@ const Dashboard = (props) => {
 
     api.request("get", `/${props.selectedBranchId}/users`).then(({ data }) => {
         let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
-        optionsArr.unshift({value:"all",label:"All"})
+        // optionsArr.unshift({value:"all",label:"All"})
         setUserOptions(optionsArr);
     }).catch((error) => console.log(error));
     }, [props.selectedBranchId])
@@ -243,7 +243,7 @@ const onTimeChange = (data) => {
               classNamePrefix="select"
               onChange={(data)=>onLocationChange(data,"user")}
               options={userOptions}
-              value={userOptions[selectedOption]}
+              // value={userOptions[selectedOption]}
               isMulti
             />
           </CCol>

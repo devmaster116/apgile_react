@@ -1,7 +1,8 @@
 import React, { useEffect,useState } from 'react';
-import { Card, CardBody, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardHeader,Button } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
+import api from "@evenlogics/whf-api";
 
 const KithcenCallList  = (props) => {
 	const [query, setQuery] = useState(false);
@@ -32,7 +33,16 @@ const KithcenCallList  = (props) => {
             minDate:minDate,
         }
     };
-
+	const changeStatus = (data) => {
+		console.log(data,"data")
+		api.request("get",`/${props?.branchId}/status/${data?.id}`)
+		.then((data) => {
+			console.log(data)
+			setQuery(!query)
+		})
+		.catch((error) => console.log(error));
+	  }
+	
 		const columns = [
 			// {
 			// 	dataField: 'id',
@@ -101,6 +111,19 @@ const KithcenCallList  = (props) => {
 				align: 'center',
 				sort: true
 			},
+			{
+				isDummyField: true,
+				align: "center",
+				text: "Status",
+				sort: true,
+				formatter: (cell, row) => {
+				  return (
+					<Button color={row?.status ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+					  {row?.status === 0 ? "Active" : "Inactive"}
+					</Button>
+				  );
+				},
+			  },
 			
 
 

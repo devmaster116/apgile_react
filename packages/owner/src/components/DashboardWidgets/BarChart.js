@@ -37,7 +37,7 @@ const BarChart = (props) => {
       var linedata = [];
         api.request("get", `/${props.selectedBranchId}/teams`).then(({ data }) => {
             let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.name }))
-            optionsArr.unshift({value:"all",label:"All"})
+            // optionsArr.unshift({value:"all",label:"All"})
             setTeamsOptions(optionsArr);
         }).catch((error) => console.log(error));
 
@@ -108,7 +108,7 @@ const BarChart = (props) => {
               classNamePrefix="select"
               onChange={onTeamChange}
               options={teamsOptions}
-              value={teamsOptions[selectedOption]}
+              // value={teamsOptions[selectedOption]}
             />
         </CCol>
     </CRow>
