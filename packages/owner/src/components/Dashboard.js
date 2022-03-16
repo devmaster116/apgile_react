@@ -33,14 +33,14 @@ const Dashboard = (props) => {
     const [endDate, setEndDate] = useState(new Date());
 
     const [dashboardPayload,setPayload] = useState({
-        start:startDate,
+        start:null,
         end:null,
-        time:value,
+        time:null,
         location:null,
         item:null,
         area:null,
         user:null,
-        unit:timeline,
+        unit:null,
         status:null,
         team:null
       });
