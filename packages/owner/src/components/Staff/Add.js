@@ -17,9 +17,13 @@ const ItemAdd = (props) => {
         var rolesArray = [];
         api.request("get", "/roles")
             .then(({data}) => {
-                rolesArray = data?.filter((role) => (
-                    role.name !== "super-admin"
-                ))
+                rolesArray = data?.filter((role) => {
+                   if(props.userRole === "manager"){
+                     return  role.name !== "super-admin" &&  role.name !== "admin"
+                   } else{
+                       return  role.name !== "super-admin"
+                   } 
+            })
                 let newOption = rolesArray?.map((role) => {
                     return {value: role.id, label: role.name}
                 })
@@ -28,7 +32,7 @@ const ItemAdd = (props) => {
             .catch((error) => console.log(error));
 
         setQuery((prev) => !prev)
-    }, [props.branchId]);
+    }, [props.branchId,props.userRole]);
 
 
     const roleChanged = async (data) => {
@@ -37,8 +41,15 @@ const ItemAdd = (props) => {
     }
 
     const getInitialValues = async (data) => {
+      
         await data;
         decidePasswordLogic(data.role_id);
+        if(data?.role_id === 3){
+            console.log("if condition")
+            setShowPassword(false)
+            setShowPasscode(true)
+        }  
+        
     }
 
     const decidePasswordLogic = (role) => {
@@ -141,25 +152,32 @@ const ItemAdd = (props) => {
             condition: showPasscode,
             label: "Passcode",
             col: 1,
-        },
-        password: {
-            type: "password",
-            label: "Password",
-            name: "password",
-            required: !id,
-            condition: showPassword,
-            col: 2,
-        },
-        password_confirmation: {
-            oneOf: "password",
-            type: "password",
-            required: !id,
-            condition: showPassword,
-            label: "Password Confirmation",
-            name: "password_confirmation",
-            col: 2,
+            formatChars: {
+                '0': '[0-9]',
+                'a': '[A-Za-z]',
+                '*': '[A-Za-z0-9]'
+              },
         },
 
+       
+            password: {
+                type: "password",
+                label: "Password",
+                name: "password",
+                required: !id,
+                condition: showPassword,
+                col: 2,
+            },
+            password_confirmation: {
+                oneOf: "password",
+                type: "password",
+                required: !id,
+                condition: showPassword,
+                label: "Password Confirmation",
+                name: "password_confirmation",
+                col: 2,
+            },
+       
         hidden2: {
             type: 'hidden',
             col: 1
@@ -177,7 +195,7 @@ const ItemAdd = (props) => {
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    initialValues={props.location.aboutProps}
+                    // initialValues={props.location.aboutProps}
                     redirect="staff"
                     Query={query}
                     extraVals={{branch_id: props.branchId}}

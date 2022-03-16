@@ -3,7 +3,7 @@ import {Card, CardBody, CardHeader} from 'reactstrap';
 // import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 // import {timezonesOptions} from '@facepays/common';
-import Todo from "./Todo";
+import Todo from "./InternalCall";
 
 const Form = (props) => {
 

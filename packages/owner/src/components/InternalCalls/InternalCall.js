@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import './App.css';
 // import '../../../node_modules/'
-import Plan from './Plan';
+import Plan from './CallDetails';
 import api from "@evenlogics/whf-api";
 import {connect} from "react-redux";
 

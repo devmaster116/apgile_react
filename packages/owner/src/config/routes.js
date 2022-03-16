@@ -41,7 +41,7 @@ import ValidateAsOwner from "./../components/ValidateAsOwner";
 
 
 import SettingAdd from "./../components/Settings/Add";
-import InternalCalls from "./../components/InternalCalls/TodoForm";
+import InternalCalls from "../components/InternalCalls/InternalCallsPlaces";
 
 import CallsList from "./../components/Calls/List";
 import KitchenCalls from "./../components/KitchenCalls/List";
