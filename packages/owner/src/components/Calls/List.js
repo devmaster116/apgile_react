@@ -21,7 +21,7 @@ const List = (props) => {
             col: 12 + ' col-sm-2  ',
         },
 
-        status_id:{
+        status_id :{
             type: "advanceSelect",
             label: "Select Status",
             target: `${props.branchId}/call/status-list`,
