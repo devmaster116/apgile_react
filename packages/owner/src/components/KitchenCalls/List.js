@@ -180,6 +180,11 @@ const KithcenCallList = (props) => {
                         {...props.remoteTableFields}
                         Query={query}
                         hideActionCol={true}
+                        query={
+                            {
+                                sort : "id|desc"
+                            }
+                        }
                     />
                 </CardBody>
             </Card>

@@ -6,14 +6,17 @@ const initialState = {
   userRole:null,
   phoneMask:null,
   branches:[],
+  branchOrderId:0,
 };
 
 const BranchReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CHANGE_BRANCH":
+      console.log(action.payload,"action branch");
       return {
         ...state,
-          selectedBranchId : action.payload.value
+          selectedBranchId : action.payload.value,
+          branchOrderId : action.payload.order
       };
     case "SET_COMPANY":
       return {

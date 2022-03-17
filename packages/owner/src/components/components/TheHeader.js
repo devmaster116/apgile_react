@@ -31,14 +31,14 @@ const TheHeader = (props) => {
          props.userRole === "admin" &&  api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
                 setCompanyAllBranches(data)
-                let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
+                let optionsArr = data?.map((detail,i) => ({value: detail?.id, label: detail?.name,order:i}))
                 setOptions(optionsArr);
                 props.setBranches(data);
                 if (optionsArr.length > 0) {
-                    props.changeBranch(optionsArr[0]);
+                    props.changeBranch(optionsArr[props?.order || 0]);
                 }
             }).catch((error) => console.log(error));
-    }, []);
+    }, [props.order]);
 
 
     const dispatch = useDispatch();
@@ -135,7 +135,7 @@ const TheHeader = (props) => {
               classNamePrefix="select"
               onChange={onBranchChange}
               options={options}
-              value={options[selectedOption]}
+              value={options[props?.order]}
             />
           )}
         </CHeaderNav>
@@ -168,6 +168,7 @@ const mapStateToProps = state => {
         userRole: state.userRole,
         companyId: state.companyId,
         branchId : state.selectedBranchId,
+        order : state.branchOrderId,
     }
 }
 

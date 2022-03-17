@@ -152,6 +152,11 @@ const ItemsList = (props) => {
                             classes: "text-white",
                             callback: (data) => deleteUser(data),
                         }}
+                        query={
+                            {
+                                sort : "id|desc"
+                            }
+                        }
                     />
                 </CardBody>
             </Card>

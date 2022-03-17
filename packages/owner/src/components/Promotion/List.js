@@ -172,6 +172,11 @@ const List = (props) => {
                             Query={query}
                             filters={filters}
                             showAdvancedFitlers={true}
+                            query={
+								{
+									sort : "id|desc"
+								}
+							}
 
                         />
                     </CardBody>

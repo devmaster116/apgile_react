@@ -99,6 +99,11 @@ class List extends Component {
                                 classes:"text-white",
                                 callback: (data) => companyLogin(data),
                             }}
+                            query={
+								{
+									sort : "id|desc"
+								}
+							}
                         />
                     </CardBody>
                 </Card>
