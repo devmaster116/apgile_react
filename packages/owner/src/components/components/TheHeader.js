@@ -48,7 +48,33 @@ const TheHeader = (props) => {
     const sidebarShow = useSelector((state) => state.sidebarShow);
 
 
+
+    let element = document.querySelector('.c-default-layout')
+  
+
+    if(element){
+      element.onclick = () => {
+        // Temporary Solution 
+      let target = document.querySelector('.c-default-layout');
+      if (target.classList.contains('c-dark-theme')){
+        target.classList.remove('c-dark-theme')
+      }else{
+        target.classList.add('c-dark-theme')
+      }      
+    }
+    }
+   
+
+
     const toggleSidebar = () => {
+
+      // Temporary Solution 
+      let target = document.querySelector('.c-sidebar-fixed');
+          if (target.classList.contains('c-sidebar-lg-show')){
+            target.classList.remove('c-sidebar-lg-show')
+          }else{
+            target.classList.add('c-sidebar-lg-show')
+          }
         const val = [true, "responsive"].includes(sidebarShow)
             ? false
             : "responsive";
@@ -56,6 +82,8 @@ const TheHeader = (props) => {
     };
 
     const toggleSidebarMobile = () => {
+      console.log("clicking 2")
+
         const val = [false, "responsive"].includes(sidebarShow)
             ? true
             : "responsive";

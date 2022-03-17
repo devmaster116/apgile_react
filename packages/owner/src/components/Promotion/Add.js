@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
+    const [minDate, setMinDate] = useState('');
+
 
     useEffect(() => {
     }, [props.branchId]);
@@ -69,20 +71,25 @@ const Add = (props) => {
             col: 2,
         },
 
-        valid_from: {
-            type: 'date',
-            label: 'Start Date',
-            // required: true,
-            col: 2
+        valid_from:{
+            type:"date",
+            label:"Select From",
+            col: 12 + ' col-sm-2  ',
+            minDate:new Date(),
+            getValue:(data) => {
+                setTimeout(() => {
+                setMinDate(data?.value)
+            }, 0)
+        }
         },
-
-        valid_till: {
-            type: 'date',
-            label: 'End Date',
-            // required: true,
-            col: 2
+        valid_till:{
+            type:"date",
+            label:"Select To",
+            col: 12 + ' col-sm-2  ',
+            placeholderText: minDate ? "" : "Please select the start date",
+            disabled:minDate ? false : true,
+            minDate:minDate,
         },
-
         time: {
             type: 'timeRange',
             label: 'Time',
