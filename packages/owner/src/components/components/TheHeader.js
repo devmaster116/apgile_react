@@ -58,7 +58,7 @@ const TheHeader = (props) => {
       element_moon.style.display = "none";
     }
    
-
+   console.log(selectedOption,"selectedOption")
 
     const toggleSidebar = () => {
 
