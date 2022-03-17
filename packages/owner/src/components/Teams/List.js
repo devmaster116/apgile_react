@@ -125,6 +125,11 @@ const TeamsList = (props) => {
                         filters={filters}
                         showAAdvancedFilters={true}
                         addRoute={props?.userRole === "supervisor" ? null : "teams/add"}
+                        query={
+                            {
+                                sort : "id|desc"
+                            }
+                        }
                         {...props.remoteTableFields}
                     />
                 </CardBody>

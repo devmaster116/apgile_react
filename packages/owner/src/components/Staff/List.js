@@ -140,6 +140,11 @@ const ItemsList = (props) => {
                         addRoute="/staff/add"
                         {...props.remoteTableFields}
                         Query={query}
+                        query={
+                            {
+                                sort : "id|desc"
+                            }
+                        }
                     />
                 </CardBody>
             </Card>

@@ -157,6 +157,11 @@ const List = (props) => {
                             filters={filters}
                             showAdvancedFilters={true}
                             // query={calculateParams()}
+                            query={
+								{
+									sort : "id|desc"
+								}
+							}
                         />
                     </CardBody>
                 </Card>

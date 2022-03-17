@@ -98,6 +98,11 @@ const List = (props) => {
                                 classes:"text-white",
                                 callback: (data) => companyLogin(data),
                             }}
+                            query={
+								{
+									sort : "id|desc"
+								}
+							}
                             // Query={query}
                             // query={queryParams}
                             // {...props.remoteTableFields}

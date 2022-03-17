@@ -156,6 +156,11 @@ const KithcenCallList  = (props) => {
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}
+							query={
+								{
+									sort : "id|desc"
+								}
+							}
 
 							// customEditLink = {`locations/:id/edit`}
 						/>

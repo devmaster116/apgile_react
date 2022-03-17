@@ -225,6 +225,11 @@ const filters = {
                             // query={calculateParams()}
                             filters={filters}
                             showAdvancedFilters={true}
+                            query={
+								{
+									sort : "id|desc"
+								}
+							}
                         />
 
                         <Modal
