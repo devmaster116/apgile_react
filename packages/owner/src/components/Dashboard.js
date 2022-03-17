@@ -40,7 +40,7 @@ const Dashboard = (props) => {
     const [userOptions, setUserOptions] = useState([]);
     const [isRealTime, setRealTime] = useState(true);
     const [timeline, setTimeLine] = useState("hour");
-    const [value, setValue] = useState(['10:00', '11:00']);
+    const [value, setValue] = useState(["09:30", "18:30"]);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
