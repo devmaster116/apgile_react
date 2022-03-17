@@ -43,6 +43,7 @@ const BarChart = (props) => {
 
     const options = {
         responsive: true,
+        aspectRatio: 5,
         scales: {
             y: {
                ticks: {
@@ -52,11 +53,10 @@ const BarChart = (props) => {
         },
         plugins: {
           legend: {
-            position: 'top',
+              display: false
           },
           title: {
-            display: true,
-            text: 'Teams Bar Chart',
+            display: false
           },
         },
       };
