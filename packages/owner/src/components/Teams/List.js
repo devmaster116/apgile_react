@@ -86,9 +86,9 @@ const TeamsList = (props) => {
             text: "Team Members",
             sort: true,
             formatter: (cell, row) => {
-                return row?.users?.map(users => {
-                    return users && <span>
-                           {users?.username + `,`}
+                return row?.users?.map((users,i) => {
+                    return users && <span className={`badge h6 badge-dark text-capitalize  ${i !== row?.roles?.length-1 ? "mr-1" : ""}`}>
+                           {users?.full_name}
 					</span>
                 })
             },

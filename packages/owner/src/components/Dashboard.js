@@ -142,6 +142,10 @@ const Dashboard = (props) => {
         props.history.push('/profile')
     }
 
+    if (props?.userRole === "supervisor") {
+        props.history.push('/team')
+    }
+
 
     const onLocationChange = (data, name) => {
         if (name === "location") {
@@ -456,6 +460,14 @@ const Dashboard = (props) => {
                     subtitle=" Details of different call statuses"
                     chartData={dashbaordData}
                     timeline={timeline}
+                />
+                 <Graph
+                    type="line"
+                    title="Call Responses Time"
+                    subtitle=" Details of different call statuses"
+                    chartData={dashbaordData}
+                    timeline={timeline}
+                    multiLine={true}
                 />
                 <CCol lg={12}>
                     <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
