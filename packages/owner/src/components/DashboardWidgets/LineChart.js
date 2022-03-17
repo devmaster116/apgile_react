@@ -53,13 +53,13 @@ export const LineChart = (props) => {
         }
         console.log(props?.data,"props?.data")
 
-        props?.multiLine === true && props?.data?.calls_grouped?.completed && Object.entries(props?.data?.calls_grouped?.completed).forEach(([key, val], i) => {
+        props?.multiLine === true && props?.data?.completed && Object.entries(props?.data?.completed).forEach(([key, val], i) => {
           console.log("completed")
             completedLabels.push(key);
             completedLinedata.push(val);
         })
 
-        props?.multiLine === true && props?.data?.calls_grouped?.responses && Object.entries(props?.data?.calls_grouped?.responses).forEach(([key, val], i) => {
+        props?.multiLine === true && props?.data?.responses && Object.entries(props?.data?.responses).forEach(([key, val], i) => {
             console.log("responses")
             responsesLabels.push(key);
             responsesLinedata.push(val);

@@ -31,6 +31,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tool
 const Dashboard = (props) => {
 
     const [dashbaordData, setDashbaordData] = useState([])
+    const [secondChartData, setSecondChartData] = useState([])
     const [labels, setLabels] = useState([])
     const [dataValue, setDataValue] = useState([])
     const [selectedOption, setSelectedOption] = useState({});
@@ -70,6 +71,7 @@ const Dashboard = (props) => {
             setLabels(labelArr)
             setDataValue(valueArr)
             setDashbaordData(data)
+            setSecondChartData(data.calls_grouped)
             setLocationOptions(data.filters.locations);
             setAreaOptions(data.filters.areas);
             setItemsOptions(data.filters.items);
@@ -462,7 +464,7 @@ const Dashboard = (props) => {
                     type="line"
                     title="Call Responses Time"
                     subtitle=" Details of different call statuses"
-                    chartData={dashbaordData}
+                    chartData={secondChartData}
                     timeline={timeline}
                     multiLine={true}
                 />
