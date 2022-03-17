@@ -240,20 +240,20 @@ const Dashboard = (props) => {
             <CRow>
                 {dashbaordData?.static_calls &&
                     Object.entries(dashbaordData?.static_calls).map(([key, val], i) => (
-                        <CCol xs={12} sm={6} lg={2} key={i}>
+                        <CCol xs={12} sm={6} lg={1} key={i}>
                             <Block title={key} value={val} color={getColor(i)}/>
                         </CCol>
                     ))}
-                <CCol xs={12} sm={6} lg={2}>
+                <CCol xs={12} sm={6} lg={1}>
                     <Block
-                        title="Staff Online"
+                        title="Online"
                         value={dashbaordData?.staff_online}
                         color="primary"
                     />
                 </CCol>
-                <CCol xs={12} sm={6} lg={2}>
+                <CCol xs={12} sm={6} lg={1}>
                     <Block
-                        title="Areas Active"
+                        title="Areas"
                         value={dashbaordData?.active_areas}
                         color="secondary"
                         font="black"
@@ -374,7 +374,7 @@ const Dashboard = (props) => {
                                     type="radio"
                                     name="options"
                                     id="option0"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     className="d-none"
                                     value="hour"
                                     checked={timeline === "hour"}
@@ -392,7 +392,7 @@ const Dashboard = (props) => {
                                     type="radio"
                                     name="options"
                                     id="option1"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     value="day"
                                     className="d-none"
                                     checked={timeline === "day"}
