@@ -462,8 +462,8 @@ const Dashboard = (props) => {
                 />
                  <Graph
                     type="line"
-                    title="Call Responses Time"
-                    subtitle=" Details of different call statuses"
+                    title="Call Averages"
+                    subtitle="Average call completion and response time"
                     chartData={secondChartData}
                     timeline={timeline}
                     multiLine={true}
