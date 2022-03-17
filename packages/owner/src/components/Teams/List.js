@@ -75,6 +75,12 @@ const TeamsList = (props) => {
             sort: true
         },
         {
+            dataField: 'location_name.name',
+            text: 'Location',
+            align: 'center',
+            sort: true
+        },
+        {
             dataField: 'supervisor.first_name',
             text: 'Supervisor',
             align: 'center',

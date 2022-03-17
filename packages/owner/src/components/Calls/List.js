@@ -109,7 +109,7 @@ const List = (props) => {
                 if(row?.completed_at){
                     return (
                             <span className="badge badge-dark">
-                                 {completed_at}
+                                 {row?.completed_at}
                             </span>
 
                     )
