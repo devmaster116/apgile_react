@@ -3,6 +3,8 @@
     "1": "warning",
     "2": "success",
     "3": "danger",
-    "4": "dark"
+    "4": "dark",
+    "5": "danger",
+    "6": "danger",
+    "7": "primary"
 }
-  

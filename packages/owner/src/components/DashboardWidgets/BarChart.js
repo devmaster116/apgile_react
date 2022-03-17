@@ -39,10 +39,17 @@ const BarChart = (props) => {
          linedata && setLineData(linedata);
 
     }, [props.selectedBranchId,props.barData])
-    
+
 
     const options = {
         responsive: true,
+        scales: {
+            y: {
+               ticks: {
+                    stepSize: 1
+                }
+            }
+        },
         plugins: {
           legend: {
             position: 'top',
@@ -53,9 +60,9 @@ const BarChart = (props) => {
           },
         },
       };
-      
+
       const labels = [...Linelabels];
-      
+
        const data = {
         labels,
         datasets: [
@@ -69,19 +76,19 @@ const BarChart = (props) => {
         ],
       }
 
-   
-      
+
+
   return (
     <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
     <CardHeader>
-        <b>Members Record</b> 
+        <b>Members Record</b>
     </CardHeader>
     <CardBody>
         <Bar options={options} data={data} />
     </CardBody>
     </Card>
   )
-     
+
 }
 
 

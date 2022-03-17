@@ -70,7 +70,7 @@ const Dashboard = (props) => {
                 setDataValue(valueArr)
                 setDashbaordData(data)
             })
-                .catch((error) => console.log(error));     
+                .catch((error) => console.log(error));
         }, 1);
 
     }, [props.selectedBranchId,dashboardPayload]);
@@ -99,11 +99,11 @@ const Dashboard = (props) => {
 
     api.request("get", `/${props.selectedBranchId}/role-users/staff`).then(({ data }) => {
         let optionsArr = data?.map((detail) => ({ value: detail?.id, label: detail?.username }))
-        // optionsArr.unshift({value:"all",label:"All"})
+        optionsArr.unshift({value:"all",label:"All"})
         setUserOptions(optionsArr);
     }).catch((error) => console.log(error));
     }, [props.selectedBranchId])
-    
+
 
 
 
@@ -127,9 +127,9 @@ const Dashboard = (props) => {
           return user.value;
         });
         setPayload({ ...dashboardPayload, [name]: arr });
-      } 
-  
-      
+      }
+
+
         let selected = locationOptions.map((opt) => {
             if (opt.value === data.value) {
                 return opt;
@@ -144,9 +144,10 @@ const Dashboard = (props) => {
 
     const chartData = {
         labels: labels,
+        barPercentage: 1,
         datasets: [
             {
-                label: '# of Votes',
+                label: '',
                 data: dataValue,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -184,8 +185,6 @@ const Dashboard = (props) => {
         setTimeLine("today")
     }
 
-    console.log(dashboardPayload,"paylaod")
-
 const onTimeChange = (data) => {
     setValue(data);
 
@@ -197,7 +196,21 @@ const onTimeChange = (data) => {
 
     return (
       <div>
-        <h3>Adroit Dashboards</h3> 
+          <CRow>
+              <CCol md={6}>
+              <h3>Adroit Dashboards</h3>
+              </CCol>
+              <CCol md={6}>
+                  <Button
+                      size="md"
+                      color="danger"
+                      className="btn btn-lg btn-danger timelineButton mb-2 float-end"
+                      onClick={() => resetHandler()}
+                  >
+                      Reset
+                  </Button>
+              </CCol>
+          </CRow>
         <Card className="animated fadeIn">
             <CardHeader><b>Filter By Entity</b></CardHeader>
         <CardBody>
@@ -222,6 +235,7 @@ const onTimeChange = (data) => {
               onChange={(data)=>onLocationChange(data,"area")}
               options={areaOptions}
               value={areaOptions[selectedOption]}
+              isMulti
             />
           </CCol>
           <CCol sm={3}>
@@ -233,10 +247,11 @@ const onTimeChange = (data) => {
               onChange={(data)=>onLocationChange(data,"item")}
               options={itemsOptions}
               value={itemsOptions[selectedOption]}
+              isMulti
             />
           </CCol>
           <CCol sm={3}>
-            <label>Select User</label>
+            <label>Select Staff</label>
             <Select
               name="users"
               className="basic-multi-select"
@@ -276,7 +291,7 @@ const onTimeChange = (data) => {
             <label>Select End Date</label>
             <DatePicker
               selected={endDate}
-              onChange={(date) => 
+              onChange={(date) =>
                 {
                   setEndDate(date)
                   setPayload({
@@ -284,17 +299,19 @@ const onTimeChange = (data) => {
                        end: date
                   })
               }}
-              
+
               className="date-picker-custom"
+              dateFormat="MM-dd-yyyy"
             />
           </CCol>
           <CCol sm={4}>
           <label>Select Time Range</label> <br/>
             <TimeRangePicker  className="date-picker-custom" clockIcon={null} disableClock={true} onChange={onTimeChange} value={value} />
           </CCol>
-          <CCol sm={1}>
+          <CCol sm={4}>
+              <label>Create By</label> <br/>
             <label
-              className={`btn btn-dark timelineButton mr-1 ${
+              className={`btn btn-dark btn-sm timelineButton mr-1 ${
                 timeline === "hour" ? "active" : ""
               }`}
             >
@@ -310,11 +327,9 @@ const onTimeChange = (data) => {
               />
               Hour
             </label>
-            </CCol>
-          <CCol sm={1}>
 
             <label
-              className={`btn btn-dark timelineButton mr-1 ${
+              className={`btn btn-dark timelineButton btn-sm mr-1 ${
                 timeline === "day" ? "active" : ""
               }`}
             >
@@ -328,19 +343,44 @@ const onTimeChange = (data) => {
                 checked={timeline === "day"}
                 onChange={timelineChange}
               />
-              Day
+                &nbsp;Day&nbsp;
             </label>
+
+              <label
+                  className={`btn btn-dark btn-sm timelineButton mr-1 ${
+                      timeline === "week" ? "active" : ""
+                  }`}
+              >
+                  <input
+                      type="radio"
+                      name="options"
+                      id="option0"
+                      autoComplete="off"
+                      className="d-none"
+                      value="week"
+                      checked={timeline === "week"}
+                      onChange={timelineChange}
+                  />
+                  Week
+              </label>
+              <label
+                  className={`btn btn-dark btn-sm timelineButton mr-1 ${
+                      timeline === "month" ? "active" : ""
+                  }`}
+              >
+                  <input
+                      type="radio"
+                      name="options"
+                      id="option0"
+                      autoComplete="off"
+                      className="d-none"
+                      value="month"
+                      checked={timeline === "month"}
+                      onChange={timelineChange}
+                  />
+                  Month
+              </label>
             </CCol>
-          <CCol sm={1}>
-            <Button
-              size="sm"
-              color="danger"
-              className="btn btn-lg btn-danger timelineButton mb-2"
-              onClick={() => resetHandler()}
-            >
-              Reset
-            </Button>
-          </CCol>
       </CRow>
 
 </CardBody>
@@ -350,7 +390,7 @@ const onTimeChange = (data) => {
 
         <CRow>
           <Graph
-            type="pie"
+            type="bar"
             title="Calls Data"
             subtitle="Details of different call statuses"
             chartData={chartData}
