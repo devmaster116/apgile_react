@@ -89,6 +89,8 @@ export const LineChart = (props) => {
     }, [props.data, props.staff,props.multiLine])
 completedLinedata && console.log(completedLinedata,"completedLinedata")
 responseLinedata && console.log(responseLinedata,"responseLinedata")
+completedLinelabels && console.log(completedLinelabels,"completedLinelabels")
+
 
 console.log(responselabels,"responselabels")
 
