@@ -342,15 +342,16 @@ const Add = (props) => {
         condition: showAddFields,
         handleChange: (data) => console.log(data, "data"),
       },
-      page_footer: {
-        isDummyField: true,
-        col:2
-      },
+    
       page_footer: {
         type: "text",
         label: "Page Footer",
         col: 2,
         condition: showAddFields,
+      },
+      dummy: {
+        isDummyField: true,
+        col:1
       },
       logo: {
         type: "filePic",
@@ -360,6 +361,10 @@ const Add = (props) => {
         col: 2,
         condition: showAddFields,
       },
+      // dummy2: {
+      //   isDummyField: true,
+      //   col:1
+      // },
       bg_image: {
         type: "filePic",
         label: "Background Image",
