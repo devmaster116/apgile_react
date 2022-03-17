@@ -107,16 +107,9 @@ const List = (props) => {
             sort: true,
             formatter: (cell, row) => {
                 if(row?.completed_at){
-                    var now = new Date(row?.completed_at);
-                    now.setSeconds(0, 0);
-                    var stamp = now
-                      .toISOString()
-                      .replace(/T/, " ")
-                      .replace(/:00.000Z/, "");
-                    console.log(stamp)
                     return (
                             <span className="badge badge-dark">
-                                 {stamp}
+                                 {completed_at}
                             </span>
 
                     )
