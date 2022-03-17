@@ -26,11 +26,24 @@ export const LineChart = (props) => {
 
     const [Linelabels, setLineLabels] = useState([])
     const [Linedata, setLineData] = useState([])
+
+    const [completedLinelabels, setCompletedLineLabels] = useState([])
+    const [completedLinedata, setCompletedLineData] = useState([])
+    const [responselabels, setResponseLineLabels] = useState([])
+    const [responseLinedata, setResponseLineData] = useState([])
+
     const [SecondLinedata, setSecondLineData] = useState([])
 
     useEffect(() => {
         var labels = [];
         var linedata = [];
+
+        var completedLabels = [];
+        var completedLinedata = [];
+
+        var responsesLabels = [];
+        var responsesLinedata = [];
+
         var secondLinedata = [];
         if (props?.staff === false || props?.staff === undefined) {
             props?.data?.calls_grouped?.status && Object.entries(props?.data?.calls_grouped.status).forEach(([key, val], i) => {
@@ -38,6 +51,17 @@ export const LineChart = (props) => {
                 linedata.push(val);
             })
         }
+
+        props.multiLine === true && props?.data?.calls_grouped?.completed && Object.entries(props?.data?.calls_grouped?.completed).forEach(([key, val], i) => {
+            completedLabels.push(key);
+            completedLinedata.push(val);
+        })
+
+        props.multiLine === true && props?.data?.calls_grouped?.responses && Object.entries(props?.data?.calls_grouped?.responses).forEach(([key, val], i) => {
+            responsesLabels.push(key);
+            responsesLinedata.push(val);
+        })
+
 
         props?.staff === true && props?.data?.completed_calls?.status && Object.entries(props?.data?.completed_calls?.status).forEach(([key, val], i) => {
             labels.push(key);
@@ -51,8 +75,16 @@ export const LineChart = (props) => {
         labels && setLineLabels(labels);
         linedata && setLineData(linedata);
         secondLinedata && setSecondLineData(secondLinedata);
-    }, [props.data, props.staff])
 
+
+
+        completedLabels && setCompletedLineLabels(labels);
+        completedLinedata && setCompletedLineData(linedata);
+        responsesLabels && setResponseLineLabels(labels);
+        responsesLinedata && setResponseLineData(linedata);
+        
+    }, [props.data, props.staff,props.multiLine])
+console.log(responselabels,"responselabels")
     const getTitle = (timeline) => {
         switch (timeline) {
             case "today":
@@ -71,8 +103,20 @@ export const LineChart = (props) => {
                 break;
         }
     };
-    //  const doubleDataSet = [];
-
+     const doubleDataSet = [
+        {
+            label: "Completed",
+            data: [...completedLinedata],
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+            label: "Responses",
+            data: [...responseLinedata],
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        }
+    ];
 
     const dataSet = [
         {
@@ -88,11 +132,13 @@ export const LineChart = (props) => {
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
     })
-    const labels = [...Linelabels];
+    const labels = [props.multiLine === true ? [...completedLinelabels]:[...Linelabels]];
+
     const data = {
         labels,
-        datasets: dataSet
+        datasets: props.multiLine === true ? doubleDataSet: dataSet  
     };
+
     const options = {
         responsive: true,
         scales: {

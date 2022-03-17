@@ -42,7 +42,7 @@ const ValidateAsOwner = (props) => {
         <>
             <div style={{textAlign: "center", width: "100%"}}>
                 <Watch
-                    class="text-center"
+                    class="text-center m-auto"
                     heigth="100"
                     width="100"
                     color="grey"
