@@ -81,7 +81,7 @@ const BarChart = (props) => {
   return (
     <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
     <CardHeader>
-        <b>Members Record</b>
+        <b>Staff Record</b>
     </CardHeader>
     <CardBody>
         <Bar options={options} data={data} />

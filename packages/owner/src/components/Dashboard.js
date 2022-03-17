@@ -57,6 +57,28 @@ const Dashboard = (props) => {
         team: null,
     });
 
+    const dataCall = () => {
+        api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({data}) => {
+            let labelArr = []
+            let valueArr = []
+            Object.entries(data?.calls).forEach(([key, val], i) => {
+                if (key !== "total") {
+                    labelArr.push(key.toUpperCase());
+                    valueArr.push(val);
+                }
+            })
+            setLabels(labelArr)
+            setDataValue(valueArr)
+            setDashbaordData(data)
+            setLocationOptions(data.filters.locations);
+            setAreaOptions(data.filters.areas);
+            setItemsOptions(data.filters.items);
+            setUserOptions(data.filters.users);
+            setRealTime(data.realtime);
+        })
+            .catch((error) => console.log(error));
+    }
+
     useEffect(() => {
         if (!props.selectedBranchId) {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -69,28 +91,18 @@ const Dashboard = (props) => {
         }
         /* eslint-disable */
         setTimeout(() => {
-            api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({data}) => {
-                let labelArr = []
-                let valueArr = []
-                Object.entries(data?.calls).forEach(([key, val], i) => {
-                    if (key !== "total") {
-                        labelArr.push(key.toUpperCase());
-                        valueArr.push(val);
-                    }
-                })
-                setLabels(labelArr)
-                setDataValue(valueArr)
-                setDashbaordData(data)
-                setLocationOptions(data.filters.locations);
-                setAreaOptions(data.filters.areas);
-                setItemsOptions(data.filters.items);
-                setUserOptions(data.filters.users);
-                setRealTime(data.realtime);
-            })
-                .catch((error) => console.log(error));
+            dataCall();
         }, 1);
 
-    }, [props.selectedBranchId, dashboardPayload]);
+        //If its realtime we need to update stuff regularly
+        // if(isRealTime) {
+        //     setInterval(function() {
+        //         dataCall();
+        //     }, 10 * 1000);
+        // }
+
+
+    }, [props.selectedBranchId, dashboardPayload, isRealTime]);
 
 
     // useEffect(() => {
@@ -132,15 +144,15 @@ const Dashboard = (props) => {
 
 
     const onLocationChange = (data, name) => {
-        // if (name !== "user") {
-        //     setPayload({...dashboardPayload, [name]: data.value});
-        // } else {
+        if (name === "location") {
+            setPayload({...dashboardPayload, [name]: data.value});
+        } else {
             let arr = [];
             arr = data?.map((user) => {
                 return user.value;
             });
             setPayload({...dashboardPayload, [name]: arr});
-        // }
+        }
 
 
         let selected = locationOptions.map((opt) => {
@@ -211,7 +223,7 @@ const Dashboard = (props) => {
         <div>
             <CRow>
                 <CCol md={6}>
-                    <h3>Adroit Dashboards <span className="badge badge-sm badge-success">{ isRealTime ? 'Realtime' : ''}</span></h3>
+                    <h3>Adroit Dashboards</h3>
                 </CCol>
                 <CCol md={6}>
                     <Button
@@ -222,6 +234,29 @@ const Dashboard = (props) => {
                     >
                         Reset
                     </Button>
+                </CCol>
+            </CRow>
+            <CRow>
+                {dashbaordData?.calls &&
+                    Object.entries(dashbaordData?.calls).map(([key, val], i) => (
+                        <CCol xs={12} sm={6} lg={2} key={i}>
+                            <Block title={key} value={val} color={getColor(i)}/>
+                        </CCol>
+                    ))}
+                <CCol xs={12} sm={6} lg={2}>
+                    <Block
+                        title="Staff Online"
+                        value={dashbaordData?.staff_online}
+                        color="primary"
+                    />
+                </CCol>
+                <CCol xs={12} sm={6} lg={2}>
+                    <Block
+                        title="Areas Active"
+                        value={dashbaordData?.active_areas}
+                        color="secondary"
+                        font="black"
+                    />
                 </CCol>
             </CRow>
             <Card className="animated fadeIn">
@@ -238,10 +273,11 @@ const Dashboard = (props) => {
                                 onChange={(data) => onLocationChange(data, "location")}
                                 options={locationOptions}
                                 value={locationOptions[selectedOption['locations']]}
-                                isMulti
+                                // isMulti
                             />
                         </CCol>
-                        <CCol sm={3}>
+
+                        {dashboardPayload?.location && <CCol sm={3}>
                             <label>Select Area</label>
                             <Select
                                 name="areas"
@@ -253,8 +289,8 @@ const Dashboard = (props) => {
                                 value={areaOptions[selectedOption['areas']]}
                                 isMulti
                             />
-                        </CCol>
-                        <CCol sm={3}>
+                        </CCol> }
+                        {dashboardPayload?.location && <CCol sm={3}>
                             <label>Select Item</label>
                             <Select
                                 name="items"
@@ -266,8 +302,8 @@ const Dashboard = (props) => {
                                 value={itemsOptions[selectedOption['items']]}
                                 isMulti
                             />
-                        </CCol>
-                        <CCol sm={3}>
+                        </CCol>}
+                        {dashboardPayload?.location && <CCol sm={3}>
                             <label>Select Staff</label>
                             <Select
                                 name="users"
@@ -279,7 +315,7 @@ const Dashboard = (props) => {
                                 value={userOptions[selectedOption['user']]}
                                 isMulti
                             />
-                        </CCol>
+                        </CCol> }
                     </CRow>
 
                 </CardBody>
@@ -420,32 +456,9 @@ const Dashboard = (props) => {
                     chartData={dashbaordData}
                     timeline={timeline}
                 />
-                <CCol lg={4}>
-                    <CRow>
-                        {dashbaordData?.calls &&
-                            Object.entries(dashbaordData?.calls).map(([key, val], i) => (
-                                <CCol xs={12} sm={4} lg={6} key={i}>
-                                    <Block title={key} value={val} color={getColor(i)}/>
-                                </CCol>
-                            ))}
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block
-                                title="Staff Online"
-                                value={dashbaordData?.staff_online}
-                                color="primary"
-                            />
-                        </CCol>
-                        <CCol xs={12} sm={4} lg={6}>
-                            <Block
-                                title="Areas Active"
-                                value={dashbaordData?.active_areas}
-                                color="secondary"
-                                font="black"
-                            />
-                        </CCol>
-                    </CRow>
+                <CCol lg={12}>
+                    <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
                 </CCol>
-                <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
             </CRow>
         </div>
     );

@@ -39,7 +39,7 @@ const Graph = ({type, title, subtitle, chartData, timeline, staff}) => {
         }
     }
     return (
-        <CCol lg={4}>
+        <CCol lg={4} sm={6}>
             <CCard>
                 <CCardBody>
                     <CCardTitle>{title}</CCardTitle>
