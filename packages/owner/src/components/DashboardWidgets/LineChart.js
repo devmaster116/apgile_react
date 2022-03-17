@@ -51,6 +51,7 @@ export const LineChart = (props) => {
                 linedata.push(val);
             })
         }
+        console.log(props?.data,"props?.data")
 
         props?.multiLine === true && props?.data?.calls_grouped?.completed && Object.entries(props?.data?.calls_grouped?.completed).forEach(([key, val], i) => {
           console.log("completed")
