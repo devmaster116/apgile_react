@@ -49,19 +49,13 @@ const TheHeader = (props) => {
 
 
 
-    let element = document.querySelector('.c-default-layout')
-  
+    let element_moon = document.querySelector('.fa-moon')
+    let element_sun = document.querySelector('.fa-sun')
+    
 
-    if(element){
-      element.onclick = () => {
-        // Temporary Solution 
-      let target = document.querySelector('.c-default-layout');
-      if (target.classList.contains('c-dark-theme')){
-        target.classList.remove('c-dark-theme')
-      }else{
-        target.classList.add('c-dark-theme')
-      }      
-    }
+    if(element_moon && element_sun){
+      element_sun.style.display = "none";
+      element_moon.style.display = "none";
     }
    
 

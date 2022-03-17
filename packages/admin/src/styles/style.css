@@ -39,3 +39,7 @@ cursor: default !important;
 .css-2b097c-container *{
     text-transform: capitalize !important;
 }
+
+.fa-moon{
+    display: none !important;
+}
