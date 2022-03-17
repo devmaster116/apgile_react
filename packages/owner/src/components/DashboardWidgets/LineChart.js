@@ -81,10 +81,10 @@ export const LineChart = (props) => {
 
 
 
-        completedLabels && setCompletedLineLabels(labels);
-        completedLinedata && setCompletedLineData(linedata);
-        responsesLabels && setResponseLineLabels(labels);
-        responsesLinedata && setResponseLineData(linedata);
+        completedLabels && setCompletedLineLabels(completedLabels);
+        completedLinedata && setCompletedLineData(completedLinedata);
+        responsesLabels && setResponseLineLabels(responsesLabels);
+        responsesLinedata && setResponseLineData(responsesLinedata);
         
     }, [props.data, props.staff,props.multiLine])
 completedLinedata && console.log(completedLinedata,"completedLinedata")
