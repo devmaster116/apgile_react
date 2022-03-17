@@ -440,9 +440,6 @@ const Dashboard = (props) => {
 
                 </CardBody>
             </Card>
-
-            <br/>
-
             <CRow>
                 <Graph
                     type="bar"
