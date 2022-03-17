@@ -224,7 +224,7 @@ const Dashboard = (props) => {
         <div>
             <CRow>
                 <CCol md={6}>
-                    <h3>Adroit Dashboards</h3>
+                    <h3>Adroit Dashboards <span className="badge badge-success badge-sm">{dashbaordData?.timestamp}</span></h3>
                 </CCol>
                 <CCol md={6}>
                     <Button
@@ -238,8 +238,8 @@ const Dashboard = (props) => {
                 </CCol>
             </CRow>
             <CRow>
-                {dashbaordData?.calls &&
-                    Object.entries(dashbaordData?.calls).map(([key, val], i) => (
+                {dashbaordData?.static_calls &&
+                    Object.entries(dashbaordData?.static_calls).map(([key, val], i) => (
                         <CCol xs={12} sm={6} lg={2} key={i}>
                             <Block title={key} value={val} color={getColor(i)}/>
                         </CCol>
