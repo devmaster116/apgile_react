@@ -36,7 +36,15 @@ const Graph = ({type, title, subtitle, chartData, timeline, staff,multiLine}) =>
                     stepSize: 1
                 }
             }
-        }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false
+            }
+        },
     }
     return (
         <CCol lg={4} sm={6}>
