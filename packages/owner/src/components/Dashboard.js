@@ -23,7 +23,7 @@ import "../style/style.css";
 import Graph from "./DashboardWidgets/Graph";
 import DatePicker from "react-datepicker";
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
-import {Card, CardBody, CardHeader} from 'reactstrap';
+import {Card, CardBody} from 'reactstrap';
 import BarChart from "./DashboardWidgets/BarChart"
 
 
@@ -164,6 +164,7 @@ const Dashboard = (props) => {
         });
         selectedOption[name] = data;
         setSelectedOption(selectedOption);
+        console.log(selected,"selected")
     };
 
 

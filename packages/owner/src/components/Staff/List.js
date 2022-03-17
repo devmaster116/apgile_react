@@ -81,11 +81,13 @@ const ItemsList = (props) => {
         //     align: "center",
         //     sort: true,
         // },
+        
         {
             dataField: "created_at",
             text: "Created At",
             align: "center",
             sort: true,
+            className:"badge h6 badge-dark"
         },
         {
             dataField: "username",
@@ -105,11 +107,11 @@ const ItemsList = (props) => {
             text: "User Role",
             sort: true,
             formatter: (cell, row) => {
-                return row.roles.map((rol) => {
-                    return <span key={rol.id}>{rol?.name}</span>
+                return row.roles.map((rol,i) => {
+                    return <span className={`badge h6 badge-dark text-capitalize  ${i !== row?.roles?.length-1 ? "mr-1" : ""}`} key={rol.id}>{rol?.name}</span>
                 });
             },
-        },
+        },  
     ];
 
 

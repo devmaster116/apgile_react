@@ -72,3 +72,7 @@ label.active{
 .c-sidebar-brand > img {
     cursor: default !important;
     }
+
+    .css-2b097c-container *{
+        text-transform: capitalize !important;
+    }

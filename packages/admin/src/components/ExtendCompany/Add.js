@@ -288,6 +288,7 @@ const Add = (props) => {
         name: "max_users",
         required: true,
         col: 1,
+        min:0,
         condition: showAddFields,
       },
 
@@ -297,6 +298,7 @@ const Add = (props) => {
         name: "max_watches",
         required: true,
         col: 1,
+        min:0,
         condition: showAddFields,
       },
 
@@ -306,6 +308,7 @@ const Add = (props) => {
         name: "max_codes",
         required: true,
         col: 1,
+        min:0,
         condition: showAddFields,
       },
 
@@ -314,12 +317,7 @@ const Add = (props) => {
         col:2
       },
 
-      page_footer: {
-        type: "text",
-        label: "Page Footer",
-        col: 3,
-        condition: showAddFields,
-      },
+    
 
       "Style Details": {
         isDummyField: true,
@@ -344,13 +342,22 @@ const Add = (props) => {
         condition: showAddFields,
         handleChange: (data) => console.log(data, "data"),
       },
-
+      page_footer: {
+        isDummyField: true,
+        col:2
+      },
+      page_footer: {
+        type: "text",
+        label: "Page Footer",
+        col: 2,
+        condition: showAddFields,
+      },
       logo: {
         type: "filePic",
         label: "Logo",
         name: "logo",
         // required: true,
-        col: 3,
+        col: 2,
         condition: showAddFields,
       },
       bg_image: {
@@ -358,7 +365,7 @@ const Add = (props) => {
         label: "Background Image",
         name: "bg_image",
         // required: true,
-        col: 5,
+        col: 2,
         condition: showAddFields,
       },
     };
