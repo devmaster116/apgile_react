@@ -224,7 +224,7 @@ const Dashboard = (props) => {
         <div>
             <CRow>
                 <CCol md={6}>
-                    <h3>Adroit Dashboards <span className="badge badge-success badge-sm">{dashbaordData?.timestamp}</span></h3>
+                    <h3>Adroit Dashboards {isRealTime && <span className="badge badge-success badge-sm">{dashbaordData?.timestamp}</span>}</h3>
                 </CCol>
                 <CCol md={6}>
                     <Button
