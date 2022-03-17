@@ -52,12 +52,14 @@ export const LineChart = (props) => {
             })
         }
 
-        props.multiLine === true && props?.data?.calls_grouped?.completed && Object.entries(props?.data?.calls_grouped?.completed).forEach(([key, val], i) => {
+        props?.multiLine === true && props?.data?.calls_grouped?.completed && Object.entries(props?.data?.calls_grouped?.completed).forEach(([key, val], i) => {
+          console.log("completed")
             completedLabels.push(key);
             completedLinedata.push(val);
         })
 
-        props.multiLine === true && props?.data?.calls_grouped?.responses && Object.entries(props?.data?.calls_grouped?.responses).forEach(([key, val], i) => {
+        props?.multiLine === true && props?.data?.calls_grouped?.responses && Object.entries(props?.data?.calls_grouped?.responses).forEach(([key, val], i) => {
+            console.log("responses")
             responsesLabels.push(key);
             responsesLinedata.push(val);
         })
@@ -84,7 +86,11 @@ export const LineChart = (props) => {
         responsesLinedata && setResponseLineData(linedata);
         
     }, [props.data, props.staff,props.multiLine])
+completedLinedata && console.log(completedLinedata,"completedLinedata")
+responseLinedata && console.log(responseLinedata,"responseLinedata")
+
 console.log(responselabels,"responselabels")
+
     const getTitle = (timeline) => {
         switch (timeline) {
             case "today":
