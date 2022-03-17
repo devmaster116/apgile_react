@@ -139,7 +139,7 @@ console.log(responselabels,"responselabels")
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
     })
-    const labels = [props.multiLine === true ? [...completedLinelabels]:[...Linelabels]];
+    const labels = [...Linelabels];
 
     const data = {
         labels,
