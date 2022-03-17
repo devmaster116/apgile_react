@@ -260,7 +260,7 @@ const Dashboard = (props) => {
                 </CCol>
             </CRow>
             <Card className="animated fadeIn">
-                <CardHeader><b>Filter By Entity</b></CardHeader>
+                {/*<CardHeader><b>Filter By Entity</b></CardHeader>*/}
                 <CardBody>
                     <CRow className="align-items-end">
                         <CCol sm={3}>
@@ -321,7 +321,7 @@ const Dashboard = (props) => {
                 </CardBody>
             </Card>
             <Card className="animated fadeIn">
-                <CardHeader><b>Filter By Time</b></CardHeader>
+                {/*<CardHeader><b>Filter By Time</b></CardHeader>*/}
                 <CardBody>
                     <CRow className="align-items-end">
                         <CCol sm={2}>
