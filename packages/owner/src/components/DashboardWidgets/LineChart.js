@@ -116,8 +116,8 @@ console.log(responselabels,"responselabels")
         {
             label: "Completed",
             data: [...completedLinedata],
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: '#a3916c',
+            backgroundColor: '#f9b115',
         },
         {
             label: "Responses",
