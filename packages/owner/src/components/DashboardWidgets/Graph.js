@@ -3,7 +3,7 @@ import {
     CCard,
     CCardBody, CCardSubtitle,
     CCardTitle,
-    // CCol,
+    CCol, CRow,
 } from '@coreui/react-pro';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import {
@@ -13,6 +13,7 @@ import {
 } from 'chart.js';
 // import {LineChart} from './LineChart';
 import "../../style/style.css";
+import Select from "react-select";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,
     PointElement,
@@ -20,7 +21,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tool
 );
 
 
-const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspectRatio = 2}) => {
+const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspectRatio = 2, filterData = false, onFilterChange, filterName}) => {
 
     const components = {
         pie: Pie,
@@ -60,12 +61,12 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
         },
     }
 
-    if(typeof chartData === 'undefined') {
+    if (typeof chartData === 'undefined') {
         return [];
     }
 
     let finalData = {};
-    if(typeof chartData.datasets !== 'undefined') {
+    if (typeof chartData.datasets !== 'undefined') {
         finalData = chartData;
     } else {
         finalData = {
@@ -97,18 +98,44 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
     }
 
     return (
-            <CCard>
-                <CCardBody>
-                    <CCardTitle>{title}</CCardTitle>
-                    <CCardSubtitle className="mb-2 text-medium-emphasis">
-                        {subtitle}
-                    </CCardSubtitle>
-                    {/*<Line className='height-graph' data={data} options={props.options}/>*/}
-                    {/*<Bar className='height-graph' data={finalData} options={options}/>*/}
-                    {/*<SpecificStory data={chartData} timeline={timeline} staff={staff} options={options} multiLine={multiLine}/>*/}
-                    <SpecificStory data={finalData} options={options} />
-                </CCardBody>
-            </CCard>
+        <CCard>
+            <CCardBody>
+                {filterData &&
+                    <CRow>
+                        <CCol lg={8}>
+                            <CCardTitle>
+                                {title}
+                            </CCardTitle>
+                        </CCol>
+                        <CCol lg={4}>
+                            <div style={{maxWidth: '200px', margin: '0 auto'}}>
+                                <Select
+                                name={filterName}
+                                className="basic-multi-select"
+                                placeholder="All..."
+                                classNamePrefix="select"
+                                onChange={(data) => onFilterChange(data, filterName)}
+                                options={filterData}
+                                // isMulti
+                            />
+                            </div>
+                        </CCol>
+                    </CRow>
+                }
+
+                {!filterData && <CCardTitle className="text-center">
+                    {title}
+                </CCardTitle>}
+                {subtitle && <CCardSubtitle className="mb-2 text-medium-emphasis">
+                    {subtitle}
+                </CCardSubtitle>}
+
+                {/*<Line className='height-graph' data={data} options={props.options}/>*/}
+                {/*<Bar className='height-graph' data={finalData} options={options}/>*/}
+                {/*<SpecificStory data={chartData} timeline={timeline} staff={staff} options={options} multiLine={multiLine}/>*/}
+                <SpecificStory data={finalData} options={options}/>
+            </CCardBody>
+        </CCard>
     );
 }
 
