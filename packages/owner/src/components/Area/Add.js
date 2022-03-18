@@ -74,7 +74,7 @@ const Add = (props) => {
         // multi:true,
         async: true,
         col: 4,
-        // callback: (data) => locationChangeHandler(data),
+        callback: (data) => locationChangeHandler(data),
       },
 
       page_id: {
