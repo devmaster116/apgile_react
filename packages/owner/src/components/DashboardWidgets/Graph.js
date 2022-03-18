@@ -11,7 +11,7 @@ import {
     PointElement,
     LineElement,
 } from 'chart.js';
-import {LineChart} from './LineChart';
+// import {LineChart} from './LineChart';
 import "../../style/style.css";
 import Select from "react-select";
 

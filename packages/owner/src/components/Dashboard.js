@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Button} from 'reactstrap';
 import {CCol, CRow} from '@coreui/react-pro';
-import {getColor} from "@facepays/common";
+// import {getColor} from "@facepays/common";
 import {
     Chart as ChartJS,
     ArcElement,
@@ -24,7 +24,7 @@ import Graph from "./DashboardWidgets/Graph";
 import DatePicker from "react-datepicker";
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import {Card, CardBody} from 'reactstrap';
-import BarChart from "./DashboardWidgets/BarChart"
+// import BarChart from "./DashboardWidgets/BarChart"
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend, PointElement, LineElement);
@@ -217,7 +217,8 @@ const Dashboard = (props) => {
             unit: e.target.value
         })
     }
-
+console.log(chartData,"data")
+console.log(secondChartData,"secondChartData")
 
     const resetHandler = () => {
         // setSelectedOption(0)
@@ -233,6 +234,7 @@ const Dashboard = (props) => {
             time: data
         })
     }
+
 
     return (
         <div>

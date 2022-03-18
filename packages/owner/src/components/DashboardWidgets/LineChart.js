@@ -87,25 +87,27 @@ export const LineChart = (props) => {
     }, [props.data, props.staff,props.multiLine])
 
 
-    const getTitle = (timeline) => {
-        switch (timeline) {
-            case "today":
-                return "Hours";
-            case "yesterday":
-                return "Hours";
-            case "week":
-                return "Days";
-            case "month":
-                return "Weeks";
-            case "last-month":
-                return "Weeks";
-            case "year":
-                return "Months";
-            default:
-                break;
-        }
-    };
+    // const getTitle = (timeline) => {
+    //     switch (timeline) {
+    //         case "today":
+    //             return "Hours";
+    //         case "yesterday":
+    //             return "Hours";
+    //         case "week":
+    //             return "Days";
+    //         case "month":
+    //             return "Weeks";
+    //         case "last-month":
+    //             return "Weeks";
+    //         case "year":
+    //             return "Months";
+    //         default:
+    //             break;
+    //     }
+    // };
      console.log('leaner data', completedLinedata);
+     console.log('leaner data', completedLinelabels);
+
      const doubleDataSet = [
         {
             label: "Completed",
