@@ -19,8 +19,7 @@ const Add = (props) => {
     const locationChangeHandler = (data) => {
         setTimeout(() => {
             // setTargetID(`${props.branchId}/location/${data?.value}/items`)
-            setTargetID(`${props.branchId}/items-page/${data?.value}`)
-
+            setTargetID(`${props.branchId}/items-pages`)
         }, 10);
     }
 
@@ -75,7 +74,7 @@ const Add = (props) => {
         // multi:true,
         async: true,
         col: 4,
-        callback: (data) => locationChangeHandler(data),
+        // callback: (data) => locationChangeHandler(data),
       },
 
       page_id: {
