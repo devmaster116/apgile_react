@@ -39,7 +39,7 @@ const Add = (props) => {
         category_id: {
             type: "advanceSelect",
             label: "Select Category",
-            target: `${props.branchId}/categories`,
+            target: `${props.branchId}/active/category`,
             optionLabel: "name",
             name: "category_id",
             async: true,
