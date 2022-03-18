@@ -39,14 +39,14 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
                 },
                 title: {
                     display: true,
-                    text: ytitle
+                    text: ytitle.toUpperCase()
                 }
             },
 
             x: {
                 title: {
                     display: true,
-                    text: xtitle
+                    text: xtitle.toUpperCase()
                 }
             }
         },
@@ -60,7 +60,7 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
         },
     }
 
-    if(typeof chartData === 'undefined' || (typeof chartData !== 'undefined' && !chartData)) {
+    if(typeof chartData === 'undefined') {
         return [];
     }
 

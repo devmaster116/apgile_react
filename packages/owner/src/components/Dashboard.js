@@ -215,8 +215,9 @@ const Dashboard = (props) => {
 
 
     const resetHandler = () => {
-        setSelectedOption(0)
-        setTimeLine("today")
+        // setSelectedOption(0)
+        // setTimeLine("today")
+        window.location.reload(false);
     }
 
     const onTimeChange = (data) => {
@@ -471,7 +472,7 @@ const Dashboard = (props) => {
                     subtitle=" Details of different call statuses"
                     chartData={dashbaordData?.charts?.status}
                     ytitle="Calls"
-                    xtitle="Hours"
+                    xtitle={timeline}
                     lengend={false}
                 />
                 </CCol>
@@ -484,7 +485,7 @@ const Dashboard = (props) => {
                     timeline={timeline}
                     multiLine={true}
                     ytitle="Minutes"
-                    xtitle="Hours"
+                    xtitle={timeline}
                     lengend={true}
                 />
                 </CCol>
