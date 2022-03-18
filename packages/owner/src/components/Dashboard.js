@@ -45,6 +45,8 @@ const Dashboard = (props) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [timestamp, setTimestamp] = useState('');
+    const [statusOptions, setStatusOptions] = useState([]);
+    const [filterUnits, setFilterUnits] = useState([]);
 
     const [dashboardPayload, setPayload] = useState({
         start: null,
@@ -79,6 +81,9 @@ const Dashboard = (props) => {
             setUserOptions(data.filters.users);
             setRealTime(data.realtime);
             setTimestamp(data.timestamp);
+            setStatusOptions(data.statuses);
+            setTimeLine(data.unit)
+            setFilterUnits(data.units)
         })
             .catch((error) => console.log(error));
     }
@@ -152,7 +157,7 @@ const Dashboard = (props) => {
 
 
     const onLocationChange = (data, name) => {
-        if (name === "location") {
+        if (name === "location" || name === "staff_status" || name === "activity_status") {
             setPayload({...dashboardPayload, [name]: data.value});
         } else {
             let arr = [];
@@ -378,76 +383,26 @@ const Dashboard = (props) => {
                         </CCol>
                         <CCol sm={4}>
                             <label>Create By</label> <br/>
-                            <label
-                                className={`btn btn-dark btn-sm timelineButton mr-1 ${
-                                    timeline === "hour" ? "active" : ""
-                                }`}
-                            >
-                                <input
-                                    type="radio"
-                                    name="options"
-                                    id="option0"
-                                    autoComplete="off"
-                                    className="d-none"
-                                    value="hour"
-                                    checked={timeline === "hour"}
-                                    onChange={timelineChange}
-                                />
-                                Hour
-                            </label>
-
-                            <label
-                                className={`btn btn-dark timelineButton btn-sm mr-1 ${
-                                    timeline === "day" ? "active" : ""
-                                }`}
-                            >
-                                <input
-                                    type="radio"
-                                    name="options"
-                                    id="option1"
-                                    autoComplete="off"
-                                    value="day"
-                                    className="d-none"
-                                    checked={timeline === "day"}
-                                    onChange={timelineChange}
-                                />
-                                &nbsp;Day&nbsp;
-                            </label>
-
-                            <label
-                                className={`btn btn-dark btn-sm timelineButton mr-1 ${
-                                    timeline === "week" ? "active" : ""
-                                }`}
-                            >
-                                <input
-                                    type="radio"
-                                    name="options"
-                                    id="option0"
-                                    autoComplete="off"
-                                    className="d-none"
-                                    value="week"
-                                    checked={timeline === "week"}
-                                    onChange={timelineChange}
-                                />
-                                Week
-                            </label>
-                            <label
-                                className={`btn btn-dark btn-sm timelineButton mr-1 ${
-                                    timeline === "month" ? "active" : ""
-                                }`}
-                            >
-                                <input
-                                    type="radio"
-                                    name="options"
-                                    id="option0"
-                                    autoComplete="off"
-                                    className="d-none"
-                                    value="month"
-                                    checked={timeline === "month"}
-                                    onChange={timelineChange}
-                                />
-                                Month
-                            </label>
+                            {filterUnits.length > 0 &&
+                                Object.entries(filterUnits).map(([key, val], i) => (
+                                    <label
+                                        className={`btn btn-dark btn-sm timelineButton mr-1 ${
+                                            timeline === val ? "active" : ""
+                                        }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="options"
+                                            id={"option" + key}
+                                            autoComplete="off"
+                                            className="d-none"
+                                            value={val}
+                                            checked={timeline === val}
+                                            onChange={timelineChange}
+                                        />
+                                        {val.toUpperCase()}
+                                    </label>
+                                ))}
                         </CCol>
                     </CRow>
 
@@ -457,10 +412,9 @@ const Dashboard = (props) => {
                 <CCol lg={4} sm={6}>
                 <Graph
                     type="bar"
-                    title="Calls Data"
-                    subtitle="Details of different call statuses"
+                    title="Call Counts"
                     chartData={dashbaordData?.call_chart}
-                    ytitle="Calls"
+                    ytitle="# Calls"
                     xtitle="Statuses"
                     lengend={false}
                 />
@@ -468,23 +422,24 @@ const Dashboard = (props) => {
                 <CCol lg={4} sm={6}>
                 <Graph
                     type="line"
-                    title="Activity Time"
-                    subtitle=" Details of different call statuses"
+                    title="Activity"
                     chartData={dashbaordData?.charts?.status}
-                    ytitle="Calls"
+                    ytitle="# Calls"
                     xtitle={timeline}
                     lengend={false}
+                    onFilterChange={onLocationChange}
+                    filterData={statusOptions}
+                    filterName="activity_status"
                 />
                 </CCol>
                 <CCol lg={4} sm={6}>
                  <Graph
                     type="line"
-                    title="Request Averages"
-                    subtitle="Average call completion and response time"
+                    title="Service Performance"
                     chartData={dashbaordData?.charts?.avgs}
                     timeline={timeline}
                     multiLine={true}
-                    ytitle="Minutes"
+                    ytitle="Avg. Minutes Spent"
                     xtitle={timeline}
                     lengend={true}
                 />
@@ -492,15 +447,17 @@ const Dashboard = (props) => {
                 <CCol lg={12}>
                     <Graph
                         type="bar"
-                        title="Request Averages"
-                        subtitle="Average call completion and response time"
+                        title="Staff Performance"
                         chartData={dashbaordData?.charts?.team}
                         timeline={timeline}
                         multiLine={true}
-                        ytitle="Calls"
+                        ytitle="# Calls"
                         xtitle="Team"
                         lengend={false}
                         aspectRatio={5}
+                        onFilterChange={onLocationChange}
+                        filterData={statusOptions}
+                        filterName="staff_status"
                     />
                     {/*<BarChart barData={dashbaordData} onLocationChange={onLocationChange} ytitle="Calls" xtitle="Team Members"/>*/}
                 </CCol>
