@@ -3,7 +3,7 @@ import {
     CCard,
     CCardBody, CCardSubtitle,
     CCardTitle,
-    CCol,
+    // CCol,
 } from '@coreui/react-pro';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import {
@@ -11,7 +11,7 @@ import {
     PointElement,
     LineElement,
 } from 'chart.js';
-import {LineChart} from './LineChart';
+// import {LineChart} from './LineChart';
 import "../../style/style.css";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,
