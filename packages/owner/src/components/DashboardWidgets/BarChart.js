@@ -48,6 +48,16 @@ const BarChart = (props) => {
             y: {
                ticks: {
                     stepSize: 1
+                },
+                title: {
+                    display: true,
+                    text: props.ytitle
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: props.xtitle
                 }
             }
         },
@@ -81,7 +91,7 @@ const BarChart = (props) => {
   return (
     <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
     <CardHeader>
-        <b>Staff Record</b>
+        <b>Staff Performance</b>
     </CardHeader>
     <CardBody>
         <Bar options={options} data={data} />

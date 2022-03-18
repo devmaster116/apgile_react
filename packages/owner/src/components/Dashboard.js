@@ -44,6 +44,7 @@ const Dashboard = (props) => {
     const [value, setValue] = useState(["09:30", "18:30"]);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const [timestamp, setTimestamp] = useState('');
 
     const [dashboardPayload, setPayload] = useState({
         start: null,
@@ -71,12 +72,13 @@ const Dashboard = (props) => {
             setLabels(labelArr)
             setDataValue(valueArr)
             setDashbaordData(data)
-            setSecondChartData(data.calls_grouped)
+            setSecondChartData(data.charts)
             setLocationOptions(data.filters.locations);
             setAreaOptions(data.filters.areas);
             setItemsOptions(data.filters.items);
             setUserOptions(data.filters.users);
             setRealTime(data.realtime);
+            setTimestamp(data.timestamp);
         })
             .catch((error) => console.log(error));
     }
@@ -179,7 +181,7 @@ const Dashboard = (props) => {
         barPercentage: 1,
         datasets: [
             {
-                label: '',
+                label: 'Calls',
                 data: dataValue,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -213,8 +215,9 @@ const Dashboard = (props) => {
 
 
     const resetHandler = () => {
-        setSelectedOption(0)
-        setTimeLine("today")
+        // setSelectedOption(0)
+        // setTimeLine("today")
+        window.location.reload(false);
     }
 
     const onTimeChange = (data) => {
@@ -230,41 +233,45 @@ const Dashboard = (props) => {
         <div>
             <CRow>
                 <CCol md={6}>
-                    <h3>Adroit Dashboards {isRealTime && <span className="badge badge-success badge-sm">{dashbaordData?.timestamp}</span>}</h3>
+                    <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>
                 </CCol>
                 <CCol md={6}>
                     <Button
                         size="md"
-                        color="danger"
-                        className="btn btn-lg btn-danger timelineButton mb-2 float-end"
+                        // color="danger"
+                        className="btn btn-danger timelineButton mb-2 float-end"
                         onClick={() => resetHandler()}
                     >
                         Reset
                     </Button>
                 </CCol>
             </CRow>
+            <br />
             <CRow>
-                {dashbaordData?.static_calls &&
-                    Object.entries(dashbaordData?.static_calls).map(([key, val], i) => (
-                        <CCol xs={12} sm={6} lg={1} key={i}>
-                            <Block title={key} value={val} color={getColor(i)}/>
+                {dashbaordData?.calls &&
+                    Object.entries(dashbaordData?.calls).map(([key, val], i) => (
+                        <CCol xs={12} sm={6} lg={dashbaordData?.call_attrs[key]?.size ? 2 : 1} key={i}>
+                            <Block title={key} value={val} color={dashbaordData?.call_attrs[key].color}/>
                         </CCol>
                     ))}
+
                 <CCol xs={12} sm={6} lg={1}>
                     <Block
-                        title="Online"
+                        title="Online Staff"
                         value={dashbaordData?.staff_online}
-                        color="primary"
+                        color="success"
                     />
                 </CCol>
                 <CCol xs={12} sm={6} lg={1}>
                     <Block
-                        title="Areas"
+                        title="Active Areas"
                         value={dashbaordData?.active_areas}
-                        color="secondary"
-                        font="black"
+                        color="warning"
                     />
                 </CCol>
+            </CRow>
+            <CRow>
+
             </CRow>
             <Card className="animated fadeIn">
                 {/*<CardHeader><b>Filter By Entity</b></CardHeader>*/}
@@ -447,29 +454,55 @@ const Dashboard = (props) => {
                 </CardBody>
             </Card>
             <CRow>
+                <CCol lg={4} sm={6}>
                 <Graph
                     type="bar"
                     title="Calls Data"
                     subtitle="Details of different call statuses"
-                    chartData={chartData}
+                    chartData={dashbaordData?.call_chart}
+                    ytitle="Calls"
+                    xtitle="Statuses"
+                    lengend={false}
                 />
+                </CCol>
+                <CCol lg={4} sm={6}>
                 <Graph
                     type="line"
                     title="Activity Time"
                     subtitle=" Details of different call statuses"
-                    chartData={dashbaordData}
-                    timeline={timeline}
+                    chartData={dashbaordData?.charts?.status}
+                    ytitle="Calls"
+                    xtitle={timeline}
+                    lengend={false}
                 />
+                </CCol>
+                <CCol lg={4} sm={6}>
                  <Graph
                     type="line"
-                    title="Call Responses Time"
-                    subtitle=" Details of different call statuses"
-                    chartData={secondChartData}
+                    title="Request Averages"
+                    subtitle="Average call completion and response time"
+                    chartData={dashbaordData?.charts?.avgs}
                     timeline={timeline}
                     multiLine={true}
+                    ytitle="Minutes"
+                    xtitle={timeline}
+                    lengend={true}
                 />
+                </CCol>
                 <CCol lg={12}>
-                    <BarChart barData={dashbaordData} onLocationChange={onLocationChange}/>
+                    <Graph
+                        type="bar"
+                        title="Request Averages"
+                        subtitle="Average call completion and response time"
+                        chartData={dashbaordData?.charts?.team}
+                        timeline={timeline}
+                        multiLine={true}
+                        ytitle="Calls"
+                        xtitle="Team"
+                        lengend={false}
+                        aspectRatio={5}
+                    />
+                    {/*<BarChart barData={dashbaordData} onLocationChange={onLocationChange} ytitle="Calls" xtitle="Team Members"/>*/}
                 </CCol>
             </CRow>
         </div>
