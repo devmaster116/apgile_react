@@ -79,20 +79,13 @@ export const LineChart = (props) => {
         linedata && setLineData(linedata);
         secondLinedata && setSecondLineData(secondLinedata);
 
-
-
         completedLabels && setCompletedLineLabels(completedLabels);
         completedLinedata && setCompletedLineData(completedLinedata);
         responsesLabels && setResponseLineLabels(responsesLabels);
         responsesLinedata && setResponseLineData(responsesLinedata);
-        
+
     }, [props.data, props.staff,props.multiLine])
-completedLinedata && console.log(completedLinedata,"completedLinedata")
-responseLinedata && console.log(responseLinedata,"responseLinedata")
-completedLinelabels && console.log(completedLinelabels,"completedLinelabels")
 
-
-console.log(responselabels,"responselabels")
 
     const getTitle = (timeline) => {
         switch (timeline) {
@@ -112,6 +105,7 @@ console.log(responselabels,"responselabels")
                 break;
         }
     };
+     console.log('leaner data', completedLinedata);
      const doubleDataSet = [
         {
             label: "Completed",
@@ -145,19 +139,8 @@ console.log(responselabels,"responselabels")
 
     const data = {
         labels,
-        datasets: props.multiLine === true ? doubleDataSet: dataSet  
+        datasets: props.multiLine === true ? doubleDataSet: dataSet
     };
 
-    const options = {
-        responsive: true,
-        scales: {
-            x: {title: {display: true, text: getTitle(props.timeline)}},
-            y: {
-                title: {display: true, text: 'Calls'}, ticks: {
-                    stepSize: 1
-                }
-            }
-        }
-    };
-    return (Linelabels) && <Line className='height-graph' data={data} options={options}/>;
+    return (Linelabels) && <Line className='height-graph' data={data} options={props.options}/>;
 }
