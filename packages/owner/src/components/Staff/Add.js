@@ -44,7 +44,7 @@ const ItemAdd = (props) => {
       
         await data;
         decidePasswordLogic(data.role_id);
-        if(data?.role_id === 3){
+        if(data?.role_id === 4){
             console.log("if condition")
             setShowPassword(false)
             setShowPasscode(true)
@@ -56,7 +56,7 @@ const ItemAdd = (props) => {
         role = parseInt(role);
         if(role === 5 || role === 4) {
             setShowPasscode(true);
-            if(role === 5) {
+            if(role === 5 || role === 4) {
                 setShowPassword(false);
             }
         } else {

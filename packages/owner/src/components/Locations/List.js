@@ -116,8 +116,8 @@ const KithcenCallList  = (props) => {
 				sort: true,
 				formatter: (cell, row) => {
 				  return (
-					<Button color={row?.status ? "danger" : "success"} onClick={()=>changeStatus(row)}>
-					  {row?.status === 0 ? "Active" : "Inactive"}
+					<Button color={row?.status ? "success" : "danger"} onClick={()=>changeStatus(row)}>
+					  {row?.status === 0 ? "Inactive" : "Active"}
 					</Button>
 				  );
 				},

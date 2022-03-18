@@ -18,8 +18,9 @@ const Add = (props) => {
 
     const locationChangeHandler = (data) => {
         setTimeout(() => {
-            // setTargetID(`${props.branchId}/location/${data?.value}/items`)
-            setTargetID(`${props.branchId}/items-pages`)
+            setTargetID(`${props.branchId}/location/${data?.value}/items`)
+            // location/{id}/items
+            // setTargetID(`${props.branchId}/items-pages`)
         }, 10);
     }
 
@@ -79,7 +80,7 @@ const Add = (props) => {
 
       page_id: {
         type: "advanceSelect",
-        label: "Item#",
+        label: "Item",
         name: "page_id",
         target: targetPoint,
         required: true,
