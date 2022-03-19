@@ -55,7 +55,7 @@ const Graph = ({
     let xAxes = {
         title: {
             display: true,
-            text: xtitle.toUpperCase(),
+            text: xtitle?.toUpperCase(),
         }
     };
 
