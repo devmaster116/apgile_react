@@ -366,7 +366,7 @@ const Dashboard = (props) => {
                 </CardBody>
             </Card>
             <CRow>
-                <CCol lg={4} sm={6}>
+                <CCol lg={4} md={12}>
                 <Graph
                     type="bar"
                     title="Call Counts"
@@ -377,7 +377,7 @@ const Dashboard = (props) => {
                     lengend={false}
                 />
                 </CCol>
-                <CCol lg={8} sm={6}>
+                <CCol lg={8} md={12}>
                     <Graph
                         type="bar"
                         title="Staff Performance"
@@ -393,6 +393,8 @@ const Dashboard = (props) => {
                         filterName="staff_status"
                     />
                 </CCol>
+            </CRow>
+            <CRow>
                 <CCol lg={12} sm={12}>
                     <Graph
                         type="line"

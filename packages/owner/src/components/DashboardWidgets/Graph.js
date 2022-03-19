@@ -160,7 +160,7 @@ const Graph = ({
 
     return (
         <CCard>
-            <CCardBody>
+            <CCardBody style={{minHeight: '330px'}}>
                 {filterData &&
                     <CRow>
                         <CCol lg={8}>
