@@ -64,11 +64,7 @@ const Graph = ({
         xAxes.position = 'left'
         xAxes.ticks = {
             source: 'labels',
-            autoSkip: false,
-            callback: function (val, index) {
-                // Hide every 2nd tick label
-                return index % 2 === 0 ? val : '';
-            },
+            autoSkip: false
         }
 
         if(typeof timeline !== 'undefined') {

@@ -369,8 +369,8 @@ const Dashboard = (props) => {
                     lengend={false}
                 />
                 </CCol>
-                {!props.user && <CCol lg={8} md={12}>
-                    <Graph
+                <CCol lg={8} md={12}>
+                    {!props.user && <Graph
                         type="bar"
                         title="Staff Performance"
                         chartData={dashbaordData?.charts?.team}
@@ -383,11 +383,27 @@ const Dashboard = (props) => {
                         onFilterChange={onLocationChange}
                         filterData={statusOptions}
                         filterName="staff_status"
-                    />
-                </CCol>}
+                    />}
+                    {props.user && <Graph
+                        type="line"
+                        title="Activity"
+                        chartData={dashbaordData?.charts?.status}
+                        ytitle="# Calls"
+                        xtitle={timeline}
+                        timeX={true}
+                        timeline={timeline}
+                        lengend={false}
+                        startDate={startDate}
+                        endDate={endDate}
+                        aspectRatio={5}
+                        onFilterChange={onLocationChange}
+                        filterData={statusOptions}
+                        filterName="activity_status"
+                    />}
+                </CCol>
             </CRow>
             <CRow>
-                <CCol lg={12} sm={12}>
+                {!props.user && <CCol lg={12} sm={12}>
                     <Graph
                         type="line"
                         title="Activity"
@@ -404,7 +420,7 @@ const Dashboard = (props) => {
                         filterData={statusOptions}
                         filterName="activity_status"
                     />
-                </CCol>
+                </CCol>}
                 <CCol lg={12} sm={12}>
                     <Graph
                         type="line"

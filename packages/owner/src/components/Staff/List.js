@@ -11,23 +11,23 @@ const ItemsList = (props) => {
 
     const [optionsArr, setOptionsArr] = useState([])
     useEffect(() => {
-        var rolesArray=[];
-        api.request("get","/roles")
-        .then(({data}) => {
-          rolesArray = data?.filter((role)=>(
-             role.name !== "super-admin"
-          ))
-          let newOption = rolesArray?.map((role)=>{
-            return {value:role.id,label:role.name}
-          })
-          setOptionsArr(newOption);
-        })
-        .catch((error) => console.log(error));
+        var rolesArray = [];
+        api.request("get", "/roles")
+            .then(({data}) => {
+                rolesArray = data?.filter((role) => (
+                    role.name !== "super-admin"
+                ))
+                let newOption = rolesArray?.map((role) => {
+                    return {value: role.id, label: role.name}
+                })
+                setOptionsArr(newOption);
+            })
+            .catch((error) => console.log(error));
         setQuery((prev) => !prev);
     }, [props.branchId]);
 
 
-    console.log(props?.branchId,"branchid")
+    console.log(props?.branchId, "branchid")
 
     const filters = {
 
@@ -38,40 +38,40 @@ const ItemsList = (props) => {
             name: "roles_role_id",
             col: 12 + ' col-sm-2  ',
             // target: "roles",
-            options:optionsArr,
+            options: optionsArr,
             // optionValue: 'value',
             // optionLabel: 'label',
             // required: true,
         },
-        start_date:{
-            type:"date",
-            label:"Select From",
+        start_date: {
+            type: "date",
+            label: "Select From",
             col: 12 + ' col-sm-2  ',
-            getValue:(data) => {
+            getValue: (data) => {
                 setTimeout(() => {
-                setMinDate(data?.value)
-            }, 0)
-        }
+                    setMinDate(data?.value)
+                }, 0)
+            }
         },
-        end_date:{
-            type:"date",
-            label:"Select To",
+        end_date: {
+            type: "date",
+            label: "Select To",
             col: 12 + ' col-sm-2  ',
             placeholderText: minDate ? "" : "Please select the start date",
-            disabled:minDate ? false : true,
-            minDate:minDate,
+            disabled: minDate ? false : true,
+            minDate: minDate,
         }
-    //     role_id: {
-    //       type: "advanceSelect",
-    //       label: "Roles",
-    //       target: "roles",
-    //       classes:"mt-5",
-    //       async: true,
-    //       name: "role_id",
-    //       required: true,
-    //       col:4
+        //     role_id: {
+        //       type: "advanceSelect",
+        //       label: "Roles",
+        //       target: "roles",
+        //       classes:"mt-5",
+        //       async: true,
+        //       name: "role_id",
+        //       required: true,
+        //       col:4
 
-    //   }
+        //   }
     }
 
     const columns = [
@@ -81,13 +81,13 @@ const ItemsList = (props) => {
         //     align: "center",
         //     sort: true,
         // },
-        
+
         {
             dataField: "created_at",
             text: "Created At",
             align: "center",
             sort: true,
-            className:"badge h6 badge-dark"
+            className: "badge h6 badge-dark"
         },
         {
             dataField: "username",
@@ -107,11 +107,13 @@ const ItemsList = (props) => {
             text: "User Role",
             sort: true,
             formatter: (cell, row) => {
-                return row.roles.map((rol,i) => {
-                    return <span className={`badge h6 badge-dark text-capitalize  ${i !== row?.roles?.length-1 ? "mr-1" : ""}`} key={rol.id}>{rol?.name}</span>
+                return row.roles.map((rol, i) => {
+                    return <span
+                        className={`badge h6 badge-dark text-capitalize  ${i !== row?.roles?.length - 1 ? "mr-1" : ""}`}
+                        key={rol.id}>{rol?.name}</span>
                 });
             },
-        },  
+        },
     ];
 
 
@@ -134,15 +136,20 @@ const ItemsList = (props) => {
                         customEntity="staff"
                         columns={columns}
                         sort={defaultSorted}
-                        // hideDetail={true}
+                        hideDetail={true}
                         filters={filters}
-                        showAdvanceFilters = {true}
+                        showAdvanceFilters={true}
                         addRoute="/staff/add"
                         {...props.remoteTableFields}
                         Query={query}
+                        customButton={{
+                            name: "Performance",
+                            color: "warning",
+                            callback: (data) => props?.history?.push(`/staff/${data?.id}/details`),
+                        }}
                         query={
                             {
-                                sort : "id|desc"
+                                sort: "id|desc"
                             }
                         }
                     />
