@@ -395,6 +395,7 @@ const Dashboard = (props) => {
                         ytitle="# Calls"
                         xtitle={timeline}
                         timeX={true}
+                        timeline={timeline}
                         lengend={false}
                         startDate={startDate}
                         endDate={endDate}

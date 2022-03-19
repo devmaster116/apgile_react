@@ -62,10 +62,41 @@ const Graph = ({
     if (timeX) {
         xAxes.type = "time";
         xAxes.position = 'left'
-        xAxes.ticks = {source: 'labels', autoSkip: false}
-        xAxes.time = {
-            unit: timeline
-        };
+        xAxes.ticks = {
+            source: 'labels',
+            autoSkip: false,
+            callback: function (val, index) {
+                // Hide every 2nd tick label
+                return index % 2 === 0 ? val : '';
+            },
+        }
+
+        if(typeof timeline !== 'undefined') {
+            let tooltipFormat = 'MMM YYYY';
+            switch (timeline) {
+                case "hour":
+                    tooltipFormat = 'MMM D @ h a'
+                    break;
+
+                case "day":
+                    tooltipFormat = 'MMM D'
+                    break;
+
+                case "week":
+                    tooltipFormat = 'MMM D'
+                    break;
+
+                case "month":
+                    tooltipFormat = 'MMM YYYY'
+                    break;
+            }
+
+            xAxes.time = {
+                unit: timeline,
+                tooltipFormat: tooltipFormat,
+            };
+        }
+
 
         // xAxes.min = startDate;
         // xAxes.max = endDate;
@@ -118,7 +149,7 @@ const Graph = ({
                     },
                     mode: 'x',
                 }
-            },
+            }
         },
     }
 
@@ -195,7 +226,7 @@ const Graph = ({
                 {/*<Line className='height-graph' data={data} options={props.options}/>*/}
                 {/*<Bar className='height-graph' data={finalData} options={options}/>*/}
                 {/*<SpecificStory data={chartData} timeline={timeline} staff={staff} options={options} multiLine={multiLine}/>*/}
-                <SpecificStory data={finalData} options={options} />
+                <SpecificStory data={finalData} options={options}/>
             </CCardBody>
         </CCard>
     );
