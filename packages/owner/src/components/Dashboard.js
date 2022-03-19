@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Button} from 'reactstrap';
-import {CCol, CRow} from '@coreui/react-pro';
+import {CAlert, CCol, CRow} from '@coreui/react-pro';
 // import {getColor} from "@facepays/common";
 import {
     Chart as ChartJS,
@@ -44,6 +44,9 @@ const Dashboard = (props) => {
     const [endDate, setEndDate] = useState(new Date());
     const [timestamp, setTimestamp] = useState('');
     const [statusOptions, setStatusOptions] = useState([]);
+    const [staff, setStaff] = useState({});
+    const [isLoading, setLoading] = useState(true);
+    const [dashboardDisabled, setDisabled] = useState(false);
 
     const [dashboardPayload, setPayload] = useState({
         start: moment(startDate).format('YYYY-MM-DD'),
@@ -52,7 +55,7 @@ const Dashboard = (props) => {
         location: null,
         item: null,
         area: null,
-        user: null,
+        user: props.user ? props.user : null,
         unit: timeline,
         status: null,
         team: null,
@@ -61,7 +64,7 @@ const Dashboard = (props) => {
     });
 
     const dataCall = () => {
-        api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({data}) => {
+        api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({success, data}) => {
             // let labelArr = []
             // let valueArr = []
             // Object.entries(data?.calls).forEach(([key, val], i) => {
@@ -70,17 +73,25 @@ const Dashboard = (props) => {
             //         valueArr.push(val);
             //     }
             // })
+            setLoading(false);
 
-            setDashbaordData(data)
-            setLocationOptions(data.filters.locations);
-            setAreaOptions(data.filters.areas);
-            setItemsOptions(data.filters.items);
-            setUserOptions(data.filters.users);
-            setRealTime(data.realtime);
-            setTimestamp(data.timestamp);
-            setStatusOptions(data.statuses);
+            if(success) {
+                setDashbaordData(data)
+                setLocationOptions(data.filters.locations);
+                setAreaOptions(data.filters.areas);
+                setItemsOptions(data.filters.items);
+                setUserOptions(data.filters.users);
+                setRealTime(data.realtime);
+                setTimestamp(data.timestamp);
+                setStatusOptions(data.statuses);
+                setStaff(data.user);
 
-            moment.tz.setDefault(data.tz);
+                moment.tz.setDefault(data.tz);
+            } else {
+                setDisabled(true);
+            }
+
+
         })
             .catch((error) => console.log(error));
     }
@@ -102,34 +113,13 @@ const Dashboard = (props) => {
 
     }, [props.selectedBranchId, dashboardPayload, isRealTime]);
 
+    if(isLoading) {
+        return []
+    }
 
-    // useEffect(() => {
-        // api.request("get", `/${props.selectedBranchId}/locations`).then(({data}) => {
-        //     let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
-        //     // optionsArr.unshift({value: "all", label: "All"})
-        //     setLocationOptions(optionsArr);
-        // }).catch((error) => console.log(error));
-
-        // api.request("get", `/${props.selectedBranchId}/items`).then(({data}) => {
-        //     let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
-        //     // optionsArr.unshift({value: "all", label: "All"})
-        //     setItemsOptions(optionsArr);
-        // }).catch((error) => console.log(error));
-        //
-        // api.request("get", `/${props.selectedBranchId}/areas`).then(({data}) => {
-        //     let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.name}))
-        //     // optionsArr.unshift({value: "all", label: "All"})
-        //     setAreaOptions(optionsArr);
-        // }).catch((error) => console.log(error));
-        //
-        //
-        // api.request("get", `/${props.selectedBranchId}/role-users/staff`).then(({data}) => {
-        //     let optionsArr = data?.map((detail) => ({value: detail?.id, label: detail?.username}))
-        //     // optionsArr.unshift({value: "all", label: "All"})
-        //     setUserOptions(optionsArr);
-        // }).catch((error) => console.log(error));
-    // }, [props.selectedBranchId])
-
+    if(dashboardDisabled) {
+        return <CAlert color="warning">Your Dashboard is disabled</CAlert>
+    }
 
     /* eslint-enable */
     const setInitialData = (data) => {
@@ -196,7 +186,8 @@ const Dashboard = (props) => {
         <div>
             <CRow>
                 <CCol md={6}>
-                    <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>
+                    {staff?.full_name && <h3> {staff.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
+                    {!props.user && <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
                 </CCol>
                 <CCol md={6}>
                     <Button
@@ -280,7 +271,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol>}
-                        {dashboardPayload?.location && <CCol sm={3}>
+                        {!props.user && dashboardPayload?.location && <CCol sm={3}>
                             <label>Select Staff</label>
                             <Select
                                 name="users"
@@ -377,7 +368,7 @@ const Dashboard = (props) => {
                     lengend={false}
                 />
                 </CCol>
-                <CCol lg={8} md={12}>
+                {!props.user && <CCol lg={8} md={12}>
                     <Graph
                         type="bar"
                         title="Staff Performance"
@@ -392,7 +383,7 @@ const Dashboard = (props) => {
                         filterData={statusOptions}
                         filterName="staff_status"
                     />
-                </CCol>
+                </CCol>}
             </CRow>
             <CRow>
                 <CCol lg={12} sm={12}>
