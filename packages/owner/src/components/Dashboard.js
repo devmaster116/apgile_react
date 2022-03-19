@@ -32,7 +32,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tool
 const Dashboard = (props) => {
 
     const [dashbaordData, setDashbaordData] = useState([])
-    const [secondChartData, setSecondChartData] = useState([])
     const [labels, setLabels] = useState([])
     const [dataValue, setDataValue] = useState([])
     const [selectedOption, setSelectedOption] = useState({});
@@ -47,7 +46,6 @@ const Dashboard = (props) => {
     const [endDate, setEndDate] = useState(new Date());
     const [timestamp, setTimestamp] = useState('');
     const [statusOptions, setStatusOptions] = useState([]);
-    const [filterUnits, setFilterUnits] = useState(['hour', 'day', 'week', 'month']);
 
     const [dashboardPayload, setPayload] = useState({
         start: moment(startDate).format('YYYY-MM-DD'),
@@ -83,8 +81,6 @@ const Dashboard = (props) => {
             setRealTime(data.realtime);
             setTimestamp(data.timestamp);
             setStatusOptions(data.statuses);
-            // setTimeLine(data.unit)
-            // setFilterUnits(data.units)
         })
             .catch((error) => console.log(error));
     }
@@ -152,7 +148,7 @@ const Dashboard = (props) => {
         props.history.push('/profile')
     }
 
-   
+
 
 
     const onLocationChange = (data, name) => {
@@ -177,35 +173,6 @@ const Dashboard = (props) => {
         selectedOption[name] = data;
         setSelectedOption(selectedOption);
         console.log(selected,"selected")
-    };
-
-
-    const chartData = {
-        labels: labels,
-        barPercentage: 1,
-        datasets: [
-            {
-                label: 'Calls',
-                data: dataValue,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                ],
-                borderWidth: 1,
-            },
-        ],
     };
 
 
@@ -382,8 +349,7 @@ const Dashboard = (props) => {
                         </CCol>
                         <CCol sm={4}>
                             <label>Create By</label> <br/>
-                            {filterUnits.length > 0 &&
-                                Object.entries(filterUnits).map(([key, val], i) => (
+                            {Object.entries(['hour', 'day', 'week', 'month']).map(([key, val], i) => (
                                     <label
                                         className={`btn btn-dark btn-sm timelineButton mr-1 ${
                                             timeline === val ? "active" : ""

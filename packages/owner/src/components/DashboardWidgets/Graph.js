@@ -9,7 +9,7 @@ import 'chartjs-adapter-moment';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import {
-    Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, TimeScale, TimeUnit,
+    Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, TimeScale,
     PointElement,
     LineElement
 } from 'chart.js';
