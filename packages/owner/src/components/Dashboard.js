@@ -56,18 +56,21 @@ const Dashboard = (props) => {
         unit: timeline,
         status: null,
         team: null,
+        realtime: true,
+        init: true
     });
 
     const dataCall = () => {
         api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({data}) => {
-            let labelArr = []
-            let valueArr = []
-            Object.entries(data?.calls).forEach(([key, val], i) => {
-                if (key !== "total") {
-                    labelArr.push(key.toUpperCase());
-                    valueArr.push(val);
-                }
-            })
+            // let labelArr = []
+            // let valueArr = []
+            // Object.entries(data?.calls).forEach(([key, val], i) => {
+            //     if (key !== "total") {
+            //         labelArr.push(key.toUpperCase());
+            //         valueArr.push(val);
+            //     }
+            // })
+
             setDashbaordData(data)
             setLocationOptions(data.filters.locations);
             setAreaOptions(data.filters.areas);
@@ -76,6 +79,8 @@ const Dashboard = (props) => {
             setRealTime(data.realtime);
             setTimestamp(data.timestamp);
             setStatusOptions(data.statuses);
+
+            moment.tz.setDefault(data.tz);
         })
             .catch((error) => console.log(error));
     }
@@ -94,14 +99,6 @@ const Dashboard = (props) => {
         setTimeout(() => {
             dataCall();
         }, 1);
-
-        //If its realtime we need to update stuff regularly
-        // if(isRealTime) {
-        //     setInterval(function() {
-        //         dataCall();
-        //     }, 10 * 1000);
-        // }
-        moment.tz.setDefault('UTC');
 
     }, [props.selectedBranchId, dashboardPayload, isRealTime]);
 
