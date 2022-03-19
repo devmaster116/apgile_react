@@ -24,7 +24,7 @@ import Graph from "./DashboardWidgets/Graph";
 import DatePicker from "react-datepicker";
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import {Card, CardBody} from 'reactstrap';
-import moment from "moment";
+import moment from 'moment-timezone';
 // import BarChart from "./DashboardWidgets/BarChart"
 
 
@@ -101,7 +101,7 @@ const Dashboard = (props) => {
         //         dataCall();
         //     }, 10 * 1000);
         // }
-
+        moment.tz.setDefault('UTC');
 
     }, [props.selectedBranchId, dashboardPayload, isRealTime]);
 
