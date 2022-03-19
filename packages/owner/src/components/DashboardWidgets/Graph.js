@@ -5,23 +5,44 @@ import {
     CCardTitle,
     CCol, CRow,
 } from '@coreui/react-pro';
+import 'chartjs-adapter-moment';
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import zoomPlugin from 'chartjs-plugin-zoom';
 import {
-    Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
+    Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, TimeScale, TimeUnit,
     PointElement,
-    LineElement,
+    LineElement
 } from 'chart.js';
 // import {LineChart} from './LineChart';
 import "../../style/style.css";
 import Select from "react-select";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,
+ChartJS.register(
+    CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend,
     PointElement,
-    LineElement
+    LineElement,
+    TimeScale,
+    zoomPlugin
 );
 
 
-const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspectRatio = 2, filterData = false, onFilterChange, filterName}) => {
+const Graph = ({
+                   type,
+                   title,
+                   xtitle,
+                   ytitle,
+                   subtitle,
+                   chartData,
+                   timeX,
+                   lengend,
+                   timeline,
+                   aspectRatio = 2,
+                   filterData = false,
+                   onFilterChange,
+                   filterName,
+                   startDate,
+                   endDate
+               }) => {
 
     const components = {
         pie: Pie,
@@ -30,6 +51,34 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
     };
 
     const SpecificStory = components[type];
+
+    let xAxes = {
+        title: {
+            display: true,
+            text: xtitle.toUpperCase(),
+        }
+    };
+
+    if (timeX) {
+        xAxes.type = "time";
+        xAxes.position = 'left'
+        xAxes.ticks = {source: 'labels', autoSkip: false}
+        xAxes.time = {
+            unit: timeline
+        };
+
+        // xAxes.min = startDate;
+        // xAxes.max = endDate;
+    }
+
+    const customStyles = {
+        container: (provided, state) => ({
+            ...provided,
+            minWidth: '200px'
+        }),
+    }
+
+
     const options = {
         responsive: true,
         aspectRatio: aspectRatio,
@@ -41,23 +90,35 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
                 title: {
                     display: true,
                     text: ytitle.toUpperCase()
-                }
+                },
+                min: 0
             },
 
-            x: {
-                title: {
-                    display: true,
-                    text: xtitle.toUpperCase()
-                }
-            }
+            x: xAxes
         },
         plugins: {
             label: {
                 display: false
             },
             legend: {
-                display: lengend
-            }
+                display: chartData ? lengend : false
+            },
+            zoom: {
+                pan: {
+                    enabled: true,
+                    'mode': 'xy'
+                },
+                zoom: {
+                    wheel: {
+                        enabled: true,
+                        modifierKey: 'ctrl'
+                    },
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'x',
+                }
+            },
         },
     }
 
@@ -108,22 +169,23 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
                             </CCardTitle>
                         </CCol>
                         <CCol lg={4}>
-                            <div style={{maxWidth: '200px', margin: '0 auto'}}>
+                            <div style={{maxWidth: '200px'}} className="float-right">
                                 <Select
-                                name={filterName}
-                                className="basic-multi-select"
-                                placeholder="All..."
-                                classNamePrefix="select"
-                                onChange={(data) => onFilterChange(data, filterName)}
-                                options={filterData}
-                                // isMulti
-                            />
+                                    styles={customStyles}
+                                    name={filterName}
+                                    className="basic-multi-select"
+                                    placeholder="All..."
+                                    classNamePrefix="select"
+                                    onChange={(data) => onFilterChange(data, filterName)}
+                                    options={filterData}
+                                    // isMulti
+                                />
                             </div>
                         </CCol>
                     </CRow>
                 }
 
-                {!filterData && <CCardTitle className="text-center">
+                {!filterData && <CCardTitle className="text-left">
                     {title}
                 </CCardTitle>}
                 {subtitle && <CCardSubtitle className="mb-2 text-medium-emphasis">
@@ -133,7 +195,7 @@ const Graph = ({type, title, xtitle, ytitle, subtitle, chartData, lengend, aspec
                 {/*<Line className='height-graph' data={data} options={props.options}/>*/}
                 {/*<Bar className='height-graph' data={finalData} options={options}/>*/}
                 {/*<SpecificStory data={chartData} timeline={timeline} staff={staff} options={options} multiLine={multiLine}/>*/}
-                <SpecificStory data={finalData} options={options}/>
+                <SpecificStory data={finalData} options={options} />
             </CCardBody>
         </CCard>
     );

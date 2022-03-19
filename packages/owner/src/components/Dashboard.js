@@ -24,6 +24,7 @@ import Graph from "./DashboardWidgets/Graph";
 import DatePicker from "react-datepicker";
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import {Card, CardBody} from 'reactstrap';
+import moment from "moment";
 // import BarChart from "./DashboardWidgets/BarChart"
 
 
@@ -41,22 +42,22 @@ const Dashboard = (props) => {
     const [userOptions, setUserOptions] = useState([]);
     const [isRealTime, setRealTime] = useState(true);
     const [timeline, setTimeLine] = useState("hour");
-    const [value, setValue] = useState(["09:30", "18:30"]);
+    const [value, setValue] = useState(["00:10", "23:59"]);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [timestamp, setTimestamp] = useState('');
     const [statusOptions, setStatusOptions] = useState([]);
-    const [filterUnits, setFilterUnits] = useState([]);
+    const [filterUnits, setFilterUnits] = useState(['hour', 'day', 'week', 'month']);
 
     const [dashboardPayload, setPayload] = useState({
-        start: null,
-        end: null,
-        time: null,
+        start: moment(startDate).format('YYYY-MM-DD'),
+        end: moment(endDate).format('YYYY-MM-DD'),
+        time: value,
         location: null,
         item: null,
         area: null,
         user: null,
-        unit: null,
+        unit: timeline,
         status: null,
         team: null,
     });
@@ -82,8 +83,8 @@ const Dashboard = (props) => {
             setRealTime(data.realtime);
             setTimestamp(data.timestamp);
             setStatusOptions(data.statuses);
-            setTimeLine(data.unit)
-            setFilterUnits(data.units)
+            // setTimeLine(data.unit)
+            // setFilterUnits(data.units)
         })
             .catch((error) => console.log(error));
     }
@@ -217,8 +218,6 @@ const Dashboard = (props) => {
             unit: e.target.value
         })
     }
-console.log(chartData,"data")
-console.log(secondChartData,"secondChartData")
 
     const resetHandler = () => {
         // setSelectedOption(0)
@@ -353,7 +352,7 @@ console.log(secondChartData,"secondChartData")
                                     setStartDate(date)
                                     setPayload({
                                         ...dashboardPayload,
-                                        start: date
+                                        start: moment(date).format('YYYY-MM-DD')
                                     })
                                 }
                                 }
@@ -370,7 +369,7 @@ console.log(secondChartData,"secondChartData")
                                     setEndDate(date)
                                     setPayload({
                                         ...dashboardPayload,
-                                        end: date
+                                        end: moment(date).format('YYYY-MM-DD')
                                     })
                                 }}
 
@@ -418,35 +417,11 @@ console.log(secondChartData,"secondChartData")
                     chartData={dashbaordData?.call_chart}
                     ytitle="# Calls"
                     xtitle="Statuses"
+                    aspectRatio={1.86}
                     lengend={false}
                 />
                 </CCol>
-                <CCol lg={4} sm={6}>
-                <Graph
-                    type="line"
-                    title="Activity"
-                    chartData={dashbaordData?.charts?.status}
-                    ytitle="# Calls"
-                    xtitle={timeline}
-                    lengend={false}
-                    onFilterChange={onLocationChange}
-                    filterData={statusOptions}
-                    filterName="activity_status"
-                />
-                </CCol>
-                <CCol lg={4} sm={6}>
-                 <Graph
-                    type="line"
-                    title="Service Performance"
-                    chartData={dashbaordData?.charts?.avgs}
-                    timeline={timeline}
-                    multiLine={true}
-                    ytitle="Avg. Minutes Spent"
-                    xtitle={timeline}
-                    lengend={true}
-                />
-                </CCol>
-                <CCol lg={12}>
+                <CCol lg={8} sm={6}>
                     <Graph
                         type="bar"
                         title="Staff Performance"
@@ -456,12 +431,42 @@ console.log(secondChartData,"secondChartData")
                         ytitle="# Calls"
                         xtitle="Team"
                         lengend={false}
-                        aspectRatio={5}
+                        aspectRatio={4}
                         onFilterChange={onLocationChange}
                         filterData={statusOptions}
                         filterName="staff_status"
                     />
-                    {/*<BarChart barData={dashbaordData} onLocationChange={onLocationChange} ytitle="Calls" xtitle="Team Members"/>*/}
+                </CCol>
+                <CCol lg={12} sm={12}>
+                    <Graph
+                        type="line"
+                        title="Activity"
+                        chartData={dashbaordData?.charts?.status}
+                        ytitle="# Calls"
+                        xtitle={timeline}
+                        timeX={true}
+                        lengend={false}
+                        startDate={startDate}
+                        endDate={endDate}
+                        aspectRatio={5}
+                        onFilterChange={onLocationChange}
+                        filterData={statusOptions}
+                        filterName="activity_status"
+                    />
+                </CCol>
+                <CCol lg={12} sm={12}>
+                    <Graph
+                        type="line"
+                        title="Service Performance"
+                        chartData={dashbaordData?.charts?.avgs}
+                        timeline={timeline}
+                        timeX={true}
+                        aspectRatio={5}
+                        multiLine={true}
+                        ytitle="Avg. Minutes Spent"
+                        xtitle={timeline}
+                        lengend={true}
+                    />
                 </CCol>
             </CRow>
         </div>
