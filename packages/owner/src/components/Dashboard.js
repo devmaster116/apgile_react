@@ -209,20 +209,21 @@ const Dashboard = (props) => {
                         </CCol>
                     ))}
 
+                {!props.user &&
                 <CCol xs={12} sm={6} lg={1}>
                     <Block
                         title="Online Staff"
                         value={dashbaordData?.staff_online}
                         color="success"
                     />
-                </CCol>
-                <CCol xs={12} sm={6} lg={1}>
+                </CCol>}
+                {!props.user &&<CCol xs={12} sm={6} lg={1}>
                     <Block
                         title="Active Areas"
                         value={dashbaordData?.active_areas}
                         color="warning"
                     />
-                </CCol>
+                </CCol> }
             </CRow>
             <CRow>
 

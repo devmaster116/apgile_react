@@ -60,7 +60,7 @@ const Detail = (props) => {
       align: "center",
       sort: true,
     },
-   
+
     {
       dataField: "created_at",
       text: "Created On",
@@ -80,7 +80,7 @@ const Detail = (props) => {
       sort: true,
     },
 
-  
+
   ];
 
   const defaultSorted = [
@@ -104,6 +104,7 @@ const Detail = (props) => {
             columns={columns}
             sort={defaultSorted}
             hideActionCol={true}
+            hideDetail={true}
           />
         </CardBody>
       </Card>
