@@ -406,7 +406,7 @@ const Dashboard = (props) => {
                 </CCol>
                 <CCol lg={12} sm={12}>
                     <Graph
-                        type="line"
+                        type="bar"
                         title="Service Performance"
                         chartData={dashbaordData?.charts?.avgs}
                         timeline={timeline}
