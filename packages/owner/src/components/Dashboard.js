@@ -32,8 +32,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tool
 const Dashboard = (props) => {
 
     const [dashbaordData, setDashbaordData] = useState([])
-    const [labels, setLabels] = useState([])
-    const [dataValue, setDataValue] = useState([])
     const [selectedOption, setSelectedOption] = useState({});
     const [locationOptions, setLocationOptions] = useState([]);
     const [itemsOptions, setItemsOptions] = useState([]);
@@ -70,8 +68,6 @@ const Dashboard = (props) => {
                     valueArr.push(val);
                 }
             })
-            setLabels(labelArr)
-            setDataValue(valueArr)
             setDashbaordData(data)
             setLocationOptions(data.filters.locations);
             setAreaOptions(data.filters.areas);
