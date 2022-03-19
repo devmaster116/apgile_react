@@ -73,7 +73,6 @@ const Dashboard = (props) => {
             setLabels(labelArr)
             setDataValue(valueArr)
             setDashbaordData(data)
-            setSecondChartData(data.charts)
             setLocationOptions(data.filters.locations);
             setAreaOptions(data.filters.areas);
             setItemsOptions(data.filters.items);
