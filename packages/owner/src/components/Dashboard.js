@@ -152,9 +152,7 @@ const Dashboard = (props) => {
         props.history.push('/profile')
     }
 
-    if (props?.userRole === "supervisor") {
-        props.history.push('/team')
-    }
+   
 
 
     const onLocationChange = (data, name) => {
