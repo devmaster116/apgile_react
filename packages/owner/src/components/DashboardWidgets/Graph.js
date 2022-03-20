@@ -71,7 +71,7 @@ const Graph = ({
             let tooltipFormat = 'MMM YYYY';
             switch (timeline) {
                 case "hour":
-                    tooltipFormat = 'MMM D @ h a'
+                    tooltipFormat = 'MMM Do @ h a'
                     break;
 
                 case "day":
@@ -79,7 +79,8 @@ const Graph = ({
                     break;
 
                 case "week":
-                    tooltipFormat = '[Week of] MMMM Do'
+                    // tooltipFormat = '[Week of] MMMM Do'
+                    tooltipFormat = '[Week] W'
                     break;
 
                 case "month":
@@ -137,8 +138,7 @@ const Graph = ({
             },
             zoom: {
                 limits: {
-                    y: {min: 0},
-                    y2: {min: 0}
+                    y: {min: 0}
                 },
                 pan: {
                     enabled: true,
