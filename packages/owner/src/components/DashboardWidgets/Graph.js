@@ -79,12 +79,17 @@ const Graph = ({
                     break;
 
                 case "week":
-                    tooltipFormat = 'MMM D'
+                    tooltipFormat = '[Week of] MMMM Do'
                     break;
 
                 case "month":
                     tooltipFormat = 'MMM YYYY'
                     break;
+
+                default:
+                    tooltipFormat = 'MMM D'
+                    break;
+
             }
 
             xAxes.time = {
@@ -131,6 +136,10 @@ const Graph = ({
                 display: chartData ? lengend : false
             },
             zoom: {
+                limits: {
+                    y: {min: 0},
+                    y2: {min: 0}
+                },
                 pan: {
                     enabled: true,
                     'mode': 'xy'
