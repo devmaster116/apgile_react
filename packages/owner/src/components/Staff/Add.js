@@ -22,7 +22,7 @@ const ItemAdd = (props) => {
                      return  role.name !== "super-admin" &&  role.name !== "admin"
                    } else{
                        return  role.name !== "super-admin"
-                   } 
+                   }
             })
                 let newOption = rolesArray?.map((role) => {
                     return {value: role.id, label: role.name}
@@ -41,23 +41,25 @@ const ItemAdd = (props) => {
     }
 
     const getInitialValues = async (data) => {
-      
+
         await data;
         decidePasswordLogic(data.role_id);
-        if(data?.role_id === 4){
-            console.log("if condition")
+        if(data?.role_id === 3 || data?.role_id === 4) {
             setShowPassword(false)
             setShowPasscode(true)
-        }  
-        
+        }
+
     }
 
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
-        if(role === 5 || role === 4) {
+        console.log('role', role);
+        if(role === 3 || role === 4) {
             setShowPasscode(true);
-            if(role === 5 || role === 4) {
+            if(role === 3) {
                 setShowPassword(false);
+            } else {
+                setShowPassword(true);
             }
         } else {
             setShowPasscode(false);
@@ -159,7 +161,7 @@ const ItemAdd = (props) => {
               },
         },
 
-       
+
             password: {
                 type: "password",
                 label: "Password",
@@ -177,7 +179,7 @@ const ItemAdd = (props) => {
                 name: "password_confirmation",
                 col: 2,
             },
-       
+
         hidden2: {
             type: 'hidden',
             col: 1
