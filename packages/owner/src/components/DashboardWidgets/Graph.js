@@ -138,7 +138,10 @@ const Graph = ({
             },
             zoom: {
                 limits: {
-                    y: {min: 0}
+                    y: {min: "original"},
+                    x: {
+                        min: "original"
+                    }
                 },
                 pan: {
                     enabled: true,

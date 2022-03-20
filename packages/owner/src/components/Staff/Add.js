@@ -45,15 +45,18 @@ const ItemAdd = (props) => {
         await data;
         decidePasswordLogic(data.role_id);
         if(data?.role_id === 3 || data?.role_id === 4) {
-            setShowPassword(false)
             setShowPasscode(true)
+            if(data?.role_id === 3) {
+                setShowPassword(false);
+            } else {
+                setShowPassword(true);
+            }
         }
 
     }
 
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
-        console.log('role', role);
         if(role === 3 || role === 4) {
             setShowPasscode(true);
             if(role === 3) {
