@@ -95,6 +95,10 @@ const Dashboard = (props) => {
         })
             .catch((error) => console.log(error));
     }
+    const setInitialData = (data) => {
+        props.setReduxData(data);
+        window.location.reload();
+    }
 
     useEffect(() => {
         if (!props.selectedBranchId) {
@@ -106,6 +110,7 @@ const Dashboard = (props) => {
                 userRole: currentUser?.roles[0]
             });
         }
+      
         /* eslint-disable */
         setTimeout(() => {
             dataCall();
@@ -122,14 +127,9 @@ const Dashboard = (props) => {
     }
 
     /* eslint-enable */
-    const setInitialData = (data) => {
-        props.setReduxData(data);
-        window.location.reload();
-    }
+   
     if (props?.userRole === "staff") {
         props.history.push('/profile')
-    }else if (props?.userRole === "supervisor") {
-        props.history.push('/calls')
     }
 
     const onLocationChange = (data, name) => {
@@ -205,7 +205,7 @@ const Dashboard = (props) => {
             <CRow>
                 {dashbaordData?.calls &&
                     Object.entries(dashbaordData?.calls).map(([key, val], i) => (
-                        <CCol xs={12} sm={6} lg={dashbaordData?.call_attrs[key]?.size ? 2 : 1} key={i}>
+                        <CCol key={i} xs={12} sm={6} lg={dashbaordData?.call_attrs[key]?.size ? 2 : 1}>
                             <Block title={key} value={val} color={dashbaordData?.call_attrs[key].color}/>
                         </CCol>
                     ))}
@@ -339,6 +339,7 @@ const Dashboard = (props) => {
                                         className={`btn btn-dark btn-sm timelineButton mr-1 ${
                                             timeline === val ? "active" : ""
                                         }`}
+                                        key={i}
                                     >
                                         <input
                                             type="radio"

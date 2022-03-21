@@ -25,7 +25,10 @@ const TheHeader = (props) => {
     const [companyAllBranches, setCompanyAllBranches] = useState([]);
     /* eslint-disable */
     useEffect(() => {
-
+      if (props?.userRole === "supervisor") {
+        // window.location.href = '#/calls';
+        window.location.replace(`#/calls`)
+      }
         let ls = JSON.parse(localStorage.getItem('currentUser'));
         let roled = ls?.roles?.map(role => role)
          props.userRole === "admin" &&  api.request("get", `/branches/${ls?.company?.id}/all`)
@@ -47,7 +50,7 @@ const TheHeader = (props) => {
     const darkMode = useSelector((state) => state.darkMode);
     const sidebarShow = useSelector((state) => state.sidebarShow);
 
-
+    
 
     let element_moon = document.querySelector('.fa-moon')
     let element_sun = document.querySelector('.fa-sun')
