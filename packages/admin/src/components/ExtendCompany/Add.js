@@ -28,7 +28,7 @@ const Add = (props) => {
 
 
   useEffect(() => {
-    id &&  api.request("get", `company-branches/${id}`).then(({data}) => {
+    id &&  api.request("get", `/company-branches/${id}`).then(({data}) => {
            companyChangeHandler({value :data?.address?.country})
          }).catch((error) => console.log(error));
 
