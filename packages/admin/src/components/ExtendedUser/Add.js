@@ -11,6 +11,7 @@ const Add = (props) => {
     const [optionsArr, setOptionsArr] = useState([])
     const [showPasscode, setShowPasscode] = useState(false)
     const [showPassword, setShowPassword] = useState(true);
+    const [showBranch, setShowBranch] = useState(true);
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -78,6 +79,7 @@ const Add = (props) => {
                 setShowPassword(true);
             }
         }
+      
 
     }
 
@@ -93,6 +95,12 @@ const Add = (props) => {
         } else {
             setShowPasscode(false);
             setShowPassword(true);
+        }
+        if(role === 2){
+            console.log("admin here")
+          setShowBranch(false)
+        }else{
+          setShowBranch(true)
         }
     }
 
@@ -230,7 +238,7 @@ const Add = (props) => {
             target: target,
             label: "Select Branch",
             required: true,
-            condition: !id,
+            condition: id ? false : showBranch ,
             async: true,
             name: "branch_id"
         },

@@ -15,19 +15,19 @@ const List = (props) => {
             target: "countries?limit=1000",
             col: 4,
         },
-        city: {
-            type: "text",
-            label: "City",
-            name: "city",
-            col: 3,
-        },
+        // city: {
+        //     type: "text",
+        //     label: "City",
+        //     name: "city",
+        //     col: 3,
+        // },
 
-        state: {
-            type: "text",
-            label: "State",
-            name: "state",
-            col: 3,
-        },
+        // state: {
+        //     type: "text",
+        //     label: "State",
+        //     name: "state",
+        //     col: 3,
+        // },
 
     }
 
