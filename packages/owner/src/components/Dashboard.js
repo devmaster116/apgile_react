@@ -154,6 +154,7 @@ const Dashboard = (props) => {
         });
         selectedOption[name] = data;
         setSelectedOption(selectedOption);
+        console.log(selected,"selected")
     };
 
 
