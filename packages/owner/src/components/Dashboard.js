@@ -84,7 +84,7 @@ const Dashboard = (props) => {
                 setRealTime(data.realtime);
                 setTimestamp(data.timestamp);
                 setStatusOptions(data.statuses);
-                setStaff(data.user);
+                setStaff(data?.user);
 
                 moment.tz.setDefault(data.tz);
             } else {
@@ -154,7 +154,6 @@ const Dashboard = (props) => {
         });
         selectedOption[name] = data;
         setSelectedOption(selectedOption);
-        console.log(selected,"selected")
     };
 
 
@@ -181,12 +180,13 @@ const Dashboard = (props) => {
         })
     }
 
+    console.log(staff,"staff")
 
     return (
         <div>
             <CRow>
                 <CCol md={6}>
-                    {staff?.full_name && <h3> {staff.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
+                    {staff?.full_name && <h3> {staff?.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
                     {!props.user && <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
                 </CCol>
                 <CCol md={6}>

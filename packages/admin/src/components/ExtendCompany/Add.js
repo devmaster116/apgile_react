@@ -307,10 +307,48 @@ const Add = (props) => {
         label: "Max. QR Codes",
         name: "max_codes",
         required: true,
-        col: 1,
+        col: 2,
         min:0,
         condition: showAddFields,
       },
+
+
+      dummy_space: {
+        isDummyField: true,
+        // type: "h4",
+        col: 1,
+        // condition: showAddFields,
+      },
+
+      wait_time: {
+        // parent: 'settings',
+        type: "number",
+        label: "Wait Time",
+        required: true,
+        col: 1,
+        min:0,
+        condition: showAddFields,
+    },
+    cycle: {
+      //  parent: 'settings',
+        type: "number",
+        label: "Cycle",
+        required: true,
+        col: 1,
+        min:0,
+        condition: showAddFields,
+
+    },
+    throttle_wait: {
+        // parent: 'settings',
+        type: "number",
+        label: "Throttle Wait",
+        required: true,
+        col: 1,
+        min:0,
+        condition: showAddFields,
+
+    },
 
       dummy3: {
         isDummyField: true,

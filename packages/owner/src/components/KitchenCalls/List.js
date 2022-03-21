@@ -163,7 +163,7 @@ const KithcenCallList = (props) => {
             <AddInternal match={props.match}/>
             <Card>
                 <CardHeader>
-                    <strong>Kitchen Calls List</strong>
+                    <strong>Internal Calls List</strong>
                 </CardHeader>
                 <CardBody>
                     <RemoteTable
