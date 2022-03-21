@@ -329,16 +329,16 @@ const Add = (props) => {
         min:0,
         condition: showAddFields,
     },
-    cycle: {
-      //  parent: 'settings',
-        type: "number",
-        label: "Cycle",
-        required: true,
-        col: 1,
-        min:0,
-        condition: showAddFields,
+    // cycle: {
+    //   //  parent: 'settings',
+    //     type: "number",
+    //     label: "Cycle",
+    //     required: true,
+    //     col: 1,
+    //     min:0,
+    //     condition: showAddFields,
 
-    },
+    // },
     throttle_wait: {
         // parent: 'settings',
         type: "number",
@@ -399,10 +399,10 @@ const Add = (props) => {
         col: 2,
         condition: showAddFields,
       },
-      // dummy2: {
-      //   isDummyField: true,
-      //   col:1
-      // },
+      dummy5: {
+        isDummyField: true,
+        col:1
+      },
       bg_image: {
         type: "filePic",
         label: "Background Image",

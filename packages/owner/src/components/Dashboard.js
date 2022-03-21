@@ -128,10 +128,9 @@ const Dashboard = (props) => {
     }
     if (props?.userRole === "staff") {
         props.history.push('/profile')
+    }else if (props?.userRole === "supervisor") {
+        props.history.push('/calls')
     }
-
-
-
 
     const onLocationChange = (data, name) => {
         if (name === "location" || name === "staff_status" || name === "activity_status") {
@@ -181,13 +180,12 @@ const Dashboard = (props) => {
         })
     }
 
-    console.log(staff,"staff")
 
     return (
         <div>
             <CRow>
                 <CCol md={6}>
-                    {staff?.full_name && <h3> {staff?.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
+                    {/* {staff?.full_name && <h3> {staff?.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>} */}
                     {!props.user && <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
                 </CCol>
                 <CCol md={6}>

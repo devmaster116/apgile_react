@@ -138,7 +138,7 @@ const List = (props) => {
         <div className="animated">
             <Card>
                 <CardHeader>
-                    <strong>Call List</strong>
+                    <strong>Customer Calls List</strong>
                 </CardHeader>
                 <CardBody>
                     <RemoteTable

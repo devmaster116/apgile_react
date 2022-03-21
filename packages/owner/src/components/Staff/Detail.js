@@ -12,7 +12,7 @@ const Detail = (props) => {
    <div>
       <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
         <CardHeader>
-          <b>User Detail</b>
+          <b>User Performance</b>
           <Button size="sm" color="primary" className="float-right" onClick={()=>props.history.goBack()}>
             Go Back
           </Button>

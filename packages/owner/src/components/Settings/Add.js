@@ -46,15 +46,15 @@ console.log(showPlaces,"showPlaces")
         //     min: 0
         //
         // },
-        cycle: {
-            type: "number",
-            label: "Cycle",
-            required: true,
-            name: "cycle",
-            col: 1,
-            min: 0
+        // cycle: {
+        //     type: "number",
+        //     label: "Cycle",
+        //     required: true,
+        //     name: "cycle",
+        //     col: 1,
+        //     min: 0
 
-        },
+        // },
         throttle_wait: {
             type: "number",
             label: "Throttle Wait",

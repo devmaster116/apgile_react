@@ -290,15 +290,15 @@ const ExtendBranchAdd = (props) =>  {
             col: 1,
             min:0
         },
-        cycle: {
-            parent: 'settings',
-            type: "number",
-            label: "Cycle",
-            required: true,
-            col: 1,
-            min:0
+        // cycle: {
+        //     parent: 'settings',
+        //     type: "number",
+        //     label: "Cycle",
+        //     required: true,
+        //     col: 1,
+        //     min:0
 
-        },
+        // },
         throttle_wait: {
             parent: 'settings',
             type: "number",

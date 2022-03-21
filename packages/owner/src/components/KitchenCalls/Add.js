@@ -25,7 +25,7 @@ const Add = (props) => {
     let fields = {
         internal_place: {
             type: "advanceSelect",
-            label: "Call Place",
+            label: "Select Call Venue",
             target: `${props.branchId}/call-places`,
             optionValue: 'name',
             required: true,
@@ -61,7 +61,7 @@ const Add = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title="New Call"/>
+                <Header title="Make New Internal Call"/>
                 <CardBody>
                     <FormGenerator
                         targetEntity={`${props.branchId}/internal-call`}
