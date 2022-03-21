@@ -57,9 +57,9 @@ const ItemAdd = (props) => {
 
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
-        if(role === 3 || role === 4) {
+        if(role === 4 || role === 5) {
             setShowPasscode(true);
-            if(role === 3) {
+            if(role === 5) {
                 setShowPassword(false);
             } else {
                 setShowPassword(true);

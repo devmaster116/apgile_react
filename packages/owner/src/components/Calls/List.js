@@ -148,7 +148,7 @@ const List = (props) => {
                         sort={defaultSorted}
                         hideEdit={false}
                         // hideDetail={props.userRole === "supervisor" ? true : false}
-                        hideDetail={true}
+                        hideDetail={false}
                         disableDelete={true}
                         hideActionCol={props.userRole === "staff" ? true : false}
                         Query={query}

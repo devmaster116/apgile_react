@@ -10,6 +10,7 @@ import api from "@evenlogics/whf-api";
 const Add = (props) => {
     const [optionsArr, setOptionsArr] = useState([])
     const [showPasscode, setShowPasscode] = useState(false)
+    const [showPassword, setShowPassword] = useState(true);
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -41,23 +42,60 @@ const Add = (props) => {
         }, 1);
     }
 
+    // const roleChanged = async (data) => {
+    //     await data.value;
+    //     if(parseInt(data.value)  === 5 || parseInt(data.value) === 4) {
+    //         setShowPasscode(true);
+    //     } else {
+    //         setShowPasscode(false);
+    //     }
+    // }
+
+    // const getInitialValues = async (data) => {
+    //     await data;
+    //     if(parseInt(data.role_id) === 5 || parseInt(data.role_id) === 4) {
+    //         setShowPasscode(true);
+    //     } else {
+    //         setShowPasscode(false);
+    //     }
+    // }
+
+    
     const roleChanged = async (data) => {
         await data.value;
-        if(parseInt(data.value)  === 5 || parseInt(data.value) === 4) {
-            setShowPasscode(true);
-        } else {
-            setShowPasscode(false);
-        }
+        decidePasswordLogic(data.value);
     }
 
     const getInitialValues = async (data) => {
+
         await data;
-        if(parseInt(data.role_id) === 5 || parseInt(data.role_id) === 4) {
+        decidePasswordLogic(data.role_id);
+        if(data?.role_id === 3 || data?.role_id === 4) {
+            setShowPasscode(true)
+            if(data?.role_id === 3) {
+                setShowPassword(false);
+            } else {
+                setShowPassword(true);
+            }
+        }
+
+    }
+
+    const decidePasswordLogic = (role) => {
+        role = parseInt(role);
+        if(role === 4 || role === 5) {
             setShowPasscode(true);
+            if(role === 5) {
+                setShowPassword(false);
+            } else {
+                setShowPassword(true);
+            }
         } else {
             setShowPasscode(false);
+            setShowPassword(true);
         }
     }
+
 
 
     let fields = {
@@ -133,6 +171,7 @@ const Add = (props) => {
             type: "password",
             label: "Password",
             name: "password",
+            condition:showPassword,
             required: !id,
             col: 4,
         },
@@ -141,6 +180,7 @@ const Add = (props) => {
             oneOf: "password",
             type: "password",
             required: !id,
+            condition:showPassword,
             label: "Password Confirmation",
             name: "password_confirmation",
             col: 4,
