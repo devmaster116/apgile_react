@@ -92,12 +92,12 @@ const KithcenCallList = (props) => {
             align: "center",
             sort: true,
         },
-        // {
-        //     dataField: "action",
-        //     text: "Status",
-        //     align: "center",
-        //     sort: true,
-        // },
+        {
+            dataField: "status",
+            text: "Status",
+            align: "center",
+            sort: true,
+        },
         // {
         //     dataField: "",
         //     text: "Received At",
