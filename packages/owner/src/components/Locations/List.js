@@ -17,7 +17,7 @@ const KithcenCallList  = (props) => {
 		start_date:{
             type:"date",
             label:"Select From",
-            col: 12 + ' col-sm-2  ',
+            col: 4,
             getValue:(data) => {
                 setTimeout(() => {
                 setMinDate(data?.value)
@@ -27,7 +27,7 @@ const KithcenCallList  = (props) => {
         end_date:{
             type:"date",
             label:"Select To",
-            col: 12 + ' col-sm-2  ',
+            col: 4,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled:minDate ? false : true,
             minDate:minDate,

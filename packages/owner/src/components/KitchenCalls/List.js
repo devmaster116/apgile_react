@@ -35,22 +35,22 @@ const KithcenCallList = (props) => {
             label: "Select Location",
             target: `${props?.branchId}/locations`,
             async: true,
-            col: 12 + ' col-sm-2  ',
+            col: 3,
         },
 
-        user_id: {
+        staff_id: {
             type: "advanceSelect",
             label: "Select Staff Member",
             target: `${props?.branchId}/role-users/staff`,
             optionLabel: "username",
             async: true,
-            col: 12 + ' col-sm-2  ',
+            col: 2,
         },
 
         start_date: {
             type: "date",
             label: "Select From",
-            col: 12 + ' col-sm-2  ',
+            col: 2,
             getValue: (data) => {
                 setTimeout(() => {
                     setMinDate(data?.value)
@@ -60,7 +60,7 @@ const KithcenCallList = (props) => {
         end_date: {
             type: "date",
             label: "Select To",
-            col: 12 + ' col-sm-2  ',
+            col: 2,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled: minDate ? false : true,
             minDate: minDate,

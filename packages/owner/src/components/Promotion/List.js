@@ -35,7 +35,7 @@ const List = (props) => {
             label: "Select Category",
             target: `${props?.branchId}/categories`,
             async: true,
-            col: 12 + ' col-sm-2 ',
+            col: 3,
         },
 
         status: {
@@ -46,12 +46,12 @@ const List = (props) => {
                 {label: "Active", value: "1"},
                 {label: "Inactive", value: "0"},
             ],
-            col: 12 + ' col-sm-2  ',
+            col: 3,
         },
         start_date: {
             type: "date",
             label: "Select From",
-            col: 12 + ' col-sm-2  ',
+            col: 3,
             getValue: (data) => {
                 setTimeout(() => {
                     setMinDate(data?.value)
@@ -61,7 +61,7 @@ const List = (props) => {
         end_date: {
             type: "date",
             label: "Select To",
-            col: 12 + ' col-sm-2  ',
+            col: 3,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled: minDate ? false : true,
             minDate: minDate,

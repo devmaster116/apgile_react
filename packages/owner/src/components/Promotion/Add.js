@@ -74,7 +74,7 @@ const Add = (props) => {
         valid_from:{
             type:"date",
             label:"Select From",
-            col: 12 + ' col-sm-2  ',
+            col: 3,
             minDate:new Date(),
             getValue:(data) => {
                 setTimeout(() => {
@@ -85,7 +85,7 @@ const Add = (props) => {
         valid_till:{
             type:"date",
             label:"Select To",
-            col: 12 + ' col-sm-2  ',
+            col: 3,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled:minDate ? false : true,
             minDate:minDate,

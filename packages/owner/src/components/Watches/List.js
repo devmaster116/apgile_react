@@ -32,7 +32,7 @@ const List = (props) => {
 			 {label:"Active",value:"1"},
 			 {label:"Inactive",value:"0"},
 		   ],
-			col: 12 + ' col-sm-2  ',
+			col: 4,
 		},
 	  };
 	const columns = [

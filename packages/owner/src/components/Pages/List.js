@@ -70,7 +70,7 @@ const filters = {
         label: "Select Location",
         target: `${props?.branchId}/locations`,
         async: true,
-        col: 12 + ' col-sm-2  ',
+        col: 4,
     },
 
 }

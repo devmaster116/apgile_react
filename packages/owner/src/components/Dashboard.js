@@ -110,7 +110,7 @@ const Dashboard = (props) => {
                 userRole: currentUser?.roles[0]
             });
         }
-      
+
         /* eslint-disable */
         setTimeout(() => {
             dataCall();
@@ -127,7 +127,7 @@ const Dashboard = (props) => {
     }
 
     /* eslint-enable */
-   
+
     if (props?.userRole === "staff") {
         props.history.push('/profile')
     }
@@ -209,6 +209,22 @@ const Dashboard = (props) => {
                             <Block title={key} value={val} color={dashbaordData?.call_attrs[key].color}/>
                         </CCol>
                     ))}
+
+                {props.user &&<CCol xs={12} sm={6} lg={1}>
+                    <Block
+                        title="Avg. Accept"
+                        value={dashbaordData?.avgs?.avg_response}
+                        color="warning"
+                    />
+                </CCol> }
+
+                {props.user &&<CCol xs={12} sm={6} lg={1}>
+                    <Block
+                        title="Avg Complete"
+                        value={dashbaordData?.avgs?.avg_complete}
+                        color="success"
+                    />
+                </CCol> }
 
                 {!props.user &&
                 <CCol xs={12} sm={6} lg={1}>

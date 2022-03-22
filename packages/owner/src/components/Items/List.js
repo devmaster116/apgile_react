@@ -19,12 +19,12 @@ const ItemsList = (props) => {
 				label: "Select Location",
 				target: `${props?.branchId}/locations`,
 				async: true,
-				col: 12 + ' col-sm-2  ',
+				col: 4,
 			},
 			start_date:{
 				type:"date",
 				label:"Select From",
-				col: 12 + ' col-sm-2  ',
+				col: 4,
 				getValue:(data) => {
 					setTimeout(() => {
 					setMinDate(data?.value)
@@ -34,7 +34,7 @@ const ItemsList = (props) => {
 			end_date:{
 				type:"date",
 				label:"Select To",
-				col: 12 + ' col-sm-2  ',
+				col: 4,
 				placeholderText: minDate ? "" : "Please select the start date",
 				disabled:minDate ? false : true,
 				minDate:minDate,
