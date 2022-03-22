@@ -16,7 +16,7 @@ const TeamsList = (props) => {
             label: "Select Location",
             target: `${props?.branchId}/locations`,
             async: true,
-            col: 12 + " col-sm-2 Z-Index ",
+            col: 3,
         },
 
         ...(props.userRole !== "supervisor" && {
@@ -27,7 +27,7 @@ const TeamsList = (props) => {
                 optionLabel: "full_name",
                 // required: true,
                 // async: true,
-                col: 12 + " col-sm-2 Z-Index ",
+                col: 3,
             },
         }),
 
@@ -38,12 +38,12 @@ const TeamsList = (props) => {
             optionLabel: "full_name",
             optionId: "id",
             async: true,
-            col: 12 + " col-sm-2 Z-Index ",
+            col: 2,
         },
         start_date:{
             type:"date",
             label:"Select From",
-            col: 4,
+            col: 2,
             getValue:(data) => {
                 setTimeout(() => {
                 setMinDate(data?.value)
@@ -53,7 +53,7 @@ const TeamsList = (props) => {
         end_date:{
             type:"date",
             label:"Select To",
-            col: 4,
+            col: 2,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled:minDate ? false : true,
             minDate:minDate,
