@@ -89,13 +89,13 @@ const TheHeader = (props) => {
          branches?.id === data?.value && props.setPhoneMask(getMaskHelper(branches.address.country))
    )
 
-     let selected =  options.map((opt)=>{
-            if(opt.value === data.value){
-                return opt
-            }else {
-                return opt
-            }
-        })
+     // let selected =  options.map((opt)=>{
+     //        if(opt.value === data.value){
+     //            return opt
+     //        }else {
+     //            return opt
+     //        }
+     //    })
         props.changeBranch(data);
     }
 
