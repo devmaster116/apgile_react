@@ -16,7 +16,7 @@ const TeamsAdd = (props) => {
                 type: 'text',
                 label: 'Name',
                 required: true,
-                name: 'name',
+                name: 'team_name',
                 col: 4
             },
             location_id: {
