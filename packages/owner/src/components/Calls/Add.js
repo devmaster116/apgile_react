@@ -32,7 +32,7 @@ const Add = (props) => {
             type: "advanceSelect",
             label: "Change Status",
             target: `${props.branchId}/call/status-list`,
-            optionLabel: 'name',
+            optionLabel: 'title',
             key:'status_id',
             optionId: 'id',
             col: 3,

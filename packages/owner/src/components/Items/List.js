@@ -110,7 +110,7 @@ const ItemsList = (props) => {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>Items</strong>
+						<strong>All Items</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable

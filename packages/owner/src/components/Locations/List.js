@@ -45,7 +45,7 @@ const KithcenCallList  = (props) => {
 		})
 		.catch((error) => console.log(error));
 	  }
-	
+
 		const columns = [
 			// {
 			// 	dataField: 'id',
@@ -102,7 +102,7 @@ const KithcenCallList  = (props) => {
 					}
 				},
 			},
-			
+
 			{
 				dataField: 'weekdays_name',
 				text: 'Days',
@@ -122,7 +122,7 @@ const KithcenCallList  = (props) => {
 				  );
 				},
 			  },
-			
+
 
 
 		];
@@ -142,7 +142,7 @@ const KithcenCallList  = (props) => {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>Locations List</strong>
+						<strong>All Locations</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable

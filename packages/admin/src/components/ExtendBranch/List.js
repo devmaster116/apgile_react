@@ -79,7 +79,7 @@ class List extends Component {
             <div className="animated">
                 <Card>
                     <CardHeader>
-                        <strong>Outlets List</strong>
+                        <strong>All Outlets</strong>
                     </CardHeader>
                     <CardBody>
                         <RemoteTable

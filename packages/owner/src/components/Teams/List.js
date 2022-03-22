@@ -115,7 +115,7 @@ const TeamsList = (props) => {
         <div className="animated">
             <Card>
                 <CardHeader>
-                    <strong>Team List</strong>
+                    <strong>All Teams</strong>
                 </CardHeader>
                 <CardBody>
                     <RemoteTable
