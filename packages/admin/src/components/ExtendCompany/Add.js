@@ -123,7 +123,7 @@ const Add = (props) => {
 
       state_list: {
         // parent: "user",
-        // required:true,
+        required:true,
         type: "advanceSelect",
         options: statesOptionList(),
         label: "State",
@@ -307,7 +307,7 @@ const Add = (props) => {
         label: "Max. QR Codes",
         name: "max_codes",
         required: true,
-        col: 2,
+        col: 1,
         min:0,
         condition: showAddFields,
       },
@@ -355,7 +355,7 @@ const Add = (props) => {
         col:2
       },
 
-    
+
 
       "Style Details": {
         isDummyField: true,
@@ -380,7 +380,7 @@ const Add = (props) => {
         condition: showAddFields,
         handleChange: (data) => console.log(data, "data"),
       },
-    
+
       page_footer: {
         type: "text",
         label: "Page Footer",

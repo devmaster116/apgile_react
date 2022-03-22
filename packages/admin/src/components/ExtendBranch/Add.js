@@ -100,7 +100,7 @@ const ExtendBranchAdd = (props) =>  {
 
         state_list: {
             // parent: "user",
-            // required:true,
+            required:true,
             type: "advanceSelect",
             options: statesOptionList(),
             label: "State",
