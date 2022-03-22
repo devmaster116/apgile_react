@@ -21,7 +21,6 @@ import {Logo, LanguageSelector, Breadcrumbs} from "@evenlogics/whf-ra-components
 const TheHeader = (props) => {
 
     const [options, setOptions] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(0);
     const [companyAllBranches, setCompanyAllBranches] = useState([]);
     /* eslint-disable */
     useEffect(() => {
@@ -97,7 +96,6 @@ const TheHeader = (props) => {
                 return opt
             }
         })
-        setSelectedOption(selected.value);
         props.changeBranch(data);
     }
 
