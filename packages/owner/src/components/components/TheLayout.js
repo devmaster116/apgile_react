@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import classNames from 'classnames';
 import {Helper, ErrorBoundary, TheContent, TheSidebar, TheAside, TheFooter} from '@evenlogics/whf-ra-components';
@@ -9,6 +9,7 @@ import store from '../Redux/Store';
 const TheLayout = (props) => {
     const darkMode = useSelector((state) => state.darkMode);
     const classes = classNames('c-app c-default-layout', darkMode && 'c-dark-theme');
+    const [internalActive, setInternalActive] = useState('internal-disabled');
 
     // React.useEffect(() => {
     // 	Helper.verifyAuth(props);
@@ -16,19 +17,26 @@ const TheLayout = (props) => {
 
     React.useEffect(() => {
         Helper.themeActiveMode();
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if(currentUser?.settings?.internal_active) {
+            setInternalActive("internal-enabled");
+        }
+        // console.log('asldkfj', currentUser.settings.internal_active);
     }, [])
 
     return (
-        <div className={classes}>
+        <div className={classes + ' ' +  internalActive}>
             {
                 JSON.parse(localStorage.getItem('currentUser'))&& <TheSidebar/>
             }
-           
+
             <TheAside/>
             <Provider store={store}>
                 <div className="c-wrapper">
                { JSON.parse(localStorage.getItem('currentUser'))&& <TheHeader/>}
-                    
+
                     <ErrorBoundary>
                         <div className="c-body">
                             <TheContent/>

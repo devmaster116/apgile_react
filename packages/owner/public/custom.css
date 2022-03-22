@@ -14,3 +14,7 @@
 .login-page .card-header {
     background-color: transparent;
 }
+
+.internal-disabled #p-nav-link-internal_venues, .internal-disabled #pcustomer_management-nav-item-2 {
+    display: none;
+}

@@ -10,24 +10,20 @@ import AddInternal from "./Add";
 const KithcenCallList = (props) => {
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
+    const [internalActive, setInternalActive] = useState(false);
 
     useEffect(() => {
         setQuery((prev) => !prev)
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if(currentUser?.settings?.internal_active) {
+            setInternalActive(true);
+        }
     }, [props.branchId]);
 
-    // const deleteUser = (id) => {
-    //     api.request("delete", `/${props?.branchId}/internal-call/${id}`)
-    //         .then((data) => {
-    //             console.log(data.message, "message")
-    //             toast.success(data.message)
-    //             setQuery(!query)
-    //         }, 3000)
-    //         .catch((error) => {
-    //                 toast.error(`Error ! ${error.response.data.message}`)
-    //             }
-    //         )
-    // }
-
+    if(!internalActive) {
+        return [];
+    }
     const filters = {
 
         location_id: {

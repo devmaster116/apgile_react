@@ -69,7 +69,7 @@ const Add = (props) => {
                         targetId={id}
                         name={id ? "editForm" : ""}
                         repeater={true}
-                        redirect="kitchen-calls"
+                        redirect="internal"
                         extraVals={{branch_id: props.branchId}}
                         // getInitialValues={getInitialValues}
                     />

@@ -141,7 +141,7 @@ const ItemsList = (props) => {
                         sort={defaultSorted}
                         addRoute="users/add"
                         filters={filters}
-                        hideDetail={false}
+                        hideDetail={true}
                         disableDelete={true}
                         Query={query}
                         showAdvanceFilters={true}

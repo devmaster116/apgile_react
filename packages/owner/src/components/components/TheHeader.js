@@ -46,26 +46,24 @@ const TheHeader = (props) => {
 
     const dispatch = useDispatch();
     const asideShow = useSelector((state) => state.asideShow);
-   /* eslint-enable */  
+   /* eslint-enable */
     const darkMode = useSelector((state) => state.darkMode);
     const sidebarShow = useSelector((state) => state.sidebarShow);
 
-    
+
 
     let element_moon = document.querySelector('.fa-moon')
     let element_sun = document.querySelector('.fa-sun')
-    
+
 
     if(element_moon && element_sun){
       element_sun.style.display = "none";
       element_moon.style.display = "none";
     }
-   
-   console.log(selectedOption,"selectedOption")
 
     const toggleSidebar = () => {
 
-      // Temporary Solution 
+      // Temporary Solution
       let target = document.querySelector('.c-sidebar-fixed');
           if (target.classList.contains('c-sidebar-lg-show')){
             target.classList.remove('c-sidebar-lg-show')
@@ -125,7 +123,7 @@ const TheHeader = (props) => {
                props.userRole === "admin" && <CHeaderNavLink to="/dashboard">
                {props?.companyName}
              </CHeaderNavLink>
-           }  
+           }
           </CHeaderNavItem>
           {props.userRole === "admin" && options.length > 1 && (
             <Select

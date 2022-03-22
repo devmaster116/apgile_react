@@ -139,9 +139,9 @@ const routes = [
 
 	{ path: '/calls', exact : true,component: CallsList,isPublic: false},
 
-	{ path: '/add-kitchen-call', exact : true,component: KitchenCallAdd,isPublic: false},
+	{ path: '/add-internal', exact : true,component: KitchenCallAdd,isPublic: false},
 
-	{ path: '/kitchen-calls', exact : true,component: KitchenCalls,isPublic: false},
+	{ path: '/internal', exact : true,component: KitchenCalls,isPublic: false},
 
 	{ path: '/calls/:id/edit', exact : true,component:CallAssigned ,isPublic: false},
 	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},

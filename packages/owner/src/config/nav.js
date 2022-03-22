@@ -247,12 +247,12 @@ export default {
                 roles: ["admin", "manager", "supervisor"],
                 icon: "fas fa-phone-square-alt",
             },
-            kitchen_calls: {
+            internal_calls: {
                 _tag: "CSidebarNavDropdown",
-                name: "kitchen_calls",
+                name: "internal_calls",
                 order: 2,
                 phrase: "Internal Calls",
-                to: "/kitchen-calls",
+                to: "/internal",
                 roles: ["admin", "manager", "supervisor"],
                 icon: "fas fa-tty",
             },
