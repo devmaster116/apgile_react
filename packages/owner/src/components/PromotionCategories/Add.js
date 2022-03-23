@@ -28,7 +28,7 @@ const Add = (props) => {
             type: "text",
             label: "Sub Title",
             // required: true,
-            col: 2,
+            col: 3,
         },
         sort_order: {
             type: "number",
