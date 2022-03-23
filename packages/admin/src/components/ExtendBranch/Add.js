@@ -323,7 +323,7 @@ const ExtendBranchAdd = (props) =>  {
             // required: true,
             col: 3,
         },
-        
+
         page_subtitle:{
             parent: 'settings',
             type: "text",
