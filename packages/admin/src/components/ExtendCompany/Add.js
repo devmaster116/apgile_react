@@ -317,6 +317,7 @@ const Add = (props) => {
         isDummyField: true,
         // type: "h4",
         col: 1,
+        groupClass: "d-none d-md-block d-sm-block col-lg-1"
         // condition: showAddFields,
       },
 
