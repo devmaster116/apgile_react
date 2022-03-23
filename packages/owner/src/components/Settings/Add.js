@@ -76,16 +76,16 @@ console.log(showPlaces,"showPlaces")
             col: 12,
         },
 
-        page_title: {
+        page_subtitle: {
             type: "text",
-            label: "Title",
+            label: "Sub Title",
             // required: true,
             col: 3,
         },
 
-        page_subtitle: {
+        page_title: {
             type: "text",
-            label: "Sub Title",
+            label: "Title",
             // required: true,
             col: 3,
         },
