@@ -71,6 +71,7 @@ const Add = (props) => {
                         repeater={true}
                         redirect="internal"
                         extraVals={{branch_id: props.branchId}}
+                        successCallback={props.successCallback}
                         // getInitialValues={getInitialValues}
                     />
                 </CardBody>

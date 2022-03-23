@@ -93,48 +93,7 @@ const KithcenCallList = (props) => {
             text: "Status",
             align: "center",
             sort: true,
-        },
-        // {
-        //     dataField: "",
-        //     text: "Received At",
-        //     align: "center",
-        //     sort: true,
-        // },
-
-        // {
-        //     isDummyField: true,
-        //     align: "center",
-        //     text: "Action",
-        //     sort: true,
-        //     formatter: (cell, row) => {
-        //         console.log(row, "row");
-        //         return (
-        //             <div className="button-tables">
-        //                 <Button
-        //                     size="sm"
-        //                     color="danger"
-        //                     className="mx-auto"
-        //                     onClick={() => {
-        //                         deleteUser(row?.id);
-        //                     }}
-        //                 >
-        //                     Delete
-        //                 </Button>
-        //
-        //                 {row?.call?.status_id !== 8 && (
-        //                     <Button
-        //                         size="sm"
-        //                         className="mx-auto text-white"
-        //                         color="warning"
-        //                         onClick={() => reverseCall(row.id)}
-        //                     >
-        //                         Reverse Call
-        //                     </Button>
-        //                 )}
-        //             </div>
-        //         );
-        //     },
-        // },
+        }
     ];
 
 
@@ -148,6 +107,10 @@ const KithcenCallList = (props) => {
             order: 'desc'
         }
     ];
+
+    const successCallback = (data) => {
+        window.location.reload();
+    }
     // const reverseCall = (id) => {
     //     console.log(id, "data")
     //     api.request("patch", `/${props?.branchId}/internal-call/${id}`).then(() => {
@@ -156,7 +119,7 @@ const KithcenCallList = (props) => {
     // }
     return (
         <div className="animated">
-            <AddInternal match={props.match}/>
+            <AddInternal match={props.match} successCallback={successCallback}/>
             <Card>
                 <CardHeader>
                     <strong>Internal Calls List</strong>
