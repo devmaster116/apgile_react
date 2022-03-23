@@ -43,16 +43,6 @@ const LocationsAdd = (props) => {
             col: 2,
             condition: !showTeam
         },
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Week Day",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            name: 'weekdays',
-            multi:true,
-            required: true,
-            col: 2
-        },
         start_time: {
             type: "date",
             label: "Start Time",
@@ -74,10 +64,24 @@ const LocationsAdd = (props) => {
             showTimeSelectOnly:true,
         },
 
-        // dummy: {
-        //     isDummyField: true,
-        //     col: 4
-        // },
+        dummy: {
+            isDummyField: true,
+            col: 2
+        },
+        weekdays: {
+            type: 'advanceSelect',
+            label: "Days",
+            target: `${props.branchId}/week-day-list`,
+            // async: true,
+            name: 'weekdays',
+            multi:true,
+            required: true,
+            col: 6
+        },
+        dummy2: {
+            isDummyField: true,
+            col: 6
+        },
         status: {
             type: "switch",
             label: "Status",

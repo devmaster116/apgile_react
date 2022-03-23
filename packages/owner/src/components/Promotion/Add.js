@@ -53,23 +53,11 @@ const Add = (props) => {
             name: "description",
             col: 4,
         },
-        status: {
-            type: "switch",
-            label: "Status",
-            required: true,
-            name:"status",
+        dummy3: {
             col: 8,
+            isDummyField: true
         },
 
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Week Day",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            multi:true,
-            // required: true,
-            col: 2,
-        },
 
         valid_from:{
             type:"date",
@@ -98,10 +86,33 @@ const Add = (props) => {
             col: 3,
         },
 
-
-        dummy: {
+        dummy2: {
             col: 3,
             isDummyField: true
+        },
+
+        weekdays: {
+            type: 'advanceSelect',
+            label: "Days",
+            target: `${props.branchId}/week-day-list`,
+            // async: true,
+            multi:true,
+            // required: true,
+            col: 6,
+        },
+
+
+        dummy: {
+            col: 6,
+            isDummyField: true
+        },
+
+        status: {
+            type: "switch",
+            label: "Status",
+            required: true,
+            name:"status",
+            col: 12,
         },
 
         // "Media Details": {

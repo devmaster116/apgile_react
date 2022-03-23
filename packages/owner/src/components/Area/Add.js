@@ -80,13 +80,13 @@ const Add = (props) => {
 
       page_id: {
         type: "advanceSelect",
-        label: "Item",
+        label: "Items",
         name: "page_id",
         target: targetPoint,
         required: true,
         async: true,
         multi: true,
-        col: 4,
+        col: 8,
       },
     };
 
