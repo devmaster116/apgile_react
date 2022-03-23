@@ -34,8 +34,19 @@ console.log(showPlaces,"showPlaces")
             label: "Wait Time",
             required: true,
             name: "wait_time",
-            col: 1,
+            // groupClass: "col-xxl-2 col-xl-2 col-md-3 col-sm-6",
+            col: 2,
             min: 0
+        },
+        throttle_wait: {
+            type: "number",
+            label: "Throttle Wait",
+            // groupClass: "col-xxl-2 col-xl-2 col-md-3 col-sm-6",
+            required: true,
+            name: "throttle_wait",
+            col: 2,
+            min: 0
+
         },
         // escalation_hop: {
         //     type: "number",
@@ -55,15 +66,7 @@ console.log(showPlaces,"showPlaces")
         //     min: 0
 
         // },
-        throttle_wait: {
-            type: "number",
-            label: "Throttle Wait",
-            required: true,
-            name: "throttle_wait",
-            col: 1,
-            min: 0
 
-        },
 
 
 
