@@ -280,6 +280,7 @@ const ExtendBranchAdd = (props) =>  {
         spacer: {
             type: "hidden",
             col: 1,
+            groupClass: "d-none d-md-block d-sm-block col-lg-1"
         },
 
         wait_time: {
