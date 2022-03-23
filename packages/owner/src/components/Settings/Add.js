@@ -78,14 +78,14 @@ console.log(showPlaces,"showPlaces")
 
         page_subtitle: {
             type: "text",
-            label: "Sub Title",
+            label: "Title",
             // required: true,
             col: 3,
         },
 
         page_title: {
             type: "text",
-            label: "Title",
+            label: "Sub Title",
             // required: true,
             col: 3,
         },

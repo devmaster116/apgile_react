@@ -319,7 +319,7 @@ const ExtendBranchAdd = (props) =>  {
         page_subtitle:{
             parent: 'settings',
             type: "text",
-            label: "Sub Title",
+            label: "Title",
             // required: true,
             col: 3,
         },
@@ -327,7 +327,7 @@ const ExtendBranchAdd = (props) =>  {
         page_title:{
             parent: 'settings',
             type: "text",
-            label: "Title",
+            label: "Sub Title",
             // required: true,
             col: 3,
         },
