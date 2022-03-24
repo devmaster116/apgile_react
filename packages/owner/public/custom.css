@@ -20,3 +20,7 @@
 .promotion-disabled #ppromotion-nav-item-1, .promotion-disabled #ppromotion-nav-item-2 {
     display: none;
 }
+
+.advance-select > div > div:nth-child(2) > div {
+    padding: 7px !important;
+}

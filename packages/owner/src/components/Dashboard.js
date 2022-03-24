@@ -212,7 +212,7 @@ const Dashboard = (props) => {
 
                 {props.user &&<CCol xs={12} sm={6} lg={1}>
                     <Block
-                        title="Avg. Accept"
+                        title="Avg Accept"
                         value={dashbaordData?.avgs?.avg_response}
                         color="warning"
                     />

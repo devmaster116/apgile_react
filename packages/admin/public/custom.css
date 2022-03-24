@@ -14,3 +14,7 @@
 .login-page .card-header {
     background-color: transparent;
 }
+
+.advance-select > div > div:nth-child(2) > div {
+    padding: 7px !important;
+}
