@@ -30,7 +30,7 @@ const List = (props) => {
 
 
     const filters = {
-        categories_id: {
+        category_id: {
             type: "advanceSelect",
             label: "Select Category",
             target: `${props?.branchId}/categories`,

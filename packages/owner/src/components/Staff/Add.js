@@ -161,6 +161,7 @@ const ItemAdd = (props) => {
                 'a': '[A-Za-z]',
                 '*': '[A-Za-z0-9]'
               },
+              getValue : (data) => {console.log(data,"data")}
         },
 
 

@@ -36,7 +36,7 @@ const Detail = (props) => {
               (userKey, index) => {
                 if (Array.isArray(userData[userKey]) === false){
                  return <React.Fragment key={index}>
-                { typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && <Col
+                { typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && userKey !== "full_name" && <Col
                       
                       sm="2"
                       className="mb-4 text-capitalize"
@@ -45,7 +45,7 @@ const Detail = (props) => {
                     </Col>
                 }
                 {
-                    typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && <>  <Col  sm="2" className="mb-4">
+                    typeof userData[userKey] !== 'number' && userData[userKey] !== null && userKey !== 'gender_id' && userData[userKey] !== "" && userKey !== "is_online"  && userKey !== "title" && userKey !== "title_name" && userKey !== "full_name" && <>  <Col  sm="2" className="mb-4">
                     {userData[userKey]}
                   </Col>
                  
@@ -62,8 +62,6 @@ const Detail = (props) => {
                         <Col sm="2">
                           {role?.name}
                         </Col>
-              
-                        
                       </React.Fragment>
                     ))
                   }
