@@ -60,14 +60,15 @@ end_date: {
 
 
 }
-  const defaultSorted = [{ dataField: "title", order: "desc" }];
+  const defaultSorted = [{ dataField: "id", order: "desc" }];
   const columns = [
-    // {
-    //   dataField: "id",
-    //   text: "ID",
-    //   align: "center",
-    //   sort: true,
-    // },
+    {
+      hidden:true,
+      dataField: "id",
+      text: "ID",
+      align: "center",
+      sort: true,
+  },
     {
       dataField: "created_at",
       text: "Created At",
@@ -121,11 +122,11 @@ end_date: {
               Query={query}
               filters={filters}
               showAdvancedFilters={true}
-              query={
-								{
-									sort : "id|desc"
-								}
-							}
+              // query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
 
             />
           </CardBody>

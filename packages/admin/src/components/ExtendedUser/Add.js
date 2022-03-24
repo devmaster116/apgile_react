@@ -10,7 +10,7 @@ const Add = (props) => {
     const [showPasscode, setShowPasscode] = useState(false)
     const [showPassword, setShowPassword] = useState(true);
     const [showBranch, setShowBranch] = useState(true);
-    // const [roleId, setRoleId] = useState(null);
+    const [roleId, setRoleId] = useState(null);
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -62,7 +62,7 @@ const Add = (props) => {
 
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
-        // setRoleId(role);
+        setRoleId(role);
         if(role === 4 || role === 5) {
             setShowPasscode(true);
             if(role === 5) {
@@ -223,14 +223,14 @@ const Add = (props) => {
     }
 
 
-    // var extraValObj = {}
+    var extraValObj = {}
         
-    //    if (roleId === 5 ){
-    //     extraValObj = {
-    //        password:null,
-    //        password_confirmation:null
-    //     }
-    // }  
+       if (roleId === 5 ){
+        extraValObj = {
+           password:null,
+           password_confirmation:null
+        }
+    }  
     //    }else if(roleId === 4){
 
     //    }
@@ -254,7 +254,7 @@ const Add = (props) => {
                     name={id ? "editForm" : ""}
                     getInitialValues={getInitialValues}
                     redirect="owner/users"
-                    // extraVals={extraValObj}
+                    extraVals={extraValObj}
                 />
             </CardBody>
         </Card>

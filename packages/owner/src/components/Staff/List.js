@@ -75,12 +75,13 @@ const ItemsList = (props) => {
     }
 
     const columns = [
-        // {
-        //     dataField: "id",
-        //     text: "ID",
-        //     align: "center",
-        //     sort: true,
-        // },
+        {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
 
         {
             dataField: "created_at",
@@ -119,7 +120,7 @@ const ItemsList = (props) => {
 
     const defaultSorted = [
         {
-            dataField: 'username',
+            dataField: 'id',
             order: 'desc'
         }
     ];
@@ -147,11 +148,11 @@ const ItemsList = (props) => {
                             color: "warning",
                             callback: (data) => props?.history?.push(`/staff/${data?.id}/details`),
                         }}
-                        query={
-                            {
-                                sort: "id|desc"
-                            }
-                        }
+                        // query={
+                        //     {
+                        //         sort: "id|desc"
+                        //     }
+                        // }
                     />
                 </CardBody>
             </Card>

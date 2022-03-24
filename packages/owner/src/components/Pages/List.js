@@ -74,9 +74,15 @@ const filters = {
     },
 
 }
-    const defaultSorted = [{dataField: "location.name", order: "desc"}];
+    const defaultSorted = [{dataField: "id", order: "desc"}];
     const columns = [
-
+        {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
         {
             isDummyField: true,
             align: "center",
@@ -225,11 +231,11 @@ const filters = {
                             // query={calculateParams()}
                             filters={filters}
                             showAdvancedFilters={true}
-                            query={
-								{
-									sort : "id|desc"
-								}
-							}
+                            // query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
                         />
 
                         <Modal

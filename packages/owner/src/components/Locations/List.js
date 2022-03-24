@@ -47,12 +47,13 @@ const KithcenCallList  = (props) => {
 	  }
 
 		const columns = [
-			// {
-			// 	dataField: 'id',
-			// 	text: 'ID',
-			// 	align: 'center',
-			// 	sort: true
-			// },
+			{
+				hidden:true,
+				dataField: "id",
+				text: "ID",
+				align: "center",
+				sort: true,
+			},
 			{
 				dataField: "created_at",
 				text: "Created At",
@@ -133,7 +134,7 @@ const KithcenCallList  = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'name',
+				dataField: 'id',
 				order: 'desc'
 			}
 		];
@@ -156,11 +157,11 @@ const KithcenCallList  = (props) => {
 							addRoute="/locations/add"
 							{...props.remoteTableFields}
 							Query={query}
-							query={
-								{
-									sort : "id|desc"
-								}
-							}
+							// query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
 
 							// customEditLink = {`locations/:id/edit`}
 						/>

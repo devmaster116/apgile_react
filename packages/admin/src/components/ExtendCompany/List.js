@@ -32,6 +32,13 @@ const List = (props) => {
     }
 
     const columns = [
+        {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
       {
         dataField: "name",
         text: "Company Name",
@@ -60,7 +67,7 @@ const List = (props) => {
       }
     ];
 
-    const defaultSorted = [{dataField: 'name', order: 'desc'}];
+    const defaultSorted = [{dataField: 'id', order: 'desc'}];
 
 
     const companyLogin = (data) => {
@@ -98,14 +105,7 @@ const List = (props) => {
                                 classes:"text-white",
                                 callback: (data) => companyLogin(data),
                             }}
-                            query={
-								{
-									sort : "id|desc"
-								}
-							}
-                            // Query={query}
-                            // query={queryParams}
-                            // {...props.remoteTableFields}
+                  
 
                         />
                     </CardBody>

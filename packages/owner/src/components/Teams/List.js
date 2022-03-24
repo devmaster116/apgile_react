@@ -61,7 +61,13 @@ const TeamsList = (props) => {
     };
 
     const columns = [
-        // { dataField: 'id', text: 'ID', align: 'center', sort: true },
+        {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
         {
             dataField: "created_at",
             text: "Created At",
@@ -106,7 +112,7 @@ const TeamsList = (props) => {
 
     const defaultSorted = [
         {
-            dataField: 'name',
+            dataField: 'id',
             order: 'desc'
         }
     ];
@@ -131,11 +137,11 @@ const TeamsList = (props) => {
                         filters={filters}
                         showAAdvancedFilters={true}
                         addRoute={props?.userRole === "supervisor" ? null : "teams/add"}
-                        query={
-                            {
-                                sort : "id|desc"
-                            }
-                        }
+                        // query={
+                        //     {
+                        //         sort : "id|desc"
+                        //     }
+                        // }
                         {...props.remoteTableFields}
                     />
                 </CardBody>

@@ -73,12 +73,13 @@ const ItemsList = (props) => {
     };
 
     const columns = [
-        // {
-        //   dataField: "id",
-        //   text: "ID",
-        //   align: "center",
-        //   sort: true,
-        // },
+        {
+          dataField: "id",
+          hidden:true,
+          text: "ID",
+          align: "center",
+          sort: true,
+        },
         {
             dataField: "username",
             text: "Username",
@@ -107,7 +108,7 @@ const ItemsList = (props) => {
 
     const defaultSorted = [
         {
-            dataField: "username",
+            dataField: "id",
             order: "desc",
         },
     ];
@@ -152,11 +153,11 @@ const ItemsList = (props) => {
                             classes: "text-white",
                             callback: (data) => deleteUser(data),
                         }}
-                        query={
-                            {
-                                sort : "id|desc"
-                            }
-                        }
+                        // query={
+                        //     {
+                        //         sort : "id|desc"
+                        //     }
+                        // }
                     />
                 </CardBody>
             </Card>

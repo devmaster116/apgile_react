@@ -22,6 +22,13 @@ class List extends Component {
         }
         const columns = [
             {
+                hidden:true,
+                dataField: "id",
+                text: "ID",
+                align: "center",
+                sort: true,
+            },
+            {
                 dataField: 'name',
                 text: 'Name',
                 align: 'center',
@@ -54,7 +61,7 @@ class List extends Component {
 
         const defaultSorted = [
             {
-                dataField: 'name',
+                dataField: 'id',
                 order: 'desc'
             }
         ];
@@ -99,11 +106,11 @@ class List extends Component {
                                 classes:"text-white",
                                 callback: (data) => companyLogin(data),
                             }}
-                            query={
-								{
-									sort : "id|desc"
-								}
-							}
+                            // query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
                         />
                     </CardBody>
                 </Card>

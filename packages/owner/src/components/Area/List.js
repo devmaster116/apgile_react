@@ -34,7 +34,7 @@ const List = (props) => {
             setPages(`${props?.branchId}/location/${data?.value}/pages`)
         }, 1);
     }
-    const defaultSorted = [{dataField: "name", order: "desc"}];
+    const defaultSorted = [{dataField: "id", order: "desc"}];
 
 
     const filters = {
@@ -93,12 +93,13 @@ const List = (props) => {
 
     }
     const columns = [
-        // {
-        //   dataField: "id",
-        //   text: "ID",
-        //   align: "center",
-        //   sort: true,
-        // },
+        {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
 
         {
             dataField: "created_at",
@@ -157,11 +158,11 @@ const List = (props) => {
                             filters={filters}
                             showAdvancedFilters={true}
                             // query={calculateParams()}
-                            query={
-								{
-									sort : "id|desc"
-								}
-							}
+                            // query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
                         />
                     </CardBody>
                 </Card>

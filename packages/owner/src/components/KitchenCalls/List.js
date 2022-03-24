@@ -65,6 +65,13 @@ const KithcenCallList = (props) => {
 
     const columns = [
         {
+            hidden:true,
+            dataField: "id",
+            text: "ID",
+            align: "center",
+            sort: true,
+        },
+        {
             isDummyField: true,
             text: "Time Call Created",
             align: "center",
@@ -103,7 +110,7 @@ const KithcenCallList = (props) => {
 
     const defaultSorted = [
         {
-            dataField: 'location_name',
+            dataField: 'id',
             order: 'desc'
         }
     ];
@@ -139,11 +146,11 @@ const KithcenCallList = (props) => {
                         {...props.remoteTableFields}
                         Query={query}
                         hideActionCol={true}
-                        query={
-                            {
-                                sort : "id|desc"
-                            }
-                        }
+                        // query={
+                        //     {
+                        //         sort : "id|desc"
+                        //     }
+                        // }
                     />
                 </CardBody>
             </Card>

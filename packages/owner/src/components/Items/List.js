@@ -42,12 +42,13 @@ const ItemsList = (props) => {
 		 }
 
 		const columns = [
-			// {
-			// 	dataField: 'id',
-			// 	text: 'ID',
-			// 	align: 'center',
-			// 	sort: true
-			// },
+			{
+				hidden:true,
+				dataField: "id",
+				text: "ID",
+				align: "center",
+				sort: true,
+			},
 			{
 				dataField: "created_at",
 				text: "Created At",
@@ -99,7 +100,7 @@ const ItemsList = (props) => {
 
 		const defaultSorted = [
 			{
-				dataField: 'name',
+				dataField: 'id',
 				order: 'desc'
 			}
 		];
@@ -124,11 +125,11 @@ const ItemsList = (props) => {
 							Query={query}
 							filters={filters}
 							showAdvancedFilters={true}
-							query={
-								{
-									sort : "id|desc"
-								}
-							}
+							// query={
+							// 	{
+							// 		sort : "id|desc"
+							// 	}
+							// }
 						/>
 					</CardBody>
 				</Card>

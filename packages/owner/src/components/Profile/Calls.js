@@ -9,7 +9,7 @@ const List = (props) => {
 
 
     const columns = [
-        // {dataField: "id", text: "ID", align: "center"},
+        {dataField: "id",hidden:true, text: "ID", align: "center"},
         {
             dataField: "call.cus_name",
             text: "Customer Name",
@@ -73,7 +73,7 @@ const List = (props) => {
 
     const defaultSorted = [
         {
-            dataField: "call.message",
+            dataField: "id",
             order: "asc",
         },
     ];

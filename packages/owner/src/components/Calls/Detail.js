@@ -47,7 +47,7 @@ import {connect} from "react-redux";
 
 const Detail = (props) => {
   const columns = [
-    // { dataField: "id", text: "ID", align: "center", sort: true },
+    { dataField: "id",hidden:true, text: "ID", align: "center", sort: true },
     {
       dataField: "call_id",
       text: "Call ID",
@@ -85,7 +85,7 @@ const Detail = (props) => {
 
   const defaultSorted = [
     {
-      dataField: "call_id",
+      dataField: "id",
       order: "asc",
     },
   ];
