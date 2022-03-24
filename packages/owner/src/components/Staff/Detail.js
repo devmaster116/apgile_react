@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardBody, CardHeader, Button} from 'reactstrap';
+import {Card, CardBody, CardHeader} from 'reactstrap';
 import {connect} from "react-redux";
 import "../../style/style.css";
 import Dashboard from "../Dashboard";
