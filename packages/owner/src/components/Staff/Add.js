@@ -41,7 +41,6 @@ const ItemAdd = (props) => {
     }
 
     const getInitialValues = async (data) => {
-console.log(data,"dataaa")
         await data;
         decidePasswordLogic(data.role_id);
         // if(data?.role_id === 3 || data?.role_id === 4) {
