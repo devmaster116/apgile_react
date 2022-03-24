@@ -116,7 +116,7 @@ const Add = (props) => {
         // parent: "address",
         type: "text",
         label: "State",
-        name: "state",
+        name: "state_txt",
         col: 2,
         condition: !showStates,
       },

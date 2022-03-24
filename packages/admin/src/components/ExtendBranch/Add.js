@@ -92,7 +92,7 @@ const ExtendBranchAdd = (props) =>  {
             parent: "address",
             type: "text",
             label: "State",
-            name: "state",
+            name: "state_txt",
             defaultValue:" ",
             col: 3,
             condition: !showStates
