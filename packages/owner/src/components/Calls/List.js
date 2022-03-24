@@ -51,7 +51,12 @@ const List = (props) => {
     }
 
     const columns = [
-        {dataField: "id", text: "ID", align: "center", hidden: true},
+        {
+            dataField: "id", 
+            text: "ID",
+            align: "center", 
+            hidden: true
+        },
         {
             dataField: "staff_name",
             text: "Assigned To",
@@ -130,7 +135,7 @@ const List = (props) => {
     const defaultSorted = [
         {
             dataField: "id",
-            order: "asc",
+            order: "desc",
         },
     ];
 
@@ -154,11 +159,11 @@ const List = (props) => {
                         Query={query}
                         filters={filters}
                         showAdvancedFilters={true}
-                        query={
-                            {
-                                sort : "id|desc"
-                            }
-                        }
+                        // query={
+                        //     {
+                        //         sort : "id|desc"
+                        //     }
+                        // }
 
                     />
                 </CardBody>
