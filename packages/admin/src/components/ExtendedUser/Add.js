@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {formPageTitle} from "@facepays/common";
-// import { getMaskHelper } from "../ExtendCompany/getMaskHelper";
-// import {getMaskHelper} from "@facepays/common";
 import api from "@evenlogics/whf-api";
 
 
@@ -12,6 +10,7 @@ const Add = (props) => {
     const [showPasscode, setShowPasscode] = useState(false)
     const [showPassword, setShowPassword] = useState(true);
     const [showBranch, setShowBranch] = useState(true);
+    const [roleId, setRoleId] = useState(null);
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -30,36 +29,14 @@ const Add = (props) => {
 
 
     const {id} = props.match.params;
-    // const [maskedValue, setMaskedValue] = useState("+1 (999) 999-9999")
     const [target, setTarget] = useState('branches');
-//   const [maskedValue, setMaskedValue] = useState("+99-99-9999")
 
 
     const companiesChangeHandler = (data) => {
         setTimeout(() => {
-            // let returnMask = getMaskHelper(data?.value)
-            // setMaskedValue(returnMask);
             setTarget(`branches/${data.value}/all`)
         }, 1);
     }
-
-    // const roleChanged = async (data) => {
-    //     await data.value;
-    //     if(parseInt(data.value)  === 5 || parseInt(data.value) === 4) {
-    //         setShowPasscode(true);
-    //     } else {
-    //         setShowPasscode(false);
-    //     }
-    // }
-
-    // const getInitialValues = async (data) => {
-    //     await data;
-    //     if(parseInt(data.role_id) === 5 || parseInt(data.role_id) === 4) {
-    //         setShowPasscode(true);
-    //     } else {
-    //         setShowPasscode(false);
-    //     }
-    // }
 
     
     const roleChanged = async (data) => {
@@ -85,6 +62,7 @@ const Add = (props) => {
 
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
+        setRoleId(role);
         if(role === 4 || role === 5) {
             setShowPasscode(true);
             if(role === 5) {
@@ -245,6 +223,24 @@ const Add = (props) => {
     }
 
 
+    var extraValObj = {}
+        
+    //    if (roleId === 5 ){
+    //     extraValObj = {
+    //        password:null,
+    //        password_confirmation:null
+    //     }
+    // }  
+    //    }else if(roleId === 4){
+
+    //    }
+
+      
+        // passcode
+
+
+
+
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
             <CardHeader>
@@ -253,23 +249,16 @@ const Add = (props) => {
             <CardBody>
                 <FormGenerator
                     targetEntity="users"
-                    // getValues={handleValue}
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    // repeater={true}
-                    // initialValues={props.users.aboutProps}
                     getInitialValues={getInitialValues}
                     redirect="owner/users"
-                    // handleSameValueFields={['title', 'slug']}
-                    // Query={query}
-                    // extraVals={{branch_id: props.branchId}}
+                    extraVals={extraValObj}
                 />
             </CardBody>
         </Card>
     );
-
-    // return <UserAdd debug={true} deleteFields={deleteFields} extendedFields={fields} match={props.match} />;
 
 }
 

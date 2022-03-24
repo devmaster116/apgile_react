@@ -83,7 +83,7 @@ const Add = (props) => {
             label: 'Time',
             // required: true,
             name: 'time',
-            col: 3,
+            col: 4,
         },
 
         dummy2: {
