@@ -245,6 +245,14 @@ const ExtendBranchAdd = (props) =>  {
             col: 2
         },
 
+        promotions: {
+            parent: 'settings',
+            type: "switch",
+            label: "Allow Promotions",
+            required: true,
+            col: 2
+        },
+
         dashboard: {
             parent: 'settings',
             type: "switch",

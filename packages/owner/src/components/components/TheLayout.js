@@ -9,7 +9,8 @@ import store from '../Redux/Store';
 const TheLayout = (props) => {
     const darkMode = useSelector((state) => state.darkMode);
     const classes = classNames('c-app c-default-layout', darkMode && 'c-dark-theme');
-    const [internalActive, setInternalActive] = useState('internal-disabled');
+    const [internalActive, setInternalActive] = useState(' internal-disabled');
+    const [promotionActive, setPromotionActive] = useState(' promotion-disabled');
 
     // React.useEffect(() => {
     // 	Helper.verifyAuth(props);
@@ -21,13 +22,17 @@ const TheLayout = (props) => {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
         if(currentUser?.settings?.internal_active) {
-            setInternalActive("internal-enabled");
+            setInternalActive(" internal-enabled");
+        }
+
+        if(currentUser?.settings?.promotions) {
+            setPromotionActive(" promotion-enabled");
         }
         // console.log('asldkfj', currentUser.settings.internal_active);
     }, [])
 
     return (
-        <div className={classes + ' ' +  internalActive}>
+        <div className={classes + internalActive + promotionActive}>
             {
                 JSON.parse(localStorage.getItem('currentUser'))&& <TheSidebar/>
             }

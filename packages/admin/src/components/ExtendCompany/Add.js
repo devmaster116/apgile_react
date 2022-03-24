@@ -274,6 +274,14 @@ const Add = (props) => {
         condition: showAddFields,
       },
 
+      promotions: {
+        type: "switch",
+        label: "Allow Promotions",
+        required: true,
+        col: 2,
+        condition: showAddFields,
+      },
+
       dashboard: {
         type: "switch",
         label: "Dashboard Stats",
