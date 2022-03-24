@@ -164,7 +164,25 @@ const ItemAdd = (props) => {
               getValue : (data) => {console.log(data,"data")}
         },
 
-
+        // ...(showPassword && {
+        //     password: {
+        //         type: "password",
+        //         label: "Password",
+        //         name: "password",
+        //         required: id ? false :true ,
+        //         // condition: showPassword,
+        //         col: 2,
+        //     },
+        //     password_confirmation: {
+        //         oneOf: "password",
+        //         type: "password",
+        //         required:  id ? false :true,
+        //         // condition: showPassword,
+        //         label: "Password Confirmation",
+        //         name: "password_confirmation",
+        //         col: 2,
+        //     },
+        //   }),
             password: {
                 type: "password",
                 label: "Password",
