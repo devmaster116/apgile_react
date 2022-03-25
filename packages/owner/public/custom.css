@@ -20,3 +20,8 @@
 .promotion-disabled #ppromotion-nav-item-1, .promotion-disabled #ppromotion-nav-item-2 {
     display: none;
 }
+
+.remotetop-bar input, .remotetop-bar button {
+    margin-right: 7px;
+    border-radius: .25rem !important;
+}
