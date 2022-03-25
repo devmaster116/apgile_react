@@ -13,8 +13,8 @@ const Add = (props) => {
 
 
     let fields = {
-    
-     
+
+
 
       current_password: {
         // parent: "user",
@@ -32,9 +32,9 @@ const Add = (props) => {
             required: true,
             col: 4,
           },
-      
 
-  
+
+
         password_confirmation: {
           // parent: "user",
           oneOf: "password",
@@ -44,15 +44,15 @@ const Add = (props) => {
           name: "password_confirmation",
           col: 4,
         },
-     
+
     };
 
 
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
-        
+
             <Header title="Change Password"/>
-       
+
             <CardBody>
                 <FormGenerator
                     targetEntity="change-password"
@@ -63,7 +63,7 @@ const Add = (props) => {
                     // repeater={true}
                     // initialValues={props.users.aboutProps}
 
-                    redirect="super-admins"
+                    redirect="change-password"
                     // handleSameValueFields={['title', 'slug']}
                     // Query={query}
                     extraVals={{_method: "patch"}}
