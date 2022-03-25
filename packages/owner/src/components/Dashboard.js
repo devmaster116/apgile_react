@@ -227,7 +227,7 @@ const Dashboard = (props) => {
                 </CCol> }
 
                 {!props.user &&
-                <CCol xs={12} sm={6} md={4} lg={3} xl={1}>
+                <CCol xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Block
                         title="Online Staff"
                         value={dashbaordData?.staff_online}
