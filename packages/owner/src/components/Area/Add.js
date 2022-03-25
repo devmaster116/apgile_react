@@ -10,7 +10,7 @@ const Add = (props) => {
 
     const {id} = props.match.params;
     const [targetPoint, setTargetID] = useState(id ? `${props.branchId}/items-page/${id}` : `${props.branchId}/items-pages`);
-    // const [options, setOptions] = useState([]);
+    const [showItem, setShowItem] = useState(false);
 
 
     useEffect(() => {
@@ -19,6 +19,11 @@ const Add = (props) => {
     const locationChangeHandler = (data) => {
         setTimeout(() => {
             setTargetID(`${props.branchId}/location/${data?.value}/items`)
+            if(data?.value) {
+                setShowItem(true)
+            } else {
+                setShowItem(false)
+            }
             // location/{id}/items
             // setTargetID(`${props.branchId}/items-pages`)
         }, 10);
@@ -83,6 +88,7 @@ const Add = (props) => {
         label: "Items",
         name: "page_id",
         target: targetPoint,
+          condition: showItem,
         required: true,
         async: true,
         multi: true,
