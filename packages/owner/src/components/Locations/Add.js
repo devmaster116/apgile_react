@@ -80,7 +80,7 @@ const LocationsAdd = (props) => {
         },
         dummy2: {
             isDummyField: true,
-            col: 6
+            col: 12
         },
         status: {
             type: "switch",
@@ -100,7 +100,7 @@ const LocationsAdd = (props) => {
             label: "Include Customer ID",
             // required: true,
             name: "customer_required",
-            col: 3,
+            col: 8,
         },
         "Manage Auto Assinged": {
             isDummyField: true,
