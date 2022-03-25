@@ -23,7 +23,7 @@ const List = (props) => {
     }, [props.branchId]);
 
 /* eslint-enable */
-    
+
 
     const changeStatus = (data) => {
         let payload = {
@@ -74,6 +74,8 @@ const List = (props) => {
         //     async: true,
         //     col: 12 + ' col-sm-3  ',
         // },
+
+
         page_id: {
             type: "advanceSelect",
             label: "Select Item",
@@ -122,6 +124,14 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
+
+        {
+            dataField: "location.name",
+            text: "Location",
+            align: "center",
+            sort: true,
+        },
+
         {
             dataField: "description",
             text: "Area Description",
