@@ -205,12 +205,12 @@ const Dashboard = (props) => {
             <CRow>
                 {dashbaordData?.calls &&
                     Object.entries(dashbaordData?.calls).map(([key, val], i) => (
-                        <CCol key={i} xs={12} sm={6} lg={dashbaordData?.call_attrs[key]?.size ? 2 : 1}>
+                        <CCol key={i} xs={12} sm={6} md={4} lg={3} xl={dashbaordData?.call_attrs[key]?.size ? 2 : 2}>
                             <Block title={key} value={val} color={dashbaordData?.call_attrs[key].color}/>
                         </CCol>
                     ))}
 
-                {props.user &&<CCol xs={12} sm={6} lg={1}>
+                {props.user &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Block
                         title="Avg Accept"
                         value={dashbaordData?.avgs?.avg_response}
@@ -218,7 +218,7 @@ const Dashboard = (props) => {
                     />
                 </CCol> }
 
-                {props.user &&<CCol xs={12} sm={6} lg={1}>
+                {props.user &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Block
                         title="Avg Complete"
                         value={dashbaordData?.avgs?.avg_complete}
@@ -227,14 +227,14 @@ const Dashboard = (props) => {
                 </CCol> }
 
                 {!props.user &&
-                <CCol xs={12} sm={6} lg={1}>
+                <CCol xs={12} sm={6} md={4} lg={3} xl={1}>
                     <Block
                         title="Online Staff"
                         value={dashbaordData?.staff_online}
                         color="success"
                     />
                 </CCol>}
-                {!props.user &&<CCol xs={12} sm={6} lg={1}>
+                {!props.user &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
                     <Block
                         title="Active Areas"
                         value={dashbaordData?.active_areas}
@@ -249,7 +249,7 @@ const Dashboard = (props) => {
                 {/*<CardHeader><b>Filter By Entity</b></CardHeader>*/}
                 <CardBody>
                     <CRow className="align-items-end">
-                        <CCol sm={3}>
+                        <CCol sm={6} md={4} lg={2}>
                             <label>Select Location</label>
                             <Select
                                 name="locations"
@@ -263,7 +263,7 @@ const Dashboard = (props) => {
                             />
                         </CCol>
 
-                        {dashboardPayload?.location && <CCol sm={3}>
+                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
                             <label>Select Area</label>
                             <Select
                                 name="areas"
@@ -276,7 +276,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol> }
-                        {dashboardPayload?.location && <CCol sm={3}>
+                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
                             <label>Select Item</label>
                             <Select
                                 name="items"
@@ -289,7 +289,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol>}
-                        {!props.user && dashboardPayload?.location && <CCol sm={3}>
+                        {!props.user && dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
                             <label>Select Staff</label>
                             <Select
                                 name="users"
@@ -310,7 +310,7 @@ const Dashboard = (props) => {
                 {/*<CardHeader><b>Filter By Time</b></CardHeader>*/}
                 <CardBody>
                     <CRow className="align-items-end">
-                        <CCol sm={2}>
+                        <CCol md={12} lg={6} xl={2}>
                             <label>Select Start Date</label>
                             <DatePicker
                                 selected={startDate}
@@ -327,7 +327,7 @@ const Dashboard = (props) => {
                             />
                         </CCol>
 
-                        <CCol sm={2}>
+                        <CCol md={12} lg={6} xl={2}>
                             <label>Select End Date</label>
                             <DatePicker
                                 selected={endDate}
@@ -343,12 +343,12 @@ const Dashboard = (props) => {
                                 dateFormat="MM-dd-yyyy"
                             />
                         </CCol>
-                        <CCol sm={4}>
+                        <CCol md={12} lg={6} xl={4}>
                             <label>Select Time Range</label> <br/>
                             <TimeRangePicker className="date-picker-custom" clockIcon={null} disableClock={true}
                                              onChange={onTimeChange} value={value}/>
                         </CCol>
-                        <CCol sm={4}>
+                        <CCol md={12} lg={6} xl={4}>
                             <label>Create By</label> <br/>
                             {Object.entries(['hour', 'day', 'week', 'month']).map(([key, val], i) => (
                                     <label
@@ -376,7 +376,7 @@ const Dashboard = (props) => {
                 </CardBody>
             </Card>
             <CRow>
-                <CCol lg={4} md={12}>
+                <CCol xl={4} lg={6} md={12}>
                 <Graph
                     type="bar"
                     title="Call Counts"
@@ -387,7 +387,7 @@ const Dashboard = (props) => {
                     lengend={false}
                 />
                 </CCol>
-                <CCol lg={8} md={12}>
+                <CCol xl={8} lg={6} md={12}>
                     {!props.user && <Graph
                         type="bar"
                         title="Staff Performance"
