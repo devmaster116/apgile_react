@@ -235,7 +235,7 @@ const ItemAdd = (props) => {
                     Query={query}
                     extraVals={extraVal}
                     getInitialValues={getInitialValues}
-                    debug={true}
+                    // debug={true}
                 />
             </CardBody>
         </Card>

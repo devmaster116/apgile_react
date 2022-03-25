@@ -52,7 +52,7 @@ const ItemsList = (props) => {
             type: "advanceSelect",
             label: "Branch",
             target: target,
-            async: true,
+            // async: true,
             name: "userDetail_branch_id",
             optionValue: "id",
             optionLabel: "name",

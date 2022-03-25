@@ -14,7 +14,7 @@ class List extends Component {
                 type: "advanceSelect",
                 label: "Company",
                 target: 'companies?limit=1000',
-                async: true,
+                // async: true,
                 name: "company_company_id",
                 // required: true,
                 col: 12 + ' col-xl-3 mt-2',
