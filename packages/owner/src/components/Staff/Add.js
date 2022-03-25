@@ -165,24 +165,6 @@ const ItemAdd = (props) => {
         },
 
         // ...(showPassword && {
-        //     password: {
-        //         type: "password",
-        //         label: "Password",
-        //         name: "password",
-        //         required: id ? false :true ,
-        //         // condition: showPassword,
-        //         col: 2,
-        //     },
-        //     password_confirmation: {
-        //         oneOf: "password",
-        //         type: "password",
-        //         required:  id ? false :true,
-        //         // condition: showPassword,
-        //         label: "Password Confirmation",
-        //         name: "password_confirmation",
-        //         col: 2,
-        //     },
-        //   }),
             password: {
                 type: "password",
                 label: "Password",
@@ -200,13 +182,43 @@ const ItemAdd = (props) => {
                 name: "password_confirmation",
                 col: 2,
             },
+        //   }),
+            // password: {
+            //     type: "password",
+            //     label: "Password",
+            //     name: "password",
+            //     required: id ? false :true ,
+            //     condition: showPassword,
+            //     col: 2,
+            // },
+            // password_confirmation: {
+            //     oneOf: "password",
+            //     type: "password",
+            //     required:  id ? false :true,
+            //     condition: showPassword,
+            //     label: "Password Confirmation",
+            //     name: "password_confirmation",
+            //     col: 2,
+            // },
 
         hidden2: {
             type: 'hidden',
             col: 1
         },
     };
+    var extraVal = {branch_id: props.branchId}
 
+    if(showPassword){
+        extraVal = {
+           branch_id: props.branchId,
+        }
+    }else{
+        extraVal = {
+            branch_id: props.branchId,
+            password:null,
+            password_confirmation:null
+         }   
+    }
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
             <CardHeader>
@@ -221,8 +233,9 @@ const ItemAdd = (props) => {
                     // initialValues={props.location.aboutProps}
                     redirect="staff"
                     Query={query}
-                    extraVals={{branch_id: props.branchId}}
+                    extraVals={extraVal}
                     getInitialValues={getInitialValues}
+                    debug={true}
                 />
             </CardBody>
         </Card>
