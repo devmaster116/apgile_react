@@ -66,7 +66,7 @@ const ItemsList = (props) => {
             // multi: false,
             // options:optionsArr,
             // required: true,
-            name: 'role_id',
+            name: 'roles_role_id',
             label: 'Roles',
             col: 12 + " col-xl-3 mt-2",
         },

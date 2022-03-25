@@ -56,8 +56,6 @@ const Add = (props) => {
                 setShowPassword(true);
             }
         }
-      
-
     }
 
     const decidePasswordLogic = (role) => {

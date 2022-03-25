@@ -129,6 +129,16 @@ const LocationsAdd = (props) => {
         },
     };
 
+    const getInitialValues = async (data) => {
+    await data;
+        console.log(data,"data")
+        if (typeof data.auto_assign !== "undefined" && data.auto_assign === 1){
+            setShowTeam(true);
+        }else {
+            setShowTeam(false);
+        }
+    }
+
     return (
         <Card className="animated fadeIn">
             <CardHeader>
@@ -145,6 +155,8 @@ const LocationsAdd = (props) => {
                     // initialValues={props.location.aboutProps}
                     extraVals={{branch_id: props.branchId}}
                     redirect="locations"
+                    getInitialValues={getInitialValues}
+
                     // handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>
