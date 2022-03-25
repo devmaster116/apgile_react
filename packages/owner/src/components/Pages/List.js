@@ -18,6 +18,7 @@ const List = (props) => {
     const [Loader, setLoader] = useState(false);
     const [ID, setID] = useState(0);
     const [query, setQuery] = useState(false)
+    const [valueOff, setValueOff] = useState(0);
 
 
     useEffect(() => {
@@ -37,9 +38,17 @@ const List = (props) => {
     }, [ID, props.branchId])
 
 
-    useEffect(() => {
-        setQuery((prev) => !prev)
-    }, [props.branchId]);
+    /* eslint-disable */
+    
+        useEffect(() => {
+            if(valueOff === 0){
+                setValueOff(1)
+            }else{
+                setQuery((prev) => !prev)
+            }
+        }, [props.branchId]);
+
+    /* eslint-enable */
 
 const save = (value,data) => {
     console.log(data,"data")

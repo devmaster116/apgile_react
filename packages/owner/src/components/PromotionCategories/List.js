@@ -10,11 +10,19 @@ const List = (props) => {
 
   const [query, setQuery] = useState(false);
   const [minDate, setMinDate] = useState('');
+  const [valueOff, setValueOff] = useState(0);
 
-  useEffect(() => {
-    setQuery((prev)=>!prev);
-  }, [props.branchId]);
+/* eslint-disable */
 
+    useEffect(() => {
+        if(valueOff === 0){
+            setValueOff(1)
+        }else{
+            setQuery((prev) => !prev)
+        }
+    }, [props.branchId]);
+
+/* eslint-enable */
   const changeStatus = (data) => {
     console.log(data?.status,"data")
     let payload = {

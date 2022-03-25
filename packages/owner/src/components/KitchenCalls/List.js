@@ -11,15 +11,29 @@ const KithcenCallList = (props) => {
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
     const [internalActive, setInternalActive] = useState(false);
+    const [valueOff, setValueOff] = useState(0);
+
+/* eslint-disable */
+
 
     useEffect(() => {
-        setQuery((prev) => !prev)
+        if(valueOff === 0){
+            setValueOff(1)
+        }else{
+            setQuery((prev) => !prev)
+        }
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
         if(currentUser?.settings?.internal_active) {
             setInternalActive(true);
         }
     }, [props.branchId]);
+
+
+
+    
+/* eslint-enable */
+
 
     if(!internalActive) {
         return [];

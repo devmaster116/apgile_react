@@ -6,10 +6,19 @@ import {connect} from "react-redux";
 const TeamsList = (props) => {
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
+    const [valueOff, setValueOff] = useState(0);
+
+/* eslint-disable */
+
     useEffect(() => {
-        setQuery((prev) => !prev);
+        if(valueOff === 0){
+            setValueOff(1)
+        }else{
+            setQuery((prev) => !prev)
+        }
     }, [props.branchId]);
 
+/* eslint-enable */
     const filters = {
         location_id: {
             type: "advanceSelect",

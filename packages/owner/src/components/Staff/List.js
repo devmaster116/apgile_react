@@ -8,8 +8,10 @@ const ItemsList = (props) => {
 
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
+    const [valueOff, setValueOff] = useState(0);
 
     const [optionsArr, setOptionsArr] = useState([])
+        /* eslint-disable */
     useEffect(() => {
         var rolesArray = [];
         api.request("get", "/roles")
@@ -23,9 +25,16 @@ const ItemsList = (props) => {
                 setOptionsArr(newOption);
             })
             .catch((error) => console.log(error));
-        setQuery((prev) => !prev);
+            if(valueOff === 0){
+                setValueOff(1)
+            }else{
+                setQuery((prev) => !prev)
+            }
     }, [props.branchId]);
+    /* eslint-enable */
 
+
+     
 
     console.log(props?.branchId, "branchid")
 

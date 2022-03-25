@@ -11,10 +11,19 @@ const List = (props) => {
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
     const [pages,setPages] = useState(`${props?.branchId}/pages`)
+    const [valueOff, setValueOff] = useState(0);
 
+/* eslint-disable */
     useEffect(() => {
-        setQuery((prev) => !prev)
+        if(valueOff === 0){
+            setValueOff(1)
+        }else{
+            setQuery((prev) => !prev)
+        }
     }, [props.branchId]);
+
+/* eslint-enable */
+    
 
     const changeStatus = (data) => {
         let payload = {
@@ -124,7 +133,6 @@ const List = (props) => {
             text: "Status",
             sort: true,
             formatter: (cell, row) => {
-                console.log(row?.status, "status")
                 return (
                     <Button color={row?.status === true ? "success" : "danger"} onClick={() => changeStatus(row)}>
                         {row?.status === true ? "Active" : "Inactive"}
@@ -142,7 +150,8 @@ const List = (props) => {
                 <Card className="animated fadeIn">
                     <Header title="All Areas"/>
                     <CardBody>
-                        <RemoteTable
+                        {
+                            props?.branchId && <RemoteTable
 
                             // entity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
                             // customEntity={props?.branchId !== null ? `areas?branch_id=${props?.branchId}`:`areas`}
@@ -164,6 +173,7 @@ const List = (props) => {
 							// 	}
 							// }
                         />
+                        }
                     </CardBody>
                 </Card>
             </div>

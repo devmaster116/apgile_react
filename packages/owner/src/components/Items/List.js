@@ -8,10 +8,17 @@ const ItemsList = (props) => {
 
 	const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
+    const [valueOff, setValueOff] = useState(0);
 
-	useEffect(() => {
-		setQuery((prev)=>!prev)
-		}, [props.branchId]);
+/* eslint-disable */
+    useEffect(() => {
+        if(valueOff === 0){
+            setValueOff(1)
+        }else{
+            setQuery((prev) => !prev)
+        }
+    }, [props.branchId]);
+/* eslint-enable */
 
 		const filters = {
 			location_id: {
