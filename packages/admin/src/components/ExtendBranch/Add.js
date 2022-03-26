@@ -16,8 +16,10 @@ const ExtendBranchAdd = (props) =>  {
     const {id} = props.match.params;
 
     const companyChangeHandler = (value, field, loadOptions, setFunction) => {
-        setFunction('state_txt', '');
-        setFunction('state', '');
+        if(typeof setFunction !== 'undefined') {
+            setFunction('state_txt', '');
+            setFunction('state', '');
+        }
         setTimeout(() => {
             value.value && setMaskedValue((prev) => prev = getMaskHelper(value.value))
             value.value === "US" ? setShowStates(true) : setShowStates(false)

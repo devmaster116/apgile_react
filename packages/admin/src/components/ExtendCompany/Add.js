@@ -16,7 +16,12 @@ const Add = (props) => {
 
     const {id} = props.match.params;
 
-    const companyChangeHandler = (value) => {
+    const companyChangeHandler = (value, field, loadOptions, setFunction) => {
+      if(typeof setFunction !== 'undefined') {
+        setFunction('state_txt', '');
+        setFunction('state', '');
+      }
+
       setTimeout(() => {
           value.value && setMaskedValue((prev) => prev = getMaskHelper(value.value))
           value.value === "US" ? setShowStates(true) : setShowStates(false)
@@ -64,7 +69,7 @@ const Add = (props) => {
         target: "countries?limit=1000",
         required: true,
         col: 4,
-        callback: (data) => companyChangeHandler(data),
+        callback: companyChangeHandler,
       },
       phone1: {
         type: "masked",
