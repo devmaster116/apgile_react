@@ -23,7 +23,6 @@ const List = (props) => {
     /* eslint-enable */
 
     const changeStatus = (data) => {
-        console.log(data?.status, "data")
         let payload = {
             status: !data?.status
         }
@@ -102,12 +101,12 @@ const List = (props) => {
             align: "center",
             sort: true,
         },
-        {
-            dataField: "weekdays_name",
-            text: "Days",
-            align: "center",
-            sort: true,
-        },
+        // {
+        //     dataField: "weekdays_name",
+        //     text: "Days",
+        //     align: "center",
+        //     sort: true,
+        // },
         {
             dataField: "time_text",
             text: "Time Range",

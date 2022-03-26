@@ -25,7 +25,14 @@ console.log(showPlaces,"showPlaces")
         qrcode_details: {
             type: "switch",
             label: "Show location on QR Codes",
-            // required: true,
+            required: true,
+            col: 3,
+        },
+
+        direct_escalate: {
+            type: "switch",
+            label: "Direct Escalation",
+            required: true,
             col: 3,
         },
 
