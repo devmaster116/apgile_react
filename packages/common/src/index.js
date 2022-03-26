@@ -6,7 +6,6 @@ import colorArray from "./widgets-color.json";
 import {jsonToOptionList} from "./helpers";
 
 export const getMaskHelper = (countryCode) => {
-    console.log(countryCode,"countryCode")
     if(typeof phoneArray[countryCode] != 'undefined' && phoneArray[countryCode]) {
         return phoneArray[countryCode];
     }
