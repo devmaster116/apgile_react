@@ -11,7 +11,7 @@ const List = (props) => {
 	const [valueOff, setValueOff] = useState(0);
 
 	/* eslint-disable */
-	
+
 		useEffect(() => {
 			if(valueOff === 0){
 				setValueOff(1)
@@ -19,7 +19,7 @@ const List = (props) => {
 				setQuery((prev) => !prev)
 			}
 		}, [props.branchId]);
-	
+
 	/* eslint-enable */
 	const changeStatus = (data) => {
 		let payload = {
@@ -73,6 +73,12 @@ const List = (props) => {
 		{
 			dataField: 'device',
 			text: 'Device',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'app_version',
+			text: 'App Ver.',
 			align: 'center',
 			sort: true
 		},
