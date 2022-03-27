@@ -132,8 +132,8 @@ const filters = {
                         size="sm"
                             color="primary"
                             onClick={() => {
-                                console.log('click received');
                                 setID(row?.id);
+                                setShow(true);
                             }}
                         >
                             View QR Code
