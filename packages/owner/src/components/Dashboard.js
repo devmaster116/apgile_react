@@ -317,7 +317,6 @@ const Dashboard = (props) => {
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => {
-                                    console.log(moment(date).format('YYYY-MM-DD'), date.toLocaleDateString("en-US"), 'date');
                                     setStartDate(date)
                                     const year = date.getFullYear();
                                     let month = date.getMonth()+1;
@@ -325,7 +324,7 @@ const Dashboard = (props) => {
                                     const day = date.getDate()
                                     setPayload({
                                         ...dashboardPayload,
-                                        end: year + '-' + month + '-' + day
+                                        start: year + '-' + month + '-' + day
                                     })
                                 }
                                 }
