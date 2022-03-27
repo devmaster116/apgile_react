@@ -86,7 +86,7 @@ const Dashboard = (props) => {
                 setStatusOptions(data.statuses);
                 setStaff(data?.user);
 
-                moment.tz.setDefault(data.tz);
+                // moment.tz.setDefault(data.tz);
             } else {
                 setDisabled(true);
             }
@@ -116,6 +116,8 @@ const Dashboard = (props) => {
             dataCall();
         }, 1);
 
+        //This is just a fix for chart labels generated automatically from carbon period. As its generated in utc
+        moment.tz.setDefault('UTC');
     }, [props.selectedBranchId, dashboardPayload, isRealTime]);
 
     if(isLoading) {
