@@ -317,10 +317,15 @@ const Dashboard = (props) => {
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => {
+                                    console.log(moment(date).format('YYYY-MM-DD'), date.toLocaleDateString("en-US"), 'date');
                                     setStartDate(date)
+                                    const year = date.getFullYear();
+                                    let month = date.getMonth()+1;
+                                    month = month < 10 ? "0" + month : month;
+                                    const day = date.getDate()
                                     setPayload({
                                         ...dashboardPayload,
-                                        start: moment(date).format('YYYY-MM-DD')
+                                        end: year + '-' + month + '-' + day
                                     })
                                 }
                                 }
@@ -335,9 +340,13 @@ const Dashboard = (props) => {
                                 selected={endDate}
                                 onChange={(date) => {
                                     setEndDate(date)
+                                    const year = date.getFullYear();
+                                    let month = date.getMonth()+1;
+                                    month = month < 10 ? "0" + month : month;
+                                    const day = date.getDate()
                                     setPayload({
                                         ...dashboardPayload,
-                                        end: moment(date).format('YYYY-MM-DD')
+                                        end: year + '-' + month + '-' + day
                                     })
                                 }}
 
