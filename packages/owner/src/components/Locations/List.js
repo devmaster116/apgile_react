@@ -20,7 +20,7 @@ const KithcenCallList  = (props) => {
 			}
 		}, [props.branchId]);
 
-		
+
 	/* eslint-enable */
 
 
@@ -90,10 +90,10 @@ const KithcenCallList  = (props) => {
 				align: "center",
 				sort: true,
 				formatter: (cell, row) => {
-					if(row?.start_time){
+					if(row?.start_list){
 						return (
 								<span className="badge badge-dark">
-									 {row?.start_time}
+									 {row?.start_list}
 								</span>
 						)
 					}
@@ -105,10 +105,10 @@ const KithcenCallList  = (props) => {
 				align: "center",
 				sort: true,
 				formatter: (cell, row) => {
-					if(row?.end_time){
+					if(row?.end_list){
 						return (
 								<span className="badge badge-dark">
-									 {row?.end_time}
+									 {row?.end_list}
 								</span>
 						)
 					}

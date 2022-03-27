@@ -289,7 +289,7 @@ const Add = (props) => {
 
       dashboard: {
         type: "switch",
-        label: "Dashboard Stats",
+        label: "Dashboard",
         required: true,
         col: 2,
         condition: showAddFields,

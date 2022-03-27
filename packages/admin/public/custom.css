@@ -14,3 +14,8 @@
 .login-page .card-header {
     background-color: transparent;
 }
+
+.remotetop-bar input, .remotetop-bar button {
+    margin-right: 7px;
+    border-radius: .25rem !important;
+}

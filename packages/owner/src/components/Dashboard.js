@@ -278,7 +278,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol> }
-                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
+                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={4}>
                             <label>Select Item</label>
                             <Select
                                 name="items"
@@ -291,7 +291,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol>}
-                        {!props.user && dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
+                        {!props.user && dashboardPayload?.location && <CCol sm={6} md={4} lg={4}>
                             <label>Select Staff</label>
                             <Select
                                 name="users"

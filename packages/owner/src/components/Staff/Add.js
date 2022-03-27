@@ -124,7 +124,7 @@ const ItemAdd = (props) => {
             type: "email",
             label: "Email",
             name: "email",
-            col: 2,
+            col: 3,
         },
         phone1: {
             type: "masked",
@@ -217,7 +217,7 @@ const ItemAdd = (props) => {
             branch_id: props.branchId,
             password:null,
             password_confirmation:null
-         }   
+         }
     }
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">

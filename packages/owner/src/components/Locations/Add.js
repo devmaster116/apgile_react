@@ -30,7 +30,7 @@ const LocationsAdd = (props) => {
         description: {
             type: 'text',
             label: 'Description',
-            col: 2
+            col: 4
         },
         supervisor_id: {
             type: 'advanceSelect',
@@ -64,10 +64,10 @@ const LocationsAdd = (props) => {
             showTimeSelectOnly:true,
         },
 
-        dummy: {
-            isDummyField: true,
-            col: 2
-        },
+        // dummy: {
+        //     isDummyField: true,
+        //     col: 1
+        // },
         weekdays: {
             type: 'advanceSelect',
             label: "Days",

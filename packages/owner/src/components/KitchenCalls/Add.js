@@ -30,7 +30,7 @@ const Add = (props) => {
             optionValue: 'name',
             required: true,
             async: true,
-            col: 2,
+            col: 3,
         },
 
         location_id: {
@@ -40,7 +40,7 @@ const Add = (props) => {
             target: `${props.branchId}/locations`,
             required: true,
             async: true,
-            col: 2,
+            col: 3,
             callback: (data) => locationChangeHandler(data),
         },
 
@@ -52,7 +52,7 @@ const Add = (props) => {
             condition: showArea,
             required: true,
             async: true,
-            col: 2,
+            col: 3,
         },
 
 

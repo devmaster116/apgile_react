@@ -39,7 +39,7 @@ const List = (props) => {
 
 
     /* eslint-disable */
-    
+
         useEffect(() => {
             if(valueOff === 0){
                 setValueOff(1)
@@ -120,31 +120,6 @@ const filters = {
             align: "center",
             sort: true,
         },
-        // {
-        //     dataField: "total_calls",
-        //     text: "Total Calls",
-        //     align: "center",
-        //     sort: true,
-        // },
-        // {
-        //     isDummyField: true,
-        //     text: "Last Call",
-        //     align: "center",
-        //     sort: true,
-        //     formatter: (cell, row) => {
-        //         if(row?.last_used){
-        //             return (
-        //                     <span className="badge badge-dark">
-        //                          {row?.last_used}
-        //                     </span>
-
-        //             )
-        //         }
-
-        //     },
-        // },
-
-
         {
             isDummyField: true,
             align: "center",
@@ -157,6 +132,7 @@ const filters = {
                         size="sm"
                             color="primary"
                             onClick={() => {
+                                console.log('click received');
                                 setID(row?.id);
                             }}
                         >
