@@ -75,7 +75,7 @@ const Add = (props) => {
             type: "advanceSelect",
             label: "Select Location",
             name: "location_id",
-            target: `${props.branchId}/locations`,
+            target: `${props.branchId}/active/locations`,
             required: true,
             // multi:true,
             async: true,

@@ -47,7 +47,7 @@ const ItemAdd = (props) => {
         location_id: {
             type: "advanceSelect",
             label: "Location",
-            target: `${props.branchId}/locations?limit=1000`,
+            target: `${props.branchId}/active/locations?limit=1000`,
             // optionLabel: 'title',
             async: true,
             required: true,

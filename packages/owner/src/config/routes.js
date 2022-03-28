@@ -59,6 +59,8 @@ import StyleAdd from "./../components/Styles/Add";
 
 import KitchenCallAdd from "./../components/KitchenCalls/Add";
 
+import mirageRoute from "../components/MirageRoute";
+
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
@@ -146,6 +148,8 @@ const routes = [
 	{ path: '/calls/:id/edit', exact : true,component:CallAssigned ,isPublic: false},
 	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},
 
+	{ path: '/mirageRoute', exact : true,component:mirageRoute ,isPublic: false},
+	
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 

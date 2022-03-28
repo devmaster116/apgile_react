@@ -4,6 +4,7 @@ import {Card, CardBody, Button} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
 import api from "@evenlogics/whf-api";
+import {toast} from 'react-toastify';
 
 const List = (props) => {
 
@@ -33,8 +34,10 @@ const List = (props) => {
             .then((data) => {
                 console.log(data)
                 setQuery(!query)
-            })
-            .catch((error) => console.log(error));
+            }).catch(err => {
+                toast.error(err?.response?.data.message)
+               
+            });
     }
 
 

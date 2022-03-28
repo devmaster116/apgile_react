@@ -53,7 +53,7 @@ const StyleAdd = (props) => {
                         name={id ? "editForm" : ""}
                         // repeater={true}
                         extraVals={extraVals}
-                        redirect="style"
+                        redirect="mirageRoute"
                         // debug={true}
                         
                     />
