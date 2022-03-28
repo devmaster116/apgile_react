@@ -11,18 +11,18 @@ export default {
         },
     },
     owner: {
-        phrase: "Manage Teams",
+        phrase: "Manage Staff",
         to: "/owner",
         order: 21,
         roles: ["admin", "manager"],
-        icon: "fas fa-users",
+        icon: "fas fa-house-user",
         hasRoute: false,
         children: {
             staff: {
                 phrase: "Staff",
                 order: 20,
                 to: "/staff",
-                icon: "fas fa-users",
+                icon: "fas fa-user",
                 roles: ["admin", "manager"],
             },
             teams: {
@@ -190,7 +190,7 @@ export default {
                 order: 0,
                 to: "/categories",
                 roles: ["admin", "manager"],
-                icon: "fas fa-users",
+                icon: "fas fa-box",
             },
             sections: {
                 phrase: "Promotions",
