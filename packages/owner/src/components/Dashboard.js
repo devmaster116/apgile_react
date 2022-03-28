@@ -251,7 +251,7 @@ const Dashboard = (props) => {
                 {/*<CardHeader><b>Filter By Entity</b></CardHeader>*/}
                 <CardBody>
                     <CRow className="align-items-end">
-                        <CCol sm={6} md={4} lg={2}>
+                        <CCol sm={6} md={4} lg={3}>
                             <label>Select Location</label>
                             <Select
                                 name="locations"
@@ -265,7 +265,7 @@ const Dashboard = (props) => {
                             />
                         </CCol>
 
-                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={2}>
+                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={3}>
                             <label>Select Area</label>
                             <Select
                                 name="areas"
@@ -278,7 +278,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol> }
-                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={4}>
+                        {dashboardPayload?.location && <CCol sm={6} md={4} lg={3}>
                             <label>Select Item</label>
                             <Select
                                 name="items"
@@ -291,7 +291,7 @@ const Dashboard = (props) => {
                                 isMulti
                             />
                         </CCol>}
-                        {!props.user && dashboardPayload?.location && <CCol sm={6} md={4} lg={4}>
+                        {!props.user && dashboardPayload?.location && <CCol sm={6} md={4} lg={3}>
                             <label>Select Staff</label>
                             <Select
                                 name="users"
