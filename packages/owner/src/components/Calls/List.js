@@ -9,15 +9,15 @@ const List = (props) => {
     const [minDate, setMinDate] = useState('');
     const [valueOff, setValueOff] = useState(0);
 
-/* eslint-disable */
+    /* eslint-disable */
     useEffect(() => {
-        if(valueOff === 0){
+        if (valueOff === 0) {
             setValueOff(1)
-        }else{
+        } else {
             setQuery((prev) => !prev)
         }
     }, [props.branchId]);
-/* eslint-enable */
+    /* eslint-enable */
     const filters = {
         location_id: {
             type: "advanceSelect",
@@ -27,7 +27,7 @@ const List = (props) => {
             col: 4,
         },
 
-        status_id :{
+        status_id: {
             type: "advanceSelect",
             label: "Select Status",
             target: `${props.branchId}/call/status-list`,
@@ -36,31 +36,31 @@ const List = (props) => {
             async: true,
             col: 4,
         },
-        start_date:{
-            type:"date",
-            label:"Select From",
+        start_date: {
+            type: "date",
+            label: "Select From",
             col: 4,
-            getValue:(data) => {
+            getValue: (data) => {
                 setTimeout(() => {
-                setMinDate(data?.value)
-            }, 0)
-        }
+                    setMinDate(data?.value)
+                }, 0)
+            }
         },
-        end_date:{
-            type:"date",
-            label:"Select To",
+        end_date: {
+            type: "date",
+            label: "Select To",
             col: 4,
             placeholderText: minDate ? "" : "Please select the start date",
-            disabled:minDate ? false : true,
-            minDate:minDate,
+            disabled: minDate ? false : true,
+            minDate: minDate,
         }
     }
 
     const columns = [
         {
-            dataField: "id", 
+            dataField: "id",
             text: "ID",
-            align: "center", 
+            align: "center",
             hidden: true
         },
         {
@@ -99,7 +99,7 @@ const List = (props) => {
             align: "center",
             sort: true,
             formatter: (cell, row) => {
-                if(row?.created_at){
+                if (row?.created_at) {
                     return (
                         <span className="badge badge-dark">
                                  {row?.created_at}
@@ -117,9 +117,9 @@ const List = (props) => {
             align: "center",
             sort: true,
             formatter: (cell, row) => {
-                if(row?.completed_at){
+                if (row?.completed_at) {
                     return (
-                            <span className="badge badge-dark">
+                        <span className="badge badge-dark">
                                  {row?.completed_at}
                             </span>
 
@@ -130,10 +130,15 @@ const List = (props) => {
         },
 
         {
-            dataField: "status",
+            dataField: "status_id",
             text: "Status",
             align: "center",
             sort: true,
+            formatter: (cell, row) => {
+                return (
+                    row?.status
+                )
+            },
         },
 
     ];
@@ -153,7 +158,7 @@ const List = (props) => {
                 </CardHeader>
                 <CardBody>
                     <RemoteTable
-                        entity={props.userRole === "supervisor" ? `${props.branchId}/supervisor-calls` : `${props.branchId}/calls` }
+                        entity={props.userRole === "supervisor" ? `${props.branchId}/supervisor-calls` : `${props.branchId}/calls`}
                         customEntity="calls"
                         columns={columns}
                         sort={defaultSorted}
