@@ -22,7 +22,7 @@ const List = (props) => {
         location_id: {
             type: "advanceSelect",
             label: "Select Location",
-            target: `${props?.branchId}/locations`,
+            target: props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-locations` : `${props?.branchId}/locations`,
             async: true,
             col: 4,
         },

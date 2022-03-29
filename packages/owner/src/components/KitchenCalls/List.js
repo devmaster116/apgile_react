@@ -43,7 +43,7 @@ const KithcenCallList = (props) => {
         location_id: {
             type: "advanceSelect",
             label: "Select Location",
-            target: `${props?.branchId}/locations`,
+            target: props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-locations` : `${props?.branchId}/locations`,
             async: true,
             col: 3,
         },
@@ -51,7 +51,7 @@ const KithcenCallList = (props) => {
         staff_id: {
             type: "advanceSelect",
             label: "Select Staff Member",
-            target: `${props?.branchId}/role-users/staff`,
+            target:props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-staffs` : `${props.branchId}/role-users/staff` ,
             optionLabel: "username",
             async: true,
             col: 2,
