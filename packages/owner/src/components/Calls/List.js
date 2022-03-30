@@ -24,7 +24,7 @@ const List = (props) => {
             label: "Select Location",
             target: props?.userRole === "supervisor" ? `${props?.branchId}/supervisor-locations` : `${props?.branchId}/locations`,
             async: true,
-            col: 4,
+            col: 3,
         },
 
         status_id: {
@@ -34,12 +34,12 @@ const List = (props) => {
             optionLabel: 'name',
             optionId: 'id',
             async: true,
-            col: 4,
+            col: 3,
         },
         start_date: {
             type: "date",
             label: "Select From",
-            col: 4,
+            col: 3,
             getValue: (data) => {
                 setTimeout(() => {
                     setMinDate(data?.value)
@@ -49,7 +49,7 @@ const List = (props) => {
         end_date: {
             type: "date",
             label: "Select To",
-            col: 4,
+            col: 3,
             placeholderText: minDate ? "" : "Please select the start date",
             disabled: minDate ? false : true,
             minDate: minDate,
@@ -77,12 +77,6 @@ const List = (props) => {
         {
             dataField: "location.name",
             text: "Location",
-            align: "center",
-            sort: true,
-        },
-        {
-            dataField: "message",
-            text: "Message",
             align: "center",
             sort: true,
         },
