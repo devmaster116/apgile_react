@@ -136,7 +136,9 @@ const List = (props) => {
             sort: true,
             formatter: (cell, row) => {
                 return (
-                    row?.status
+                    <span className="badge badge-primary">
+                                 {row?.status}
+                            </span>
                 )
             },
         },

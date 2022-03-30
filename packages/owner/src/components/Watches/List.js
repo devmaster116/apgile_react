@@ -53,8 +53,8 @@ const List = (props) => {
             sort: true,
         },
 		{
-			dataField: 'user.username',
-			text: 'Username',
+			dataField: 'user.full_name',
+			text: 'Name',
 			align: 'center',
 			sort: true
 		},

@@ -355,7 +355,7 @@ const Dashboard = (props) => {
                         </CCol>
                         <CCol md={12} lg={6} xl={4}>
                             <label>Select Time Range</label> <br/>
-                            <TimeRangePicker className="date-picker-custom" clockIcon={null} disableClock={true}
+                            <TimeRangePicker format="h:m a" className="date-picker-custom" clockIcon={null} disableClock={true}
                                              onChange={onTimeChange} value={value}/>
                         </CCol>
                         <CCol md={12} lg={6} xl={4}>
