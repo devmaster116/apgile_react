@@ -31,11 +31,10 @@ const Add = (props) => {
 
     // console.log(options,"options");
     let fields = {
-        name: {
+        area_name: {
             type: "text",
             label: "Name",
             required: true,
-            name: "name",
             col: 4,
         },
 
