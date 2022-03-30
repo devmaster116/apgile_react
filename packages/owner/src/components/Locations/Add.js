@@ -122,7 +122,7 @@ const LocationsAdd = (props) => {
             // optionLabel: 'title',
             multi: true,
             async: true,
-            // required: true,
+            required: true,
             name: "team",
             col: 3,
             condition: showTeam
