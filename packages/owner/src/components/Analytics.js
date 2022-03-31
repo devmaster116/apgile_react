@@ -190,7 +190,7 @@ const Dashboard = (props) => {
             <CRow>
                 <CCol md={6}>
                     {/* {staff?.full_name && <h3> {staff?.full_name}'s Stats <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>} */}
-                    {!props.user && <h3>Adroit Dashboards <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
+                    {!props.user && <h3>Analytics <span className="badge badge-success badge-sm">Created At: {timestamp}</span></h3>}
                 </CCol>
                 <CCol md={6}>
                     <Button
