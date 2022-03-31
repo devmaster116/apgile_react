@@ -1,6 +1,7 @@
 import React from "react";
 
 import Dashboard from "./../components/Dashboard";
+import Analytics from "./../components/Analytics";
 
 import ProfileDetail from "./../components/Profile/Detail";
 import StaffCalls from "./../components/Profile/Calls";
@@ -68,7 +69,8 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 const routes = [
 
 	{ path: '/', exact : true, component: Dashboard, roles:['admin', 'manager','staff'], isPublic: false,},
-	{ path: '/dashboard', exact : true,name: 'Dashboard',roles:['admin', 'manager','staff'], component: Dashboard, isPublic: false,},
+	{ path: '/dashboard', exact : true, component: Dashboard, roles:['admin', 'manager','staff'], isPublic: false,},
+	{ path: '/analytics', exact : true,name: 'Analytics',roles:['admin', 'manager','staff'], component: Analytics, isPublic: false,},
 
 	{ path: '/profile', exact : true,component: ProfileDetail,isPublic: false},
 	{ path: '/user-calls', exact : true,component: StaffCalls,isPublic: false},
@@ -149,7 +151,7 @@ const routes = [
 	{ path: '/calls/:id/details', exact : true,component:CallDetail ,isPublic: false},
 
 	{ path: '/mirageRoute', exact : true,component:mirageRoute ,isPublic: false},
-	
+
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 

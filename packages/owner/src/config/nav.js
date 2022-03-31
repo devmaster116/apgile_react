@@ -4,11 +4,18 @@ export default {
         to: "/dashboard",
         order: 8,
         roles: ["admin", "manager"],
-        icon: "fas fa-tachometer-alt",
+        icon: "fas fa-home",
         badge: {
             color: "info",
             text: "NEW",
         },
+    },
+    analytics: {
+        phrase: "Analytics",
+        to: "/analytics",
+        order: 9,
+        roles: ["admin", "manager"],
+        icon: "fas fa-tachometer-alt",
     },
     owner: {
         phrase: "Manage Staff",
