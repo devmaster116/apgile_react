@@ -19,7 +19,7 @@ const Dashboard = () => {
             <h3>Adroit Dashboard</h3>
 
             <div className="text-center">
-                <img src="https://call-button.test/public/assets/images/fp-icon.png" height="30%" />
+                <img src="https://service.facepays.ai/assets/images/fp-icon.png" height="30%" />
             </div>
         </div>
     );
