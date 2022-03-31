@@ -1,21 +1,28 @@
 import React, { useEffect,useState } from "react";
+import {connect} from "react-redux";
+import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
-    const [counter, setCounter] = useState(0);
+    const setInitialData = (data) => {
+        props.setReduxData(data);
+        window.location.reload();
+    }
     useEffect(() => {
-        console.log("rendring");
-        // window.location.reload();
-        setCounter((prev)=> prev+1)
-    }, []);
+        if (!props.selectedBranchId) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            setInitialData({
+                companyName: currentUser?.company?.name,
+                companyId: currentUser?.company?.id,
+                selectedBranchId: currentUser?.branch?.id,
+                userRole: currentUser?.roles[0]
+            });
+        }
+
+    }, [props.selectedBranchId]);
 
     return (
         <div>
-            {
-                counter === 2 && <p>hello</p>
-
-            }
-            {console.log(counter,"counter")}
             <h3>Adroit Dashboard</h3>
 
             <div className="text-center">
@@ -25,4 +32,22 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return {
+        companyName: state.companyName,
+        userRole: state.userRole,
+        companyId: state.companyId,
+        selectedBranchId: state.selectedBranchId,
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        changeBranch: (valueObj) => dispatch(changeBranch(valueObj)),
+        setCompany: (valueObj) => dispatch(setCompany(valueObj)),
+        setReduxData: (valueObj) => dispatch(setReduxData(valueObj))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

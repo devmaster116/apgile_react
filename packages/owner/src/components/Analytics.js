@@ -95,22 +95,8 @@ const Analytics = (props) => {
         })
             .catch((error) => console.log(error));
     }
-    const setInitialData = (data) => {
-        props.setReduxData(data);
-        window.location.reload();
-    }
 
     useEffect(() => {
-        if (!props.selectedBranchId) {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            setInitialData({
-                companyName: currentUser?.company?.name,
-                companyId: currentUser?.company?.id,
-                selectedBranchId: currentUser?.branch?.id,
-                userRole: currentUser?.roles[0]
-            });
-        }
-
         /* eslint-disable */
         setTimeout(() => {
             dataCall();
