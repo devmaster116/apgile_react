@@ -7,7 +7,7 @@ const Dashboard = (props) => {
     const setInitialData = useCallback((data) => {
         props.setReduxData(data);
         window.location.reload();
-    }, [])
+    }, [props.setReduxData])
 
     useEffect(() => {
         if (!props.selectedBranchId) {
