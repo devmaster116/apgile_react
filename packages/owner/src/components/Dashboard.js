@@ -20,7 +20,7 @@ const Dashboard = (props) => {
             });
         }
 
-    }, [props.selectedBranchId]);
+    }, [props.selectedBranchId, setInitialData]);
 
     return (
         <div>
