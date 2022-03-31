@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 
@@ -19,7 +19,7 @@ const Dashboard = (props) => {
             });
         }
 
-    }, [props.selectedBranchId]);
+    }, [props.selectedBranchId, setInitialData]);
 
     return (
         <div>
