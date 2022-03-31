@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 
 const Dashboard = (props) => {
 
-    const setInitialData = (data) => {
+    const setInitialData = useCallback((data) => {
         props.setReduxData(data);
         window.location.reload();
-    }
+    }, [])
+
     useEffect(() => {
         if (!props.selectedBranchId) {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -19,7 +20,7 @@ const Dashboard = (props) => {
             });
         }
 
-    }, [props.selectedBranchId, setInitialData]);
+    }, [props.selectedBranchId]);
 
     return (
         <div>
