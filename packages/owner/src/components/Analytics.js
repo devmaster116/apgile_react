@@ -29,7 +29,7 @@ import moment from 'moment-timezone';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ArcElement, Tooltip, Legend, PointElement, LineElement);
-const Dashboard = (props) => {
+const Analytics = (props) => {
 
     const [dashbaordData, setDashbaordData] = useState([])
     const [selectedOption, setSelectedOption] = useState({});
@@ -485,4 +485,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Analytics);

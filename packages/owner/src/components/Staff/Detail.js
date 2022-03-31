@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {connect} from "react-redux";
 import "../../style/style.css";
-import Dashboard from "../Dashboard";
+import Analytics from "../Analytics";
 
 const Detail = (props) => {
 
@@ -18,7 +18,7 @@ const Detail = (props) => {
                     {/*</Button>*/}
                 </CardHeader>
                 <CardBody>
-                    <Dashboard user={id}/>
+                    <Analytics user={id}/>
                 </CardBody>
             </Card>
         </div>
