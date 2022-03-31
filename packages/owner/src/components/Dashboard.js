@@ -4,10 +4,11 @@ import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
 
 const Dashboard = (props) => {
 
+    const setReduxData = props.setReduxData;
     const setInitialData = useCallback((data) => {
-        props.setReduxData(data);
+        setReduxData(data);
         window.location.reload();
-    }, [props.setReduxData])
+    }, [setReduxData])
 
     useEffect(() => {
         if (!props.selectedBranchId) {
