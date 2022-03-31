@@ -17,6 +17,10 @@ const Dashboard = () => {
             }
             {console.log(counter,"counter")}
             <h3>Adroit Dashboard</h3>
+
+            <div className="text-center">
+                <img src="https://call-button.test/public/assets/images/fp-icon.png" height="30%" />
+            </div>
         </div>
     );
 };
