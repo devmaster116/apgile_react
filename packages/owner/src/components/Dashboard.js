@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
+import {getMaskHelper} from "@facepays/common";
 
 const Dashboard = (props) => {
 
@@ -17,7 +18,8 @@ const Dashboard = (props) => {
                 companyName: currentUser?.company?.name,
                 companyId: currentUser?.company?.id,
                 selectedBranchId: currentUser?.branch?.id,
-                userRole: currentUser?.roles[0]
+                userRole: currentUser?.roles[0],
+                phoneMask: getMaskHelper(currentUser?.branch_address?.country)
             });
         }
 
