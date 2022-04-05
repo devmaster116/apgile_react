@@ -9,6 +9,8 @@ import {formPageTitle} from '@facepays/common';
 import api from "@evenlogics/whf-api";
 
 
+
+
 const ExtendBranchAdd = (props) =>  {
 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
@@ -41,7 +43,7 @@ const ExtendBranchAdd = (props) =>  {
 
 
     let fields = {
-        name: {
+        branch_name: {
             col:4,
             type:"text",
             label:"Name",
