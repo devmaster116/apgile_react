@@ -8,9 +8,6 @@ import {formPageTitle} from '@facepays/common';
 // import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 import api from "@evenlogics/whf-api";
 
-
-
-
 const ExtendBranchAdd = (props) =>  {
 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
