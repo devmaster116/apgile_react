@@ -161,7 +161,7 @@ const List = (props) => {
                         hideEdit={false}
                         // hideDetail={props.userRole === "supervisor" ? true : false}
                         hideDetail={false}
-                        disableDelete={true}
+                       // disableDelete={true}
                         hideActionCol={props.userRole === "staff" ? true : false}
                         Query={query}
                         filters={filters}
