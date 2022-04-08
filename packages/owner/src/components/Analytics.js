@@ -229,6 +229,14 @@ const Analytics = (props) => {
                         color="warning"
                     />
                 </CCol> }
+
+                {!props.user &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Block
+                        title="Quota Left"
+                        value={dashbaordData?.monthly_quota}
+                        color={dashbaordData?.monthly_quota > 100 ? 'success' : 'danger'}
+                    />
+                </CCol> }
             </CRow>
             <CRow>
 
