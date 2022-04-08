@@ -288,11 +288,19 @@ const ExtendBranchAdd = (props) =>  {
             col: 1
         },
 
-        spacer: {
-            type: "hidden",
-            col: 1,
-            groupClass: "d-none d-md-block d-sm-block col-lg-1"
+        max_calls:{
+            parent: 'settings',
+            type: "number",
+            label: "Max. Calls",
+            required: true,
+            col: 1
         },
+
+        // spacer: {
+        //     type: "hidden",
+        //     col: 1,
+        //     groupClass: "d-none d-md-block d-sm-block col-lg-1"
+        // },
 
         wait_time: {
             parent: 'settings',
