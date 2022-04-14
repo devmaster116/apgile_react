@@ -26,12 +26,6 @@ const Dashboard = (props) => {
             });
         }
 
-        dataCall();
-
-    }, [props.selectedBranchId, setInitialData]);
-
-
-    const dataCall = () => {
         api.request("get", `/${props.selectedBranchId}/outlet-quota`).then(({success, data}) => {
             if(success) {
                 setCallQuota(data.monthly_quota);
@@ -39,7 +33,8 @@ const Dashboard = (props) => {
             }
         })
             .catch((error) => console.log(error));
-    }
+
+    }, [props.selectedBranchId, setInitialData]);
 
     return (
         <div>
