@@ -65,14 +65,7 @@ const Analytics = (props) => {
 
     const dataCall = () => {
         api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({success, data}) => {
-            // let labelArr = []
-            // let valueArr = []
-            // Object.entries(data?.calls).forEach(([key, val], i) => {
-            //     if (key !== "total") {
-            //         labelArr.push(key.toUpperCase());
-            //         valueArr.push(val);
-            //     }
-            // })
+
             setLoading(false);
 
             if(success) {
