@@ -1,8 +1,10 @@
 import React, { useEffect, useCallback, useState } from "react";
 import {connect} from "react-redux";
 import {changeBranch, setCompany, setReduxData} from "./Redux/BranchActions";
+import {CCol, CRow} from '@coreui/react-pro';
 import {getMaskHelper} from "@facepays/common";
 import api from "@evenlogics/whf-api";
+import Block from "./DashboardWidgets/Block";
 
 const Dashboard = (props) => {
 
@@ -40,7 +42,18 @@ const Dashboard = (props) => {
         <div>
             <h3>Adroit Dashboard</h3>
 
-            {showQuota &&  <div className="alert alert-success alert-lg">Remaining calls for this month: {callQuota}</div>}
+            <div>
+                <CRow>
+                    <CCol md={3}>
+                        {showQuota &&  <Block
+                            title="Quota Left"
+                            value={callQuota}
+                            color={callQuota > 100 ? 'success' : 'danger'}
+                        />}
+                    </CCol>
+                </CRow>
+            </div>
+
 
             <div className="text-center">
                 <img src="https://service.facepays.ai/assets/images/fp-icon.png" height="30%" alt="Adroit" />
