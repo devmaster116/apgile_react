@@ -63,6 +63,8 @@ import KitchenCallAdd from "./../components/KitchenCalls/Add";
 import mirageRoute from "../components/MirageRoute";
 import OrderItemList from "../components/OrderItem/List";
 import OrderItemAdd from "../components/OrderItem/Add";
+import ReservationList from "../components/Reservation/List";
+import ReservationAdd from "../components/Reservation/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -112,6 +114,10 @@ const routes = [
 	{ path: '/items', exact : true,component: ItemsList,isPublic: false},
 	{ path: '/items/add', exact : true,component: ItemAdd,isPublic: false},
 	{ path: '/items/:id/edit', exact : true,component: ItemAdd,isPublic: false},
+
+	{ path: '/reservations', exact : true,component: ReservationList,isPublic: false},
+	{ path: '/reservations/add', exact : true,component: ReservationAdd,isPublic: false},
+	{ path: '/reservations/:id/edit', exact : true,component: ReservationAdd,isPublic: false},
 
 	{ path: '/areas', exact : true,component: AreasList,isPublic: false},
 	{ path: '/areas/add', exact : true,component: AreaAdd,isPublic: false},

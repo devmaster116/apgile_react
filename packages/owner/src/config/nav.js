@@ -96,6 +96,13 @@ export default {
         order: 31,
         icon: "fas fa-pager",
     },
+    reservations: {
+        phrase: "Reservations",
+        to: "/reservations",
+        roles: ["admin", "manager"],
+        order: 40,
+        icon: "fas fa-calendar",
+    },
     order_items: {
         phrase: "Order Items",
         to: "/order-items",

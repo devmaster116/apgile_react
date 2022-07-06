@@ -19,31 +19,8 @@ const OrderItemList  = (props) => {
 				setQuery((prev) => !prev)
 			}
 		}, [props.branchId]);
-
-
 	/* eslint-enable */
 
-
-	const filters = {
-		start_date:{
-            type:"date",
-            label:"Select From",
-            col: 4,
-            getValue:(data) => {
-                setTimeout(() => {
-                setMinDate(data?.value)
-            }, 0)
-        }
-        },
-        end_date:{
-            type:"date",
-            label:"Select To",
-            col: 4,
-            placeholderText: minDate ? "" : "Please select the start date",
-            disabled:minDate ? false : true,
-            minDate:minDate,
-        }
-    };
 	const changeStatus = (data) => {
 		let payload = {
 			status_id: !data?.status,
