@@ -61,6 +61,8 @@ import StyleAdd from "./../components/Styles/Add";
 import KitchenCallAdd from "./../components/KitchenCalls/Add";
 
 import mirageRoute from "../components/MirageRoute";
+import OrderItemList from "../components/OrderItem/List";
+import OrderItemAdd from "../components/OrderItem/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -100,6 +102,11 @@ const routes = [
 	{ path: '/locations', exact : true,component: LocationsList,isPublic: false},
 	{ path: '/locations/add', exact : true,component: LocationAdd,isPublic: false},
 	{ path: '/locations/:id/edit', exact : true,component: LocationAdd,isPublic: false},
+
+
+	{ path: '/order-items', exact : true,component: OrderItemList,isPublic: false},
+	{ path: '/order-items/add', exact : true,component: OrderItemAdd,isPublic: false},
+	{ path: '/order-items/:id/edit', exact : true,component: OrderItemAdd,isPublic: false},
 
 
 	{ path: '/items', exact : true,component: ItemsList,isPublic: false},

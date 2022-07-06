@@ -28,7 +28,6 @@ const List = (props) => {
         }
         api.request("put", `/${props.branchId}/promotion/status/${data?.id}`, payload)
             .then((data) => {
-                console.log(data)
                 setQuery(!query)
             })
             .catch((error) => console.log(error));

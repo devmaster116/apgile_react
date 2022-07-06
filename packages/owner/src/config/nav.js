@@ -96,6 +96,13 @@ export default {
         order: 31,
         icon: "fas fa-pager",
     },
+    order_items: {
+        phrase: "Order Items",
+        to: "/order-items",
+        roles: ["admin", "manager"],
+        order: 50,
+        icon: "fas fa-building",
+    },
     entity: {
         phrase: "Branch",
         order: 102,

@@ -4,7 +4,7 @@ import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
 import api from "@evenlogics/whf-api";
 
-const LocationsList  = (props) => {
+const OrderItemList  = (props) => {
 	const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
 	const [valueOff, setValueOff] = useState(0);
@@ -45,13 +45,11 @@ const LocationsList  = (props) => {
         }
     };
 	const changeStatus = (data) => {
-		console.log(data,"data")
 		let payload = {
-			status: !data?.status,
+			status_id: !data?.status,
 		}
-		api.request("put",`/${props?.branchId}/location/status/${data?.id}`,payload)
+		api.request("put",`/${props?.branchId}/order-items/status/${data?.id}`,payload)
 		.then((data) => {
-			console.log(data)
 			setQuery(!query)
 		})
 		.catch((error) => console.log(error));
@@ -66,14 +64,8 @@ const LocationsList  = (props) => {
 				sort: true,
 			},
 			{
-				dataField: "created_at",
-				text: "Created At",
-				align: "center",
-				sort: true,
-			},
-			{
-				dataField: 'name',
-				text: 'Name',
+				dataField: 'title',
+				text: 'Title',
 				align: 'center',
 				sort: true
 			},
@@ -86,43 +78,6 @@ const LocationsList  = (props) => {
 
 			{
 				isDummyField: true,
-				text: "Start Time",
-				align: "center",
-				sort: true,
-				formatter: (cell, row) => {
-					if(row?.start_list){
-						return (
-								<span className="badge badge-dark">
-									 {row?.start_list}
-								</span>
-						)
-					}
-				},
-			},
-			{
-				isDummyField: true,
-				text: "End Time",
-				align: "center",
-				sort: true,
-				formatter: (cell, row) => {
-					if(row?.end_list){
-						return (
-								<span className="badge badge-dark">
-									 {row?.end_list}
-								</span>
-						)
-					}
-				},
-			},
-
-			{
-				dataField: 'weekdays_name',
-				text: 'Days',
-				align: 'center',
-				sort: true
-			},
-			{
-				isDummyField: true,
 				align: "center",
 				text: "Status",
 				sort: true,
@@ -133,15 +88,9 @@ const LocationsList  = (props) => {
 					</Button>
 				  );
 				},
-			  },
-
-
+			  }
 
 		];
-
-		if (props.extendedFields) {
-			props.extendedFields.forEach(field => columns.push(field))
-		}
 
 		const defaultSorted = [
 			{
@@ -154,27 +103,17 @@ const LocationsList  = (props) => {
 			<div className="animated">
 				<Card>
 					<CardHeader>
-						<strong>All Locations</strong>
+						<strong>All Order Items</strong>
 					</CardHeader>
 					<CardBody>
 						<RemoteTable
-							entity={`${props?.branchId}/locations`}
-							customEntity={`locations`}
+							entity={`${props?.branchId}/order-items`}
+							customEntity={`order-items`}
 							columns={columns}
 							sort={defaultSorted}
 							hideDetail={true}
-							filters={filters}
-							showAAdvancedFilters={true}
-							addRoute="/locations/add"
-							{...props.remoteTableFields}
 							Query={query}
-							// query={
-							// 	{
-							// 		sort : "id|desc"
-							// 	}
-							// }
-
-							// customEditLink = {`locations/:id/edit`}
+							addRoute="/order-items/add"
 						/>
 					</CardBody>
 				</Card>
@@ -192,5 +131,5 @@ const mapStateToProps = state => {
       }
 }
 
-export default connect(mapStateToProps,null)(LocationsList);
+export default connect(mapStateToProps,null)(OrderItemList);
 
