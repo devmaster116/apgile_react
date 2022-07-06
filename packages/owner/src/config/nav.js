@@ -89,12 +89,19 @@ export default {
         },
     },
 
-    QR_Code: {
+    qrcode: {
         phrase: "QR Codes",
         to: "/qr-codes",
         roles: ["admin", "manager", "supervisor"],
         order: 31,
         icon: "fas fa-pager",
+    },
+    bulkprinting: {
+        phrase: "Bulk Printing",
+        to: "/bulk-printing",
+        roles: ["admin", "manager", "supervisor"],
+        order: 32,
+        icon: "fas fa-print",
     },
     reservations: {
         phrase: "Reservations",

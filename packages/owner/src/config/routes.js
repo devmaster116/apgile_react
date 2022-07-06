@@ -65,6 +65,7 @@ import OrderItemList from "../components/OrderItem/List";
 import OrderItemAdd from "../components/OrderItem/Add";
 import ReservationList from "../components/Reservation/List";
 import ReservationAdd from "../components/Reservation/Add";
+import BulkPrinting from "../components/Pages/Bulk";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -124,8 +125,9 @@ const routes = [
 	{ path: '/areas/:id/edit', exact : true,component: AreaAdd,isPublic: false},
 
 	{ path: '/qr-codes', exact : true,component: PagesList,isPublic: false},
-	{ path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
-	{ path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
+	{ path: '/bulk-printing', exact : true,component: BulkPrinting, isPublic: false},
+	// { path: '/qr-codes/add', exact : true,component: PageAdd,isPublic: false},
+	// { path: '/qr-codes/:id/edit', exact : true,component: PageAdd,isPublic: false},
 
 
 	{ path: '/staff', exact : true,component: StaffList,isPublic: false},

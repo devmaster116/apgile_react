@@ -62,7 +62,6 @@ const OrderItemAdd = (props) => {
 const mapStateToProps = state => {
     return {
         branchId: state.selectedBranchId,
-
     }
 }
 
