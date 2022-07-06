@@ -101,7 +101,7 @@ export default {
         to: "/order-items",
         roles: ["admin", "manager"],
         order: 50,
-        icon: "fas fa-building",
+        icon: "fas fa-utensils",
     },
     entity: {
         phrase: "Branch",

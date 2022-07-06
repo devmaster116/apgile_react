@@ -78,6 +78,17 @@ const LocationsAdd = (props) => {
             required: true,
             col: 6
         },
+        orderItems: {
+            type: 'advanceSelect',
+            label: "Order Items",
+            target: `${props.branchId}/order-items?limit=1000`,
+            // async: true,
+            optionLabel: 'title',
+            name: 'order_items',
+            multi:true,
+            // required: true,
+            col: 6
+        },
         dummy2: {
             isDummyField: true,
             col: 12
