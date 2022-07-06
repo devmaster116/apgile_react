@@ -29,7 +29,7 @@ const BulkPrinting = (props) => {
     return (
         <div>
             <Card className="animated fadeIn">
-                <Header title={formPageTitle("Page", id)}/>
+                <Header title="Bulk QR Code Printing"/>
                 <CardBody>
                     <FormGenerator
                         targetEntity={`${props.branchId}/bulk-print-redirect`}
