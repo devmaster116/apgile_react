@@ -6,18 +6,10 @@ import {formPageTitle} from "@facepays/common";
 
 const OrderItemAdd = (props) => {
 
-    const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
     const {id} = props.match.params;
-
-    const manageTeamField = data => {
-        if(typeof data.value !== 'undefined' && data.value)
-            setShowTeam(false);
-        else
-            setShowTeam(true);
-    };
 
     const fields = {
         title: {

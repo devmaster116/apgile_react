@@ -6,11 +6,9 @@ import api from "@evenlogics/whf-api";
 
 const OrderItemList  = (props) => {
 	const [query, setQuery] = useState(false);
-    const [minDate, setMinDate] = useState('');
 	const [valueOff, setValueOff] = useState(0);
 
 	/* eslint-disable */
-
 
 		useEffect(() => {
 			if(valueOff === 0){

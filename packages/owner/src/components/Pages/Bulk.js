@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
-import {formPageTitle} from "@facepays/common";
 import {connect} from "react-redux";
 
 const BulkPrinting = (props) => {

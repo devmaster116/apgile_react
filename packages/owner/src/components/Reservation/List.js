@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Card, CardBody, CardHeader, Button} from 'reactstrap';
+import {Card, CardBody, CardHeader} from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import {connect} from "react-redux";
-import api from "@evenlogics/whf-api";
 
 const ReservationList = (props) => {
     const [query, setQuery] = useState(false);
@@ -21,23 +20,10 @@ const ReservationList = (props) => {
 
 
     const filters = {
-        start_date: {
+        target_date: {
             type: "date",
-            label: "Select From",
-            col: 4,
-            getValue: (data) => {
-                setTimeout(() => {
-                    setMinDate(data?.value)
-                }, 0)
-            }
-        },
-        end_date: {
-            type: "date",
-            label: "Select To",
-            col: 4,
-            placeholderText: minDate ? "" : "Please select the start date",
-            disabled: minDate ? false : true,
-            minDate: minDate,
+            label: "Reservation Date",
+            col: 4
         }
     };
 
@@ -90,6 +76,7 @@ const ReservationList = (props) => {
                         columns={columns}
                         sort={defaultSorted}
                         hideDetail={true}
+                        filters={filters}
                         Query={query}
                         addRoute="/reservations/add"
                     />

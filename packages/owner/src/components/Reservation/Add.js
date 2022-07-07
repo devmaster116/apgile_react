@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
@@ -6,18 +6,10 @@ import {formPageTitle} from "@facepays/common";
 
 const ReservationAdd = (props) => {
 
-    const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
     const {id} = props.match.params;
-
-    const manageTeamField = data => {
-        if(typeof data.value !== 'undefined' && data.value)
-            setShowTeam(false);
-        else
-            setShowTeam(true);
-    };
 
     const fields = {
         name: {

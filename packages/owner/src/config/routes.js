@@ -32,7 +32,6 @@ import AreasList from "./../components/Area/List";
 import AreaAdd from "./../components/Area/Add";
 
 import PagesList from "./../components/Pages/List";
-import PageAdd from "./../components/Pages/Add";
 
 import StaffList from "./../components/Staff/List";
 import StaffAdd from "./../components/Staff/Add";
