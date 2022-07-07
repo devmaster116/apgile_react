@@ -46,12 +46,23 @@ const ReservationAdd = (props) => {
             required: true,
             multi:true,
             // async: true,
-            col: 6
+            col: 4
+        },
+        promotions: {
+            type: "advanceSelect",
+            label: "Promotions",
+            name: "promotion_ids",
+            target: `${props.branchId}/promotions?limit=2000`,
+            optionLabel: 'title',
+            // required: true,
+            multi:true,
+            // async: true,
+            col: 4
         },
         description: {
             type: 'textarea',
             label: 'Notes',
-            col: 6
+            col: 4
         }
     };
 
