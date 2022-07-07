@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {FormGenerator} from "@evenlogics/whf-form-generator";
 import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
@@ -7,8 +7,22 @@ import {connect} from "react-redux";
 
 const BulkPrinting = (props) => {
     const {id} = props.match.params;
+    const [showPages, setShowPages] = useState(false);
 
+    const showPagesProcess = (data) => {
+        if(typeof data.value !== 'undefined' && data.value)
+            setShowPages(true);
+        else
+            setShowPages(false);
+    }
     let fields = {
+        allpages: {
+            type: "switch",
+            label: "Print All Items",
+            // required: true,
+            col: 2,
+            callback: (data) => showPagesProcess(data)
+        },
         pages: {
             type: "advanceSelect",
             label: "Select Items to Print",
@@ -17,6 +31,7 @@ const BulkPrinting = (props) => {
             required: true,
             multi: true,
             // async: true,
+            condition: showPages,
             col: 6
         },
     };
@@ -42,6 +57,7 @@ const BulkPrinting = (props) => {
                         // initialValues={props.location.aboutProps}
                         successCallback={successSubmit}
                         redirect="qr-codes"
+                        initialValues={{allpages: true}}
                         // handleSameValueFields={["name"]}
                     />
                 </CardBody>
