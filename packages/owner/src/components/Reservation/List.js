@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 
 const ReservationList = (props) => {
     const [query, setQuery] = useState(false);
-    const [minDate, setMinDate] = useState('');
     const [valueOff, setValueOff] = useState(0);
 
     /* eslint-disable */
