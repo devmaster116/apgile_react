@@ -28,16 +28,16 @@ const Add = (props) => {
             col: 3,
         },
 
-        status_id: {
-            type: "advanceSelect",
-            label: "Change Status",
-            target: `${props.branchId}/call/status-list`,
-            optionLabel: 'title',
-            key:'status_id',
-            optionId: 'id',
-            col: 3,
-            async: true,
-        },
+        // status_id: {
+        //     type: "advanceSelect",
+        //     label: "Change Status",
+        //     target: `${props.branchId}/call/status-list`,
+        //     optionLabel: 'title',
+        //     key:'status_id',
+        //     optionId: 'id',
+        //     col: 3,
+        //     async: true,
+        // },
 
 
     };
