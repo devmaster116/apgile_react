@@ -65,6 +65,9 @@ import OrderItemAdd from "../components/OrderItem/Add";
 import ReservationList from "../components/Reservation/List";
 import ReservationAdd from "../components/Reservation/Add";
 import BulkPrinting from "../components/Pages/Bulk";
+import ButtonList from "../components/Buttons/List";
+import ButtonAdd from "../components/Buttons/Add";
+import ButtonDetail from "../components/Buttons/Detail";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -144,6 +147,10 @@ const routes = [
 
 	{path : "/style" ,exact : true ,component : StyleAdd},
 
+	{ path: '/buttons', exact : true,component: ButtonList,isPublic: false},
+	{ path: '/buttons/add', exact : true,component: ButtonAdd,isPublic: false},
+	{ path: '/buttons/:id/edit', exact : true,component: ButtonAdd,isPublic: false},
+	{ path: '/buttons/:id/details', exact : true,component: ButtonDetail,isPublic: false},
 
 	{path : "/categories" ,exact : true ,component :CategoriesList},
 	{path : "/categories/add" ,exact : true ,component :CategoriesAdd},

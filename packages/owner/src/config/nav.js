@@ -103,6 +103,13 @@ export default {
         order: 32,
         icon: "fas fa-print",
     },
+    buttons: {
+        phrase: "Buttons",
+        to: "/buttons",
+        roles: ["admin", "manager", "supervisor"],
+        order: 35,
+        icon: "fas fa-stop",
+    },
     reservations: {
         phrase: "Reservations",
         to: "/reservations",
