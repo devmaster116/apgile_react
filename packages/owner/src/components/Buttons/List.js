@@ -63,7 +63,7 @@ const ButtonList = (props) => {
 				sort: true,
 			},
 			{
-				dataField: 'item.name',
+				dataField: 'page.name',
 				text: 'Item',
 				align: 'center',
 				sort: true
