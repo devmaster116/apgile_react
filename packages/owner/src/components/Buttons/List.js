@@ -130,7 +130,7 @@ const ButtonList = (props) => {
 							entity={`${props?.branchId}/buttons`}
 							customEntity={`buttons`}
 							columns={columns}
-							hideDetail={true}
+							// hideDetail={true}
 							sort={defaultSorted}
 							addRoute="/buttons/add"
 							{...props.remoteTableFields}
