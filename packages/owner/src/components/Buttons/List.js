@@ -132,7 +132,6 @@ const ButtonList = (props) => {
 							// hideDetail={true}
 							sort={defaultSorted}
 							addRoute="/buttons/add"
-							{/*{...props.remoteTableFields}*/}
 							// Query={query}
 							filters={filters}
 							showAdvancedFilters={true}
