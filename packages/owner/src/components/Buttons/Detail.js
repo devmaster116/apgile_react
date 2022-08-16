@@ -25,7 +25,7 @@ const ButtonDetail = (props) => {
 		setTimeout(function() {
 			setCounter(counter + 1);
 		}, 5 * 1000);
-	}, [counter]);
+	}, [counter, dataCall]);
 
 
 	if(loading) {

@@ -7,7 +7,6 @@ import api from "@evenlogics/whf-api";
 const ButtonList = (props) => {
 
 	const [query, setQuery] = useState(false);
-    const [minDate, setMinDate] = useState('');
     const [valueOff, setValueOff] = useState(0);
 
     useEffect(() => {
@@ -16,7 +15,7 @@ const ButtonList = (props) => {
         }else{
             setQuery((prev) => !prev)
         }
-    }, [props.branchId]);
+    });
 
 	const changeStatus = (data) => {
 		let payload = {
