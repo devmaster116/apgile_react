@@ -21,7 +21,7 @@ const ButtonDetail = (props) => {
 		setTimeout(function() {
 			setCounter(counter + 1);
 		}, 5 * 1000);
-	}, [counter]);
+	}, [counter, id, props.branchId]);
 
 
 	if(loading) {
