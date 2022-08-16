@@ -13,19 +13,15 @@ const ButtonDetail = (props) => {
 	const [loading, setLoading] = useState(true);
 	const [counter, setCounter] = useState(0);
 
-	const dataCall = () => {
+	useEffect(() => {
 		api.request("get", `/${props.branchId}/buttons/${id}`).then(({data}) => {
 			setButtonData(data);
 			setLoading(false);
 		}).catch((error) => console.log(error));
-	}
-
-	useEffect(() => {
-		dataCall();
 		setTimeout(function() {
 			setCounter(counter + 1);
 		}, 5 * 1000);
-	}, [counter, dataCall]);
+	}, [counter]);
 
 
 	if(loading) {

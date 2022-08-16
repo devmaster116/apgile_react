@@ -15,7 +15,7 @@ const ButtonList = (props) => {
         }else{
             setQuery((prev) => !prev)
         }
-    });
+    }, [valueOff]);
 
 	const changeStatus = (data) => {
 		let payload = {
