@@ -281,9 +281,9 @@ const Add = (props) => {
 
         promotions: {
             type: "switch",
-            label: "Allow Promotions",
+            label: "Promotions",
             required: true,
-            col: 2,
+            col: 1,
             condition: showAddFields,
         },
 
@@ -291,7 +291,7 @@ const Add = (props) => {
             type: "switch",
             label: "Dashboard",
             required: true,
-            col: 2,
+            col: 1,
             condition: showAddFields,
         },
 
@@ -299,6 +299,16 @@ const Add = (props) => {
             type: "number",
             label: "Max. Users",
             name: "max_users",
+            required: true,
+            col: 1,
+            min: 0,
+            condition: showAddFields,
+        },
+
+        maxbuttons: {
+            type: "number",
+            label: "Max. Buttons",
+            name: "max_buttons",
             required: true,
             col: 1,
             min: 0,
@@ -361,7 +371,15 @@ const Add = (props) => {
             col: 1,
             min: 0,
             condition: showAddFields,
-
+        },
+        button_wait: {
+            // parent: 'settings',
+            type: "number",
+            label: "Button Wait",
+            required: true,
+            col: 1,
+            min: 0,
+            condition: showAddFields,
         },
 
         dummy3: {

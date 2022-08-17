@@ -1426,10 +1426,10 @@
   resolved "https://registry.yarnpkg.com/@evenlogics/whf-config/-/whf-config-1.4.38.tgz#cebe9cdb6e042c96683022c35376ecd4afaa0c9c"
   integrity sha512-qN2aFM20fBhvLyXac35DmUAh8lDyUJHYtSri1ywwZaJV8q2Zqr34BmZNUpj+Ly5MfW8kuaNhtE54KQFPz8ewQA==
 
-"@evenlogics/whf-form-generator@^1.4.44":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-form-generator/-/whf-form-generator-1.4.44.tgz#8d92c8c893cfedb0589a92853ae5f56dbca23ca1"
-  integrity sha512-OO3So7ARwWo1M+L8BSAbaPmWSSDWjDdvB6Ezo8ortvihnbFymrsfjt/HIKTWRN00XyRkmA7tTFlXkG1uoNS3Dw==
+"@evenlogics/whf-form-generator@^1.4.45":
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-form-generator/-/whf-form-generator-1.4.45.tgz#210c3ca010c942390e3ee7348f9b11c9944b18f7"
+  integrity sha512-KX7xQjVs3aT+wLLMXqXw3v0zsS9Jr/cK+9YMXn4/1e1fMXn0+N8YDThWk3F3ItuDCcpnXDu2YE+SfCgEJs5OqQ==
   dependencies:
     "@evenlogics/whf-api" "^1.4.38"
     "@uiw/react-md-editor" "^3.14.4"
@@ -1462,46 +1462,46 @@
     dompurify "^2.1.1"
 
 "@evenlogics/whf-ra-customer@^1.4.21":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.4.44.tgz#cdb61f8ac5cbbca26108917c3b52abd769a6e1a0"
-  integrity sha512-NyxUG7AsTqc8gEzGF+Qmxtut+QikQr65y3+EG619LzBKh1/2yKALj1+Xh1YdAM+4MF35zQLW2gAtAnmmLZk1+g==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-customer/-/whf-ra-customer-1.4.45.tgz#9f63ad38c157342948c3d600e89ab95191483e51"
+  integrity sha512-7gOxXjOSWAJHQpk81eX/JUJEdbaY2if4gJOx+B+DYMu/2pdypex7+AtojB0yU6Bb8mmUBPKYjnpQJHZMe6BBXQ==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.44"
+    "@evenlogics/whf-reactadmin" "^1.4.45"
 
 "@evenlogics/whf-ra-entity@^1.4.21":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.44.tgz#6f3257ead3c04ce3c9348d9cc6f5844d8df3f81f"
-  integrity sha512-CKv4TVlIsurHkWbqqT4TotTL/PzgxQ3xpq3au04/c/f97UaDaQbZ6UcbvVSVSuxLMZYdMuCs8Nxmd5o2N533wQ==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.4.45.tgz#1c4af7579a896c84148799837ff455d1d54e0d36"
+  integrity sha512-B+5B1Y54VsoN8Qp0R1meyE7r7FWVaEPMCizkPfRIjdd3sgceopNg3JLOMa7OuaMvQ50qXP2WnwUdWNXK0YojFA==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.44"
+    "@evenlogics/whf-reactadmin" "^1.4.45"
 
 "@evenlogics/whf-ra-notifier@^1.4.21":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.44.tgz#192d9c6aed93df239217bff04dd6cb2723598eab"
-  integrity sha512-AHHbWnJ4dJmuxfiCU3y8U6lHxGmb9qUxcUbgyeA/GnDC7rbmtQorXmqWOpJXWSRcyVH7I5mfMi6oABLof/5MjA==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.45.tgz#cec4f9aa47f4dc275596df1792af73084160852d"
+  integrity sha512-1JsWqCg28ey78rTEmq4TEgJHynbfGNDAatRMtBH6ZMjIomPMZl8V0PyLu+qKa/OIWQlF5ETo95A3+2S2ZMeBpg==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.44"
+    "@evenlogics/whf-reactadmin" "^1.4.45"
 
 "@evenlogics/whf-ra-user@^1.4.21":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.4.44.tgz#a121638b3d4e8729d844d56b5b57ace0f654d297"
-  integrity sha512-exV5ADy5xgqdJoZ8wM8RZyp328TRJl2X7Q7J5qIpDlX2VplHdA5ci86mETR/F9r+2p65o0pTuAMD1e+TZo1vAg==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.4.45.tgz#d14bf5abf5a9e58fb897bcb805ba3e72b595f79c"
+  integrity sha512-paJoJTrXD6fFE6r3iIX8/9ID0s6WyvjqunA+hDU8u3/O8vpw4rqQTGUWKz779XkNYp4MA+Bzy/wvv1nduM/5gw==
   dependencies:
-    "@evenlogics/whf-reactadmin" "^1.4.44"
+    "@evenlogics/whf-reactadmin" "^1.4.45"
 
-"@evenlogics/whf-reactadmin@^1.4.21", "@evenlogics/whf-reactadmin@^1.4.44":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.4.44.tgz#0d41dd849761b28ddfef802bc36e1b45e6700bdb"
-  integrity sha512-52o9WLBsBolk9f21Oga+YwG3gSEdXhp0C8491RO5l00Rzf6YWKVVlZiaLV/YSt9yQsRiy4Les7SnCXxqCQ3RTA==
+"@evenlogics/whf-reactadmin@^1.4.21", "@evenlogics/whf-reactadmin@^1.4.45":
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-reactadmin/-/whf-reactadmin-1.4.45.tgz#9bf8598093999f320beb34188e6bf13376ee1a68"
+  integrity sha512-aoEx8uKnKTtPV19YNLOAhkHCDByQS37nMUCq/8z6fOrTcPxJl8dup7Ro+um2PvB0MHwGnGfyO4x2DoVrMpMLxw==
   dependencies:
     "@evenlogics/coreui-pro" "^3.4.2"
     "@evenlogics/react" "^3.0.1"
     "@evenlogics/whf-api" "^1.4.38"
     "@evenlogics/whf-config" "^1.4.38"
-    "@evenlogics/whf-form-generator" "^1.4.44"
+    "@evenlogics/whf-form-generator" "^1.4.45"
     "@evenlogics/whf-ra-auth" "^1.4.39"
     "@evenlogics/whf-ra-components" "^1.4.38"
-    "@evenlogics/whf-remote-table" "^1.4.44"
+    "@evenlogics/whf-remote-table" "^1.4.45"
     "@fortawesome/fontawesome-free" "^5.15.3"
     axios "^0.19.2"
     axios-retry "^3.1.8"
@@ -1530,13 +1530,13 @@
     slugify "^1.4.5"
     uuid "^8.3.0"
 
-"@evenlogics/whf-remote-table@^1.4.44":
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/@evenlogics/whf-remote-table/-/whf-remote-table-1.4.44.tgz#16f0203ac71fb8111082a60e0eac5862e042563c"
-  integrity sha512-yC/ic7BziFCzDugSlHOgN3y1Ooo99OsBgBf2bsBW/nK31KPWoiw5+2Hq0XqPZs68jDtM5IEpvtOAY9dvJIOpRw==
+"@evenlogics/whf-remote-table@^1.4.45":
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-remote-table/-/whf-remote-table-1.4.45.tgz#27b0705564b4865fe4e61e4fcee3ca2d498ef956"
+  integrity sha512-FmkDJP/VBV5qs/Uj7YzsDWUNR5SmjKlPCCzKajLnrdlXiJqiN0epxA8HOyE1+6BZQvpkk9gYbHIlK6YawjoCOg==
   dependencies:
     "@evenlogics/whf-api" "^1.4.38"
-    "@evenlogics/whf-form-generator" "^1.4.44"
+    "@evenlogics/whf-form-generator" "^1.4.45"
     react-bootstrap-table-next "^4.0.3"
     react-bootstrap-table2-paginator "^2.1.2"
     react-csv "^2.0.3"
@@ -2940,9 +2940,9 @@
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*":
-  version "18.7.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.5.tgz#f1c1d4b7d8231c0278962347163656f9c36f3e83"
-  integrity sha512-NcKK6Ts+9LqdHJaW6HQmgr7dT/i3GOHG+pt6BiWv++5SnjtRd4NXeiuN2kA153SjhXPR/AhHIPHPbrsbpUVOww==
+  version "18.7.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.6.tgz#31743bc5772b6ac223845e18c3fc26f042713c83"
+  integrity sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -4435,9 +4435,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001370:
-  version "1.0.30001377"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001377.tgz#fa446cef27f25decb0c7420759c9ea17a2221a70"
-  integrity sha512-I5XeHI1x/mRSGl96LFOaSk528LA/yZG3m3iQgImGujjO8gotd/DL8QaI1R1h1dg5ATeI2jqPblMpKq4Tr5iKfQ==
+  version "1.0.30001378"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001378.tgz#3d2159bf5a8f9ca093275b0d3ecc717b00f27b67"
+  integrity sha512-JVQnfoO7FK7WvU4ZkBRbPjaot4+YqxogSDosHv0Hv5mWpUESmN+UubMU6L/hGz8QlQ2aY5U0vR6MOs6j/CXpNA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -5941,9 +5941,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.4.202:
-  version "1.4.221"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.221.tgz#1ff8425d257a8bfc8269d552a426993c5b525471"
-  integrity sha512-aWg2mYhpxZ6Q6Xvyk7B2ziBca4YqrCDlXzmcD7wuRs65pVEVkMT1u2ifdjpAQais2O2o0rW964ZWWWYRlAL/kw==
+  version "1.4.222"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.222.tgz#2ba24bef613fc1985dbffea85df8f62f2dec6448"
+  integrity sha512-gEM2awN5HZknWdLbngk4uQCVfhucFAfFzuchP3wM3NN6eow1eDU0dFy2kts43FB20ZfhVFF0jmFSTb1h5OhyIg==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -10892,9 +10892,9 @@ object-visit@^1.0.0:
     isobject "^3.0.0"
 
 object.assign@^4.1.0, object.assign@^4.1.2:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.3.tgz#d36b7700ddf0019abb6b1df1bb13f6445f79051f"
-  integrity sha512-ZFJnX3zltyjcYJL0RoCJuzb+11zWGyaDbjgxZbdV7rFEcHQuYxrZqhow67aA7xpes6LhojyFDaBKAFfogQrikA==
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.4.tgz#9673c7c7c351ab8c4d0b516f4343ebf4dfb7799f"
+  integrity sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==
   dependencies:
     call-bind "^1.0.2"
     define-properties "^1.1.4"
@@ -14662,9 +14662,9 @@ svgo@^1.0.0, svgo@^1.2.2:
     util.promisify "~1.0.0"
 
 sweetalert2@^11.3.3, sweetalert2@^11.4.4:
-  version "11.4.26"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.26.tgz#a09aa01dda9b430f411531c8e2e998e3bc92ab17"
-  integrity sha512-YqH/C6IPudeWVK9R0x3pCOqP7m90Ae50tl98SQBpAwL3+UBl1WYD2+5OaKy0ybiVTKbYe76wwJ3PV+bITLjl+A==
+  version "11.4.28"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.28.tgz#651bd309768dceb62c1cb8e3ff4bfa5121195ef6"
+  integrity sha512-leCf8Kc/o+R0LNWmLjWXI7l0roMchEHg6X+XibmfTYaOMvOoHXmoxmegHl0it+8vvvZlPIjzyfM6bYBOKTFnRg==
 
 symbol-tree@^3.2.2:
   version "3.2.4"
@@ -15073,9 +15073,9 @@ typedarray@^0.0.6:
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
 uglify-js@^3.1.4:
-  version "3.16.3"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.16.3.tgz#94c7a63337ee31227a18d03b8a3041c210fd1f1d"
-  integrity sha512-uVbFqx9vvLhQg0iBaau9Z75AxWJ8tqM9AV890dIZCLApF4rTcyHwmAvLeEdYRs+BzYWu8Iw81F79ah0EfTXbaw==
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.0.tgz#55bd6e9d19ce5eef0d5ad17cd1f587d85b180a85"
+  integrity sha512-aTeNPVmgIMPpm1cxXr2Q/nEbvkmV8yq66F3om7X3P/cvOXQ0TMQ64Wk63iyT1gPlmdmGzjGpyLh1f3y8MZWXGg==
 
 uid-number@0.0.6:
   version "0.0.6"

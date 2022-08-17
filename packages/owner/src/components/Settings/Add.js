@@ -53,7 +53,14 @@ console.log(showPlaces,"showPlaces")
             name: "throttle_wait",
             col: 2,
             min: 0
-
+        },
+        button_wait: {
+            type: "number",
+            label: "Button Wait",
+            // groupClass: "col-xxl-2 col-xl-2 col-md-3 col-sm-6",
+            required: true,
+            col: 2,
+            min: 0
         },
         // escalation_hop: {
         //     type: "number",

@@ -243,17 +243,17 @@ const ExtendBranchAdd = (props) =>  {
         internal_active: {
             parent: 'settings',
             type: "switch",
-            label: "Allow Internal Calls",
+            label: "Internal",
             required: true,
-            col: 2
+            col: 1
         },
 
         promotions: {
             parent: 'settings',
             type: "switch",
-            label: "Allow Promotions",
+            label: "Promotions",
             required: true,
-            col: 2
+            col: 1
         },
 
         dashboard: {
@@ -261,7 +261,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "switch",
             label: "Dashboard",
             required: true,
-            col: 2
+            col: 1
         },
 
         max_users:{
@@ -270,6 +270,14 @@ const ExtendBranchAdd = (props) =>  {
             label: "Max. Users",
             required: true,
             col: 1
+        },
+
+        max_buttons: {
+            parent: 'settings',
+            type: "number",
+            label: "Max. Buttons",
+            required: true,
+            col: 1,
         },
 
         max_watches:{
@@ -287,6 +295,7 @@ const ExtendBranchAdd = (props) =>  {
             required: true,
             col: 1
         },
+
 
         max_calls:{
             parent: 'settings',
@@ -326,7 +335,15 @@ const ExtendBranchAdd = (props) =>  {
             required: true,
             col: 1,
             min:0
+        },
 
+        button_wait: {
+            parent: 'settings',
+            type: "number",
+            label: "Button Wait",
+            required: true,
+            col: 1,
+            min: 0,
         },
 
         "Site Content": {
