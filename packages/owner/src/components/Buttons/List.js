@@ -132,7 +132,7 @@ const ButtonList = (props) => {
 							// hideDetail={true}
 							sort={defaultSorted}
 							addRoute="/buttons/add"
-							// Query={query}
+							Query={query}
 							filters={filters}
 							showAdvancedFilters={true}
 							// query={

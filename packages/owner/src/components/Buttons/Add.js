@@ -28,7 +28,11 @@ const ButtonAdd = (props) => {
             required: true,
             col: 3
         },
-
+        message: {
+            type: "textarea",
+            label: "Message",
+            col: 12
+        }
     };
 
 

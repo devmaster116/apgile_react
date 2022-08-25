@@ -47,6 +47,10 @@ const Analytics = (props) => {
     const [staff, setStaff] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [dashboardDisabled, setDisabled] = useState(false);
+    const [callTypeFilter, setCallTypeFilter] = useState({
+        'qrcode': true,
+        'button': true,
+    });
 
     const [dashboardPayload, setPayload] = useState({
         start: moment(startDate).format('YYYY-MM-DD'),
@@ -60,7 +64,9 @@ const Analytics = (props) => {
         status: null,
         team: null,
         realtime: true,
-        init: true
+        init: true,
+        'qrcode': true,
+        'button': true
     });
 
     const dataCall = () => {
@@ -143,6 +149,20 @@ const Analytics = (props) => {
         setPayload({
             ...dashboardPayload,
             unit: e.target.value
+        })
+    }
+
+    const callTypeChange = (e) => {
+        let tempTypeObj = {};
+        tempTypeObj[e.target.name] = dashboardPayload[e.target.name] ? false : true;
+
+        // setPayload((prevState => {
+        //     return {...prevState, ...tempTypeObj};
+        // }));
+
+        setPayload({
+            ...dashboardPayload,
+            ...tempTypeObj
         })
     }
 
@@ -340,12 +360,12 @@ const Analytics = (props) => {
                                 dateFormat="MM-dd-yyyy"
                             />
                         </CCol>
-                        <CCol md={12} lg={6} xl={4}>
+                        <CCol md={12} lg={6} xl={3}>
                             <label>Select Time Range</label> <br/>
                             <TimeRangePicker format="h:m a" className="date-picker-custom" clockIcon={null} disableClock={true}
                                              onChange={onTimeChange} value={value}/>
                         </CCol>
-                        <CCol md={12} lg={6} xl={4}>
+                        <CCol md={12} lg={6} xl={3}>
                             <label>Create By</label> <br/>
                             {Object.entries(['hour', 'day', 'week', 'month']).map(([key, val], i) => (
                                     <label
@@ -367,6 +387,32 @@ const Analytics = (props) => {
                                         {val.toUpperCase()}
                                     </label>
                                 ))}
+                        </CCol>
+                        <CCol md={12} lg={6} xl={2}>
+                            <label>Call Type</label> <br/>
+                            <div className="btn-group-toggle" data-toggle="buttons">
+                            {Object.entries(['qrcode', 'button']).map(([key, val], i) => (
+                                <label
+                                    className={`btn btn-dark btn-sm callTypeCheck mr-1 ${
+                                        dashboardPayload[val] ? "active" : ""
+                                    }`}
+                                    key={i}
+                                >
+                                    <input
+                                        type="checkbox"
+                                        name={val}
+                                        id={"option" + key}
+                                        autoComplete="off"
+                                        className="d-none"
+                                        value={dashboardPayload[val]}
+                                        // checked={callTypeFilter[val]}
+                                        checked={dashboardPayload[val]}
+                                        onChange={callTypeChange}
+                                    />
+                                    {val.toUpperCase()}
+                                </label>
+                            ))}
+                            </div>
                         </CCol>
                     </CRow>
 

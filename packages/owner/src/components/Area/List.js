@@ -32,7 +32,6 @@ const List = (props) => {
         }
         api.request("put", `/${props.branchId}/areas/status/${data?.id}`, payload)
             .then((data) => {
-                console.log(data)
                 setQuery(!query)
             }).catch(err => {
                 toast.error(err?.response?.data.message)
