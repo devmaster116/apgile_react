@@ -20,7 +20,7 @@ const ButtonAdd = (props) => {
             type: "advanceSelect",
             label: "Select Item Type",
             target: `${props.branchId}/pages`,
-            col: 3,
+            col: 4,
         },
         status: {
             type: "switch",
@@ -28,10 +28,14 @@ const ButtonAdd = (props) => {
             required: true,
             col: 3
         },
+        dummy: {
+            col: 5,
+            isDummyField: true
+        },
         message: {
             type: "textarea",
             label: "Message",
-            col: 12
+            col: 4
         }
     };
 
