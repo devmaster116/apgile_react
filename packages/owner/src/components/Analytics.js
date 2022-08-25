@@ -47,10 +47,6 @@ const Analytics = (props) => {
     const [staff, setStaff] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [dashboardDisabled, setDisabled] = useState(false);
-    const [callTypeFilter, setCallTypeFilter] = useState({
-        'qrcode': true,
-        'button': true,
-    });
 
     const [dashboardPayload, setPayload] = useState({
         start: moment(startDate).format('YYYY-MM-DD'),
