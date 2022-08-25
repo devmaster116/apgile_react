@@ -96,19 +96,19 @@ export default {
         order: 31,
         icon: "fas fa-pager",
     },
-    bulkprinting: {
-        phrase: "Bulk Printing",
-        to: "/bulk-printing",
-        roles: ["admin", "manager", "supervisor"],
-        order: 32,
-        icon: "fas fa-print",
-    },
     buttons: {
         phrase: "Buttons",
         to: "/buttons",
         roles: ["admin", "manager", "supervisor"],
-        order: 35,
+        order: 32,
         icon: "fas fa-stop",
+    },
+    bulkprinting: {
+        phrase: "Bulk Printing",
+        to: "/bulk-printing",
+        roles: ["admin", "manager", "supervisor"],
+        order: 33,
+        icon: "fas fa-print",
     },
     reservations: {
         phrase: "Reservations",
@@ -205,7 +205,7 @@ export default {
 
     watches: {
         name: "Watches",
-        order: 33,
+        order: 34,
         phrase: "Watches",
         roles: ["admin", "manager"],
         to: "/watches",
@@ -216,7 +216,7 @@ export default {
         phrase: "Site Content",
         to: "/promotions",
         roles: ["admin", "manager"],
-        order: 34,
+        order: 35,
         icon: "fas fa-ad",
         children: {
             categories: {
