@@ -386,7 +386,6 @@ const Analytics = (props) => {
                         </CCol>
                         <CCol md={12} lg={6} xl={2}>
                             <label>Call Type</label> <br/>
-                            <div className="btn-group-toggle" data-toggle="buttons">
                             {Object.entries(['qrcode', 'button']).map(([key, val], i) => (
                                 <label
                                     className={`btn btn-dark btn-sm callTypeCheck mr-1 ${
@@ -408,7 +407,6 @@ const Analytics = (props) => {
                                     {val.toUpperCase()}
                                 </label>
                             ))}
-                            </div>
                         </CCol>
                     </CRow>
 
