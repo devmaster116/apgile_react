@@ -107,7 +107,7 @@ const Add = (props) => {
             name: "location_id",
             target: `${props.branchId}/active/locations`,
             // required: true,
-            // multi:true,
+            multi:true,
             async: true,
             col: 4
         },
