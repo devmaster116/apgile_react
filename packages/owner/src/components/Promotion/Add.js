@@ -101,6 +101,17 @@ const Add = (props) => {
             col: 6,
         },
 
+        location_id: {
+            type: "advanceSelect",
+            label: "Select Location",
+            name: "location_id",
+            target: `${props.branchId}/active/locations`,
+            // required: true,
+            // multi:true,
+            async: true,
+            col: 4
+        },
+
 
         dummy: {
             col: 6,
