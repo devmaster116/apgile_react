@@ -16,7 +16,7 @@ const Dashboard = () => {
 
 		}
 		{console.log(counter,"counter")}
-      <h3>Adroit Dashboard</h3>
+      <h3>Apdroit Dashboard</h3>
     </div>
   );
 };
