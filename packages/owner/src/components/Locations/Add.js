@@ -111,7 +111,14 @@ const LocationsAdd = (props) => {
             label: "Include Customer ID",
             // required: true,
             name: "customer_required",
-            col: 8,
+            col: 2,
+        },
+        bypass_cycle: {
+            type: "switch",
+            label: "Bypass Call Cycle",
+            // required: true,
+            name: "bypass_call_cycle",
+            col: 6,
         },
         "Manage Auto Assinged": {
             isDummyField: true,
