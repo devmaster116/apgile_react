@@ -16,13 +16,44 @@ const OrderItemAdd = (props) => {
             type: "text",
             label: "Title",
             required: true,
-            col: 8,
+            col: 6,
         },
+        weekdays: {
+            type: 'advanceSelect',
+            label: "Days",
+            target: `${props.branchId}/week-day-list`,
+            // async: true,
+            name: 'weekdays',
+            multi:true,
+            required: true,
+            col: 6
+        },
+        start_time: {
+            type: "date",
+            label: "Start Time",
+            showTimeSelect:true,
+            showTimeSelectOnly:true,
+            required: true,
+            timeCaption:"Time",
+            dateFormat:"h:mm aa",
+            col:3,
+        },
+        end_time: {
+            type: "date",
+            label: "End Time",
+            col: 3,
+            showTimeSelect:true,
+            required: true,
+            timeCaption:"Time",
+            dateFormat:"h:mm aa",
+            showTimeSelectOnly:true,
+        },
+      
         status_id: {
             type: "switch",
             label: "Status",
             required: true,
-            col: 4
+            col: 2
         },
         description: {
             type: 'textarea',

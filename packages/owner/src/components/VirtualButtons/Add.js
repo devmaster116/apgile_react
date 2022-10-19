@@ -16,11 +16,21 @@ const ButtonAdd = (props) => {
     const {id} = props.match.params;
 
     const fields = {
-        page_id: {
-            type: "advanceSelect",
-            label: "Select Item Type",
-            target: `${props.branchId}/pages?limit=1000`,
-            col: 4,
+        // page_id: {
+        //     type: "advanceSelect",
+        //     label: "Select Item Type",
+        //     target: `${props.branchId}/pages?limit=1000`,
+        //     col: 4,
+        // },
+        title: {
+            type: "text",
+            label: "Title",
+            col: 3,
+        },
+        action: {
+            type: "text",
+            label: "Action",
+            col: 3,
         },
         status: {
             type: "switch",
@@ -32,18 +42,18 @@ const ButtonAdd = (props) => {
             col: 5,
             isDummyField: true
         },
-        message: {
-            type: "textarea",
-            label: "Message",
-            col: 4
-        }
+        // message: {
+        //     type: "textarea",
+        //     label: "Message",
+        //     col: 4
+        // }
     };
 
 
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
             <CardHeader>
-                {formPageTitle('Button', id)}
+                {formPageTitle('Virtual Button', id)}
             </CardHeader>
             <CardBody>
                 <FormGenerator

@@ -69,6 +69,10 @@ import ButtonList from "../components/Buttons/List";
 import ButtonAdd from "../components/Buttons/Add";
 import ButtonDetail from "../components/Buttons/Detail";
 
+import VirtualButtonList from "../components/VirtualButtons/List";
+import VirtualButtonAdd from "../components/VirtualButtons/Add";
+import VirtualButtonDetail from "../components/VirtualButtons/Detail";
+
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
@@ -176,6 +180,10 @@ const routes = [
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
 
+	{path : "/virtual-buttons" ,exact : true ,component : VirtualButtonList,isPublic:true},
+	{path : "/virtual-buttons/add" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
+	{path : "/virtual-buttons/:id/details" ,exact : true ,component : VirtualButtonDetail,isPublic:true},
+	{path : "/virtual-buttons/:id/edit" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
 
 ];
 

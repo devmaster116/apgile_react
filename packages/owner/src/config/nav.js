@@ -96,6 +96,7 @@ export default {
         order: 31,
         icon: "fas fa-pager",
     },
+
     buttons: {
         phrase: "Buttons",
         to: "/buttons",
@@ -103,6 +104,15 @@ export default {
         order: 32,
         icon: "fas fa-stop",
     },
+    
+    virtual_buttons: {
+        phrase: "Virtual Buttons",
+        to: "/virtual-buttons",
+        roles: ["admin", "manager", "supervisor"],
+        order: 150,
+        icon: "fas fa-stop",
+    },
+
     bulkprinting: {
         phrase: "Bulk Printing",
         to: "/bulk-printing",

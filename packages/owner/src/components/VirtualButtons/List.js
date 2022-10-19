@@ -29,7 +29,7 @@ const ButtonList = (props) => {
 	}
 
 	const handleCountReset = (data) => {
-		console.log(data,"data")
+		console.log(data, "data")
 		api.request("post", `/${props?.branchId}/buttons/reset-count/${data?.uuid}`)
 			.then((data) => {
 				setQuery(!query)
@@ -43,12 +43,11 @@ const ButtonList = (props) => {
 		// 	label: "UUID",
 		// 	col: 3
 		// },
-		page_id: {
-			type: "advanceSelect",
-			label: "Select Item Type",
-			target: `${props.branchId}/pages`,
-			col: 3,
-		},
+		action: {
+            type: "text",
+            label: "Action",
+            col: 3,
+        },
 		status: {
 			type: "switch",
 			label: "Status",
@@ -71,34 +70,47 @@ const ButtonList = (props) => {
 			sort: true,
 		},
 		{
-			dataField: 'page.name',
-			text: 'Item',
-			align: 'center',
-			sort: true
+			dataField: "title",
+			text: "Title",
+			align: "center",
+			sort: true,
 		},
+		{
+			dataField: "action",
+			text: "Action",
+			align: "center",
+			sort: true,
+		},
+
+		// {
+		// 	dataField: 'page.name',
+		// 	text: 'Item',
+		// 	align: 'center',
+		// 	sort: true
+		// },
 		// {
 		// 	dataField: 'type_label',
 		// 	text: 'Type',
 		// 	align: 'center',
 		// 	sort: true
 		// },
-		{
-			dataField: 'call_count',
-			text: 'Count',
-			align: 'center',
-			sort: true
-		},
-		{
-			dataField: 'url',
-			align: "center",
-			text: "URL",
-			sort: true,
-			formatter: (cell, row) => {
-				return (
-					<input type="text" value={cell} className="form-control" disabled />
-				);
-			},
-		},
+		// {
+		// 	dataField: 'call_count',
+		// 	text: 'Count',
+		// 	align: 'center',
+		// 	sort: true
+		// },
+		// {
+		// 	dataField: 'url',
+		// 	align: "center",
+		// 	text: "URL",
+		// 	sort: true,
+		// 	formatter: (cell, row) => {
+		// 		return (
+		// 			<input type="text" value={cell} className="form-control" disabled />
+		// 		);
+		// 	},
+		// },
 		{
 			align: "center",
 			text: "Status",
@@ -131,16 +143,16 @@ const ButtonList = (props) => {
 		<div className="animated">
 			<Card>
 				<CardHeader>
-					<strong>All Buttons</strong>
+					<strong>All Virtual Buttons</strong>
 				</CardHeader>
 				<CardBody>
 					<RemoteTable
 						entity={`${props?.branchId}/buttons`}
-						customEntity={`buttons`}
+						customEntity={`virtual-buttons`}
 						columns={columns}
 						// hideDetail={true}
 						sort={defaultSorted}
-						addRoute="/buttons/add"
+						addRoute="/virtual-buttons/add"
 						Query={query}
 						filters={filters}
 						showAdvancedFilters={true}
@@ -150,11 +162,6 @@ const ButtonList = (props) => {
 							classes: "text-white",
 							callback: (data) => handleCountReset(data),
 						}}
-					// query={
-					// 	{
-					// 		sort : "id|desc"
-					// 	}
-					// }
 					/>
 				</CardBody>
 			</Card>
