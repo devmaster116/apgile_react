@@ -59,6 +59,11 @@ const List = (props) => {
         }
     }
 
+    const showMessage = (message) => {
+        setModalMessage(message);
+        setMessageVisible(!messageVisible)
+    }
+
     const columns = [
         {
             dataField: "id",
@@ -96,8 +101,7 @@ const List = (props) => {
             sort: true,
             formatter: (cell, row) => {
                 if(cell) {
-                    setModalMessage(cell);
-                    return (<Button onClick={() => setMessageVisible(!messageVisible)}>Message</Button>)
+                    return (<Button onClick={() => showMessage(cell)}>Message</Button>)
                 }
             }
         },
