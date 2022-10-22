@@ -43,25 +43,33 @@ const LocationsAdd = (props) => {
             col: 2,
             condition: !showTeam
         },
-        start_time: {
-            type: "date",
-            label: "Start Time",
-            showTimeSelect:true,
-            showTimeSelectOnly:true,
+        // start_time: {
+        //     type: "date",
+        //     label: "Start Time",
+        //     showTimeSelect:true,
+        //     showTimeSelectOnly:true,
+        //     required: true,
+        //     timeCaption:"Time",
+        //     dateFormat:"h:mm aa",
+        //     col:2,
+        // },
+        // end_time: {
+        //     type: "date",
+        //     label: "End Time",
+        //     col: 2,
+        //     showTimeSelect:true,
+        //     required: true,
+        //     timeCaption:"Time",
+        //     dateFormat:"h:mm aa",
+        //     showTimeSelectOnly:true,
+        // },
+
+        time: {
+            type: 'timeRange',
+            label: 'Time',
             required: true,
-            timeCaption:"Time",
-            dateFormat:"h:mm aa",
-            col:2,
-        },
-        end_time: {
-            type: "date",
-            label: "End Time",
-            col: 2,
-            showTimeSelect:true,
-            required: true,
-            timeCaption:"Time",
-            dateFormat:"h:mm aa",
-            showTimeSelectOnly:true,
+            name: 'time',
+            col: 4,
         },
 
         // dummy: {

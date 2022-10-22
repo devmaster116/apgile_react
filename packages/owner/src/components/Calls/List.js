@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Card, CardBody, CardHeader} from "reactstrap";
+import {Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, Button} from "reactstrap";
 import RemoteTable from "@evenlogics/whf-remote-table";
 import {connect} from "react-redux";
 
@@ -8,6 +8,9 @@ const List = (props) => {
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
     const [valueOff, setValueOff] = useState(0);
+    const [messageVisible, setMessageVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState(false);
+
 
     /* eslint-disable */
     useEffect(() => {
@@ -56,6 +59,11 @@ const List = (props) => {
         }
     }
 
+    const showMessage = (message) => {
+        setModalMessage(message);
+        setMessageVisible(!messageVisible)
+    }
+
     const columns = [
         {
             dataField: "id",
@@ -85,6 +93,17 @@ const List = (props) => {
             text: "Customer",
             align: "center",
             sort: true,
+        },
+        {
+            dataField: "message",
+            text: "Message",
+            align: "center",
+            sort: true,
+            formatter: (cell, row) => {
+                if(cell) {
+                    return (<Button onClick={() => showMessage(cell)}>Message</Button>)
+                }
+            }
         },
 
         {
@@ -175,6 +194,17 @@ const List = (props) => {
                     />
                 </CardBody>
             </Card>
+            <Modal isOpen={messageVisible} toggle={() => setMessageVisible(!messageVisible)}>
+                <ModalHeader toggle={() => setMessageVisible(!messageVisible)}>Call Message</ModalHeader>
+                <ModalBody style={{whiteSpace: "pre-wrap"}}>
+                    { modalMessage }
+                </ModalBody>
+                {/*<ModalFooter>*/}
+                {/*    <Button color="success" onClick={() => setMessageVisible(!messageVisible)}>*/}
+                {/*        Close*/}
+                {/*    </Button>*/}
+                {/*</ModalFooter>*/}
+            </Modal>
         </div>
     );
 };
