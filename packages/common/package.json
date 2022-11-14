@@ -18,6 +18,7 @@
   "dependencies": {
     "@coreui/react": "^4.1.2",
     "@coreui/react-pro": "^4.1.4",
+    "autoprefixer": "10.4.5",
     "chart.js": "^3.7.1",
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartjs-adapter-moment": "^1.0.0",
