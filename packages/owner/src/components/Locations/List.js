@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import api from "@evenlogics/whf-api";
 import App from "./SortOrderItem/App";
 import List from "./SortOrderItem/data";
-import { getOverlayDirection } from 'react-bootstrap/esm/helpers';
 
 const LocationsList = (props) => {
 	const [query, setQuery] = useState(false);
