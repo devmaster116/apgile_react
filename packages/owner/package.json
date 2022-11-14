@@ -38,6 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "resolutions": {
+    "autoprefixer": "10.4.5"
+  },
   "devDependencies": {
     "react-scripts": "^5.0.1"
   },
