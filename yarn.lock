@@ -1469,6 +1469,13 @@
   dependencies:
     "@evenlogics/whf-reactadmin" "^1.4.46"
 
+"@evenlogics/whf-ra-entity@^1.5.0-alpha.0":
+  version "1.5.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-entity/-/whf-ra-entity-1.5.0-alpha.0.tgz#a24e0cf4b980a6123acbb33e7cc0a4acbb48bbfe"
+  integrity sha512-TEKt7SOE0Qt5+fcaw3VlsbAytgqX/CxTlCT9sgIQp05L2aRY/gtvNd8VnBQIVa3R0V8O7pw0ZzL1Z9Os64W7LQ==
+  dependencies:
+    "@evenlogics/whf-reactadmin" "^1.5.0-alpha.0"
+
 "@evenlogics/whf-ra-notifier@^1.4.21":
   version "1.4.46"
   resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-notifier/-/whf-ra-notifier-1.4.46.tgz#95753e684f9f764d9532c253574a0f29f3014f57"
@@ -1482,6 +1489,13 @@
   integrity sha512-xZrGqZnEb+7/N3tv1oY7x1so3tnzsk/bri83Xvyhw+CbMm30Nhp1gzzK21b/EiIWGt86XiRDeQwx0W4FrYQHBA==
   dependencies:
     "@evenlogics/whf-reactadmin" "^1.4.46"
+
+"@evenlogics/whf-ra-user@^1.5.0-alpha.0":
+  version "1.5.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@evenlogics/whf-ra-user/-/whf-ra-user-1.5.0-alpha.0.tgz#78bcf4f8d11bc9938d4790f808d9ecf6e12dcd27"
+  integrity sha512-cY9pHEKdMRtzsFZ2tnWQNdrSmZ7zvUvJKBufRIXjzJpgBlEwPLYbfWFQk+UDv3iknIgtgDqzffjc/3fu6ds05g==
+  dependencies:
+    "@evenlogics/whf-reactadmin" "^1.5.0-alpha.0"
 
 "@evenlogics/whf-reactadmin@^1.4.46":
   version "1.4.46"
@@ -12209,16 +12223,16 @@ regexpp@^3.2.0:
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
 regexpu-core@^5.1.0:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-5.2.1.tgz#a69c26f324c1e962e9ffd0b88b055caba8089139"
-  integrity sha512-HrnlNtpvqP1Xkb28tMhBUO2EbyUHdQlsnlAhzWcwHy8WJR53UWr7/MAvqrsQKMbV4qdpv03oTMG8iIhfsPFktQ==
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-5.2.2.tgz#3e4e5d12103b64748711c3aad69934d7718e75fc"
+  integrity sha512-T0+1Zp2wjF/juXMrMxHxidqGYn8U4R+zleSJhX9tQ1PUsS8a9UtYfbsF9LdiVgNX3kiX8RNaKM42nfSgvFJjmw==
   dependencies:
     regenerate "^1.4.2"
     regenerate-unicode-properties "^10.1.0"
     regjsgen "^0.7.1"
     regjsparser "^0.9.1"
     unicode-match-property-ecmascript "^2.0.0"
-    unicode-match-property-value-ecmascript "^2.0.0"
+    unicode-match-property-value-ecmascript "^2.1.0"
 
 regjsgen@^0.7.1:
   version "0.7.1"
@@ -13776,10 +13790,10 @@ unicode-match-property-ecmascript@^2.0.0:
     unicode-canonical-property-names-ecmascript "^2.0.0"
     unicode-property-aliases-ecmascript "^2.0.0"
 
-unicode-match-property-value-ecmascript@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.0.0.tgz#1a01aa57247c14c568b89775a54938788189a714"
-  integrity sha512-7Yhkc0Ye+t4PNYzOGKedDhXbYIBe1XEQYQxOPyhcXNMJ0WCABqqj6ckydd6pWRZTHV4GuCPKdBAUiMc60tsKVw==
+unicode-match-property-value-ecmascript@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.1.0.tgz#cb5fffdcd16a05124f5a4b0bf7c3770208acbbe0"
+  integrity sha512-qxkjQt6qjg/mYscYMC0XKRn3Rh0wFPlfxB0xkt9CfyTvpX1Ra0+rAmdX2QyAobptSEvuy4RtpPRui6XkV+8wjA==
 
 unicode-property-aliases-ecmascript@^2.0.0:
   version "2.1.0"
