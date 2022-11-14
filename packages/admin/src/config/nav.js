@@ -1,4 +1,4 @@
-export default {
+const nav = {
     dashboard: {
         phrase: "Dashboard",
         to: "/dashboard",
@@ -313,3 +313,5 @@ export default {
 
 
 };
+
+export default nav;

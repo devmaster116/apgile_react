@@ -1,4 +1,4 @@
-export default [
+const modules = [
     {
         name: 'Entity',
         component: require('@evenlogics/whf-ra-entity'),
@@ -14,3 +14,5 @@ export default [
    
     
 ];
+
+export default modules;
