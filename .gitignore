@@ -27,3 +27,4 @@ src/views/customComponents/*
 /src/config/moduleConfig.js
 /public/assets/fontawesome-free/
 Test.js
+.env.development
