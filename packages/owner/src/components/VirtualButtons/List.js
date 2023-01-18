@@ -17,43 +17,36 @@ const ButtonList = (props) => {
 		}
 	}, [valueOff]);
 
-	const changeStatus = (data) => {
-		let payload = {
-			status: !data?.status,
-		}
-		api.request("put", `/${props?.branchId}/buttons/status/${data?.id}`, payload)
-			.then((data) => {
-				setQuery(!query)
-			})
-			.catch((error) => console.log(error));
-	}
+	// const changeStatus = (data) => {
+	// 	let payload = {
+	// 		status: !data?.status,
+	// 	}
+	// 	api.request("put", `/${props?.branchId}/buttons/status/${data?.id}`, payload)
+	// 		.then((data) => {
+	// 			setQuery(!query)
+	// 		})
+	// 		.catch((error) => console.log(error));
+	// }
 
-	const handleCountReset = (data) => {
-		console.log(data, "data")
-		api.request("post", `/${props?.branchId}/buttons/reset-count/${data?.uuid}`)
-			.then((data) => {
-				setQuery(!query)
-			})
-			.catch((error) => console.log(error));
-	}
+	
 
-	const filters = {
-		// uuid: {
-		// 	type: "text",
-		// 	label: "UUID",
-		// 	col: 3
-		// },
-		action: {
-            type: "text",
-            label: "Action",
-            col: 3,
-        },
-		status: {
-			type: "switch",
-			label: "Status",
-			col: 3
-		}
-	}
+	// const filters = {
+	// 	// uuid: {
+	// 	// 	type: "text",
+	// 	// 	label: "UUID",
+	// 	// 	col: 3
+	// 	// },
+	// 	action: {
+    //         type: "text",
+    //         label: "Action",
+    //         col: 3,
+    //     },
+	// 	status: {
+	// 		type: "switch",
+	// 		label: "Status",
+	// 		col: 3
+	// 	}
+	// }
 
 	const columns = [
 		{
@@ -63,12 +56,7 @@ const ButtonList = (props) => {
 			align: "center",
 			sort: true,
 		},
-		{
-			dataField: "uuid",
-			text: "UUID",
-			align: "center",
-			sort: true,
-		},
+	
 		{
 			dataField: "title",
 			text: "Title",
@@ -76,49 +64,54 @@ const ButtonList = (props) => {
 			sort: true,
 		},
 		{
-			dataField: "action",
-			text: "Action",
+			dataField: 'weekdays_name',
+			text: 'Days',
+			align: 'center',
+			sort: true
+		},
+		{
+			isDummyField: true,
+			text: "Start Time",
 			align: "center",
 			sort: true,
+			formatter: (cell, row) => {
+				if (row?.time) {
+					return (
+						<span className="badge badge-dark">
+							{row.time[0]}
+						</span>
+					)
+				}
+			},
 		},
-
-		// {
-		// 	dataField: 'page.name',
-		// 	text: 'Item',
-		// 	align: 'center',
-		// 	sort: true
-		// },
-		// {
-		// 	dataField: 'type_label',
-		// 	text: 'Type',
-		// 	align: 'center',
-		// 	sort: true
-		// },
-		// {
-		// 	dataField: 'call_count',
-		// 	text: 'Count',
-		// 	align: 'center',
-		// 	sort: true
-		// },
-		// {
-		// 	dataField: 'url',
-		// 	align: "center",
-		// 	text: "URL",
-		// 	sort: true,
-		// 	formatter: (cell, row) => {
-		// 		return (
-		// 			<input type="text" value={cell} className="form-control" disabled />
-		// 		);
-		// 	},
-		// },
+		{
+			isDummyField: true,
+			text: "End Time",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+				if (row?.time) {
+					return (
+						<span className="badge badge-dark">
+							{row?.time[1]}
+						</span>
+					)
+				}
+			},
+		},
 		{
 			align: "center",
 			text: "Status",
 			sort: true,
 			formatter: (cell, row) => {
+				console.log(row,row.status_id)
 				return (
-					<Button color={row?.status === true ? "success" : "danger"} onClick={() => changeStatus(row)}>
-						{row?.status === true ? "Active" : "Inactive"}
+					<Button color={row?.status_id === 1 ? "success" : "danger"} 
+					// onClick={
+					// 	() => changeStatus(row)
+					// 	}
+						>
+						{row?.status_id === 1 ? "Active" : "Inactive"}
 					</Button>
 				);
 			},
@@ -147,21 +140,21 @@ const ButtonList = (props) => {
 				</CardHeader>
 				<CardBody>
 					<RemoteTable
-						entity={`${props?.branchId}/buttons`}
+						entity={`${props?.branchId}/virtual-buttons`}
 						customEntity={`virtual-buttons`}
 						columns={columns}
 						// hideDetail={true}
 						sort={defaultSorted}
 						addRoute="/virtual-buttons/add"
 						Query={query}
-						filters={filters}
-						showAdvancedFilters={true}
-						customButton={{
-							name: "Reset Count",
-							color: "warning",
-							classes: "text-white",
-							callback: (data) => handleCountReset(data),
-						}}
+						// filters={filters}
+						// showAdvancedFilters={true}
+						// customButton={{
+						// 	name: "Reset Count",
+						// 	color: "warning",
+						// 	classes: "text-white",
+						// 	callback: (data) => handleCountReset(data),
+						// }}
 					/>
 				</CardBody>
 			</Card>
