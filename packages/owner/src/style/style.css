@@ -80,3 +80,23 @@ label.active{
     .fa-moon{
         display: none !important;
     }
+/* new changes */
+.c-sidebar .c-sidebar-brand {
+    background: #fff;
+}
+.c-sidebar .c-sidebar-brand img {
+    height: 35px;
+}
+.c-sidebar {
+    background: #325AA9;
+}
+.c-sidebar .c-sidebar-nav-link {
+    border-left: 5px solid transparent;
+}
+.c-sidebar .c-sidebar-nav-link.c-active, .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle {
+    background: #1F4898;
+    border-left: 5px solid #FF8B02;
+}
+.c-sidebar .c-sidebar-nav-link:hover, .c-sidebar .c-sidebar-nav-dropdown-toggle:hover {
+    background: #1F4898;
+}
