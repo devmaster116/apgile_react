@@ -124,6 +124,7 @@ body small {
     box-shadow: none;
     border-color: #E6E6E6;
     color: #56677A !important;
+    vertical-align: middle;
 }
 .table-bordered thead td, .table-bordered thead th {
     border-bottom-width: 1px;
@@ -154,4 +155,19 @@ body small {
 }
 .pagination .page-item {
     margin: 0 5px;
+}
+.c-main {
+    background: #F5F6FA;
+}
+.c-app:not(.c-legacy-theme) .c-header.c-header-fixed {
+    box-shadow: 0 3px 3px rgb(0 0 0 / 5%);
+}
+.c-app:not(.c-legacy-theme) .c-sidebar.c-sidebar-lg-show.c-sidebar-fixed, .c-app:not(.c-legacy-theme) .c-sidebar.c-sidebar-show.c-sidebar-fixed {
+    box-shadow: none;
+}
+.input-group>.form-control, .input-group>.form-select {
+    border: 1px solid #EBEBEB;
+    background-color: #f9f9f9;
+    border-radius: 10px !important;
+    height: 44px;
 }

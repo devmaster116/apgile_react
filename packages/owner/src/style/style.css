@@ -161,6 +161,7 @@ label.active{
         box-shadow: none;
         border-color: #E6E6E6;
         color: #56677A !important;
+        vertical-align: middle;
     }
     .table-bordered thead td, .table-bordered thead th {
         border-bottom-width: 1px;
@@ -191,4 +192,10 @@ label.active{
     }
     .pagination .page-item {
         margin: 0 5px;
+    }
+    .input-group>.form-control, .input-group>.form-select {
+        border: 1px solid #EBEBEB;
+        background-color: #f9f9f9;
+        border-radius: 10px !important;
+        height: 44px;
     }
