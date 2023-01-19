@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader } from 'reactstrap';
 import { FormGenerator } from '@evenlogics/whf-form-generator';
 import { connect } from "react-redux";
 import { formPageTitle } from "@facepays/common";
-
+import fontAwesome from './fontAwesome.json';
 
 const ButtonAdd = (props) => {
 
@@ -13,6 +13,7 @@ const ButtonAdd = (props) => {
     const [isLink, setIsLink] = useState(false)
     const [isCustomMsg, setisCustomMsg] = useState(false)
     const [isQty, setIsQty] = useState(false)
+    const [isLocation, setIsLocation] = useState(false)
     useEffect(() => {
         setQuery((prev) => !prev)
     }, [props.branchId]);
@@ -54,6 +55,7 @@ const ButtonAdd = (props) => {
             name: 'time',
             col: 4,
         },
+        
         weekdays: {
             type: 'advanceSelect',
             label: "Days",
@@ -104,6 +106,33 @@ const ButtonAdd = (props) => {
             col: 3,
             required: true
         },
+        Location:{
+            type:'h4',
+            value:'Location'
+        },
+        location_enabled: {
+            type: "switch",
+            label: "Enable On All Location",
+            required: false,
+            name:'location_enabled',
+            col: 2,
+            callback:async (e)=>{
+                await e
+                setIsLocation(e.value)
+            }
+        },
+        location_ids: {
+            type: "advanceSelect",
+            label: "Location",
+            target: `${props.branchId}/active/locations?limit=1000`,
+            // optionLabel: 'title',
+            async: true,
+            multi:true,
+            name: "location_ids",
+            col: 3,
+            condition:!isLocation
+        },
+       
         Formatting: {
             type: 'h4',
             value: 'Formatting',
@@ -135,10 +164,7 @@ const ButtonAdd = (props) => {
         icon: {
             type: 'advanceSelect',
             label: `Select Icon`,
-            options: [
-                { value: 'fas fa-link', label: 'Link' },
-                { value: 'fas fa-user-tie', label: 'User With Tie' },
-            ],
+            options: fontAwesome,
             optionLabel: 'label',
             optionId: 'value',
             required: true,
@@ -163,6 +189,7 @@ const ButtonAdd = (props) => {
         setIsLink(data.type === 3)
         setisCustomMsg(data.type === 4)
         setIsQty(data.type === 5)
+        setIsLocation(data.location_enabled)
 
     }
     return (

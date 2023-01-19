@@ -168,7 +168,9 @@ const filters = {
     }
 
     const openPage = (item) => {
-        window.open(item.front_url);
+
+        window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}`);
+        // window.open(item.front_url);
     }
 
     // const calculateParams = () => {

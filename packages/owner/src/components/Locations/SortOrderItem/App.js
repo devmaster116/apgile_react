@@ -26,7 +26,7 @@ const App = ({allOrderItems}) => {
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 {list.map((item, i) => (
                   <Draggable
-                    key={item.id}
+                    key={Math.random()}
                     draggableId={"draggable-" + item.id}
                     index={i}
                   >

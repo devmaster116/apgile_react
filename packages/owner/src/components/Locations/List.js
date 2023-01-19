@@ -10,19 +10,21 @@ import List from "./SortOrderItem/data";
 const LocationsList = (props) => {
 	const [query, setQuery] = useState(false);
 	const [allOrderItems, setAllOrderItems] = useState([])
+	const [allVirtualButtons, setAllVirtualButtons] = useState([])
 	const [selectedItems, setSelectedItems] = useState([])
 	const [minDate, setMinDate] = useState('');
 	const [valueOff, setValueOff] = useState(0);
 	const [locationId, setLocationId] = useState(null);
 	const [show, setShow] = useState(false);
-	var order_items = [];
+	const [sortActionFor,setSortActionFor]=useState('')
+	const [reloadItems,setReloadItems]=useState(false)
 
 	/* eslint-disable */
 
 
 	useEffect(() => {
 
-		api.request("get", `/${props.branchId}/order-items`)
+		api.request("get", `/${props.branchId}/order-items?limit=1000`)
 			.then(({ data }) => {
 				setAllOrderItems(data)
 			})
@@ -33,7 +35,18 @@ const LocationsList = (props) => {
 		} else {
 			setQuery((prev) => !prev)
 		}
-	}, [props.branchId]);
+
+		api.request("get", `/${props.branchId}/virtual-buttons?limit=1000`)
+			.then(({ data }) => {
+				console.log('vb',data)
+				setAllVirtualButtons(data)
+			})
+			.catch((error) => console.log(error));
+
+		
+	}, [props.branchId,reloadItems]);
+
+
 
 
 	/* eslint-enable */
@@ -50,7 +63,8 @@ const LocationsList = (props) => {
 	}
 	const handleClose = () => {
 		setShow(false)
-		order_items = [];
+		List.clearList() 
+		setSelectedItems([])
 	};
 
 	const handleSendSortedList = () => {
@@ -58,29 +72,45 @@ const LocationsList = (props) => {
 			sorted_items: List.getList(),
 		}
 		console.log("payload :- ", payload, "locationId :- ", locationId)
-		api.request("post", `/${props?.branchId}/location/${locationId}/sorted-items`, payload)
+		let url=`/${props?.branchId}/order-items-sorted`
+		if(sortActionFor==='virtualButtons'){
+			url=`/${props?.branchId}/vbtn-sorted`
+		}
+		api.request("post", url, payload)
 			.then((data) => {
 				handleClose()
 				setQuery(!query)
+				List.clearList()
+				setReloadItems(!reloadItems)
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}
+	
 
-	const handleShow = (data) => {
-		console.log(data?.order_items, "data.order_item")
+	const handleShow = (data, field) => {
+		console.log(field)
+		setSortActionFor(field)
 		setLocationId(data?.id)
-		allOrderItems.map((item) =>
-			data?.order_items.forEach(itemId => {
-				if (item.id === itemId) {
-					order_items.push(item)
+		let itemsForSorting = []
+		if (field === 'orderItems') {
+			allOrderItems.forEach((item) => {
+				if (data?.order_items.includes(item.id)) {
+					itemsForSorting.push(item)
 				}
 			})
-		)
-		setSelectedItems(order_items)
+		}
+		if (field === 'virtualButtons') {
+			allVirtualButtons.forEach((btn, i) => {
+				if (data?.virtualbtn_ids.includes(btn.id)) {
+					itemsForSorting.push(btn)
+				}
+			})
+		}
+		setSelectedItems(itemsForSorting)
 		setShow(true)
-	}
+	} 
 
 	const filters = {
 		start_date: {
@@ -180,6 +210,19 @@ const LocationsList = (props) => {
 				);
 			},
 		},
+		{
+			isDummyField: true,
+			align: "center",
+			text: "Sort Virtual Buttons",
+			sort: true,
+			formatter: (cell, row) => {
+				return (
+					<Button color={'info'} size='sm' onClick={(e) => {
+						handleShow(row,'virtualButtons')
+					}}>Sort Virtual Buttons</Button>
+				);
+			},
+		},
 
 
 
@@ -194,6 +237,7 @@ const LocationsList = (props) => {
 		}
 	];
 
+	console.log({selectedItems})
 
 	return (
 		<>
@@ -238,7 +282,7 @@ const LocationsList = (props) => {
 								name: "Sort Order Items",
 								color: "warning",
 								classes: "text-white",
-								callback: (data) => handleShow(data),
+								callback: (data) => handleShow(data,'orderItems'),
 							}}
 						/>
 					</CardBody>

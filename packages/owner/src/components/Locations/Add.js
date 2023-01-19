@@ -97,13 +97,13 @@ const LocationsAdd = (props) => {
             // required: true,
             col: 6
         },
-        virtualButtons: {
+        virtualbtn_ids: {
             type: 'advanceSelect',
             label: "Virtual Buttons",
             target: `${props.branchId}/virtual-buttons?limit=1000`,
             // async: true,
             optionLabel: 'title',
-            name: 'virtual_buttons',
+            name: 'virtualbtn_ids',
             multi:true,
             // required: true,
             col: 6
