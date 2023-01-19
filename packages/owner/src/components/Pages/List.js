@@ -168,8 +168,8 @@ const filters = {
     }
 
     const openPage = (item) => {
-
-        window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}`);
+        const id=JSON.parse(localStorage.getItem('currentUser')).id||''
+        window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}&owner=${id}`);
         // window.open(item.front_url);
     }
 
