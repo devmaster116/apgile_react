@@ -148,6 +148,7 @@ body .btn.btn-danger {
 body .btn.btn-secondary , body .btn.btn-info, body .btn.btn-primary {
     background-color: #2e476557;
     border: 1px solid #2e476530 !important;
+    color: #fff !important;
 }
 body small {
     font-weight: bold;
