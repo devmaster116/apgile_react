@@ -356,12 +356,12 @@ const Analytics = (props) => {
                                 dateFormat="MM-dd-yyyy"
                             />
                         </CCol>
-                        <CCol md={12} lg={6} xl={3}>
+                        <CCol md={12} lg={6} xl={4}>
                             <label>Select Time Range</label> <br/>
                             <TimeRangePicker format="h:m a" className="date-picker-custom" clockIcon={null} disableClock={true}
                                              onChange={onTimeChange} value={value}/>
                         </CCol>
-                        <CCol md={12} lg={6} xl={3}>
+                        <CCol md={12} lg={6} xl={2}>
                             <label>Create By</label> <br/>
                             {Object.entries(['hour', 'day', 'week', 'month']).map(([key, val], i) => (
                                     <label
