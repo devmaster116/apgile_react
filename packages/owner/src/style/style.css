@@ -217,3 +217,6 @@ body .button-tables a, body .button-tables button {
 body .btn.disabled, body .btn:disabled {
     opacity: .35;
 }
+body .button-tables a, body .button-tables button {
+    margin: 2px;
+}
