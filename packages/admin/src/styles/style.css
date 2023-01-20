@@ -111,6 +111,7 @@ body .btn.btn-danger {
 body .btn.btn-secondary , body .btn.btn-info, body .btn.btn-primary {
     background-color: #2e476557;
     border: 1px solid #2e476530 !important;
+    color: #fff !important;
 }
 body small {
     font-weight: bold;
@@ -144,7 +145,7 @@ body .btn.dropdown-toggle {
     background-color: #fff;
     box-shadow: none !important;
     border-radius: 10px;
-    color: #717171
+    color: #717171 !important;
 }
 body .pagination .page-link {
     background-color: #fff;
@@ -179,4 +180,7 @@ body .button-tables a, body .button-tables button {
 }
 body .btn.disabled, body .btn:disabled {
     opacity: .35;
+}
+body .button-tables a, body .button-tables button {
+    margin: 2px;
 }
