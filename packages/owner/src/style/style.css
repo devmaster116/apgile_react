@@ -182,7 +182,7 @@ body .btn.dropdown-toggle {
     background-color: #fff;
     box-shadow: none !important;
     border-radius: 10px;
-    color: #717171
+    color: #717171 !important;
 }
 body .pagination .page-link {
     background-color: #fff;
