@@ -206,11 +206,10 @@ body .c-app:not(.c-legacy-theme) .c-header.c-header-fixed {
 body .c-app:not(.c-legacy-theme) .c-sidebar.c-sidebar-lg-show.c-sidebar-fixed, .c-app:not(.c-legacy-theme) .c-sidebar.c-sidebar-show.c-sidebar-fixed {
     box-shadow: none;
 }
-body .input-group>.form-control, .input-group>.form-select {
+body .form-control, body .form-select {
     border: 1px solid #EBEBEB;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9 !important;
     border-radius: 10px !important;
-    height: 44px;
 }
 body .button-tables a, body .button-tables button {
     width: auto;
