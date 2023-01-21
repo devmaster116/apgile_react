@@ -160,43 +160,43 @@ const LocationsList = (props) => {
 			sort: true
 		},
 
-		{
-			isDummyField: true,
-			text: "Start Time",
-			align: "center",
-			sort: true,
-			formatter: (cell, row) => {
-				if (row?.start_list) {
-					return (
-						<span className="badge badge-dark">
-							{row?.start_list}
-						</span>
-					)
-				}
-			},
-		},
-		{
-			isDummyField: true,
-			text: "End Time",
-			align: "center",
-			sort: true,
-			formatter: (cell, row) => {
-				if (row?.end_list) {
-					return (
-						<span className="badge badge-dark">
-							{row?.end_list}
-						</span>
-					)
-				}
-			},
-		},
+		// {
+		// 	isDummyField: true,
+		// 	text: "Start Time",
+		// 	align: "center",
+		// 	sort: true,
+		// 	formatter: (cell, row) => {
+		// 		if (row?.start_list) {
+		// 			return (
+		// 				<span className="badge badge-dark">
+		// 					{row?.start_list}
+		// 				</span>
+		// 			)
+		// 		}
+		// 	},
+		// },
+		// {
+		// 	isDummyField: true,
+		// 	text: "End Time",
+		// 	align: "center",
+		// 	sort: true,
+		// 	formatter: (cell, row) => {
+		// 		if (row?.end_list) {
+		// 			return (
+		// 				<span className="badge badge-dark">
+		// 					{row?.end_list}
+		// 				</span>
+		// 			)
+		// 		}
+		// 	},
+		// },
 
-		{
-			dataField: 'weekdays_name',
-			text: 'Days',
-			align: 'center',
-			sort: true
-		},
+		// {
+		// 	dataField: 'weekdays_name',
+		// 	text: 'Days',
+		// 	align: 'center',
+		// 	sort: true
+		// },
 		{
 			isDummyField: true,
 			align: "center",
