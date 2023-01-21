@@ -163,11 +163,11 @@ const nav = {
         },
     },
     slot: {
-        phrase: "Slots",
+        phrase: "Time Slots",
         to: "/slots",
         roles: ["admin", "manager"],
         order: 60,
-        icon: "fas fa-cogs",
+        icon: "fas fa-clock",
     },
     setting: {
         phrase: "Settings",

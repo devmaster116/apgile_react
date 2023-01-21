@@ -74,7 +74,7 @@ const LocationsAdd = (props) => {
 
         slots: {
             type: 'advanceSelect',
-            label: "Slots",
+            label: "Time Slots",
             target: `${props.branchId}/slot-filters/location`,
             // async: true,
             multi:true,

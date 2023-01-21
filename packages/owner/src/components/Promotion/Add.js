@@ -78,12 +78,22 @@ const Add = (props) => {
             disabled:minDate ? false : true,
             minDate:minDate,
         },
-        time: {
-            type: 'timeRange',
-            label: 'Time',
-            // required: true,
-            name: 'time',
-            col: 4,
+        // time: {
+        //     type: 'timeRange',
+        //     label: 'Time',
+        //     // required: true,
+        //     name: 'time',
+        //     col: 4,
+        // },
+
+        slots: {
+            type: 'advanceSelect',
+            label: "Time Slots",
+            target: `${props.branchId}/slot-filters/promotion`,
+            // async: true,
+            multi:true,
+            required: true,
+            col: 4
         },
 
         dummy2: {
@@ -91,15 +101,15 @@ const Add = (props) => {
             isDummyField: true
         },
 
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Days",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            multi:true,
-            // required: true,
-            col: 6,
-        },
+        // weekdays: {
+        //     type: 'advanceSelect',
+        //     label: "Days",
+        //     target: `${props.branchId}/week-day-list`,
+        //     // async: true,
+        //     multi:true,
+        //     // required: true,
+        //     col: 6,
+        // },
 
         location_id: {
             type: "advanceSelect",
