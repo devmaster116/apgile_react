@@ -162,6 +162,13 @@ const nav = {
             },
         },
     },
+    slot: {
+        phrase: "Slots",
+        to: "/slots",
+        roles: ["admin", "manager"],
+        order: 60,
+        icon: "fas fa-cogs",
+    },
     setting: {
         phrase: "Settings",
         to: "/settings",

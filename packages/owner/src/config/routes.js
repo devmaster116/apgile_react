@@ -72,6 +72,8 @@ import ButtonDetail from "../components/Buttons/Detail";
 import VirtualButtonList from "../components/VirtualButtons/List";
 import VirtualButtonAdd from "../components/VirtualButtons/Add";
 import VirtualButtonDetail from "../components/VirtualButtons/Detail";
+import SlotList from "../components/Slot/List";
+import SlotAdd from "../components/Slot/Add";
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
@@ -125,6 +127,10 @@ const routes = [
 	{ path: '/reservations', exact : true,component: ReservationList,isPublic: false},
 	{ path: '/reservations/add', exact : true,component: ReservationAdd,isPublic: false},
 	{ path: '/reservations/:id/edit', exact : true,component: ReservationAdd,isPublic: false},
+
+	{ path: '/slots', exact : true,component: SlotList,isPublic: false},
+	{ path: '/slots/add', exact : true,component: SlotAdd,isPublic: false},
+	{ path: '/slots/:id/edit', exact : true,component: SlotAdd,isPublic: false},
 
 	{ path: '/areas', exact : true,component: AreasList,isPublic: false},
 	{ path: '/areas/add', exact : true,component: AreaAdd,isPublic: false},
