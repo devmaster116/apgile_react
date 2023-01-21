@@ -48,22 +48,30 @@ const ButtonAdd = (props) => {
             required: true,
             callback: onTypeChange
         },
-        time: {
-            type: 'timeRange',
-            label: 'Time',
-            required: true,
-            name: 'time',
-            col: 4,
-        },
-        
-        weekdays: {
+        // time: {
+        //     type: 'timeRange',
+        //     label: 'Time',
+        //     required: true,
+        //     name: 'time',
+        //     col: 4,
+        // },
+        //
+        // weekdays: {
+        //     type: 'advanceSelect',
+        //     label: "Days",
+        //     target: `${props.branchId}/week-day-list`,
+        //     // async: true,
+        //     name: 'weekdays',
+        //     multi: true,
+        //     required: true,
+        //     col: 4
+        // },
+        slots: {
             type: 'advanceSelect',
-            label: "Days",
-            target: `${props.branchId}/week-day-list`,
+            label: "Time Slots",
+            target: `${props.branchId}/slot-filters/virtualbutton`,
             // async: true,
-            name: 'weekdays',
-            multi: true,
-            required: true,
+            multi:true,
             col: 4
         },
         call_staff_id: {
@@ -100,12 +108,12 @@ const ButtonAdd = (props) => {
             required: isQty,
         },
 
-        priority_no: {
-            type: "number",
-            label: "Priority",
-            col: 3,
-            required: true
-        },
+        // priority_no: {
+        //     type: "number",
+        //     label: "Priority",
+        //     col: 3,
+        //     required: true
+        // },
         Location:{
             type:'h4',
             value:'Location'
@@ -208,7 +216,7 @@ const ButtonAdd = (props) => {
                     // repeater={true}
                     getInitialValues={getInitialValues}
                     redirect="virtual-buttons"
-                    debug={true}
+                    debug={false}
                 // handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>
