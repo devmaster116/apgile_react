@@ -154,6 +154,11 @@ const LocationsAdd = (props) => {
             type: "h4",
             col: 12,
         },
+        location_banner: {
+            type: "filePic",
+            label: "Location Banner",
+            col: 12,
+        },
         auto: {
             type: "switch",
             label: "Auto Assign Staff",
