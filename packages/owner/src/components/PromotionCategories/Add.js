@@ -4,7 +4,7 @@ import {Card, CardBody} from "reactstrap";
 import {Header} from "@evenlogics/whf-ra-components";
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
-
+import fontAwesome from '../VirtualButtons/fontAwesome.json'
 const Add = (props) => {
 
     useEffect(() => {
@@ -46,6 +46,16 @@ const Add = (props) => {
             label: "Status",
             required: true,
             col: 2
+        },
+        icon: {
+            type: 'advanceSelect',
+            label: `Select Icon`,
+            options: fontAwesome,
+            optionLabel: 'label',
+            optionId: 'value',
+            required: true,
+            name: 'icon',
+            col: 4,
         },
     };
 

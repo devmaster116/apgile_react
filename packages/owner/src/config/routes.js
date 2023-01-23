@@ -78,6 +78,7 @@ import SlotAdd from "../components/Slot/Add";
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
+const VirtualButtonsSort = React.lazy(() => import('../components/VirtualButtons/VirtualButtonsSort'));
 
 const routes = [
 
@@ -190,6 +191,7 @@ const routes = [
 	{path : "/virtual-buttons/add" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
 	{path : "/virtual-buttons/:id/details" ,exact : true ,component : VirtualButtonDetail,isPublic:true},
 	{path : "/virtual-buttons/:id/edit" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
+	{path : "/virtual-buttons-sort" ,exact : true ,component : VirtualButtonsSort,isPublic:true},
 
 ];
 

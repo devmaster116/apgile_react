@@ -112,6 +112,13 @@ const nav = {
         order: 150,
         icon: "fas fa-stop",
     },
+    virtual_buttons_sort: {
+        phrase: "Sort Virtual Buttons ",
+        to: "/virtual-buttons-sort",
+        roles: ["admin", "manager", "supervisor"],
+        order: 151,
+        icon: "fas fa-sort",
+    },
 
     bulkprinting: {
         phrase: "Bulk Printing",

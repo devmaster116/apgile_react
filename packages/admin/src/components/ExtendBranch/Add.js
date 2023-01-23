@@ -279,6 +279,14 @@ const ExtendBranchAdd = (props) =>  {
             required: true,
             col: 1,
         },
+        max_vbtn: {
+            type: "number",
+            label: "Max. Virt Buttons",
+            name: "max_vbtn",
+            required: true,
+            col: 1,
+            min: 0,
+        },
 
         max_watches:{
             parent: 'settings',

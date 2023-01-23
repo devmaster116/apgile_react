@@ -205,7 +205,12 @@ const LocationsAdd = (props) => {
                     name={id ? "editForm" : ""}
                     // repeater={true}
                     // initialValues={props.location.aboutProps}
-                    extraVals={{branch_id: props.branchId}}
+                    extraVals={
+                        {
+                            branch_id: props.branchId,
+                            ...(id&& {_method:'patch'})
+                        }
+                    }
                     redirect="locations"
                     getInitialValues={getInitialValues}
 
