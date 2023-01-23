@@ -43,14 +43,22 @@ function VirtualButtonSort(props) {
   }
 
 
-  const SortableContainer = sortableContainer(({ children }) => <div style={{ height: '33vw', overflowY: 'scroll' }}  >{children}</div>)
+  const SortableContainer = sortableContainer(({ children }) => <div className='sort-wrap' style={{
+    overflowY: 'scroll',
+    display: 'grid',
+    gridGap: '20px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(200px , 1fr))',
+    margin: '20px 0',
+    cursor:'grab'
+
+  }}  >{children}</div>)
 
   const SortableItem = sortableElement(({ children }) => children)
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setDataToSort(arrayMove(dataToSort, oldIndex, newIndex))
   };
-  const DragHandle = sortableHandle(() => <i className='fa fa-bars ' style={{cursor:'grab'}}></i>);
+
   return (
     <Card className="animated fadeIn">
       <CardHeader title={`Virtual Button Sort`} />
@@ -70,11 +78,14 @@ function VirtualButtonSort(props) {
             />
           </CCol>
           <CCol md={12}>
-            <SortableContainer onSortEnd={onSortEnd} useDragHandle axis='xy' >
+            <SortableContainer onSortEnd={onSortEnd} axis="xy" >
               {dataToSort.map((data, index) => (
                 <SortableItem key={`item-${data.id}`} index={index} value={data} >
-                  <div className='p-2 d-flex align-items-center'>
-                  <DragHandle />
+                  <div className='p-2 d-flex align-items-center sort-inner' style={{
+                    border: '1px solid #cbcbcb',
+                    borderRadius: '5px',
+                    backgroundColor: '#eef5ff'
+                  }}>
                     <div className='ml-1'>  <i className={`fa ${data.icon}`}></i>{data.title}</div>
                   </div>
                 </SortableItem>
