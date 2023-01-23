@@ -23,7 +23,7 @@ const ButtonAdd = (props) => {
         setTimeout(() => {
             setIsStaff(e.value === 2)
             setIsLink(e.value === 3)
-            setisCustomMsg(e.value === 4)
+            // setisCustomMsg(e.value === 4)
             setIsQty(e.value === 5)
         }, 0);
 
@@ -158,7 +158,7 @@ const ButtonAdd = (props) => {
         background_color: {
             type: "color",
             label: "background Color",
-            defaultValue: "#000000",
+            defaultValue: "#ffffff",
             name: "background_color",
             col: 2,
             required: false
@@ -216,7 +216,7 @@ const ButtonAdd = (props) => {
                     // repeater={true}
                     getInitialValues={getInitialValues}
                     redirect="virtual-buttons"
-                    debug={false}
+                    // debug={false}
                 // handleSameValueFields={['title', 'slug']}
                 />
             </CardBody>
