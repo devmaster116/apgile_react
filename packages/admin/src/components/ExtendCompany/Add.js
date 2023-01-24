@@ -314,7 +314,14 @@ const Add = (props) => {
             min: 0,
             condition: showAddFields,
         },
-
+        max_vbtn: {
+            type: "number",
+            label: "Max. Virt Buttons",
+            name: "max_vbtn",
+            required: true,
+            col: 1,
+            min: 0,
+        },
         watches: {
             type: "number",
             label: "Max. Watches",
