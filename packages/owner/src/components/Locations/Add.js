@@ -64,28 +64,38 @@ const LocationsAdd = (props) => {
         //     showTimeSelectOnly:true,
         // },
 
-        time: {
-            type: 'timeRange',
-            label: 'Time',
+        // time: {
+        //     type: 'timeRange',
+        //     label: 'Time',
+        //     required: true,
+        //     name: 'time',
+        //     col: 4,
+        // },
+
+        slots: {
+            type: 'advanceSelect',
+            label: "Time Slots",
+            target: `${props.branchId}/slot-filters/location`,
+            // async: true,
+            multi:true,
             required: true,
-            name: 'time',
-            col: 4,
+            col: 4
         },
 
         // dummy: {
         //     isDummyField: true,
         //     col: 1
         // },
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Days",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            name: 'weekdays',
-            multi:true,
-            required: true,
-            col: 6
-        },
+        // weekdays: {
+        //     type: 'advanceSelect',
+        //     label: "Days",
+        //     target: `${props.branchId}/week-day-list`,
+        //     // async: true,
+        //     name: 'weekdays',
+        //     multi:true,
+        //     required: true,
+        //     col: 6
+        // },
         orderItems: {
             type: 'advanceSelect',
             label: "Order Items",
@@ -144,6 +154,11 @@ const LocationsAdd = (props) => {
             type: "h4",
             col: 12,
         },
+        location_banner: {
+            type: "filePic",
+            label: "Location Banner",
+            col: 12,
+        },
         auto: {
             type: "switch",
             label: "Auto Assign Staff",
@@ -190,7 +205,12 @@ const LocationsAdd = (props) => {
                     name={id ? "editForm" : ""}
                     // repeater={true}
                     // initialValues={props.location.aboutProps}
-                    extraVals={{branch_id: props.branchId}}
+                    extraVals={
+                        {
+                            branch_id: props.branchId,
+                            ...(id&& {_method:'patch'})
+                        }
+                    }
                     redirect="locations"
                     getInitialValues={getInitialValues}
 

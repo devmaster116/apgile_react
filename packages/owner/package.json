@@ -27,6 +27,7 @@
     "react-dom": "^16.13.1",
     "react-input-mask": "^2.0.4",
     "react-select": "^5.2.1",
+    "react-sortable-hoc": "^2.0.0",
     "styled-components": "^5.3.6",
     "sweetalert2": "^11.3.3"
   },

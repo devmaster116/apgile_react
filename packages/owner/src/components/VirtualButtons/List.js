@@ -63,42 +63,58 @@ const ButtonList = (props) => {
 			align: "center",
 			sort: true,
 		},
-		{
-			dataField: 'weekdays_name',
-			text: 'Days',
-			align: 'center',
-			sort: true
-		},
+		// {
+		// 	dataField: 'weekdays_name',
+		// 	text: 'Days',
+		// 	align: 'center',
+		// 	sort: true
+		// },
+
 		{
 			isDummyField: true,
-			text: "Start Time",
+			text: "Slots",
 			align: "center",
 			sort: true,
 			formatter: (cell, row) => {
-				if (row?.time) {
+				if (row?.slots) {
 					return (
-						<span className="badge badge-dark">
-							{row.time[0]}
-						</span>
+						
+							row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
+						
 					)
 				}
 			},
 		},
-		{
-			isDummyField: true,
-			text: "End Time",
-			align: "center",
-			sort: true,
-			formatter: (cell, row) => {
-				if (row?.time) {
-					return (
-						<span className="badge badge-dark">
-							{row?.time[1]}
-						</span>
-					)
-				}
-			},
-		},
+		// {
+		// 	isDummyField: true,
+		// 	text: "Start Time",
+		// 	align: "center",
+		// 	sort: true,
+		// 	formatter: (cell, row) => {
+		// 		if (row?.time) {
+		// 			return (
+		// 				<span className="badge badge-dark">
+		// 					{row.time[0]}
+		// 				</span>
+		// 			)
+		// 		}
+		// 	},
+		// },
+		// {
+		// 	isDummyField: true,
+		// 	text: "End Time",
+		// 	align: "center",
+		// 	sort: true,
+		// 	formatter: (cell, row) => {
+		// 		if (row?.time) {
+		// 			return (
+		// 				<span className="badge badge-dark">
+		// 					{row?.time[1]}
+		// 				</span>
+		// 			)
+		// 		}
+		// 	},
+		// },
 		{
 			align: "center",
 			text: "Status",

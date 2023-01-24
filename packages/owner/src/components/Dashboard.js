@@ -40,7 +40,7 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <h3>Apdroit Dashboard</h3>
+            <h3>Apgile Dashboard</h3>
 
             <div>
                 <CRow>
@@ -55,9 +55,9 @@ const Dashboard = (props) => {
             </div>
 
 
-            <div className="text-center">
-                <img src="https://service.facepays.ai/assets/images/fp-icon.png" height="30%" alt="Apdroit" />
-            </div>
+            {/*<div className="text-center">*/}
+            {/*    <img src="https://service.facepays.ai/assets/images/fp-icon.png" height="30%" alt="Apgile" />*/}
+            {/*</div>*/}
         </div>
     );
 };

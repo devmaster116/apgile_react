@@ -22,6 +22,15 @@ const ButtonAdd = (props) => {
             target: `${props.branchId}/pages?limit=1000`,
             col: 4,
         },
+        virtual_button_id: {
+            type: 'advanceSelect',
+            label: "Virtual Button",
+            target: `${props.branchId}/virtual-button-physical`,
+            // async: true,
+            // multi:true,
+            optionLabel: "title",
+            col: 4
+        },
         status: {
             type: "switch",
             label: "Status",
