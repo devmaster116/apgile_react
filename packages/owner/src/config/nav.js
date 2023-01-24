@@ -119,6 +119,13 @@ const nav = {
         order: 150,
         icon: "fas fa-stop",
     },
+    submit_ticket: {
+        phrase: "Submit Ticket",
+        to: "/submit-ticket",
+        roles: ["admin", "manager", "supervisor"],
+        order: 151,
+        icon: "fas fa-stop",
+    },
   
 
     bulkprinting: {

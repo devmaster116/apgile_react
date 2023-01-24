@@ -84,6 +84,8 @@ const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 const VirtualButtonsSort = React.lazy(() => import('../components/VirtualButtons/VirtualButtonsSort'));
+const SubmitTicket = React.lazy(() => import('../components/SubmitTicket/SubmitTicket'));
+
 
 const routes = [
 
@@ -199,6 +201,7 @@ const routes = [
 	{path : "/virtual-buttons/:id/edit" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
 	
 	{path : "/vb-sort" ,exact : true ,component : VirtualButtonsSort,isPublic:false},
+	{path : "/submit-ticket" ,exact : true ,component : SubmitTicket,isPublic:false},
 	
 
 ];
