@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
+import { Button } from 'react-bootstrap';
+import {Modal,Spinner,ModalHeader,ModalBody} from "react-bootstrap/";
 
 const ReservationAdd = (props) => {
 // const [targetItemsPath, setTargetItemsPath] = useState(`${props.branchId}/pages?limit=2000`)
+    const [showImportModal, setShowImportModal] = useState(false)
     useEffect(() => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
@@ -120,10 +123,23 @@ const ReservationAdd = (props) => {
         }
     };
 
+
+    const importFields={
+        file: {
+            type: 'file',
+            label: 'CSV File ',
+            required: true,
+            col: 12,
+        },
+    }
     return (
         <Card className="animated fadeIn">
             <CardHeader>
-                {formPageTitle('Reservation', id)}
+                <div className='d-flex justify-content-between'>
+                    {formPageTitle('Reservation', id)}
+                      <Button onClick={()=>setShowImportModal(true)} >Import Reservation</Button>  
+                </div>
+                
             </CardHeader>
             <CardBody>
                 <FormGenerator
@@ -133,8 +149,19 @@ const ReservationAdd = (props) => {
                     name={id ? "editForm" : ""}
                     extraVals={{branch_id: props.branchId}}
                     redirect="reservations"
+                    successCallback={()=>setShowImportModal(false)}
                 />
             </CardBody>
+            <Modal style={{ textAlign: "center" }} show={showImportModal} onHide={() => setShowImportModal(false)} aria-labelledby="contained-modal-title-vcenter" centered>
+                <ModalHeader >Import CSV</ModalHeader>
+                <ModalBody>
+                    <FormGenerator
+                        targetEntity={`${props.branchId}/reservation-import`}
+                        fields={importFields}
+                        redirect="reservations"
+                    />
+                </ModalBody>
+            </Modal>
         </Card>
     );
 }

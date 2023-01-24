@@ -104,7 +104,14 @@ const nav = {
         order: 32,
         icon: "fas fa-stop",
     },
-    
+    virtual_buttons_sort: {
+        phrase: "Sort Virtual Buttons",
+        to: "/vb-sort",
+        roles: ["admin", "manager", "supervisor"],
+        order: 151,
+        icon: "fas fa-sort",
+    },
+  
     virtual_buttons: {
         phrase: "Virtual Buttons",
         to: "/virtual-buttons",
@@ -112,13 +119,7 @@ const nav = {
         order: 150,
         icon: "fas fa-stop",
     },
-    virtual_buttons_sort: {
-        phrase: "Sort Virtual Buttons ",
-        to: "/virtual-buttons-sort",
-        roles: ["admin", "manager", "supervisor"],
-        order: 151,
-        icon: "fas fa-sort",
-    },
+  
 
     bulkprinting: {
         phrase: "Bulk Printing",
@@ -140,6 +141,13 @@ const nav = {
         roles: ["admin", "manager"],
         order: 50,
         icon: "fas fa-utensils",
+    },
+    oi_sort: {
+        phrase: "Sort Order Items",
+        to: "/oi-sort",
+        roles: ["admin", "manager", "supervisor"],
+        order: 51,
+        icon: "fas fa-sort",
     },
     entity: {
         phrase: "Branch",

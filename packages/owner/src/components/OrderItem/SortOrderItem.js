@@ -8,7 +8,7 @@ import { sortableContainer, sortableElement, arrayMove } from 'react-sortable-ho
 
 
 
-function VirtualButtonSort(props) {
+function OrderItemSort(props) {
 
   const [options, setOptions] = useState([])
   const [selectedOption, setSelectedOption] = useState(null)
@@ -26,7 +26,7 @@ function VirtualButtonSort(props) {
 
   useEffect(() => {
     if (selectedOption?.value) {
-      api.request("get", `/${props?.branchId}/virtual-buttons?limit=1000&location_id=${selectedOption.value}`)
+      api.request("get", `/${props?.branchId}/order-items?limit=1000&location_id=${selectedOption.value}`)
         .then(({ data }) => {
           setDataToSort(data)
         })
@@ -112,4 +112,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(VirtualButtonSort);
+export default connect(mapStateToProps, null)(OrderItemSort);
