@@ -264,12 +264,17 @@ const ExtendBranchAdd = (props) =>  {
             col: 1
         },
 
+        dummy6: {
+            isDummyField: true,
+            col: 12
+        },
+
         max_users:{
             parent: 'settings',
             type: "number",
             label: "Max. Users",
             required: true,
-            col: 1
+            col: 2
         },
 
         max_buttons: {
@@ -277,15 +282,15 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Max. Buttons",
             required: true,
-            col: 1,
+            col: 2,
         },
         max_vbtn: {
             parent: 'settings',
             type: "number",
-            label: "Max. Virt Buttons",
+            label: "Max. Virtual Buttons",
             name: "max_vbtn",
             required: true,
-            col: 1,
+            col: 2,
             min: 0,
         },
       
@@ -294,7 +299,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Max. Watches",
             required: true,
-            col: 1
+            col: 2
         },
 
         max_codes:{
@@ -302,7 +307,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Max. QR Codes",
             required: true,
-            col: 1
+            col: 2
         },
 
 
@@ -311,7 +316,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Max. Calls",
             required: true,
-            col: 1
+            col: 2
         },
 
         // spacer: {
@@ -325,7 +330,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Wait Time",
             required: true,
-            col: 1,
+            col: 2,
             min:0
         },
         // cycle: {
@@ -342,7 +347,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Throttle Wait",
             required: true,
-            col: 1,
+            col: 2,
             min:0
         },
 
@@ -351,7 +356,7 @@ const ExtendBranchAdd = (props) =>  {
             type: "number",
             label: "Button Wait",
             required: true,
-            col: 1,
+            col: 2,
             min: 0,
         },
 
