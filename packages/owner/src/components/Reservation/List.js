@@ -82,12 +82,15 @@ const ReservationList = (props) => {
         },
     }
     const exportCsv=()=>{
-        const url =`${process.env.REACT_APP_URL}/reservation-export?branch_id=${props.branchId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`
-        api.request("get",url)
-        .then(({data}) => {
-            console.log(data)
-        })
-        .catch((error) => console.log(error));
+        window.open(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${props.branchId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`,'_blank')
+        
+        setShowExportModal(false)
+        // const url =`${process.env.REACT_APP_URL}/reservation-export?branch_id=${props.branchId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`
+        // api.request("get",url)
+        // .then(({data}) => {
+        //     console.log(data)
+        // })
+        // .catch((error) => console.log(error));
     }
     return (
         <div className="animated">
