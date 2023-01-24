@@ -124,7 +124,7 @@ const nav = {
         to: "/submit-ticket",
         roles: ["admin", "manager", "supervisor"],
         order: 151,
-        icon: "fas fa-stop",
+        icon: "fas fa-question-circle",
     },
   
 
