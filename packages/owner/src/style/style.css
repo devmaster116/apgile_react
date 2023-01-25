@@ -220,6 +220,21 @@ body .btn.disabled, body .btn:disabled {
 body .button-tables a, body .button-tables button {
     margin: 2px;
 }
+.react-timerange-picker .react-timerange-picker__wrapper {
+    border: none !important;
+    height: initial;
+}
+.react-timerange-picker .react-timerange-picker__inputGroup {
+    height: auto;
+}
+.react-timerange-picker input {
+    margin: 0 5px;
+    outline: none;
+}
+.react-timerange-picker input:focus {
+    border-color: #8ad4ee;
+    box-shadow: 0 0 0 0.2rem rgb(50 31 219 / 25%);
+}
 body .c-sidebar .c-sidebar-nav-link, body .c-sidebar .c-sidebar-nav-dropdown-toggle ,
 body .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon, body .c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon{
     color: #fff;
@@ -230,4 +245,11 @@ body .c-sidebar-nav-dropdown {
 }
 body .c-sidebar-nav-dropdown.c-show {
     border-left: 5px solid #FF8B02;
+}
+.react-timerange-picker .react-timerange-picker__wrapper select {
+    padding: 5px 2px;
+    margin-right: 5px;
+}
+.shadow {
+    border-radius: 5px;
 }
