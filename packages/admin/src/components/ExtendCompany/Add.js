@@ -326,6 +326,7 @@ const Add = (props) => {
             required: true,
             col: 2,
             min: 0,
+            condition: showAddFields,
         },
         watches: {
             type: "number",
