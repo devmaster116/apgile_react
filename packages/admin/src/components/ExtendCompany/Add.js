@@ -322,7 +322,6 @@ const Add = (props) => {
         max_vbtn: {
             type: "number",
             label: "Max. Virtual Buttons",
-            name: "max_vbtn",
             required: true,
             col: 2,
             min: 0,
