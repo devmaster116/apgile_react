@@ -220,3 +220,14 @@ body .btn.disabled, body .btn:disabled {
 body .button-tables a, body .button-tables button {
     margin: 2px;
 }
+body .c-sidebar .c-sidebar-nav-link, body .c-sidebar .c-sidebar-nav-dropdown-toggle ,
+body .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon, body .c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon{
+    color: #fff;
+    font-weight: 600;
+}
+body .c-sidebar-nav-dropdown {
+    border-left: 5px solid transparent;
+}
+body .c-sidebar-nav-dropdown.c-show {
+    border-left: 5px solid #FF8B02;
+}
