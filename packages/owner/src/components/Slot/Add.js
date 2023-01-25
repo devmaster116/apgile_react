@@ -59,7 +59,9 @@ const SlotAdd = (props) => {
         },
 
     };
-
+    const  getInitialValues=(data)=>{
+        setIsFullDay(data.full_day)
+    }
     return (
         <Card className="animated fadeIn">
             <CardHeader>
@@ -72,6 +74,7 @@ const SlotAdd = (props) => {
                     targetId={id}
                     name={id ? "editForm" : ""}
                     extraVals={{branch_id: props.branchId}}
+                    getInitialValues={getInitialValues}
                     redirect="slots"
                 />
             </CardBody>
