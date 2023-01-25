@@ -8,7 +8,7 @@ import { sortableContainer, sortableElement, arrayMove } from 'react-sortable-ho
 import { toast } from 'react-toastify';
 
 
-function VirtualButtonSort(props) {
+function OrderItemSort(props) {
 
   const [options, setOptions] = useState([])
   const [selectedOption, setSelectedOption] = useState(null)
@@ -28,7 +28,7 @@ function VirtualButtonSort(props) {
 
   useEffect(() => {
     if (selectedOption?.value) {
-      api.request("get", `/${props?.branchId}/virtual-buttons?limit=1000&location_id=${selectedOption.value}`)
+      api.request("get", `/${props?.branchId}/order-items?limit=1000&location_id=${selectedOption.value}`)
         .then(({ data }) => {
           setDataToSort(data)
         })
@@ -72,7 +72,7 @@ function VirtualButtonSort(props) {
   const deleteItem = () => {
     const { id, index } = dataToDelete
     if (id && index) {
-      api.request("delete", `/${props?.branchId}/virtual-buttons/${id}`)
+      api.request("delete", `/${props?.branchId}/order-items/${id}`)
         .then(({ data }) => {
           setDataToSort((prev) => {
             prev.splice(index, 1)
@@ -93,24 +93,26 @@ function VirtualButtonSort(props) {
     setShowDeleteModal(false)
     setDataToDelete({ id: null, index: null })
   }
+
   return (
     <Card className="animated fadeIn">
       <CardHeader>
         <div className='d-flex justify-content-between'>
-          Virtual Button Sort
-          <Button color='success' onClick={() => { props.history.push('/virtual-buttons/add') }} >Add Virtual Buttons</Button>
+          Order Item Sort
+          <Button color='success' onClick={() => { props.history.push('/order-items/add') }} >Add Order Items</Button>
         </div>
       </CardHeader>
-
       <CardBody>
-
         <CRow>
           <CCol md={6}>
             <label>Select Location</label>
             <Select
-              className="basic-multi-select" placeholder="All..."
-              classNamePrefix="select" onChange={onOptionChange}
-              options={options} value={selectedOption}
+              className="basic-multi-select"
+              placeholder="All..."
+              classNamePrefix="select"
+              onChange={onOptionChange}
+              options={options}
+              value={selectedOption}
             // isMulti
             />
 
@@ -121,19 +123,22 @@ function VirtualButtonSort(props) {
             <CCol md={12}>
               <SortableContainer onSortEnd={onSortEnd} axis="xy" >
                 {dataToSort.map((data, index) => (
-                  <SortableItem key={`item-${data.id}`} index={index} value={data} >
-                    <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
-                      <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
-                      <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
-                    </div>
-                  </SortableItem>
+                  <SortableContainer onSortEnd={onSortEnd} axis="xy" >
+                    {dataToSort.map((data, index) => (
+                      <SortableItem key={`item-${data.id}`} index={index} value={data} >
+                        <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
+                          <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
+                          <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
+                        </div>
+                      </SortableItem>
+                    ))}
+                  </SortableContainer>
                 ))}
               </SortableContainer>
               <Button color="primary" className="mt-2" onClick={onSave} >Save Order</Button>
             </CCol>
           }
         </CRow>
-
 
         <Modal isOpen={showDeleteModal} >
           <ModalHeader >Delete Item</ModalHeader>
@@ -155,4 +160,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(VirtualButtonSort);
+export default connect(mapStateToProps, null)(OrderItemSort);

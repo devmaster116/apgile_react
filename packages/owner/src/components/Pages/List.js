@@ -168,9 +168,9 @@ const filters = {
     }
 
     const openPage = (item) => {
-        const id=JSON.parse(localStorage.getItem('currentUser')).id||''
-        window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}&owner=${id}`);
-        // window.open(item.front_url);
+        // const id=JSON.parse(localStorage.getItem('currentUser')).id||''
+        // window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}&owner=${id}`);
+        window.open(item.pwa_page_url);
     }
 
     // const calculateParams = () => {

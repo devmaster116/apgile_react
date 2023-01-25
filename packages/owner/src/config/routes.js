@@ -1,84 +1,91 @@
 import React from "react";
-
-import Dashboard from "./../components/Dashboard";
-import Analytics from "./../components/Analytics";
-
-import ProfileDetail from "./../components/Profile/Detail";
-import StaffCalls from "./../components/Profile/Calls";
-
-import CompanyBranchList from "../components/CompanyBranch/List";
-import CompanyBranchAdd from "../components/CompanyBranch/Add";
-
-import UserList from "./../components/Users/List";
-import UserAdd from "./../components/Users/Add";
-
-import TeamsList from "./../components/Teams/List";
-import TeamsAdd from "./../components/Teams/Add";
-
-import ShiftsList from "./../components/Shift/List";
-import ShiftAdd from "./../components/Shift/Add";
-
-
-import RoastersList from "./../components/Roaster/List";
-import RoasterAdd from "./../components/Roaster/Add";
-
-import LocationsList from "./../components/Locations/List";
-import LocationAdd from "./../components/Locations/Add";
-
-import ItemsList from "./../components/Items/List";
-import ItemAdd from "./../components/Items/Add";
-
-import AreasList from "./../components/Area/List";
-import AreaAdd from "./../components/Area/Add";
-
-import PagesList from "./../components/Pages/List";
-
-import StaffList from "./../components/Staff/List";
-import StaffAdd from "./../components/Staff/Add";
-import StaffDetail from "./../components/Staff/Detail";
-
 import ValidateAsOwner from "./../components/ValidateAsOwner";
 
+const Dashboard = React.lazy(() => import('./../components/Dashboard'));
+const Analytics = React.lazy(() => import('./../components/Analytics'));
+const ProfileDetail = React.lazy(() => import('./../components/Profile/Detail'));
+const StaffCalls = React.lazy(() => import('./../components/Profile/Calls'));
 
-import SettingAdd from "./../components/Settings/Add";
-import InternalCalls from "../components/InternalCalls/InternalCallsPlaces";
+const CompanyBranchList = React.lazy(() => import('./../components/CompanyBranch/List'));
+const CompanyBranchAdd = React.lazy(() => import('./../components/CompanyBranch/Add'));
 
-import CallsList from "./../components/Calls/List";
-import KitchenCalls from "./../components/KitchenCalls/List";
-import CallAssigned from "./../components/Calls/Add";
-import CallDetail from "./../components/Calls/Detail";
+const UserList = React.lazy(() => import('./../components/Users/List'));
+const UserAdd = React.lazy(() => import('./../components/Users/Add'));
 
-import CategoriesList from "./../components/PromotionCategories/List";
-import CategoriesAdd from "./../components/PromotionCategories/Add";
+const TeamsList = React.lazy(() => import('./../components/Teams/List'));
+const TeamsAdd = React.lazy(() => import('./../components/Teams/Add'));
 
-import WatchesList from "./../components/Watches/List";
-import WatchesAdd from "./../components/Watches/Add";
+const ShiftsList = React.lazy(() => import('./../components/Shift/List'));
+const ShiftAdd = React.lazy(() => import('./../components/Shift/Add'));
+
+const RoastersList = React.lazy(() => import('./../components/Roaster/List'));
+const RoasterAdd = React.lazy(() => import('./../components/Roaster/Add'));
 
 
-import StyleAdd from "./../components/Styles/Add";
+const LocationsList = React.lazy(() => import('./../components/Locations/List'));
+const LocationAdd = React.lazy(() => import('./../components/Locations/Add'));
 
-import KitchenCallAdd from "./../components/KitchenCalls/Add";
+const ItemsList = React.lazy(() => import('./../components/Items/List'));
+const ItemAdd = React.lazy(() => import('./../components/Items/Add'));
 
-import mirageRoute from "../components/MirageRoute";
-import OrderItemList from "../components/OrderItem/List";
-import OrderItemAdd from "../components/OrderItem/Add";
-import ReservationList from "../components/Reservation/List";
-import ReservationAdd from "../components/Reservation/Add";
-import BulkPrinting from "../components/Pages/Bulk";
-import ButtonList from "../components/Buttons/List";
-import ButtonAdd from "../components/Buttons/Add";
-import ButtonDetail from "../components/Buttons/Detail";
+const AreasList = React.lazy(() => import('./../components/Area/List'));
+const AreaAdd = React.lazy(() => import('./../components/Area/Add'));
 
-import VirtualButtonList from "../components/VirtualButtons/List";
-import VirtualButtonAdd from "../components/VirtualButtons/Add";
-import VirtualButtonDetail from "../components/VirtualButtons/Detail";
-import SlotList from "../components/Slot/List";
-import SlotAdd from "../components/Slot/Add";
+const PagesList = React.lazy(() => import('./../components/Pages/List'));
+
+const StaffList = React.lazy(() => import('./../components/Staff/List'));
+const StaffAdd = React.lazy(() => import('./../components/Staff/Add'));
+
+const StaffDetail = React.lazy(() => import('./../components/Staff/Detail'));
+// const ValidateAsOwner = React.lazy(() => import('./../components/ValidateAsOwner'));
+const SettingAdd = React.lazy(() => import('./../components/Settings/Add'));
+const InternalCalls = React.lazy(() => import('../components/InternalCalls/InternalCallsPlaces'));
+
+
+const CallsList = React.lazy(() => import('./../components/Calls/List'));
+const KitchenCalls = React.lazy(() => import('./../components/KitchenCalls/List'));
+const CallAssigned = React.lazy(() => import('./../components/Calls/Add'));
+const CallDetail = React.lazy(() => import('./../components/Calls/Detail'));
+const CategoriesList = React.lazy(() => import('./../components/PromotionCategories/List'));
+
+
+const CategoriesAdd = React.lazy(() => import('./../components/PromotionCategories/Add'));
+const WatchesList = React.lazy(() => import('./../components/Watches/List'));
+const WatchesAdd = React.lazy(() => import('./../components/Watches/Add'));
+const StyleAdd = React.lazy(() => import('./../components/Styles/Add'));
+
+
+const KitchenCallAdd = React.lazy(() => import('./../components/KitchenCalls/Add'));
+const mirageRoute = React.lazy(() => import('../components/MirageRoute'));
+
+const OrderItemList = React.lazy(() => import('../components/OrderItem/List'));
+const OrderItemAdd = React.lazy(() => import('../components/OrderItem/Add'));
+
+const ReservationList = React.lazy(() => import('../components/Reservation/List'));
+const ReservationAdd = React.lazy(() => import('../components/Reservation/Add'));
+
+
+const BulkPrinting = React.lazy(() => import('../components/Pages/Bulk'));
+
+const ButtonList = React.lazy(() => import('../components/Buttons/List'));
+const ButtonAdd = React.lazy(() => import('../components/Buttons/Add'));
+const ButtonDetail = React.lazy(() => import('../components/Buttons/Detail'));
+
+
+const VirtualButtonList = React.lazy(() => import('../components/VirtualButtons/List'));
+const VirtualButtonAdd = React.lazy(() => import('../components/VirtualButtons/Add'));
+const VirtualButtonDetail = React.lazy(() => import('../components/VirtualButtons/Detail'));
+const SlotList = React.lazy(() => import('../components/Slot/List'));
+
+const SlotAdd = React.lazy(() => import('../components/Slot/Add'));
+const SortOrderItem = React.lazy(() => import('../components/OrderItem/SortOrderItem'));
 
 const AddPromotions = React.lazy(() => import('./../components/Promotion/Add'));
 const PromotionsList = React.lazy(() => import('./../components/Promotion/List'));
 
 const VirtualButtonsSort = React.lazy(() => import('../components/VirtualButtons/VirtualButtonsSort'));
+const SubmitTicket = React.lazy(() => import('../components/SubmitTicket/SubmitTicket'));
+
 
 const routes = [
 
@@ -119,7 +126,8 @@ const routes = [
 	{ path: '/order-items', exact : true,component: OrderItemList,isPublic: false},
 	{ path: '/order-items/add', exact : true,component: OrderItemAdd,isPublic: false},
 	{ path: '/order-items/:id/edit', exact : true,component: OrderItemAdd,isPublic: false},
-
+	{ path: '/oi-sort', exact : true,component: SortOrderItem,isPublic: false},
+	
 
 	{ path: '/items', exact : true,component: ItemsList,isPublic: false},
 	{ path: '/items/add', exact : true,component: ItemAdd,isPublic: false},
@@ -186,12 +194,15 @@ const routes = [
 
 
 	{path : "/validateAsOwner/:token" ,exact : true ,component : ValidateAsOwner,isPublic:true},
-
+	
 	{path : "/virtual-buttons" ,exact : true ,component : VirtualButtonList,isPublic:true},
 	{path : "/virtual-buttons/add" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
 	{path : "/virtual-buttons/:id/details" ,exact : true ,component : VirtualButtonDetail,isPublic:true},
 	{path : "/virtual-buttons/:id/edit" ,exact : true ,component : VirtualButtonAdd,isPublic:true},
-	{path : "/virtual-buttons-sort" ,exact : true ,component : VirtualButtonsSort,isPublic:true},
+	
+	{path : "/vb-sort" ,exact : true ,component : VirtualButtonsSort,isPublic:false},
+	{path : "/submit-ticket" ,exact : true ,component : SubmitTicket,isPublic:false},
+	
 
 ];
 

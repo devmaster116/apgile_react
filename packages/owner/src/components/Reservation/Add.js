@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
+import { Button } from 'react-bootstrap';
 
 const ReservationAdd = (props) => {
 // const [targetItemsPath, setTargetItemsPath] = useState(`${props.branchId}/pages?limit=2000`)
@@ -120,10 +121,12 @@ const ReservationAdd = (props) => {
         }
     };
 
+
+   
     return (
         <Card className="animated fadeIn">
             <CardHeader>
-                {formPageTitle('Reservation', id)}
+                    {formPageTitle('Reservation', id)}
             </CardHeader>
             <CardBody>
                 <FormGenerator
@@ -135,6 +138,7 @@ const ReservationAdd = (props) => {
                     redirect="reservations"
                 />
             </CardBody>
+           
         </Card>
     );
 }
