@@ -56,13 +56,21 @@ const OrderItemAdd = (props) => {
             multi:true,
             col: 4
         },
-      
+       
         status_id: {
             type: "switch",
             label: "Status",
             required: true,
             col: 2
         },
+        locations: {
+            type: "advanceSelect",
+            label: "Select Location",
+            target: `${props.branchId}/locations`,
+            name: "locations",
+            col: 6,
+            multi:true,
+          },
         description: {
             type: 'textarea',
             label: 'Description',
