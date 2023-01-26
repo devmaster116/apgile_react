@@ -155,7 +155,7 @@ const ButtonList = (props) => {
 						entity={`${props?.branchId}/virtual-buttons`}
 						customEntity={`virtual-buttons`}
 						columns={columns}
-						// hideDetail={true}
+						hideDetail={true}
 						sort={defaultSorted}
 						addRoute="/virtual-buttons/add"
 						Query={query}

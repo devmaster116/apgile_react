@@ -28,7 +28,7 @@ function OrderItemSort(props) {
 
   useEffect(() => {
     if (selectedOption?.value) {
-      api.request("get", `/${props?.branchId}/order-items?limit=1000&location_id=${selectedOption.value}`)
+      api.request("get", `/${props?.branchId}/get-order-orderItem?limit=1000&location_id=${selectedOption.value}`)
         .then(({ data }) => {
           setDataToSort(data)
         })
@@ -54,8 +54,11 @@ function OrderItemSort(props) {
   const onSortEnd = ({ oldIndex, newIndex }) => setDataToSort(arrayMove(dataToSort, oldIndex, newIndex))
 
   const onSave = () => {
-    const data = dataToSort
-    api.request("get", `/${props?.branchId}/virtual-buttons`, data)
+    const data = {
+      location_id:selectedOption.value,
+      sort:dataToSort.map((d)=>d.id)
+  }
+    api.request("post", `/${props?.branchId}/set-order-orderItem`, data)
       .then(({ data }) => {
         toast.success('Sorted Successfully')
       })
