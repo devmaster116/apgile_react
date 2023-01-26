@@ -71,7 +71,7 @@ function OrderItemSort(props) {
   }
   const deleteItem = () => {
     const { id, index } = dataToDelete
-    if (id && index) {
+    if (id && index!==null) {
       api.request("delete", `/${props?.branchId}/order-items/${id}`)
         .then(({ data }) => {
           setDataToSort((prev) => {
