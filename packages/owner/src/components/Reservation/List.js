@@ -1,5 +1,5 @@
 import {CCol, CFormInput, CFormLabel, CRow} from '@coreui/react-pro';
-import {Card, CardBody, CardHeader, Button} from 'reactstrap';
+import {Card, CardBody, CardHeader, Button,Spinner} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {Modal,ModalHeader,ModalBody} from "react-bootstrap/";
 import RemoteTable from '@evenlogics/whf-remote-table';
@@ -12,6 +12,8 @@ const ReservationList = (props) => {
 
     const [showExportModal, setShowExportModal] = useState(false)
     const [showImportModal, setShowImportModal] = useState(false)
+    const [encId, setEncId] = useState('')
+    const [encIdLoading,setEncIdLoading]=useState(false)
 
     const [query, setQuery] = useState(false);
     const [valueOff, setValueOff] = useState(0);
@@ -82,15 +84,20 @@ const ReservationList = (props) => {
         },
     }
     const exportCsv=()=>{
-        window.open(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${props.branchId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`,'_blank')
-        
-        setShowExportModal(false)
-        // const url =`${process.env.REACT_APP_URL}/reservation-export?branch_id=${props.branchId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`
-        // api.request("get",url)
-        // .then(({data}) => {
-        //     console.log(data)
-        // })
-        // .catch((error) => console.log(error));
+        console.log(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`)
+        window.open(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`,'_blank')
+        setShowExportModal(false) 
+    }
+
+    const openExportModal=()=>{
+        setEncIdLoading(true)
+        api.request('post',`/${props.branchId}/encrypt-string`).then((res) => {
+            setEncId(res.encrypted_string)
+            setEncIdLoading(false)
+        }).catch((err) => {
+            
+        });
+        setShowExportModal(true)
     }
     return (
         <div className="animated">
@@ -99,8 +106,8 @@ const ReservationList = (props) => {
                     <div className='d-flex justify-content-between'>
                         <strong>All Reservations</strong>
                         <div>
-                            <Button onClick={() => setShowExportModal(true)} color='info'>Export Reservation</Button>{'   '}
-                            <Button onClick={() => setShowImportModal(true)} color='warning' >Import Reservation</Button>
+                            <Button onClick={openExportModal} color='info'>Export Reservation</Button>{'   '}
+                            <Button onClick={()=>setShowImportModal(true)} color='warning' >Import Reservation</Button>
                         </div>
                     </div>
                 </CardHeader>
@@ -121,7 +128,13 @@ const ReservationList = (props) => {
             <Modal style={{ textAlign: "center" }} show={showExportModal} onHide={() => setShowExportModal(false)} aria-labelledby="contained-modal-title-vcenter" centered>
                 <ModalHeader >Export CSV</ModalHeader>
                 <ModalBody>
-                    <CRow>
+                    {
+                        encIdLoading ?
+                        <Spinner animation="border" role="status" className='mx-auto'>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                        :
+                        <CRow>
                         <CCol lg={4} md={4} sm={12}>
                             <CFormLabel>Start Date</CFormLabel>
                             <CFormInput type='date' ref={startDate}/>
@@ -135,6 +148,7 @@ const ReservationList = (props) => {
                         </CCol>
 
                     </CRow>
+                    }
                 </ModalBody>
             </Modal>
 

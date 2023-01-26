@@ -19,9 +19,9 @@ const ButtonList = (props) => {
 
 	const changeStatus = (data) => {
 		let payload = {
-			status: !data?.status,
+			status: !data?.status_id,
 		}
-		api.request("put", `/${props?.branchId}/virtual-buttons/status/${data?.id}`, payload)
+		api.request("put", `/${props?.branchId}/virtual-button/status/${data?.id}`, payload)
 			.then((data) => {
 				setQuery(!query)
 			})
