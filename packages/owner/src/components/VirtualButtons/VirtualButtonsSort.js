@@ -71,7 +71,8 @@ function VirtualButtonSort(props) {
   }
   const deleteItem = () => {
     const { id, index } = dataToDelete
-    if (id && index) {
+    console.log(id, index)
+    if (id && index!==null) {
       api.request("delete", `/${props?.branchId}/virtual-buttons/${id}`)
         .then(({ data }) => {
           setDataToSort((prev) => {

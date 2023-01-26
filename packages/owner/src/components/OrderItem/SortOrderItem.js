@@ -123,16 +123,12 @@ function OrderItemSort(props) {
             <CCol md={12}>
               <SortableContainer onSortEnd={onSortEnd} axis="xy" >
                 {dataToSort.map((data, index) => (
-                  <SortableContainer onSortEnd={onSortEnd} axis="xy" >
-                    {dataToSort.map((data, index) => (
-                      <SortableItem key={`item-${data.id}`} index={index} value={data} >
-                        <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
-                          <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
-                          <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
-                        </div>
-                      </SortableItem>
-                    ))}
-                  </SortableContainer>
+                  <SortableItem key={`item-${data.id}`} index={index} value={data} >
+                    <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
+                      <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
+                      <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
+                    </div>
+                  </SortableItem>
                 ))}
               </SortableContainer>
               <Button color="primary" className="mt-2" onClick={onSave} >Save Order</Button>
