@@ -17,16 +17,16 @@ const ButtonList = (props) => {
 		}
 	}, [valueOff]);
 
-	// const changeStatus = (data) => {
-	// 	let payload = {
-	// 		status: !data?.status,
-	// 	}
-	// 	api.request("put", `/${props?.branchId}/buttons/status/${data?.id}`, payload)
-	// 		.then((data) => {
-	// 			setQuery(!query)
-	// 		})
-	// 		.catch((error) => console.log(error));
-	// }
+	const changeStatus = (data) => {
+		let payload = {
+			status: !data?.status_id,
+		}
+		api.request("put", `/${props?.branchId}/virtual-button/status/${data?.id}`, payload)
+			.then((data) => {
+				setQuery(!query)
+			})
+			.catch((error) => console.log(error));
+	}
 
 	
 
@@ -122,11 +122,7 @@ const ButtonList = (props) => {
 			formatter: (cell, row) => {
 				console.log(row,row.status_id)
 				return (
-					<Button color={row?.status_id === 1 ? "success" : "danger"} 
-					// onClick={
-					// 	() => changeStatus(row)
-					// 	}
-						>
+					<Button color={row?.status_id === 1 ? "success" : "danger"} onClick={() => changeStatus(row)}>
 						{row?.status_id === 1 ? "Active" : "Inactive"}
 					</Button>
 				);
@@ -159,7 +155,7 @@ const ButtonList = (props) => {
 						entity={`${props?.branchId}/virtual-buttons`}
 						customEntity={`virtual-buttons`}
 						columns={columns}
-						// hideDetail={true}
+						hideDetail={true}
 						sort={defaultSorted}
 						addRoute="/virtual-buttons/add"
 						Query={query}

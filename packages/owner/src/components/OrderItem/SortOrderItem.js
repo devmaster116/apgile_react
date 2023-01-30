@@ -28,7 +28,7 @@ function OrderItemSort(props) {
 
   useEffect(() => {
     if (selectedOption?.value) {
-      api.request("get", `/${props?.branchId}/order-items?limit=1000&location_id=${selectedOption.value}`)
+      api.request("get", `/${props?.branchId}/get-order-orderItem?limit=1000&location_id=${selectedOption.value}`)
         .then(({ data }) => {
           setDataToSort(data)
         })
@@ -54,8 +54,11 @@ function OrderItemSort(props) {
   const onSortEnd = ({ oldIndex, newIndex }) => setDataToSort(arrayMove(dataToSort, oldIndex, newIndex))
 
   const onSave = () => {
-    const data = dataToSort
-    api.request("get", `/${props?.branchId}/virtual-buttons`, data)
+    const data = {
+      location_id:selectedOption.value,
+      sort:dataToSort.map((d)=>d.id)
+  }
+    api.request("post", `/${props?.branchId}/set-order-orderItem`, data)
       .then(({ data }) => {
         toast.success('Sorted Successfully')
       })
@@ -71,7 +74,7 @@ function OrderItemSort(props) {
   }
   const deleteItem = () => {
     const { id, index } = dataToDelete
-    if (id && index) {
+    if (id && index!==null) {
       api.request("delete", `/${props?.branchId}/order-items/${id}`)
         .then(({ data }) => {
           setDataToSort((prev) => {
@@ -123,16 +126,12 @@ function OrderItemSort(props) {
             <CCol md={12}>
               <SortableContainer onSortEnd={onSortEnd} axis="xy" >
                 {dataToSort.map((data, index) => (
-                  <SortableContainer onSortEnd={onSortEnd} axis="xy" >
-                    {dataToSort.map((data, index) => (
-                      <SortableItem key={`item-${data.id}`} index={index} value={data} >
-                        <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
-                          <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
-                          <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
-                        </div>
-                      </SortableItem>
-                    ))}
-                  </SortableContainer>
+                  <SortableItem key={`item-${data.id}`} index={index} value={data} >
+                    <div className='p-2 d-flex align-items-center sort-inner justify-content-between' style={{ border: '1px solid #cbcbcb', borderRadius: '5px', backgroundColor: '#eef5ff' }}>
+                      <div className='ml-1'>  <i className={`fa ${data.icon} mr-2`}></i>{data.title}</div>
+                      <Button color='danger' onClick={() => { openDeleteModal(data.id, index) }} ><i className='fa fa-trash'></i></Button>
+                    </div>
+                  </SortableItem>
                 ))}
               </SortableContainer>
               <Button color="primary" className="mt-2" onClick={onSave} >Save Order</Button>
