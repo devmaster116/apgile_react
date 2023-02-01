@@ -56,6 +56,14 @@ const nav = {
         },
     },
 
+    slot: {
+        phrase: "Time Slots",
+        to: "/slots",
+        roles: ["admin", "manager"],
+        order: 22,
+        icon: "fas fa-clock",
+    },
+
     locations: {
         phrase: "Location Management",
         to: "/locations",
@@ -86,75 +94,110 @@ const nav = {
                 roles: ["admin", "manager"],
                 icon: "fas fa-warehouse",
             },
+            reservations: {
+                phrase: "Reservations",
+                to: "/reservations",
+                roles: ["admin", "manager"],
+                order: 10,
+                icon: "fas fa-calendar",
+            },
         },
     },
 
-    qrcode: {
+    order_management: {
+        phrase: "Order Items",
+        to: "/promotions",
+        roles: ["admin", "manager"],
+        order: 28,
+        icon: "fas fa-utensils",
+        children: {
+            order_items: {
+                phrase: "Items",
+                to: "/order-items",
+                roles: ["admin", "manager"],
+                order: 10,
+                icon: "fas fa-utensils",
+            },
+            oi_sort: {
+                phrase: "Sort Order Items",
+                to: "/oi-sort",
+                roles: ["admin", "manager"],
+                order: 11,
+                icon: "fas fa-sort",
+            },
+        },
+    },
+
+    virtual_btn_management: {
+        phrase: "Virtual Buttons",
+        to: "/promotions",
+        roles: ["admin", "manager"],
+        order: 29,
+        icon: "fas fa-stop",
+        children: {
+            virtual_buttons: {
+                phrase: "Virtual Buttons",
+                to: "/virtual-buttons",
+                roles: ["admin", "manager", "supervisor"],
+                order: 150,
+                icon: "fas fa-stop",
+            },
+            virtual_buttons_sort: {
+                phrase: "Sort Virtual Buttons",
+                to: "/vb-sort",
+                roles: ["admin", "manager", "supervisor"],
+                order: 151,
+                icon: "fas fa-sort",
+            },
+        },
+    },
+
+    qr_code_management: {
         phrase: "QR Codes",
         to: "/qr-codes",
-        roles: ["admin", "manager", "supervisor"],
-        order: 31,
+        roles: ["admin", "manager"],
+        order: 32,
         icon: "fas fa-pager",
+        children: {
+            qrcode: {
+                phrase: "QR Codes",
+                to: "/qr-codes",
+                roles: ["admin", "manager"],
+                order: 32,
+                icon: "fas fa-pager",
+            },
+            bulkprinting: {
+                phrase: "Bulk Printing",
+                to: "/bulk-printing",
+                roles: ["admin", "manager"],
+                order: 33,
+                icon: "fas fa-print",
+            },
+        },
     },
 
     buttons: {
-        phrase: "Buttons",
+        phrase: "IoT Buttons",
         to: "/buttons",
         roles: ["admin", "manager", "supervisor"],
+        order: 31,
+        icon: "fas fa-stop",
+    },
+
+    internal_venues: {
+        phrase: "Internal Venues",
+        to: "/internal-venues",
+        roles: ["admin", "manager"],
         order: 32,
-        icon: "fas fa-stop",
+        icon: "fas fa-building",
     },
-    virtual_buttons_sort: {
-        phrase: "Sort Virtual Buttons",
-        to: "/vb-sort",
-        roles: ["admin", "manager", "supervisor"],
-        order: 151,
-        icon: "fas fa-sort",
-    },
-  
-    virtual_buttons: {
-        phrase: "Virtual Buttons",
-        to: "/virtual-buttons",
-        roles: ["admin", "manager", "supervisor"],
-        order: 150,
-        icon: "fas fa-stop",
-    },
+
     submit_ticket: {
         phrase: "Submit Ticket",
         to: "/submit-ticket",
         roles: ["admin", "manager", "supervisor"],
         order: 152,
         icon: "fas fa-question-circle",
-    },
-  
-
-    bulkprinting: {
-        phrase: "Bulk Printing",
-        to: "/bulk-printing",
-        roles: ["admin", "manager", "supervisor"],
-        order: 33,
-        icon: "fas fa-print",
-    },
-    reservations: {
-        phrase: "Reservations",
-        to: "/reservations",
-        roles: ["admin", "manager"],
-        order: 40,
-        icon: "fas fa-calendar",
-    },
-    order_items: {
-        phrase: "Order Items",
-        to: "/order-items",
-        roles: ["admin", "manager"],
-        order: 50,
-        icon: "fas fa-utensils",
-    },
-    oi_sort: {
-        phrase: "Sort Order Items",
-        to: "/oi-sort",
-        roles: ["admin", "manager", "supervisor"],
-        order: 51,
-        icon: "fas fa-sort",
     },
     entity: {
         phrase: "Branch",
@@ -184,26 +227,12 @@ const nav = {
             },
         },
     },
-    slot: {
-        phrase: "Time Slots",
-        to: "/slots",
-        roles: ["admin", "manager"],
-        order: 60,
-        icon: "fas fa-clock",
-    },
     setting: {
         phrase: "Settings",
         to: "/settings",
         roles: ["admin", "manager"],
         order: 100,
         icon: "fas fa-cogs",
-    },
-    internal_venues: {
-        phrase: "Internal Venues",
-        to: "/internal-venues",
-        roles: ["admin", "manager"],
-        order: 101,
-        icon: "fas fa-building",
     },
     user: {
         _tag: "CSidebarNavDropdown",
