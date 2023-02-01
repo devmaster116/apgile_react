@@ -31,11 +31,17 @@ const ButtonAdd = (props) => {
             optionLabel: "title",
             col: 4
         },
+        total_click: {
+            type: "number",
+            label: "Total Clicks",
+            col: 2,
+            required:true
+        },
         status: {
             type: "switch",
             label: "Status",
             required: true,
-            col: 3
+            col: 2
         },
         dummy: {
             col: 5,
