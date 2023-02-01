@@ -79,6 +79,12 @@ const ItemAdd = (props) => {
             min:1,
             col: 2
         },
+        reservable: {
+            type: "switch",
+            label: "Reservable",
+            required: true,
+            col: 2
+        },
 
     };
 
