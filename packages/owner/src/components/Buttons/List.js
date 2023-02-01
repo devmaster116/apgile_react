@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader, Button } from 'reactstrap';
 import RemoteTable from '@evenlogics/whf-remote-table';
 import { connect } from "react-redux";
 import api from "@evenlogics/whf-api";
+import { toast } from 'react-toastify';
 
 const ButtonList = (props) => {
 
@@ -33,6 +34,7 @@ const ButtonList = (props) => {
 		api.request("post", `/${props?.branchId}/buttons/reset-count/${data?.uuid}`)
 			.then((data) => {
 				setQuery(!query)
+				toast.success('Counter has been reset')
 			})
 			.catch((error) => console.log(error));
 	}
