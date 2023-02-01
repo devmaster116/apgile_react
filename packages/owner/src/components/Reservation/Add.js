@@ -68,7 +68,7 @@ const ReservationAdd = (props) => {
             type: "advanceSelect",
             label: "Reserved Items",
             name: "page_ids",
-            target: `${props.branchId}/pages?limit=2000`,
+            target: `${props.branchId}/pages?limit=2000&reservable=1`,
             required: true,
             multi:true,
             // async: true,
