@@ -113,6 +113,16 @@ const ButtonList = (props) => {
 				);
 			},
 		},
+		{
+			align: "center",
+			text: "Battery Percentage",
+			sort: true,
+			formatter: (cell, row) => {
+				return (
+                   <span class={row?.battery_percentage <= 30 ? 'badge badge-pill badge-danger' : 'badge badge-pill badge-success'}>{row?.battery_percentage}%</span>
+				);
+			},
+		},
 
 	];
 
