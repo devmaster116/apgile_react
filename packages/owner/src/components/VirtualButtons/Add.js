@@ -8,14 +8,14 @@ import fontAwesome from './fontAwesome.json';
 const ButtonAdd = (props) => {
 
     const { id } = props.match.params;
-    const [query, setQuery] = useState(false);
+    // const [query, setQuery] = useState(false);
     const [isStaff, setIsStaff] = useState(false);
     const [isLink, setIsLink] = useState(false)
     const [isCustomMsg, setisCustomMsg] = useState(false)
     const [isQty, setIsQty] = useState(false)
     const [isLocation, setIsLocation] = useState(false)
     useEffect(() => {
-        setQuery((prev) => !prev)
+        // setQuery((prev) => !prev)
     }, [props.branchId]);
 
 

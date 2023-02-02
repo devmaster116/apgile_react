@@ -33,7 +33,7 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start:owner": "set PORT=3006 && react-scripts start",
+    "start:owner": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "build:staging": "env-cmd -f .env.staging react-scripts build",
     "build:production": "env-cmd -f .env.production react-scripts build",
