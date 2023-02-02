@@ -164,6 +164,8 @@ const filters = {
     ];
 
     const downloadPdf = (item) => {
+        console.log(item,"item")
+        console.log(item.download_url,"item.download_url")
         window.open(item.download_url);
     }
 
