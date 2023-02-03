@@ -125,7 +125,7 @@ const LocationsAdd = (props) => {
         status: {
             type: "switch",
             label: "Status",
-            required: true,
+            // required: true,
             col: 2
         },
         message_box: {

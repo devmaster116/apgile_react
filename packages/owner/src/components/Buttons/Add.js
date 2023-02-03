@@ -41,7 +41,7 @@ const ButtonAdd = (props) => {
         status: {
             type: "switch",
             label: "Status",
-            required: true,
+            // required: true,
             col: 2
         },
         dummy: {

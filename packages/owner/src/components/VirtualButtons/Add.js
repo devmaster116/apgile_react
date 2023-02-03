@@ -166,7 +166,7 @@ const ButtonAdd = (props) => {
         status_id: {
             type: "switch",
             label: "Status",
-            required: true,
+            // required: true,
             col: 2
         },
         icon: {
