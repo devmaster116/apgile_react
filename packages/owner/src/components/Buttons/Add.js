@@ -20,6 +20,7 @@ const ButtonAdd = (props) => {
             type: "advanceSelect",
             label: "Select Item Type",
             target: `${props.branchId}/pages?limit=1000`,
+            required:true,
             col: 4,
         },
         virtual_button_id: {
