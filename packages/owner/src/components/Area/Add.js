@@ -91,7 +91,17 @@ const Add = (props) => {
             required: true,
             async: true,
             multi: true,
-            col: 8,
+            col: 4,
+        },
+
+        slots: {
+            type: 'advanceSelect',
+            label: "Time Slots",
+            target: `${props.branchId}/slot-filters/area`,
+            // async: true,
+            multi:true,
+            required: true,
+            col: 4
         },
     };
 
