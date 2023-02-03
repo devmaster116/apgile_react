@@ -32,6 +32,7 @@ const TheHeader = (props) => {
         let roled = ls?.roles?.map(role => role)
          props.userRole === "admin" &&  api.request("get", `/branches/${ls?.company?.id}/all`)
             .then(({data}) => {
+                console.log(data,"data")
                 setCompanyAllBranches(data)
                 let optionsArr = data?.map((detail,i) => ({value: detail?.id, label: detail?.name,order:i}))
                 setOptions(optionsArr);
@@ -123,6 +124,10 @@ const TheHeader = (props) => {
              </CHeaderNavLink>
            }
           </CHeaderNavItem>
+          {console.log(options,"options")}
+          {console.log(options[props?.order],"options[props?.order]")}
+          {console.log(props?.order,"props?.order")}
+       
           {props.userRole === "admin" && options.length > 1 && (
             <Select
               // value={this.state.value}

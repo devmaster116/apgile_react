@@ -11,6 +11,7 @@ const SlotAdd = (props) => {
     const {id} = props.match.params;
 
     const [isFullDay, setIsFullDay] = useState(false)
+    const [isFullWeek, setIsFullWeek] = useState(false)
 
 
     const fields = {
@@ -28,6 +29,7 @@ const SlotAdd = (props) => {
             name: 'weekdays',
             multi:true,
             required: true,
+            condition:!isFullWeek,
             col: 4
         },
         target: {
@@ -50,6 +52,17 @@ const SlotAdd = (props) => {
                 setIsFullDay(e.value)
             }
         },
+        full_week: {
+            type: "switch",
+            label: "Full Week",
+            required: false,
+            name:'full_week',
+            col: 2,
+            callback:async (e)=>{
+                await e
+                setIsFullWeek(e?.value)
+            }
+        },
         time: {
             type: 'timeRange',
             label: 'Time',
@@ -61,6 +74,7 @@ const SlotAdd = (props) => {
     };
     const  getInitialValues=(data)=>{
         setIsFullDay(data.full_day)
+        setIsFullWeek(data.full_week)
     }
     return (
         <Card className="animated fadeIn">
