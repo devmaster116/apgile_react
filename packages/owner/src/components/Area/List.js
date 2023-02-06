@@ -11,7 +11,7 @@ const List = (props) => {
 
     const [query, setQuery] = useState(false);
     const [minDate, setMinDate] = useState('');
-    const [pages,setPages] = useState(`${props?.branchId}/pages`)
+    const [pages,setPages] = useState(`${props?.branchId}/pages?limit=1000`)
     const [valueOff, setValueOff] = useState(0);
 
 /* eslint-disable */
@@ -42,7 +42,7 @@ const List = (props) => {
 
     const handleChangeLocation = (data) => {
         setTimeout(() => {
-            setPages(`${props?.branchId}/location/${data?.value}/pages`)
+            setPages(`${props?.branchId}/location/${data?.value}/pages?limit=1000`)
         }, 1);
     }
     const defaultSorted = [{dataField: "id", order: "desc"}];

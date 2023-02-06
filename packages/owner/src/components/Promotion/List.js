@@ -38,7 +38,7 @@ const List = (props) => {
         category_id: {
             type: "advanceSelect",
             label: "Select Category",
-            target: `${props?.branchId}/categories`,
+            target: `${props?.branchId}/categories?limit=1000`,
             async: true,
             col: 3,
         },
