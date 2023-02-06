@@ -85,6 +85,21 @@ const ButtonList = (props) => {
 				}
 			},
 		},
+		{
+			isDummyField: true,
+			text: "Locations",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+				if (row?.location_names) {
+					return (
+						
+							row.location_names.map((s)=><span className="badge badge-dark ml-1">{s}</span>)
+						
+					)
+				}
+			},
+		},
 		// {
 		// 	isDummyField: true,
 		// 	text: "Start Time",
@@ -115,7 +130,7 @@ const ButtonList = (props) => {
 		// 		}
 		// 	},
 		// },
-		{
+		{ 
 			align: "center",
 			text: "Status",
 			sort: true,
