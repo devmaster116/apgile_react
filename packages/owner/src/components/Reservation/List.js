@@ -84,8 +84,8 @@ const ReservationList = (props) => {
         },
     }
     const exportCsv=()=>{
-        console.log(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`)
-        window.open(`${process.env.REACT_APP_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`,'_blank')
+        console.log(`${process.env.REACT_APP_SERVER_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`)
+        window.open(`${process.env.REACT_APP_SERVER_URL}/reservation-export?branch_id=${encId}&start_date=${startDate.current.value}&end_date=${endDate.current.value}`,'_blank')
         setShowExportModal(false) 
     }
 
