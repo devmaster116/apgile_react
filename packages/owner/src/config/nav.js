@@ -133,7 +133,7 @@ const nav = {
         to: "/promotions",
         roles: ["admin", "manager"],
         order: 29,
-        icon: "fas fa-stop",
+        icon: "fas fa-circle",
         children: {
             virtual_buttons: {
                 phrase: "Virtual Buttons",
