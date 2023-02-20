@@ -246,6 +246,29 @@ const Analytics = (props) => {
                         color={dashbaordData?.monthly_quota > 100 ? 'success' : 'danger'}
                     />
                 </CCol> }
+
+                {!props.orderItems &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Block
+                        title="Order items"
+                        value={dashbaordData?.orderItems}
+                        color="info"
+                    />
+                </CCol> }
+                {!props.reservations &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Block
+                        title="Reservations"
+                        value={dashbaordData?.reservations}
+                        color="success"
+                    />
+                </CCol> }
+                {!props.promotions &&<CCol xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Block
+                        title="Promotions"
+                        value={dashbaordData?.promotions}
+                        color="warning"
+                    />
+                </CCol> }
+                
             </CRow>
             <CRow>
 
