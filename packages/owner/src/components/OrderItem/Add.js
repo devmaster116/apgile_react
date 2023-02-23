@@ -51,7 +51,7 @@ const OrderItemAdd = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/orderitem`,
+            target: `${props.branchId}/slot-filters/orderitem?limit=1000`,
             // async: true,
             multi:true,
             col: 4

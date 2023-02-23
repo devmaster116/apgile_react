@@ -69,7 +69,7 @@ const ButtonAdd = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/virtualbutton`,
+            target: `${props.branchId}/slot-filters/virtualbutton?limit=1000`,
             // async: true,
             multi:true,
             col: 4

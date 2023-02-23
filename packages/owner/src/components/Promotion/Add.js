@@ -89,7 +89,7 @@ const Add = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/promotion`,
+            target: `${props.branchId}/slot-filters/promotion?limit=1000`,
             // async: true,
             multi:true,
             required: true,
