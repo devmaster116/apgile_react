@@ -119,6 +119,7 @@ const List = (props) => {
             sort: true,
             formatter: (cell, row) => {
                 console.log(row, "row")
+                if(row?.promotion_image?.url){
                 return (
                     <img
                         width="60"
@@ -128,6 +129,9 @@ const List = (props) => {
                         alt="logo"
                     />
                 );
+                }else{
+                    return 'No Image'
+                }
             },
         },
 
