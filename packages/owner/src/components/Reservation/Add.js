@@ -38,16 +38,16 @@ const ReservationAdd = (props) => {
             required: true,
             col: 3,
         },
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Days",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            name: 'weekdays',
-            multi:true,
-            required: true,
-            col: 4
-        },
+        // weekdays: {
+        //     type: 'advanceSelect',
+        //     label: "Days",
+        //     target: `${props.branchId}/week-day-list`,
+        //     // async: true,
+        //     name: 'weekdays',
+        //     multi:true,
+        //     required: true,
+        //     col: 4
+        // },
         // location_id: {
         //     type: "advanceSelect",
         //     label: "Location",
