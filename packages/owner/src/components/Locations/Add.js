@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
 const LocationsAdd = (props) => {
-
+    const [fullDay,setFullDay]=useState("true")
     const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
         // setQuery((prev) => !prev);
@@ -79,7 +79,11 @@ const LocationsAdd = (props) => {
             // async: true,
             multi:true,
             required: true,
-            col: 4
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value.length?"false":"true")
+            }
         },
 
         // dummy: {
@@ -189,6 +193,7 @@ const LocationsAdd = (props) => {
         }else {
             setShowTeam(false);
         }
+        setFullDay(data.slots.length?"false":"true")
     }
 
     return (
@@ -208,7 +213,8 @@ const LocationsAdd = (props) => {
                     extraVals={
                         {
                             branch_id: props.branchId,
-                            ...(id&& {_method:'patch'})
+                            ...(id&& {_method:'patch'}),
+                            full_day:fullDay
                         }
                     }
                     redirect="locations"

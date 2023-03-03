@@ -11,7 +11,7 @@ const Add = (props) => {
     const {id} = props.match.params;
     const [targetPoint, setTargetID] = useState(id ? `${props.branchId}/items-page/${id}` : `${props.branchId}/items-pages`);
     const [showItem, setShowItem] = useState(id ? '' : 'd-none');
-
+    const [fullDay,setFullDay]=useState("true")
 
     useEffect(() => {
     }, [props.branchId]);
@@ -101,10 +101,18 @@ const Add = (props) => {
             // async: true,
             multi:true,
             required: true,
-            col: 4
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value.length?"false":"true")
+            }
         },
     };
+    const getInitialValues = async (data) => {
+        await data;
+        setFullDay(data.slots.length?"false":"true")
 
+    }
     return (
         <div>
             <Card className="animated fadeIn">
@@ -117,7 +125,8 @@ const Add = (props) => {
                         name={id ? "editForm" : ""}
                         repeater={true}
                         redirect="areas"
-                        extraVals={{branch_id: props.branchId}}
+                        extraVals={{branch_id: props.branchId,full_day:fullDay}}
+                        getInitialValues={getInitialValues}
                         // successCallback={successCallback}
                     />
                 </CardBody>

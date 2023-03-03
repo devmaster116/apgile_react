@@ -14,6 +14,7 @@ const ButtonAdd = (props) => {
     const [isCustomMsg, setisCustomMsg] = useState(false)
     const [isQty, setIsQty] = useState(false)
     const [isLocation, setIsLocation] = useState(false)
+    const [fullDay,setFullDay]=useState("true")
     useEffect(() => {
         // setQuery((prev) => !prev)
     }, [props.branchId]);
@@ -72,7 +73,11 @@ const ButtonAdd = (props) => {
             target: `${props.branchId}/slot-filters/virtualbutton?limit=1000`,
             // async: true,
             multi:true,
-            col: 4
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value.length?"false":"true")
+            }
         },
         call_staff_id: {
             type: 'advanceSelect',
@@ -198,6 +203,7 @@ const ButtonAdd = (props) => {
         setisCustomMsg(data.type === 4)
         setIsQty(data.type === 5)
         setIsLocation(data.location_enabled)
+        setFullDay(data.slots.length?"false":"true")
 
     }
     return (
@@ -216,6 +222,7 @@ const ButtonAdd = (props) => {
                     // repeater={true}
                     getInitialValues={getInitialValues}
                     redirect="virtual-buttons"
+                    extraVals={{full_day:fullDay}}
                     // debug={false}
                 // handleSameValueFields={['title', 'slug']}
                 />

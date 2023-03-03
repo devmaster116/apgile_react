@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
 const OrderItemAdd = (props) => {
-
+    const [fullDay,setFullDay]=useState("true")
     useEffect(() => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
@@ -54,7 +54,11 @@ const OrderItemAdd = (props) => {
             target: `${props.branchId}/slot-filters/orderitem?limit=1000`,
             // async: true,
             multi:true,
-            col: 4
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value.length?"false":"true")
+            }
         },
        
         status_id: {
@@ -78,7 +82,11 @@ const OrderItemAdd = (props) => {
         },
 
     };
+    const getInitialValues = async (data) => {
+        await data;
+        setFullDay(data.slots.length?"false":"true")
 
+    }
     return (
         <Card className="animated fadeIn">
             <CardHeader>
@@ -90,7 +98,8 @@ const OrderItemAdd = (props) => {
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    extraVals={{branch_id: props.branchId}}
+                    getInitialValues={getInitialValues}
+                    extraVals={{branch_id: props.branchId,full_day:fullDay}}
                     redirect="order-items"
                 />
             </CardBody>

@@ -41,17 +41,17 @@ const SlotAdd = (props) => {
             // required: true,
             col: 4
         },
-        full_day: {
-            type: "switch",
-            label: "All Day",
-            required: false,
-            name:'full_day',
-            col: 2,
-            callback:async (e)=>{
-                await e
-                setIsFullDay(e.value)
-            }
-        },
+        // full_day: {
+        //     type: "switch",
+        //     label: "All Day",
+        //     required: false,
+        //     name:'full_day',
+        //     col: 2,
+        //     callback:async (e)=>{
+        //         await e
+        //         setIsFullDay(e.value)
+        //     }
+        // },
         full_week: {
             type: "switch",
             label: "Full Week",

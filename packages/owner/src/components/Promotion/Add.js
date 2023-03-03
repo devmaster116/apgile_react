@@ -7,7 +7,7 @@ import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
     const [minDate, setMinDate] = useState('');
-
+    const [fullDay,setFullDay]=useState("true")
 
     useEffect(() => {
     }, [props.branchId]);
@@ -92,8 +92,12 @@ const Add = (props) => {
             target: `${props.branchId}/slot-filters/promotion?limit=1000`,
             // async: true,
             multi:true,
-            required: true,
-            col: 4
+            required: false,
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value.length?"false":"true")
+            }
         },
 
         dummy2: {
@@ -152,10 +156,16 @@ const Add = (props) => {
     };
     const extraVal = id ? {
         _method: "PUT",
-        branch_id: props.branchId
+        branch_id: props.branchId,
+        full_day:fullDay
     } : {
-        branch_id: props.branchId
+        branch_id: props.branchId,
+        full_day:fullDay
     };
+    const getInitialValues = async (data) => {
+        await data;
+        setFullDay(data.slots.length?"false":"true")
+    }
     return (
         <div>
             <Card className="animated fadeIn">
@@ -166,8 +176,8 @@ const Add = (props) => {
                         fields={fields}
                         targetId={id}
                         name={id ? "editForm" : ""}
-                        // getInitialValues={this.getInitialValues}
-                        // debug={false}
+                        getInitialValues={getInitialValues}
+                        debug={true}
                         extraVals={extraVal}
                         // extraVals={{branch_id:props.branchId}}
                         redirect="promotions"
