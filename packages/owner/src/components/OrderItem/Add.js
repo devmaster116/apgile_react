@@ -53,6 +53,7 @@ const OrderItemAdd = (props) => {
             label: "Time Slots",
             target: `${props.branchId}/slot-filters/orderitem?limit=1000`,
             // async: true,
+            required:false,
             multi:true,
             col: 4,
             callback:async (e)=>{
@@ -84,7 +85,7 @@ const OrderItemAdd = (props) => {
     };
     const getInitialValues = async (data) => {
         await data;
-        setFullDay(data.slots.length?"false":"true")
+        setFullDay(data.slots && data.slots.length?"false":"true")
 
     }
     return (

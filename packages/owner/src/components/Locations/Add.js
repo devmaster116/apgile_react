@@ -193,7 +193,7 @@ const LocationsAdd = (props) => {
         }else {
             setShowTeam(false);
         }
-        setFullDay(data.slots.length?"false":"true")
+        setFullDay(data.slots && data.slots.length?"false":"true")
     }
 
     return (
@@ -230,7 +230,6 @@ const LocationsAdd = (props) => {
 const mapStateToProps = state => {
     return {
         branchId: state.selectedBranchId,
-
     }
 }
 

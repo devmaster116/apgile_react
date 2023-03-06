@@ -204,7 +204,7 @@ const ButtonAdd = (props) => {
         setisCustomMsg(data.type === 4)
         setIsQty(data.type === 5)
         setIsLocation(data.location_enabled)
-        setFullDay(data.slots.length?"false":"true")
+        setFullDay(data.slots && data.slots.length?"false":"true")
 
     }
     return (

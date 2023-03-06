@@ -164,7 +164,7 @@ const Add = (props) => {
     };
     const getInitialValues = async (data) => {
         await data;
-        setFullDay(data.slots.length?"false":"true")
+        setFullDay(data.slots && data.slots.length?"false":"true")
     }
     return (
         <div>
