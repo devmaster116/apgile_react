@@ -96,7 +96,7 @@ const Add = (props) => {
             col: 4,
             callback:async (e)=>{
                 await e
-                setFullDay(e.value.length?"false":"true")
+                setFullDay(e.value && e.value.length?"false":"true")
             }
         },
 
