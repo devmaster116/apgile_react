@@ -77,7 +77,8 @@ const ButtonAdd = (props) => {
             callback:async (e)=>{
                 await e
                 setFullDay(e.value.length?"false":"true")
-            }
+            },
+            required:false
         },
         call_staff_id: {
             type: 'advanceSelect',

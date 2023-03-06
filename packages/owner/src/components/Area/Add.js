@@ -100,7 +100,7 @@ const Add = (props) => {
             target: `${props.branchId}/slot-filters/area?limit=1000`,
             // async: true,
             multi:true,
-            required: true,
+            required: false,
             col: 4,
             callback:async (e)=>{
                 await e
