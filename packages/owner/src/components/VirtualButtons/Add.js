@@ -86,7 +86,7 @@ const ButtonAdd = (props) => {
             target: `${props.branchId}/role-users/staff`,
             optionLabel: 'full_name',
             optionId: 'id',
-            required: true,
+            required: false,
             async: true,
             name: 'call_staff_id',
             col: 2,
