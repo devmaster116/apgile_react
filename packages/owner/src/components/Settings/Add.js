@@ -153,11 +153,18 @@ console.log(showPlaces,"showPlaces")
             name: "youtube",
             col: 6,
         },
-        reddit: {
+        tiktok: {
             type: "text",
-            label: "Reddit",
+            label: "TikTok",
             // required: true,
-            name: "reddit",
+            name: "tiktok",
+            col: 6,
+        },
+        telegram: {
+            type: "text",
+            label: "Telegram",
+            // required: true,
+            name: "telegram",
             col: 6,
         },
         pinterest: {
