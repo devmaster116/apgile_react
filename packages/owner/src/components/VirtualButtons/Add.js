@@ -4,7 +4,7 @@ import { FormGenerator } from '@evenlogics/whf-form-generator';
 import { connect } from "react-redux";
 import { formPageTitle } from "@facepays/common";
 import fontAwesome from './fontAwesome.json';
-import { components } from "react-select";
+import { components,SingleValueProps  } from "react-select";
 const ButtonAdd = (props) => {
 
     const { id } = props.match.params;
@@ -29,13 +29,19 @@ const ButtonAdd = (props) => {
         }, 0);
 
     }
-    const { Option } = components;
+    const { Option  } = components;
     const IconOption = props => (
         <Option {...props}>
             <i className={`fa ${[props.data.value]} mr-2`}></i>
             {props.data.label}
         </Option>
     );
+    const SingleValue = ({ children,...props } ) => (
+        <components.SingleValue {...props}>
+            <i className={`fa ${[props.data.value]} mr-2`}></i>
+            {props.data.label}
+        </components.SingleValue>
+      );
 
     const fields = {
 
@@ -192,7 +198,7 @@ const ButtonAdd = (props) => {
             required: true,
             name: 'icon',
             col: 2,
-            components:{ Option: IconOption }
+            components:{ Option: IconOption,SingleValue }
         },
         shape: {
             type: 'advanceSelect',
