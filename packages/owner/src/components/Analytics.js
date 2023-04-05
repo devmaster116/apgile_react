@@ -65,6 +65,11 @@ const Analytics = (props) => {
         'button': true
     });
 
+    const promotionsFilters=[ 
+        {value: null, label: "All"},
+        {value: 'click', label: "Click"},
+        {value: 'view', label: "View"}
+    ]
     const dataCall = () => {
         api.request("post", `/${props.selectedBranchId}/dashboard-stats`, dashboardPayload).then(({success, data}) => {
 
@@ -116,7 +121,8 @@ const Analytics = (props) => {
     }
 
     const onLocationChange = (data, name) => {
-        if (name === "location" || name === "staff_status" || name === "activity_status") {
+        console.log(data,name)
+        if (name === "location" || name === "staff_status" || name === "activity_status" || name === "type") {
             setPayload({...dashboardPayload, [name]: data.value});
         } else {
             let arr = [];
@@ -479,7 +485,10 @@ const Analytics = (props) => {
                         filterName="activity_status"
                     />}
                 </CCol>
+
+                
             </CRow>
+            
             <CRow>
                 {!props.user && <CCol lg={12} sm={12}>
                     <Graph
@@ -497,6 +506,56 @@ const Analytics = (props) => {
                         onFilterChange={onLocationChange}
                         filterData={statusOptions}
                         filterName="activity_status"
+                    />
+                </CCol>}
+                {!props.user && <CCol lg={12} sm={12}>
+                    <Graph
+                        type="line"
+                        title="Promotions"
+                        chartData={dashbaordData?.charts?.promotions}
+                        ytitle="# Views"
+                        xtitle={timeline}
+                        timeX={true}
+                        timeline={timeline}
+                        lengend={false}
+                        startDate={startDate}
+                        endDate={endDate}
+                        aspectRatio={5}
+                        onFilterChange={onLocationChange}
+                        filterData={promotionsFilters}
+                        filterName="type"
+                    />
+                </CCol>}
+                {!props.user && <CCol lg={12} sm={12}>
+                    <Graph
+                        type="line"
+                        title="Order Items"
+                        chartData={dashbaordData?.charts?.order_items}
+                        ytitle="# Views"
+                        xtitle={timeline}
+                        timeX={true}
+                        timeline={timeline}
+                        lengend={false}
+                        startDate={startDate}
+                        endDate={endDate}
+                        aspectRatio={5}
+                        onFilterChange={onLocationChange} 
+                    />
+                </CCol>}
+                {!props.user && <CCol lg={12} sm={12}>
+                    <Graph
+                        type="line"
+                        title="Reservations"
+                        chartData={dashbaordData?.charts?.reservations}
+                        ytitle="# Views"
+                        xtitle={timeline}
+                        timeX={true}
+                        timeline={timeline}
+                        lengend={false}
+                        startDate={startDate}
+                        endDate={endDate}
+                        aspectRatio={5}
+                        onFilterChange={onLocationChange} 
                     />
                 </CCol>}
                 <CCol lg={12} sm={12}>
