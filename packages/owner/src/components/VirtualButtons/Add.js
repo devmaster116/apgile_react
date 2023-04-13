@@ -4,7 +4,7 @@ import { FormGenerator } from '@evenlogics/whf-form-generator';
 import { connect } from "react-redux";
 import { formPageTitle } from "@facepays/common";
 import fontAwesome from './fontAwesome.json';
-import { components,SingleValueProps  } from "react-select";
+import { components  } from "react-select";
 const ButtonAdd = (props) => {
 
     const { id } = props.match.params;
