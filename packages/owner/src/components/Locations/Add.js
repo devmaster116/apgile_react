@@ -4,9 +4,7 @@ import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
-const LocationsAdd = (props) => {
-    const [deleteLogo,setDeleteLogo]=useState(false)
-    const [deleteBanner,setDeleteBanner]=useState(false)
+const LocationsAdd = (props) => { 
     const [fullDay,setFullDay]=useState("true")
     const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
@@ -235,9 +233,7 @@ const LocationsAdd = (props) => {
                         {
                             branch_id: props.branchId,
                             ...(id&& {_method:'patch'}),
-                            full_day:fullDay,
-                            delete_location_logo:deleteLogo,
-                            delete_location_banner:deleteBanner
+                            full_day:fullDay
                         }
                     }
                     redirect="locations"
