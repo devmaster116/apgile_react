@@ -7,8 +7,7 @@ import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
     const [minDate, setMinDate] = useState('');
-    const [fullDay,setFullDay]=useState("true")
-    const [deletePromoImg,setDeletePromoImg]=useState(false)
+    const [fullDay,setFullDay]=useState("true") 
 
     useEffect(() => {
     }, [props.branchId]);
@@ -161,8 +160,7 @@ const Add = (props) => {
             col: 3 
         },
 
-    };
-    console.log({deletePromoImg})
+    }; 
     const extraVal = id ? {
         _method: "PUT",
         branch_id: props.branchId,
