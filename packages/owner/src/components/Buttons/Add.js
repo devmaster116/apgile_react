@@ -9,6 +9,7 @@ const ButtonAdd = (props) => {
 
     const [query, setQuery] = useState(false);
     // const [openQrCode, setsw] = useState(false);
+    const [fullDay,setFullDay]=useState("true")
     useEffect(() => {
         setQuery((prev) => !prev)
     }, [props.branchId]);
@@ -32,12 +33,31 @@ const ButtonAdd = (props) => {
             optionLabel: "title",
             col: 4
         },
+        slots: {
+            type: 'advanceSelect',
+            label: "Time Slots",
+            target: `${props.branchId}/slot-filters/virtualbutton?limit=1000`,
+            // async: true,
+            multi:true,
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value && e.value.length?"false":"true")
+            },
+            required:false
+        },
         // total_click: {
         //     type: "number",
         //     label: "Total Clicks",
         //     col: 2,
         //     required:true
         // },
+        message: {
+            type: "textarea",
+            label: "Message",
+            col: 6
+        },
+        
         status: {
             type: "switch",
             label: "Status",
@@ -48,11 +68,7 @@ const ButtonAdd = (props) => {
             col: 5,
             isDummyField: true
         },
-        message: {
-            type: "textarea",
-            label: "Message",
-            col: 4
-        }
+      
     };
 
 
@@ -73,6 +89,7 @@ const ButtonAdd = (props) => {
                     redirect="buttons"
                     // debug={true}
                     // handleSameValueFields={['title', 'slug']}
+                    extraVals={{full_day:fullDay}}
                 />
             </CardBody>
         </Card>

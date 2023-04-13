@@ -78,6 +78,33 @@ const ButtonList = (props) => {
 			align: 'center',
 			sort: true
 		},
+		{
+			dataField: 'table.area_page.area.name',
+			text: 'Area',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'table.location.name',
+			text: 'Location',
+			align: 'center',
+			sort: true
+		},
+		{
+			isDummyField: true,
+			text: "Slots",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+				if (row?.slots) {
+					return (
+						
+							row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
+						
+					)
+				}
+			},
+		},
 		// {
 		// 	dataField: 'type_label',
 		// 	text: 'Type',

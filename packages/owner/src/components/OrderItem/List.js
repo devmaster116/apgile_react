@@ -45,6 +45,21 @@ const OrderItemList  = (props) => {
 				sort: true
 			},
 			{
+				isDummyField: true,
+				text: "Slots",
+				align: "center",
+				sort: true,
+				formatter: (cell, row) => {
+					if (row?.slots) {
+						return (
+							
+								row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
+							
+						)
+					}
+				},
+			},
+			{
 				dataField: 'description',
 				text: 'Description',
 				align: 'center',

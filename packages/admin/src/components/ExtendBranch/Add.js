@@ -8,8 +8,7 @@ import {formPageTitle} from '@facepays/common';
 // import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 import api from "@evenlogics/whf-api";
 
-const ExtendBranchAdd = (props) =>  {
-
+const ExtendBranchAdd = (props) =>  { 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
     const {id} = props.match.params;
@@ -419,7 +418,10 @@ const ExtendBranchAdd = (props) =>  {
             name: "bg_color",
             col: 2
         },
-
+        "break": {
+            isDummyField: true,
+            col: 12
+        },
         logo: {
             type: "filePic",
             label: "Logo",
@@ -427,13 +429,29 @@ const ExtendBranchAdd = (props) =>  {
             // required: true,
             col: 3
         },
+        delete_logo: {
+           
+            type: "switch",
+            label: "Delete Logo",
+            required: true,
+            name:"delete_logo",
+            col: 3 
+        },
         bg_image: {
             type: "filePic",
             label: "Background Image",
             name: "bg_image",
             // required: true,
-            col: 5
+            col: 3
         },
+        delete_bg_image:{
+           
+            type: "switch",
+            label: "Delete Background",
+            required: true,
+            name:"delete_bg_image",
+            col: 3 
+        }
     }
 
     return (

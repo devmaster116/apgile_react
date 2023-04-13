@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
 const LocationsAdd = (props) => {
+    const [deleteLogo,setDeleteLogo]=useState(false)
+    const [deleteBanner,setDeleteBanner]=useState(false)
     const [fullDay,setFullDay]=useState("true")
     const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
@@ -161,7 +163,26 @@ const LocationsAdd = (props) => {
         location_banner: {
             type: "filePic",
             label: "Location Banner",
-            col: 12,
+            col: 3,
+        },
+        delete_location_banner: { 
+            type: "switch",
+            label: "Delete Banner",
+            required: true,
+            name:"delete_location_banner",
+            col: 3 
+        },
+        location_logo: {
+            type: "filePic",
+            label: "Location Logo",
+            col: 3,
+        },
+        delete_location_logo: { 
+            type: "switch",
+            label: "Delete Logo",
+            required: true,
+            name:"delete_location_logo",
+            col: 3 
         },
         auto: {
             type: "switch",
@@ -214,7 +235,9 @@ const LocationsAdd = (props) => {
                         {
                             branch_id: props.branchId,
                             ...(id&& {_method:'patch'}),
-                            full_day:fullDay
+                            full_day:fullDay,
+                            delete_location_logo:deleteLogo,
+                            delete_location_banner:deleteBanner
                         }
                     }
                     redirect="locations"
