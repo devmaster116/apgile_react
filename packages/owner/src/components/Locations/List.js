@@ -62,10 +62,11 @@ const LocationsList = (props) => {
 			align: "center",
 			sort: true,
 			formatter: (cell, row) => {
-				if (row?.slots) {
+				console.log(row)
+				if (row?.slot_obj) {
 					return (
 						
-							row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
+							row.slot_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
 						
 					)
 				}

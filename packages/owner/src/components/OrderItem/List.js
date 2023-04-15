@@ -50,10 +50,10 @@ const OrderItemList  = (props) => {
 				align: "center",
 				sort: true,
 				formatter: (cell, row) => {
-					if (row?.slots) {
+					if (row?.slots_obj) {
 						return (
 							
-								row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
+								row.slots_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
 							
 						)
 					}
