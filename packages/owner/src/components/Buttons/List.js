@@ -96,12 +96,9 @@ const ButtonList = (props) => {
 			align: "center",
 			sort: true,
 			formatter: (cell, row) => {
-				if (row?.slots) {
-					return (
-						
-							row.slots.map((s)=><span className="badge badge-dark">{s.name}</span>)
-						
-					)
+				console.log(row)
+				if (row?.slots_obj) {
+					return row.slots_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
 				}
 			},
 		},

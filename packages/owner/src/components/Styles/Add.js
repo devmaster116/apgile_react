@@ -24,17 +24,39 @@ const StyleAdd = (props) => {
                 col: 2,
                 handleChange:(data)=> console.log(data,"data")
             },
+            "Logo & Banner": {
+                isDummyField: true,
+                type: "h4",
+                col: 12,
+    
+            },
             logo: {
                 type: "filePic",
                 label: "Logo",
                 name: "logo",
                 col: 3
             },
+            delete_logo: {
+           
+                type: "switch",
+                label: "Delete Logo",
+                required: true,
+                name:"delete_logo",
+                col: 2
+            },
             bg_image: {
                 type: "filePic",
                 label: "Background Image",
                 name: "bg_image",
-                col: 5
+                col: 3
+            },
+            delete_bg_image:{
+           
+                type: "switch",
+                label: "Delete Background",
+                required: true,
+                name:"delete_bg_image",
+                col: 2
             }
 
         };
