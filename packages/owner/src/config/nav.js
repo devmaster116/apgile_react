@@ -304,10 +304,17 @@ const nav = {
             },
             style: {
                 phrase: "Style",
-                order: 1,
+                order: 2,
                 to: "/style",
                 roles: ["admin", "manager"],
                 icon: "fas fa-brush",
+            },
+            sort: {
+                phrase: "Sort Categories",
+                order: 3,
+                to: "/categories/sort",
+                roles: ["admin", "manager"],
+                icon: "fas fa-sort",
             },
         },
     },
