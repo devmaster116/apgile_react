@@ -73,7 +73,13 @@ const ReservationList = (props) => {
 			text: "Time Range",
 			align: "center",
 			sort: true,
-		}
+		},
+        {
+			dataField: "location",
+			text: "Location",
+			align: "center",
+			sort: true,
+		} 
 
     ];
 

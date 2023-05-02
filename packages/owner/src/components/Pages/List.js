@@ -159,7 +159,12 @@ const filters = {
                 );
             },
         },
-
+        {
+            dataField: "area",
+            text: "Area",
+            align: "center",
+            sort: true
+        }
 
     ];
 
