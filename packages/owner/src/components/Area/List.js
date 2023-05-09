@@ -121,6 +121,13 @@ const List = (props) => {
             sort: true,
         },
         {
+            dataField: "location.name",
+            text: "Location",
+            align: "center",
+            sort: true,
+        },
+
+        {
             dataField: "name",
             text: "Area Name",
             align: "center",
@@ -140,13 +147,7 @@ const List = (props) => {
 				}
 			},
 		},
-        {
-            dataField: "location.name",
-            text: "Location",
-            align: "center",
-            sort: true,
-        },
-
+        
         {
             dataField: "description",
             text: "Area Description",

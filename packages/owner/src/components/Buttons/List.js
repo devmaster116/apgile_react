@@ -116,14 +116,14 @@ const ButtonList = (props) => {
 			sort: true
 		},
 		{
-			dataField: 'table.area_page.area.name',
-			text: 'Area',
+			dataField: 'table.location.name',
+			text: 'Location',
 			align: 'center',
 			sort: true
 		},
 		{
-			dataField: 'table.location.name',
-			text: 'Location',
+			dataField: 'table.area_page.area.name',
+			text: 'Area',
 			align: 'center',
 			sort: true
 		},
