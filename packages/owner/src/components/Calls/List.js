@@ -76,12 +76,7 @@ const List = (props) => {
             text: "Assigned To",
             align: "center"
         },
-        {
-            dataField: "page.name",
-            text: "QR Code",
-            align: "center",
-            sort: true,
-        },
+        
         {
             dataField: "location.name",
             text: "Location",
@@ -91,6 +86,12 @@ const List = (props) => {
         {
             dataField: "page.area",
             text: "Area",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "page.name",
+            text: "QR Code",
             align: "center",
             sort: true,
         },
