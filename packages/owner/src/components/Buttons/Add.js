@@ -55,19 +55,16 @@ const ButtonAdd = (props) => {
                 setselectedArea(data.value)
                 }
           },
-        page_id: {
-            type: "advanceSelect",
-            label: "Select Item Type",
-            target: `${props.branchId}/area/${selectedArea}?limit=1000`,
-            required: true,
-            async: true,
-            col: 4,
-
-            // callback: async (params, value, _loadOptions, setFieldValue) => {
-            //     await value
-            //     setValueForLocationAndArea(value.value,setFieldValue)
-            // }
-        },
+        ...(selectedArea && {
+            page_id: {
+                type: "advanceSelect",
+                label: "Select Item Type",
+                target: `${props.branchId}/area/${selectedArea}?limit=1000`,
+                required: true,
+                async: true,
+                col: 4,
+            },
+        }),
         // location: {
         //     type: 'text',
         //     disabled: true,
