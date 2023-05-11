@@ -27,28 +27,28 @@ const ButtonAdd = (props) => {
     const [selectedLoc, setselectedLoc] = useState(null)
     const [selectedArea, setselectedArea] = useState(null)
     const fields = {
-        location: {
+        location_id: {
             type: "advanceSelect",
             label: "Locations",
             target: `${props?.branchId}/locations?limit=1000`,
             // optionLabel: 'title',
             async: true,
             required: true,
-            name: "location",
+            name: "location_id",
             col: 6,
             callback:async(data)=>{
                 await data
                 setselectedLoc(data.value)
                 }
           },
-          area: {
+          area_id: {
             type: "advanceSelect",
             label: "Areas",
             target: `${props?.branchId}/areas?limit=1000&location_id=${selectedLoc}`,
             // optionLabel: 'title',
             async: true,
             required: true,
-            name: "area",
+            name: "area_id",
             col: 6,
             callback:async(data)=>{
                 await data
@@ -64,24 +64,7 @@ const ButtonAdd = (props) => {
                 async: true,
                 col: 4,
             },
-        }),
-        // location: {
-        //     type: 'text',
-        //     disabled: true,
-        //     label: 'location',
-        //     readonly: true,
-        //     col: 4,
-        //     defaultValue:locationAndArea.location
-        // },
-        // area: {
-        //     type: 'text',
-        //     disabled: true,
-        //     label: 'area',
-        //     readonly: true,
-        //     col: 4,
-        //     defaultValue:locationAndArea.area
-
-        // },
+        }), 
         virtual_button_id: {
             type: 'advanceSelect',
             label: "Virtual Button",
@@ -129,7 +112,8 @@ const ButtonAdd = (props) => {
 
     };
 
-    const getInitialValues=(values)=>{
+    const getInitialValues=(values)=>{ 
+        setselectedLoc(values.area_id)
         // setlocationAndArea({location:values.location.name,area:values.area.name})
     }
 
