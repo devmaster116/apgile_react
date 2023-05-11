@@ -55,16 +55,16 @@ const ButtonAdd = (props) => {
                 setselectedArea(data.value)
                 }
           },
-        ...(selectedArea && {
+         
             page_id: {
                 type: "advanceSelect",
                 label: "Select Item Type",
-                target: `${props.branchId}/area/${selectedArea}?limit=1000`,
+                target: `${props?.branchId}/area-pages?area_id=${selectedArea}`,
                 required: true,
                 async: true,
                 col: 4,
             },
-        }), 
+         
         virtual_button_id: {
             type: 'advanceSelect',
             label: "Virtual Button",
@@ -113,10 +113,10 @@ const ButtonAdd = (props) => {
     };
 
     const getInitialValues=(values)=>{ 
-        setselectedLoc(values.area_id)
+        setselectedLoc(values.location_id)
+        setselectedArea(values.area_id)
         // setlocationAndArea({location:values.location.name,area:values.area.name})
-    }
-
+    } 
     return (
         <Card className="animated fadeIn xl-12 lg-12 md-12 sm-12 xs-12">
             <CardHeader>
