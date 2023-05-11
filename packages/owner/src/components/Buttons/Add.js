@@ -6,7 +6,7 @@ import { formPageTitle } from "@facepays/common";
 import Api from '@evenlogics/whf-api'
 const ButtonAdd = (props) => {
 
-    const [locationAndArea, setlocationAndArea] = useState({location:'',area:''})
+    // const [locationAndArea, setlocationAndArea] = useState({location:'',area:''})
     const [query, setQuery] = useState(false);
     // const [openQrCode, setsw] = useState(false);
     const [fullDay, setFullDay] = useState("true")
@@ -15,44 +15,76 @@ const ButtonAdd = (props) => {
     }, [props.branchId]);
     console.log(query, "query")
     const { id } = props.match.params;
-    const setValueForLocationAndArea=async (id,setFieldValue)=>{
-        try {
-            const { data } = await Api.request('get', `/${props.branchId}/button/info/${id}`)
-            setFieldValue('area', data.area_page.area.name)
-            setFieldValue('location', data.location.name) 
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const setValueForLocationAndArea=async (id,setFieldValue)=>{
+    //     try {
+    //         const { data } = await Api.request('get', `/${props.branchId}/button/info/${id}`)
+    //         setFieldValue('area', data.area_page.area.name)
+    //         setFieldValue('location', data.location.name) 
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    const [selectedLoc, setselectedLoc] = useState(null)
+    const [selectedArea, setselectedArea] = useState(null)
     const fields = {
+        location: {
+            type: "advanceSelect",
+            label: "Locations",
+            target: `${props?.branchId}/locations?limit=1000`,
+            // optionLabel: 'title',
+            async: true,
+            required: true,
+            name: "location",
+            col: 6,
+            callback:async(data)=>{
+                await data
+                setselectedLoc(data.value)
+                }
+          },
+          area: {
+            type: "advanceSelect",
+            label: "Areas",
+            target: `${props?.branchId}/areas?limit=1000&location_id=${selectedLoc}`,
+            // optionLabel: 'title',
+            async: true,
+            required: true,
+            name: "area",
+            col: 6,
+            callback:async(data)=>{
+                await data
+                setselectedArea(data.value)
+                }
+          },
         page_id: {
             type: "advanceSelect",
             label: "Select Item Type",
-            target: `${props.branchId}/pages?limit=1000`,
+            target: `${props.branchId}/area/${selectedArea}?limit=1000`,
             required: true,
+            async: true,
             col: 4,
-            callback: async (params, value, _loadOptions, setFieldValue) => {
-                await value
-                setValueForLocationAndArea(value.value,setFieldValue)
-            }
-        },
-        location: {
-            type: 'text',
-            disabled: true,
-            label: 'location',
-            readonly: true,
-            col: 4,
-            defaultValue:locationAndArea.location
-        },
-        area: {
-            type: 'text',
-            disabled: true,
-            label: 'area',
-            readonly: true,
-            col: 4,
-            defaultValue:locationAndArea.area
 
+            // callback: async (params, value, _loadOptions, setFieldValue) => {
+            //     await value
+            //     setValueForLocationAndArea(value.value,setFieldValue)
+            // }
         },
+        // location: {
+        //     type: 'text',
+        //     disabled: true,
+        //     label: 'location',
+        //     readonly: true,
+        //     col: 4,
+        //     defaultValue:locationAndArea.location
+        // },
+        // area: {
+        //     type: 'text',
+        //     disabled: true,
+        //     label: 'area',
+        //     readonly: true,
+        //     col: 4,
+        //     defaultValue:locationAndArea.area
+
+        // },
         virtual_button_id: {
             type: 'advanceSelect',
             label: "Virtual Button",
@@ -101,7 +133,7 @@ const ButtonAdd = (props) => {
     };
 
     const getInitialValues=(values)=>{
-        setlocationAndArea({location:values.location.name,area:values.area.name})
+        // setlocationAndArea({location:values.location.name,area:values.area.name})
     }
 
     return (
