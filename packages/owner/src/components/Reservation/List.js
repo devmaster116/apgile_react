@@ -1,7 +1,7 @@
 import {CCol, CFormInput, CFormLabel, CRow} from '@coreui/react-pro';
 import {Card, CardBody, CardHeader, Button,Spinner} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {Modal,ModalHeader,ModalBody} from "react-bootstrap/";
+import {Modal,ModalHeader,ModalBody, Badge} from "react-bootstrap/";
 import RemoteTable from '@evenlogics/whf-remote-table';
 import React, {useEffect, useState} from 'react';
 import api from "@evenlogics/whf-api";
@@ -79,6 +79,11 @@ const ReservationList = (props) => {
 			text: "Location",
 			align: "center",
 			sort: true,
+            formatter:(cell)=>{
+                return cell?.map((val)=>{
+                    return <Badge>{val}</Badge>
+                })
+            }
 		} 
 
     ];
