@@ -11,6 +11,7 @@ const Add = (props) => {
 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
+    const [showRadius, setShowRadius] = useState(false)
     // const [color, setColor] = useState('')
 
 
@@ -31,10 +32,19 @@ const Add = (props) => {
 
     /* eslint-disable */
 
+    const changeGeoRadius = (data) => {
+        setTimeout(() => {
+            if(data && data.value) {
+                setShowRadius(true);
+            } else {
+                setShowRadius(false);
+            }
+        }, 0);
+    }
 
     useEffect(() => {
         id && api.request("get", `/company-branches/${id}`).then(({data}) => {
-            companyChangeHandler({value: data?.address?.country})
+            companyChangeHandler({value: data?.address?.country});
         }).catch((error) => console.log(error));
 
     }, [id])
@@ -293,6 +303,24 @@ const Add = (props) => {
             required: true,
             col: 1,
             condition: showAddFields,
+        },
+
+        geolock: {
+            type: "switch",
+            label: "Geo Lock",
+            required: true,
+            col: 1,
+            callback: (data) => changeGeoRadius(data),
+            condition: showAddFields,
+        },
+
+        georadius: {
+            type: "number",
+            label: "Geo Radius",
+            required: true,
+            col: 2,
+            min: 0,
+            condition: showRadius && showAddFields,
         },
 
         dummy6: {

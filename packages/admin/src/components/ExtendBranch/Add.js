@@ -11,6 +11,7 @@ import api from "@evenlogics/whf-api";
 const ExtendBranchAdd = (props) =>  { 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
+    const [showRadius, setShowRadius] = useState(false)
     const {id} = props.match.params;
 
     const companyChangeHandler = (value, field, loadOptions, setFunction) => {
@@ -25,12 +26,26 @@ const ExtendBranchAdd = (props) =>  {
        value?.value === "US" ? setShowStates(true) : setShowStates(false)
     }
 
+    const changeGeoRadius = (data) => {
+        setTimeout(() => {
+            if(data && data.value) {
+                setShowRadius(true);
+            } else {
+                setShowRadius(false);
+            }
+        }, 0);
+    }
+
        /* eslint-disable */
 
 
     useEffect(() => {
         id && api.request("get", `/branches/${id}`).then(({data}) => {
-             companyChangeHandler({value :data?.address?.country})
+             companyChangeHandler({value :data?.address?.country});
+             // console.log(data?.settings?.geolock, 'asdlfkajsdf');
+            if(data?.settings?.geolock) {
+                setShowRadius(data?.settings?.geolock);
+            }
            }).catch((error) => console.log(error));
 
        }, [id])
@@ -261,6 +276,24 @@ const ExtendBranchAdd = (props) =>  {
             label: "Dashboard",
             required: true,
             col: 1
+        },
+
+        geolock: {
+            parent: 'settings',
+            type: "switch",
+            label: "Geo Lock",
+            required: true,
+            col: 1,
+            callback: (data) => changeGeoRadius(data)
+        },
+
+        georadius:{
+            parent: 'settings',
+            type: "number",
+            label: "Geo Radius",
+            required: true,
+            col: 2,
+            condition: showRadius
         },
 
         dummy6: {
