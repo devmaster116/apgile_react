@@ -189,16 +189,22 @@ const ButtonAdd = (props) => {
             // required: true,
             col: 2
         },
+        // icon: {
+        //     type: 'advanceSelect',
+        //     label: `Select Icon`,
+        //     options: fontAwesome,
+        //     optionLabel: 'label',
+        //     optionId: 'value',
+        //     required: true,
+        //     name: 'icon',
+        //     col: 2,
+        //     components:{ Option: IconOption,SingleValue }
+        // },
         icon: {
-            type: 'advanceSelect',
-            label: `Select Icon`,
-            options: fontAwesome,
-            optionLabel: 'label',
-            optionId: 'value',
+            type: 'faselector',
+            label: 'Select Icon',
             required: true,
-            name: 'icon',
-            col: 2,
-            components:{ Option: IconOption,SingleValue }
+            col: 2
         },
         shape: {
             type: 'advanceSelect',

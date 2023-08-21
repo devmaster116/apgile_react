@@ -253,3 +253,19 @@ body .c-sidebar-nav-dropdown.c-show {
 .shadow {
     border-radius: 5px;
 }
+
+.form-group .rfip {
+    width: 100%;
+    margin: 0;
+}
+
+.form-group .rfipbtn {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 5px;
+}
+
+.form-group .rfipbtn--default .rfipbtn__button {
+    background-color: transparent;
+    color: #cecece;
+}

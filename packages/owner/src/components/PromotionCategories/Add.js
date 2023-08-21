@@ -47,16 +47,25 @@ const Add = (props) => {
             required: true,
             col: 2
         },
+        // icon: {
+        //     type: 'advanceSelect',
+        //     label: `Select Icon`,
+        //     options: fontAwesome,
+        //     optionLabel: 'label',
+        //     optionId: 'value',
+        //     required: true,
+        //     name: 'icon',
+        //     col: 4,
+        // },
+
         icon: {
-            type: 'advanceSelect',
+            type: 'faselector',
             label: `Select Icon`,
-            options: fontAwesome,
-            optionLabel: 'label',
-            optionId: 'value',
             required: true,
             name: 'icon',
             col: 4,
         },
+
     };
 
     const extraVal = id ? {
@@ -76,7 +85,7 @@ const Add = (props) => {
                         targetId={id}
                         name={id ? "editForm" : ""}
                         // getInitialValues={this.getInitialValues}
-                        // debug={true}
+                        debug={true}
                         extraVals={extraVal}
                         // extraVals={{branch_id:props.branchId}}
                         redirect="categories"
