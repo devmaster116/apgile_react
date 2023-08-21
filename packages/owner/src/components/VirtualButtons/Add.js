@@ -24,7 +24,7 @@ const ButtonAdd = (props) => {
         setTimeout(() => {
             setIsStaff(e.value === 2)
             setIsLink(e.value === 3)
-            // setisCustomMsg(e.value === 4)
+            setisCustomMsg(e.value === 4)
             setIsQty(e.value === 5)
         }, 0);
 
@@ -220,6 +220,7 @@ const ButtonAdd = (props) => {
     };
     const getInitialValues = async (data) => {
         await data;
+        console.log(data.type, 'type');
         setIsStaff(data.type === 2)
         setIsLink(data.type === 3)
         setisCustomMsg(data.type === 4)

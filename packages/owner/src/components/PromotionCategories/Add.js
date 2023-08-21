@@ -85,7 +85,7 @@ const Add = (props) => {
                         targetId={id}
                         name={id ? "editForm" : ""}
                         // getInitialValues={this.getInitialValues}
-                        debug={true}
+                        // debug={true}
                         extraVals={extraVal}
                         // extraVals={{branch_id:props.branchId}}
                         redirect="categories"
