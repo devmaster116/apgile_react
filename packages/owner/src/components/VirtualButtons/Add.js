@@ -24,7 +24,7 @@ const ButtonAdd = (props) => {
         setTimeout(() => {
             setIsStaff(e.value === 2)
             setIsLink(e.value === 3)
-            setisCustomMsg(e.value === 4)
+            setisCustomMsg(e.value === 6)
             setIsQty(e.value === 5)
         }, 0);
 
@@ -223,7 +223,7 @@ const ButtonAdd = (props) => {
         console.log(data.type, 'type');
         setIsStaff(data.type === 2)
         setIsLink(data.type === 3)
-        setisCustomMsg(data.type === 4)
+        setisCustomMsg(data.type === 6)
         setIsQty(data.type === 5)
         setIsLocation(data.location_enabled)
         setFullDay(data.slots && data.slots.length?"false":"true")
