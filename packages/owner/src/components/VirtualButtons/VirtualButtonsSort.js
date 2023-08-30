@@ -5,7 +5,7 @@ export default function VirtualButtonSort() {
     
     <CustomSort 
       headerTitle={'Virtual Button Sort'}
-      entityEndpoint={'virtual-buttons?limit=1000'}
+      entityEndpoint={'active-virtualButton?limit=1000'}
       getSortedEnpoint={'get-vbtn-sorted'}
       setSortEndpoint={'set-vbtn-sorted'}
     />

@@ -86,6 +86,7 @@ const PromotionsList = React.lazy(() => import('./../components/Promotion/List')
 const VirtualButtonsSort = React.lazy(() => import('../components/VirtualButtons/VirtualButtonsSort'));
 const SubmitTicket = React.lazy(() => import('../components/SubmitTicket/SubmitTicket'));
 
+const CategorySort = React.lazy(() => import('../components/PromotionCategories/CategorySort'));
 
 const routes = [
 
@@ -173,6 +174,7 @@ const routes = [
 
 	{path : "/categories" ,exact : true ,component :CategoriesList},
 	{path : "/categories/add" ,exact : true ,component :CategoriesAdd},
+	{path : "/categories/sort" ,exact : true ,component :CategorySort},
 	{path : "/categories/:id/edit" ,exact : true ,component :CategoriesAdd},
 
 

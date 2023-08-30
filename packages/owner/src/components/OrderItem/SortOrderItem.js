@@ -10,7 +10,7 @@ function OrderItemSort(props) {
     <CustomSort
 
       headerTitle={'Order Item Sort'}
-      entityEndpoint={'order-items?limit=1000'}
+      entityEndpoint={'active-orderItem?limit=1000'}
       getSortedEnpoint={'get-order-orderItem'}
       setSortEndpoint={'set-order-orderItem'}
     />

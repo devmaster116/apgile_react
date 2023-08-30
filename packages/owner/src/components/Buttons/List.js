@@ -38,7 +38,16 @@ const ButtonList = (props) => {
 			})
 			.catch((error) => console.log(error));
 	}
-
+	const locationChangeHandler = (data) => {
+        setTimeout(() => {
+            // setTargetID(`${props.branchId}/location/${data?.value}/items`)
+            // if (data?.value) {
+            //     setShowItem('')
+            // } else {
+            //     setShowItem('d-none')
+            // } 
+        }, 10);
+    }
 	const filters = {
 		// uuid: {
 		// 	type: "text",
@@ -51,6 +60,34 @@ const ButtonList = (props) => {
 			target: `${props.branchId}/pages`,
 			col: 3,
 		},
+		// location_id: {
+        //     type: "advanceSelect",
+        //     label: "Select Location",
+        //     name: "location_id",
+        //     target: `${props.branchId}/active/locations`, 
+        //     // multi:true,
+        //     async: true,
+        //     col: 4,
+        //     // callback: (data) => locationChangeHandler(data),
+        // }, 
+        // area_id: {
+        //     type: "advanceSelect",
+        //     label: "Select Area",
+        //     name: "area_id",
+        //     target: `${props.branchId}/areas`, 
+        //     // multi:true,
+        //     async: true,
+        //     col: 4
+        // },
+        slot_id: {
+            type: "advanceSelect",
+            label: "Select Slot",
+            name: "slot_id",
+            target: `${props.branchId}/slots`, 
+            // multi:true,
+            async: true,
+            col: 4
+        },
 		status: {
 			type: "switch",
 			label: "Status",
@@ -77,6 +114,30 @@ const ButtonList = (props) => {
 			text: 'Item',
 			align: 'center',
 			sort: true
+		},
+		{
+			dataField: 'table.location.name',
+			text: 'Location',
+			align: 'center',
+			sort: true
+		},
+		{
+			dataField: 'table.area_page.area.name',
+			text: 'Area',
+			align: 'center',
+			sort: true
+		},
+		{
+			isDummyField: true,
+			text: "Slots",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+				console.log(row)
+				if (row?.slots_obj) {
+					return row.slots_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
+				}
+			},
 		},
 		// {
 		// 	dataField: 'type_label',

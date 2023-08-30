@@ -1,7 +1,7 @@
 import {CCol, CFormInput, CFormLabel, CRow} from '@coreui/react-pro';
 import {Card, CardBody, CardHeader, Button,Spinner} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
-import {Modal,ModalHeader,ModalBody} from "react-bootstrap/";
+import {Modal,ModalHeader,ModalBody, Badge} from "react-bootstrap/";
 import RemoteTable from '@evenlogics/whf-remote-table';
 import React, {useEffect, useState} from 'react';
 import api from "@evenlogics/whf-api";
@@ -53,6 +53,15 @@ const ReservationList = (props) => {
             align: 'center',
             sort: true
         },
+        {
+            dataField: 'name',
+            text: 'Details',
+            align: 'center',
+            sort: true,
+            formatter:(cell,row)=>{
+                return <ReservedItems row={row} />
+            }
+        },
 		{
 			dataField: "date_converted",
 			text: "Date",
@@ -64,7 +73,18 @@ const ReservationList = (props) => {
 			text: "Time Range",
 			align: "center",
 			sort: true,
-		}
+		},
+        {
+			dataField: "location",
+			text: "Location",
+			align: "center",
+			sort: true,
+            formatter:(cell)=>{
+                return cell?.map((val)=>{
+                    return <Badge>{val}</Badge>
+                })
+            }
+		} 
 
     ];
 
@@ -171,6 +191,23 @@ const ReservationList = (props) => {
         </div>
     );
 
+}
+const ReservedItems=({row})=>{
+    const [show, setShow] = useState(false)
+    const toggleShow=()=>setShow(!show)
+    return <div>
+        <Button variant="primary" onClick={toggleShow} className='mb-1' >{show?'Hide':'Show'} Items</Button>
+        { show && <tr><th>Item</th><th>Location</th><th>Area</th></tr>}
+        {
+            show && row.pages.map((r)=>{
+                return <tr>
+                    <td>{r.name}</td>
+                    <td>{r.location.name}</td>
+                    <td>{r.area_page.area.name}</td>
+                </tr>
+            })
+        }
+    </div>
 }
 
 const mapStateToProps = state => {

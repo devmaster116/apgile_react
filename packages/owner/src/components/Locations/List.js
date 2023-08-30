@@ -57,6 +57,22 @@ const LocationsList = (props) => {
 			sort: true,
 		},
 		{
+			isDummyField: true,
+			text: "Slots",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+				console.log(row)
+				if (row?.slot_obj) {
+					return (
+						
+							row.slot_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
+						
+					)
+				}
+			},
+		},
+		{
 			dataField: 'name',
 			text: 'Name',
 			align: 'center',

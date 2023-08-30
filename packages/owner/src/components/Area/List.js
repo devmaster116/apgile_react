@@ -121,19 +121,33 @@ const List = (props) => {
             sort: true,
         },
         {
-            dataField: "name",
-            text: "Area Name",
-            align: "center",
-            sort: true,
-        },
-
-        {
             dataField: "location.name",
             text: "Location",
             align: "center",
             sort: true,
         },
 
+        {
+            dataField: "name",
+            text: "Area Name",
+            align: "center",
+            sort: true,
+        },
+        {
+			isDummyField: true,
+			text: "Slots",
+			align: "center",
+			sort: true,
+			formatter: (cell, row) => {
+                console.log(row)
+				if (row?.slots_obj) {
+					return (
+							row.slots_obj.map((s)=><span className="badge badge-dark">{s.name}</span>)
+					)
+				}
+			},
+		},
+        
         {
             dataField: "description",
             text: "Area Description",

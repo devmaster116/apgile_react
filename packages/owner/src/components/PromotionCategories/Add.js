@@ -47,16 +47,25 @@ const Add = (props) => {
             required: true,
             col: 2
         },
+        // icon: {
+        //     type: 'advanceSelect',
+        //     label: `Select Icon`,
+        //     options: fontAwesome,
+        //     optionLabel: 'label',
+        //     optionId: 'value',
+        //     required: true,
+        //     name: 'icon',
+        //     col: 4,
+        // },
+
         icon: {
-            type: 'advanceSelect',
+            type: 'faselector',
             label: `Select Icon`,
-            options: fontAwesome,
-            optionLabel: 'label',
-            optionId: 'value',
             required: true,
             name: 'icon',
             col: 4,
         },
+
     };
 
     const extraVal = id ? {

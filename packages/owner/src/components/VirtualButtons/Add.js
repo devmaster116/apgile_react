@@ -4,7 +4,7 @@ import { FormGenerator } from '@evenlogics/whf-form-generator';
 import { connect } from "react-redux";
 import { formPageTitle } from "@facepays/common";
 import fontAwesome from './fontAwesome.json';
-
+import { components  } from "react-select";
 const ButtonAdd = (props) => {
 
     const { id } = props.match.params;
@@ -14,6 +14,7 @@ const ButtonAdd = (props) => {
     const [isCustomMsg, setisCustomMsg] = useState(false)
     const [isQty, setIsQty] = useState(false)
     const [isLocation, setIsLocation] = useState(false)
+    const [fullDay,setFullDay]=useState("true")
     useEffect(() => {
         // setQuery((prev) => !prev)
     }, [props.branchId]);
@@ -23,11 +24,25 @@ const ButtonAdd = (props) => {
         setTimeout(() => {
             setIsStaff(e.value === 2)
             setIsLink(e.value === 3)
-            // setisCustomMsg(e.value === 4)
+            setisCustomMsg(e.value === 6)
             setIsQty(e.value === 5)
         }, 0);
 
     }
+    const { Option  } = components;
+    const IconOption = props => (
+        <Option {...props}>
+            <i className={`fa ${[props.data.value]} mr-2`}></i>
+            {props.data.label}
+        </Option>
+    );
+    const SingleValue = ({ children,...props } ) => (
+        <components.SingleValue {...props}>
+            <i className={`fa ${[props.data.value]} mr-2`}></i>
+            {props.data.label}
+        </components.SingleValue>
+      );
+
     const fields = {
 
         title: {
@@ -69,10 +84,15 @@ const ButtonAdd = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/virtualbutton`,
+            target: `${props.branchId}/slot-filters/virtualbutton?limit=1000`,
             // async: true,
             multi:true,
-            col: 4
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value && e.value.length?"false":"true")
+            },
+            required:false
         },
         call_staff_id: {
             type: 'advanceSelect',
@@ -80,7 +100,7 @@ const ButtonAdd = (props) => {
             target: `${props.branchId}/role-users/staff`,
             optionLabel: 'full_name',
             optionId: 'id',
-            required: true,
+            required: false,
             async: true,
             name: 'call_staff_id',
             col: 2,
@@ -169,15 +189,22 @@ const ButtonAdd = (props) => {
             // required: true,
             col: 2
         },
+        // icon: {
+        //     type: 'advanceSelect',
+        //     label: `Select Icon`,
+        //     options: fontAwesome,
+        //     optionLabel: 'label',
+        //     optionId: 'value',
+        //     required: true,
+        //     name: 'icon',
+        //     col: 2,
+        //     components:{ Option: IconOption,SingleValue }
+        // },
         icon: {
-            type: 'advanceSelect',
-            label: `Select Icon`,
-            options: fontAwesome,
-            optionLabel: 'label',
-            optionId: 'value',
+            type: 'faselector',
+            label: 'Select Icon',
             required: true,
-            name: 'icon',
-            col: 2,
+            col: 2
         },
         shape: {
             type: 'advanceSelect',
@@ -193,11 +220,13 @@ const ButtonAdd = (props) => {
     };
     const getInitialValues = async (data) => {
         await data;
+        console.log(data.type, 'type');
         setIsStaff(data.type === 2)
         setIsLink(data.type === 3)
-        setisCustomMsg(data.type === 4)
+        setisCustomMsg(data.type === 6)
         setIsQty(data.type === 5)
         setIsLocation(data.location_enabled)
+        setFullDay(data.slots && data.slots.length?"false":"true")
 
     }
     return (
@@ -216,6 +245,7 @@ const ButtonAdd = (props) => {
                     // repeater={true}
                     getInitialValues={getInitialValues}
                     redirect="virtual-buttons"
+                    extraVals={{full_day:fullDay}}
                     // debug={false}
                 // handleSameValueFields={['title', 'slug']}
                 />

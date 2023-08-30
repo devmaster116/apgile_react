@@ -41,17 +41,17 @@ const SlotAdd = (props) => {
             // required: true,
             col: 4
         },
-        full_day: {
-            type: "switch",
-            label: "All Day",
-            required: false,
-            name:'full_day',
-            col: 2,
-            callback:async (e)=>{
-                await e
-                setIsFullDay(e.value)
-            }
-        },
+        // full_day: {
+        //     type: "switch",
+        //     label: "All Day",
+        //     required: false,
+        //     name:'full_day',
+        //     col: 2,
+        //     callback:async (e)=>{
+        //         await e
+        //         setIsFullDay(e.value)
+        //     }
+        // },
         full_week: {
             type: "switch",
             label: "Full Week",
@@ -76,6 +76,11 @@ const SlotAdd = (props) => {
         setIsFullDay(data.full_day)
         setIsFullWeek(data.full_week)
     }
+
+    const extraVals={
+        branch_id: props.branchId,
+        ...(isFullWeek && {weekdays: []})
+    }
     return (
         <Card className="animated fadeIn">
             <CardHeader>
@@ -87,7 +92,7 @@ const SlotAdd = (props) => {
                     fields={fields}
                     targetId={id}
                     name={id ? "editForm" : ""}
-                    extraVals={{branch_id: props.branchId}}
+                    extraVals={extraVals}
                     getInitialValues={getInitialValues}
                     redirect="slots"
                 />

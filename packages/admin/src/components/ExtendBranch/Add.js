@@ -8,10 +8,10 @@ import {formPageTitle} from '@facepays/common';
 // import BranchAdd from "@evenlogics/whf-ra-entity/dist/Branch/Add";
 import api from "@evenlogics/whf-api";
 
-const ExtendBranchAdd = (props) =>  {
-
+const ExtendBranchAdd = (props) =>  { 
     const [maskedValue, setMaskedValue] = useState("+1 (000) 000-0000")
     const [showStates, setShowStates] = useState(false)
+    const [showRadius, setShowRadius] = useState(false)
     const {id} = props.match.params;
 
     const companyChangeHandler = (value, field, loadOptions, setFunction) => {
@@ -26,12 +26,26 @@ const ExtendBranchAdd = (props) =>  {
        value?.value === "US" ? setShowStates(true) : setShowStates(false)
     }
 
+    const changeGeoRadius = (data) => {
+        setTimeout(() => {
+            if(data && data.value) {
+                setShowRadius(true);
+            } else {
+                setShowRadius(false);
+            }
+        }, 0);
+    }
+
        /* eslint-disable */
 
 
     useEffect(() => {
         id && api.request("get", `/branches/${id}`).then(({data}) => {
-             companyChangeHandler({value :data?.address?.country})
+             companyChangeHandler({value :data?.address?.country});
+             // console.log(data?.settings?.geolock, 'asdlfkajsdf');
+            if(data?.settings?.geolock) {
+                setShowRadius(data?.settings?.geolock);
+            }
            }).catch((error) => console.log(error));
 
        }, [id])
@@ -264,6 +278,24 @@ const ExtendBranchAdd = (props) =>  {
             col: 1
         },
 
+        geolock: {
+            parent: 'settings',
+            type: "switch",
+            label: "Geo Lock",
+            required: true,
+            col: 1,
+            callback: (data) => changeGeoRadius(data)
+        },
+
+        georadius:{
+            parent: 'settings',
+            type: "number",
+            label: "Geo Radius",
+            required: true,
+            col: 2,
+            condition: showRadius
+        },
+
         dummy6: {
             isDummyField: true,
             col: 12
@@ -366,7 +398,7 @@ const ExtendBranchAdd = (props) =>  {
             col: 12,
         },
 
-        page_subtitle:{
+        page_title:{
             parent: 'settings',
             type: "text",
             label: "Title",
@@ -374,7 +406,7 @@ const ExtendBranchAdd = (props) =>  {
             col: 3,
         },
 
-        page_title:{
+        page_subtitle:{
             parent: 'settings',
             type: "text",
             label: "Sub Title",
@@ -419,7 +451,10 @@ const ExtendBranchAdd = (props) =>  {
             name: "bg_color",
             col: 2
         },
-
+        "break": {
+            isDummyField: true,
+            col: 12
+        },
         logo: {
             type: "filePic",
             label: "Logo",
@@ -427,13 +462,29 @@ const ExtendBranchAdd = (props) =>  {
             // required: true,
             col: 3
         },
+        delete_logo: {
+           
+            type: "switch",
+            label: "Delete Logo",
+            required: true,
+            name:"delete_logo",
+            col: 3 
+        },
         bg_image: {
             type: "filePic",
             label: "Background Image",
             name: "bg_image",
             // required: true,
-            col: 5
+            col: 3
         },
+        delete_bg_image:{
+           
+            type: "switch",
+            label: "Delete Background",
+            required: true,
+            name:"delete_bg_image",
+            col: 3 
+        }
     }
 
     return (

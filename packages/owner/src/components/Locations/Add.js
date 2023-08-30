@@ -4,8 +4,8 @@ import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
 import {formPageTitle} from "@facepays/common";
 
-const LocationsAdd = (props) => {
-
+const LocationsAdd = (props) => { 
+    const [fullDay,setFullDay]=useState("true")
     const [showTeam, setShowTeam] = useState(false);
     useEffect(() => {
         // setQuery((prev) => !prev);
@@ -75,11 +75,15 @@ const LocationsAdd = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/location`,
+            target: `${props.branchId}/slot-filters/location?limit=1000`,
             // async: true,
             multi:true,
-            required: true,
-            col: 4
+            required: false,
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value && e.value.length?"false":"true")
+            }
         },
 
         // dummy: {
@@ -157,7 +161,26 @@ const LocationsAdd = (props) => {
         location_banner: {
             type: "filePic",
             label: "Location Banner",
-            col: 12,
+            col: 3,
+        },
+        delete_location_banner: { 
+            type: "switch",
+            label: "Delete Banner",
+            required: true,
+            name:"delete_location_banner",
+            col: 3 
+        },
+        location_logo: {
+            type: "filePic",
+            label: "Location Logo",
+            col: 3,
+        },
+        delete_location_logo: { 
+            type: "switch",
+            label: "Delete Logo",
+            required: true,
+            name:"delete_location_logo",
+            col: 3 
         },
         auto: {
             type: "switch",
@@ -189,6 +212,7 @@ const LocationsAdd = (props) => {
         }else {
             setShowTeam(false);
         }
+        setFullDay(data.slots && data.slots.length?"false":"true")
     }
 
     return (
@@ -208,7 +232,8 @@ const LocationsAdd = (props) => {
                     extraVals={
                         {
                             branch_id: props.branchId,
-                            ...(id&& {_method:'patch'})
+                            ...(id&& {_method:'patch'}),
+                            full_day:fullDay
                         }
                     }
                     redirect="locations"
@@ -224,7 +249,6 @@ const LocationsAdd = (props) => {
 const mapStateToProps = state => {
     return {
         branchId: state.selectedBranchId,
-
     }
 }
 

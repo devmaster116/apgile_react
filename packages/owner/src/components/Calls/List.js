@@ -76,15 +76,22 @@ const List = (props) => {
             text: "Assigned To",
             align: "center"
         },
+        
         {
-            dataField: "page.name",
-            text: "QR Code",
+            dataField: "location.name",
+            text: "Location",
             align: "center",
             sort: true,
         },
         {
-            dataField: "location.name",
-            text: "Location",
+            dataField: "page.area",
+            text: "Area",
+            align: "center",
+            sort: true,
+        },
+        {
+            dataField: "page.name",
+            text: "QR Code",
             align: "center",
             sort: true,
         },

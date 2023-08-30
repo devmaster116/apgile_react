@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {Card, CardBody, CardHeader} from 'reactstrap';
 import {FormGenerator} from '@evenlogics/whf-form-generator';
 import {connect} from "react-redux";
@@ -10,7 +10,8 @@ const ReservationAdd = (props) => {
         // setQuery((prev) => !prev);
     }, [props.branchId]);
     const {id} = props.match.params;
-
+    const [selectedLoc, setselectedLoc] = useState(null)
+    const [selectedArea, setselectedArea] = useState(null)
     const fields = {
         name: {
             type: "text",
@@ -38,16 +39,16 @@ const ReservationAdd = (props) => {
             required: true,
             col: 3,
         },
-        weekdays: {
-            type: 'advanceSelect',
-            label: "Days",
-            target: `${props.branchId}/week-day-list`,
-            // async: true,
-            name: 'weekdays',
-            multi:true,
-            required: true,
-            col: 4
-        },
+        // weekdays: {
+        //     type: 'advanceSelect',
+        //     label: "Days",
+        //     target: `${props.branchId}/week-day-list`,
+        //     // async: true,
+        //     name: 'weekdays',
+        //     multi:true,
+        //     required: true,
+        //     col: 4
+        // },
         // location_id: {
         //     type: "advanceSelect",
         //     label: "Location",
@@ -63,14 +64,42 @@ const ReservationAdd = (props) => {
         //        }, 100);
         //     } 
         // },
+        location_id: {
+            type: "advanceSelect",
+            label: "Locations",
+            target: `${props?.branchId}/locations?limit=1000`,
+            // optionLabel: 'title',
+            async: true,
+            required: true,
+            name: "location_id",
+            col: 4,
+            callback:async(data)=>{
+                await data
+                setselectedLoc(data.value)
+                }
+          },
+          area_id: {
+            type: "advanceSelect",
+            label: "Areas",
+            target: `${props?.branchId}/areas?limit=1000&location_id=${selectedLoc}`,
+            // optionLabel: 'title',
+            async: true,
+            required: true,
+            name: "area_id",
+            col: 4,
+            callback:async(data)=>{
+                await data
+                setselectedArea(data.value)
+                }
+          },
         pages: {
             type: "advanceSelect",
             label: "Reserved Items",
             name: "page_ids",
-            target: `${props.branchId}/pages?limit=2000&reservable=1`,
+            target: `${props.branchId}/area-pages?limit=2000&reservable=1&area_id=${selectedArea}`,
             required: true,
             multi:true,
-            // async: true,
+            async: true,
             col: 4
         },
         //   pages: {
@@ -120,7 +149,11 @@ const ReservationAdd = (props) => {
         }
     };
 
-
+    const getInitialValues=(values)=>{ 
+        setselectedLoc(values.location_id)
+        setselectedArea(values.area_id)
+        // setlocationAndArea({location:values.location.name,area:values.area.name})
+    } 
    
     return (
         <Card className="animated fadeIn">
@@ -129,6 +162,7 @@ const ReservationAdd = (props) => {
             </CardHeader>
             <CardBody>
                 <FormGenerator
+                  getInitialValues={getInitialValues}
                     targetEntity={`${props.branchId}/reservations`}
                     fields={fields}
                     targetId={id}

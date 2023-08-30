@@ -90,14 +90,14 @@ console.log(showPlaces,"showPlaces")
             col: 12,
         },
 
-        page_subtitle: {
+        page_title: {
             type: "text",
             label: "Title",
             // required: true,
             col: 3,
         },
 
-        page_title: {
+        page_subtitle: {
             type: "text",
             label: "Sub Title",
             // required: true,
@@ -153,11 +153,18 @@ console.log(showPlaces,"showPlaces")
             name: "youtube",
             col: 6,
         },
-        reddit: {
+        tiktok: {
             type: "text",
-            label: "Reddit",
+            label: "TikTok",
             // required: true,
-            name: "reddit",
+            name: "tiktok",
+            col: 6,
+        },
+        telegram: {
+            type: "text",
+            label: "Telegram",
+            // required: true,
+            name: "telegram",
             col: 6,
         },
         pinterest: {

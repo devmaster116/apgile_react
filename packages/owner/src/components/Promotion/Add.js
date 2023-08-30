@@ -7,7 +7,7 @@ import {formPageTitle} from "@facepays/common";
 
 const Add = (props) => {
     const [minDate, setMinDate] = useState('');
-
+    const [fullDay,setFullDay]=useState("true") 
 
     useEffect(() => {
     }, [props.branchId]);
@@ -89,11 +89,15 @@ const Add = (props) => {
         slots: {
             type: 'advanceSelect',
             label: "Time Slots",
-            target: `${props.branchId}/slot-filters/promotion`,
+            target: `${props.branchId}/slot-filters/promotion?limit=1000`,
             // async: true,
             multi:true,
-            required: true,
-            col: 4
+            required: false,
+            col: 4,
+            callback:async (e)=>{
+                await e
+                setFullDay(e.value && e.value.length?"false":"true")
+            }
         },
 
         dummy2: {
@@ -148,14 +152,27 @@ const Add = (props) => {
             // required: id ? false : true,
             col: 4,
         },
+        delete_promotion_image: {
+            type: "switch",
+            label: "Delete Promotion Image",
+            required: true,
+            name:"delete_promotion_image",
+            col: 3 
+        },
 
-    };
+    }; 
     const extraVal = id ? {
         _method: "PUT",
-        branch_id: props.branchId
+        branch_id: props.branchId,
+        full_day:fullDay
     } : {
-        branch_id: props.branchId
+        branch_id: props.branchId,
+        full_day:fullDay
     };
+    const getInitialValues = async (data) => {
+        await data;
+        setFullDay(data.slots && data.slots.length?"false":"true")
+    }
     return (
         <div>
             <Card className="animated fadeIn">
@@ -166,8 +183,8 @@ const Add = (props) => {
                         fields={fields}
                         targetId={id}
                         name={id ? "editForm" : ""}
-                        // getInitialValues={this.getInitialValues}
-                        // debug={false}
+                        getInitialValues={getInitialValues}
+                        debug={false}
                         extraVals={extraVal}
                         // extraVals={{branch_id:props.branchId}}
                         redirect="promotions"

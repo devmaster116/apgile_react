@@ -121,6 +121,12 @@ const filters = {
             sort: true,
         },
         {
+            dataField: "area",
+            text: "Area",
+            align: "center",
+            sort: true
+        },
+        {
             isDummyField: true,
             align: "center",
             text: "QR Code",
@@ -159,7 +165,7 @@ const filters = {
                 );
             },
         },
-
+        
 
     ];
 
@@ -247,7 +253,10 @@ const filters = {
                                         alt="background"
                                         src={"data:image/png;base64," + pages?.qr_code}
                                     ></img>
-                                    <p><b>{pages?.name}</b></p>
+
+                                    <p><b>Location: { pages?.location?.name}</b></p>
+                                    <p><b>Area: {pages?.area}</b></p>
+                                    <p><b>Item: {pages?.name}</b></p>
                                 </>
                             )}
                         </Modal>
