@@ -34,6 +34,7 @@ const Add = (props) => {
             type: "number",
             label: "Sort Order",
             // defaultValue: 10,
+            condition: false,
             min:0,
             col: 2,
         },
