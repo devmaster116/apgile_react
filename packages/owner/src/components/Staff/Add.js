@@ -8,7 +8,7 @@ import {formPageTitle} from "@facepays/common";
 const ItemAdd = (props) => {
 
     const [query, setQuery] = useState(false);
-    const [showPasscode, setShowPasscode] = useState(false);
+    const [showUsername, setShowUsername] = useState(true);
     const [showPassword, setShowPassword] = useState(true);
     const [optionsArr, setOptionsArr] = useState([])
     const {id} = props.match.params;
@@ -38,11 +38,13 @@ const ItemAdd = (props) => {
     const roleChanged = async (data) => {
         await data.value;
         decidePasswordLogic(data.value);
+        decideUserLogic(data.value);
     }
 
     const getInitialValues = async (data) => {
         await data;
         decidePasswordLogic(data.role_id);
+        decideUserLogic(data.role_id);
         // if(data?.role_id === 3 || data?.role_id === 4) {
         //     setShowPasscode(true)
         //     if(data?.role_id === 3) {
@@ -57,15 +59,22 @@ const ItemAdd = (props) => {
     const decidePasswordLogic = (role) => {
         role = parseInt(role);
         if(role === 4 || role === 5) {
-            setShowPasscode(true);
             if(role === 5) {
                 setShowPassword(false);
             } else {
                 setShowPassword(true);
             }
         } else {
-            setShowPasscode(false);
             setShowPassword(true);
+        }
+    }
+
+    const decideUserLogic = (role) => {
+        role = parseInt(role);
+        if(!id && (role === 4 || role === 5)) {
+            setShowUsername(false);
+        } else {
+            setShowUsername(true);
         }
     }
 
@@ -74,6 +83,7 @@ const ItemAdd = (props) => {
         username: {
             type: 'text',
             label: 'Username',
+            condition: showUsername,
             required: true,
             disabled:id ? true : false,
             col: 3
@@ -149,20 +159,20 @@ const ItemAdd = (props) => {
                 callback: (data) => roleChanged(data)
             }
         },
-        passcode: {
-            type: "masked",
-            mask: "0000",
-            required: !id,
-            condition: showPasscode,
-            label: "Passcode",
-            col: 1,
-            formatChars: {
-                '0': '[0-9]',
-                'a': '[A-Za-z]',
-                '*': '[A-Za-z0-9]'
-              },
-              getValue : (data) => {console.log(data,"data")}
-        },
+        // passcode: {
+        //     type: "masked",
+        //     mask: "0000",
+        //     required: !id,
+        //     condition: showPasscode,
+        //     label: "Passcode",
+        //     col: 1,
+        //     formatChars: {
+        //         '0': '[0-9]',
+        //         'a': '[A-Za-z]',
+        //         '*': '[A-Za-z0-9]'
+        //       },
+        //       getValue : (data) => {console.log(data,"data")}
+        // },
 
         // ...(showPassword && {
             password: {
