@@ -30,13 +30,13 @@ const Add = (props) => {
             // required: true,
             col: 3,
         },
-        sort_order: {
-            type: "number",
-            label: "Sort Order",
-            // defaultValue: 10,
-            min:0,
-            col: 2,
-        },
+        // sort_order: {
+        //     type: "number",
+        //     label: "Sort Order",
+        //     // defaultValue: 10,
+        //     min:0,
+        //     col: 2,
+        // },
         dummy: {
             col: 2,
             isDummyField: true
