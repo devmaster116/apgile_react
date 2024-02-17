@@ -10,8 +10,6 @@ import {connect} from "react-redux";
 import Swal from "sweetalert2";
 import {CModalBody, CModalHeader, CModalTitle, CModal} from "@coreui/react";
 
-// import {ButtonGroup} from "react-bootstrap";
-
 const List = (props) => {
 
     const [show, setShow] = useState(false);
@@ -335,8 +333,8 @@ const filters = {
                                 <p><b>Page:</b> { stats?.activeSet?.page}</p>
                                 <p><b>Area:</b> { stats?.activeSet?.area}</p>
                                 <p><b>Staff:</b> { stats?.activeSet?.staff}</p>
-                                <p><b>Reservation:</b> { stats?.activeSet?.reservation}</p>
                                 <p><b>Location:</b> { stats?.activeSet?.location}</p>
+                                <p><b>Reservation:</b> { stats?.activeSet?.reservation}</p>
                             </>
                         )}
                     </CModalBody>
