@@ -329,7 +329,7 @@ const filters = {
                                 <span className="visually-hidden">Loading...</span>
                             </Spinner>
                         ) : (
-                            <>
+                               <>
                                 <p><b>Page:</b> { stats?.activeSet?.page}</p>
                                 <p><b>Area:</b> { stats?.activeSet?.area}</p>
                                 <p><b>Staff:</b> { stats?.activeSet?.staff}</p>
