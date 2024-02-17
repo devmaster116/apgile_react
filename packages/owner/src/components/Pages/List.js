@@ -8,12 +8,15 @@ import api from "@evenlogics/whf-api";
 import "../../style/style.css";
 import {connect} from "react-redux";
 import Swal from "sweetalert2";
+import {CModalBody, CModalHeader, CModalTitle, CModal} from "@coreui/react";
 
 // import {ButtonGroup} from "react-bootstrap";
 
 const List = (props) => {
 
     const [show, setShow] = useState(false);
+    const [showStats, setShowStats] = useState(false);
+    const [stats, setStats] = useState(false);
     const [pages, setPages] = useState(false);
     const [Loader, setLoader] = useState(false);
     const [ID, setID] = useState(0);
@@ -72,6 +75,20 @@ const save = (value,data) => {
 
 const cancel = () => {
     console.log("cancelled")
+}
+
+const showStatsModel = (id) => {
+    setLoader(true)
+    // api.request("get", `/${props?.branchId}/pages/${id}`)
+    api.request("get", `/${props?.branchId}/pages/${id}/info`)
+        .then(({data}) => {
+            setStats(data)
+            setShowStats(true);
+            setTimeout(() => {
+                setLoader(false)
+            }, 3000);
+        })
+        .catch((error) => console.log(error));
 }
 const filters = {
     location_id: {
@@ -146,11 +163,21 @@ const filters = {
                         </Button>
                         <Button
                         size="sm"
-                        className="mx-auto"
-
                         color="secondary" onClick={() => openPage(row)}>
                             View Page
                         </Button>
+
+                        <Button
+                            size="sm"
+
+                            color="secondary"
+                            onClick={() => {
+                                showStatsModel(row?.id);
+                            }}
+                        >
+                            Page Info
+                        </Button>
+
                      {
                          props?.userRole !== "supervisor" && <Button
                          size="sm"
@@ -176,6 +203,12 @@ const filters = {
     }
 
     const openPage = (item) => {
+        // const id=JSON.parse(localStorage.getItem('currentUser')).id||''
+        // window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}&owner=${id}`);
+        window.open(item.pwa_page_url);
+    }
+
+    const openStats = (item) => {
         // const id=JSON.parse(localStorage.getItem('currentUser')).id||''
         // window.open(`${process.env.REACT_APP_PWA_URL}?q=${item.uuid}&owner=${id}`);
         window.open(item.pwa_page_url);
@@ -262,6 +295,52 @@ const filters = {
                         </Modal>
                     </CardBody>
                 </Card>
+                {/*<Modal*/}
+                {/*    // style={{textAlign: "center"}}*/}
+                {/*    show={showStats}*/}
+                {/*    onHide={() => setShowStats(false)}*/}
+                {/*    aria-labelledby="contained-modal-title-vcenter"*/}
+                {/*    centered*/}
+                {/*>*/}
+                {/*    {Loader ? (*/}
+                {/*        <Spinner animation="border" role="status" className="mx-auto">*/}
+                {/*            <span className="visually-hidden">Loading...</span>*/}
+                {/*        </Spinner>*/}
+                {/*    ) : (*/}
+                {/*        <>*/}
+                {/*            <p><b>Page:</b> { stats?.activeSet?.page}</p>*/}
+                {/*            <p><b>Area:</b> { stats?.activeSet?.area}</p>*/}
+                {/*            <p><b>Staff:</b> { stats?.activeSet?.staff}</p>*/}
+                {/*            <p><b>Reservation:</b> { stats?.activeSet?.reservation}</p>*/}
+                {/*            <p><b>Location:</b> { stats?.activeSet?.location}</p>*/}
+                {/*        </>*/}
+                {/*    )}*/}
+                {/*</Modal>*/}
+                <CModal
+                    visible={showStats}
+                    onClose={() => setShowStats(false)}
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <CModalHeader>
+                        <CModalTitle>{ stats?.page?.name}</CModalTitle>
+                    </CModalHeader>
+                    <CModalBody>
+                        {Loader ? (
+                            <Spinner animation="border" role="status" className="mx-auto">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        ) : (
+                            <>
+                                <p><b>Page:</b> { stats?.activeSet?.page}</p>
+                                <p><b>Area:</b> { stats?.activeSet?.area}</p>
+                                <p><b>Staff:</b> { stats?.activeSet?.staff}</p>
+                                <p><b>Reservation:</b> { stats?.activeSet?.reservation}</p>
+                                <p><b>Location:</b> { stats?.activeSet?.location}</p>
+                            </>
+                        )}
+                    </CModalBody>
+                </CModal>
             </div>
         </div>
     );
