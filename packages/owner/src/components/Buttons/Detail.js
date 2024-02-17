@@ -31,9 +31,9 @@ const ButtonDetail = (props) => {
 	return (
 		<div>
 			<Card className="animated fadeIn">
-				<Header title={`Button for ${buttonData.page.name}`} />
+				<Header title={`Button for ${buttonData?.page?.name}`} />
 				<CardBody>
-					<input type="text" value={buttonData.url} className="form-control" disabled/><br />
+					<input type="text" value={buttonData?.url} className="form-control" disabled/><br />
 					<CRow>
 						<CCol md={3}>
 							<Block
