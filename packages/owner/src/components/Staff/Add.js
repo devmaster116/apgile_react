@@ -80,13 +80,16 @@ const ItemAdd = (props) => {
 
 
     const fields = {
-        username: {
-            type: 'text',
-            label: 'Username',
-            condition: showUsername,
-            required: true,
-            disabled:id ? true : false,
-            col: 3
+        ...(optionsArr.length > 0) && {
+            role_id: {
+                type: "advanceSelect",
+                label: "Role",
+                name: "role_id",
+                options: optionsArr,
+                required: true,
+                col: 2,
+                callback: (data) => roleChanged(data)
+            }
         },
 
         first_name: {
@@ -124,18 +127,6 @@ const ItemAdd = (props) => {
             name: "gender_id",
             col: 2,
         },
-
-        dummy1: {
-            isDummyField: true,
-            col: 1,
-        },
-
-        email: {
-            type: "email",
-            label: "Email",
-            name: "email",
-            col: 3,
-        },
         phone1: {
             type: "masked",
             mask: props?.phoneMask,
@@ -145,76 +136,47 @@ const ItemAdd = (props) => {
                 '0': '[0-9]',
                 'a': '[A-Za-z]',
                 '*': '[A-Za-z0-9]'
-              },
+            },
         },
 
-        ...(optionsArr.length > 0) && {
-            role_id: {
-                type: "advanceSelect",
-                label: "Role",
-                name: "role_id",
-                options: optionsArr,
-                required: true,
-                col: 2,
-                callback: (data) => roleChanged(data)
-            }
+        username: {
+            type: 'text',
+            label: 'Username',
+            condition: showUsername,
+            required: true,
+            disabled:id ? true : false,
+            col: 2
         },
-        // passcode: {
-        //     type: "masked",
-        //     mask: "0000",
-        //     required: !id,
-        //     condition: showPasscode,
-        //     label: "Passcode",
-        //     col: 1,
-        //     formatChars: {
-        //         '0': '[0-9]',
-        //         'a': '[A-Za-z]',
-        //         '*': '[A-Za-z0-9]'
-        //       },
-        //       getValue : (data) => {console.log(data,"data")}
+
+        email: {
+            type: "email",
+            label: "Email",
+            name: "email",
+            col: 3,
+        },
+
+        password: {
+            type: "password",
+            label: "Password",
+            name: "password",
+            required: id ? false :true ,
+            condition: showPassword,
+            col: 2,
+        },
+        password_confirmation: {
+            oneOf: "password",
+            type: "password",
+            required:  id ? false :true,
+            condition: showPassword,
+            label: "Password Confirmation",
+            name: "password_confirmation",
+            col: 2,
+        },
+
+        // hidden2: {
+        //     type: 'hidden',
+        //     col: 1
         // },
-
-        // ...(showPassword && {
-            password: {
-                type: "password",
-                label: "Password",
-                name: "password",
-                required: id ? false :true ,
-                condition: showPassword,
-                col: 2,
-            },
-            password_confirmation: {
-                oneOf: "password",
-                type: "password",
-                required:  id ? false :true,
-                condition: showPassword,
-                label: "Password Confirmation",
-                name: "password_confirmation",
-                col: 2,
-            },
-        //   }),
-            // password: {
-            //     type: "password",
-            //     label: "Password",
-            //     name: "password",
-            //     required: id ? false :true ,
-            //     condition: showPassword,
-            //     col: 2,
-            // },
-            // password_confirmation: {
-            //     oneOf: "password",
-            //     type: "password",
-            //     required:  id ? false :true,
-            //     condition: showPassword,
-            //     label: "Password Confirmation",
-            //     name: "password_confirmation",
-            //     col: 2,
-            // },
-
-        hidden2: {
-            type: 'hidden',
-            col: 1
-        },
     };
     var extraVal = {branch_id: props.branchId}
 
